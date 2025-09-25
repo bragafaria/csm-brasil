@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+:root {
+  --surface: #0f172a; /* Dark slate for a modern, premium feel */
+  --surface-variant: #1e293b; /* Slightly lighter slate for card backgrounds */
+  --primary: #6d28d9; /* Vibrant purple, softened for elegance */
+  --primary-hover: #5b21b6; /* Darker purple for hover states */
+  --accent: #a78bfa; /* Light purple for highlights */
+  --text-primary: #f8fafc; /* Crisp white for primary text */
+  --text-secondary: #cbd5e1; /* Soft gray for secondary text */
+  --border: #334155; /* Subtle slate for borders */
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --card-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --transition: all 0.3s ease-in-out;
+}
+
+@theme inline {
+  --color-background: var(--surface);
+  --color-foreground: var(--text-primary);
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", monospace;
+}
+
+body {
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom gradient for cards */
+.card-gradient {
+  background-image: var(--card-gradient);
+  transition: var(--transition);
+}
+
+/* Hover effect for cards */
+.card-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: scale(1.05);
+}
+
+/* Section header animation */
+.section-header {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: var(--transition);
+}
+
+.section-header.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Radar chart styles (unchanged) */
+.radar-dark svg text {
+  fill: #ffffff !important;
+}
+
+.radar-dark svg .MuiRadarGrid-radial,
+.radar-dark svg .MuiRadarGrid-divider,
+.radar-dark svg .MuiChartsGrid-line {
+  stroke: #ffffff !important;
+}
+
+.radar-dark svg .MuiChartsLegend-root text {
+  fill: #ffffff !important;
+}
+
+.radar-dark svg text {
+  fill: #ffffff !important;
+}
+
+.radar-dark svg line[stroke-dasharray] {
+  stroke: #ffffff !important;
+  stroke-dasharray: 4 4 !important;
+}
+
+.radar-dark .MuiChartsTooltip-root,
+.radar-dark .MuiChartsTooltip-paper {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+  border: 1px solid #374151 !important;
+}
+
+.radar-dark .MuiChartsTooltip-root .MuiTypography-root,
+.radar-dark .MuiChartsTooltip-root td,
+.radar-dark .MuiChartsTooltip-root th {
+  color: #ffffff !important;
+}
+
+.radar-dark .MuiChartsLegend-label {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
