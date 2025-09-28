@@ -12,12 +12,10 @@ export const config = {
   },
 };
 
-async function buffer(req) {
-  const bufs = [];
-  for await (const chunk of req) {
-    bufs.push(chunk);
-  }
-  return Buffer.concat(bufs);
+async function buffer(request) {
+  // Read the request body as an ArrayBuffer and convert to Buffer
+  const arrayBuffer = await request.arrayBuffer();
+  return Buffer.from(arrayBuffer);
 }
 
 export async function POST(request) {
@@ -48,11 +46,15 @@ export async function POST(request) {
 
       if (error) {
         console.error("Supabase update error:", error);
+        return new Response(`Supabase Error: ${error.message}`, { status: 500 });
       } else {
         console.log(`User ${userId} marked as paid`);
       }
     }
   }
 
-  return new Response(JSON.stringify({ received: true }), { status: 200 });
+  return new Response(JSON.stringify({ received: true }), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
 }

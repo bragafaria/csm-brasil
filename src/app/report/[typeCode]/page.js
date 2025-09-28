@@ -24,6 +24,8 @@ export default function Report() {
     }
   }, []);
 
+  console.log("stored data", data);
+
   const openModal = (title, body) => {
     setModalContent({ title, body });
     setShowModal(true);
@@ -552,12 +554,12 @@ export default function Report() {
       transition={{ duration: 0.8 }}
       className="flex min-h-screen flex-col items-center py-12 px-4 bg-[var(--surface)] text-[var(--text-primary)]"
     >
-      <div className="w-full max-w-5xl card-gradient p-10 rounded-2xl shadow-xl border border-[var(--border)] space-y-12">
+      <div className="w-full max-w-6xl card-gradient p-10 rounded-2xl shadow-xl border border-[var(--border)] space-y-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center space-y-4"
+          className="text-center space-y-4 hero-gradient rounded-2xl p-8 mb-8 shadow-custom-lg"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] tracking-tight">
             Your CSM Personality Report

@@ -2,7 +2,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "../../lib/supabaseClient"; // Adjust import
+import { supabase } from "../utils/supabaseClient"; // Adjust import
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -24,6 +24,9 @@ export default function Login() {
     if (error) {
       setError(error.message);
     } else if (data.session) {
+      // // In Signup page, after successful fetch to /api/create-checkout-session
+      // localStorage.removeItem("csmAssessmentData");
+      // window.location.href = url;
       router.push("/dashboard");
     }
 

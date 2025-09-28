@@ -33,7 +33,7 @@ export default function DashboardLayout({ children }) {
   return (
     <div className="min-h-screen surface">
       {/* Top Navbar */}
-      <nav className="fixed top-0 w-full bg-[var(--surface)]/80 backdrop-blur-md border-b border-[var(--primary)]/20 z-50">
+      <nav className="fixed top-0 w-full bg-[var(--dashboard)]/80 backdrop-blur-md border-b border-[var(--primary)]/20 z-50">
         <div className="flex items-center justify-between px-4 py-3 h-full">
           {/* Hamburger Menu for both Mobile and Desktop when sidebar is closed */}
           {!sidebarOpen && (isMobile || !isMobile) && (

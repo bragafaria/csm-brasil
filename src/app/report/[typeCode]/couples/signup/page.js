@@ -1,11 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Add useEffect
 import { useParams, useRouter } from "next/navigation";
-import { supabase } from "../../../../utils/supabase/client"; // Import singleton client
+import { supabase } from "../../../../utils/supabaseClient";
 import { z } from "zod";
 import { ArrowRight } from "lucide-react";
 
-// Zod schema for validation
 const signupSchema = z
   .object({
     name: z.string().min(3, { message: "Name must be at least 3 characters" }),
@@ -32,8 +31,20 @@ export default function Signup() {
   const [serverError, setServerError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [confirmationSent, setConfirmationSent] = useState(false);
+  const [assessmentData, setAssessmentData] = useState(null); // Add state for assessment data
+
+  // Load assessment data from localStorage
+  useEffect(() => {
+    const stored = localStorage.getItem("csmAssessmentData");
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      setAssessmentData(parsed.results); // Set assessment data
+      console.log("Stored assessment data:", parsed.results);
+    }
+  }, []);
 
   const handleSignOut = async () => {
+    console.log("Signing out...");
     const { error } = await supabase.auth.signOut();
     if (error) {
       console.error("Error signing out:", error.message);
@@ -113,7 +124,7 @@ export default function Signup() {
           Authorization: `Bearer ${session.access_token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ typeCode }),
+        body: JSON.stringify({ typeCode, assessmentData }), // Send assessment data
       });
 
       const responseData = await response.json();
@@ -205,7 +216,7 @@ export default function Signup() {
               {serverError && <p className="text-red-400 text-sm">{serverError}</p>}
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || !assessmentData} // Disable if no assessment data
                 className="btn-primary w-full py-3 rounded-lg font-semibold inline-flex items-center justify-center group"
               >
                 {loading ? "Processing..." : "Sign Up and Proceed to Payment"}

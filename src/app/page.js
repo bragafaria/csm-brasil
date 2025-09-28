@@ -110,7 +110,8 @@ export default function Home() {
             </h1>
 
             <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-12 max-w-3xl mx-auto leading-relaxed">
-              The first personality framework designed for couples
+              The Cognitive Spectrum Model (CSM) is a framework that maps how you think and connect, providing clear
+              steps for personal growth and stronger relationships.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -131,20 +132,20 @@ export default function Home() {
 
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="p-6 rounded-2xl bg-gradient-to-b from-[var(--primary)]/10 to-transparent border border-[var(--primary)]/20 backdrop-blur-sm">
-                <div className="text-3xl font-bold text-[var(--primary)] mb-2">
-                  <Counter target={250} suffix="k+" duration={2000} />
+                <div className="text-3xl font-bold text-white mb-2">
+                  <Counter target={250} suffix="k+" duration={5000} />
                 </div>
                 <div className="text-[var(--text-secondary)]">Couples helped</div>
               </div>
               <div className="p-6 rounded-2xl bg-gradient-to-b from-[var(--accent)]/10 to-transparent border border-[var(--accent)]/20 backdrop-blur-sm">
-                <div className="text-3xl font-bold text-[var(--accent)] mb-2">
-                  <Counter target={94} suffix="%" duration={2000} />
+                <div className="text-3xl font-bold text-white mb-2">
+                  <Counter target={94} suffix="%" duration={5000} />
                 </div>
                 <div className="text-[var(--text-secondary)]">Report improvement</div>
               </div>
               <div className="p-6 rounded-2xl bg-gradient-to-b from-[var(--primary)]/10 to-transparent border border-[var(--primary)]/20 backdrop-blur-sm">
-                <div className="text-3xl font-bold text-[var(--primary)] mb-2">
-                  <Counter target={4.9} suffix="★" duration={2000} decimals={1} />
+                <div className="text-3xl font-bold text-white mb-2">
+                  <Counter target={4.9} suffix="★" duration={5000} decimals={1} />
                 </div>
                 <div className="text-[var(--text-secondary)]">Average rating</div>
               </div>

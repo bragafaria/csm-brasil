@@ -66,7 +66,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile }) {
     <div
       className={`fixed left-0 top-16 h-[calc(100vh-4rem)] ${
         isMobile ? "w-full" : "w-64"
-      } surface-variant border-r border-[var(--primary)] transition-all duration-300 z-30 overflow-hidden`}
+      } bg-[var(--dashboard)] transition-all duration-300 z-30 overflow-hidden`}
     >
       <div className="p-4 overflow-y-auto h-full">
         {/* Dashboard Header */}
