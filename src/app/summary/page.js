@@ -28,6 +28,8 @@ export default function Summary() {
     }
   };
 
+  console.log("data summary", data);
+
   const openModal = (title, body) => {
     setModalContent({ title, body });
     setShowModal(true);

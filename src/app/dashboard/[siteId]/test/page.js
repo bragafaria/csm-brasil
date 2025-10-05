@@ -1,13 +1,20 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { questions, calculateCSMResults } from "../utils/csm";
+import { useRouter, useParams } from "next/navigation"; // FIXED: useParams for siteId
+import { questions, calculateCSMResults } from "../../../utils/csm";
+import { createClient } from "@supabase/supabase-js";
 
-export default function Test() {
+export default function DashboardTest() {
   const router = useRouter();
+  const params = useParams(); // FIXED: Get siteId from URL
+  const siteId = params?.siteId; // e.g., from /dashboard/[siteId]/test
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
   const [ranks, setRanks] = useState({}); // Track points for rank-type questions
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true); // FIXED: Add loading state
+  const [showAssessment, setShowAssessment] = useState(false);
+  const [assessmentData, setAssessmentData] = useState(null);
   const q = questions[current];
 
   // Load answers from localStorage only once on component mount
@@ -15,14 +22,85 @@ export default function Test() {
     const saved = localStorage.getItem("csmAnswers");
     if (saved) {
       const parsedAnswers = JSON.parse(saved);
-      setAnswers((prevAnswers) => {
-        if (JSON.stringify(prevAnswers) !== JSON.stringify(parsedAnswers)) {
-          return parsedAnswers;
-        }
-        return prevAnswers;
-      });
+      setAnswers(parsedAnswers); // FIXED: Simplified; no redundant check
     }
-  }, []);
+  }, []); // FIXED: Empty deps for mount-only
+
+  // Initialize: Auth + user validation
+  useEffect(() => {
+    async function initializeTestDashboardPage() {
+      if (!siteId) {
+        setError("Invalid dashboard link.");
+        setLoading(false);
+        return;
+      }
+
+      const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
+        auth: { persistSession: true },
+      });
+
+      // Check session
+      const {
+        data: { session },
+        error: sessionError,
+      } = await supabase.auth.getSession();
+      if (sessionError || !session) {
+        console.error("Session error:", sessionError?.message || "No session found");
+        router.push("/login");
+        setLoading(false);
+        return;
+      }
+
+      const userId = session.user.id;
+      console.log("Initializing dashboard for user:", { userId, siteId });
+
+      // Validate access: user must be Partner A (id = siteId) or Partner B (partner_id = siteId)
+      const { data: userData, error: userError } = await supabase
+        .from("users")
+        .select("id, partner_id, has_assessment")
+        .eq("id", userId)
+        .single();
+
+      if (userError || !userData) {
+        console.error("User fetch error:", userError?.message);
+        setError("User profile not found. Please log in again.");
+        await supabase.auth.signOut();
+        router.push("/login");
+        setLoading(false);
+        return;
+      }
+
+      const isPartnerA = userId === siteId;
+      const isPartnerB = userData.partner_id === siteId;
+
+      if (!isPartnerA && !isPartnerB) {
+        console.error("Access denied:", { userId, siteId });
+        setError("You do not have access to this dashboard.");
+        setLoading(false);
+        return;
+      }
+
+      console.log("Access granted:", { isPartnerA, isPartnerB, hasAssessment: userData.has_assessment });
+
+      if (isPartnerA) {
+        // Partner A: Redirect to summary (assume they start)
+        router.push(`/dashboard/${siteId}/summary`);
+        setLoading(false);
+        return;
+      }
+
+      if (isPartnerB && !userData.has_assessment) {
+        setShowAssessment(true);
+      } else {
+        // Already completed: Redirect to summary
+        router.push(`/dashboard/${siteId}/summary`);
+      }
+
+      setLoading(false);
+    }
+
+    initializeTestDashboardPage();
+  }, [router, siteId]); // FIXED: Dep on siteId
 
   // Update ranks when current question changes
   useEffect(() => {
@@ -38,20 +116,54 @@ export default function Test() {
 
   const handleRankChange = (optionKey, points) => {
     const parsedPoints = parseInt(points) || 0;
-    if (parsedPoints < 0) return; // Prevent negative points
+    if (parsedPoints < 0) return;
     const newRanks = { ...ranks, [optionKey]: parsedPoints };
     setRanks(newRanks);
     handleAnswer(newRanks);
   };
 
-  const next = () => {
-    if (current < questions.length - 1) setCurrent(current + 1);
-    else {
-      const results = calculateCSMResults(answers);
-      localStorage.setItem("csmAssessmentData", JSON.stringify({ answers, results }));
-      router.push("/summary");
-      localStorage.removeItem("csmAnswers");
+  const next = async () => {
+    if (current < questions.length - 1) {
+      setCurrent(current + 1);
+      return;
     }
+
+    // FIXED: Calculate results first
+    const results = calculateCSMResults(answers);
+    localStorage.setItem("csmAssessmentData", JSON.stringify({ answers, results }));
+    setAssessmentData(results); // Set for immediate use
+
+    // FIXED: Recreate supabase/userId here (or use hook; scoped properly)
+    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
+      auth: { persistSession: true },
+    });
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    const userId = session?.user?.id;
+    if (!userId) {
+      setError("Session expired. Please log in again.");
+      return;
+    }
+
+    // FIXED: Build updateData properly
+    const updateData = { has_assessment: true };
+    if (results.percents?.length === 5) updateData.percents = results.percents;
+    if (results.dominants?.length === 5) updateData.dominants = results.dominants;
+    if (results.categories?.length === 5) updateData.categories = results.categories;
+
+    // Update Supabase
+    const { error: supabaseError } = await supabase.from("users").update(updateData).eq("id", userId);
+
+    if (supabaseError) {
+      console.error("Supabase update error:", supabaseError.message);
+      setError("Failed to save results. You can retry or contact support.");
+      return; // FIXED: No Response; handle client-side
+    }
+
+    console.log("Results saved:", results);
+    localStorage.removeItem("csmAnswers");
+    router.push(`/dashboard/${siteId}/summary`);
   };
 
   const prev = () => current > 0 && setCurrent(current - 1);
@@ -68,6 +180,38 @@ export default function Test() {
   const minutesPerQuestion = totalMinutes / questions.length;
   const minutesLeft = Math.max(0, Math.round((questions.length - (current + 1)) * minutesPerQuestion));
 
+  // FIXED: Conditional render + loading/error UI
+  if (loading) {
+    return (
+      <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)]">
+        <div className="text-[var(--text-primary)]">Loading assessment...</div>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)]">
+        <div className="text-red-400 text-center">{error}</div>
+        <button onClick={() => router.push("/login")} className="mt-4 btn-primary">
+          Go to Login
+        </button>
+      </main>
+    );
+  }
+
+  if (!showAssessment) {
+    return (
+      <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)]">
+        <div className="text-[var(--text-primary)] text-center">Assessment already completed or not needed.</div>
+        <button onClick={() => router.push(`/dashboard/${siteId}/summary`)} className="mt-4 btn-primary">
+          View Summary
+        </button>
+      </main>
+    );
+  }
+
+  // Test form render (unchanged, but now conditional)
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)]">
       <div className="w-full max-w-lg card-gradient p-8 rounded-xl shadow-2xl border border-[var(--border)]">

@@ -1,10 +1,52 @@
 "use client";
 import Link from "next/link";
-import { Heart, Users, Target, Shield, ArrowRight, Star, HelpCircle, Brain } from "lucide-react";
+import { useRouter } from "next/navigation"; // Added for router.push
+import {
+  Heart,
+  Users,
+  Target,
+  Shield,
+  ArrowRight,
+  Star,
+  HelpCircle,
+  Brain,
+  ChevronUp,
+  ChevronDown,
+} from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { createClient } from "@supabase/supabase-js";
 
 export default function Home() {
+  // State for FAQ accordion
+  const [expandedFAQ, setExpandedFAQ] = useState(null);
+  const router = useRouter(); // Added for navigation
+
+  // Function to toggle FAQ
+  const toggleFAQ = (index) => {
+    setExpandedFAQ(expandedFAQ === index ? null : index);
+  };
+
+  const handleStartTest = async () => {
+    localStorage.removeItem("csmAnswers");
+
+    // FIXED: Create Supabase client here (client-side safe with anon key)
+    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
+      auth: { persistSession: true },
+    });
+
+    // Check and sign out if session exists
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    if (session) {
+      console.log("Existing session found on home page - signing out"); // FIXED: Updated log
+      await supabase.auth.signOut();
+      localStorage.removeItem("supabase.auth.token"); // Explicitly clear Supabase storage key
+      router.refresh(); // Refresh to reload without session
+    }
+  };
+
   // Animation variants for the headline
   const headlineVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -58,6 +100,20 @@ export default function Home() {
       transition: { duration: 0.6, ease: "easeOut" },
     },
   };
+
+  // Animation variants for FAQ header
+  const headerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
+  // Ref for FAQ header
+  const faqHeaderRef = useRef(null);
+  const isFaqHeaderInView = useInView(faqHeaderRef, { once: true, amount: 0.2 });
 
   return (
     <div className="min-h-screen bg-[var(--surface)] text-[var(--text-primary)]">
@@ -120,6 +176,7 @@ export default function Home() {
                   initial="hidden"
                   animate="visible"
                   whileHover="hover"
+                  onClick={handleStartTest}
                   variants={buttonVariants}
                   className="group bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-2xl flex items-center space-x-2 text-[var(--text-primary)]"
                 >
@@ -461,6 +518,96 @@ export default function Home() {
               </p>
               <div className="text-[var(--primary)] font-semibold">— Emma & David</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-16 px-4 bg-[var(--surface)]">
+        <div className="container mx-auto max-w-4xl">
+          <motion.div
+            ref={faqHeaderRef}
+            initial="hidden"
+            animate={isFaqHeaderInView ? "visible" : "hidden"}
+            variants={headerVariants}
+            className="text-center mb-12 section-header"
+          >
+            <h2 className="text-4xl font-bold mb-6">
+              Frequently Asked <span className="text-[var(--accent)]">Questions</span>
+            </h2>
+          </motion.div>
+
+          <div className="space-y-4 mb-12">
+            {[
+              {
+                question: "1. What is the Cognitive Spectrum Model (CSM), and why should I care?",
+                answer:
+                  "The Cognitive Spectrum Model, or CSM, is a modern personality framework that evaluates how individuals think and interact across five key spectrums: Information Processing (Concrete versus Abstract), Decision-Making (Analytical versus Empathic), Energy Orientation (Inward versus Outward), Change Approach (Stable versus Adaptive), and Interpersonal Style (Harmony versus Autonomy). By assessing these dimensions, CSM generates one of 32 archetypes, giving you percentage-based results for nuanced insight. CSM is particularly valuable for improving self-awareness, enhancing communication, and understanding compatibility in relationships or other interpersonal contexts.",
+              },
+              {
+                question: "2. How is CSM different from MBTI, Enneagram, or Big Five?",
+                answer:
+                  "While MBTI categorizes people into 16 types, Enneagram focuses on motivations, and the Big Five measures broad traits, CSM provides 32 archetypes with spectrum-based percentages, offering far more precision. The model also introduces the unique Harmony/Autonomy dimension, which highlights how you naturally collaborate or seek independence in relationships. By integrating cognitive patterns and interpersonal applications, CSM provides actionable strategies for personal growth and relationship success that other personality frameworks don’t.",
+              },
+              {
+                question: "3. Why should I trust CSM over free online quizzes?",
+                answer:
+                  "Most free personality quizzes oversimplify human behavior. CSM is research-based, psychometrically validated, and designed for practical application in relationships and self-growth. Users consistently report that the insights are accurate, relevant, and immediately actionable, unlike generic quizzes that provide vague or entertainment-focused results.",
+              },
+              {
+                question: "4. Can CSM really “read” my relationship like a mind reader?",
+                answer:
+                  "CSM doesn’t guess emotions or predict outcomes intuitively. Instead, it analyzes cognitive alignments, such as how a partner who prefers Harmony might interact with someone who favors Autonomy. It identifies areas of synergy and potential friction, showing, for example, how Empathic values can complement Analytical logic in decision-making. About 94% of users report that CSM provides clearer insights into relationship dynamics, helping them communicate and connect more effectively.",
+              },
+              {
+                question: "5. Is CSM scientifically legit, or just another buzzword quiz?",
+                answer:
+                  "CSM is grounded in psychological theory, combining Jungian cognitive functions with Big Five traits. Its psychometric validation demonstrates internal consistency above 0.8 and 75% user alignment in pilot studies. Ongoing research supports its reliability in predicting relational patterns, outperforming other popular personality frameworks in actionable insight. CSM is evidence-based and designed for practical application, not entertainment.",
+              },
+              {
+                question: "6. How does the free assessment work?",
+                answer:
+                  "The free CSM assessment is designed to be concise, typically taking 10 to 15 minutes. It blends Likert-scale ratings with situational questions that reveal your cognitive preferences. Upon completion, you receive a report detailing your archetype, percentage-based spectrum scores, strengths, and preliminary relational insights. The assessment is secure, mobile-friendly, and accessible on any device.",
+              },
+              {
+                question: "7. Do I need my partner to start?",
+                answer:
+                  "No. You can complete the free assessment on your own and explore your personal profile. If you wish to generate a full Couple Insights Report, your partner will also need to take the assessment. Many users prefer to start individually and invite their partner later for a joint analysis.",
+              },
+              {
+                question: "8. Can CSM predict if we’re soulmates or just spot potential issues?",
+                answer:
+                  "CSM doesn’t predict destiny or label anyone as a soulmate. Instead, it highlights potential compatibilities and challenges, such as Harmony-Autonomy differences or Analytical-Empathic interactions. It provides strategies to navigate common frictions, helping couples focus on growth, understanding, and conscious effort rather than chance.",
+              },
+              {
+                question: "9. How quickly will I get my results?",
+                answer: "Your individual free assessment results are generated immediately.",
+              },
+              {
+                question: "10. Is CSM therapy or coaching?",
+                answer:
+                  "No. CSM is not a therapeutic tool and does not diagnose or treat mental health conditions. It is a self-awareness and personal growth framework designed to provide structured insights and strategies for relationships and life challenges. Many users combine it with counseling or coaching, but it is fully effective as a standalone growth tool.",
+              },
+            ].map((faq, index) => (
+              <div key={index} className="card-gradient rounded-lg overflow-hidden">
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-[var(--surface)]/20 transition-colors"
+                >
+                  <span className="font-semibold">{faq.question}</span>
+                  {expandedFAQ === index ? (
+                    <ChevronUp className="h-5 w-5 text-[var(--accent)]" />
+                  ) : (
+                    <ChevronDown className="h-5 w-5 text-[var(--accent)]" />
+                  )}
+                </button>
+                {expandedFAQ === index && (
+                  <div className="px-6 pb-4">
+                    <p className="text-[var(--text-secondary)] leading-relaxed">{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>

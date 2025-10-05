@@ -1,11 +1,15 @@
+// components/DashboardLayout.js
 "use client";
 
 import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
 import { Menu } from "lucide-react";
 import Sidebar from "./Sidebar";
 
 export default function DashboardLayout({ children }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false); // Sidebar hidden by default on mobile
+  const params = useParams();
+  const siteId = params.siteId; // Use siteId instead of userId
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [screenWidth, setScreenWidth] = useState(null);
 
@@ -15,9 +19,9 @@ export default function DashboardLayout({ children }) {
       setScreenWidth(width);
       setIsMobile(width < 430);
       if (width >= 430) {
-        setSidebarOpen(true); // Sidebar open by default on desktop
+        setSidebarOpen(true);
       } else {
-        setSidebarOpen(false); // Sidebar closed by default on mobile
+        setSidebarOpen(false);
       }
     };
 
@@ -32,14 +36,12 @@ export default function DashboardLayout({ children }) {
 
   return (
     <div className="min-h-screen surface">
-      {/* Top Navbar */}
       <nav className="fixed top-0 w-full bg-[var(--dashboard)]/80 backdrop-blur-md border-b border-[var(--primary)]/20 z-50">
         <div className="flex items-center justify-between px-4 py-3 h-full">
-          {/* Hamburger Menu for both Mobile and Desktop when sidebar is closed */}
           {!sidebarOpen && (isMobile || !isMobile) && (
             <div className="ml-4 flex items-center gap-2">
               <Menu onClick={toggleSidebar} size={24} />
-              {!isMobile && <span>Menu</span>} {/* Optional: Show "Menu" text on desktop */}
+              {!isMobile && <span>Menu</span>}
             </div>
           )}
           <div className="flex items-center space-x-3">
@@ -55,12 +57,8 @@ export default function DashboardLayout({ children }) {
         </div>
       </nav>
 
-      {/* Layout Container */}
       <div className="flex">
-        {/* Sidebar */}
-        <Sidebar sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} isMobile={isMobile} />
-
-        {/* Main Content */}
+        <Sidebar sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} isMobile={isMobile} siteId={siteId} />
         <main className={`flex-1 transition-all duration-300 ${!isMobile && sidebarOpen ? "ml-64" : ""}`}>
           {(isMobile && !sidebarOpen) || !isMobile ? <div>{children}</div> : null}
         </main>

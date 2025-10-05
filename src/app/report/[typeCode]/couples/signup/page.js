@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react"; // Add useEffect
+import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "../../../../utils/supabaseClient";
 import { z } from "zod";
@@ -31,21 +31,39 @@ export default function Signup() {
   const [serverError, setServerError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [confirmationSent, setConfirmationSent] = useState(false);
-  const [assessmentData, setAssessmentData] = useState(null); // Add state for assessment data
+  const [assessmentData, setAssessmentData] = useState(null);
 
-  // Load assessment data from localStorage
   useEffect(() => {
-    const stored = localStorage.getItem("csmAssessmentData");
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      setAssessmentData(parsed.results); // Set assessment data
-      console.log("Stored assessment data:", parsed.results);
+    async function init() {
+      // Load assessment data
+      const stored = localStorage.getItem("csmAssessmentData");
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        setAssessmentData(parsed.results);
+        console.log("Stored assessment data:", parsed.results);
+      }
+
+      // Check and sign out if session exists
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        console.log("Existing session found on signup page - signing out");
+        await supabase.auth.signOut();
+        localStorage.removeItem("supabase.auth.token"); // Explicitly clear Supabase storage key
+        router.refresh(); // Refresh to reload without session
+      }
     }
-  }, []);
+    init();
+  }, [router]);
 
   const handleSignOut = async () => {
     console.log("Signing out...");
     const { error } = await supabase.auth.signOut();
+    localStorage.clear();
+    sessionStorage.clear();
+    console.log("Cleared storage and signed out");
+
     if (error) {
       console.error("Error signing out:", error.message);
     } else {
@@ -124,7 +142,7 @@ export default function Signup() {
           Authorization: `Bearer ${session.access_token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ typeCode, assessmentData }), // Send assessment data
+        body: JSON.stringify({ typeCode, assessmentData }),
       });
 
       const responseData = await response.json();
@@ -216,7 +234,7 @@ export default function Signup() {
               {serverError && <p className="text-red-400 text-sm">{serverError}</p>}
               <button
                 type="submit"
-                disabled={loading || !assessmentData} // Disable if no assessment data
+                disabled={loading || !assessmentData}
                 className="btn-primary w-full py-3 rounded-lg font-semibold inline-flex items-center justify-center group"
               >
                 {loading ? "Processing..." : "Sign Up and Proceed to Payment"}
