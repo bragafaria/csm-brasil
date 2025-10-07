@@ -703,7 +703,7 @@ export default function Home() {
                   Help Center
                 </a>
                 <a
-                  href="/assessment"
+                  href="/test"
                   className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                 >
                   Free Assessment

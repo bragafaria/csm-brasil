@@ -49,9 +49,9 @@ export default function Signup() {
       } = await supabase.auth.getSession();
       if (session) {
         console.log("Existing session found on signup page - signing out");
-        await supabase.auth.signOut();
-        localStorage.removeItem("supabase.auth.token"); // Explicitly clear Supabase storage key
-        router.refresh(); // Refresh to reload without session
+        //await supabase.auth.signOut();
+        //localStorage.removeItem("supabase.auth.token"); // Explicitly clear Supabase storage key
+        //router.refresh(); // Refresh to reload without session
       }
     }
     init();

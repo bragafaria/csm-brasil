@@ -1,4 +1,3 @@
-// src/app/dashboard/[siteId]/page.js
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
@@ -115,6 +114,17 @@ export default function DashboardPage({ params }) {
           console.error("Invalid invite:", error?.message);
           router.push("/error?message=Invalid invite link");
         } else {
+          // Check and sign out if session exists
+          const {
+            data: { session },
+          } = await supabase.auth.getSession();
+          if (session) {
+            console.log("Existing session found on invite validation - signing out");
+            await supabase.auth.signOut();
+            localStorage.removeItem("supabase.auth.token");
+            localStorage.removeItem("csmAnswers");
+            router.refresh();
+          }
           router.push(`/invite/signup?invite=${inviteId}&siteId=${siteId}`);
         }
       }
@@ -145,7 +155,7 @@ export default function DashboardPage({ params }) {
             Please complete your assessment to view your personal report.
           </p>
           <button
-            onClick={() => router.push("/assessment")} // Adjust route as needed
+            onClick={() => router.push(`/dashboard/${siteId}/test`)} // Adjust route as needed
             className="btn-primary py-2 px-4 rounded-lg font-semibold"
           >
             Take Assessment

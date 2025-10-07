@@ -6,13 +6,13 @@ import { createClient } from "@supabase/supabase-js";
 
 export default function DashboardTest() {
   const router = useRouter();
-  const params = useParams(); // FIXED: Get siteId from URL
-  const siteId = params?.siteId; // e.g., from /dashboard/[siteId]/test
+  const params = useParams();
+  const siteId = params?.siteId;
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
-  const [ranks, setRanks] = useState({}); // Track points for rank-type questions
+  const [ranks, setRanks] = useState({});
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true); // FIXED: Add loading state
+  const [loading, setLoading] = useState(true);
   const [showAssessment, setShowAssessment] = useState(false);
   const [assessmentData, setAssessmentData] = useState(null);
   const q = questions[current];
@@ -21,10 +21,15 @@ export default function DashboardTest() {
   useEffect(() => {
     const saved = localStorage.getItem("csmAnswers");
     if (saved) {
-      const parsedAnswers = JSON.parse(saved);
-      setAnswers(parsedAnswers); // FIXED: Simplified; no redundant check
+      try {
+        const parsedAnswers = JSON.parse(saved);
+        setAnswers(parsedAnswers);
+      } catch (e) {
+        console.error("Invalid localStorage data:", e);
+        localStorage.removeItem("csmAnswers"); // Clear corrupt data
+      }
     }
-  }, []); // FIXED: Empty deps for mount-only
+  }, []);
 
   // Initialize: Auth + user validation
   useEffect(() => {
@@ -39,7 +44,6 @@ export default function DashboardTest() {
         auth: { persistSession: true },
       });
 
-      // Check session
       const {
         data: { session },
         error: sessionError,
@@ -52,9 +56,8 @@ export default function DashboardTest() {
       }
 
       const userId = session.user.id;
-      console.log("Initializing dashboard for user:", { userId, siteId });
+      console.log("Initializing test for user:", { userId, siteId });
 
-      // Validate access: user must be Partner A (id = siteId) or Partner B (partner_id = siteId)
       const { data: userData, error: userError } = await supabase
         .from("users")
         .select("id, partner_id, has_assessment")
@@ -83,8 +86,7 @@ export default function DashboardTest() {
       console.log("Access granted:", { isPartnerA, isPartnerB, hasAssessment: userData.has_assessment });
 
       if (isPartnerA) {
-        // Partner A: Redirect to summary (assume they start)
-        router.push(`/dashboard/${siteId}/summary`);
+        router.push(`/dashboard/${siteId}`);
         setLoading(false);
         return;
       }
@@ -92,15 +94,14 @@ export default function DashboardTest() {
       if (isPartnerB && !userData.has_assessment) {
         setShowAssessment(true);
       } else {
-        // Already completed: Redirect to summary
-        router.push(`/dashboard/${siteId}/summary`);
+        router.push(`/dashboard/${siteId}/`);
       }
 
       setLoading(false);
     }
 
     initializeTestDashboardPage();
-  }, [router, siteId]); // FIXED: Dep on siteId
+  }, [router, siteId]);
 
   // Update ranks when current question changes
   useEffect(() => {
@@ -128,12 +129,13 @@ export default function DashboardTest() {
       return;
     }
 
-    // FIXED: Calculate results first
+    // Calculate results first
     const results = calculateCSMResults(answers);
     localStorage.setItem("csmAssessmentData", JSON.stringify({ answers, results }));
-    setAssessmentData(results); // Set for immediate use
+    setAssessmentData(results);
+    console.log("Assessment results calculated:", results);
 
-    // FIXED: Recreate supabase/userId here (or use hook; scoped properly)
+    // Recreate supabase/userId
     const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
       auth: { persistSession: true },
     });
@@ -145,25 +147,45 @@ export default function DashboardTest() {
       setError("Session expired. Please log in again.");
       return;
     }
+    console.log("Updating for userId:", userId);
 
-    // FIXED: Build updateData properly
-    const updateData = { has_assessment: true };
-    if (results.percents?.length === 5) updateData.percents = results.percents;
-    if (results.dominants?.length === 5) updateData.dominants = results.dominants;
-    if (results.categories?.length === 5) updateData.categories = results.categories;
+    // FIXED: For jsonb columns (percents, dominants, categories), pass RAW arrays/objects
+    // Supabase auto-serializes to JSON. For text (typeCode), pass string.
+    const updateData = {
+      has_assessment: true,
+      typeCode: results.dominants?.length === 5 ? results.dominants.join("-") : null, // Text: string
+    };
+    if (results.percents?.length === 5) updateData.percents = results.percents; // jsonb: raw array of objects
+    if (results.dominants?.length === 5) updateData.dominants = results.dominants; // jsonb: raw array
+    if (results.categories?.length === 5) updateData.categories = results.categories; // jsonb: raw array of objects
 
-    // Update Supabase
-    const { error: supabaseError } = await supabase.from("users").update(updateData).eq("id", userId);
+    console.log("Update data prepared (raw for jsonb):", updateData); // DEBUG: Should show arrays, not strings
+
+    // Update Supabase (select to verify)
+    const { data: updateResponse, error: supabaseError } = await supabase
+      .from("users")
+      .update(updateData)
+      .eq("id", userId)
+      .select("id, has_assessment, typeCode, dominants, percents, categories"); // Select all for log
+
+    console.log("Update response:", { data: updateResponse, error: supabaseError }); // DEBUG
 
     if (supabaseError) {
-      console.error("Supabase update error:", supabaseError.message);
-      setError("Failed to save results. You can retry or contact support.");
-      return; // FIXED: No Response; handle client-side
+      console.error("Supabase update error details:", supabaseError);
+      setError(`Failed to save results: ${supabaseError.message}. Please try again.`);
+      return;
     }
 
-    console.log("Results saved:", results);
+    if (!updateResponse || updateResponse.length === 0) {
+      console.error("No rows updated - check RLS or userId");
+      setError("Failed to update profile (no rows affected). Please try again.");
+      return;
+    }
+
+    // Verify saved data (should show arrays in response)
+    console.log("Saved row:", updateResponse[0]);
     localStorage.removeItem("csmAnswers");
-    router.push(`/dashboard/${siteId}/summary`);
+    router.push(`/dashboard/${siteId}`);
   };
 
   const prev = () => current > 0 && setCurrent(current - 1);
@@ -180,7 +202,6 @@ export default function DashboardTest() {
   const minutesPerQuestion = totalMinutes / questions.length;
   const minutesLeft = Math.max(0, Math.round((questions.length - (current + 1)) * minutesPerQuestion));
 
-  // FIXED: Conditional render + loading/error UI
   if (loading) {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)]">

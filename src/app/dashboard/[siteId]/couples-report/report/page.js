@@ -1,14 +1,126 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Users, Heart, TrendingUp, Target, Star, Calendar } from "lucide-react";
+import { createClient } from "@supabase/supabase-js";
+import { useParams, useRouter } from "next/navigation";
+import { Users, Heart, Calendar, Target, Star } from "lucide-react";
+import FinancesPlanningPage from "@/app/components/couples/Finances";
+import { motion } from "framer-motion";
 
 export default function CouplesReportPage() {
+  const { siteId } = useParams();
+  const router = useRouter();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [reportData, setReportData] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+    async function fetchReportData() {
+      if (!siteId) {
+        console.error("Invalid siteId:", siteId);
+        setError("Invalid report URL.");
+        setIsLoaded(true);
+        return;
+      }
+
+      const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
+        auth: { persistSession: true },
+      });
+
+      const {
+        data: { session },
+        error: sessionError,
+      } = await supabase.auth.getSession();
+      if (sessionError || !session) {
+        console.error("Session error:", sessionError?.message || "No session found");
+        router.push("/login");
+        return;
+      }
+
+      const userId = session.user.id;
+
+      // Fetch both partners using site_id
+      const { data: userData, error } = await supabase
+        .from("users")
+        .select("id, name, typeCode, dominants, percents, categories, has_assessment, partner_id")
+        .eq("site_id", siteId)
+        .eq("report_status", "pending")
+        .in("id", [
+          userId,
+          (await supabase.from("users").select("partner_id").eq("id", userId).single()).data.partner_id,
+        ]);
+
+      if (error || !userData || userData.length < 2) {
+        console.error("Error fetching user data:", error?.message || "Insufficient data");
+        setError("Failed to load partner data.");
+        setIsLoaded(true);
+        return;
+      }
+
+      // Handle jsonb data (Supabase may return objects or strings)
+      const parseJsonb = (data) => {
+        if (!data) return [];
+        if (typeof data === "string") {
+          try {
+            return JSON.parse(data);
+          } catch (e) {
+            console.error("JSON parse error:", e.message, "Data:", data);
+            return [];
+          }
+        }
+        return data;
+      };
+
+      const [partnerA, partnerB] = userData[0].id === userId ? [userData[0], userData[1]] : [userData[1], userData[0]];
+
+      setReportData({
+        partnerA: {
+          id: partnerA.id,
+          name: partnerA.name,
+          typeCode: partnerA.typeCode,
+          dominants: parseJsonb(partnerA.dominants),
+          percents: parseJsonb(partnerA.percents),
+          categories: parseJsonb(partnerA.categories),
+          has_assessment: partnerA.has_assessment,
+        },
+        partnerB: {
+          id: partnerB.id,
+          name: partnerB.name,
+          typeCode: partnerB.typeCode,
+          dominants: parseJsonb(partnerB.dominants),
+          percents: parseJsonb(partnerB.percents),
+          categories: parseJsonb(partnerB.categories),
+          has_assessment: partnerB.has_assessment,
+        },
+      });
+      setIsLoaded(true);
+    }
+
+    fetchReportData();
+  }, [siteId, router]);
+
+  if (!isLoaded) {
+    console.log("Rendering loading state");
+    return <div className="p-6 text-[var(--text-primary)]">Loading report...</div>;
+  }
+  if (error) {
+    console.log("Rendering error state:", error);
+    return <div className="p-6 text-red-400">{error}</div>;
+  }
+
+  if (!reportData?.partnerA.has_assessment || !reportData?.partnerB.has_assessment) {
+    console.log("Rendering assessment incomplete state");
+    return (
+      <div className="p-6">
+        <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-6">Couple Insights Report</h1>
+        <div className="card-gradient p-6 rounded-xl shadow-custom">
+          <p className="text-[var(--text-secondary)]">
+            Both partners must complete the assessment to view this report.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -19,159 +131,46 @@ export default function CouplesReportPage() {
         <div className="flex items-center mb-4">
           <Users className="text-white mr-4" size={32} />
           <div>
-            <h1 className="text-3xl font-bold text-white">{`Couple's Progress Report`}</h1>
-            <p className="text-[var(--text-secondary)] text-lg">Joint relationship assessment and milestones</p>
+            <h1 className="text-3xl font-bold text-white">Couple Insights Report</h1>
+            <p className="text-[var(--text-secondary)] text-lg">
+              Joint relationship assessment for {reportData.partnerA.name} and {reportData.partnerB.name}
+            </p>
           </div>
         </div>
-      </div>
-
-      {/* Relationship Health Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {[
-          { title: "Relationship Score", value: "8.9/10", icon: Heart, color: "text-pink-400" },
-          { title: "Joint Sessions", value: "15", icon: Calendar, color: "text-blue-400" },
-          { title: "Milestones Reached", value: "12/15", icon: Target, color: "text-green-400" },
-          { title: "Satisfaction Rating", value: "4.8/5", icon: Star, color: "text-yellow-400" },
-        ].map((metric, index) => {
-          const Icon = metric.icon;
-          return (
-            <div
-              key={index}
-              className="card-gradient rounded-xl p-6 shadow-custom hover:shadow-custom-lg transition-custom"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <Icon className={`${metric.color}`} size={24} />
-                <div className="text-green-400 text-sm">↑</div>
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-1">{metric.value}</h3>
-              <p className="text-[var(--text-secondary)] text-sm">{metric.title}</p>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Detailed Analysis */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-        {/* Communication Patterns */}
-        <div className="card-gradient rounded-xl p-6 shadow-custom">
-          <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-6 flex items-center">
-            <TrendingUp className="mr-3 text-[var(--accent)]" size={24} />
-            Communication Patterns
-          </h2>
-
-          <div className="space-y-4">
-            {[
-              { skill: "Active Listening", score: 92, color: "bg-green-500" },
-              { skill: "Conflict Resolution", score: 78, color: "bg-yellow-500" },
-              { skill: "Emotional Expression", score: 85, color: "bg-blue-500" },
-              { skill: "Compromise Skills", score: 88, color: "bg-purple-500" },
-            ].map((item, index) => (
-              <div key={index} className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-[var(--text-primary)] text-sm font-medium">{item.skill}</span>
-                  <span className="text-[var(--accent)]">{item.score}%</span>
-                </div>
-                <div className="w-full bg-[var(--surface)] rounded-full h-2">
-                  <div
-                    className={`${item.color} h-2 rounded-full transition-all duration-1000 ease-out`}
-                    style={{ width: isLoaded ? `${item.score}%` : "0%" }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Relationship Goals */}
-        <div className="card-gradient rounded-xl p-6 shadow-custom">
-          <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-6 flex items-center">
-            <Target className="mr-3 text-[var(--accent)]" size={24} />
-            Relationship Goals
-          </h2>
-
-          <div className="space-y-4">
-            {[
-              { goal: "Weekly Date Nights", status: "completed", progress: 100 },
-              { goal: "Monthly Check-ins", status: "in-progress", progress: 80 },
-              { goal: "Shared Hobby Discovery", status: "in-progress", progress: 60 },
-              { goal: "Conflict Resolution Plan", status: "completed", progress: 100 },
-              { goal: "Future Planning Session", status: "pending", progress: 25 },
-            ].map((item, index) => (
-              <div key={index} className="flex items-center space-x-3 p-3 bg-[var(--surface)] rounded-lg">
-                <div
-                  className={`w-3 h-3 rounded-full ${
-                    item.status === "completed"
-                      ? "bg-green-400"
-                      : item.status === "in-progress"
-                      ? "bg-yellow-400"
-                      : "bg-gray-400"
-                  }`}
-                ></div>
-                <div className="flex-1">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="text-[var(--text-primary)] text-sm font-medium">{item.goal}</span>
-                    <span className="text-[var(--text-secondary)] text-xs capitalize">{item.status}</span>
-                  </div>
-                  <div className="w-full bg-[var(--border)] rounded-full h-1">
-                    <div
-                      className={`h-1 rounded-full transition-all duration-1000 ease-out ${
-                        item.status === "completed"
-                          ? "bg-green-400"
-                          : item.status === "in-progress"
-                          ? "bg-yellow-400"
-                          : "bg-gray-400"
-                      }`}
-                      style={{ width: isLoaded ? `${item.progress}%` : "0%" }}
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Recommendations */}
-      <div className="card-gradient rounded-xl p-8 shadow-custom">
-        <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-6 flex items-center">
-          <Star className="mr-3 text-[var(--accent)]" size={24} />
-          Personalized Recommendations
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-4">
-            <h3 className="font-medium text-[var(--text-primary)] text-lg">Continue Strengths</h3>
-            <div className="space-y-3">
-              {[
-                "Your communication has improved significantly",
-                "Joint problem-solving skills are excellent",
-                "Emotional support patterns are very positive",
-              ].map((item, index) => (
-                <div key={index} className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full mt-2"></div>
-                  <span className="text-[var(--text-secondary)] text-sm">{item}</span>
-                </div>
-              ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="card-gradient p-4 rounded-lg flex items-center space-x-4">
+            <Heart className="text-[var(--accent)]" size={24} />
+            <div>
+              <p className="text-[var(--text-primary)] font-semibold">Relationship Score</p>
+              <p className="text-[var(--text-secondary)]">92% Alignment</p>
             </div>
           </div>
-
-          <div className="space-y-4">
-            <h3 className="font-medium text-[var(--text-primary)] text-lg">Focus Areas</h3>
-            <div className="space-y-3">
-              {[
-                "Practice more structured conflict resolution",
-                "Increase frequency of appreciation expressions",
-                "Develop shared future planning rituals",
-              ].map((item, index) => (
-                <div key={index} className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2"></div>
-                  <span className="text-[var(--text-secondary)] text-sm">{item}</span>
-                </div>
-              ))}
+          <div className="card-gradient p-4 rounded-lg flex items-center space-x-4">
+            <Calendar className="text-[var(--accent)]" size={24} />
+            <div>
+              <p className="text-[var(--text-primary)] font-semibold">Joint Sessions</p>
+              <p className="text-[var(--text-secondary)]">3 Completed</p>
+            </div>
+          </div>
+          <div className="card-gradient p-4 rounded-lg flex items-center space-x-4">
+            <Target className="text-[var(--accent)]" size={24} />
+            <div>
+              <p className="text-[var(--text-primary)] font-semibold">Shared Goals</p>
+              <p className="text-[var(--text-secondary)]">5 Active</p>
+            </div>
+          </div>
+          <div className="card-gradient p-4 rounded-lg flex items-center space-x-4">
+            <Star className="text-[var(--accent)]" size={24} />
+            <div>
+              <p className="text-[var(--text-primary)] font-semibold">Strengths</p>
+              <p className="text-[var(--text-secondary)]">8 Identified</p>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Financial Harmony */}
+      <FinancesPlanningPage />
     </div>
   );
 }

@@ -192,7 +192,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
                         onClick={toggleSidebar}
                         className={`w-full flex items-center px-3 py-2 rounded-md text-sm transition-colors ${
                           isActive(subItem.route)
-                            ? "bg-[var(--accent)] bg-opacity-20 text-[var(--accent)]"
+                            ? "bg-[var(--accent)] bg-opacity-20 text-[var(--text-primary)]"
                             : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface)]"
                         }`}
                       >
