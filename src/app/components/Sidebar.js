@@ -109,7 +109,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
     },
     {
       id: "coaching",
-      label: "Coaching",
+      label: "Life Coaching",
       icon: BookOpen,
       subItems: [{ label: "Sessions", route: `/dashboard/${siteId}/coaching/sessions` }],
     },
