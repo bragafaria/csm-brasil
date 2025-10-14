@@ -3,7 +3,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { archetypes, getDimPoles, poles } from "../../utils/csm";
-import { reportTemplates } from "../../utils/ReportTemplates";
+import { reportTemplates } from "../../lib/personal/ReportTemplates";
 import { HelpCircle, ArrowRight } from "lucide-react";
 
 const fixedNextSteps = `You’ve uncovered the map to your unique cognitive blueprint, a crucial step toward self-insight. Now, explore how your mind connects with your partner’s. Your strengths, style, and vulnerabilities interplay with theirs, shaping your relationship’s dynamic. The CSM Couple’s Insight Report illuminates this connection, offering a tailored guide to navigate alignments, resolve tensions, and build a stronger, more aware partnership through mutual understanding. Discover how your blueprints harmonize to create a shared journey.`;

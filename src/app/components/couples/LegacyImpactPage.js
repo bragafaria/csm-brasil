@@ -1,12 +1,10 @@
-"use client";
-
 import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-import { motion, AnimatePresence } from "framer-motion";
-import FinancesPlanningTemplate from "../../utils/FinancialTemplate";
+import { motion } from "framer-motion";
+import LegacyImpactTemplate from "../../lib/couple/LegacyImpactTemplate";
 
-export default function FinancesPlanningPage() {
+export default function LegacyImpactPage() {
   const { siteId } = useParams();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
@@ -109,7 +107,7 @@ export default function FinancesPlanningPage() {
     console.log("Rendering assessment incomplete state");
     return (
       <div className="p-6 mt-20">
-        <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-6">Finances & Planning Report</h1>
+        <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-6">Legacy & Impact Report</h1>
         <div className="card-gradient p-6 rounded-xl shadow-custom">
           <p className="text-[var(--text-secondary)]">
             Both partners must complete the assessment to view this report.
@@ -120,7 +118,7 @@ export default function FinancesPlanningPage() {
   }
 
   const { partnerA, partnerB } = reportData;
-  const { description } = FinancesPlanningTemplate.generateText(partnerA, partnerB);
+  const { description } = LegacyImpactTemplate.generateText(partnerA, partnerB);
 
   return (
     <motion.main
@@ -137,12 +135,12 @@ export default function FinancesPlanningPage() {
           className="text-center space-y-4 hero-gradient rounded-2xl p-8 mb-8 shadow-custom-lg"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] tracking-tight">
-            Finances & Planning for {partnerA.name} and {partnerB.name}
+            Legacy & Impact for {partnerA.name} and {partnerB.name}
           </h1>
           <p className="text-xl italic text-[var(--text-secondary)] max-w-2xl mx-auto">
-            Money matters can shape your shared journey, and understanding how you both approach finances helps build a
-            stronger partnership. By exploring your unique styles in budgeting, spending, and planning, you can create a
-            financial life that feels secure, exciting, and aligned with your dreams together.
+            Your shared legacy and impact reflect the lasting mark you leave together. Understanding how you both
+            approach creating meaning and influence can help you build a purposeful partnership that inspires and
+            endures.
           </p>
         </motion.div>
 
@@ -153,7 +151,7 @@ export default function FinancesPlanningPage() {
             transition={{ duration: 0.5 }}
             className="section-header text-3xl font-semibold text-[var(--text-primary)] border-b-2 border-[var(--accent)]/20 pb-3"
           >
-            Your Financial Harmony
+            Your Shared Legacy
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

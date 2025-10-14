@@ -4,8 +4,17 @@ import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { useParams, useRouter } from "next/navigation";
 import { Users, Heart, Calendar, Target, Star } from "lucide-react";
-import FinancesPlanningPage from "@/app/components/couples/Finances";
+import FinancesPlanningPage from "@/app/components/couples/FinancesPlanningPage";
 import { motion } from "framer-motion";
+import CareerPlanningPage from "@/app/components/couples/CarrerPlanningPage";
+import LoveRomancePage from "@/app/components/couples/LoveRomancePage";
+import FamilyHomePage from "@/app/components/couples/FamilyHomePage";
+import CommunicationConflictPage from "@/app/components/couples/CommunicationConflictPage";
+import LeisureAdventurePage from "@/app/components/couples/LeisureAdventurePage";
+import PersonalGrowthPage from "@/app/components/couples/PersonalGrowthPage";
+import SocialConnectionsPage from "@/app/components/couples/SocialConnectionPage";
+import HealthWellnessPage from "@/app/components/couples/HealthWellnessPage";
+import LegacyImpactPage from "@/app/components/couples/LegacyImpactPage";
 
 export default function CouplesReportPage() {
   const { siteId } = useParams();
@@ -127,50 +136,27 @@ export default function CouplesReportPage() {
       className={`transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
     >
       {/* Hero Section */}
-      <div className="hero-gradient rounded-2xl p-8 mb-8 shadow-custom-lg">
-        <div className="flex items-center mb-4">
-          <Users className="text-white mr-4" size={32} />
-          <div>
-            <h1 className="text-3xl font-bold text-white">Couple Insights Report</h1>
-            <p className="text-[var(--text-secondary)] text-lg">
-              Joint relationship assessment for {reportData.partnerA.name} and {reportData.partnerB.name}
-            </p>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="card-gradient p-4 rounded-lg flex items-center space-x-4">
-            <Heart className="text-[var(--accent)]" size={24} />
-            <div>
-              <p className="text-[var(--text-primary)] font-semibold">Relationship Score</p>
-              <p className="text-[var(--text-secondary)]">92% Alignment</p>
-            </div>
-          </div>
-          <div className="card-gradient p-4 rounded-lg flex items-center space-x-4">
-            <Calendar className="text-[var(--accent)]" size={24} />
-            <div>
-              <p className="text-[var(--text-primary)] font-semibold">Joint Sessions</p>
-              <p className="text-[var(--text-secondary)]">3 Completed</p>
-            </div>
-          </div>
-          <div className="card-gradient p-4 rounded-lg flex items-center space-x-4">
-            <Target className="text-[var(--accent)]" size={24} />
-            <div>
-              <p className="text-[var(--text-primary)] font-semibold">Shared Goals</p>
-              <p className="text-[var(--text-secondary)]">5 Active</p>
-            </div>
-          </div>
-          <div className="card-gradient p-4 rounded-lg flex items-center space-x-4">
-            <Star className="text-[var(--accent)]" size={24} />
-            <div>
-              <p className="text-[var(--text-primary)] font-semibold">Strengths</p>
-              <p className="text-[var(--text-secondary)]">8 Identified</p>
-            </div>
-          </div>
-        </div>
-      </div>
 
+      {/* Love and Romance */}
+      <LoveRomancePage />
+      {/* Carrer Planning */}
+      <CareerPlanningPage />
+      {/* Family and Home */}
+      <FamilyHomePage />
       {/* Financial Harmony */}
       <FinancesPlanningPage />
+      {/* Communication and Conflict */}
+      <CommunicationConflictPage />
+      {/* Leisure and Adventure */}
+      <LeisureAdventurePage />
+      {/* Personal Growth */}
+      <PersonalGrowthPage />
+      {/* Social Connections */}
+      <SocialConnectionsPage />
+      {/* Health and Wellness */}
+      <HealthWellnessPage />
+      {/* Legacy Impact */}
+      <LegacyImpactPage />
     </div>
   );
 }
