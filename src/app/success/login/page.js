@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { supabase } from "../../utils/supabase/client";
+import { createClient } from "@supabase/supabase-js";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -12,21 +13,58 @@ export default function Login() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
 
+  useEffect(() => {
+    async function checkSession() {
+      const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
+        auth: { persistSession: true },
+      });
+      const {
+        data: { session },
+        error,
+      } = await supabase.auth.getSession();
+      console.log("Session check result:", { session, error });
+      if (error) {
+        console.error("Session check error:", error.message);
+        setError("Failed to verify session. Please log in.");
+        return;
+      }
+      if (session) {
+        await supabase.auth.signOut();
+        router.refresh();
+      }
+    }
+    checkSession();
+  }, [router, sessionId]);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
+    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
+      auth: { persistSession: true },
+    });
+    console.log("email:", email);
+    console.log("password:", password);
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
     if (error) {
+      console.error("Login error:", error.message);
       setError(error.message);
     } else if (data.session && data.user) {
-      const userId = data.user.id;
-      const redirectUrl = `/dashboard/${userId}${sessionId ? `?session_id=${sessionId}` : ""}`;
+      // CHANGED: Use the regular 'supabase' client instead of 'supabaseAdmin'.
+      // This queries with the authenticated session, so RLS applies safely.
+      const { data: userData, error: userError } = await supabase
+        .from("users")
+        .select("id, site_id")
+        .eq("id", data.user.id)
+        .single();
+      console.log("User check:", { userData, userError: userError?.message });
+      console.log("Login successful, redirecting to dashboard:", data.user.id);
+      const redirectUrl = `/dashboard/${userData?.site_id}${sessionId ? `?session_id=${sessionId}` : ""}`;
       router.push(redirectUrl);
     } else {
       setError("No session or user data returned");
@@ -62,7 +100,7 @@ export default function Login() {
           </button>
         </form>
         <p className="text-center mt-4 text-[var(--text-secondary)]">
-          {` Don't have an account?`}
+          Don&apos;t have an account?{" "}
           <a href="/signup" className="text-[var(--accent)] hover:underline">
             Sign up
           </a>

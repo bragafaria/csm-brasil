@@ -7,12 +7,27 @@ export default function Test() {
   const router = useRouter();
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
+  const [ranks, setRanks] = useState({}); // Track points for rank-type questions
   const q = questions[current];
 
+  // Load answers from localStorage only once on component mount
   useEffect(() => {
     const saved = localStorage.getItem("csmAnswers");
-    if (saved) setAnswers(JSON.parse(saved));
+    if (saved) {
+      const parsedAnswers = JSON.parse(saved);
+      setAnswers((prevAnswers) => {
+        if (JSON.stringify(prevAnswers) !== JSON.stringify(parsedAnswers)) {
+          return parsedAnswers;
+        }
+        return prevAnswers;
+      });
+    }
   }, []);
+
+  // Update ranks when current question changes
+  useEffect(() => {
+    setRanks(answers[current] || {});
+  }, [current, answers]);
 
   const handleAnswer = (value) => {
     const newAnswers = [...answers];
@@ -21,18 +36,32 @@ export default function Test() {
     localStorage.setItem("csmAnswers", JSON.stringify(newAnswers));
   };
 
+  const handleRankChange = (optionKey, points) => {
+    const parsedPoints = parseInt(points) || 0;
+    if (parsedPoints < 0) return; // Prevent negative points
+    const newRanks = { ...ranks, [optionKey]: parsedPoints };
+    setRanks(newRanks);
+    handleAnswer(newRanks);
+  };
+
   const next = () => {
     if (current < questions.length - 1) setCurrent(current + 1);
     else {
       const results = calculateCSMResults(answers);
       localStorage.setItem("csmAssessmentData", JSON.stringify({ answers, results }));
       router.push("/summary");
-      // Clear answers after saving results to start fresh next time
       localStorage.removeItem("csmAnswers");
     }
   };
 
   const prev = () => current > 0 && setCurrent(current - 1);
+
+  // Validate points: Ensure total points sum to 10
+  const isRankValid = () => {
+    if (q.type !== "rank") return answers[current] !== null;
+    const totalPoints = Object.values(ranks).reduce((sum, val) => sum + (parseInt(val) || 0), 0);
+    return totalPoints === 10;
+  };
 
   const percentage = (((current + 1) / questions.length) * 100).toFixed(0);
   const totalMinutes = 10;
@@ -85,24 +114,34 @@ export default function Test() {
             ))}
           </div>
         ) : (
-          // Rank: Styled selects with dark bg and text
-          <div className="space-y-4 mb-6">
-            {q.options.map((opt) => (
-              <div key={opt.key} className="flex items-center justify-between gap-4">
-                <label className="flex-1 text-[var(--text-secondary)] text-lg">{opt.label}</label>
-                <select
-                  onChange={(e) => handleAnswer({ ...answers[current], [opt.key]: parseInt(e.target.value) })}
-                  className="w-24 py-2 px-3 rounded-lg bg-[var(--surface-variant)] text-[var(--text-primary)] border border-[var(--border)] focus:outline-none focus:border-[var(--accent)] transition duration-300"
-                >
-                  <option className="bg-[var(--surface-variant)] text-[var(--text-primary)]">Rank</option>
-                  {[1, 2, 3].map((r) => (
-                    <option key={r} value={r} className="bg-[var(--surface-variant)] text-[var(--text-primary)]">
-                      {r}
-                    </option>
-                  ))}
-                </select>
+          // Rank: Point-allocation system
+          <div className="mb-6">
+            <div className="space-y-4 bg-[var(--surface-variant)] p-4 rounded-lg">
+              <p className="text-sm text-[var(--text-secondary)] italic">
+                Allocate 10 points across the options to reflect your preference (e.g., 5-3-2 or 4-4-2). Total must sum
+                to 10.
+              </p>
+              {q.options.map((opt) => (
+                <div key={opt.key} className="flex items-center justify-between gap-4">
+                  <label className="text-[var(--text-secondary)] flex-1">{opt.label}</label>
+                  <input
+                    type="number"
+                    min="0"
+                    max="10"
+                    value={ranks[opt.key] || 0}
+                    onChange={(e) => handleRankChange(opt.key, e.target.value)}
+                    className="w-16 p-2 rounded-lg bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border)] focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)]"
+                    placeholder="0"
+                  />
+                </div>
+              ))}
+              <div className="text-sm text-[var(--text-secondary)]">
+                Total Points: {Object.values(ranks).reduce((sum, val) => sum + (parseInt(val) || 0), 0)}/10
               </div>
-            ))}
+              {!isRankValid() && (
+                <p className="text-sm text-red-400 mt-2">Please allocate exactly 10 points across the options.</p>
+              )}
+            </div>
           </div>
         )}
         <div className="flex justify-between mt-6">
@@ -115,7 +154,7 @@ export default function Test() {
           </button>
           <button
             onClick={next}
-            disabled={answers[current] === null}
+            disabled={!isRankValid()}
             className="py-2 px-6 rounded-lg bg-[var(--primary)] text-[var(--text-primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] disabled:opacity-50 transition duration-300"
           >
             {current < questions.length - 1 ? "Next" : "Finish"}

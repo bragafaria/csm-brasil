@@ -36,6 +36,9 @@ export async function POST(request) {
       });
     }
 
+    // Read request body to get assessment data
+    const { typeCode, assessmentData } = await request.json();
+
     const supabase = createClient(supabaseUrl, supabaseServiceKey, {
       auth: { autoRefreshToken: false, persistSession: false },
     });
@@ -80,14 +83,47 @@ export async function POST(request) {
       });
       customerId = customer.id;
 
-      // Update Supabase with stripe_customer_id
-      const { error: supabaseError } = await supabase
-        .from("users")
-        .update({ stripe_customer_id: customerId })
-        .eq("id", userId);
+      // Prepare update data with arrays directly from assessmentData
+      let updateData = {
+        stripe_customer_id: customerId,
+        typeCode, // Save typeCode from request
+      };
+
+      if (assessmentData) {
+        // Validate and set percents as array
+        if (assessmentData.percents && Array.isArray(assessmentData.percents) && assessmentData.percents.length === 5) {
+          updateData.percents = assessmentData.percents;
+        }
+
+        // Validate and set dominants as array
+        if (
+          assessmentData.dominants &&
+          Array.isArray(assessmentData.dominants) &&
+          assessmentData.dominants.length === 5
+        ) {
+          updateData.dominants = assessmentData.dominants;
+        }
+
+        // Validate and set categories as array
+        if (
+          assessmentData.categories &&
+          Array.isArray(assessmentData.categories) &&
+          assessmentData.categories.length === 5
+        ) {
+          updateData.categories = assessmentData.categories;
+        }
+
+        // Set has_assessment to true if assessment data is present
+        if (assessmentData.percents || assessmentData.dominants || assessmentData.categories) {
+          updateData.has_assessment = true;
+        }
+      }
+
+      // Update Supabase with all data
+      const { error: supabaseError } = await supabase.from("users").update(updateData).eq("id", userId);
       if (supabaseError) {
         console.error("Supabase update error:", supabaseError.message);
-        return new Response(JSON.stringify({ error: "Failed to save Stripe customer ID: " + supabaseError.message }), {
+        return new Response(JSON.stringify({ error: "Failed to save user data: " + supabaseError.message }), {
           status: 500,
           headers: { "Content-Type": "application/json" },
         });
@@ -101,7 +137,7 @@ export async function POST(request) {
       mode: "payment",
       payment_method_options: {
         card: {
-          setup_future_usage: "off_session", // Save card for future off-session payments
+          setup_future_usage: "off_session",
         },
       },
       success_url: `${successUrl}/login?session_id={CHECKOUT_SESSION_ID}`,

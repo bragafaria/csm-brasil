@@ -4,6 +4,7 @@
 :root {
   --surface: #0f172a; /* Dark slate for a modern, premium feel */
   --surface-variant: #1e293b; /* Slightly lighter slate for card backgrounds */
+  --dashboard: #1f293a; /* Dark slate for a modern, premium feel */
   --primary: #6d28d9; /* Vibrant purple, softened for elegance */
   --primary-hover: #5b21b6; /* Darker purple for hover states */
   --accent: #a78bfa; /* Light purple for highlights */
@@ -108,4 +109,16 @@ body {
 .radar-dark .MuiChartsLegend-label {
   color: #ffffff !important;
   fill: #ffffff !important;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 50%, var(--accent) 100%);
+}
+
+.shadow-custom {
+  box-shadow: var(--shadow);
+}
+
+.shadow-custom-lg {
+  box-shadow: var(--shadow-lg);
 }

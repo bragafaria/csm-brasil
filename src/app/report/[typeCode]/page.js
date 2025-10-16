@@ -2,7 +2,8 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { archetypes, reportTemplates, getDimPoles, poles } from "../../utils/csm";
+import { archetypes, getDimPoles, poles } from "../../utils/csm";
+import { reportTemplates } from "../../lib/personal/ReportTemplates";
 import { HelpCircle, ArrowRight } from "lucide-react";
 
 const fixedNextSteps = `You’ve uncovered the map to your unique cognitive blueprint, a crucial step toward self-insight. Now, explore how your mind connects with your partner’s. Your strengths, style, and vulnerabilities interplay with theirs, shaping your relationship’s dynamic. The CSM Couple’s Insight Report illuminates this connection, offering a tailored guide to navigate alignments, resolve tensions, and build a stronger, more aware partnership through mutual understanding. Discover how your blueprints harmonize to create a shared journey.`;
@@ -23,6 +24,8 @@ export default function Report() {
       setData(parsed.results);
     }
   }, []);
+
+  console.log("stored data", data);
 
   const openModal = (title, body) => {
     setModalContent({ title, body });
@@ -50,8 +53,21 @@ export default function Report() {
     );
   }
 
-  const { percents, dominants, categories, archetype } = data;
+  const { percents, dominants, categories, archetype, typeCode: archetypeType } = data;
 
+  console.log("archetypeType", archetypeType);
+
+  if (typeCode !== archetypeType) {
+    return (
+      <main className="flex flex-col gap-2 min-h-screen items-center justify-center bg-[var(--surface)] text-[var(--text-primary)]">
+        <div className="text-center text-lg font-medium">
+          Your assessment report is for <span className="text-lg text-red-800"> {archetypeType}</span>, not{" "}
+          <span className="text-lg text-red-800"> {typeCode}.</span>
+        </div>
+        <div className="text-center text-sm font-medium">Please, check your Url and try again.</div>
+      </main>
+    );
+  }
   const overallDomLevel = (() => {
     const counts = categories.reduce((acc, { domLevel }) => {
       acc[domLevel.toLowerCase()] = (acc[domLevel.toLowerCase()] || 0) + 1;
@@ -223,7 +239,7 @@ export default function Report() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="space-y-8"
+          className="space-y-8 max-w-3xl mx-auto"
         >
           {templates.dimensions.map((dimTemp, dimIdx) => {
             const dim = { ...dimensionData[dimIdx], index: dimIdx };
@@ -263,7 +279,7 @@ export default function Report() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: dimIdx * 0.1 }}
-                className="card-gradient p-6 rounded-xl shadow-lg border border-[var(--border)] flex flex-col space-y-6"
+                className="bg-[var(--surface-v-secondary)] p-6 rounded-xl shadow-lg border border-[var(--border)] flex flex-col space-y-6"
               >
                 {/* Dimension Title and Subtitle */}
                 <div className="text-center space-y-3">
@@ -552,12 +568,12 @@ export default function Report() {
       transition={{ duration: 0.8 }}
       className="flex min-h-screen flex-col items-center py-12 px-4 bg-[var(--surface)] text-[var(--text-primary)]"
     >
-      <div className="w-full max-w-5xl card-gradient p-10 rounded-2xl shadow-xl border border-[var(--border)] space-y-12">
+      <div className="w-full max-w-6xl bg-[var(--surface-variant)] p-10 rounded-2xl shadow-xl border border-[var(--border)] space-y-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center space-y-4"
+          className="text-center space-y-4 hero-gradient rounded-2xl p-8 mb-8 shadow-custom-lg"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] tracking-tight">
             Your CSM Personality Report
