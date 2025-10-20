@@ -361,7 +361,7 @@ export default function Home() {
               Preview Your Spectrum Insights
             </h2>
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
-              See how CSM reveals your unique cognitive preferences with nuanced, percentage-based spectrums—unlocking
+              See how CSM reveals your unique cognitive preferences with nuanced, percentage-based spectrums,unlocking
               personalized relationship strategies.
             </p>
           </div>
@@ -437,7 +437,7 @@ export default function Home() {
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                   With a Mild primary preference for Concrete Focus (C) at 57% and High secondary influence from
                   Abstract Insight (N) at 43%, your balanced spectrum suggests versatile application of the {`report's`}
-                  insights. The general analysis provides a flexible foundation—lean into Concrete Focus for core
+                  insights. The general analysis provides a flexible foundation,lean into Concrete Focus for core
                   relational patterns but frequently blend in Abstract Insight elements for nuanced, context-specific
                   communication strategies. This adaptability makes the report a dynamic guide rather than a rigid
                   blueprint, allowing you to switch between C and N modes seamlessly across relationship scenarios.
@@ -450,7 +450,7 @@ export default function Home() {
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-[var(--text-primary)]">Unlock Nuanced Insights</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed">
-                  Imagine seeing exactly how your mind works—57% grounded in practical details, with 43% room for
+                  Imagine seeing exactly how your mind works,57% grounded in practical details, with 43% room for
                   creative possibilities. {`CSM's spectrum model doesn't`} box you in; it reveals the balance that makes
                   your relationships thrive.
                 </p>
@@ -491,7 +491,7 @@ export default function Home() {
                 This assessment revealed communication patterns we never noticed. Our relationship has never been
                 stronger!
               </p>
-              <div className="text-[var(--primary)] font-semibold">— Sarah & Mike</div>
+              <div className="text-[var(--primary)] font-semibold">, Sarah & Mike</div>
             </div>
 
             <div className="p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20">
@@ -504,7 +504,7 @@ export default function Home() {
                 Finally, a test that looks at us as a couple, not just individuals. The insights were incredibly
                 accurate.
               </p>
-              <div className="text-[var(--primary)] font-semibold">— Alex & Jordan</div>
+              <div className="text-[var(--primary)] font-semibold">, Alex & Jordan</div>
             </div>
 
             <div className="p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20">
@@ -516,7 +516,7 @@ export default function Home() {
               <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">
                 The personalized recommendations helped us navigate our differences with so much more understanding.
               </p>
-              <div className="text-[var(--primary)] font-semibold">— Emma & David</div>
+              <div className="text-[var(--primary)] font-semibold">, Emma & David</div>
             </div>
           </div>
         </div>

@@ -95,7 +95,7 @@ export default function Sales() {
     {
       question: "What is the Cognitive Spectrum Model (CSM), and why should I care?",
       answer:
-        "CSM maps how your mind processes information, makes decisions, and approaches life's domains. Instead of putting you in a box, it shows you as a spectrum across multiple cognitive dimensions. This helps couples understand not just what they do differently, but why—leading to deeper empathy and more effective communication.",
+        "CSM maps how your mind processes information, makes decisions, and approaches life's domains. Instead of putting you in a box, it shows you as a spectrum across multiple cognitive dimensions. This helps couples understand not just what they do differently, but why,leading to deeper empathy and more effective communication.",
     },
     {
       question: "How is CSM different from MBTI, Enneagram, or Big Five?",
@@ -110,7 +110,7 @@ export default function Sales() {
     {
       question: "Can CSM really 'read' my relationship like a mind reader?",
       answer:
-        "CSM doesn't predict the future, but it reveals patterns in how you and your partner approach life's challenges. Think of it as a GPS for your relationship—it shows you where you are now and suggests the best routes forward based on your unique dynamic.",
+        "CSM doesn't predict the future, but it reveals patterns in how you and your partner approach life's challenges. Think of it as a GPS for your relationship,it shows you where you are now and suggests the best routes forward based on your unique dynamic.",
     },
     {
       question: "How does the free assessment work?",
@@ -218,7 +218,7 @@ export default function Sales() {
                 </button>
                 <p className="text-[var(--text-secondary)] flex items-center">
                   <Play className="h-4 w-4 mr-2 text-[var(--accent)]" />
-                  Start with a free personality assessment to unlock your archetype—then invite your partner!
+                  Start with a free personality assessment to unlock your archetype,then invite your partner!
                 </p>
               </div>
             </div>
@@ -252,7 +252,7 @@ export default function Sales() {
               For Couples Who <span className="text-[var(--accent)]">Build</span>, Not Just Repair
             </h2>
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
-              {`Great relationships aren't just about fixing problems—they're about understanding what lies ahead. The CSM
+              {`Great relationships aren't just about fixing problems,they're about understanding what lies ahead. The CSM
               report gives you the foresight to navigate life's biggest domains before challenges arise.`}
             </p>
           </div>
@@ -421,7 +421,7 @@ export default function Sales() {
               {
                 title: "In-Depth Profiles for Both Partners",
                 subtitle: "Your Unique 'Couple's Dynamic' Analysis",
-                desc: "Discover how your types create synergy or friction—with personalized tips.",
+                desc: "Discover how your types create synergy or friction,with personalized tips.",
                 image:
                   "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=800",
                 reverse: false,
@@ -648,7 +648,7 @@ export default function Sales() {
 
           <div className="text-center card-gradient p-6 rounded-xl">
             <p className="text-[var(--text-secondary)] mb-4">
-              One-time payment of $49. Backed by our 14-day satisfaction guarantee—no questions asked.
+              One-time payment of $49. Backed by our 14-day satisfaction guarantee,no questions asked.
             </p>
             <div className="flex items-center justify-center space-x-6 text-sm">
               <div className="flex items-center">
