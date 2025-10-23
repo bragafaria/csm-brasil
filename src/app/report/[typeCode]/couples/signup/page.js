@@ -1,9 +1,12 @@
+// src/app/components/couples/Signup.js
 "use client";
+
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { supabase } from "../../../../utils/supabaseClient";
+import { supabase } from "@/app/utils/supabaseClient";
 import { z } from "zod";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const signupSchema = z
   .object({
@@ -14,6 +17,7 @@ const signupSchema = z
       .min(6, { message: "Email must be at least 6 characters" }),
     confirmEmail: z.string(),
     password: z.string().min(8, { message: "Password must be at least 8 characters" }),
+    typeCode: z.string().regex(/^[A-Z0-9-]+$/, { message: "Invalid type code" }),
   })
   .refine((data) => data.email === data.confirmEmail, {
     message: "Emails do not match",
@@ -35,39 +39,59 @@ export default function Signup() {
 
   useEffect(() => {
     async function init() {
-      // Load assessment data
-      const stored = localStorage.getItem("csmAssessmentData");
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        setAssessmentData(parsed.results);
-        console.log("Stored assessment data:", parsed.results);
-      }
+      try {
+        // Load assessment data
+        const stored = localStorage.getItem("csmAssessmentData");
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          setAssessmentData(parsed.results);
+          console.log("Stored assessment data:", parsed.results);
+        } else {
+          console.warn("No assessment data found in localStorage");
+          setServerError("Please complete the assessment before signing up.");
+        }
 
-      // Check and sign out if session exists
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      if (session) {
-        console.log("Existing session found on signup page - signing out");
-        //await supabase.auth.signOut();
-        //localStorage.removeItem("supabase.auth.token"); // Explicitly clear Supabase storage key
-        //router.refresh(); // Refresh to reload without session
+        // Check session
+        const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (sessionError) {
+          console.error("Session check error:", sessionError.message, sessionError);
+          return;
+        }
+
+        if (session) {
+          console.log("Existing session found, redirecting to dashboard:", session.user.id);
+          router.push(`/dashboard/${session.user.id}`);
+        }
+      } catch (err) {
+        console.error("Unexpected error in init:", err.message, err);
+        setServerError("An unexpected error occurred. Please try again.");
       }
     }
     init();
   }, [router]);
 
   const handleSignOut = async () => {
-    console.log("Signing out...");
-    const { error } = await supabase.auth.signOut();
-    localStorage.clear();
-    sessionStorage.clear();
-    console.log("Cleared storage and signed out");
-
-    if (error) {
-      console.error("Error signing out:", error.message);
-    } else {
-      router.push("/login");
+    try {
+      console.log("Signing out...");
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.error("Error signing out:", error.message, error);
+        setServerError("Failed to sign out. Please try again.");
+        return;
+      }
+      // Preserve csmAssessmentData
+      const savedAssessment = localStorage.getItem("csmAssessmentData");
+      if (savedAssessment) {
+        localStorage.setItem("csmAssessmentData", savedAssessment);
+      }
+      console.log("Signed out successfully, preserved csmAssessmentData");
+      router.push(`/report/${typeCode}/couples`);
+    } catch (err) {
+      console.error("Unexpected error in handleSignOut:", err.message, err);
+      setServerError("An unexpected error occurred during sign out.");
     }
   };
 
@@ -78,7 +102,7 @@ export default function Signup() {
     setServerError(null);
     setConfirmationSent(false);
 
-    const result = signupSchema.safeParse({ name, email, confirmEmail, password });
+    const result = signupSchema.safeParse({ name, email, confirmEmail, password, typeCode });
 
     if (!result.success) {
       setErrors(result.error.flatten().fieldErrors);
@@ -87,20 +111,41 @@ export default function Signup() {
     }
 
     try {
+      // Check if user already exists
+      const { data: existingUser, error: userError } = await supabase
+        .from("users")
+        .select("id")
+        .eq("email", email)
+        .maybeSingle();
+
+      if (userError) {
+        console.error("Error checking existing user:", userError.message, userError);
+        throw new Error("Failed to verify email availability.");
+      }
+
+      if (existingUser) {
+        console.warn("User already exists with email:", email);
+        setServerError("An account with this email already exists. Please log in.");
+        setLoading(false);
+        return;
+      }
+
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          data: { name, typeCode },
-          emailRedirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/report/${typeCode}/couples/signup`,
+          data: { name, typeCode, has_assessment: !!assessmentData },
+          emailRedirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/success/login`,
         },
       });
 
       if (error) {
+        console.error("Signup error:", error.message, error);
         throw new Error(error.message || "Failed to sign up. Please try again.");
       }
 
       if (!data.user) {
+        console.error("User creation failed: No user data returned");
         throw new Error("User creation failed. No user data returned.");
       }
 
@@ -117,6 +162,7 @@ export default function Signup() {
             setLoading(false);
             return;
           }
+          console.error("Sign-in error:", signInError.message, signInError);
           throw signInError;
         }
         session = signInData.session;
@@ -128,11 +174,23 @@ export default function Signup() {
         return;
       }
 
-      // Test authentication token
-      const { data: userData, error: authError } = await supabase.auth.getUser(session.access_token);
-      console.log("Auth Test Result:", { userData, authError });
-      if (authError || !userData.user) {
-        throw new Error(authError?.message || "Failed to verify access token");
+      // Update users table with assessment data
+      if (assessmentData) {
+        const updateData = {
+          name,
+          typeCode,
+          has_assessment: true,
+          percents: assessmentData.percents?.length === 5 ? assessmentData.percents : [],
+          dominants: assessmentData.dominants?.length === 5 ? assessmentData.dominants : [],
+          categories: assessmentData.categories?.length === 5 ? assessmentData.categories : [],
+        };
+
+        const { error: updateError } = await supabase.from("users").update(updateData).eq("id", data.user.id);
+
+        if (updateError) {
+          console.error("Error updating user data:", updateError.message, updateError);
+          throw new Error("Failed to save assessment data.");
+        }
       }
 
       // Create Stripe checkout session
@@ -147,47 +205,75 @@ export default function Signup() {
 
       const responseData = await response.json();
       if (!response.ok) {
-        throw new Error(responseData.error || "Failed to create checkout session");
+        console.error("Checkout session error:", responseData.error, responseData);
+        throw new Error(responseData.error || "Failed to create checkout session.");
       }
 
       const { url } = responseData;
       if (!url) {
-        throw new Error("No checkout URL returned from server");
+        console.error("No checkout URL returned:", responseData);
+        throw new Error("No checkout URL returned from server.");
       }
 
+      // Clear assessment data after successful signup
+      localStorage.removeItem("csmAssessmentData");
+      console.log("Cleared csmAssessmentData from localStorage");
       window.location.href = url;
     } catch (err) {
-      console.error("Signup error:", err);
-      setServerError(err.message || "An unexpected error occurred during signup.");
-    } finally {
+      console.error("Signup error:", err.message, err);
+      setServerError(
+        err.message.includes("already exists")
+          ? "An account with this email already exists. Please log in."
+          : err.message || "An unexpected error occurred during signup."
+      );
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[var(--surface)]">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen flex items-center justify-center bg-[var(--surface)]"
+    >
       <div className="card-gradient p-8 rounded-xl shadow-lg max-w-md w-full">
-        <h1 className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]">
+        <motion.h1
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]"
+        >
           Sign Up to Get Your Couple Insights Report
-        </h1>
+        </motion.h1>
         {confirmationSent ? (
-          <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+          >
             <p className="text-[var(--text-primary)] mb-4">
               A confirmation email has been sent to {email}. Please verify your email to continue.
             </p>
-            <button
+            <motion.button
               onClick={() => router.push(`/report/${typeCode}/couples`)}
               className="btn-primary w-full py-3 rounded-lg font-semibold inline-flex items-center justify-center group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Return to Couples Page
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         ) : (
           <>
             <form onSubmit={handleSignup} className="space-y-4">
               <div>
-                <input
+                <motion.input
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
                   type="text"
                   placeholder="Name"
                   value={name}
@@ -198,7 +284,10 @@ export default function Signup() {
                 {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name[0]}</p>}
               </div>
               <div>
-                <input
+                <motion.input
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
                   type="email"
                   placeholder="Email"
                   value={email}
@@ -209,7 +298,10 @@ export default function Signup() {
                 {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email[0]}</p>}
               </div>
               <div>
-                <input
+                <motion.input
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
                   type="email"
                   placeholder="Confirm Email"
                   value={confirmEmail}
@@ -221,7 +313,10 @@ export default function Signup() {
                 {errors.confirmEmail && <p className="text-red-400 text-sm mt-1">{errors.confirmEmail[0]}</p>}
               </div>
               <div>
-                <input
+                <motion.input
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
                   type="password"
                   placeholder="Password"
                   value={password}
@@ -231,24 +326,50 @@ export default function Signup() {
                 />
                 {errors.password && <p className="text-red-400 text-sm mt-1">{errors.password[0]}</p>}
               </div>
-              {serverError && <p className="text-red-400 text-sm">{serverError}</p>}
-              <button
+              {serverError && (
+                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400 text-sm">
+                  {serverError}
+                </motion.p>
+              )}
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
                 type="submit"
                 disabled={loading || !assessmentData}
-                className="btn-primary w-full py-3 rounded-lg font-semibold inline-flex items-center justify-center group"
+                className="btn-primary w-full py-3 rounded-lg font-semibold inline-flex items-center justify-center group disabled:opacity-50"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {loading ? "Processing..." : "Sign Up and Proceed to Payment"}
                 {!loading && <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />}
-              </button>
+              </motion.button>
             </form>
-            <div className="mt-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="mt-4 text-center"
+            >
               <button onClick={handleSignOut} className="text-[var(--text-secondary)] hover:text-[var(--accent)]">
                 Sign Out
               </button>
-            </div>
+            </motion.div>
+            {!assessmentData && (
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-red-400 text-sm mt-4 text-center"
+              >
+                Please complete the assessment before signing up.
+                <a href={`/report/${typeCode}/couples`} className="text-[var(--accent)] hover:underline ml-1">
+                  Go back to assessment
+                </a>
+              </motion.p>
+            )}
           </>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -1,17 +1,27 @@
+// app/components/couples/LegacyImpactPage.js
+"use client";
+
 import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/app/utils/supabaseClient"; // Use singleton
 import { motion } from "framer-motion";
-import LegacyImpactTemplate from "../../lib/couple/LegacyImpactTemplate";
+import LegacyImpactTemplate from "@/app/lib/couple/LegacyImpactTemplate";
 
-export default function LegacyImpactPage() {
+export default function LegacyImpactPage({ reportData: propReportData }) {
   const { siteId } = useParams();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [reportData, setReportData] = useState(null);
+  const [reportData, setReportData] = useState(propReportData);
 
   useEffect(() => {
+    // If reportData is provided as a prop, use it and skip fetching
+    if (propReportData) {
+      setLoading(false);
+      return;
+    }
+
+    // Fallback to fetching data if no prop is provided
     async function fetchReportData() {
       if (!siteId) {
         console.error("Invalid siteId:", siteId);
@@ -20,79 +30,118 @@ export default function LegacyImpactPage() {
         return;
       }
 
-      const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
-        auth: { persistSession: true },
-      });
-
-      const {
-        data: { session },
-        error: sessionError,
-      } = await supabase.auth.getSession();
-      if (sessionError || !session) {
-        console.error("Session error:", sessionError?.message || "No session found");
-        router.push("/login");
-        return;
-      }
-
-      const userId = session.user.id;
-
-      // Fetch both partners using site_id
-      const { data: userData, error } = await supabase
-        .from("users")
-        .select("id, name, typeCode, percents, dominants, categories, has_assessment, partner_id")
-        .eq("site_id", siteId)
-        .eq("report_status", "pending")
-        .in("id", [
-          userId,
-          (await supabase.from("users").select("partner_id").eq("id", userId).single()).data.partner_id,
-        ]);
-
-      if (error || !userData || userData.length < 2) {
-        console.error("Error fetching user data:", error?.message || "Insufficient data");
-        setError("Failed to load partner data.");
-        setLoading(false);
-        return;
-      }
-
-      // Handle jsonb data (Supabase may return objects or strings)
-      const parseJsonb = (data) => {
-        if (!data) return [];
-        if (typeof data === "string") {
-          try {
-            return JSON.parse(data);
-          } catch (e) {
-            console.error("JSON parse error:", e.message, "Data:", data);
-            return [];
-          }
+      try {
+        // Check session
+        const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (sessionError || !session) {
+          console.error("Session error:", sessionError?.message || "No session found", sessionError);
+          setError("You must be logged in to view this report.");
+          setLoading(false);
+          router.push("/login");
+          return;
         }
-        return data;
-      };
+        console.log("LegacyImpactPage session user ID:", session.user.id);
 
-      const [partnerA, partnerB] = userData[0].id === userId ? [userData[0], userData[1]] : [userData[1], userData[0]];
+        const userId = session.user.id;
 
-      setReportData({
-        partnerA: {
-          name: partnerA.name,
-          typeCode: partnerA.typeCode,
-          percents: parseJsonb(partnerA.percents),
-          dominants: parseJsonb(partnerA.dominants),
-          categories: parseJsonb(partnerA.categories),
-          has_assessment: partnerA.has_assessment,
-        },
-        partnerB: {
-          name: partnerB.name,
-          typeCode: partnerB.typeCode,
-          percents: parseJsonb(partnerB.percents),
-          dominants: parseJsonb(partnerB.dominants),
-          categories: parseJsonb(partnerB.categories),
-          has_assessment: partnerB.has_assessment,
-        },
-      });
-      setLoading(false);
+        // Fetch Partner A's data (siteId is Partner A's id)
+        const { data: partnerAData, error: partnerAError } = await supabase
+          .from("users")
+          .select("id, name, typeCode, percents, dominants, categories, has_assessment, partner_id")
+          .eq("id", siteId)
+          .maybeSingle(); // Use maybeSingle
+
+        if (partnerAError || !partnerAData) {
+          console.error("Error fetching Partner A:", partnerAError?.message || "No user found for siteId", siteId);
+          setError("Failed to load report data.");
+          setLoading(false);
+          return;
+        }
+
+        // Validate access: user must be Partner A or Partner B
+        const isPartnerA = userId === siteId;
+        const isPartnerB = partnerAData.partner_id && userId === partnerAData.partner_id;
+
+        if (!isPartnerA && !isPartnerB) {
+          console.error("Access denied: User not associated with this report", { userId, siteId });
+          setError("You do not have access to this report.");
+          setLoading(false);
+          return;
+        }
+
+        // Check if Partner B exists
+        if (!partnerAData.partner_id) {
+          console.error("Partner B not found: No partner_id for siteId", siteId);
+          setError("Partner B has not signed up yet.");
+          setLoading(false);
+          return;
+        }
+
+        // Fetch Partner B's data
+        const { data: partnerBData, error: partnerBError } = await supabase
+          .from("users")
+          .select("id, name, typeCode, percents, dominants, categories, has_assessment")
+          .eq("id", partnerAData.partner_id)
+          .maybeSingle(); // Use maybeSingle
+
+        if (partnerBError || !partnerBData) {
+          console.error(
+            "Error fetching Partner B:",
+            partnerBError?.message || "No user found for partner_id",
+            partnerAData.partner_id
+          );
+          setError("Failed to load Partner B's report data.");
+          setLoading(false);
+          return;
+        }
+
+        // Handle jsonb data
+        const parseJsonb = (data) => {
+          if (!data) return [];
+          if (typeof data === "string") {
+            try {
+              return JSON.parse(data);
+            } catch (e) {
+              console.error("JSON parse error:", e.message, "Data:", data);
+              return [];
+            }
+          }
+          return data;
+        };
+
+        setReportData({
+          partnerA: {
+            name: partnerAData.name,
+            typeCode: partnerAData.typeCode,
+            percents: parseJsonb(partnerAData.percents),
+            dominants: parseJsonb(partnerAData.dominants),
+            categories: parseJsonb(partnerAData.categories),
+            has_assessment: partnerAData.has_assessment,
+          },
+          partnerB: {
+            name: partnerBData.name,
+            typeCode: partnerBData.typeCode,
+            percents: parseJsonb(partnerBData.percents),
+            dominants: parseJsonb(partnerBData.dominants),
+            categories: parseJsonb(partnerBData.categories),
+            has_assessment: partnerBData.has_assessment,
+          },
+        });
+        setLoading(false);
+      } catch (err) {
+        console.error("Unexpected error in fetchReportData:", err.message, err);
+        setError("An unexpected error occurred while loading the report.");
+        setLoading(false);
+      }
     }
 
-    fetchReportData();
-  }, [siteId, router]);
+    if (!propReportData) {
+      fetchReportData();
+    }
+  }, [siteId, router, propReportData]);
 
   if (loading) {
     console.log("Rendering loading state");

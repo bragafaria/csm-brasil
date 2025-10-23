@@ -1,18 +1,20 @@
+// src/app/components/Sidebar.js
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation"; // Add useRouter
 import Link from "next/link";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/app/utils/supabaseClient";
 import { User, Users, BookOpen, Lightbulb, Settings, HelpCircle, X, ChevronLeft } from "lucide-react";
 
 export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }) {
   const [expandedItems, setExpandedItems] = useState([]);
   const [partnerNames, setPartnerNames] = useState({ partnerA: "Partner A", partnerB: null });
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); // Add error state
   const pathname = usePathname();
+  const router = useRouter(); // Add router for redirect
 
-  // Function to create URL-friendly slug from name
   const createSlug = (name) => {
     if (!name) return "";
     return name
@@ -25,44 +27,67 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
     async function fetchPartnerNames() {
       if (!siteId) {
         console.error("siteId is undefined in Sidebar");
+        setError("Invalid dashboard URL.");
         setLoading(false);
         return;
       }
 
-      const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
-        auth: { persistSession: true },
-      });
-
       try {
-        // Fetch Partner A's data (siteId is Partner A's id)
+        const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (sessionError || !session) {
+          console.error("No session found:", sessionError?.message);
+          router.push("/login"); // Redirect to login
+          return;
+        }
+        console.log("Sidebar session user ID:", session.user.id);
+
+        const userId = session.user.id;
+
+        // Fetch Partner A data and verify user access
         const { data: partnerAData, error: partnerAError } = await supabase
           .from("users")
           .select("id, name, partner_id")
           .eq("id", siteId)
-          .single();
+          .maybeSingle();
 
-        if (partnerAError || !partnerAData) {
-          console.error("Error fetching Partner A:", partnerAError?.message);
+        if (partnerAError) {
+          console.error("Error fetching Partner A:", partnerAError.message, partnerAError);
+          setError("Failed to load partner data.");
           setLoading(false);
           return;
         }
 
-        console.log("Partner A data:", partnerAData);
+        if (!partnerAData) {
+          console.error("No user found for siteId:", siteId);
+          setError("No user found for this dashboard.");
+          setLoading(false);
+          return;
+        }
+
+        // Verify user is Partner A or Partner B
+        if (userId !== partnerAData.id && userId !== partnerAData.partner_id) {
+          console.error("Access denied: User not associated with siteId", { userId, siteId });
+          setError("You do not have access to this dashboard.");
+          setLoading(false);
+          return;
+        }
 
         const partnerAName = partnerAData.name || "Partner A";
         let partnerBName = null;
 
-        // Fetch Partner B's data if partner_id exists
         if (partnerAData.partner_id) {
           const { data: partnerBData, error: partnerBError } = await supabase
             .from("users")
             .select("name")
             .eq("id", partnerAData.partner_id)
-            .single();
+            .maybeSingle();
 
-          if (partnerBError || !partnerBData) {
-            console.error("Error fetching Partner B:", partnerBError?.message);
-          } else {
+          if (partnerBError) {
+            console.error("Error fetching Partner B:", partnerBError.message, partnerBError);
+          } else if (partnerBData) {
             partnerBName = partnerBData.name || "Partner B";
           }
         }
@@ -73,13 +98,14 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
         });
         setLoading(false);
       } catch (err) {
-        console.error("Error fetching partner names:", err.message);
+        console.error("Error fetching partner names:", err.message, err);
+        setError("An unexpected error occurred.");
         setLoading(false);
       }
     }
 
     fetchPartnerNames();
-  }, [siteId]);
+  }, [siteId, router]);
 
   const menuItems = [
     {
@@ -142,6 +168,14 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
   };
 
   const isActive = (route) => pathname === route;
+
+  if (loading) {
+    return <div className="p-4 text-[var(--text-primary)]">Loading sidebar...</div>;
+  }
+
+  if (error) {
+    return <div className="p-4 text-red-400">{error}</div>;
+  }
 
   if (!sidebarOpen) return null;
 

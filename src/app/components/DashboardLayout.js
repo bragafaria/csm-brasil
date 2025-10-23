@@ -1,13 +1,15 @@
-// components/DashboardLayout.js
+// src/app/components/DashboardLayout.js
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation"; // Added useRouter
 import { Menu } from "lucide-react";
 import Sidebar from "./Sidebar";
+import { supabase } from "@/app/utils/supabaseClient";
 
 export default function DashboardLayout({ children }) {
   const params = useParams();
+  const router = useRouter(); // Added for redirect after logout
   const siteId = params.siteId; // Use siteId instead of userId
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -34,6 +36,21 @@ export default function DashboardLayout({ children }) {
     setSidebarOpen(!sidebarOpen);
   };
 
+  const handleLogout = async () => {
+    try {
+      console.log("Logging out...");
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        console.error("Logout error:", error.message, error);
+        return;
+      }
+      console.log("Logged out successfully");
+      router.push("/login"); // Redirect to login page
+    } catch (err) {
+      console.error("Unexpected error in handleLogout:", err.message, err);
+    }
+  };
+
   return (
     <div className="min-h-screen surface">
       <nav className="fixed top-0 w-full bg-[var(--dashboard)]/80 backdrop-blur-md border-b border-[var(--primary)]/20 z-50">
@@ -50,6 +67,9 @@ export default function DashboardLayout({ children }) {
             </h1>
           </div>
           <div className="flex items-center space-x-2">
+            <button className="text-sm font-medium text-primary hover:underline" onClick={handleLogout}>
+              Logout
+            </button>
             <div className="w-8 h-8 rounded-full primary-gradient flex items-center justify-center">
               <span className="text-sm font-medium text-white">U</span>
             </div>

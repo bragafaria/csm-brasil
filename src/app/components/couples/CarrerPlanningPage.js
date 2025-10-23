@@ -1,10 +1,11 @@
+// src/app/dashboard/[siteId]/career-planning/page.js
 "use client";
 
 import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/app/utils/supabaseClient"; // Use singleton
 import { motion, AnimatePresence } from "framer-motion";
-import CareerAmbitionTemplate from "../../lib/couple/CareerAmbitionTemplate";
+import CareerAmbitionTemplate from "@/app/lib/couple/CareerAmbitionTemplate"; // Use alias
 
 export default function CareerPlanningPage() {
   const { siteId } = useParams();
@@ -22,75 +23,93 @@ export default function CareerPlanningPage() {
         return;
       }
 
-      const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
-        auth: { persistSession: true },
-      });
-
-      const {
-        data: { session },
-        error: sessionError,
-      } = await supabase.auth.getSession();
-      if (sessionError || !session) {
-        console.error("Session error:", sessionError?.message || "No session found");
-        router.push("/login");
-        return;
-      }
-
-      const userId = session.user.id;
-
-      // Fetch both partners using site_id
-      const { data: userData, error } = await supabase
-        .from("users")
-        .select("id, name, typeCode, percents, dominants, categories, has_assessment, partner_id")
-        .eq("site_id", siteId)
-        .eq("report_status", "pending")
-        .in("id", [
-          userId,
-          (await supabase.from("users").select("partner_id").eq("id", userId).single()).data.partner_id,
-        ]);
-
-      if (error || !userData || userData.length < 2) {
-        console.error("Error fetching user data:", error?.message || "Insufficient data");
-        setError("Failed to load partner data.");
-        setLoading(false);
-        return;
-      }
-
-      // Handle jsonb data (Supabase may return objects or strings)
-      const parseJsonb = (data) => {
-        if (!data) return [];
-        if (typeof data === "string") {
-          try {
-            return JSON.parse(data);
-          } catch (e) {
-            console.error("JSON parse error:", e.message, "Data:", data);
-            return [];
-          }
+      try {
+        // Check session
+        const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (sessionError || !session) {
+          console.error("Session error:", sessionError?.message || "No session found");
+          router.push("/login");
+          return;
         }
-        return data;
-      };
+        console.log("CareerPlanning session user ID:", session.user.id);
 
-      const [partnerA, partnerB] = userData[0].id === userId ? [userData[0], userData[1]] : [userData[1], userData[0]];
+        const userId = session.user.id;
 
-      setReportData({
-        partnerA: {
-          name: partnerA.name,
-          typeCode: partnerA.typeCode,
-          percents: parseJsonb(partnerA.percents),
-          dominants: parseJsonb(partnerA.dominants),
-          categories: parseJsonb(partnerA.categories),
-          has_assessment: partnerA.has_assessment,
-        },
-        partnerB: {
-          name: partnerB.name,
-          typeCode: partnerB.typeCode,
-          percents: parseJsonb(partnerB.percents),
-          dominants: parseJsonb(partnerB.dominants),
-          categories: parseJsonb(partnerB.categories),
-          has_assessment: partnerB.has_assessment,
-        },
-      });
-      setLoading(false);
+        // Fetch partner_id for the current user
+        const { data: currentUserData, error: userError } = await supabase
+          .from("users")
+          .select("partner_id")
+          .eq("id", userId)
+          .maybeSingle(); // Use maybeSingle
+
+        if (userError || !currentUserData) {
+          console.error("Error fetching user data:", userError?.message || "No user found");
+          setError("Failed to load user data.");
+          setLoading(false);
+          return;
+        }
+
+        const partnerId = currentUserData.partner_id;
+
+        // Fetch both partners using site_id
+        const { data: userData, error } = await supabase
+          .from("users")
+          .select("id, name, typeCode, percents, dominants, categories, has_assessment, partner_id")
+          .eq("site_id", siteId)
+          .eq("report_status", "pending")
+          .in("id", [userId, partnerId].filter(Boolean)); // Filter out null/undefined
+
+        if (error || !userData || userData.length < 2) {
+          console.error("Error fetching user data:", error?.message || "Insufficient data");
+          setError("Failed to load partner data.");
+          setLoading(false);
+          return;
+        }
+
+        // Handle jsonb data (Supabase may return objects or strings)
+        const parseJsonb = (data) => {
+          if (!data) return [];
+          if (typeof data === "string") {
+            try {
+              return JSON.parse(data);
+            } catch (e) {
+              console.error("JSON parse error:", e.message, "Data:", data);
+              return [];
+            }
+          }
+          return data;
+        };
+
+        const [partnerA, partnerB] =
+          userData[0].id === userId ? [userData[0], userData[1]] : [userData[1], userData[0]];
+
+        setReportData({
+          partnerA: {
+            name: partnerA.name,
+            typeCode: partnerA.typeCode,
+            percents: parseJsonb(partnerA.percents),
+            dominants: parseJsonb(partnerA.dominants),
+            categories: parseJsonb(partnerA.categories),
+            has_assessment: partnerA.has_assessment,
+          },
+          partnerB: {
+            name: partnerB.name,
+            typeCode: partnerB.typeCode,
+            percents: parseJsonb(partnerB.percents),
+            dominants: parseJsonb(partnerB.dominants),
+            categories: parseJsonb(partnerB.categories),
+            has_assessment: partnerB.has_assessment,
+          },
+        });
+        setLoading(false);
+      } catch (err) {
+        console.error("Unexpected error in fetchReportData:", err.message, err);
+        setError("An unexpected error occurred.");
+        setLoading(false);
+      }
     }
 
     fetchReportData();

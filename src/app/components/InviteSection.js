@@ -1,8 +1,9 @@
+// src/app/components/InviteSection.js
 "use client";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/app/utils/supabaseClient"; // Use singleton
 
 export default function InviteSection({ siteId }) {
   const [inviteLink, setInviteLink] = useState("");
@@ -12,51 +13,85 @@ export default function InviteSection({ siteId }) {
 
   useEffect(() => {
     async function fetchInvite() {
-      setLoading(true);
-      setError("");
-
-      const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
-        auth: { persistSession: true },
-      });
-
-      const {
-        data: { session },
-        error: sessionError,
-      } = await supabase.auth.getSession();
-      if (sessionError || !session) {
-        console.error("Session error:", sessionError?.message || "No session found");
-        setError("You must be logged in to generate an invite.");
+      if (!siteId) {
+        console.error("Invalid siteId:", siteId);
+        setError("Invalid dashboard URL.");
         setLoading(false);
-        router.push("/login");
         return;
       }
 
-      const token = session.access_token;
-      const response = await fetch("/api/get-invite", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      try {
+        const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (sessionError || !session) {
+          console.error("Session error:", sessionError?.message || "No session found");
+          setError("You must be logged in to generate an invite.");
+          setLoading(false);
+          router.push("/login");
+          return;
+        }
+        console.log("InviteSection session user ID:", session.user.id);
 
-      const result = await response.json();
-      if (response.ok) {
-        setInviteLink(result.inviteLink);
-      } else {
-        setError(result.error || "Failed to fetch invite link.");
+        const userId = session.user.id;
+
+        // Verify user is associated with siteId
+        const { data: userData, error: userError } = await supabase
+          .from("users")
+          .select("id, partner_id")
+          .eq("id", siteId)
+          .maybeSingle();
+
+        if (userError || !userData) {
+          console.error("Error fetching user data:", userError?.message || "No user found for siteId", siteId);
+          setError("Failed to load dashboard data.");
+          setLoading(false);
+          return;
+        }
+
+        if (userId !== userData.id && userId !== userData.partner_id) {
+          console.error("Access denied: User not associated with siteId", { userId, siteId });
+          setError("You do not have access to this dashboard.");
+          setLoading(false);
+          return;
+        }
+
+        const token = session.access_token;
+        const response = await fetch("/api/get-invite", {
+          method: "POST", // Specify method for clarity
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          credentials: "include", // Ensure cookies are sent if needed
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+          setInviteLink(result.inviteLink);
+        } else {
+          console.error("API error:", result.error || "Failed to fetch invite link", result);
+          setError(result.error || "Failed to fetch invite link.");
+        }
+      } catch (err) {
+        console.error("Unexpected error in fetchInvite:", err.message, err);
+        setError("An unexpected error occurred.");
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     }
 
     fetchInvite();
-  }, [router]);
+  }, [siteId, router]);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(inviteLink);
     alert("Invite link copied to clipboard!");
   };
 
-  if (loading) return <p>Loading invite...</p>;
-  if (error) return <p className="text-red-400">{error}</p>;
+  if (loading) return <p className="p-4 text-[var(--text-primary)]">Loading invite...</p>;
+  if (error) return <p className="p-4 text-red-400">{error}</p>;
 
   return (
     <div className="bg-[var(--surface)] p-6 rounded-xl shadow-custom">

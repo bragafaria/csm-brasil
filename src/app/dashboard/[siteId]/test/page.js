@@ -1,13 +1,15 @@
+// app/components/couples/DashboardTest.js
 "use client";
+
 import { useState, useEffect } from "react";
-import { useRouter, useParams } from "next/navigation"; // FIXED: useParams for siteId
-import { questions, calculateCSMResults } from "../../../utils/csm";
-import { createClient } from "@supabase/supabase-js";
+import { useRouter, useParams } from "next/navigation";
+import { questions, calculateCSMResults } from "@/utils/csm";
+import { supabase } from "@/app/utils/supabaseClient"; // Use singleton
+import { motion } from "framer-motion";
 
 export default function DashboardTest() {
   const router = useRouter();
-  const params = useParams();
-  const siteId = params?.siteId;
+  const { siteId } = useParams();
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
   const [ranks, setRanks] = useState({});
@@ -25,7 +27,7 @@ export default function DashboardTest() {
         const parsedAnswers = JSON.parse(saved);
         setAnswers(parsedAnswers);
       } catch (e) {
-        console.error("Invalid localStorage data:", e);
+        console.error("Invalid localStorage data:", e.message, e);
         localStorage.removeItem("csmAnswers"); // Clear corrupt data
       }
     }
@@ -35,69 +37,79 @@ export default function DashboardTest() {
   useEffect(() => {
     async function initializeTestDashboardPage() {
       if (!siteId) {
+        console.error("Invalid siteId:", siteId);
         setError("Invalid dashboard link.");
         setLoading(false);
         return;
       }
 
-      const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
-        auth: { persistSession: true },
-      });
+      try {
+        const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (sessionError || !session) {
+          console.error("Session error:", sessionError?.message || "No session found", sessionError);
+          setError("You must be logged in to access the assessment.");
+          setLoading(false);
+          router.push("/login");
+          return;
+        }
 
-      const {
-        data: { session },
-        error: sessionError,
-      } = await supabase.auth.getSession();
-      if (sessionError || !session) {
-        console.error("Session error:", sessionError?.message || "No session found");
-        router.push("/login");
+        const userId = session.user.id;
+        console.log("Initializing test for user:", { userId, siteId });
+
+        const { data: userData, error: userError } = await supabase
+          .from("users")
+          .select("id, partner_id, has_assessment")
+          .eq("id", userId)
+          .maybeSingle(); // Use maybeSingle
+
+        if (userError || !userData) {
+          console.error("User fetch error:", userError?.message || "No user found for userId", userId, userError);
+          setError("User profile not found. Please log in again.");
+          await supabase.auth.signOut();
+          router.push("/login");
+          setLoading(false);
+          return;
+        }
+
+        const isPartnerA = userId === siteId;
+        const isPartnerB = userData.partner_id === siteId;
+
+        if (!isPartnerA && !isPartnerB) {
+          console.error("Access denied:", { userId, siteId, partner_id: userData.partner_id });
+          setError("You do not have access to this dashboard.");
+          setLoading(false);
+          return;
+        }
+
+        console.log("Access granted:", { isPartnerA, isPartnerB, hasAssessment: userData.has_assessment });
+
+        if (isPartnerA) {
+          console.log("Redirecting Partner A to dashboard:", `/dashboard/${siteId}`);
+          router.push(`/dashboard/${siteId}`);
+          setLoading(false);
+          return;
+        }
+
+        if (isPartnerB && !userData.has_assessment) {
+          console.log("Showing assessment for Partner B:", userId);
+          setShowAssessment(true);
+        } else {
+          console.log(
+            "Redirecting Partner B to dashboard (assessment completed or not needed):",
+            `/dashboard/${siteId}`
+          );
+          router.push(`/dashboard/${siteId}`);
+        }
+
         setLoading(false);
-        return;
-      }
-
-      const userId = session.user.id;
-      console.log("Initializing test for user:", { userId, siteId });
-
-      const { data: userData, error: userError } = await supabase
-        .from("users")
-        .select("id, partner_id, has_assessment")
-        .eq("id", userId)
-        .single();
-
-      if (userError || !userData) {
-        console.error("User fetch error:", userError?.message);
-        setError("User profile not found. Please log in again.");
-        await supabase.auth.signOut();
-        router.push("/login");
+      } catch (err) {
+        console.error("Unexpected error in initializeTestDashboardPage:", err.message, err);
+        setError("An unexpected error occurred. Please try again.");
         setLoading(false);
-        return;
       }
-
-      const isPartnerA = userId === siteId;
-      const isPartnerB = userData.partner_id === siteId;
-
-      if (!isPartnerA && !isPartnerB) {
-        console.error("Access denied:", { userId, siteId });
-        setError("You do not have access to this dashboard.");
-        setLoading(false);
-        return;
-      }
-
-      console.log("Access granted:", { isPartnerA, isPartnerB, hasAssessment: userData.has_assessment });
-
-      if (isPartnerA) {
-        router.push(`/dashboard/${siteId}`);
-        setLoading(false);
-        return;
-      }
-
-      if (isPartnerB && !userData.has_assessment) {
-        setShowAssessment(true);
-      } else {
-        router.push(`/dashboard/${siteId}/`);
-      }
-
-      setLoading(false);
     }
 
     initializeTestDashboardPage();
@@ -129,68 +141,87 @@ export default function DashboardTest() {
       return;
     }
 
-    // Calculate results first
-    const results = calculateCSMResults(answers);
-    localStorage.setItem("csmAssessmentData", JSON.stringify({ answers, results }));
-    setAssessmentData(results);
-    console.log("Assessment results calculated:", results);
+    try {
+      // Calculate results
+      const results = calculateCSMResults(answers);
+      if (
+        !results ||
+        !Array.isArray(results.percents) ||
+        !Array.isArray(results.dominants) ||
+        !Array.isArray(results.categories)
+      ) {
+        console.error("Invalid assessment results:", results);
+        setError("Failed to calculate assessment results. Please try again.");
+        return;
+      }
+      localStorage.setItem("csmAssessmentData", JSON.stringify({ answers, results }));
+      setAssessmentData(results);
+      console.log("Assessment results calculated:", results);
 
-    // Recreate supabase/userId
-    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
-      auth: { persistSession: true },
-    });
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-    const userId = session?.user?.id;
-    if (!userId) {
-      setError("Session expired. Please log in again.");
-      return;
+      // Get user session
+      const {
+        data: { session },
+        error: sessionError,
+      } = await supabase.auth.getSession();
+      const userId = session?.user?.id;
+      if (!userId) {
+        console.error("Session expired: No userId found");
+        setError("Session expired. Please log in again.");
+        router.push("/login");
+        return;
+      }
+      console.log("Updating for userId:", userId);
+
+      // Prepare update data for JSONB columns
+      const updateData = {
+        has_assessment: true,
+        typeCode: results.dominants?.length === 5 ? results.dominants.join("-") : null, // Text: string
+        percents: results.percents?.length === 5 ? results.percents : [], // jsonb: raw array
+        dominants: results.dominants?.length === 5 ? results.dominants : [], // jsonb: raw array
+        categories: results.categories?.length === 5 ? results.categories : [], // jsonb: raw array
+      };
+
+      console.log("Update data prepared (raw for jsonb):", updateData);
+
+      // Update Supabase
+      const { data: updateResponse, error: supabaseError } = await supabase
+        .from("users")
+        .update(updateData)
+        .eq("id", userId)
+        .select("id, has_assessment, typeCode, dominants, percents, categories");
+
+      console.log("Update response:", { data: updateResponse, error: supabaseError });
+
+      if (supabaseError) {
+        console.error("Supabase update error details:", supabaseError.message, supabaseError);
+        setError(`Failed to save results: ${supabaseError.message}. Please try again.`);
+        return;
+      }
+
+      if (!updateResponse || updateResponse.length === 0) {
+        console.error("No rows updated - check RLS or userId:", userId);
+        setError("Failed to update profile (no rows affected). Please try again.");
+        return;
+      }
+
+      // Verify saved data
+      console.log("Saved row:", updateResponse[0]);
+
+      // Clear localStorage
+      localStorage.removeItem("csmAnswers");
+      localStorage.removeItem("csmAssessmentData");
+      console.log("Cleared localStorage: csmAnswers, csmAssessmentData");
+
+      router.push(`/dashboard/${siteId}`);
+    } catch (err) {
+      console.error("Unexpected error in next:", err.message, err);
+      setError("An unexpected error occurred while saving results. Please try again.");
     }
-    console.log("Updating for userId:", userId);
-
-    // FIXED: For jsonb columns (percents, dominants, categories), pass RAW arrays/objects
-    // Supabase auto-serializes to JSON. For text (typeCode), pass string.
-    const updateData = {
-      has_assessment: true,
-      typeCode: results.dominants?.length === 5 ? results.dominants.join("-") : null, // Text: string
-    };
-    if (results.percents?.length === 5) updateData.percents = results.percents; // jsonb: raw array of objects
-    if (results.dominants?.length === 5) updateData.dominants = results.dominants; // jsonb: raw array
-    if (results.categories?.length === 5) updateData.categories = results.categories; // jsonb: raw array of objects
-
-    console.log("Update data prepared (raw for jsonb):", updateData); // DEBUG: Should show arrays, not strings
-
-    // Update Supabase (select to verify)
-    const { data: updateResponse, error: supabaseError } = await supabase
-      .from("users")
-      .update(updateData)
-      .eq("id", userId)
-      .select("id, has_assessment, typeCode, dominants, percents, categories"); // Select all for log
-
-    console.log("Update response:", { data: updateResponse, error: supabaseError }); // DEBUG
-
-    if (supabaseError) {
-      console.error("Supabase update error details:", supabaseError);
-      setError(`Failed to save results: ${supabaseError.message}. Please try again.`);
-      return;
-    }
-
-    if (!updateResponse || updateResponse.length === 0) {
-      console.error("No rows updated - check RLS or userId");
-      setError("Failed to update profile (no rows affected). Please try again.");
-      return;
-    }
-
-    // Verify saved data (should show arrays in response)
-    console.log("Saved row:", updateResponse[0]);
-    localStorage.removeItem("csmAnswers");
-    router.push(`/dashboard/${siteId}`);
   };
 
   const prev = () => current > 0 && setCurrent(current - 1);
 
-  // Validate points: Ensure total points sum to 10
+  // Validate points: Ensure total points sum to 10 for rank questions
   const isRankValid = () => {
     if (q.type !== "rank") return answers[current] !== null;
     const totalPoints = Object.values(ranks).reduce((sum, val) => sum + (parseInt(val) || 0), 0);
@@ -232,9 +263,13 @@ export default function DashboardTest() {
     );
   }
 
-  // Test form render (unchanged, but now conditional)
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)]">
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)]"
+    >
       <div className="w-full max-w-lg card-gradient p-8 rounded-xl shadow-2xl border border-[var(--border)]">
         <div className="flex justify-between items-center mb-4">
           <span className="text-sm font-medium text-[#BF00FF]">{percentage}% Complete</span>
@@ -326,6 +361,6 @@ export default function DashboardTest() {
           </button>
         </div>
       </div>
-    </main>
+    </motion.main>
   );
 }
