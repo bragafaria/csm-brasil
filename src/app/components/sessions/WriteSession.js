@@ -24,11 +24,6 @@ export default function WriteSession() {
       } = await supabase.auth.getSession();
       if (sessionError || !session) throw new Error("Please log in again");
 
-      console.log("WriteSession session:", {
-        userId: session.user.id,
-        accessToken: session.access_token.substring(0, 10) + "...",
-      });
-
       const response = await fetch("/api/get-blueprint-status", {
         method: "POST",
         headers: {
@@ -44,9 +39,7 @@ export default function WriteSession() {
       }
       const status = await response.json();
       setUserStatus(status);
-      console.log("User status:", status);
 
-      // Updated logic: Show SalesSession if no subscriber and (active session or no available per-session/free)
       setShowSalesPage(
         !status.isActiveSubscriber &&
           (status.hasActiveSession || (!status.hasAvailablePerSession && !status.hasFreeSessionAvailable)) &&

@@ -1,3 +1,4 @@
+// app/api/get-blueprint-status/route.js
 import { createClient } from "@supabase/supabase-js";
 
 export async function POST(request) {
@@ -6,7 +7,6 @@ export async function POST(request) {
 
     const authHeader = request.headers.get("Authorization");
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      console.error("No valid Authorization header");
       return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
     }
     const token = authHeader.replace("Bearer ", "");
@@ -16,73 +16,55 @@ export async function POST(request) {
       refresh_token: request.headers.get("Refresh-Token") || "",
     });
     if (setAuthError) {
-      console.error("Set auth error:", setAuthError.message);
-      return new Response(JSON.stringify({ error: `Failed to set auth context: ${setAuthError.message}` }), {
-        status: 401,
-      });
+      return new Response(JSON.stringify({ error: "Invalid session" }), { status: 401 });
     }
 
     const {
-      data: { user },
-      error: authError,
-    } = await supabase.auth.getUser(token);
-    if (authError || !user) {
-      console.error("Auth error:", authError?.message);
+      data: { session },
+      error: sessionError,
+    } = await supabase.auth.getSession();
+    if (sessionError || !session?.user) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), { status: 401 });
     }
 
-    const { data: userData, error: userError } = await supabase
-      .from("users")
-      .select("has_used_free_session")
-      .eq("id", user.id)
-      .single();
-    if (userError) {
-      console.error("User fetch error:", userError.message);
-      return new Response(JSON.stringify({ error: "Failed to fetch user data" }), { status: 500 });
-    }
+    const userId = session.user.id;
 
-    const { data: activeSessions, error: sessionError } = await supabase
+    // 1. FREE SESSION
+    const { data: userData } = await supabase.from("users").select("has_used_free_session").eq("id", userId).single();
+
+    // 2. ACTIVE SESSION (ONLY pending OR assigned)
+    const { data: activeSessions } = await supabase
       .from("blueprint_sessions")
       .select("id")
-      .eq("user_id", user.id)
-      .in("status", ["pending", "assigned"]);
-    if (sessionError) {
-      console.error("Session fetch error:", sessionError.message);
-      return new Response(JSON.stringify({ error: "Failed to fetch sessions" }), { status: 500 });
-    }
+      .eq("user_id", userId)
+      .in("status", ["pending", "assigned"]); // ← CORRECT
 
-    const { data: payments, error: paymentError } = await supabase
+    // 3. PER-SESSION CREDITS
+    const { data: payments } = await supabase
       .from("blueprint_payments")
       .select("id")
-      .eq("user_id", user.id)
+      .eq("user_id", userId)
       .eq("status", "succeeded")
       .is("session_id", null);
-    if (paymentError) {
-      console.error("Payment fetch error:", paymentError.message);
-      return new Response(JSON.stringify({ error: "Failed to fetch payments" }), { status: 500 });
-    }
 
-    const { data: subscriptions, error: subError } = await supabase
+    // 4. ACTIVE SUBSCRIPTION
+    const { data: subscriptions } = await supabase
       .from("blueprint_subscriptions")
       .select("id")
-      .eq("user_id", user.id)
+      .eq("user_id", userId)
       .eq("status", "active");
-    if (subError) {
-      console.error("Subscription fetch error:", subError.message);
-      return new Response(JSON.stringify({ error: "Failed to fetch subscriptions" }), { status: 500 });
-    }
 
     return new Response(
       JSON.stringify({
-        hasFreeSessionAvailable: !userData.has_used_free_session,
+        hasFreeSessionAvailable: !userData?.has_used_free_session,
         isActiveSubscriber: subscriptions.length > 0,
         hasAvailablePerSession: payments.length > 0,
-        hasActiveSession: activeSessions.length > 0,
+        hasActiveSession: activeSessions.length > 0, // ← THIS IS THE KEY
       }),
       { status: 200 }
     );
   } catch (err) {
-    console.error("Unexpected error:", err.message);
+    console.error("get-blueprint-status error:", err);
     return new Response(JSON.stringify({ error: "Server error" }), { status: 500 });
   }
 }
