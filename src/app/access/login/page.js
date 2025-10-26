@@ -1,10 +1,10 @@
-// src/app/success/login/page.js
+// @/app/access/login/page.js
 "use client";
 
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { supabase } from "@/app/utils/supabaseClient"; // Correct path
 import { motion } from "framer-motion";
+import { supabase } from "@/app/utils/supabaseClient";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -15,60 +15,57 @@ export default function Login() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
 
-  // Debug supabase import
-  useEffect(() => {
-    console.log("Supabase client:", supabase);
-    if (!supabase) {
-      console.error("Supabase client is undefined");
-      setError("Authentication service unavailable. Please try again later.");
-    }
-  }, []);
-
   useEffect(() => {
     async function checkSession() {
       try {
-        if (!supabase) {
-          throw new Error("Supabase client is not initialized");
-        }
-
         const {
           data: { session },
           error: sessionError,
         } = await supabase.auth.getSession();
-        console.log("Session check result:", { session, error: sessionError?.message });
         if (sessionError) {
-          console.error("Session check error:", sessionError.message, sessionError);
+          console.error("Session check error:", sessionError.message);
           setError("Failed to verify session. Please log in.");
           return;
         }
 
         if (session) {
-          // Verify user exists in the users table (Partner A)
           const userId = session.user.id;
           const { data: userData, error: userError } = await supabase
             .from("users")
-            .select("id")
+            .select("id, user_type")
             .eq("id", userId)
             .maybeSingle();
 
           if (userError || !userData) {
-            console.error("User fetch error:", userError?.message || "No user found for userId", userId, userError);
-            setError("User profile not found. Please log in again.");
+            console.error("User fetch error:", userError?.message || "No user found for userId", userId);
+            setError("User profile not found. Please sign up or try again.");
             await supabase.auth.signOut();
-            router.push("/login");
+            router.push("/access/login");
             return;
           }
 
-          // Redirect Partner A to their dashboard
-          console.log("Authenticated user, redirecting:", { userId, redirectPath: `/dashboard/${userId}` });
-          router.push(`/dashboard/${userId}`);
+          // Check if user is a coach
+          const { data: coachData, error: coachError } = await supabase
+            .from("coaches")
+            .select("id")
+            .eq("user_id", userId)
+            .maybeSingle();
+
+          if (coachError) {
+            console.error("Coach fetch error:", coachError.message);
+            setError("Failed to verify coach status. Please try again.");
+            return;
+          }
+
+          const redirectPath = coachData ? "/access/coaching" : "/dashboard";
+          console.log("Authenticated user, redirecting:", { userId, redirectPath });
+          router.push(redirectPath);
         }
       } catch (err) {
-        console.error("Unexpected error in checkSession:", err.message, err);
+        console.error("Unexpected error in checkSession:", err.message);
         setError("An unexpected error occurred. Please try again.");
       }
     }
-
     checkSession();
   }, [router]);
 
@@ -78,52 +75,56 @@ export default function Login() {
     setError(null);
 
     try {
-      if (!supabase) {
-        throw new Error("Supabase client is not initialized");
-      }
-
-      console.log("Attempting login with:", { email });
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
       if (error) {
-        console.error("Login error:", error.message, error);
+        console.error("Login error:", error.message);
         setError(error.message);
-        setLoading(false);
         return;
       }
 
       if (!data.session || !data.user) {
         console.error("No session or user data returned:", { data });
         setError("No session or user data returned. Please try again.");
-        setLoading(false);
         return;
       }
 
-      // Verify user exists in the users table (Partner A)
+      const userId = data.user.id;
       const { data: userData, error: userError } = await supabase
         .from("users")
-        .select("id")
-        .eq("id", data.user.id)
+        .select("id, user_type")
+        .eq("id", userId)
         .maybeSingle();
 
       if (userError || !userData) {
-        console.error("User fetch error:", userError?.message || "No user found for userId", data.user.id, userError);
+        console.error("User fetch error:", userError?.message || "No user found for userId", userId);
         setError("User profile not found. Please sign up or try again.");
         await supabase.auth.signOut();
-        setLoading(false);
         return;
       }
 
-      // Redirect Partner A to their dashboard
-      const redirectPath = `/dashboard/${data.user.id}`;
-      console.log("Login successful, redirecting:", { userId: data.user.id, redirectPath });
+      const { data: coachData, error: coachError } = await supabase
+        .from("coaches")
+        .select("id")
+        .eq("user_id", userId)
+        .maybeSingle();
+
+      if (coachError) {
+        console.error("Coach fetch error:", coachError.message);
+        setError("Failed to verify coach status. Please try again.");
+        return;
+      }
+
+      const redirectPath = coachData ? "/access/coaching" : "/dashboard";
+      console.log("Login successful, redirecting:", { userId, redirectPath });
       router.push(redirectPath);
     } catch (err) {
-      console.error("Unexpected error in handleLogin:", err.message, err);
+      console.error("Unexpected error in handleLogin:", err.message);
       setError("An unexpected error occurred during login. Please try again.");
+    } finally {
       setLoading(false);
     }
   };
@@ -185,17 +186,6 @@ export default function Login() {
             {loading ? "Logging in..." : "Login"}
           </motion.button>
         </form>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center mt-4 text-[var(--text-secondary)] hover:cursor-pointer"
-        >
-          Don&apos;t have an account?{" "}
-          <a href="/signup" className="text-[var(--accent)] hover:underline">
-            Sign up
-          </a>
-        </motion.p>
       </div>
     </motion.div>
   );

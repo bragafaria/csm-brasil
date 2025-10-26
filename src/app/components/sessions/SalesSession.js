@@ -108,13 +108,13 @@ export default function SalesSession({
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
             <button
               onClick={handleBuySession}
-              className="w-full md:w-auto px-8 py-3 rounded-lg font-medium shadow-custom bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white transition-all duration-200"
+              className="w-full md:w-auto px-8 py-3 rounded-lg font-medium shadow-custom bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white transition-all duration-200 cursor-pointer"
             >
               Buy Session Credit ($19)
             </button>
             <button
               onClick={handleSubscribe}
-              className="w-full md:w-auto px-8 py-3 rounded-lg font-medium shadow-custom bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white transition-all duration-200"
+              className="w-full md:w-auto px-8 py-3 rounded-lg font-medium shadow-custom bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white transition-all duration-200 cursor-pointer"
             >
               Subscribe ($49/month - Unlimited)
             </button>

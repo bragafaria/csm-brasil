@@ -1,14 +1,15 @@
-// app/login/page.js (Create this file for a simple login page)
+// app/login/page.js
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@supabase/supabase-js"; // Adjust import
+import { supabase } from "@/app/utils/supabaseClient";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
 
   const handleLogin = async (e) => {
@@ -16,21 +17,66 @@ export default function Login() {
     setLoading(true);
     setError(null);
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (error) {
-      setError(error.message);
-    } else if (data.session) {
-      // // In Signup page, after successful fetch to /api/create-checkout-session
-      // localStorage.removeItem("csmAssessmentData");
-      // window.location.href = url;
-      router.push("/dashboard");
+      if (error) {
+        setError(error.message);
+        setLoading(false);
+        return;
+      }
+
+      if (!data.session) {
+        setError("No session returned. Please try again.");
+        setLoading(false);
+        return;
+      }
+
+      console.log("Login successful, fetching user data:", { userId: data.session.user.id });
+
+      // Fetch siteId from users table
+      const { data: userData, error: userError } = await supabase
+        .from("users")
+        .select("site_id")
+        .eq("id", data.session.user.id)
+        .maybeSingle();
+
+      if (userError) {
+        console.error("Error fetching user data:", userError.message, userError);
+        setError("Failed to load user data.");
+        setLoading(false);
+        return;
+      }
+
+      if (!userData) {
+        console.error("No user found for ID:", data.session.user.id);
+        setError("User not found.");
+        setLoading(false);
+        return;
+      }
+
+      if (!userData.site_id) {
+        console.log("No siteId found for user, showing modal");
+        setShowModal(true);
+        setLoading(false);
+        return;
+      }
+
+      console.log("Redirecting to dashboard with siteId:", userData.site_id);
+      router.push(`/dashboard/${userData.site_id}`);
+    } catch (err) {
+      console.error("Unexpected error during login:", err.message, err);
+      setError("An unexpected error occurred.");
+      setLoading(false);
     }
+  };
 
-    setLoading(false);
+  const handleModalClose = () => {
+    setShowModal(false);
+    router.push("/");
   };
 
   return (
@@ -55,17 +101,38 @@ export default function Login() {
             required
           />
           {error && <p className="text-red-400 text-sm">{error}</p>}
-          <button type="submit" disabled={loading} className="btn-primary w-full py-3 rounded-lg font-semibold">
+          <button
+            type="submit"
+            disabled={loading}
+            className="btn-primary w-full py-3 rounded-lg font-semibold hover:cursor-pointer"
+          >
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
-        <p className="text-center mt-4 text-[var(--text-secondary)]">
+        <p className="text-center mt-4 text-[var(--text-secondary)] hover:cursor-pointer">
           {`Don't have an account?`}{" "}
-          <a href="/signup" className="text-[var(--accent)] hover:underline">
-            Sign up
+          <a href="/test" className="text-[var(--accent)] hover:underline">
+            Take your free assessment now!
           </a>
         </p>
       </div>
+
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="card-gradient p-6 rounded-xl shadow-lg max-w-sm w-full">
+            <h2 className="text-xl font-semibold mb-4 text-[var(--text-primary)]">Action Required</h2>
+            <p className="text-[var(--text-secondary)] mb-6">
+              Please complete the personal assessment test and purchase the couple’s report to access your dashboard.
+            </p>
+            <button
+              onClick={handleModalClose}
+              className="btn-primary w-full py-3 rounded-lg font-semibold hover:cursor-pointer"
+            >
+              Ok
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -56,7 +56,7 @@ export default function DashboardLayout({ children }) {
       <nav className="fixed top-0 w-full bg-[var(--dashboard)]/80 backdrop-blur-md border-b border-[var(--primary)]/20 z-50">
         <div className="flex items-center justify-between px-4 py-3 h-full">
           {!sidebarOpen && (isMobile || !isMobile) && (
-            <div className="ml-4 flex items-center gap-2">
+            <div className="ml-4 flex items-center gap-2 cursor-pointer">
               <Menu onClick={toggleSidebar} size={24} />
               {!isMobile && <span>Menu</span>}
             </div>
@@ -67,7 +67,10 @@ export default function DashboardLayout({ children }) {
             </h1>
           </div>
           <div className="flex items-center space-x-2">
-            <button className="text-sm font-medium text-primary hover:underline" onClick={handleLogout}>
+            <button
+              className="text-sm font-medium text-primary hover:underline hover:cursor-pointer"
+              onClick={handleLogout}
+            >
               Logout
             </button>
             <div className="w-8 h-8 rounded-full primary-gradient flex items-center justify-center">

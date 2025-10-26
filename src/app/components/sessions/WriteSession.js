@@ -1,4 +1,4 @@
-// src/app/components/sessions/WriteSession.js
+// app/components/sessions/WriteSession.js
 "use client";
 
 import { useState, useEffect } from "react";
@@ -6,7 +6,7 @@ import { supabase } from "@/app/utils/supabaseClient";
 import Editor from "@/app/components/tiptap/Editor";
 import SalesSession from "@/app/components/sessions/SalesSession";
 
-export default function WriteSession() {
+export default function WriteSession({ isPartnerA, onTabChange }) {
   const [content, setContent] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [userStatus, setUserStatus] = useState(null);
@@ -16,46 +16,46 @@ export default function WriteSession() {
   const [useFreeSession, setUseFreeSession] = useState(false);
   const [justPaid, setJustPaid] = useState(false);
 
-  const fetchUserStatus = async () => {
-    try {
-      const {
-        data: { session },
-        error: sessionError,
-      } = await supabase.auth.getSession();
-      if (sessionError || !session) throw new Error("Please log in again");
-
-      const response = await fetch("/api/get-blueprint-status", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${session.access_token}`,
-          "Refresh-Token": session.refresh_token,
-        },
-        credentials: "include",
-      });
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ error: "No response body" }));
-        throw new Error(errorData.error || `Failed to fetch status (Status: ${response.status})`);
-      }
-      const status = await response.json();
-      setUserStatus(status);
-
-      setShowSalesPage(
-        !status.isActiveSubscriber &&
-          (status.hasActiveSession || (!status.hasAvailablePerSession && !status.hasFreeSessionAvailable)) &&
-          !justPaid
-      );
-    } catch (err) {
-      console.error("Client-side error:", err.message);
-      setError(err.message);
-    } finally {
-      setLoadingStatus(false);
-    }
-  };
-
   useEffect(() => {
+    async function fetchUserStatus() {
+      try {
+        const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (sessionError || !session) throw new Error("Please log in again");
+
+        const response = await fetch("/api/get-blueprint-status", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session.access_token}`,
+            "Refresh-Token": session.refresh_token,
+          },
+          credentials: "include",
+        });
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({ error: "No response body" }));
+          throw new Error(errorData.error || `Failed to fetch status (Status: ${response.status})`);
+        }
+        const status = await response.json();
+        setUserStatus(status);
+
+        setShowSalesPage(
+          !status.isActiveSubscriber &&
+            (status.hasActiveSession || (!status.hasAvailablePerSession && !status.hasFreeSessionAvailable)) &&
+            !justPaid
+        );
+      } catch (err) {
+        console.error("Client-side error:", err.message);
+        setError(err.message);
+      } finally {
+        setLoadingStatus(false);
+      }
+    }
+
     fetchUserStatus();
-  }, []);
+  }, []); // Empty dependency array is now safe
 
   const handleStartFree = () => {
     setUseFreeSession(true);
@@ -64,6 +64,42 @@ export default function WriteSession() {
 
   const handlePaymentSuccess = () => {
     setJustPaid(true);
+    async function fetchUserStatus() {
+      try {
+        const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (sessionError || !session) throw new Error("Please log in again");
+
+        const response = await fetch("/api/get-blueprint-status", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session.access_token}`,
+            "Refresh-Token": session.refresh_token,
+          },
+          credentials: "include",
+        });
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({ error: "No response body" }));
+          throw new Error(errorData.error || `Failed to fetch status (Status: ${response.status})`);
+        }
+        const status = await response.json();
+        setUserStatus(status);
+
+        setShowSalesPage(
+          !status.isActiveSubscriber &&
+            (status.hasActiveSession || (!status.hasAvailablePerSession && !status.hasFreeSessionAvailable)) &&
+            !justPaid
+        );
+      } catch (err) {
+        console.error("Client-side error:", err.message);
+        setError(err.message);
+      } finally {
+        setLoadingStatus(false);
+      }
+    }
     fetchUserStatus();
   };
 
@@ -100,7 +136,6 @@ export default function WriteSession() {
         throw new Error(errorData.error || "Submission failed");
       }
 
-      // Optimistic update
       setUserStatus((prev) => ({
         ...prev,
         hasActiveSession: true,
@@ -111,7 +146,8 @@ export default function WriteSession() {
       alert("Session submitted! Report in 24 hours.");
       setContent("");
       setUseFreeSession(false);
-      setShowSalesPage(true); // Show SalesSession after submission
+      setShowSalesPage(true);
+      onTabChange("view");
     } catch (err) {
       setError(err.message);
     } finally {

@@ -20,6 +20,7 @@ import { createClient } from "@supabase/supabase-js";
 export default function Home() {
   // State for FAQ accordion
   const [expandedFAQ, setExpandedFAQ] = useState(null);
+  const [activeNav, setActiveNav] = useState("home");
   const router = useRouter(); // Added for navigation
 
   // Function to toggle FAQ
@@ -117,24 +118,44 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[var(--surface)] text-[var(--text-primary)]">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-[var(--surface)]/80 backdrop-blur-md border-b border-[var(--primary)]/20 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+      {/* Sticky Header */}
+      <header className="fixed top-0 w-full z-50 header-gradient border-[var(--border)]">
+        <nav className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Heart className="h-8 w-8 text-[var(--primary)]" />
-              <span className="text-xl font-bold bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
-                CSM Assessment
-              </span>
+              <Brain className="h-8 w-8 text-[var(--accent)]" />
+              <span className="text-xl font-bold">CSM Insights</span>
             </div>
-            <Link href="/test">
-              <button className="bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg text-[var(--text-primary)]">
-                Take Free Test
-              </button>
-            </Link>
+            <div className="hidden md:flex space-x-8">
+              {[
+                { id: "home", label: "Home" },
+                { id: "how-it-works", label: "How It Works" },
+                { id: "whats-inside", label: "What's Inside" },
+                { id: "faq", label: "FAQ" },
+                { id: "blog", label: "Blog" },
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`transition-colors ${
+                    activeNav === item.id
+                      ? "text-[var(--accent)]"
+                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={() => router.push("/login")}
+              className="btn-primary px-6 py-2 rounded-lg font-semibold cursor-pointer"
+            >
+              Login
+            </button>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </header>
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -142,9 +163,9 @@ export default function Home() {
         <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--primary)]/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-[var(--accent)]/10 rounded-full blur-3xl"></div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative max-w-7xl mx-auto mt-20 px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
+            <h1 className="text-5xl md:text5xl font-bold leading-tight mb-6">
               <motion.span
                 custom={0}
                 initial="hidden"
@@ -165,7 +186,7 @@ export default function Home() {
               </motion.span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-lg text-[var(--text-secondary)] mb-12 max-w-3xl mx-auto leading-relaxed">
               The Cognitive Spectrum Model (CSM) is a framework that maps how you think and connect, providing clear
               steps for personal growth and stronger relationships.
             </p>
@@ -178,7 +199,7 @@ export default function Home() {
                   whileHover="hover"
                   onClick={handleStartTest}
                   variants={buttonVariants}
-                  className="group bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-2xl flex items-center space-x-2 text-[var(--text-primary)]"
+                  className="group bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-4 py-2 rounded-full text-lg font-semibold transition-all duration-300 shadow-2xl flex items-center space-x-2 text-[var(--text-primary)] hover:cursor-pointer"
                 >
                   <span>Take Free Test</span>
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -187,7 +208,7 @@ export default function Home() {
               <p className="text-[var(--text-secondary)] text-sm">Takes only 10 minutes • Completely free</p>
             </div>
 
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="my-16 grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="p-6 rounded-2xl bg-gradient-to-b from-[var(--primary)]/10 to-transparent border border-[var(--primary)]/20 backdrop-blur-sm">
                 <div className="text-3xl font-bold text-white mb-2">
                   <Counter target={250} suffix="k+" duration={5000} />
@@ -215,10 +236,18 @@ export default function Home() {
       <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
-              Why Couples Choose Our Assessment
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent whitespace-nowrap">
+                Why Couples
+              </span>
+              <span className="bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--primary)] bg-clip-text text-transparent whitespace-nowrap">
+                {" Choose "}
+              </span>
+              <span className="bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent whitespace-nowrap">
+                Our Assessment
+              </span>
             </h2>
-            <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
+            <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
               Discover insights that strengthen your bond and improve communication
             </p>
           </div>
@@ -592,7 +621,7 @@ export default function Home() {
               <div key={index} className="card-gradient rounded-lg overflow-hidden">
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-[var(--surface)]/20 transition-colors"
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-[var(--surface)]/20 transition-colors cursor-pointer"
                 >
                   <span className="font-semibold">{faq.question}</span>
                   {expandedFAQ === index ? (
@@ -622,7 +651,7 @@ export default function Home() {
             Join thousands of couples who have transformed their relationships through understanding
           </p>
           <Link href="/test">
-            <button className="group bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-12 py-4 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl flex items-center space-x-3 mx-auto text-[var(--text-primary)]">
+            <button className="cursor-pointer group bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-12 py-4 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl flex items-center space-x-3 mx-auto text-[var(--text-primary)]">
               <span>Start Your Free Assessment</span>
               <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </button>

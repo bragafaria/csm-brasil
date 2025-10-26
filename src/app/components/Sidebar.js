@@ -224,7 +224,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
                         key={subItem.route}
                         href={subItem.route}
                         onClick={toggleSidebar}
-                        className={`w-full flex items-center px-3 py-2 rounded-md text-sm transition-colors ${
+                        className={`w-full flex items-center px-3 py-2 rounded-md text-sm transition-colors cursor-pointer ${
                           isActive(subItem.route)
                             ? "bg-[var(--accent)] bg-opacity-20 text-[var(--text-primary)]"
                             : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface)]"

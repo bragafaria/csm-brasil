@@ -12,7 +12,10 @@ export default function DashboardHeader() {
           </h1>
         </div>
         <div className="flex items-center space-x-2">
-          <button className="text-sm font-medium text-primary hover:underline" onClick={handleLogout}>
+          <button
+            className="text-sm font-medium text-primary hover:underline hover:cursor-pointer"
+            onClick={handleLogout}
+          >
             Logout
           </button>
           <div className="w-8 h-8 rounded-full primary-gradient flex items-center justify-center">

@@ -2,7 +2,7 @@
 "use client";
 import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { supabase } from "@/app/utils/supabaseClient"; // Use singleton
+import { supabase } from "@/app/utils/supabaseClient";
 import { BookOpen, SquarePen, List, UserStar } from "lucide-react";
 import CoachProfile from "@/app/components/sessions/CoachProfile";
 import ViewSessions from "@/app/components/sessions/ViewSessions";
@@ -18,6 +18,11 @@ export default function SessionsPage() {
   const [isPartnerA, setIsPartnerA] = useState(false);
   const [isPartnerB, setIsPartnerB] = useState(false);
 
+  // Callback to allow child components to change tabs
+  const handleTabChange = (tab) => {
+    setShowContent(tab);
+  };
+
   useEffect(() => {
     async function initializeSessions() {
       if (!siteId) {
@@ -29,7 +34,6 @@ export default function SessionsPage() {
       }
 
       try {
-        // Check session
         const {
           data: { session },
           error: sessionError,
@@ -46,12 +50,11 @@ export default function SessionsPage() {
 
         const userId = session.user.id;
 
-        // Fetch user data to validate access
         const { data: userData, error: userError } = await supabase
           .from("users")
           .select("id, partner_id")
           .eq("id", userId)
-          .maybeSingle(); // Use maybeSingle
+          .maybeSingle();
 
         if (userError || !userData) {
           console.error("User fetch error:", userError?.message || "No user found", userError);
@@ -63,7 +66,6 @@ export default function SessionsPage() {
           return;
         }
 
-        // Validate access: user must be Partner A (userId === siteId) or Partner B (siteId === partner_id)
         const isPartnerA = userId === siteId;
         const isPartnerB = userData.partner_id && siteId === userData.partner_id;
 
@@ -153,7 +155,7 @@ export default function SessionsPage() {
           </div>
 
           <div className="p-4 md:p-6">
-            {showContent === "write" && <WriteSession isPartnerA={isPartnerA} />}
+            {showContent === "write" && <WriteSession isPartnerA={isPartnerA} onTabChange={handleTabChange} />}
             {showContent === "view" && <ViewSessions />}
             {showContent === "coach" && <CoachProfile />}
           </div>
