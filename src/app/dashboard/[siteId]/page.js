@@ -3,7 +3,7 @@
 
 import { useRouter, useSearchParams, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { supabase } from "@/app/utils/supabaseClient"; // Use singleton
+import { supabase } from "@/app/utils/supabaseClient";
 import InviteSection from "../../components/InviteSection";
 
 export default function DashboardPage() {
@@ -20,7 +20,6 @@ export default function DashboardPage() {
   useEffect(() => {
     async function initializeDashboard() {
       try {
-        // Check session
         const {
           data: { session },
           error: sessionError,
@@ -36,12 +35,12 @@ export default function DashboardPage() {
 
         const userId = session.user.id;
 
-        // Validate access: user must be Partner A (siteId) or Partner B (partner_id = siteId)
+        // Validate access
         const { data: userData, error: userError } = await supabase
           .from("users")
           .select("id, partner_id, has_paid, has_assessment")
           .eq("id", userId)
-          .maybeSingle(); // Use maybeSingle
+          .single();
 
         if (userError || !userData) {
           console.error("User fetch error:", userError?.message || "No user found", userError);
@@ -66,13 +65,13 @@ export default function DashboardPage() {
           return;
         }
 
-        // Check if InviteSection should be shown (only for Partner A if partner_id is null and has_paid is true)
+        // Check if InviteSection should be shown (only for Partner A)
         if (isPartnerA) {
           const { data: partnerAData, error: partnerAError } = await supabase
             .from("users")
             .select("partner_id, has_paid")
             .eq("id", siteId)
-            .maybeSingle(); // Use maybeSingle
+            .single();
 
           if (partnerAError || !partnerAData) {
             console.error("Partner A fetch error:", partnerAError?.message || "No user found for siteId", siteId);
@@ -81,19 +80,29 @@ export default function DashboardPage() {
             return;
           }
 
-          setShowInviteSection(!partnerAData.partner_id && partnerAData.has_paid);
+          // Check for invite existence
+          const { data: inviteData, error: inviteError } = await supabase
+            .from("invite")
+            .select("id")
+            .eq("user_id", siteId)
+            .single();
+
+          setShowInviteSection(!partnerAData.partner_id && partnerAData.has_paid && !!inviteData);
+          console.log("InviteSection visibility:", {
+            partnerId: partnerAData.partner_id,
+            hasPaid: partnerAData.has_paid,
+            inviteExists: !!inviteData,
+            inviteError: inviteError?.message,
+          });
         }
 
-        console.log("Dashboard access:", { isPartnerA, isPartnerB, hasAssessment: userData.has_assessment });
-
-        // Show assessment prompt for Partner B if has_assessment is false
         if (isPartnerB && !userData.has_assessment) {
           setShowAssessmentPrompt(true);
         }
 
         setLoading(false);
       } catch (err) {
-        console.error("Unexpected error in initializeDashboard:", err.message, err);
+        console.error("Unexpected error in initializeDashboard:", err.message, err.stack);
         setError("An unexpected error occurred while loading the dashboard.");
         setLoading(false);
       }
@@ -103,13 +112,12 @@ export default function DashboardPage() {
       async function validateInvite() {
         try {
           console.log("Validating invite:", { siteId, inviteId });
-
           const { data, error } = await supabase
             .from("invite")
             .select("id")
             .eq("user_id", siteId)
             .eq("invite", inviteId)
-            .maybeSingle(); // Use maybeSingle
+            .single();
 
           if (error || !data) {
             console.error("Invalid invite:", error?.message || "No invite found", { siteId, inviteId });
@@ -117,17 +125,12 @@ export default function DashboardPage() {
             return;
           }
 
-          // Check if user is already authenticated and associated with the dashboard
           const {
             data: { session },
           } = await supabase.auth.getSession();
           if (session) {
             const userId = session.user.id;
-            const { data: userData } = await supabase
-              .from("users")
-              .select("id, partner_id")
-              .eq("id", userId)
-              .maybeSingle();
+            const { data: userData } = await supabase.from("users").select("id, partner_id").eq("id", userId).single();
 
             if (userData && (userId === siteId || userData.partner_id === siteId)) {
               console.log("User already associated with dashboard, redirecting:", { userId, siteId });
@@ -141,7 +144,7 @@ export default function DashboardPage() {
 
           router.push(`/invite/signup?invite=${inviteId}&siteId=${siteId}`);
         } catch (err) {
-          console.error("Unexpected error in validateInvite:", err.message, err);
+          console.error("Unexpected error in validateInvite:", err.message, err.stack);
           router.push("/error?message=Failed to validate invite link");
         }
       }

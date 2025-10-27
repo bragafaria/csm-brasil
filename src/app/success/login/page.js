@@ -3,26 +3,17 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { supabase } from "@/app/utils/supabaseClient"; // Correct path
+import { supabase } from "@/app/utils/supabaseClient";
 import { motion } from "framer-motion";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
-
-  // Debug supabase import
-  useEffect(() => {
-    console.log("Supabase client:", supabase);
-    if (!supabase) {
-      console.error("Supabase client is undefined");
-      setError("Authentication service unavailable. Please try again later.");
-    }
-  }, []);
 
   useEffect(() => {
     async function checkSession() {
@@ -31,46 +22,57 @@ export default function Login() {
           throw new Error("Supabase client is not initialized");
         }
 
+        console.log("Checking session with session_id:", sessionId);
         const {
           data: { session },
           error: sessionError,
         } = await supabase.auth.getSession();
         console.log("Session check result:", { session, error: sessionError?.message });
+
         if (sessionError) {
           console.error("Session check error:", sessionError.message, sessionError);
           setError("Failed to verify session. Please log in.");
+          setLoading(false);
           return;
         }
 
         if (session) {
-          // Verify user exists in the users table (Partner A)
           const userId = session.user.id;
           const { data: userData, error: userError } = await supabase
             .from("users")
-            .select("id")
+            .select("id, has_paid")
             .eq("id", userId)
-            .maybeSingle();
+            .single();
 
           if (userError || !userData) {
             console.error("User fetch error:", userError?.message || "No user found for userId", userId, userError);
             setError("User profile not found. Please log in again.");
             await supabase.auth.signOut();
+            setLoading(false);
             router.push("/login");
             return;
           }
 
-          // Redirect Partner A to their dashboard
+          // Delay redirect to allow webhook processing
+          if (sessionId) {
+            console.log("Post-payment redirect, waiting 2s for webhook...");
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+          }
+
           console.log("Authenticated user, redirecting:", { userId, redirectPath: `/dashboard/${userId}` });
           router.push(`/dashboard/${userId}`);
+        } else {
+          setLoading(false);
         }
       } catch (err) {
-        console.error("Unexpected error in checkSession:", err.message, err);
+        console.error("Unexpected error in checkSession:", err.message, err.stack);
         setError("An unexpected error occurred. Please try again.");
+        setLoading(false);
       }
     }
 
     checkSession();
-  }, [router]);
+  }, [router, sessionId]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -102,12 +104,11 @@ export default function Login() {
         return;
       }
 
-      // Verify user exists in the users table (Partner A)
       const { data: userData, error: userError } = await supabase
         .from("users")
         .select("id")
         .eq("id", data.user.id)
-        .maybeSingle();
+        .single();
 
       if (userError || !userData) {
         console.error("User fetch error:", userError?.message || "No user found for userId", data.user.id, userError);
@@ -117,16 +118,32 @@ export default function Login() {
         return;
       }
 
-      // Redirect Partner A to their dashboard
-      const redirectPath = `/dashboard/${data.user.id}`;
-      console.log("Login successful, redirecting:", { userId: data.user.id, redirectPath });
-      router.push(redirectPath);
+      console.log("Login successful, redirecting:", {
+        userId: data.user.id,
+        redirectPath: `/dashboard/${data.user.id}`,
+      });
+      router.push(`/dashboard/${data.user.id}`);
     } catch (err) {
-      console.error("Unexpected error in handleLogin:", err.message, err);
+      console.error("Unexpected error in handleLogin:", err.message, err.stack);
       setError("An unexpected error occurred during login. Please try again.");
       setLoading(false);
     }
   };
+
+  if (loading) {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen flex items-center justify-center bg-[var(--surface)]"
+      >
+        <div className="text-[var(--text-primary)] text-xl">
+          {sessionId ? "Payment successful, redirecting to your dashboard..." : "Checking session..."}
+        </div>
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div

@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/app/utils/supabaseClient"; // Use singleton
+import { supabase } from "@/app/utils/supabaseClient";
 
 export default function InviteSection({ siteId }) {
   const [inviteLink, setInviteLink] = useState("");
@@ -41,7 +41,7 @@ export default function InviteSection({ siteId }) {
           .from("users")
           .select("id, partner_id")
           .eq("id", siteId)
-          .maybeSingle();
+          .single();
 
         if (userError || !userData) {
           console.error("Error fetching user data:", userError?.message || "No user found for siteId", siteId);
@@ -59,12 +59,10 @@ export default function InviteSection({ siteId }) {
 
         const token = session.access_token;
         const response = await fetch("/api/get-invite", {
-          method: "POST", // Specify method for clarity
+          method: "GET", // Changed to GET
           headers: {
-            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          credentials: "include", // Ensure cookies are sent if needed
         });
 
         const result = await response.json();
@@ -72,11 +70,11 @@ export default function InviteSection({ siteId }) {
           setInviteLink(result.inviteLink);
         } else {
           console.error("API error:", result.error || "Failed to fetch invite link", result);
-          setError(result.error || "Failed to fetch invite link.");
+          setError(result.error || "Failed to fetch invite link. Please try again.");
         }
       } catch (err) {
-        console.error("Unexpected error in fetchInvite:", err.message, err);
-        setError("An unexpected error occurred.");
+        console.error("Unexpected error in fetchInvite:", err.message, err.stack);
+        setError("Failed to load invite link. Please refresh the page or contact support.");
       } finally {
         setLoading(false);
       }

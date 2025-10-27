@@ -38,8 +38,9 @@ export default function Login() {
 
           if (userError || !userData) {
             console.error("User fetch error:", userError?.message || "No user found for userId", userId);
-            setError("User profile not found. Please sign up or try again.");
+            setError("User profile not found. Please log in again.");
             await supabase.auth.signOut();
+            localStorage.removeItem("supabase.auth.token");
             router.push("/access/login");
             return;
           }
@@ -57,9 +58,17 @@ export default function Login() {
             return;
           }
 
-          const redirectPath = coachData ? "/access/coaching" : "/dashboard";
-          console.log("Authenticated user, redirecting:", { userId, redirectPath });
-          router.push(redirectPath);
+          if (!coachData) {
+            // If user is not a coach, force logout
+            console.log("Non-coach session detected, signing out:", { userId, userType: userData.user_type });
+            await supabase.auth.signOut();
+            localStorage.removeItem("supabase.auth.token");
+            router.push("/access/login");
+            return;
+          }
+
+          console.log("Authenticated coach, redirecting:", { userId, redirectPath: "/access/coaching" });
+          router.push("/access/coaching");
         }
       } catch (err) {
         console.error("Unexpected error in checkSession:", err.message);

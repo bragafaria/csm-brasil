@@ -1,8 +1,9 @@
+// src/app/invite/signup/page.js
 "use client";
 
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/app/utils/supabaseClient"; // Use singleton
 import { ArrowRight } from "lucide-react";
 
 export default function InviteSignupPage() {
@@ -21,6 +22,7 @@ export default function InviteSignupPage() {
     const invite = searchParams.get("invite");
     const siteId = searchParams.get("siteId");
     if (!invite || !siteId) {
+      console.error("Missing invite or siteId:", { invite, siteId });
       setServerError("Invalid invite link. Please use a valid link.");
       setShowModal(true);
     }
@@ -55,6 +57,7 @@ export default function InviteSignupPage() {
     const siteId = searchParams.get("siteId");
 
     if (!invite || !siteId) {
+      console.error("Missing invite or siteId in form submission:", { invite, siteId });
       setServerError("Invalid invite link. Please use a valid link.");
       setShowModal(true);
       setLoading(false);
@@ -62,42 +65,77 @@ export default function InviteSignupPage() {
     }
 
     try {
+      // Sign up Partner B
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: { data: { name } },
+      });
+
+      if (authError) {
+        console.error("Signup error:", authError.message);
+        setServerError(authError.message);
+        setShowModal(true);
+        setLoading(false);
+        return;
+      }
+
+      const partnerBId = authData.user.id;
+      console.log("Partner B signed up:", { partnerBId, email });
+
+      // Call the invite-signup API to link users and delete invite
       const response = await fetch("/api/invite-signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, confirmEmail, password, invite, siteId }),
+        body: JSON.stringify({ name, email, confirmEmail, password, invite, siteId, partnerBId }),
       });
 
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || "An unexpected error occurred.");
+        console.error("API error:", result.error);
+        setServerError(result.error || "An unexpected error occurred.");
+        setShowModal(true);
+        setLoading(false);
+        return;
       }
 
-      // Sign in the new user to establish a session
-      const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
-        auth: { persistSession: true },
-      });
-
-      const { error: signInError } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (signInError) {
-        throw new Error(signInError.message);
+      // Ensure session is active
+      const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+      if (sessionError || !sessionData.session) {
+        console.error("No session after signup:", sessionError?.message);
+        // Attempt to sign in manually
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+        if (signInError) {
+          console.error("Sign-in error after signup:", signInError.message);
+          setServerError(signInError.message || "Failed to establish session.");
+          setShowModal(true);
+          setLoading(false);
+          return;
+        }
       }
 
-      // Redirect to dashboard
-      router.push(`/dashboard/${siteId}`);
+      console.log("Signup and session established successfully, redirecting to dashboard");
+      router.push(`/dashboard/${siteId}/personal-report/${createSlug(name)}`);
     } catch (err) {
-      console.error("Signup error:", err.message);
+      console.error("Unexpected error in handleSignup:", err.message, err.stack);
       setServerError(err.message || "An unexpected error occurred. Please try again.");
       setShowModal(true);
       setLoading(false);
     }
+  };
+
+  const createSlug = (name) => {
+    if (!name) return "";
+    return name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
   };
 
   const closeModal = () => {

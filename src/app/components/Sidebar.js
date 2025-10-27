@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation"; // Add useRouter
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/app/utils/supabaseClient";
 import { User, Users, BookOpen, Lightbulb, Settings, HelpCircle, X, ChevronLeft } from "lucide-react";
@@ -11,9 +11,9 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
   const [expandedItems, setExpandedItems] = useState([]);
   const [partnerNames, setPartnerNames] = useState({ partnerA: "Partner A", partnerB: null });
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null); // Add error state
+  const [error, setError] = useState(null);
   const pathname = usePathname();
-  const router = useRouter(); // Add router for redirect
+  const router = useRouter();
 
   const createSlug = (name) => {
     if (!name) return "";
@@ -38,8 +38,10 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
           error: sessionError,
         } = await supabase.auth.getSession();
         if (sessionError || !session) {
-          console.error("No session found:", sessionError?.message);
-          router.push("/login"); // Redirect to login
+          console.error("No session found:", sessionError?.message || "No active session");
+          setError("Please log in to access the dashboard.");
+          setLoading(false);
+          router.push("/login");
           return;
         }
         console.log("Sidebar session user ID:", session.user.id);
@@ -54,7 +56,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
           .maybeSingle();
 
         if (partnerAError) {
-          console.error("Error fetching Partner A:", partnerAError.message, partnerAError);
+          console.error("Error fetching Partner A:", partnerAError.message);
           setError("Failed to load partner data.");
           setLoading(false);
           return;
@@ -86,7 +88,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
             .maybeSingle();
 
           if (partnerBError) {
-            console.error("Error fetching Partner B:", partnerBError.message, partnerBError);
+            console.error("Error fetching Partner B:", partnerBError.message);
           } else if (partnerBData) {
             partnerBName = partnerBData.name || "Partner B";
           }
@@ -98,8 +100,8 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
         });
         setLoading(false);
       } catch (err) {
-        console.error("Error fetching partner names:", err.message, err);
-        setError("An unexpected error occurred.");
+        console.error("Error fetching partner names:", err.message, err.stack);
+        setError("An unexpected error occurred while loading the sidebar.");
         setLoading(false);
       }
     }

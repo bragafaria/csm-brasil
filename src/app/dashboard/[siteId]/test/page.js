@@ -243,7 +243,7 @@ export default function DashboardTest() {
 
   if (error) {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)]">
+      <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)] cursor-pointer">
         <div className="text-red-400 text-center">{error}</div>
         <button onClick={() => router.push("/login")} className="mt-4 btn-primary">
           Go to Login
@@ -256,7 +256,7 @@ export default function DashboardTest() {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)]">
         <div className="text-[var(--text-primary)] text-center">Assessment already completed or not needed.</div>
-        <button onClick={() => router.push(`/dashboard/${siteId}/summary`)} className="mt-4 btn-primary">
+        <button onClick={() => router.push(`/dashboard/${siteId}/summary`)} className="mt-4 btn-primary cursor-pointer">
           View Summary
         </button>
       </main>
@@ -287,7 +287,7 @@ export default function DashboardTest() {
               <button
                 key={v}
                 onClick={() => handleAnswer(v)}
-                className={`flex-1 py-3 px-4 rounded-lg transition duration-300 ${
+                className={`flex-1 py-3 px-4 cursor-pointer rounded-lg transition duration-300 ${
                   answers[current] === v
                     ? "bg-[var(--primary)] text-[var(--text-primary)] shadow-md"
                     : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[color-mix(in_srgb,var(--surface-variant)_80%,white_10%)]"
@@ -303,7 +303,7 @@ export default function DashboardTest() {
               <button
                 key={opt.key}
                 onClick={() => handleAnswer(opt.key)}
-                className={`w-full py-3 px-4 rounded-lg text-left transition duration-300 ${
+                className={`w-full cursor-pointer py-3 px-4 rounded-lg text-left transition duration-300 ${
                   answers[current] === opt.key
                     ? "bg-[var(--primary)] text-[var(--text-primary)] shadow-md"
                     : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[color-mix(in_srgb,var(--surface-variant)_80%,white_10%)]"
@@ -348,14 +348,14 @@ export default function DashboardTest() {
           <button
             onClick={prev}
             disabled={current === 0}
-            className="py-2 px-6 rounded-lg bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[color-mix(in_srgb,var(--surface-variant)_80%,white_10%)] disabled:opacity-50 transition duration-300"
+            className="py-2 px-6 rounded-lg bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[color-mix(in_srgb,var(--surface-variant)_80%,white_10%)] disabled:opacity-50 transition duration-300 cursor-pointer"
           >
             Prev
           </button>
           <button
             onClick={next}
             disabled={!isRankValid()}
-            className="py-2 px-6 rounded-lg bg-[var(--primary)] text-[var(--text-primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] disabled:opacity-50 transition duration-300"
+            className="py-2 px-6 rounded-lg bg-[var(--primary)] text-[var(--text-primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] disabled:opacity-50 transition duration-300 cursor-pointer"
           >
             {current < questions.length - 1 ? "Next" : "Finish"}
           </button>

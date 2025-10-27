@@ -21,7 +21,6 @@ async function buffer(request) {
 export async function POST(request) {
   console.log("Webhook received at:", new Date().toISOString());
 
-  // Verify environment variables
   if (!process.env.STRIPE_SECRET_KEY || !webhookSecret || !supabaseUrl || !supabaseServiceKey) {
     console.error("Missing environment variables:", {
       stripe: !!process.env.STRIPE_SECRET_KEY,
@@ -41,7 +40,7 @@ export async function POST(request) {
   let event;
   try {
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
-    console.log("Webhook event verified:", { type: event.type, id: event.id });
+    console.log("Webhook event verified:", { type: event.type, id: event.id, metadata: event.data.object.metadata });
   } catch (err) {
     console.error("Webhook signature verification failed:", err.message, err.stack);
     return new Response(`Webhook Error: ${err.message}`, { status: 400 });
@@ -70,7 +69,6 @@ export async function POST(request) {
         },
       });
 
-      // Verify user exists
       const { data: userData, error: userError } = await supabaseAdmin
         .from("users")
         .select("id, has_paid, stripe_customer_id")
@@ -83,45 +81,41 @@ export async function POST(request) {
         return new Response(JSON.stringify({ error: "User not found" }), { status: 400 });
       }
 
-      // Check if already paid to avoid duplicate updates (idempotency)
-      if (userData.has_paid) {
+      if (!userData.has_paid) {
+        console.log("Updating users table for user_id:", userId);
+        const { data: updateData, error: userUpdateError } = await supabaseAdmin
+          .from("users")
+          .update({ has_paid: true, site_id: userId })
+          .eq("id", userId)
+          .select();
+        console.log("User update result:", { updateData, userUpdateError: userUpdateError?.message });
+
+        if (userUpdateError) {
+          console.error("Supabase user update error:", userUpdateError.message, userUpdateError.details);
+          return new Response(JSON.stringify({ error: `Supabase user update error: ${userUpdateError.message}` }), {
+            status: 500,
+          });
+        }
+      } else {
         console.log(`User ${userId} already marked as paid, skipping update`);
-        return new Response(JSON.stringify({ received: true, message: "User already paid" }), { status: 200 });
       }
 
-      // Update users table to mark as paid
-      console.log("Updating users table for user_id:", userId);
-      const { data: updateData, error: userUpdateError } = await supabaseAdmin
-        .from("users")
-        .update({ has_paid: true, site_id: userId })
-        .eq("id", userId)
-        .select();
-      console.log("User update result:", { updateData, userUpdateError: userUpdateError?.message });
-
-      if (userUpdateError) {
-        console.error("Supabase user update error:", userUpdateError.message, userUpdateError.details);
-        return new Response(JSON.stringify({ error: `Supabase user update error: ${userUpdateError.message}` }), {
-          status: 500,
-        });
-      }
-
-      // Check if invite already exists (to handle retries idempotently)
       const { data: existingInvite, error: inviteCheckError } = await supabaseAdmin
         .from("invite")
-        .select("id")
+        .select("id, invite")
         .eq("user_id", userId)
         .single();
       console.log("Invite check:", { existingInvite, inviteCheckError: inviteCheckError?.message });
 
       if (existingInvite) {
-        console.log(`Invite already exists for user ${userId}, skipping insert`);
+        console.log(`Invite already exists for user ${userId}:`, existingInvite.invite);
       } else {
-        // Insert into invite table (let Supabase generate invite UUID)
         console.log("Inserting into invite table for user_id:", userId);
         const { data: inviteData, error: inviteInsertError } = await supabaseAdmin
           .from("invite")
-          .insert({ user_id: userId }) // No invite field, as it's auto-generated
-          .select();
+          .insert({ user_id: userId })
+          .select("id, invite")
+          .single();
         console.log("Invite insert result:", { inviteData, inviteInsertError: inviteInsertError?.message });
 
         if (inviteInsertError) {
@@ -130,13 +124,15 @@ export async function POST(request) {
             status: 500,
           });
         }
+
+        console.log("Invite created successfully:", { inviteId: inviteData.invite });
       }
     } else {
       console.log(`Unhandled event type: ${event.type}`);
     }
   } catch (handlerErr) {
     console.error("Webhook handler error:", handlerErr.message, handlerErr.stack);
-    return new Response(JSON.stringify({ error: "Webhook processing error" }), { status: 500 });
+    return new Response(JSON.stringify({ error: "Webhook processing error: " + handlerErr.message }), { status: 500 });
   }
 
   return new Response(JSON.stringify({ received: true }), {

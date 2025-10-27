@@ -232,68 +232,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent whitespace-nowrap">
-                Why Couples
-              </span>
-              <span className="bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--primary)] bg-clip-text text-transparent whitespace-nowrap">
-                {" Choose "}
-              </span>
-              <span className="bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent whitespace-nowrap">
-                Our Assessment
-              </span>
-            </h2>
-            <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
-              Discover insights that strengthen your bond and improve communication
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <AnimatedCard>
-              <div className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20 hover:border-[var(--primary)]/40 transition-all duration-300 hover:transform hover:scale-105 h-full min-h-[250px] flex flex-col">
-                <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <Users className="h-8 w-8 text-[var(--text-primary)]" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Couple-Focused</h3>
-                <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
-                  Unlike individual personality tests, our framework is specifically designed to understand relationship
-                  dynamics between partners.
-                </p>
-              </div>
-            </AnimatedCard>
-
-            <AnimatedCard delay={0.2}>
-              <div className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20 hover:border-[var(--primary)]/40 transition-all duration-300 hover:transform hover:scale-105 h-full min-h-[250px] flex flex-col">
-                <div className="w-16 h-16 rounded-2xl bg-[var(--accent)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <Target className="h-8 w-8 text-[var(--text-primary)]" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Actionable Insights</h3>
-                <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
-                  Get specific recommendations and strategies tailored to your unique relationship patterns and
-                  communication styles.
-                </p>
-              </div>
-            </AnimatedCard>
-
-            <AnimatedCard delay={0.4}>
-              <div className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20 hover:border-[var(--primary)]/40 transition-all duration-300 hover:transform hover:scale-105 h-full min-h-[250px] flex flex-col">
-                <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <Shield className="h-8 w-8 text-[var(--text-primary)]" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Research-Based</h3>
-                <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
-                  Built on decades of relationship psychology research and validated by thousands of successful couples.
-                </p>
-              </div>
-            </AnimatedCard>
-          </div>
-        </div>
-      </section>
-
       {/* How It Works */}
       <section className="py-20 bg-gradient-to-b from-[var(--surface)] to-[var(--surface-variant)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -378,6 +316,68 @@ export default function Home() {
                 growth areas.
               </p>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent whitespace-nowrap">
+                Why Couples
+              </span>
+              <span className="bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--primary)] bg-clip-text text-transparent whitespace-nowrap">
+                {" Choose "}
+              </span>
+              <span className="bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent whitespace-nowrap">
+                Our Assessment
+              </span>
+            </h2>
+            <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
+              Discover insights that strengthen your bond and improve communication
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <AnimatedCard>
+              <div className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20 hover:border-[var(--primary)]/40 transition-all duration-300 hover:transform hover:scale-105 h-full min-h-[250px] flex flex-col">
+                <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Users className="h-8 w-8 text-[var(--text-primary)]" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Couple-Focused</h3>
+                <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
+                  Unlike individual personality tests, our framework is specifically designed to understand relationship
+                  dynamics between partners.
+                </p>
+              </div>
+            </AnimatedCard>
+
+            <AnimatedCard delay={0.2}>
+              <div className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20 hover:border-[var(--primary)]/40 transition-all duration-300 hover:transform hover:scale-105 h-full min-h-[250px] flex flex-col">
+                <div className="w-16 h-16 rounded-2xl bg-[var(--accent)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Target className="h-8 w-8 text-[var(--text-primary)]" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Actionable Insights</h3>
+                <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
+                  Get specific recommendations and strategies tailored to your unique relationship patterns and
+                  communication styles.
+                </p>
+              </div>
+            </AnimatedCard>
+
+            <AnimatedCard delay={0.4}>
+              <div className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20 hover:border-[var(--primary)]/40 transition-all duration-300 hover:transform hover:scale-105 h-full min-h-[250px] flex flex-col">
+                <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Shield className="h-8 w-8 text-[var(--text-primary)]" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Research-Based</h3>
+                <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
+                  Built on decades of relationship psychology research and validated by thousands of successful couples.
+                </p>
+              </div>
+            </AnimatedCard>
           </div>
         </div>
       </section>

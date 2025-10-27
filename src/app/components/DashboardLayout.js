@@ -36,6 +36,7 @@ export default function DashboardLayout({ children }) {
     setSidebarOpen(!sidebarOpen);
   };
 
+  // src/app/components/DashboardLayout.js
   const handleLogout = async () => {
     try {
       console.log("Logging out...");
@@ -44,8 +45,20 @@ export default function DashboardLayout({ children }) {
         console.error("Logout error:", error.message, error);
         return;
       }
+
+      // Verify session is cleared
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        console.error("Session still exists after signOut:", session);
+        return;
+      }
+
       console.log("Logged out successfully");
-      router.push("/login"); // Redirect to login page
+      // Clear localStorage explicitly to avoid persistence
+      localStorage.removeItem("supabase.auth.token");
+      router.push("/login");
     } catch (err) {
       console.error("Unexpected error in handleLogout:", err.message, err);
     }

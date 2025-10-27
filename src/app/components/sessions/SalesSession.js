@@ -92,7 +92,7 @@ export default function SalesSession({
         </ul>
 
         {hasActiveSession && !isActiveSubscriber && (
-          <p className="text-[var(--accent)] text-base">
+          <p className="text-red-500 text-sm md:text-base">
             Your session is being processed. View it in View Sessions. To submit another, buy credit or subscribe.
           </p>
         )}
@@ -126,7 +126,7 @@ export default function SalesSession({
           BLOCK MODAL
          ------------------------------------------------- */}
       {showBlockModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-[var(--surface)] p-6 rounded-lg max-w-md w-full shadow-xl">
             <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-3">Cannot Purchase Yet</h3>
             <p className="text-[var(--text-secondary)] mb-4">
@@ -135,7 +135,7 @@ export default function SalesSession({
             </p>
             <button
               onClick={() => setShowBlockModal(false)}
-              className="w-full px-4 py-2 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white rounded-md"
+              className="w-full px-4 py-2 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white rounded-md cursor-pointer"
             >
               Got it
             </button>

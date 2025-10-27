@@ -32,30 +32,22 @@ export async function GET(request) {
     const siteId = user.id; // Enforce Partner A rule (siteId = user.id)
 
     const { data, error } = await supabase
-      .from("invite") // Adjust to "invites" if that's the table name
+      .from("invite")
       .select("invite")
       .eq("user_id", siteId)
       .order("created_at", { ascending: false })
       .limit(1)
-      .maybeSingle(); // Use maybeSingle to avoid JSON coercion error
+      .single();
 
-    if (error) {
-      console.error("Error fetching invite:", error?.message, error);
-      return new Response(JSON.stringify({ error: "Failed to fetch invite: Database error" }), {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
-      });
-    }
-
-    if (!data) {
-      console.error("No invite found for siteId:", siteId);
+    if (error || !data) {
+      console.error("Error fetching invite:", error?.message || "No invite found", { siteId, error });
       return new Response(JSON.stringify({ error: "No invite found for this dashboard" }), {
         status: 404,
         headers: { "Content-Type": "application/json" },
       });
     }
 
-    const inviteLink = `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/${siteId}?invite=${data.invite}`;
+    const inviteLink = `${process.env.NEXT_PUBLIC_BASE_URL}/invite/signup?invite=${data.invite}&siteId=${siteId}`;
     console.log("Generated invite link:", inviteLink);
 
     return new Response(JSON.stringify({ inviteLink }), {
@@ -63,7 +55,7 @@ export async function GET(request) {
       headers: { "Content-Type": "application/json" },
     });
   } catch (err) {
-    console.error("Unexpected error in get-invite:", err.message, err);
+    console.error("Unexpected error in get-invite:", err.message, err.stack);
     return new Response(JSON.stringify({ error: `Server error: ${err.message}` }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
