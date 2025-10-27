@@ -7,11 +7,12 @@ import SessionPreview from "./SessionPreview";
 import { generateHTML } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
-import sanitizeHtml from "sanitize-html"; // Use sanitize-html
-import parse from "html-react-parser"; // Use html-react-parser
+import sanitizeHtml from "sanitize-html";
+import parse from "html-react-parser";
 
 export default function ViewSessions() {
   const [sessions, setSessions] = useState([]);
+  const [coach, setCoach] = useState({ name: null, profile_picture_path: null });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedSession, setSelectedSession] = useState(null);
@@ -21,9 +22,9 @@ export default function ViewSessions() {
   const [totalPages, setTotalPages] = useState(1);
   const recordsPerPage = 5;
 
-  // Fetch sessions from Supabase with pagination
+  // Fetch sessions and coach details
   useEffect(() => {
-    async function fetchSessions() {
+    async function fetchData() {
       try {
         const {
           data: { session },
@@ -63,14 +64,58 @@ export default function ViewSessions() {
         }
 
         setSessions(data || []);
+
+        // Fetch coach assigned to the most recent 'answered' or 'assigned' session
+        let coachData = null;
+        if (data && data.length > 0) {
+          const { data: sessionCoach, error: coachError } = await supabase
+            .from("blueprint_sessions")
+            .select("coaches(id, profile_picture_path, users(name))")
+            .eq("user_id", session.user.id)
+            .in("status", ["answered", "assigned"])
+            .order("updated_at", { ascending: false })
+            .limit(1)
+            .single();
+
+          if (coachError && coachError.code !== "PGRST116") {
+            console.error("Coach fetch error:", coachError);
+            throw new Error(`Failed to fetch session coach: ${coachError.message}`);
+          }
+
+          coachData = sessionCoach?.coaches;
+        }
+
+        // Fallback: Fetch a default coach if no sessions or no coach assigned
+        if (!coachData) {
+          const { data: defaultCoach, error: defaultCoachError } = await supabase
+            .from("coaches")
+            .select("id, profile_picture_path, users(name)")
+            .eq("availability", true)
+            .order("last_assignment_at", { ascending: true, nullsFirst: true })
+            .limit(1)
+            .single();
+
+          if (defaultCoachError) {
+            console.error("Default coach fetch error:", defaultCoachError);
+            throw new Error(`Failed to fetch default coach: ${defaultCoachError.message}`);
+          }
+
+          coachData = defaultCoach;
+        }
+
+        setCoach({
+          name: coachData?.users?.name || "Unknown Coach",
+          profile_picture_path: coachData?.profile_picture_path || null,
+        });
       } catch (err) {
+        console.error("Fetch data error:", err);
         setError(err.message);
       } finally {
         setLoading(false);
       }
     }
 
-    fetchSessions();
+    fetchData();
   }, [currentPage]);
 
   // Handle session click to show preview
@@ -128,7 +173,6 @@ export default function ViewSessions() {
   // Function to strip HTML and truncate text
   const stripHtmlAndTruncate = (html, maxLength = 100) => {
     if (!html) return "";
-    // Parse HTML to plain text
     const doc = new DOMParser().parseFromString(html, "text/html");
     const text = doc.body.textContent || "";
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
@@ -138,7 +182,6 @@ export default function ViewSessions() {
   const renderHtml = (content) => {
     if (!content) return "";
     try {
-      // Attempt to parse as JSONB (Tiptap format)
       const parsed = JSON.parse(content);
       const output = generateHTML(parsed, [
         StarterKit.configure({
@@ -148,7 +191,6 @@ export default function ViewSessions() {
         }),
         Underline,
       ]);
-      // Sanitize Tiptap output
       return sanitizeHtml(output, {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(["h1", "h2", "h3", "underline"]),
         allowedAttributes: {
@@ -157,7 +199,6 @@ export default function ViewSessions() {
         },
       });
     } catch (e) {
-      // If not valid JSON, treat as raw HTML and sanitize
       return sanitizeHtml(content, {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(["h1", "h2", "h3", "underline"]),
         allowedAttributes: {
@@ -183,6 +224,23 @@ export default function ViewSessions() {
           <h2 className="text-xl md:text-2xl font-semibold text-[var(--text-primary)] section-header animate">
             Your Sessions
           </h2>
+          <div className="space-y-2">
+            <h3 className="text-lg font-medium text-[var(--text-primary)]">Certified CSM Specialist:</h3>
+            <div className="flex items-center space-x-4">
+              {coach.profile_picture_path ? (
+                <img
+                  src={`${coach.profile_picture_path}?width=128&height=128&quality=80&resize=contain`}
+                  alt={`${coach.name}'s profile`}
+                  className="w-12 h-12 rounded-full object-cover"
+                />
+              ) : (
+                <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-[var(--text-secondary)]">
+                  {coach.name ? coach.name.charAt(0) : "C"}
+                </div>
+              )}
+              <span className="text-[var(--text-primary)]">{coach.name || "Loading..."}</span>
+            </div>
+          </div>
           <p className="text-[var(--text-secondary)] text-sm md:text-base">
             View your past and current coaching sessions. Click a session to see a preview.
           </p>
