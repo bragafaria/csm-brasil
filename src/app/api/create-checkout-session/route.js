@@ -1,3 +1,4 @@
+// src/app/api/create-checkout-session/route.js
 import { createClient } from "@supabase/supabase-js";
 import Stripe from "stripe";
 
@@ -26,7 +27,6 @@ export async function POST(request) {
     }
 
     const stripe = new Stripe(stripeSecretKey);
-
     const token = request.headers.get("authorization")?.replace("Bearer ", "");
     if (!token) {
       console.error("No authorization token provided");
@@ -36,9 +36,7 @@ export async function POST(request) {
       });
     }
 
-    // Read request body to get assessment data
     const { typeCode, assessmentData } = await request.json();
-
     const supabase = createClient(supabaseUrl, supabaseServiceKey, {
       auth: { autoRefreshToken: false, persistSession: false },
     });
@@ -59,7 +57,6 @@ export async function POST(request) {
     const userEmail = user.email;
     const userName = user.user_metadata?.name || null;
 
-    // Check if user already has a stripe_customer_id
     const { data: existingUser, error: fetchError } = await supabase
       .from("users")
       .select("stripe_customer_id")
@@ -75,7 +72,6 @@ export async function POST(request) {
 
     let customerId = existingUser?.stripe_customer_id;
     if (!customerId) {
-      // Create a Stripe Customer object
       const customer = await stripe.customers.create({
         email: userEmail,
         name: userName,
@@ -83,19 +79,15 @@ export async function POST(request) {
       });
       customerId = customer.id;
 
-      // Prepare update data with arrays directly from assessmentData
       let updateData = {
         stripe_customer_id: customerId,
-        typeCode, // Save typeCode from request
+        typeCode,
       };
 
       if (assessmentData) {
-        // Validate and set percents as array
         if (assessmentData.percents && Array.isArray(assessmentData.percents) && assessmentData.percents.length === 5) {
           updateData.percents = assessmentData.percents;
         }
-
-        // Validate and set dominants as array
         if (
           assessmentData.dominants &&
           Array.isArray(assessmentData.dominants) &&
@@ -103,8 +95,6 @@ export async function POST(request) {
         ) {
           updateData.dominants = assessmentData.dominants;
         }
-
-        // Validate and set categories as array
         if (
           assessmentData.categories &&
           Array.isArray(assessmentData.categories) &&
@@ -112,14 +102,11 @@ export async function POST(request) {
         ) {
           updateData.categories = assessmentData.categories;
         }
-
-        // Set has_assessment to true if assessment data is present
         if (assessmentData.percents || assessmentData.dominants || assessmentData.categories) {
           updateData.has_assessment = true;
         }
       }
 
-      // Update Supabase with all data
       const { error: supabaseError } = await supabase.from("users").update(updateData).eq("id", userId);
       if (supabaseError) {
         console.error("Supabase update error:", supabaseError.message);
@@ -135,15 +122,13 @@ export async function POST(request) {
       billing_address_collection: "auto",
       line_items: [{ price: priceId, quantity: 1 }],
       mode: "payment",
-      payment_method_options: {
-        card: {
-          setup_future_usage: "off_session",
-        },
-      },
+      payment_method_types: ["card"], // Explicitly use card only
       success_url: `${successUrl}/login?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: cancelUrl,
       metadata: { user_id: userId },
     });
+
+    console.log("Checkout session created:", { sessionId: checkoutSession.id, userId });
 
     return new Response(JSON.stringify({ url: checkoutSession.url }), {
       status: 200,

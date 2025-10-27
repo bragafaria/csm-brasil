@@ -2,7 +2,7 @@
 
 import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/app/utils/supabaseClient"; // Use singleton
 import { motion, AnimatePresence } from "framer-motion";
 import { archetypes, getDimPoles, poles } from "../../../../utils/csm";
 import { reportTemplates } from "../../../../lib/personal/ReportTemplates";
@@ -39,97 +39,108 @@ export default function PersonalReportPage() {
         return;
       }
 
-      const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
-        auth: { persistSession: true },
-      });
+      try {
+        // Check session
+        const {
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
+        if (sessionError || !session) {
+          console.error("Session error:", sessionError?.message || "No session found", sessionError);
+          setError("You must be logged in to view this report.");
+          setLoading(false);
+          router.push("/login");
+          return;
+        }
+        console.log("PersonalReportPage session user ID:", session.user.id);
 
-      // Check session
-      const {
-        data: { session },
-        error: sessionError,
-      } = await supabase.auth.getSession();
-      if (sessionError || !session) {
-        console.error("Session error:", sessionError?.message || "No session found");
-        router.push("/login");
-        return;
-      }
+        const userId = session.user.id;
 
-      const userId = session.user.id;
+        // Fetch Partner A's data (siteId is Partner A's id)
+        const { data: partnerAData, error: partnerAError } = await supabase
+          .from("users")
+          .select("id, name, partner_id, percents, dominants, categories, has_assessment")
+          .eq("id", siteId)
+          .maybeSingle(); // Use maybeSingle
 
-      // Fetch Partner A's data (siteId is Partner A's id)
-      const { data: partnerAData, error: partnerAError } = await supabase
-        .from("users")
-        .select("id, name, partner_id, percents, dominants, categories, has_assessment")
-        .eq("id", siteId)
-        .single();
+        if (partnerAError || !partnerAData) {
+          console.error("Error fetching Partner A:", partnerAError?.message || "No user found for siteId", siteId);
+          setError("Failed to load report data.");
+          setLoading(false);
+          return;
+        }
 
-      if (partnerAError || !partnerAData) {
-        console.error("Error fetching Partner A:", partnerAError?.message);
-        setError("Failed to load report data.");
+        // Validate access: user must be Partner A or Partner B
+        const isPartnerA = userId === siteId;
+        const isPartnerB = partnerAData.partner_id && userId === partnerAData.partner_id;
+
+        if (!isPartnerA && !isPartnerB) {
+          console.error("Access denied: User not associated with this report", { userId, siteId });
+          setError("You do not have access to this report.");
+          setLoading(false);
+          return;
+        }
+
+        // Determine which report to show based on userName slug
+        const partnerASlug = createSlug(partnerAData.name);
+
+        if (userName === partnerASlug) {
+          setReportData({
+            name: partnerAData.name,
+            percents: partnerAData.percents,
+            dominants: partnerAData.dominants,
+            categories: partnerAData.categories,
+            has_assessment: partnerAData.has_assessment,
+          });
+          setLoading(false);
+          return;
+        }
+
+        // Fetch Partner B's data if partner_id exists
+        if (!partnerAData.partner_id) {
+          console.error("Partner B not found: No partner_id for siteId", siteId);
+          setError("Partner B has not signed up yet.");
+          setLoading(false);
+          return;
+        }
+
+        const { data: partnerBData, error: partnerBError } = await supabase
+          .from("users")
+          .select("id, name, percents, dominants, categories, has_assessment")
+          .eq("id", partnerAData.partner_id)
+          .maybeSingle(); // Use maybeSingle
+
+        if (partnerBError || !partnerBData) {
+          console.error(
+            "Error fetching Partner B:",
+            partnerBError?.message || "No user found for partner_id",
+            partnerAData.partner_id
+          );
+          setError("Failed to load Partner B's report data.");
+          setLoading(false);
+          return;
+        }
+
+        const partnerBSlug = createSlug(partnerBData.name);
+        if (userName === partnerBSlug) {
+          setReportData({
+            name: partnerBData.name,
+            percents: partnerBData.percents,
+            dominants: partnerBData.dominants,
+            categories: partnerBData.categories,
+            has_assessment: partnerBData.has_assessment,
+          });
+        } else {
+          console.error("Invalid userName slug:", userName, { partnerASlug, partnerBSlug });
+          setError("Invalid report URL.");
+        }
+
         setLoading(false);
-        return;
-      }
-
-      // Validate access: user must be Partner A or Partner B
-      const isPartnerA = userId === siteId;
-      const isPartnerB = partnerAData.partner_id && userId === partnerAData.partner_id;
-
-      if (!isPartnerA && !isPartnerB) {
-        console.error("Access denied: User not associated with this report", { userId, siteId });
-        setError("You do not have access to this report.");
+      } catch (err) {
+        console.error("Unexpected error in fetchReportData:", err.message, err);
+        setError("An unexpected error occurred while loading the report.");
         setLoading(false);
-        return;
       }
-
-      // Determine which report to show based on userName slug
-      const partnerASlug = createSlug(partnerAData.name);
-
-      if (userName === partnerASlug) {
-        setReportData({
-          name: partnerAData.name,
-          percents: partnerAData.percents,
-          dominants: partnerAData.dominants,
-          categories: partnerAData.categories,
-          has_assessment: partnerAData.has_assessment,
-        });
-        setLoading(false);
-        return;
-      }
-
-      // Fetch Partner B's data if partner_id exists
-      if (!partnerAData.partner_id) {
-        setError("Partner B has not signed up yet.");
-        setLoading(false);
-        return;
-      }
-
-      const { data: partnerBData, error: partnerBError } = await supabase
-        .from("users")
-        .select("id, name, percents, dominants, categories, has_assessment")
-        .eq("id", partnerAData.partner_id)
-        .single();
-
-      if (partnerBError || !partnerBData) {
-        console.error("Error fetching Partner B:", partnerBError?.message);
-        setError("Failed to load Partner B's report data.");
-        setLoading(false);
-        return;
-      }
-
-      const partnerBSlug = createSlug(partnerBData.name);
-      if (userName === partnerBSlug) {
-        setReportData({
-          name: partnerBData.name,
-          percents: partnerBData.percents,
-          dominants: partnerBData.dominants,
-          categories: partnerBData.categories,
-          has_assessment: partnerBData.has_assessment,
-        });
-      } else {
-        setError("Invalid report URL.");
-      }
-
-      setLoading(false);
     }
 
     fetchReportData();
