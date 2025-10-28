@@ -15,12 +15,13 @@ import {
 } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/app/utils/supabaseClient";
 
 export default function Home() {
   // State for FAQ accordion
   const [expandedFAQ, setExpandedFAQ] = useState(null);
   const [activeNav, setActiveNav] = useState("home");
+  const [loggingOut, setLoggingOut] = useState(false);
   const router = useRouter(); // Added for navigation
 
   // Function to toggle FAQ
@@ -29,23 +30,27 @@ export default function Home() {
   };
 
   const handleStartTest = async () => {
+    // 1. Clean any old answers
     localStorage.removeItem("csmAnswers");
 
-    // FIXED: Create Supabase client here (client-side safe with anon key)
-    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
-      auth: { persistSession: true },
-    });
-
-    // Check and sign out if session exists
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-    if (session) {
-      console.log("Existing session found on home page - signing out"); // FIXED: Updated log
-      await supabase.auth.signOut();
-      localStorage.removeItem("supabase.auth.token"); // Explicitly clear Supabase storage key
-      router.refresh(); // Refresh to reload without session
+    // 2. If a session exists → log out via API
+    const { data } = await supabase.auth.getSession();
+    if (data.session) {
+      setLoggingOut(true);
+      try {
+        const res = await fetch("/api/auth/logout", { method: "POST" });
+        if (!res.ok) throw new Error("Logout failed");
+      } catch (e) {
+        console.error(e);
+        // Fallback: client-side sign-out
+        await supabase.auth.signOut();
+      } finally {
+        setLoggingOut(false);
+      }
     }
+
+    // 3. Go to the test page
+    router.push("/test");
   };
 
   // Animation variants for the headline
@@ -198,10 +203,11 @@ export default function Home() {
                   animate="visible"
                   whileHover="hover"
                   onClick={handleStartTest}
+                  disabled={loggingOut}
                   variants={buttonVariants}
                   className="group bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-4 py-2 rounded-full text-lg font-semibold transition-all duration-300 shadow-2xl flex items-center space-x-2 text-[var(--text-primary)] hover:cursor-pointer"
                 >
-                  <span>Take Free Test</span>
+                  <span>{loggingOut ? "Preparing…" : "Take Free Test"}</span>
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </Link>

@@ -25,8 +25,6 @@ export default function Report() {
     }
   }, []);
 
-  console.log("stored data", data);
-
   const openModal = (title, body) => {
     setModalContent({ title, body });
     setShowModal(true);
@@ -55,8 +53,6 @@ export default function Report() {
 
   const { percents, dominants, categories, archetype, typeCode: archetypeType } = data;
 
-  console.log("archetypeType", archetypeType);
-
   if (typeCode !== archetypeType) {
     return (
       <main className="flex flex-col gap-2 min-h-screen items-center justify-center bg-[var(--surface)] text-[var(--text-primary)]">
@@ -68,12 +64,20 @@ export default function Report() {
       </main>
     );
   }
+
+  // FIXED: Returns lowercase
   const overallDomLevel = (() => {
     const counts = categories.reduce((acc, { domLevel }) => {
-      acc[domLevel.toLowerCase()] = (acc[domLevel.toLowerCase()] || 0) + 1;
+      const key = domLevel.toLowerCase();
+      acc[key] = (acc[key] || 0) + 1;
       return acc;
     }, {});
-    return Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
+
+    if (counts.strong) return "strong";
+    if (counts.moderate) return "moderate";
+    if (counts.mild) return "mild";
+    if (counts.balanced) return "balanced";
+    return "mild";
   })();
 
   const dimensionData = [
@@ -136,8 +140,12 @@ export default function Report() {
         "Your primary preference for {primaryFull} ({primaryPole}) is clearly dominant (66-85%), with noticeable but not overwhelming influence from the secondary. This common range suggests a reliable lean toward one side while still allowing for adaptability and growth through the other. This corresponds to a Moderate secondary influence, providing a solid foundation with room for balance.",
       Strong:
         "Your primary preference for {primaryFull} ({primaryPole}) heavily dominates (86-100%), highlighting a core strength but potential blind spots in the secondary pole. This can manifest as exceptional proficiency in the primary but may require intentional effort to engage the secondary for well-roundedness. This corresponds to a Low secondary influence, emphasizing focused expertise with targeted growth opportunities.",
+      Balanced:
+        "Your preference for {primaryFull} ({primaryPole}) is perfectly balanced with its opposite (50%), showing exceptional cognitive flexibility. You use both poles with equal ease, adapting fluidly to context. This rare equilibrium makes you highly versatile and adaptable across all situations.",
     };
-    return templates[domLevel].replace("{primaryFull}", primaryFull).replace("{primaryPole}", primaryPole);
+    return (templates[domLevel] || templates.Mild)
+      .replace("{primaryFull}", primaryFull)
+      .replace("{primaryPole}", primaryPole);
   };
 
   const getSecondaryDesc = (secondaryFull, secondaryPole, infLevel) => {
@@ -146,8 +154,12 @@ export default function Report() {
       Moderate:
         "The secondary preference for {secondaryFull} ({secondaryPole}) has a noticeable but not dominant presence (15-34%). It emerges in specific situations but requires some effort to engage fully. This corresponds to a Moderate primary dominance (66-85%), offering a dependable core preference with accessible support for varied challenges.",
       Low: "The secondary preference for {secondaryFull} ({secondaryPole}) is rarely used naturally (0-14%), often functioning as a blind spot or area of discomfort. Engaging it requires significant conscious effort and may be a key growth area. This corresponds to a Strong primary dominance (86-100%), where your expertise shines but intentional development of this area can unlock greater versatility.",
+      Balanced:
+        "Your secondary preference for {secondaryFull} ({secondaryPole}) is equal in strength to the primary (50%), indicating full cognitive integration. You access both poles seamlessly, with no dominant bias. This perfect balance is a rare strength, enabling fluid adaptation in any context.",
     };
-    return templates[infLevel].replace("{secondaryFull}", secondaryFull).replace("{secondaryPole}", secondaryPole);
+    return (templates[infLevel] || templates.High)
+      .replace("{secondaryFull}", secondaryFull)
+      .replace("{secondaryPole}", secondaryPole);
   };
 
   const getInterpretationTitle = (primaryFull, secondaryFull, domLevel, infLevel) => {
@@ -155,8 +167,10 @@ export default function Report() {
       "Mild-High": "Balanced Harmony",
       "Moderate-Moderate": "Steady Alignment",
       "Strong-Low": "Focused Edge",
+      "Balanced-Balanced": "Perfect Equilibrium",
     };
-    return `${levelPhrases[`${domLevel}-${infLevel}`]}: ${primaryFull} and ${secondaryFull}`;
+    const key = `${domLevel}-${infLevel}`;
+    return `${levelPhrases[key] || "Dynamic Balance"}: ${primaryFull} and ${secondaryFull}`;
   };
 
   const getInterpretationIntro = (
@@ -169,13 +183,16 @@ export default function Report() {
     index
   ) => {
     const templates = {
-      "Mild-High": `With a Mild primary preference for ${primaryFull} and High secondary influence from ${secondaryFull}, your balanced spectrum suggests versatile application of the report's insights. The general analysis provides a flexible foundation,lean into ${primaryFull} for core relational patterns but frequently blend in ${secondaryFull} elements for nuanced, context-specific communication strategies. This adaptability makes the report a dynamic guide rather than a rigid blueprint, allowing you to switch between ${primaryPole} and ${secondaryPole} modes seamlessly across relationship scenarios.`,
+      "Mild-High": `With a Mild primary preference for ${primaryFull} and High secondary influence from ${secondaryFull}, your balanced spectrum suggests versatile application of the report's insights. The general analysis provides a flexible foundation—lean into ${primaryFull} for core relational patterns but frequently blend in ${secondaryFull} elements for nuanced, context-specific communication strategies. This adaptability makes the report a dynamic guide rather than a rigid blueprint, allowing you to switch between ${primaryPole} and ${secondaryPole} modes seamlessly across relationship scenarios.`,
       "Moderate-Moderate": `Your Moderate primary preference for ${primaryFull} paired with Moderate secondary influence from ${secondaryFull} indicates a reliable yet adjustable lens for interpreting the report. Use ${primaryFull} as your steady anchor for key themes in couple dynamics, while ${secondaryFull} offers practical support in everyday interactions. The report's general ideas shine here as a balanced roadmap: emphasize ${primaryPole} strengths for consistency, but integrate ${secondaryPole} perspectives to avoid over-reliance and enhance relational flexibility.`,
-      "Strong-Low": `Featuring a Strong primary preference for ${primaryFull} and Low secondary influence from ${secondaryFull}, approach the report with focused intensity on ${primaryFull} while mindfully cultivating ${secondaryFull} as a growth edge. The general content highlights your core expertise in ${primaryPole}-driven approaches,apply it deeply where it excels in partnerships,but use the spectrum to identify blind spots, intentionally stretching into ${secondaryPole} areas for comprehensive interpretation. This transforms the report into a targeted tool for mastery and balanced development in relationships.`,
+      "Strong-Low": `Featuring a Strong primary preference for ${primaryFull} and Low secondary influence from ${secondaryFull}, approach the report with focused intensity on ${primaryFull} while mindfully cultivating ${secondaryFull} as a growth edge. The general content highlights your core expertise in ${primaryPole}-driven approaches—apply it deeply where it excels in partnerships—but use the spectrum to identify blind spots, intentionally stretching into ${secondaryPole} areas for comprehensive interpretation. This transforms the report into a targeted tool for mastery and balanced development in relationships.`,
+      "Balanced-Balanced": `Your perfect balance between ${primaryFull} and ${secondaryFull} reflects exceptional cognitive flexibility. You seamlessly integrate both ${primaryPole} and ${secondaryPole} approaches, adapting fluidly to any context. The report serves as a mirror of your versatility—use it to refine your already strong ability to shift between modes as needed in relationships. This equilibrium empowers you to navigate any dynamic with ease, making you a natural bridge-builder in partnerships.`,
     };
+
     const fullText =
       templates[`${domLevel}-${infLevel}`] ||
       `Leverage your ${primaryFull} dominance while exploring ${secondaryFull} for fuller insights.`;
+
     const previewLength = 140;
     if (fullText.length <= previewLength) {
       return <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{fullText}</p>;
@@ -203,6 +220,7 @@ export default function Report() {
       Strong: "text-red-400 border-red-400/20",
       High: "text-red-400 border-red-400/20",
       Low: "text-green-400 border-green-400/20",
+      Balanced: "text-blue-400 border-blue-400/20",
     };
     return colors[level] || "text-gray-400 border-gray-400/20";
   };
@@ -214,6 +232,7 @@ export default function Report() {
       Strong: "from-red-500/10 to-black/10",
       High: "from-red-500/10 to-black/10",
       Low: "from-green-500/10 to-black/10",
+      Balanced: "from-blue-500/10 to-black/10",
     };
     return gradients[level] || "from-gray-500/10 to-black/10";
   };
@@ -225,6 +244,7 @@ export default function Report() {
       Strong: "bg-red-400",
       High: "bg-red-400",
       Low: "bg-green-400",
+      Balanced: "bg-blue-400",
     };
     return colors[level] || "bg-gray-400";
   };
@@ -266,12 +286,10 @@ export default function Report() {
             );
             const primaryColor = getColorClass(domLevel);
             const secondaryColor = getColorClass(infLevel);
-            const primaryGradient = getGradientClass(domLevel);
-            const secondaryGradient = getGradientClass(infLevel);
             const primaryProgressColor = getProgressColor(domLevel);
             const secondaryProgressColor = getProgressColor(infLevel);
             const profileTitle = dimTemp.title(primPct, secPct, domLevel, infLevel);
-            const profileParas = dimTemp[domLevel.toLowerCase()];
+            const profileParas = dimTemp[domLevel.toLowerCase()] || dimTemp.mild;
 
             return (
               <motion.div
@@ -281,16 +299,16 @@ export default function Report() {
                 transition={{ duration: 0.5, delay: dimIdx * 0.1 }}
                 className="bg-[var(--surface-v-secondary)] p-6 rounded-xl shadow-lg border border-[var(--border)] flex flex-col space-y-6"
               >
-                {/* Dimension Title and Subtitle */}
                 <div className="text-center space-y-3">
                   <h3 className="text-xl font-semibold text-[var(--text-primary)]">{dim.title}</h3>
                   <p className="text-sm text-[var(--text-secondary)] italic">{dim.subtitle}</p>
                 </div>
 
-                {/* Primary and Secondary Preference Cards */}
                 <div className="space-y-6">
                   <div className={`card-gradient p-5 rounded-lg border ${primaryColor} space-y-3`}>
-                    <div className="text-lg font-medium text-[var(--text-primary)] text-center">{primaryFull}</div>
+                    <div className="text-lg font-medium text-[var(--text-primary)] text-center">
+                      {primaryFull} ({primaryPole})
+                    </div>
                     <p className="text-sm text-[var(--text-secondary)] text-center italic px-4">{primaryDesc}</p>
                     <div className="space-y-3">
                       <div className={`text-base font-semibold ${primaryColor} text-center`}>{domLevel} Dominance</div>
@@ -325,7 +343,9 @@ export default function Report() {
                   </div>
 
                   <div className={`card-gradient p-5 rounded-lg border ${secondaryColor} space-y-3`}>
-                    <div className="text-lg font-medium text-[var(--text-primary)] text-center">{secondaryFull}</div>
+                    <div className="text-lg font-medium text-[var(--text-primary)] text-center">
+                      {secondaryFull} ({secondaryPole})
+                    </div>
                     <p className="text-sm text-[var(--text-secondary)] text-center italic px-4">{secondaryDesc}</p>
                     <div className="space-y-3">
                       <div className={`text-base font-semibold ${secondaryColor} text-center`}>
@@ -362,13 +382,11 @@ export default function Report() {
                   </div>
                 </div>
 
-                {/* Interpretation Section */}
                 <div className="card-gradient p-5 rounded-lg border border-[var(--border)]/50">
                   <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-3">{interpretationTitle}</h4>
                   {interpretationIntro}
                 </div>
 
-                {/* Dimensional Profile Written Analysis */}
                 <div className="space-y-4">
                   <h4 className="text-lg font-semibold text-[var(--accent)]">{profileTitle}</h4>
                   <div className="space-y-4">
@@ -386,6 +404,10 @@ export default function Report() {
       );
     }
 
+    const levelKey = overallDomLevel.toLowerCase();
+    const content = templates[levelKey];
+    if (!content) return null;
+
     return (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -393,7 +415,7 @@ export default function Report() {
         transition={{ duration: 0.5 }}
         className="space-y-6"
       >
-        {templates[overallDomLevel].map((para, idx) => (
+        {content.map((para, idx) => (
           <p key={idx} className="text-lg leading-relaxed text-[var(--text-secondary)] max-w-3xl mx-auto">
             {para}
           </p>
@@ -455,6 +477,23 @@ export default function Report() {
             for practical details.
           </>
         ),
+        balanced: (
+          <>
+            You are perfectly balanced between{" "}
+            <span className={primaryColor}>
+              <strong>
+                {primaryFull} ({primaryPct}%)
+              </strong>
+            </span>{" "}
+            and{" "}
+            <span className={secondaryColor}>
+              <strong>
+                {secondaryFull} ({secPct}%)
+              </strong>
+            </span>
+            , using both with equal ease.
+          </>
+        ),
       },
       DecisionMaking: {
         mild: (
@@ -472,6 +511,23 @@ export default function Report() {
               </strong>
             </span>{" "}
             for balance.
+          </>
+        ),
+        balanced: (
+          <>
+            You are perfectly balanced between{" "}
+            <span className={primaryColor}>
+              <strong>
+                {primaryFull} ({primaryPct}%)
+              </strong>
+            </span>{" "}
+            and{" "}
+            <span className={secondaryColor}>
+              <strong>
+                {secondaryFull} ({secPct}%)
+              </strong>
+            </span>
+            , blending logic and empathy fluidly.
           </>
         ),
       },
@@ -493,6 +549,23 @@ export default function Report() {
             in social or reflective contexts.
           </>
         ),
+        balanced: (
+          <>
+            You are perfectly balanced between{" "}
+            <span className={primaryColor}>
+              <strong>
+                {primaryFull} ({primaryPct}%)
+              </strong>
+            </span>{" "}
+            and{" "}
+            <span className={secondaryColor}>
+              <strong>
+                {secondaryFull} ({secPct}%)
+              </strong>
+            </span>
+            , recharging equally in solitude and company.
+          </>
+        ),
       },
       ChangeApproach: {
         mild: (
@@ -510,6 +583,23 @@ export default function Report() {
               </strong>
             </span>{" "}
             when flexibility is needed.
+          </>
+        ),
+        balanced: (
+          <>
+            You are perfectly balanced between{" "}
+            <span className={primaryColor}>
+              <strong>
+                {primaryFull} ({primaryPct}%)
+              </strong>
+            </span>{" "}
+            and{" "}
+            <span className={secondaryColor}>
+              <strong>
+                {secondaryFull} ({secPct}%)
+              </strong>
+            </span>
+            , thriving in both order and spontaneity.
           </>
         ),
       },
@@ -531,8 +621,41 @@ export default function Report() {
             when needed.
           </>
         ),
+        balanced: (
+          <>
+            You are perfectly balanced between{" "}
+            <span className={primaryColor}>
+              <strong>
+                {primaryFull} ({primaryPct}%)
+              </strong>
+            </span>{" "}
+            and{" "}
+            <span className={secondaryColor}>
+              <strong>
+                {secondaryFull} ({secPct}%)
+              </strong>
+            </span>
+            , excelling in both solo and team settings.
+          </>
+        ),
       },
     };
+
+    const fallback = (
+      <>
+        <span className={primaryColor}>
+          <strong>
+            {primaryFull} ({primaryPct}%)
+          </strong>
+        </span>{" "}
+        ↔{" "}
+        <span className={secondaryColor}>
+          <strong>
+            {secondaryFull} ({secPct}%)
+          </strong>
+        </span>
+      </>
+    );
 
     return (
       <motion.li
@@ -542,21 +665,7 @@ export default function Report() {
         transition={{ duration: 0.4, delay: i * 0.1 }}
         className="text-base text-[var(--text-secondary)] leading-relaxed"
       >
-        {summaries[dimensionKey]?.[domLevel] || (
-          <>
-            <span className={primaryColor}>
-              <strong>
-                {primaryFull} ({primaryPct}%)
-              </strong>
-            </span>{" "}
-            ↔{" "}
-            <span className={secondaryColor}>
-              <strong>
-                {secondaryFull} ({secPct}%)
-              </strong>
-            </span>
-          </>
-        )}
+        {summaries[dimensionKey]?.[domLevel] || fallback}
       </motion.li>
     );
   });
@@ -681,8 +790,8 @@ export default function Report() {
             transition={{ duration: 0.5 }}
             className="text-lg leading-relaxed text-[var(--text-secondary)] max-w-3xl mx-auto space-y-4"
           >
-            {reportTemplates[typeCode]?.relationships?.[overallDomLevel] && (
-              <p>{reportTemplates[typeCode].relationships[overallDomLevel][0]}</p>
+            {reportTemplates[typeCode]?.relationships?.[overallDomLevel.toLowerCase()] && (
+              <p>{reportTemplates[typeCode].relationships[overallDomLevel.toLowerCase()][0]}</p>
             )}
             <div dangerouslySetInnerHTML={{ __html: fixedNextSteps.replace(/\n/g, "<br/><br/>") }} />
           </motion.div>
