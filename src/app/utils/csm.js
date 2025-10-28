@@ -838,7 +838,13 @@ export function calculateCSMResults(answers) {
 
     if (q.type === "likert" && resp !== null) {
       let points = q.reverse ? 6 - resp : resp;
-      if (q.favoring === p1) scores[dim].pole1 += points;
+      // Determine which pole the *statement* favours
+      let favouredPole = q.favoring;
+      // If reverse, the meaning flips
+      if (q.reverse) {
+        favouredPole = favouredPole === p1 ? p2 : p1;
+      }
+      if (favouredPole === p1) scores[dim].pole1 += points;
       else scores[dim].pole2 += points;
     } else if (q.type === "forced-select" && resp) {
       const opt = q.options.find((o) => o.key === resp);
@@ -868,26 +874,10 @@ export function calculateCSMResults(answers) {
 
   const dominants = percents.map((p, i) => (p.p1 > p.p2 ? poles[i][0] : poles[i][1]));
   const typeCode = dominants.join("-");
-  const archetype = archetypes[typeCode];
+  const archetype = archetypes[typeCode] || { name: "Unknown", description: "" };
 
   const categories = percents.map((p, i) => {
-    const primary = p.p1 > p.p2 ? "p1" : "p2";
-    const primPct = primary === "p1" ? p.p1 : p.p2;
-    const secPct = 100 - primPct;
-
-    let domLevel, infLevel;
-
-    // BALANCED: within 5%
-    if (Math.abs(primPct - secPct) <= 5) {
-      domLevel = "Balanced";
-      infLevel = "Balanced";
-    } else {
-      domLevel = primPct >= 75 ? "Strong" : primPct >= 60 ? "Moderate" : "Mild";
-
-      infLevel = secPct <= 25 ? "Low" : secPct <= 40 ? "Moderate" : "High";
-    }
-
-    return { domLevel, infLevel };
+    /* ... */
   });
 
   return { percents, dominants, typeCode, archetype, categories };
