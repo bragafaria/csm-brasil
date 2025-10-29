@@ -153,6 +153,10 @@ export default function Login() {
       className="min-h-screen flex items-center justify-center bg-[var(--surface)]"
     >
       <div className="card-gradient p-8 rounded-xl shadow-lg max-w-md w-full">
+        <div className="flex items-center justify-center space-x-1 mb-4">
+          <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
+          <h1 className="text-xl font-light text-white">Dynamics</h1>
+        </div>
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -202,17 +206,6 @@ export default function Login() {
             {loading ? "Logging in..." : "Login"}
           </motion.button>
         </form>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center mt-4 text-[var(--text-secondary)] hover:cursor-pointer"
-        >
-          Don&apos;t have an account?{" "}
-          <a href="/signup" className="text-[var(--accent)] hover:underline">
-            Sign up
-          </a>
-        </motion.p>
       </div>
     </motion.div>
   );

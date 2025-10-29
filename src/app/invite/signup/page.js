@@ -146,6 +146,10 @@ export default function InviteSignupPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--surface)]">
       <div className="card-gradient p-8 rounded-xl shadow-lg max-w-md w-full">
+        <div className="flex items-center justify-center space-x-1 mb-4">
+          <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
+          <h1 className="text-xl font-light text-white">Dynamics</h1>
+        </div>
         <h1 className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]">Sign Up to Join Your Partner</h1>
         <form onSubmit={handleSignup} className="space-y-4">
           <div>

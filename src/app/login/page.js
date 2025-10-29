@@ -82,6 +82,10 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--surface)]">
       <div className="card-gradient p-8 rounded-xl shadow-lg max-w-md w-full">
+        <div className="flex items-center justify-center space-x-1 mb-4">
+          <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
+          <h1 className="text-xl font-light text-white">Dynamics</h1>
+        </div>
         <h1 className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]">Login to Your Account</h1>
         <form onSubmit={handleLogin} className="space-y-4">
           <input
@@ -111,7 +115,7 @@ export default function Login() {
         </form>
         <p className="text-center mt-4 text-[var(--text-secondary)] hover:cursor-pointer">
           {`Don't have an account?`}{" "}
-          <a href="/test" className="text-[var(--accent)] hover:underline">
+          <a href="/csm-assessment" className="text-[var(--accent)] hover:underline">
             Take your free assessment now!
           </a>
         </p>

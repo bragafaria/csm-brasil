@@ -73,9 +73,16 @@ export default function Test() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)]">
       <div className="w-full max-w-lg card-gradient p-8 rounded-xl shadow-2xl border border-[var(--border)]">
+        <div className="flex mb-6 items-center justify-center space-x-1">
+          <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
+          <h1 className="text-xl font-light text-white">Assessment</h1>
+        </div>
+        <p className="text-center text-sm text-[var(--text-secondary)] mb-6">
+          Be honest. Think briefly. Answer what you <em>truly</em> do.
+        </p>
         <div className="flex justify-between items-center mb-4">
-          <span className="text-sm font-medium text-[#BF00FF]">{percentage}% Complete</span>
-          <span className="text-sm font-medium text-[#BF00FF]">~{minutesLeft} min left</span>
+          <span className="text-sm font-medium text-[var(--accent)]">{percentage}% Complete</span>
+          <span className="text-sm font-medium text-[var(--accent)]">~{minutesLeft} min left</span>
         </div>
         <progress
           value={current + 1}
@@ -92,7 +99,7 @@ export default function Test() {
               <button
                 key={v}
                 onClick={() => handleAnswer(v)}
-                className={`flex-1 py-3 px-4 rounded-lg transition duration-300 ${
+                className={`flex-1 py-3 px-4 rounded-lg transition duration-300 cursor-pointer ${
                   answers[current] === v
                     ? "bg-[var(--primary)] text-white shadow-md"
                     : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[color-mix(in_srgb,var(--surface-variant)_80%,white_10%)]"
@@ -109,7 +116,7 @@ export default function Test() {
               <button
                 key={opt.key}
                 onClick={() => handleAnswer(opt.key)}
-                className={`w-full py-3 px-4 rounded-lg text-left transition duration-300 ${
+                className={`w-full py-3 px-4 rounded-lg text-left transition duration-300 cursor-pointer ${
                   answers[current] === opt.key
                     ? "bg-[var(--primary)] text-white shadow-md"
                     : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[color-mix(in_srgb,var(--surface-variant)_80%,white_10%)]"
@@ -126,14 +133,14 @@ export default function Test() {
           <button
             onClick={prev}
             disabled={current === 0}
-            className="py-2 px-6 rounded-lg bg-[var(--surface-variant)] text-[var(--text-secondary)] disabled:opacity-50 transition"
+            className="py-2 px-6 rounded-lg bg-[var(--surface-variant)] text-[var(--text-secondary)] disabled:opacity-50 transition cursor-pointer"
             aria-label="Previous question"
           >
             Prev
           </button>
           <button
             onClick={next}
-            className="py-2 px-6 rounded-lg bg-[var(--primary)] text-white hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] transition"
+            className="py-2 px-6 rounded-lg bg-[var(--primary)] text-white hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] transition cursor-pointer"
             aria-label={current < questions.length - 1 ? "Next question" : "Finish test"}
           >
             {current < questions.length - 1 ? "Next" : "Finish"}

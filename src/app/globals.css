@@ -19,6 +19,9 @@
   --accent: #5e5185; /* HSL: same hue as #5033c0, S: 100% → 60%, L: 80% */
   --accent-hover: #493f62; /* Slightly lighter version of accent */
 
+  /* Tertiary */
+  --tertiary: #bf00ff;
+
   /* Text */
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;

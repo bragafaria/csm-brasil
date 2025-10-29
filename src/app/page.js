@@ -51,7 +51,7 @@ export default function Home() {
     }
 
     // 3. Go to the test page
-    router.push("/test");
+    router.push("/csm-assessment");
   };
 
   // Animation variants for the headline
@@ -201,7 +201,7 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/test">
+              <Link href="/csm-assessment">
                 <motion.button
                   initial="hidden"
                   animate="visible"
@@ -513,7 +513,7 @@ export default function Home() {
                   and amplify strengths. Couples report 94% better communication after applying these insights.
                 </p>
               </div>
-              <Link href="/test">
+              <Link href="/csm-assessment">
                 <button className="w-full bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl text-[var(--text-primary)]">
                   Start Your Assessment Now
                 </button>
@@ -673,7 +673,7 @@ export default function Home() {
           <p className="text-xl text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
             Join thousands of couples who have transformed their relationships through understanding
           </p>
-          <Link href="/test">
+          <Link href="/csm-assessment">
             <button className="cursor-pointer group bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-12 py-4 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl flex items-center space-x-3 mx-auto text-[var(--text-primary)]">
               <span>Start Your Free Assessment</span>
               <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
@@ -755,7 +755,7 @@ export default function Home() {
                   Help Center
                 </a>
                 <a
-                  href="/test"
+                  href="/csm-assessment"
                   className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                 >
                   Free Assessment

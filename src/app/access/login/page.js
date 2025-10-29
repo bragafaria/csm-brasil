@@ -146,6 +146,10 @@ export default function Login() {
       className="min-h-screen flex items-center justify-center bg-[var(--surface)]"
     >
       <div className="card-gradient p-8 rounded-xl shadow-lg max-w-md w-full">
+        <div className="flex items-center justify-center space-x-1 mb-4">
+          <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
+          <h1 className="text-xl font-light text-white">Dynamics</h1>
+        </div>
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

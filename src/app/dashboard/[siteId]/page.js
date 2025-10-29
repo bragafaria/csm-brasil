@@ -175,7 +175,7 @@ export default function DashboardPage() {
             Please complete your assessment to view your personal report.
           </p>
           <button
-            onClick={() => router.push(`/dashboard/${siteId}/test`)}
+            onClick={() => router.push(`/dashboard/${siteId}/csm-assessment`)}
             className="btn-primary py-2 px-4 rounded-lg font-semibold"
           >
             Take Assessment

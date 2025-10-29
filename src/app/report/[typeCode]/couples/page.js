@@ -157,7 +157,10 @@ export default function Sales() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Brain className="h-8 w-8 text-[var(--accent)]" />
-              <span className="text-xl font-bold">CSM Insights</span>
+              <div className="flex items-center space-x-1">
+                <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
+                <h1 className="text-xl font-light text-white">Dynamics</h1>
+              </div>
             </div>
             <div className="hidden md:flex space-x-8">
               {[
@@ -294,7 +297,7 @@ export default function Sales() {
               {`Join 5,000+ couples who've strengthened their bond with CSM insights`}
             </p>
             <button
-              onClick={() => router.push("/test")}
+              onClick={() => router.push("/csm-assessment")}
               className="btn-primary px-8 py-4 rounded-lg font-semibold text-lg inline-flex items-center"
             >
               Start Your Assessment
@@ -383,7 +386,7 @@ export default function Sales() {
 
           <div className="text-center mb-8">
             <button
-              onClick={() => router.push("/test")}
+              onClick={() => router.push("/csm-assessment")}
               className="btn-primary px-8 py-4 rounded-lg font-semibold text-lg inline-flex items-center"
             >
               Start Your Assessment
@@ -535,7 +538,10 @@ export default function Sales() {
               >
                 Contact Us
               </button>
-              <button onClick={() => router.push("/test")} className="btn-primary px-6 py-3 rounded-lg font-semibold">
+              <button
+                onClick={() => router.push("/csm-assessment")}
+                className="btn-primary px-6 py-3 rounded-lg font-semibold"
+              >
                 Start Your Free Assessment
               </button>
             </div>
@@ -598,7 +604,7 @@ export default function Sales() {
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </button>
                   <button
-                    onClick={() => router.push("/test")}
+                    onClick={() => router.push("/csm-assessment")}
                     className="px-8 py-4 border border-[var(--border)] rounded-lg hover:bg-[var(--surface)] transition-colors flex items-center justify-center"
                   >
                     Start Free Assessment First
@@ -740,7 +746,7 @@ export default function Sales() {
                   Help Center
                 </a>
                 <a
-                  href="/test"
+                  href="/csm-assessment"
                   className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                 >
                   Free Assessment
