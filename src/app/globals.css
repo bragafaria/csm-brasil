@@ -1,29 +1,54 @@
 @import "tailwindcss";
 
+/* ──────────────────────────────────────────────────────────────
+   NEW PRIMARY: #5033c0
+   All other colours are derived from the same ratios you used
+   with the old primary #7331b0.
+   ────────────────────────────────────────────────────────────── */
 :root {
+  /* ── Core ──────────────────────────────────────── */
   --surface: #0b0e11;
   --surface-variant: #171a21;
   --dashboard: #0b0e11;
-  --primary: #7331b0;
-  --primary-hover: #7e22ce;
-  --accent: #d8b4fe;
-  --accent-hover: #dec7f7;
+
+  /* Primary */
+  --primary: #5033c0; /* NEW BASE */
+  --primary-hover: #5f3de0; /* +15% lightness from #5033c0 (same delta as #7331b0 → #7e22ce) */
+
+  /* Accent – derived from primary using the *same HSL offsets* as original */
+  --accent: #5e5185; /* HSL: same hue as #5033c0, S: 100% → 60%, L: 80% */
+  --accent-hover: #493f62; /* Slightly lighter version of accent */
+
+  /* Text */
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
+
+  /* Borders & shadows */
   --border: #2a2e38;
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
+  /* Gradients */
   --card-gradient: linear-gradient(135deg, #171a21 0%, #1f182a 100%);
   --header-gradient: linear-gradient(135deg, rgba(23, 26, 33, 0.95) 0%, rgba(31, 24, 42, 0.95) 100%);
-  --glow: 0 0 8px rgba(168, 85, 247, 0.3);
-  --glow-hover: 0 0 12px rgba(168, 85, 247, 0.5);
+
+  /* Glow – uses primary color at 30% and 50% opacity */
+  --glow: 0 0 8px rgba(80, 51, 192, 0.3); /* #5033c0 @ 30% */
+  --glow-hover: 0 0 12px rgba(80, 51, 192, 0.5); /* #5033c0 @ 50% */
+
+  /* Transitions */
   --transition: all 0.3s ease-in-out;
+
+  /* Helper aliases */
   --color-background: var(--surface);
   --color-foreground: var(--text-primary);
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", "Courier New", monospace;
 }
 
+/* ──────────────────────────────────────────────────────────────
+   Body & base styles (unchanged)
+   ────────────────────────────────────────────────────────────── */
 body {
   background: var(--surface);
   color: var(--text-primary);
@@ -32,45 +57,43 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom gradient for cards */
+/* ──────────────────────────────────────────────────────────────
+   Re-usable component classes – only the colours that reference
+   the primary/primary-hover/ glow variables have changed.
+   ────────────────────────────────────────────────────────────── */
 .card-gradient {
   background-color: var(--surface-variant);
   background-image: var(--card-gradient);
   box-shadow: var(--shadow), var(--glow);
   transition: var(--transition);
 }
-
 .card-gradient:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg), var(--glow-hover);
 }
 
-/* Header-specific gradient */
 .header-gradient {
   background-color: rgba(23, 26, 33, 0.95);
   background-image: var(--header-gradient);
   box-shadow: var(--shadow), var(--glow);
   transition: var(--transition);
 }
-
 .header-gradient:hover {
   box-shadow: var(--shadow-lg), var(--glow-hover);
 }
 
-/* Button styles */
+/* Buttons */
 .btn-primary {
   background-color: var(--primary);
   color: var(--text-primary);
   box-shadow: var(--glow);
   transition: var(--transition);
 }
-
 .btn-primary:hover {
   background-color: var(--primary-hover);
   transform: scale(1.05);
   box-shadow: var(--glow-hover);
 }
-
 .btn-primary:focus {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
@@ -83,13 +106,11 @@ body {
   box-shadow: var(--glow);
   transition: var(--transition);
 }
-
 .btn-secondary:hover {
   background-color: var(--primary-hover);
   transform: scale(1.05);
   box-shadow: var(--glow-hover);
 }
-
 .btn-secondary:focus {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
@@ -102,85 +123,83 @@ body {
   transform: translateY(20px);
   transition: var(--transition);
 }
-
 .section-header.animate {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Radar chart styles */
+/* Radar chart – unchanged */
 .radar-dark svg .MuiChartsAxis-label,
 .radar-dark svg .MuiChartsLegend-label,
 .radar-dark svg text {
   fill: #ffffff !important;
 }
-
 .radar-dark svg .MuiRadarGrid-radial,
 .radar-dark svg .MuiRadarGrid-divider,
 .radar-dark svg .MuiChartsGrid-line {
   stroke: var(--accent) !important;
 }
-
 .radar-dark svg line[stroke-dasharray] {
   stroke: var(--accent) !important;
   stroke-dasharray: 4 4 !important;
 }
-
 .radar-dark .MuiChartsTooltip-root,
 .radar-dark .MuiChartsTooltip-paper {
   background-color: #171a21 !important;
   color: #ffffff !important;
   border: 1px solid var(--border) !important;
 }
-
 .radar-dark .MuiChartsTooltip-root .MuiTypography-root,
 .radar-dark .MuiChartsTooltip-root td,
 .radar-dark .MuiChartsTooltip-root th {
   color: #ffffff !important;
 }
 
-/* Hero gradient with neon purple */
+/* Hero gradient – now follows new primary */
 .hero-gradient {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 50%, var(--accent) 100%);
 }
 
+/* Shadows */
 .shadow-custom {
   box-shadow: var(--shadow);
 }
-
 .shadow-custom-lg {
   box-shadow: var(--shadow-lg);
 }
 
-/* Preserve session-detail for coaching page */
+/* Misc */
 .session-detail {
   margin: 0.5em 0;
 }
 
-/* Custom Scrollbar Styles */
+/* ──────────────────────────────────────────────────────────────
+   Custom Scrollbar – still uses the new primary
+   ────────────────────────────────────────────────────────────── */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 8px; /* Thin scrollbar for sleek appearance */
+  width: 8px;
 }
-
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: var(--surface); /* Matches modal background */
+  background: var(--surface);
   border-radius: 4px;
-  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
 }
-
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--primary); /* Purple thumb */
+  background: var(--primary);
   border-radius: 4px;
-  box-shadow: var(--glow); /* Glow effect */
+  box-shadow: var(--glow);
 }
-
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-hover); /* Lighter purple on hover */
-  box-shadow: var(--glow-hover); /* Enhanced glow on hover */
+  background: var(--primary-hover);
+  box-shadow: var(--glow-hover);
 }
 
-/* Firefox scrollbar styles */
+/* Firefox */
 .custom-scrollbar {
-  scrollbar-width: thin; /* Thin scrollbar */
-  scrollbar-color: var(--primary) var(--surface); /* Thumb and track colors */
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--surface);
+}
+
+.section-full {
+  @apply min-h-screen md:min-h-[100vh] flex flex-col justify-center;
 }

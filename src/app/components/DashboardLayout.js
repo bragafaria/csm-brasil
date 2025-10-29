@@ -58,7 +58,7 @@ export default function DashboardLayout({ children }) {
       console.log("Logged out successfully");
       // Clear localStorage explicitly to avoid persistence
       localStorage.removeItem("supabase.auth.token");
-      router.push("/login");
+      router.push("/");
     } catch (err) {
       console.error("Unexpected error in handleLogout:", err.message, err);
     }
@@ -74,10 +74,9 @@ export default function DashboardLayout({ children }) {
               {!isMobile && <span>Menu</span>}
             </div>
           )}
-          <div className="flex items-center space-x-3">
-            <h1 className="text-xl font-bold text-primary bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
-              CSM Dashboard
-            </h1>
+          <div className="flex items-center space-x-1">
+            <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
+            <h1 className="text-xl font-light text-white">Dynamics</h1>
           </div>
           <div className="flex items-center space-x-2">
             <button
