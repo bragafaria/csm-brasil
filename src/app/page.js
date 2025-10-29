@@ -15,12 +15,14 @@ import {
 } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/app/utils/supabaseClient";
+import { RotatingWord } from "@/app/components/ui/RotatingWord";
 
 export default function Home() {
   // State for FAQ accordion
   const [expandedFAQ, setExpandedFAQ] = useState(null);
   const [activeNav, setActiveNav] = useState("home");
+  const [loggingOut, setLoggingOut] = useState(false);
   const router = useRouter(); // Added for navigation
 
   // Function to toggle FAQ
@@ -29,23 +31,27 @@ export default function Home() {
   };
 
   const handleStartTest = async () => {
+    // 1. Clean any old answers
     localStorage.removeItem("csmAnswers");
 
-    // FIXED: Create Supabase client here (client-side safe with anon key)
-    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
-      auth: { persistSession: true },
-    });
-
-    // Check and sign out if session exists
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-    if (session) {
-      console.log("Existing session found on home page - signing out"); // FIXED: Updated log
-      await supabase.auth.signOut();
-      localStorage.removeItem("supabase.auth.token"); // Explicitly clear Supabase storage key
-      router.refresh(); // Refresh to reload without session
+    // 2. If a session exists → log out via API
+    const { data } = await supabase.auth.getSession();
+    if (data.session) {
+      setLoggingOut(true);
+      try {
+        const res = await fetch("/api/auth/logout", { method: "POST" });
+        if (!res.ok) throw new Error("Logout failed");
+      } catch (e) {
+        console.error(e);
+        // Fallback: client-side sign-out
+        await supabase.auth.signOut();
+      } finally {
+        setLoggingOut(false);
+      }
     }
+
+    // 3. Go to the test page
+    router.push("/csm-assessment");
   };
 
   // Animation variants for the headline
@@ -124,7 +130,10 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Brain className="h-8 w-8 text-[var(--accent)]" />
-              <span className="text-xl font-bold">CSM Insights</span>
+              <div className="flex items-center space-x-1">
+                <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
+                <h1 className="text-xl font-light text-white">Dynamics</h1>
+              </div>
             </div>
             <div className="hidden md:flex space-x-8">
               {[
@@ -158,7 +167,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative section-full flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/20 via-transparent to-[var(--accent)]/20"></div>
         <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--primary)]/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-[var(--accent)]/10 rounded-full blur-3xl"></div>
@@ -192,16 +201,17 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/test">
+              <Link href="/csm-assessment">
                 <motion.button
                   initial="hidden"
                   animate="visible"
                   whileHover="hover"
                   onClick={handleStartTest}
+                  disabled={loggingOut}
                   variants={buttonVariants}
                   className="group bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-4 py-2 rounded-full text-lg font-semibold transition-all duration-300 shadow-2xl flex items-center space-x-2 text-[var(--text-primary)] hover:cursor-pointer"
                 >
-                  <span>Take Free Test</span>
+                  <span>{loggingOut ? "Preparing…" : "Take Free Test"}</span>
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </Link>
@@ -211,19 +221,19 @@ export default function Home() {
             <div className="my-16 grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="p-6 rounded-2xl bg-gradient-to-b from-[var(--primary)]/10 to-transparent border border-[var(--primary)]/20 backdrop-blur-sm">
                 <div className="text-3xl font-bold text-white mb-2">
-                  <Counter target={250} suffix="k+" duration={5000} />
+                  <Counter target={250} suffix="k+" duration={3000} />
                 </div>
                 <div className="text-[var(--text-secondary)]">Couples helped</div>
               </div>
               <div className="p-6 rounded-2xl bg-gradient-to-b from-[var(--accent)]/10 to-transparent border border-[var(--accent)]/20 backdrop-blur-sm">
                 <div className="text-3xl font-bold text-white mb-2">
-                  <Counter target={94} suffix="%" duration={5000} />
+                  <Counter target={94} suffix="%" duration={3000} />
                 </div>
                 <div className="text-[var(--text-secondary)]">Report improvement</div>
               </div>
               <div className="p-6 rounded-2xl bg-gradient-to-b from-[var(--primary)]/10 to-transparent border border-[var(--primary)]/20 backdrop-blur-sm">
                 <div className="text-3xl font-bold text-white mb-2">
-                  <Counter target={4.9} suffix="★" duration={5000} decimals={1} />
+                  <Counter target={4.9} suffix=" ★" duration={3000} decimals={1} />
                 </div>
                 <div className="text-[var(--text-secondary)]">Average rating</div>
               </div>
@@ -233,12 +243,10 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 bg-gradient-to-b from-[var(--surface)] to-[var(--surface-variant)]">
+      <section className="py-20 section-full bg-gradient-to-b from-[var(--surface)] to-[var(--surface-variant)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
-              How It Works
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--text-primary)]">How It Works</h2>
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
               Simple steps to unlock deeper understanding in your relationship
             </p>
@@ -258,7 +266,7 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={circleVariants}
-                className="w-20 h-20 rounded-full bg-[var(--primary)] flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-[var(--text-primary)]"
+                className="w-20 h-20 rounded-full bg-[var(--accent)] flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-[var(--text-primary)]"
               >
                 1
               </motion.div>
@@ -306,7 +314,7 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={circleVariants}
-                className="w-20 h-20 rounded-full bg-[var(--primary)] flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-[var(--text-primary)]"
+                className="w-20 h-20 rounded-full bg-[var(--accent)] flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-[var(--text-primary)]"
               >
                 3
               </motion.div>
@@ -320,25 +328,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 relative">
+      {/* Features Section – with rotating headline */}
+      <section className="py-20 relative section-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* ---------- HEADLINE WITH ROTATING WORD ---------- */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent whitespace-nowrap">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 flex flex-wrap items-center justify-center gap-1 md:gap-2">
+              {/* Fixed part */}
+              <span className="bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent whitespace-nowrap">
                 Why Couples
               </span>
-              <span className="bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--primary)] bg-clip-text text-transparent whitespace-nowrap">
-                {" Choose "}
+
+              {/* ---------- ANIMATED WORD + STATIC RECTANGLE ---------- */}
+              <span className="relative inline-block">
+                {/* Static purple rectangle */}
+                <span className="absolute inset-0 bg-[var(--primary)] rounded-md"></span>
+
+                {/* Animated word – perfectly centered */}
+                <RotatingWord
+                  words={["Choose", "Love", "Trust", "Value"]}
+                  interval={2000}
+                  className="relative z-10 text-white font-bold flex items-center justify-center h-full px-3 py-1 md:px-4"
+                />
               </span>
-              <span className="bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent whitespace-nowrap">
+              {/* ---------------------------------------------------- */}
+
+              {/* Fixed part */}
+              <span className="bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent whitespace-nowrap">
                 Our Assessment
               </span>
             </h2>
+
             <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
               Discover insights that strengthen your bond and improve communication
             </p>
           </div>
+          {/* ------------------------------------------------- */}
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <AnimatedCard>
@@ -356,7 +381,7 @@ export default function Home() {
 
             <AnimatedCard delay={0.2}>
               <div className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20 hover:border-[var(--primary)]/40 transition-all duration-300 hover:transform hover:scale-105 h-full min-h-[250px] flex flex-col">
-                <div className="w-16 h-16 rounded-2xl bg-[var(--accent)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Target className="h-8 w-8 text-[var(--text-primary)]" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Actionable Insights</h3>
@@ -386,9 +411,7 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
-              Preview Your Spectrum Insights
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white ">Preview Your Spectrum Insights</h2>
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
               See how CSM reveals your unique cognitive preferences with nuanced, percentage-based spectrums,unlocking
               personalized relationship strategies.
@@ -490,7 +513,7 @@ export default function Home() {
                   and amplify strengths. Couples report 94% better communication after applying these insights.
                 </p>
               </div>
-              <Link href="/test">
+              <Link href="/csm-assessment">
                 <button className="w-full bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl text-[var(--text-primary)]">
                   Start Your Assessment Now
                 </button>
@@ -650,7 +673,7 @@ export default function Home() {
           <p className="text-xl text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
             Join thousands of couples who have transformed their relationships through understanding
           </p>
-          <Link href="/test">
+          <Link href="/csm-assessment">
             <button className="cursor-pointer group bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-12 py-4 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl flex items-center space-x-3 mx-auto text-[var(--text-primary)]">
               <span>Start Your Free Assessment</span>
               <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
@@ -732,7 +755,7 @@ export default function Home() {
                   Help Center
                 </a>
                 <a
-                  href="/test"
+                  href="/csm-assessment"
                   className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                 >
                   Free Assessment

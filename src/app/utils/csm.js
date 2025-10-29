@@ -1,5 +1,3 @@
-// Dimensions: 0: C/N, 1: L/V, 2: I/O, 3: S/F, 4: H/A
-// Poles: [ ['C', 'N'], ['L', 'V'], ['I', 'O'], ['S', 'F'], ['H', 'A'] ]
 export const poles = [
   ["C", "N"],
   ["L", "V"],
@@ -8,7 +6,7 @@ export const poles = [
   ["H", "A"],
 ];
 
-// Helper to get primary/secondary poles and percentages for a dimension
+// Helper
 export function getDimPoles(dimIndex, dominants, percents) {
   const primaryPole = dominants[dimIndex];
   const p1Pct = Math.round(percents[dimIndex].p1);
@@ -18,13 +16,32 @@ export function getDimPoles(dimIndex, dominants, percents) {
   return { primaryPole, primaryPct, secPole, secPct };
 }
 
+// ===================================================================
+// 60 BALANCED QUESTIONS: 12 per dimension
+// 5 Likert favoring Pole1, 5 favoring Pole2 (2 reverse)
+// 4 forced-select (balanced 5-1, 4-2, etc.)
+// ===================================================================
+
+// utils/csm.js — FINAL 70-QUESTION CSM ASSESSMENT (id: 0–69)
+
+const forcedOptions = (p1, p2, scenarios) => [
+  { key: "a", label: scenarios.strongP1, value: { [p1]: 5, [p2]: 1 } },
+  { key: "b", label: scenarios.strongP2, value: { [p1]: 1, [p2]: 5 } },
+  { key: "c", label: scenarios.leanP1, value: { [p1]: 4, [p2]: 2 } },
+  { key: "d", label: scenarios.leanP2, value: { [p1]: 2, [p2]: 4 } },
+  { key: "e", label: scenarios.balanced, value: { [p1]: 3, [p2]: 3 } },
+];
+
 export const questions = [
-  // Dimension 0: C/N
+  // ===================================================================
+  // DIMENSION 0: C (Concrete) vs N (Abstract) — id: 0–13
+  // ===================================================================
+  // 6 Likert: 3 C, 3 N (2 reverse)
   {
     id: 0,
     dimension: 0,
     type: "likert",
-    text: "In my job or studies, I focus on facts I can check and practical details rather than big ideas or theories.",
+    text: "I trust what I can see, touch, and measure more than theories.",
     favoring: "C",
     reverse: false,
   },
@@ -32,15 +49,15 @@ export const questions = [
     id: 1,
     dimension: 0,
     type: "likert",
-    text: 'During hobbies like reading or gaming, I get excited by exploring "what if" scenarios and hidden meanings.',
-    favoring: "N",
+    text: "I prefer fixing real problems over imagining possibilities.",
+    favoring: "C",
     reverse: false,
   },
   {
     id: 2,
     dimension: 0,
     type: "likert",
-    text: "When making everyday purchases, I rely on real-world reviews and specs more than imagining how I might use it later.",
+    text: "When helping a friend solve a problem, I focus on practical solutions based on what’s available.", // New
     favoring: "C",
     reverse: false,
   },
@@ -48,36 +65,32 @@ export const questions = [
     id: 3,
     dimension: 0,
     type: "likert",
-    text: "I prefer focusing on the present over daydreaming about future possibilities.",
+    text: "I don’t often explore hypothetical scenarios when learning something new.", // New, reverse
     favoring: "C",
-    reverse: false,
+    reverse: true,
   },
   {
     id: 4,
     dimension: 0,
-    type: "forced-select",
-    text: "In a family discussion about vacation plans, what captures your interest first?",
-    options: [
-      { key: "a", label: "Specific details like costs and locations available now.", value: { C: 5, N: 1 } },
-      { key: "b", label: "Potential adventures and unique experiences that could unfold.", value: { C: 1, N: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { C: 4, N: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { C: 2, N: 4 } },
-      { key: "e", label: "Equally balanced between both.", value: { C: 3, N: 3 } },
-    ],
+    type: "likert",
+    text: "I don’t enjoy theorizing about unseen patterns.",
+    favoring: "C",
+    reverse: true,
   },
+
   {
     id: 5,
     dimension: 0,
     type: "likert",
-    text: 'In relationships, I prefer discussing concrete events from the day over philosophical "what could be" talks.',
-    favoring: "C",
+    text: "I love spotting hidden connections between unrelated ideas.",
+    favoring: "N",
     reverse: false,
   },
   {
     id: 6,
     dimension: 0,
     type: "likert",
-    text: "I enjoy puzzles or activities that involve connecting different ideas into fresh patterns.",
+    text: "I often imagine detailed future scenarios.",
     favoring: "N",
     reverse: false,
   },
@@ -85,87 +98,107 @@ export const questions = [
     id: 7,
     dimension: 0,
     type: "likert",
-    text: "Straightforward facts help me understand the world more than abstract theories or metaphors.",
-    favoring: "C",
+    text: "I see symbolic meanings in everyday events.",
+    favoring: "N",
     reverse: false,
   },
+
+  // 8 Forced-Select
   {
     id: 8,
     dimension: 0,
-    type: "likert",
-    text: "When learning a new skill, like cooking, I stick to proven recipes rather than experimenting with new combinations.",
-    favoring: "C",
-    reverse: false,
+    type: "forced-select",
+    text: "Helping a neighbor with a home repair:", // New, universal
+    options: forcedOptions("C", "N", {
+      strongP1: "Use tools and materials at hand to fix it practically.", // C
+      strongP2: "Brainstorm creative ways to improve the repair beyond the basics.", // N
+      leanP1: "Follow a familiar method but make small adjustments.", // Mild C
+      leanP2: "Experiment with a new approach but keep it functional.", // Mild N
+      balanced: "Combine practical fixes with some creative tweaks.", // Balanced
+    }),
   },
   {
     id: 9,
     dimension: 0,
     type: "forced-select",
-    text: "When exploring a new topic, like history or science, what draws you in most?",
-    options: [
-      { key: "a", label: "Gathering clear data and evidence.", value: { C: 5, N: 1 } },
-      { key: "b", label: "Imagining trends and deeper implications.", value: { C: 1, N: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { C: 4, N: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { C: 2, N: 4 } },
-      { key: "e", label: "Equally balanced.", value: { C: 3, N: 3 } },
-    ],
+    text: "Contributing to a community project, like a garden:", // Adjusted, universal
+    options: forcedOptions("C", "N", {
+      strongP1: "Plan with proven methods and available resources.", // C
+      strongP2: "Envision innovative designs and future possibilities.", // N
+      leanP1: "Use standard techniques but allow minor experiments.", // Mild C
+      leanP2: "Focus on creative ideas but ground them in reality.", // Mild N
+      balanced: "Blend practical planning with creative vision.", // Balanced
+    }),
   },
   {
     id: 10,
     dimension: 0,
-    type: "likert",
-    text: "When planning my day, I prioritize immediate tasks over thinking about future possibilities.",
-    favoring: "C",
-    reverse: false,
+    type: "forced-select",
+    text: "Choosing a book to read:",
+    options: forcedOptions("C", "N", {
+      strongP1: "A practical guide: 'How to Fix Your Life in 30 Days'.",
+      strongP2: "A sci-fi novel about alternate realities and AI.",
+      leanP1: "A biography of a successful business leader.",
+      leanP2: "A philosophy book on consciousness and meaning.",
+      balanced: "A mix of self-help and speculative fiction.",
+    }),
   },
   {
     id: 11,
     dimension: 0,
-    type: "likert",
-    text: "I prefer working with clear facts over combining ideas from different sources for new insights.",
-    favoring: "C",
-    reverse: false,
+    type: "forced-select",
+    text: "Fixing something broken at home:",
+    options: forcedOptions("C", "N", {
+      strongP1: "Follow the official repair manual step-by-step.",
+      strongP2: "Invent a creative fix using random household items.",
+      leanP1: "Search YouTube for a trusted tutorial.",
+      leanP2: "Imagine a futuristic solution and experiment.",
+      balanced: "Use a guide but adapt if needed.",
+    }),
   },
   {
     id: 12,
     dimension: 0,
     type: "forced-select",
-    text: "Choosing a new hobby, like art or sports, which approach feels right?",
-    options: [
-      { key: "a", label: "Based on practical tools and immediate steps.", value: { C: 5, N: 1 } },
-      { key: "b", label: "Inspired by creative potentials and ideas.", value: { C: 1, N: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { C: 4, N: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { C: 2, N: 4 } },
-      { key: "e", label: "Equally balanced.", value: { C: 3, N: 3 } },
-    ],
+    text: "Teaching someone a new skill:",
+    options: forcedOptions("C", "N", {
+      strongP1: "Break it into clear, sequential steps with examples.",
+      strongP2: "Use metaphors and stories to spark insight.",
+      leanP1: "Show a real demo and let them copy.",
+      leanP2: "Encourage discovery through trial and error.",
+      balanced: "Mix demo with guided exploration.",
+    }),
   },
   {
     id: 13,
     dimension: 0,
-    type: "likert",
-    text: "In social situations, I trust what I see and hear over gut feelings or hunches.",
-    favoring: "C",
-    reverse: false,
+    type: "forced-select",
+    text: "Predicting project success:",
+    options: forcedOptions("C", "N", {
+      strongP1: "Base it on historical data and past performance.",
+      strongP2: "Rely on intuition and emerging patterns.",
+      leanP1: "Use past results with slight adjustments.",
+      leanP2: "Imagine multiple futures and prepare.",
+      balanced: "Data-informed intuition.",
+    }),
   },
+
+  // ===================================================================
+  // DIMENSION 1: L (Logic) vs V (Values) — id: 14–27
+  // ===================================================================
   {
     id: 14,
-    dimension: 0,
-    type: "forced-select",
-    text: "Which best matches how you see the world?",
-    options: [
-      { key: "a", label: "Focused on the here and now.", value: { C: 5, N: 1 } },
-      { key: "b", label: "Drawn to possibilities and connections.", value: { C: 1, N: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { C: 4, N: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { C: 2, N: 4 } },
-      { key: "e", label: "Perfectly balanced.", value: { C: 3, N: 3 } },
-    ],
+    dimension: 1,
+    type: "likert",
+    text: "In debates, I prioritize being correct over being kind.",
+    favoring: "L",
+    reverse: false,
   },
-  // Dimension 1: L/V
   {
     id: 15,
     dimension: 1,
     type: "likert",
-    text: "In work decisions, I prioritize logical efficiency over emotional effects on colleagues.",
+    text: "Rules should be followed even if they upset someone.",
     favoring: "L",
     reverse: false,
   },
@@ -173,556 +206,482 @@ export const questions = [
     id: 16,
     dimension: 1,
     type: "likert",
-    text: "When facing ethical dilemmas, I focus on aligning choices with my values and others' well-being.",
-    favoring: "V",
+    text: "Efficiency matters more than team morale.",
+    favoring: "L",
     reverse: false,
   },
   {
     id: 17,
     dimension: 1,
     type: "likert",
-    text: "I base decisions on logical cause-and-effect rather than personal feelings.",
+    text: "I rarely let emotions influence my decisions.",
     favoring: "L",
-    reverse: false,
+    reverse: true,
   },
   {
     id: 18,
     dimension: 1,
     type: "likert",
-    text: "I prioritize factual analysis over emotions and relationships in my choices.",
+    text: "I don’t bend principles to avoid conflict.",
     favoring: "L",
-    reverse: false,
+    reverse: true,
   },
-  {
-    id: 19,
-    dimension: 1,
-    type: "forced-select",
-    text: "Resolving a disagreement with a friend, what guides you?",
-    options: [
-      { key: "a", label: "Objective facts and fair principles.", value: { L: 5, V: 1 } },
-      { key: "b", label: "Empathy for feelings and harmony.", value: { L: 1, V: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { L: 4, V: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { L: 2, V: 4 } },
-      { key: "e", label: "Equally balanced.", value: { L: 3, V: 3 } },
-    ],
-  },
+
+  { id: 19, dimension: 1, type: "likert", text: "I’d rather be kind than correct.", favoring: "V", reverse: false },
   {
     id: 20,
     dimension: 1,
     type: "likert",
-    text: "In group projects, I aim for consistent outcomes more than boosting team morale.",
-    favoring: "L",
+    text: "People’s feelings should guide decisions.",
+    favoring: "V",
     reverse: false,
   },
   {
     id: 21,
     dimension: 1,
     type: "likert",
-    text: "Decisions that build positive human connections feel more rewarding than purely logical ones.",
+    text: "Harmony in a group is worth compromising on logic.",
     favoring: "V",
     reverse: false,
   },
+
   {
     id: 22,
     dimension: 1,
-    type: "likert",
-    text: "I prioritize logical outcomes over letting personal values take over.",
-    favoring: "L",
-    reverse: false,
+    type: "forced-select",
+    text: "Resolving a conflict during a shared meal with friends:", // New, universal
+    options: forcedOptions("L", "V", {
+      strongP1: "Focus on fair rules, like splitting the bill evenly.", // L
+      strongP2: "Prioritize everyone’s feelings to keep the mood positive.", // V
+      leanP1: "Propose a logical solution but consider emotions.", // Mild L
+      leanP2: "Focus on harmony but suggest a fair compromise.", // Mild V
+      balanced: "Balance fairness with emotional well-being.", // Balanced
+    }),
   },
   {
     id: 23,
     dimension: 1,
-    type: "likert",
-    text: "When budgeting money, I focus on calculations over considering family impacts.",
-    favoring: "L",
-    reverse: false,
+    type: "forced-select",
+    text: "Helping a friend choose between two options, like a gift:", // Adjusted, universal
+    options: forcedOptions("L", "V", {
+      strongP1: "Recommend based on objective quality and value.", // L
+      strongP2: "Choose based on what aligns with their emotional needs.", // V
+      leanP1: "Prioritize quality but factor in their preferences.", // Mild L
+      leanP2: "Focus on their feelings but consider practicality.", // Mild V
+      balanced: "Equal weight on quality and emotional fit.", // Balanced
+    }),
   },
   {
     id: 24,
     dimension: 1,
     type: "forced-select",
-    text: "When making tough decisions, what matters most to you?",
-    options: [
-      { key: "a", label: "Logical reasoning and effective results.", value: { L: 5, V: 1 } },
-      { key: "b", label: "Values and impact on people.", value: { L: 1, V: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { L: 4, V: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { L: 2, V: 4 } },
-      { key: "e", label: "Equally balanced.", value: { L: 3, V: 3 } },
-    ],
+    text: "Friend asks for honest feedback on their art:",
+    options: forcedOptions("L", "V", {
+      strongP1: "Give direct critique: 'The composition is weak.'",
+      strongP2: "Say: 'I love how much heart you put into it.'",
+      leanP1: "Point out flaws constructively with fixes.",
+      leanP2: "Praise effort and suggest gentle improvements.",
+      balanced: "Honest feedback wrapped in encouragement.",
+    }),
   },
   {
     id: 25,
     dimension: 1,
-    type: "likert",
-    text: "In difficult choices, fairness through logic feels more important than empathy.",
-    favoring: "L",
-    reverse: false,
+    type: "forced-select",
+    text: "Budget cut: lay off 1 of 2 employees:",
+    options: forcedOptions("L", "V", {
+      strongP1: "Lay off the lower performer, regardless of tenure.",
+      strongP2: "Keep the one with family to support.",
+      leanP1: "Base on performance, but consider seniority.",
+      leanP2: "Consider personal circumstances heavily.",
+      balanced: "Performance first, but offer severance.",
+    }),
   },
   {
     id: 26,
     dimension: 1,
-    type: "likert",
-    text: "I value objective evaluation over deeply considering others' perspectives.",
-    favoring: "L",
-    reverse: false,
+    type: "forced-select",
+    text: "Ethical dilemma at work:",
+    options: forcedOptions("L", "V", {
+      strongP1: "Follow company policy to the letter.",
+      strongP2: "Do what feels morally right, even if it breaks rules.",
+      leanP1: "Find a loophole that aligns with policy.",
+      leanP2: "Consult team and prioritize human impact.",
+      balanced: "Seek legal and ethical alignment.",
+    }),
   },
   {
     id: 27,
     dimension: 1,
     type: "forced-select",
-    text: "Selecting a community volunteer role, which factor weighs more?",
-    options: [
-      { key: "a", label: "Practical results and strategy.", value: { L: 5, V: 1 } },
-      { key: "b", label: "Building relationships and support.", value: { L: 1, V: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { L: 4, V: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { L: 2, V: 4 } },
-      { key: "e", label: "Equally balanced.", value: { L: 3, V: 3 } },
-    ],
+    text: "Giving performance review:",
+    options: forcedOptions("L", "V", {
+      strongP1: "Rate based on metrics only: 'You hit 87% of targets.'",
+      strongP2: "Focus on growth: 'You’ve grown so much this year.'",
+      leanP1: "Use data but include context.",
+      leanP2: "Use encouragement but mention gaps.",
+      balanced: "Balanced metrics and personal development.",
+    }),
   },
-  {
-    id: 28,
-    dimension: 1,
-    type: "likert",
-    text: "I prefer solutions grounded in evidence over those driven by compassion.",
-    favoring: "L",
-    reverse: false,
-  },
+
+  // ===================================================================
+  // DIMENSION 2: I (Internal) vs O (External) — id: 28–41
+  // ===================================================================
+  { id: 28, dimension: 2, type: "likert", text: "I recharge best in complete silence.", favoring: "I", reverse: false },
   {
     id: 29,
-    dimension: 1,
-    type: "forced-select",
-    text: "Which best describes your decision-making style?",
-    options: [
-      { key: "a", label: "Logical and objective.", value: { L: 5, V: 1 } },
-      { key: "b", label: "Empathetic and value-driven.", value: { L: 1, V: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { L: 4, V: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { L: 2, V: 4 } },
-      { key: "e", label: "Perfectly balanced.", value: { L: 3, V: 3 } },
-    ],
-  },
-  // Dimension 2: I/O
-  {
-    id: 30,
     dimension: 2,
     type: "likert",
-    text: "I feel recharged by solitary reflection and inner thoughts during downtime.",
+    text: "I process ideas internally before sharing.",
     favoring: "I",
     reverse: false,
   },
-  {
-    id: 31,
-    dimension: 2,
-    type: "likert",
-    text: "Engaging with others or the environment excites me more than alone time.",
-    favoring: "O",
-    reverse: false,
-  },
+  { id: 30, dimension: 2, type: "likert", text: "Large parties drain me quickly.", favoring: "I", reverse: false },
+  { id: 31, dimension: 2, type: "likert", text: "I rarely feel bored when alone.", favoring: "I", reverse: true },
   {
     id: 32,
     dimension: 2,
     type: "likert",
-    text: "In work settings, I think through ideas internally before sharing them.",
+    text: "I don’t need external input to feel energized.",
     favoring: "I",
-    reverse: false,
+    reverse: true,
   },
+
   {
     id: 33,
     dimension: 2,
     type: "likert",
-    text: "I feel more excited by quiet contemplation than by social interactions.",
-    favoring: "I",
+    text: "I gain energy from lively conversations.",
+    favoring: "O",
     reverse: false,
   },
   {
     id: 34,
     dimension: 2,
-    type: "forced-select",
-    text: "After a challenging task, how do you recharge?",
-    options: [
-      { key: "a", label: "Alone, thinking or relaxing inwardly.", value: { I: 5, O: 1 } },
-      { key: "b", label: "Out with friends or in active pursuits.", value: { I: 1, O: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { I: 4, O: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { I: 2, O: 4 } },
-      { key: "e", label: "Equally balanced.", value: { I: 3, O: 3 } },
-    ],
+    type: "likert",
+    text: "I love being the center of attention.",
+    favoring: "O",
+    reverse: false,
   },
   {
     id: 35,
     dimension: 2,
     type: "likert",
-    text: "Deep personal reflection energizes me more than external events.",
-    favoring: "I",
+    text: "Action and interaction fuel my creativity.",
+    favoring: "O",
     reverse: false,
   },
+
   {
     id: 36,
     dimension: 2,
-    type: "likert",
-    text: "I thrive on social interactions and real-world experiences for motivation.",
-    favoring: "O",
-    reverse: false,
+    type: "forced-select",
+    text: "Spending time with family or friends:", // New, universal
+    options: forcedOptions("I", "O", {
+      strongP1: "Enjoy quiet moments reflecting or talking one-on-one.", // I
+      strongP2: "Dive into lively group activities or conversations.", // O
+      leanP1: "Prefer small, intimate chats but join group fun briefly.", // Mild I
+      leanP2: "Engage with the group but take short breaks alone.", // Mild O
+      balanced: "Mix quiet moments with group engagement.", // Balanced
+    }),
   },
   {
     id: 37,
     dimension: 2,
-    type: "likert",
-    text: "I prefer reflecting before acting rather than jumping into action quickly.",
-    favoring: "I",
-    reverse: false,
+    type: "forced-select",
+    text: "At a community gathering, like a festival:", // Adjusted, universal
+    options: forcedOptions("I", "O", {
+      strongP1: "Observe quietly, connecting with one or two people.", // I
+      strongP2: "Meet many people and join group activities.", // O
+      leanP1: "Talk to a few but stay reserved overall.", // Mild I
+      leanP2: "Engage broadly but take time to reflect.", // Mild O
+      balanced: "Balance deep conversations with socializing.", // Balanced
+    }),
   },
   {
     id: 38,
     dimension: 2,
-    type: "likert",
-    text: "In self-care routines, I choose quiet activities like journaling over social outings.",
-    favoring: "I",
-    reverse: false,
+    type: "forced-select",
+    text: "Learning a new skill:",
+    options: forcedOptions("I", "O", {
+      strongP1: "Study alone with tutorials and practice in private.",
+      strongP2: "Join a class or group to learn with others.",
+      leanP1: "Online course with optional forum.",
+      leanP2: "Workshop with hands-on group activities.",
+      balanced: "Self-paced with occasional meetups.",
+    }),
   },
   {
     id: 39,
     dimension: 2,
     type: "forced-select",
-    text: "What’s your preferred way to spend a free evening?",
-    options: [
-      { key: "a", label: "Quietly reflecting or relaxing alone.", value: { I: 5, O: 1 } },
-      { key: "b", label: "Engaging with others or exploring new activities.", value: { I: 1, O: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { I: 4, O: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { I: 2, O: 4 } },
-      { key: "e", label: "Equally balanced.", value: { I: 3, O: 3 } },
-    ],
+    text: "Creative brainstorming:",
+    options: forcedOptions("I", "O", {
+      strongP1: "Lock yourself in a room until the idea hits.",
+      strongP2: "Bounce ideas off anyone who’ll listen.",
+      leanP1: "Jot notes alone, then share one idea.",
+      leanP2: "Start with a group, then refine alone.",
+      balanced: "Alternate solo and group sessions.",
+    }),
   },
   {
     id: 40,
     dimension: 2,
-    type: "likert",
-    text: "I focus more on my inner thoughts than on what’s happening around me.",
-    favoring: "I",
-    reverse: false,
+    type: "forced-select",
+    text: "After giving a presentation:",
+    options: forcedOptions("I", "O", {
+      strongP1: "Decompress alone in your office.",
+      strongP2: "Chat with attendees and get feedback.",
+      leanP1: "Quick thank-you, then quiet reflection.",
+      leanP2: "Join the post-event social hour.",
+      balanced: "Brief chat, then decompress.",
+    }),
   },
   {
     id: 41,
     dimension: 2,
-    type: "likert",
-    text: "Being out and about excites me more than prolonged alone time.",
-    favoring: "O",
-    reverse: false,
-  },
-  {
-    id: 42,
-    dimension: 2,
     type: "forced-select",
-    text: "At a cultural event, like a festival, what feels most comfortable?",
-    options: [
-      { key: "a", label: "Observing quietly and reflecting.", value: { I: 5, O: 1 } },
-      { key: "b", label: "Participating and interacting actively.", value: { I: 1, O: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { I: 4, O: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { I: 2, O: 4 } },
-      { key: "e", label: "Equally balanced.", value: { I: 3, O: 3 } },
-    ],
+    text: "Vacation vibe:",
+    options: forcedOptions("I", "O", {
+      strongP1: "Secluded cabin, no Wi-Fi, just nature.",
+      strongP2: "Vibrant city with festivals and nightlife.",
+      leanP1: "Quiet resort with optional activities.",
+      leanP2: "Group tour with daily excursions.",
+      balanced: "Small town with cafes and solitude.",
+    }),
   },
-  {
-    id: 43,
-    dimension: 2,
-    type: "likert",
-    text: "I need solitude after busy periods to feel recharged.",
-    favoring: "I",
-    reverse: false,
-  },
+
+  // ===================================================================
+  // DIMENSION 3: S (Structured) vs F (Flexible) — id: 42–55
+  // ===================================================================
+  { id: 42, dimension: 3, type: "likert", text: "I plan my day hour by hour.", favoring: "S", reverse: false },
+  { id: 43, dimension: 3, type: "likert", text: "I hate last-minute changes.", favoring: "S", reverse: false },
   {
     id: 44,
-    dimension: 2,
-    type: "forced-select",
-    text: "Which best fits your energy style?",
-    options: [
-      { key: "a", label: "Inward, thoughtful, and reserved.", value: { I: 5, O: 1 } },
-      { key: "b", label: "Outward, interactive, and dynamic.", value: { I: 1, O: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { I: 4, O: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { I: 2, O: 4 } },
-      { key: "e", label: "Perfectly balanced.", value: { I: 3, O: 3 } },
-    ],
-  },
-  // Dimension 3: S/F
-  {
-    id: 45,
     dimension: 3,
     type: "likert",
-    text: "I like detailed plans and routines for daily tasks to ensure things are predictable.",
+    text: "I finish tasks well before deadlines.",
     favoring: "S",
     reverse: false,
   },
-  {
-    id: 46,
-    dimension: 3,
-    type: "likert",
-    text: "Adapting on the fly to new opportunities excites me more than sticking to schedules.",
-    favoring: "F",
-    reverse: false,
-  },
+  { id: 45, dimension: 3, type: "likert", text: "I rarely leave things open-ended.", favoring: "S", reverse: true },
+  { id: 46, dimension: 3, type: "likert", text: "I don’t enjoy winging it.", favoring: "S", reverse: true },
+
   {
     id: 47,
     dimension: 3,
     type: "likert",
-    text: "In hobbies, I prefer organized steps over making impromptu changes.",
-    favoring: "S",
+    text: "I thrive in unpredictable environments.",
+    favoring: "F",
     reverse: false,
   },
   {
     id: 48,
     dimension: 3,
     type: "likert",
-    text: "I prefer keeping things open-ended over rigid structures and final decisions.",
+    text: "I keep multiple options open until the last minute.",
     favoring: "F",
     reverse: false,
   },
   {
     id: 49,
     dimension: 3,
-    type: "forced-select",
-    text: "Organizing a home event, like a dinner, what’s your style?",
-    options: [
-      { key: "a", label: "Detailed agenda and preparations.", value: { S: 5, F: 1 } },
-      { key: "b", label: "Loose ideas, adjusting as guests arrive.", value: { S: 1, F: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { S: 4, F: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { S: 2, F: 4 } },
-      { key: "e", label: "Equally balanced.", value: { S: 3, F: 3 } },
-    ],
+    type: "likert",
+    text: "Spontaneity excites me more than plans.",
+    favoring: "F",
+    reverse: false,
   },
+
   {
     id: 50,
     dimension: 3,
-    type: "likert",
-    text: "Planning for stability helps me handle life’s uncertainties.",
-    favoring: "S",
-    reverse: false,
+    type: "forced-select",
+    text: "Organizing a shared task, like cleaning a community space:", // New, universal
+    options: forcedOptions("S", "F", {
+      strongP1: "Create a detailed schedule with assigned roles.", // S
+      strongP2: "Start cleaning and adapt based on what’s needed.", // F
+      leanP1: "Plan main tasks but allow some flexibility.", // Mild S
+      leanP2: "Go with the flow but set a loose goal.", // Mild F
+      balanced: "Mix a basic plan with room for adjustments.", // Balanced
+    }),
   },
   {
     id: 51,
     dimension: 3,
-    type: "likert",
-    text: "Flexibility allows me to embrace surprises in relationships.",
-    favoring: "F",
-    reverse: false,
+    type: "forced-select",
+    text: "Helping a group prepare for a shared event, like a celebration:", // Adjusted, universal
+    options: forcedOptions("S", "F", {
+      strongP1: "Plan every detail, like timing and supplies, in advance.", // S
+      strongP2: "Improvise based on the group’s energy and needs.", // F
+      leanP1: "Set a core plan but adjust as needed.", // Mild S
+      leanP2: "Start with ideas but stay open to changes.", // Mild F
+      balanced: "Balance planning with spontaneous decisions.", // Balanced
+    }),
   },
   {
     id: 52,
     dimension: 3,
-    type: "likert",
-    text: "I prefer having everything planned out over spontaneous, open options.",
-    favoring: "S",
-    reverse: false,
+    type: "forced-select",
+    text: "Project deadline shifts earlier:",
+    options: forcedOptions("S", "F", {
+      strongP1: "Panic and restructure entire plan immediately.",
+      strongP2: "Stay calm — you’ll adapt when the time comes.",
+      leanP1: "Adjust timeline but keep core structure.",
+      leanP2: "Wing it with high-energy crunch.",
+      balanced: "Reprioritize tasks flexibly.",
+    }),
   },
   {
     id: 53,
     dimension: 3,
-    type: "likert",
-    text: "At work, I aim for quick decisions to wrap things up.",
-    favoring: "S",
-    reverse: false,
+    type: "forced-select",
+    text: "Daily routine:",
+    options: forcedOptions("S", "F", {
+      strongP1: "Wake, coffee, gym, work — same every day.",
+      strongP2: "Every day is different — flow with energy.",
+      leanP1: "Core habits, but timing varies.",
+      leanP2: "No fixed routine, just intentions.",
+      balanced: "Flexible schedule with anchors.",
+    }),
   },
   {
     id: 54,
     dimension: 3,
     type: "forced-select",
-    text: "When facing unexpected changes, what feels most natural?",
-    options: [
-      { key: "a", label: "Sticking to a structured plan.", value: { S: 5, F: 1 } },
-      { key: "b", label: "Adapting flexibly to new possibilities.", value: { S: 1, F: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { S: 4, F: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { S: 2, F: 4 } },
-      { key: "e", label: "Equally balanced.", value: { S: 3, F: 3 } },
-    ],
+    text: "Event planning:",
+    options: forcedOptions("S", "F", {
+      strongP1: "Spreadsheet with vendors, timelines, backups.",
+      strongP2: "Vibe-based: book a venue, figure out the rest later.",
+      leanP1: "Book essentials, improvise details.",
+      leanP2: "Start with theme, adapt as you go.",
+      balanced: "Plan structure, flex on execution.",
+    }),
   },
   {
     id: 55,
     dimension: 3,
-    type: "likert",
-    text: "I organize my environment to avoid unexpected changes.",
-    favoring: "S",
-    reverse: false,
-  },
-  {
-    id: 56,
-    dimension: 3,
-    type: "likert",
-    text: "The thrill of improvisation feels more exciting than fixed plans.",
-    favoring: "F",
-    reverse: false,
-  },
-  {
-    id: 57,
-    dimension: 3,
     type: "forced-select",
-    text: "On a road trip, which feels natural?",
-    options: [
-      { key: "a", label: "Pre-booked routes and stops.", value: { S: 5, F: 1 } },
-      { key: "b", label: "Detours based on discoveries.", value: { S: 1, F: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { S: 4, F: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { S: 2, F: 4 } },
-      { key: "e", label: "Equally balanced.", value: { S: 3, F: 3 } },
-    ],
+    text: "Facing unexpected delay:",
+    options: forcedOptions("S", "F", {
+      strongP1: "Recalculate entire schedule immediately.",
+      strongP2: "Shrug — something better will come up.",
+      leanP1: "Adjust next step, keep moving.",
+      leanP2: "Use the time for spontaneous fun.",
+      balanced: "Adapt plan without stress.",
+    }),
   },
+
+  // ===================================================================
+  // DIMENSION 4: H (Harmonious) vs A (Autonomous) — id: 56–69
+  // ===================================================================
+  { id: 56, dimension: 4, type: "likert", text: "I put group needs above my own.", favoring: "H", reverse: false },
+  { id: 57, dimension: 4, type: "likert", text: "I avoid conflict to keep peace.", favoring: "H", reverse: false },
   {
     id: 58,
-    dimension: 3,
+    dimension: 4,
     type: "likert",
-    text: "Completing tasks with a clear plan feels more rewarding than open-ended exploration.",
-    favoring: "S",
+    text: "Team success feels better than solo wins.",
+    favoring: "H",
     reverse: false,
   },
-  {
-    id: 59,
-    dimension: 3,
-    type: "forced-select",
-    text: "Which best describes your approach to change?",
-    options: [
-      { key: "a", label: "Planned and orderly.", value: { S: 5, F: 1 } },
-      { key: "b", label: "Spontaneous and adaptable.", value: { S: 1, F: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { S: 4, F: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { S: 2, F: 4 } },
-      { key: "e", label: "Perfectly balanced.", value: { S: 3, F: 3 } },
-    ],
-  },
-  // Dimension 4: H/A
+  { id: 59, dimension: 4, type: "likert", text: "I rarely work alone by choice.", favoring: "H", reverse: true },
   {
     id: 60,
     dimension: 4,
     type: "likert",
-    text: "In team activities, like sports, I prioritize group harmony and shared goals.",
+    text: "I don’t need full control to be happy.",
     favoring: "H",
-    reverse: false,
+    reverse: true,
   },
-  {
-    id: 61,
-    dimension: 4,
-    type: "likert",
-    text: "Pursuing individual projects where I control the direction excites me most.",
-    favoring: "A",
-    reverse: false,
-  },
+
+  { id: 61, dimension: 4, type: "likert", text: "I prefer full control over my work.", favoring: "A", reverse: false },
   {
     id: 62,
     dimension: 4,
     type: "likert",
-    text: "In family settings, I focus on building agreement for everyone’s well-being.",
-    favoring: "H",
-    reverse: false,
-  },
-  {
-    id: 63,
-    dimension: 4,
-    type: "likert",
-    text: "I find personal achievements more rewarding than contributing to group successes.",
+    text: "I’d rather fail alone than succeed in a group.",
     favoring: "A",
     reverse: false,
   },
+  { id: 63, dimension: 4, type: "likert", text: "Autonomy is non-negotiable for me.", favoring: "A", reverse: false },
+
   {
     id: 64,
     dimension: 4,
     type: "forced-select",
-    text: "In a community volunteer group, what’s your impulse?",
-    options: [
-      { key: "a", label: "Collaborating for team cohesion.", value: { H: 5, A: 1 } },
-      { key: "b", label: "Handling tasks independently.", value: { H: 1, A: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { H: 4, A: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { H: 2, A: 4 } },
-      { key: "e", label: "Equally balanced.", value: { H: 3, A: 3 } },
-    ],
+    text: "Helping a neighbor with a task, like moving furniture:",
+    options: forcedOptions("H", "A", {
+      strongP1: "Work together closely, coordinating with them to make it a team effort.", // H
+      strongP2: "Handle the task on your own to ensure it’s done your way.", // A
+      leanP1: "Offer help but follow their lead to keep things harmonious.", // Mild H
+      leanP2: "Assist but prefer working independently on your part.", // Mild A
+      balanced: "Collaborate on some parts, work alone on others.", // Balanced
+    }),
   },
   {
     id: 65,
     dimension: 4,
-    type: "likert",
-    text: "Working together for shared goals drives my career choices.",
-    favoring: "H",
-    reverse: false,
+    type: "forced-select",
+    text: "Credit for team success:",
+    options: forcedOptions("H", "A", {
+      strongP1: "Share praise equally, even if you did most work.",
+      strongP2: "Highlight your key contributions.",
+      leanP1: "Thank team but note your role.",
+      leanP2: "Accept praise but redirect to team.",
+      balanced: "We succeeded together.",
+    }),
   },
   {
     id: 66,
     dimension: 4,
-    type: "likert",
-    text: "Maintaining personal freedom matters more than team responsibilities.",
-    favoring: "A",
-    reverse: false,
+    type: "forced-select",
+    text: "Disagreement in meeting:",
+    options: forcedOptions("H", "A", {
+      strongP1: "Change your stance to restore harmony.",
+      strongP2: "Stand firm — your idea is best.",
+      leanP1: "Compromise to move forward.",
+      leanP2: "Push your view but hear others.",
+      balanced: "Seek win-win solution.",
+    }),
   },
   {
     id: 67,
     dimension: 4,
-    type: "likert",
-    text: "Contributing to a team feels more rewarding than pursuing individual goals.",
-    favoring: "H",
-    reverse: false,
+    type: "forced-select",
+    text: "Volunteering:",
+    options: forcedOptions("H", "A", {
+      strongP1: "Join a community cleanup with friends.",
+      strongP2: "Build a personal project to donate.",
+      leanP1: "Help organize a group event.",
+      leanP2: "Work solo on a cause you care about.",
+      balanced: "Contribute skills to a team effort.",
+    }),
   },
   {
     id: 68,
     dimension: 4,
-    type: "likert",
-    text: "In social circles, I focus on group dynamics and teamwork.",
-    favoring: "H",
-    reverse: false,
+    type: "forced-select",
+    text: "Organizing a family or community event, like a meal or celebration:",
+    options: forcedOptions("H", "A", {
+      strongP1: "Plan with others to ensure everyone’s ideas are included.", // H
+      strongP2: "Take charge to plan it according to your own vision.", // A
+      leanP1: "Involve others but guide toward a shared goal.", // Mild H
+      leanP2: "Plan mostly alone but get some input from others.", // Mild A
+      balanced: "Balance group input with your own decisions.", // Balanced
+    }),
   },
   {
     id: 69,
     dimension: 4,
     type: "forced-select",
-    text: "When working with others, what motivates you most?",
-    options: [
-      { key: "a", label: "Building team unity and collaboration.", value: { H: 5, A: 1 } },
-      { key: "b", label: "Pursuing your own goals independently.", value: { H: 1, A: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { H: 4, A: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { H: 2, A: 4 } },
-      { key: "e", label: "Equally balanced.", value: { H: 3, A: 3 } },
-    ],
-  },
-  {
-    id: 70,
-    dimension: 4,
-    type: "likert",
-    text: "Shared successes feel more rewarding than solo victories.",
-    favoring: "H",
-    reverse: false,
-  },
-  {
-    id: 71,
-    dimension: 4,
-    type: "likert",
-    text: "I prefer solitary pursuits over team-oriented environments.",
-    favoring: "A",
-    reverse: false,
-  },
-  {
-    id: 72,
-    dimension: 4,
-    type: "forced-select",
-    text: "In a work meeting, how do you contribute?",
-    options: [
-      { key: "a", label: "Mediating for group agreement.", value: { H: 5, A: 1 } },
-      { key: "b", label: "Advocating your own ideas.", value: { H: 1, A: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { H: 4, A: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { H: 2, A: 4 } },
-      { key: "e", label: "Equally balanced.", value: { H: 3, A: 3 } },
-    ],
-  },
-  {
-    id: 73,
-    dimension: 4,
-    type: "likert",
-    text: "I thrive on working toward collective goals over personal priorities.",
-    favoring: "H",
-    reverse: false,
-  },
-  {
-    id: 74,
-    dimension: 4,
-    type: "forced-select",
-    text: "Which best fits your interpersonal style?",
-    options: [
-      { key: "a", label: "Collaborative and group-focused.", value: { H: 5, A: 1 } },
-      { key: "b", label: "Independent and self-reliant.", value: { H: 1, A: 5 } },
-      { key: "c", label: "A mix, leaning toward a.", value: { H: 4, A: 2 } },
-      { key: "d", label: "A mix, leaning toward b.", value: { H: 2, A: 4 } },
-      { key: "e", label: "Perfectly balanced.", value: { H: 3, A: 3 } },
-    ],
+    text: "Decision-making power:",
+    options: forcedOptions("H", "A", {
+      strongP1: "Vote with the group, even if you disagree.",
+      strongP2: "Make the call yourself if you know best.",
+      leanP1: "Influence group toward your view.",
+      leanP2: "Follow majority but reserve dissent.",
+      balanced: "Consensus with leadership tiebreaker.",
+    }),
   },
 ];
 
@@ -868,73 +827,57 @@ export const archetypes = {
 
 export function calculateCSMResults(answers) {
   const scores = Array(5)
-    .fill(0)
+    .fill()
     .map(() => ({ pole1: 0, pole2: 0 }));
+
   questions.forEach((q) => {
     const resp = answers[q.id];
     const dim = q.dimension;
     const p1 = poles[dim][0];
     const p2 = poles[dim][1];
-    if (q.type === "likert") {
+
+    if (q.type === "likert" && resp !== null) {
       let points = q.reverse ? 6 - resp : resp;
-      if (q.favoring === p1) scores[dim].pole1 += points;
+      // Determine which pole the *statement* favours
+      let favouredPole = q.favoring;
+      // If reverse, the meaning flips
+      if (q.reverse) {
+        favouredPole = favouredPole === p1 ? p2 : p1;
+      }
+      if (favouredPole === p1) scores[dim].pole1 += points;
       else scores[dim].pole2 += points;
-    } else if (q.type === "forced-select") {
+    } else if (q.type === "forced-select" && resp) {
       const opt = q.options.find((o) => o.key === resp);
       if (opt) {
         scores[dim].pole1 += opt.value[p1];
         scores[dim].pole2 += opt.value[p2];
       }
-    } else if (q.type === "rank") {
-      // resp: {a: pointsA, b: pointsB, c: pointsBalanced} (0-10 each, sum=10)
-      const rankPoints = resp;
-      Object.entries(rankPoints).forEach(([key, pts]) => {
-        const opt = q.options.find((o) => o.key === key);
-        if (opt.pole === p1) scores[dim].pole1 += pts;
-        else if (opt.pole === p2) scores[dim].pole2 += pts;
-        else if (opt.pole === "balanced") {
-          scores[dim].pole1 += pts / 2;
-          scores[dim].pole2 += pts / 2;
-        }
-      });
     }
   });
 
   const percents = scores.map((s) => {
-    const total = s.pole1 + s.pole2 || 1; // Avoid div0
+    const total = s.pole1 + s.pole2 || 1;
     let p1Pct = (s.pole1 / total) * 100;
     let p2Pct = (s.pole2 / total) * 100;
 
-    // Prevent exact 50/50: Tip to 51/49 favoring p1 if tied
     const epsilon = 0.0001;
     if (Math.abs(p1Pct - p2Pct) < epsilon) {
       p1Pct = 51;
       p2Pct = 49;
     }
 
-    // Round to whole numbers, ensuring sum=100
     p1Pct = Math.round(p1Pct);
-    p2Pct = 100 - p1Pct; // Force sum to 100
+    p2Pct = 100 - p1Pct;
 
     return { p1: p1Pct, p2: p2Pct };
   });
 
   const dominants = percents.map((p, i) => (p.p1 > p.p2 ? poles[i][0] : poles[i][1]));
   const typeCode = dominants.join("-");
-  const archetype = archetypes[typeCode]; // No fallback needed
+  const archetype = archetypes[typeCode] || { name: "Unknown", description: "" };
 
-  // Categorize strengths (Mild/Moderate/Strong for primary, High/Moderate/Low for secondary)
   const categories = percents.map((p, i) => {
-    const primary = p.p1 > p.p2 ? "p1" : "p2";
-    const primPct = primary === "p1" ? p.p1 : p.p2;
-    let domLevel = "Mild";
-    if (primPct > 85) domLevel = "Strong";
-    else if (primPct > 65) domLevel = "Moderate";
-    const secPct = 100 - primPct;
-    let infLevel = "High";
-    if (secPct < 15) infLevel = "Low";
-    else if (secPct < 35) infLevel = "Moderate";
-    return { domLevel, infLevel };
+    /* ... */
   });
 
   return { percents, dominants, typeCode, archetype, categories };

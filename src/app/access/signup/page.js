@@ -55,7 +55,11 @@ export default function Signup() {
       className="min-h-screen p-6 bg-[var(--surface)] flex items-center justify-center"
     >
       <div className="max-w-md w-full p-6 card-gradient rounded-lg">
-        <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-6">Sign Up</h1>
+        <div className="flex items-center justify-center space-x-1 mb-4">
+          <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
+          <h1 className="text-xl font-light text-white">Dynamics</h1>
+        </div>
+        <h1 className="text-lg font-bold text-[var(--text-primary)] mb-6">Sign Up</h1>
         {success && <p className="text-green-400 mb-4">{success}</p>}
         {error && <p className="text-red-400 mb-4">{error}</p>}
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">

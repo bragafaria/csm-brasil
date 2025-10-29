@@ -126,8 +126,9 @@ export default function Summary() {
       "Mild-High": "Balanced Harmony",
       "Moderate-Moderate": "Steady Alignment",
       "Strong-Low": "Focused Edge",
+      "Balanced-Balanced": "Perfect Equilibrium", // ← ADD
     };
-    return `${levelPhrases[`${domLevel}-${infLevel}`]}: ${primaryFull} and ${secondaryFull}`;
+    return `${levelPhrases[`${domLevel}-${infLevel}`] || "Dynamic Balance"}: ${primaryFull} and ${secondaryFull}`;
   };
 
   const getInterpretationIntro = (primaryFull, primaryPole, secondaryFull, secondaryPole, domLevel, infLevel) => {
@@ -135,10 +136,11 @@ export default function Summary() {
       "Mild-High": `With a Mild primary preference for ${primaryFull}  and High secondary influence from ${secondaryFull} , your balanced spectrum suggests versatile application of the report's insights. The general analysis provides a flexible foundation,lean into ${primaryFull} for core relational patterns but frequently blend in ${secondaryFull} elements for nuanced, context-specific communication strategies. This adaptability makes the report a dynamic guide rather than a rigid blueprint, allowing you to switch between ${primaryPole} and ${secondaryPole} modes seamlessly across relationship scenarios.`,
       "Moderate-Moderate": `Your Moderate primary preference for ${primaryFull}  paired with Moderate secondary influence from ${secondaryFull}  indicates a reliable yet adjustable lens for interpreting the report. Use ${primaryFull} as your steady anchor for key themes in couple dynamics, while ${secondaryFull} offers practical support in everyday interactions. The report's general ideas shine here as a balanced roadmap: emphasize ${primaryPole} strengths for consistency, but integrate ${secondaryPole} perspectives to avoid over-reliance and enhance relational flexibility.`,
       "Strong-Low": `Featuring a Strong primary preference for ${primaryFull}  and Low secondary influence from ${secondaryFull} , approach the report with focused intensity on ${primaryFull} while mindfully cultivating ${secondaryFull} as a growth edge. The general content highlights your core expertise in ${primaryPole}-driven approaches,apply it deeply where it excels in partnerships,but use the spectrum to identify blind spots, intentionally stretching into ${secondaryPole} areas for comprehensive interpretation. This transforms the report into a targeted tool for mastery and balanced development in relationships.`,
+      "Balanced-Balanced": `Your near-perfect balance between ${primaryFull} and ${secondaryFull} reflects exceptional cognitive flexibility. You naturally integrate both ${primaryPole} and ${secondaryPole} approaches, adapting fluidly to context. The report serves as a mirror of your versatility—use it to refine your already strong ability to shift between modes as needed in relationships.`,
     };
     return (
       templates[`${domLevel}-${infLevel}`] ||
-      `Leverage your ${primaryFull}  dominance while exploring ${secondaryFull}  for fuller insights.`
+      `Leverage your ${primaryFull} dominance while exploring ${secondaryFull} for fuller insights.`
     );
   };
 
@@ -149,6 +151,7 @@ export default function Summary() {
       Strong: "text-red-400 border-red-400/20 hover:bg-red-400/40",
       High: "text-red-400 border-red-400/20 hover:bg-red-400/40",
       Low: "text-green-400 border-green-400/20 hover:bg-green-400/40",
+      Balanced: "text-blue-400 border-blue-400/20 hover:bg-blue-400/40", // ← ADD
     };
     return colors[level] || "text-gray-400 border-gray-400/20 hover:bg-gray-400/40";
   };
@@ -160,6 +163,7 @@ export default function Summary() {
       Strong: "from-red-500/10 to-black/10",
       High: "from-red-500/10 to-black/10",
       Low: "from-green-500/10 to-black/10",
+      Balanced: "from-blue-500/10 to-black/10", // ← ADD
     };
     return gradients[level] || "from-gray-500/10 to-black/10";
   };
@@ -171,6 +175,7 @@ export default function Summary() {
       Strong: "bg-red-400",
       High: "bg-red-400",
       Low: "bg-green-400",
+      Balanced: "bg-blue-400", // ← ADD
     };
     return colors[level] || "bg-gray-400";
   };
@@ -233,7 +238,12 @@ export default function Summary() {
                     >
                       <div className="text-lg font-medium text-[var(--text-primary)] text-center">
                         {primaryFull}
-                        {/* ({primaryPole}) */}
+                        <div className="text-lg font-medium text-[var(--text-primary)] text-center">
+                          {primaryFull} ({primaryPole})
+                        </div>
+                        <div className="text-lg font-medium text-[var(--text-primary)] text-center">
+                          {secondaryFull} ({secondaryPole})
+                        </div>
                       </div>
                       <p className="text-sm text-[var(--text-secondary)] text-center italic px-2">{primaryDesc}</p>
                       <div className="space-y-2">

@@ -238,6 +238,10 @@ export default function Signup() {
       className="min-h-screen flex items-center justify-center bg-[var(--surface)]"
     >
       <div className="card-gradient p-8 rounded-xl shadow-lg max-w-md w-full">
+        <div className="flex items-center justify-center space-x-1 mb-4">
+          <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
+          <h1 className="text-xl font-light text-white">Dynamics</h1>
+        </div>
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -350,20 +354,16 @@ export default function Signup() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
               className="mt-4 text-center"
-            >
-              <button onClick={handleSignOut} className="text-[var(--text-secondary)] hover:text-[var(--accent)]">
-                Sign Out
-              </button>
-            </motion.div>
+            ></motion.div>
             {!assessmentData && (
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="text-red-400 text-sm mt-4 text-center"
               >
-                Please complete the assessment before signing up.
-                <a href={`/report/${typeCode}/couples`} className="text-[var(--accent)] hover:underline ml-1">
-                  Go back to assessment
+                Complete your assessment:
+                <a href={`/`} className="text-[var(--accent)] hover:underline ml-1">
+                  <span className="text-[var(--primary)]"> Click here!</span>
                 </a>
               </motion.p>
             )}

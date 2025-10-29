@@ -1,6 +1,5 @@
 // src/app/components/Sidebar.js
 "use client";
-
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -31,7 +30,6 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
         setLoading(false);
         return;
       }
-
       try {
         const {
           data: { session },
@@ -45,7 +43,6 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
           return;
         }
         console.log("Sidebar session user ID:", session.user.id);
-
         const userId = session.user.id;
 
         // Fetch Partner A data and verify user access
@@ -61,7 +58,6 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
           setLoading(false);
           return;
         }
-
         if (!partnerAData) {
           console.error("No user found for siteId:", siteId);
           setError("No user found for this dashboard.");
@@ -79,14 +75,12 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
 
         const partnerAName = partnerAData.name || "Partner A";
         let partnerBName = null;
-
         if (partnerAData.partner_id) {
           const { data: partnerBData, error: partnerBError } = await supabase
             .from("users")
             .select("name")
             .eq("id", partnerAData.partner_id)
             .maybeSingle();
-
           if (partnerBError) {
             console.error("Error fetching Partner B:", partnerBError.message);
           } else if (partnerBData) {
@@ -105,29 +99,19 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
         setLoading(false);
       }
     }
-
     fetchPartnerNames();
   }, [siteId, router]);
 
+  // --------------------------------------------------------------
+  //  MENU DEFINITION
+  // --------------------------------------------------------------
   const menuItems = [
     {
-      id: "personal-report",
-      label: "Personal Report",
+      id: "home",
+      label: "Home",
       icon: User,
-      subItems: [
-        {
-          label: partnerNames.partnerA,
-          route: `/dashboard/${siteId}/personal-report/${createSlug(partnerNames.partnerA)}`,
-        },
-        ...(partnerNames.partnerB
-          ? [
-              {
-                label: partnerNames.partnerB,
-                route: `/dashboard/${siteId}/personal-report/${createSlug(partnerNames.partnerB)}`,
-              },
-            ]
-          : []),
-      ],
+      // Home is a direct link – no subItems
+      route: `/dashboard/${siteId}`,
     },
     {
       id: "couples-report",
@@ -171,14 +155,15 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
 
   const isActive = (route) => pathname === route;
 
+  // --------------------------------------------------------------
+  //  RENDER
+  // --------------------------------------------------------------
   if (loading) {
     return <div className="p-4 text-[var(--text-primary)]">Loading sidebar...</div>;
   }
-
   if (error) {
     return <div className="p-4 text-red-400">{error}</div>;
   }
-
   if (!sidebarOpen) return null;
 
   return (
@@ -205,6 +190,26 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
             const isExpanded = expandedItems.includes(item.id);
             const hasActiveChild = item.subItems?.some((sub) => isActive(sub.route));
 
+            // Home is a direct link – render it with <Link>
+            if (item.id === "home") {
+              return (
+                <Link
+                  key={item.id}
+                  href={item.route}
+                  onClick={isMobile ? toggleSidebar : undefined}
+                  className={`flex w-full items-center px-3 py-2.5 rounded-lg transition-colors group ${
+                    isActive(item.route)
+                      ? "bg-[var(--primary)] text-white"
+                      : "hover:bg-[var(--surface)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                  }`}
+                >
+                  <Icon size={20} className="mr-3 flex-shrink-0" />
+                  <span className="flex-1 text-left text-sm font-medium">{item.label}</span>
+                </Link>
+              );
+            }
+
+            // All other items (with possible sub-items)
             return (
               <div key={item.id}>
                 <button
@@ -216,7 +221,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
                   }`}
                 >
                   <Icon size={20} className="mr-3 flex-shrink-0" />
-                  <span className="flex-1 text-left text-sm font-medium">{item.label}</span>
+                  <span className="flex-1 text-left text-sm font-medium cursor-pointer">{item.label}</span>
                 </button>
 
                 {isExpanded && item.subItems && (
@@ -225,15 +230,15 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
                       <Link
                         key={subItem.route}
                         href={subItem.route}
-                        onClick={toggleSidebar}
-                        className={`w-full flex items-center px-3 py-2 rounded-md text-sm transition-colors cursor-pointer ${
+                        onClick={isMobile ? toggleSidebar : undefined}
+                        className={`flex w-full items-center px-3 py-2 rounded-md text-sm transition-colors ${
                           isActive(subItem.route)
                             ? "bg-[var(--accent)] bg-opacity-20 text-[var(--text-primary)]"
                             : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface)]"
                         }`}
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-current mr-2 opacity-50"></div>
-                        {subItem.label}
+                        <span className="cursor-pointer">{subItem.label}</span>
                       </Link>
                     ))}
                   </div>
