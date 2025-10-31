@@ -22,6 +22,7 @@ export default function Login() {
           data: { session },
           error: sessionError,
         } = await supabase.auth.getSession();
+
         if (sessionError) {
           console.error("Session check error:", sessionError.message);
           setError("Failed to verify session. Please log in.");
@@ -30,6 +31,8 @@ export default function Login() {
 
         if (session) {
           const userId = session.user.id;
+
+          // Fetch user profile
           const { data: userData, error: userError } = await supabase
             .from("users")
             .select("id, user_type")
@@ -37,7 +40,7 @@ export default function Login() {
             .maybeSingle();
 
           if (userError || !userData) {
-            console.error("User fetch error:", userError?.message || "No user found for userId", userId);
+            console.error("User fetch error:", userError?.message || "No user found", userId);
             setError("User profile not found. Please log in again.");
             await supabase.auth.signOut();
             localStorage.removeItem("supabase.auth.token");
@@ -59,7 +62,6 @@ export default function Login() {
           }
 
           if (!coachData) {
-            // If user is not a coach, force logout
             console.log("Non-coach session detected, signing out:", { userId, userType: userData.user_type });
             await supabase.auth.signOut();
             localStorage.removeItem("supabase.auth.token");
@@ -67,7 +69,7 @@ export default function Login() {
             return;
           }
 
-          console.log("Authenticated coach, redirecting:", { userId, redirectPath: "/access/coaching" });
+          console.log("Authenticated coach, redirecting to /access/coaching");
           router.push("/access/coaching");
         }
       } catch (err) {
@@ -75,6 +77,7 @@ export default function Login() {
         setError("An unexpected error occurred. Please try again.");
       }
     }
+
     checkSession();
   }, [router]);
 
@@ -96,12 +99,14 @@ export default function Login() {
       }
 
       if (!data.session || !data.user) {
-        console.error("No session or user data returned:", { data });
-        setError("No session or user data returned. Please try again.");
+        console.error("No session or user data returned:", data);
+        setError("Login failed. Please try again.");
         return;
       }
 
       const userId = data.user.id;
+
+      // Fetch user profile
       const { data: userData, error: userError } = await supabase
         .from("users")
         .select("id, user_type")
@@ -109,12 +114,13 @@ export default function Login() {
         .maybeSingle();
 
       if (userError || !userData) {
-        console.error("User fetch error:", userError?.message || "No user found for userId", userId);
+        console.error("User fetch error:", userError?.message || "No user found", userId);
         setError("User profile not found. Please sign up or try again.");
         await supabase.auth.signOut();
         return;
       }
 
+      // Check coach status
       const { data: coachData, error: coachError } = await supabase
         .from("coaches")
         .select("id")
@@ -139,67 +145,113 @@ export default function Login() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen flex items-center justify-center bg-[var(--surface)]"
-    >
-      <div className="card-gradient p-8 rounded-xl shadow-lg max-w-md w-full">
-        <div className="flex items-center justify-center space-x-1 mb-4">
-          <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
-          <h1 className="text-xl font-light text-white">Dynamics</h1>
-        </div>
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]"
-        >
-          Login to Your Account
-        </motion.h1>
-        <form onSubmit={handleLogin} className="space-y-4">
-          <motion.input
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
-            required
-          />
-          <motion.input
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
-            required
-          />
+    <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center p-6">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="w-full max-w-md"
+      >
+        <div className="card-gradient p-8 rounded-lg shadow-custom-lg border border-[var(--border)]">
+          {/* Logo */}
+          <div className="flex items-center justify-center gap-1 mb-6">
+            <h1 className="text-2xl font-bold text-[var(--primary)]">CSM</h1>
+            <h1 className="text-2xl font-light text-white">Dynamics</h1>
+          </div>
+
+          <h2 className="text-xl font-bold text-[var(--text-primary)] text-center mb-6">Login to Your Account</h2>
+
+          {/* Error Message */}
           {error && (
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400 text-sm">
-              {error}
-            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="mb-5 p-4 bg-red-500/10 border border-red-500/30 rounded-lg"
+            >
+              <p className="text-red-400 text-sm font-medium text-center">{error}</p>
+            </motion.div>
           )}
-          <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            type="submit"
-            disabled={loading}
-            className="btn-primary w-full py-3 rounded-lg font-semibold disabled:opacity-50 hover:cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {loading ? "Logging in..." : "Login"}
-          </motion.button>
-        </form>
-      </div>
-    </motion.div>
+
+          {/* Form */}
+          <form onSubmit={handleLogin} className="space-y-5">
+            {/* Email */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <label htmlFor="email" className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
+                Email Address
+              </label>
+              <input
+                id="email"
+                type="email"
+                placeholder="coach@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
+                required
+              />
+            </motion.div>
+
+            {/* Password */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <label htmlFor="password" className="block text-sm font-semibold text-[var(--text-primary)] mb-1.5">
+                Password
+              </label>
+              <input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
+                required
+              />
+            </motion.div>
+
+            {/* Submit */}
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              type="submit"
+              disabled={loading}
+              className={`w-full py-3.5 rounded-lg font-bold text-white transition-all shadow-md hover:shadow-lg ${
+                loading
+                  ? "bg-[var(--surface-variant)] text-[var(--text-secondary)] opacity-70 cursor-not-allowed"
+                  : "btn-primary"
+              }`}
+            >
+              {loading ? "Logging in..." : "Login"}
+            </motion.button>
+          </form>
+
+          {/* Links */}
+          <div className="mt-6 text-center text-sm text-[var(--text-secondary)] space-y-2">
+            <p>
+              <a
+                href="/access/forgot-password"
+                className="font-medium text-[var(--accent)] hover:underline transition-colors"
+              >
+                Forgot password?
+              </a>
+            </p>
+            <p>
+              {"Don't"} have an account?{" "}
+              <a href="/access/signup" className="font-medium text-[var(--accent)] hover:underline transition-colors">
+                Sign up
+              </a>
+            </p>
+          </div>
+        </div>
+      </motion.div>
+    </div>
   );
 }

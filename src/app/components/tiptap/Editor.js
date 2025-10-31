@@ -38,16 +38,16 @@ export default function Editor({ content, onChange }) {
     },
   });
 
-  // Sync external content changes
-  useEffect(() => {
-    if (editor && content !== undefined) {
-      editor.commands.setContent(content, false);
-    }
-  }, [content, editor]);
+  // // Sync external content changes
+  // useEffect(() => {
+  //   if (editor && content !== undefined) {
+  //     editor.commands.setContent(content, false);
+  //   }
+  // }, [content, editor]);
 
-  useEffect(() => {
-    return () => editor?.destroy();
-  }, [editor]);
+  // useEffect(() => {
+  //   return () => editor?.destroy();
+  // }, [editor]);
 
   return (
     <div className="space-y-2">

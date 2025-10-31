@@ -1,3 +1,4 @@
+// app/dashboard/[siteId]/personal-report/[userName]/page.js
 "use client";
 
 import { useRouter, useParams } from "next/navigation";
@@ -8,7 +9,7 @@ import { archetypes, getDimPoles, poles } from "../../../../utils/csm";
 import { reportTemplates } from "../../../../lib/personal/ReportTemplates";
 import { HelpCircle, ArrowRight } from "lucide-react";
 
-const fixedNextSteps = `You’ve uncovered the map to your unique cognitive blueprint, a crucial step toward self-insight. Now, explore how your mind connects with your partner’s. Your strengths, style, and vulnerabilities interplay with theirs, shaping your relationship’s dynamic. The CSM Couple’s Insight Report illuminates this connection, offering a tailored guide to navigate alignments, resolve tensions, and build a stronger, more aware partnership through mutual understanding. Discover how your blueprints harmonize to create a shared journey.`;
+const fixedNextSteps = `You've uncovered the map to your unique cognitive blueprint, a crucial step toward self-insight. Now, explore how your mind connects with your partner's. Your strengths, style, and vulnerabilities interplay with theirs, shaping your relationship's dynamic. The CSM Couple's Insight Report illuminates this connection, offering a tailored guide to navigate alignments, resolve tensions, and build a stronger, more aware partnership through mutual understanding. Discover how your blueprints harmonize to create a shared journey.`;
 
 export default function PersonalReportPage() {
   const { siteId, userName } = useParams();
@@ -170,15 +171,28 @@ export default function PersonalReportPage() {
     router.push(`/dashboard/${siteId}/couples-report/report`);
   };
 
-  if (loading) return <div className="p-6 text-lg">Loading report...</div>;
-  if (error) return <div className="p-6 text-red-400">{error}</div>;
+  if (loading)
+    return (
+      <div className="flex items-center justify-center min-h-screen p-6">
+        <div className="text-[var(--text-primary)] text-lg font-medium">Loading report...</div>
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="flex items-center justify-center min-h-screen p-6">
+        <div className="text-red-400 text-lg font-medium text-center">{error}</div>
+      </div>
+    );
 
   if (!reportData?.has_assessment || !data || !reportTemplates[data.typeCode] || !archetypes[data.typeCode]) {
     return (
-      <div className="p-6 mt-20">
-        <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-6">Personal Report for {reportData?.name}</h1>
-        <div className="bg-[var(--surface)] p-6 rounded-xl shadow-custom">
-          <p className="text-[var(--text-secondary)]">
+      <div className="container mx-auto p-6 mt-20 max-w-7xl">
+        <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-8 text-center">
+          Personal Report for {reportData?.name}
+        </h1>
+        <div className="card-gradient p-6 rounded-lg shadow-custom max-w-2xl mx-auto">
+          <p className="text-[var(--text-secondary)] text-center">
             No assessment data available. Please complete the assessment to view your report.
           </p>
         </div>
@@ -406,7 +420,7 @@ export default function PersonalReportPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: dimIdx * 0.1 }}
-                className="bg-[var(--surface-v-secondary)] p-6 rounded-xl shadow-lg border border-[var(--border)] flex flex-col space-y-6"
+                className="card-gradient p-6 rounded-lg shadow-custom border border-[var(--border)] flex flex-col space-y-6"
               >
                 <div className="text-center space-y-3">
                   <h3 className="text-xl font-semibold text-[var(--text-primary)]">{dim.title}</h3>
@@ -786,12 +800,12 @@ export default function PersonalReportPage() {
       transition={{ duration: 0.8 }}
       className="flex min-h-screen flex-col py-12 px-4 bg-[var(--surface)] text-[var(--text-primary)]"
     >
-      <div className="w-full max-w-6xl bg-[var(--surface-variant)] p-10 rounded-2xl shadow-xl border border-[var(--border)] space-y-12">
+      <div className="w-full max-w-6xl mx-auto bg-[var(--surface-variant)] p-10 rounded-lg shadow-custom-lg border border-[var(--border)] space-y-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center space-y-4 hero-gradient rounded-2xl p-8 mb-8 shadow-custom-lg"
+          className="text-center space-y-4 hero-gradient rounded-lg p-8 mb-8 shadow-custom-lg"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] tracking-tight">
             Your CSM Personality Report
@@ -815,7 +829,7 @@ export default function PersonalReportPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="card-gradient p-8 rounded-xl shadow-lg border border-[var(--border)] space-y-6"
+            className="card-gradient p-8 rounded-lg shadow-custom border border-[var(--border)] space-y-6"
           >
             <div>
               <p className="text-base font-medium text-[var(--text-primary)]">Your Type:</p>
@@ -916,7 +930,7 @@ export default function PersonalReportPage() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleCouplesReportClick}
-            className="btn-primary font-semibold py-3 px-10 rounded-lg shadow-lg inline-flex items-center group"
+            className="btn-primary font-semibold py-3 px-10 rounded-lg shadow-custom inline-flex items-center group transition-all"
           >
             Get Your Couple Insight Report
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -938,7 +952,7 @@ export default function PersonalReportPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="card-gradient p-8 rounded-2xl max-w-md w-full max-h-[80vh] overflow-y-auto shadow-xl border border-[var(--border)]"
+              className="card-gradient p-8 rounded-lg max-w-md w-full max-h-[80vh] overflow-y-auto shadow-custom-lg border border-[var(--border)]"
             >
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl font-semibold text-[var(--text-primary)]">{modalContent.title}</h3>

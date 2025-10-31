@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* ──────────────────────────────────────────────────────────────
    NEW PRIMARY: #5033c0
@@ -13,11 +15,12 @@
 
   /* Primary */
   --primary: #5033c0; /* NEW BASE */
-  --primary-hover: #5f3de0; /* +15% lightness from #5033c0 (same delta as #7331b0 → #7e22ce) */
+  --primary-hover: #5f3de0; /* +15% lightness from #5033c0 */
+  --primary-dark: rgba(80, 51, 192, 0.8); /* For button hover (replaces color-mix) */
 
-  /* Accent – derived from primary using the *same HSL offsets* as original */
-  --accent: #5e5185; /* HSL: same hue as #5033c0, S: 100% → 60%, L: 80% */
-  --accent-hover: #493f62; /* Slightly lighter version of accent */
+  /* Accent */
+  --accent: #5e5185;
+  --accent-hover: #493f62;
 
   /* Tertiary */
   --tertiary: #bf00ff;
@@ -47,10 +50,18 @@
   --color-foreground: var(--text-primary);
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  /* ── RGB VALUES FOR v3 OPACITY SUPPORT ── */
+  --primary-rgb: 80, 51, 192;
+  --primary-hover-rgb: 95, 61, 224;
+  --accent-rgb: 94, 81, 133;
+  --border-rgb: 42, 46, 56;
+  --surface-rgb: 11, 14, 17;
+  --surface-variant-rgb: 23, 26, 33;
 }
 
 /* ──────────────────────────────────────────────────────────────
-   Body & base styles (unchanged)
+   Body & base styles
    ────────────────────────────────────────────────────────────── */
 body {
   background: var(--surface);
@@ -61,8 +72,7 @@ body {
 }
 
 /* ──────────────────────────────────────────────────────────────
-   Re-usable component classes – only the colours that reference
-   the primary/primary-hover/ glow variables have changed.
+   Re-usable component classes
    ────────────────────────────────────────────────────────────── */
 .card-gradient {
   background-color: var(--surface-variant);
@@ -93,7 +103,7 @@ body {
   transition: var(--transition);
 }
 .btn-primary:hover {
-  background-color: var(--primary-hover);
+  background-color: var(--primary-dark); /* ← Uses rgba() instead of color-mix */
   transform: scale(1.05);
   box-shadow: var(--glow-hover);
 }
@@ -110,7 +120,7 @@ body {
   transition: var(--transition);
 }
 .btn-secondary:hover {
-  background-color: var(--primary-hover);
+  background-color: var(--primary-dark);
   transform: scale(1.05);
   box-shadow: var(--glow-hover);
 }
@@ -177,7 +187,7 @@ body {
 }
 
 /* ──────────────────────────────────────────────────────────────
-   Custom Scrollbar – still uses the new primary
+   Custom Scrollbar
    ────────────────────────────────────────────────────────────── */
 .custom-scrollbar::-webkit-scrollbar {
   width: 8px;
@@ -193,7 +203,7 @@ body {
   box-shadow: var(--glow);
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-hover);
+  background: var(--primary-dark);
   box-shadow: var(--glow-hover);
 }
 
@@ -203,6 +213,7 @@ body {
   scrollbar-color: var(--primary) var(--surface);
 }
 
+/* Section Full Height */
 .section-full {
   @apply min-h-screen md:min-h-[100vh] flex flex-col justify-center;
 }

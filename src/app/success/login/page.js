@@ -152,10 +152,10 @@ export default function Login() {
       transition={{ duration: 0.5 }}
       className="min-h-screen flex items-center justify-center bg-[var(--surface)]"
     >
-      <div className="card-gradient p-8 rounded-xl shadow-lg max-w-md w-full">
+      <div className="card-gradient p-8 rounded-lg shadow-custom max-w-md w-full">
         <div className="flex items-center justify-center space-x-1 mb-4">
-          <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
-          <h1 className="text-xl font-light text-white">Dynamics</h1>
+          <h1 className="text-xl font-bold text-[var(--primary)]">CSM </h1>
+          <h1 className="text-xl font-light text-[var(--text-primary)]">Dynamics</h1>
         </div>
         <motion.h1
           initial={{ opacity: 0 }}
@@ -174,7 +174,7 @@ export default function Login() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
+            className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:outline-none focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] transition-[var(--transition)]"
             required
           />
           <motion.input
@@ -185,7 +185,7 @@ export default function Login() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
+            className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:outline-none focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] transition-[var(--transition)]"
             required
           />
           {error && (
@@ -199,7 +199,7 @@ export default function Login() {
             transition={{ duration: 0.5, delay: 0.2 }}
             type="submit"
             disabled={loading}
-            className="btn-primary w-full py-3 rounded-lg font-semibold disabled:opacity-50 hover:cursor-pointer"
+            className="btn-primary w-full py-3 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

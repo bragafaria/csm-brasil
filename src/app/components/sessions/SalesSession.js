@@ -2,8 +2,8 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
+import { motion } from "framer-motion";
 
 export default function SalesSession({
   hasFreeAvailable,
@@ -12,16 +12,10 @@ export default function SalesSession({
   hasActiveSession,
   isActiveSubscriber,
 }) {
-  const router = useRouter();
   const [showBlockModal, setShowBlockModal] = useState(false);
 
-  // -------------------------------------------------
-  // Helper – block any payment attempt if a session is active
-  // -------------------------------------------------
-  // In SalesSession.js
   const attemptPayment = async (handler) => {
     if (hasActiveSession) {
-      // ← uses correct status
       setShowBlockModal(true);
       return;
     }
@@ -43,10 +37,12 @@ export default function SalesSession({
           "Refresh-Token": session.refresh_token,
         },
       });
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || "Failed to mock subscription");
       }
+
       alert("Mock subscription created! Loading editor...");
       onStatusUpdate();
     });
@@ -67,10 +63,12 @@ export default function SalesSession({
           "Refresh-Token": session.refresh_token,
         },
       });
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || "Failed to mock payment");
       }
+
       alert("Mock payment created! Loading editor...");
       onStatusUpdate();
     });
@@ -78,69 +76,106 @@ export default function SalesSession({
 
   return (
     <>
-      <div className="space-y-6 w-full bg-[var(--surface-variant)] p-4 md:p-6 rounded-lg border border-[var(--border)] shadow-custom">
-        <h2 className="text-xl md:text-2xl font-semibold text-[var(--text-primary)]">Unlock Blueprint Dialogue</h2>
-        <p className="text-[var(--text-secondary)] text-sm md:text-base">
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="card-gradient p-6 md:p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
+      >
+        <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4">Unlock Blueprint Dialogue</h2>
+
+        <p className="text-[var(--text-secondary)] text-sm md:text-base mb-6">
           Guided self-reflection sessions tailored to your CSM archetype. Benefits:
         </p>
-        <ul className="list-disc pl-6 space-y-2 text-[var(--text-primary)]">
+
+        <ul className="space-y-2 mb-6 text-[var(--text-primary)] list-disc pl-6">
           <li>Personalized insights based on your cognitive blueprint</li>
           <li>Actionable steps for growth in relationships and life</li>
           <li>Hybrid AI-human support for depth and efficiency</li>
           <li>Private, positive, and collaborative dialogues</li>
-          <li>24-hour turnaround (Mon-Fri)</li>
+          <li>24-hour turnaround (Mon–Fri)</li>
         </ul>
 
+        {/* Active Session Warning */}
         {hasActiveSession && !isActiveSubscriber && (
-          <p className="text-red-500 text-sm md:text-base">
-            Your session is being processed. View it in View Sessions. To submit another, buy credit or subscribe.
-          </p>
-        )}
-
-        {hasFreeAvailable ? (
-          <button
-            onClick={onStartFree}
-            className="w-full md:w-auto px-8 py-3 rounded-lg font-medium shadow-custom bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white transition-all duration-200"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg mb-6"
           >
-            Start Your Free Session
-          </button>
-        ) : (
-          <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-            <button
-              onClick={handleBuySession}
-              className="w-full md:w-auto px-8 py-3 rounded-lg font-medium shadow-custom bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white transition-all duration-200 cursor-pointer"
-            >
-              Buy Session Credit ($19)
-            </button>
-            <button
-              onClick={handleSubscribe}
-              className="w-full md:w-auto px-8 py-3 rounded-lg font-medium shadow-custom bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white transition-all duration-200 cursor-pointer"
-            >
-              Subscribe ($49/month - Unlimited)
-            </button>
-          </div>
-        )}
-      </div>
-
-      {/* -------------------------------------------------
-          BLOCK MODAL
-         ------------------------------------------------- */}
-      {showBlockModal && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-[var(--surface)] p-6 rounded-lg max-w-md w-full shadow-xl">
-            <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-3">Cannot Purchase Yet</h3>
-            <p className="text-[var(--text-secondary)] mb-4">
-              You already have an active session awaiting a response. Please wait until it is answered before buying a
-              new credit or subscribing.
+            <p className="text-red-500 text-sm md:text-base font-medium">
+              Your session is being processed. View it in <strong>View Sessions</strong>. To submit another, buy credit
+              or subscribe.
             </p>
-            <button
+          </motion.div>
+        )}
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col md:flex-row gap-4">
+          {hasFreeAvailable ? (
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={onStartFree}
+              className="w-full px-8 py-4 rounded-lg font-bold text-lg btn-primary shadow-md hover:shadow-lg transition-all"
+            >
+              Start Your Free Session
+            </motion.button>
+          ) : (
+            <>
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={handleBuySession}
+                className="flex-1 px-6 py-4 rounded-lg font-bold text-lg bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white shadow-md hover:shadow-lg transition-all"
+              >
+                Buy Session Credit ($19)
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={handleSubscribe}
+                className="flex-1 px-6 py-4 rounded-lg font-bold text-lg btn-primary shadow-md hover:shadow-lg transition-all"
+              >
+                Subscribe ($49/month — Unlimited)
+              </motion.button>
+            </>
+          )}
+        </div>
+      </motion.div>
+
+      {/* Block Modal */}
+      {showBlockModal && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setShowBlockModal(false)}
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+            className="bg-[var(--surface)] p-6 md:p-8 rounded-lg max-w-md w-full shadow-custom-lg card-gradient"
+          >
+            <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3">Cannot Purchase Yet</h3>
+            <p className="text-[var(--text-secondary)] text-sm md:text-base mb-6">
+              You already have an <strong>active session</strong> awaiting a response. Please wait until it is answered
+              before buying a new credit or subscribing.
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               onClick={() => setShowBlockModal(false)}
-              className="w-full px-4 py-2 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white rounded-md cursor-pointer"
+              className="w-full px-6 py-3 rounded-lg font-bold btn-primary shadow-md hover:shadow-lg transition-all"
             >
               Got it
-            </button>
-          </div>
-        </div>
+            </motion.button>
+          </motion.div>
+        </motion.div>
       )}
     </>
   );

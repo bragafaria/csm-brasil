@@ -9,6 +9,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import sanitizeHtml from "sanitize-html";
 import parse from "html-react-parser";
+import { motion } from "framer-motion";
 
 export default function ViewSessions() {
   const [sessions, setSessions] = useState([]);
@@ -22,7 +23,6 @@ export default function ViewSessions() {
   const [totalPages, setTotalPages] = useState(1);
   const recordsPerPage = 5;
 
-  // Fetch sessions and coach details
   useEffect(() => {
     async function fetchData() {
       try {
@@ -34,21 +34,16 @@ export default function ViewSessions() {
           throw new Error("Please log in to view sessions.");
         }
 
-        // Fetch total count of sessions for pagination
         const { count, error: countError } = await supabase
           .from("blueprint_sessions")
           .select("id", { count: "exact", head: true })
           .eq("user_id", session.user.id);
 
-        if (countError) {
-          throw new Error(countError.message);
-        }
+        if (countError) throw new Error(countError.message);
 
-        // Calculate total pages
         const total = count || 0;
         setTotalPages(Math.ceil(total / recordsPerPage));
 
-        // Fetch paginated sessions
         const start = (currentPage - 1) * recordsPerPage;
         const end = start + recordsPerPage - 1;
 
@@ -59,13 +54,9 @@ export default function ViewSessions() {
           .order("updated_at", { ascending: false })
           .range(start, end);
 
-        if (error) {
-          throw new Error(error.message);
-        }
-
+        if (error) throw new Error(error.message);
         setSessions(data || []);
 
-        // Fetch coach assigned to the most recent 'answered' or 'assigned' session
         let coachData = null;
         if (data && data.length > 0) {
           const { data: sessionCoach, error: coachError } = await supabase
@@ -77,15 +68,11 @@ export default function ViewSessions() {
             .limit(1)
             .single();
 
-          if (coachError && coachError.code !== "PGRST116") {
-            console.error("Coach fetch error:", coachError);
-            throw new Error(`Failed to fetch session coach: ${coachError.message}`);
+          if (!coachError && sessionCoach?.coaches) {
+            coachData = sessionCoach.coaches;
           }
-
-          coachData = sessionCoach?.coaches;
         }
 
-        // Fallback: Fetch a default coach if no sessions or no coach assigned
         if (!coachData) {
           const { data: defaultCoach, error: defaultCoachError } = await supabase
             .from("coaches")
@@ -95,12 +82,9 @@ export default function ViewSessions() {
             .limit(1)
             .single();
 
-          if (defaultCoachError) {
-            console.error("Default coach fetch error:", defaultCoachError);
-            throw new Error(`Failed to fetch default coach: ${defaultCoachError.message}`);
+          if (!defaultCoachError && defaultCoach) {
+            coachData = defaultCoach;
           }
-
-          coachData = defaultCoach;
         }
 
         setCoach({
@@ -118,59 +102,24 @@ export default function ViewSessions() {
     fetchData();
   }, [currentPage]);
 
-  // Handle session click to show preview
-  const handleSessionClick = (session) => {
-    setSelectedSession(session);
-  };
+  const handleSessionClick = (session) => setSelectedSession(session);
+  const handleClosePreview = () => setSelectedSession(null);
+  const handleOpenQuestionModal = () => selectedSession && setShowQuestionModal(true);
+  const handleOpenAnswerModal = () => selectedSession?.answer && setShowAnswerModal(true);
 
-  // Handle closing the preview
-  const handleClosePreview = () => {
-    setSelectedSession(null);
-  };
+  const handlePreviousPage = () => currentPage > 1 && setCurrentPage((prev) => prev - 1);
+  const handleNextPage = () => currentPage < totalPages && setCurrentPage((prev) => prev + 1);
 
-  // Handle opening modals
-  const handleOpenQuestionModal = () => {
-    if (selectedSession) {
-      setShowQuestionModal(true);
-    }
-  };
-
-  const handleOpenAnswerModal = () => {
-    if (selectedSession && selectedSession.answer) {
-      setShowAnswerModal(true);
-    }
-  };
-
-  // Handle pagination
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1);
-    }
-  };
-
-  // Status color mapping
   const getStatusStyles = (status) => {
-    switch (status) {
-      case "pending":
-        return "text-red-500 border-red-500/30 bg-red-500/10";
-      case "assigned":
-        return "text-orange-500 border-orange-500/30 bg-orange-500/10";
-      case "answered":
-        return "text-green-500 border-green-500/30 bg-green-500/10";
-      case "canceled":
-        return "text-purple-500 border-purple-500/30 bg-purple-500/10";
-      default:
-        return "text-gray-500 border-gray-500/30 bg-gray-500/10";
-    }
+    const styles = {
+      pending: "text-red-500 border-red-500/30 bg-red-500/10",
+      assigned: "text-orange-500 border-orange-500/30 bg-orange-500/10",
+      answered: "text-green-500 border-green-500/30 bg-green-500/10",
+      canceled: "text-purple-500 border-purple-500/30 bg-purple-500/10",
+    };
+    return styles[status] || "text-[var(--text-secondary)] border-[var(--border)] bg-[var(--surface-variant)]";
   };
 
-  // Function to strip HTML and truncate text
   const stripHtmlAndTruncate = (html, maxLength = 100) => {
     if (!html) return "";
     const doc = new DOMParser().parseFromString(html, "text/html");
@@ -178,7 +127,6 @@ export default function ViewSessions() {
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   };
 
-  // Generate and sanitize HTML for modals
   const renderHtml = (content) => {
     if (!content) return "";
     try {
@@ -186,124 +134,144 @@ export default function ViewSessions() {
       const output = generateHTML(parsed, [
         StarterKit.configure({
           heading: { levels: [1, 2, 3] },
-          bulletList: { keepMarks: true, keepAttributes: false },
-          orderedList: { keepMarks: true, keepAttributes: false },
+          bulletList: { keepMarks: true },
+          orderedList: { keepMarks: true },
         }),
         Underline,
       ]);
       return sanitizeHtml(output, {
-        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["h1", "h2", "h3", "underline"]),
-        allowedAttributes: {
-          ...sanitizeHtml.defaults.allowedAttributes,
-          "*": ["class"],
-        },
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["h1", "h2", "h3", "u"]),
+        allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, "*": ["class"] },
       });
-    } catch (e) {
+    } catch {
       return sanitizeHtml(content, {
-        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["h1", "h2", "h3", "underline"]),
-        allowedAttributes: {
-          ...sanitizeHtml.defaults.allowedAttributes,
-          "*": ["class"],
-        },
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["h1", "h2", "h3", "u"]),
+        allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, "*": ["class"] },
       });
     }
   };
 
   if (loading) {
-    return <div className="text-[var(--text-primary)]">Loading sessions...</div>;
+    return (
+      <div className="flex items-center justify-center p-8">
+        <div className="flex items-center gap-3">
+          <div className="w-6 h-6 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin"></div>
+          <span className="text-[var(--text-secondary)] text-sm font-medium">Loading sessions...</span>
+        </div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="text-red-400">Error: {error}</div>;
+    return (
+      <div className="p-6 bg-[var(--surface-variant)] rounded-lg border border-red-400/20 shadow-custom">
+        <p className="text-red-400 text-sm font-medium">Error: {error}</p>
+        <button onClick={() => window.location.reload()} className="mt-3 text-xs text-[var(--accent)] hover:underline">
+          Refresh
+        </button>
+      </div>
+    );
   }
 
   return (
-    <div className="space-y-6 w-full bg-[var(--surface-variant)] p-4 md:p-6 rounded-lg border border-[var(--border)] shadow-custom">
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="card-gradient p-6 md:p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
+    >
       {!selectedSession ? (
         <>
-          <h2 className="text-xl md:text-2xl font-semibold text-[var(--text-primary)] section-header animate">
-            Your Sessions
-          </h2>
-          <div className="space-y-2">
-            <h3 className="text-lg font-medium text-[var(--text-primary)]">Certified CSM Specialist:</h3>
-            <div className="flex items-center space-x-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6">Your Sessions</h2>
+
+          {/* Coach Info */}
+          <div className="mb-6 p-4 bg-[var(--surface)] rounded-lg border border-[var(--border)] shadow-sm">
+            <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-3">Certified CSM Expert:</h3>
+            <div className="flex items-center gap-4">
               {coach.profile_picture_path ? (
                 <img
                   src={`${coach.profile_picture_path}?width=128&height=128&quality=80&resize=contain`}
                   alt={`${coach.name}'s profile`}
-                  className="w-12 h-12 rounded-full object-cover"
+                  className="w-14 h-14 rounded-full object-cover ring-2 ring-[var(--accent)]/20"
                 />
               ) : (
-                <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-[var(--text-secondary)]">
-                  {coach.name ? coach.name.charAt(0) : "C"}
+                <div className="w-14 h-14 rounded-full bg-[var(--surface-variant)] flex items-center justify-center text-lg font-bold text-[var(--text-secondary)]">
+                  {coach.name?.charAt(0) || "C"}
                 </div>
               )}
-              <span className="text-[var(--text-primary)]">{coach.name || "Loading..."}</span>
+              <div>
+                <p className="font-medium text-[var(--text-primary)]">{coach.name}</p>
+                <p className="text-xs text-[var(--text-secondary)]">Your assigned coach</p>
+              </div>
             </div>
           </div>
-          <p className="text-[var(--text-secondary)] text-sm md:text-base">
+
+          <p className="text-[var(--text-secondary)] text-sm md:text-base mb-6">
             View your past and current coaching sessions. Click a session to see a preview.
           </p>
 
           {/* Session List */}
           {sessions.length === 0 ? (
-            <p className="text-[var(--text-secondary)]">No sessions found. Start a new session to begin!</p>
+            <div className="text-center py-12 bg-[var(--surface)] rounded-lg border border-[var(--border)]">
+              <p className="text-[var(--text-secondary)] text-sm">No sessions found. Start a new session to begin!</p>
+            </div>
           ) : (
             <div className="space-y-4">
               {sessions.map((session) => (
-                <div
+                <motion.div
                   key={session.id}
-                  className="flex justify-between items-center p-4 bg-[var(--surface)] rounded-lg border border-[var(--border)] card-gradient hover:bg-[var(--primary-hover)] hover:text-white transition-all duration-300 transform hover:scale-[1.01] cursor-pointer"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
                   onClick={() => handleSessionClick(session)}
+                  className="flex justify-between items-center p-5 bg-[var(--surface)] rounded-lg border border-[var(--border)] card-gradient hover:shadow-md transition-all cursor-pointer group"
                 >
-                  <div className="flex-1">
-                    <p className="text-[var(--text-primary)] font-medium">
+                  <div className="flex-1 pr-4">
+                    <p className="text-sm font-medium text-[var(--text-primary)] mb-1">
                       {new Date(session.created_at).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
                         year: "numeric",
                       })}
                     </p>
-                    <div className="prose dark:prose-invert max-w-none text-[var(--text-secondary)] session-detail">
+                    <div className="text-sm text-[var(--text-secondary)] line-clamp-2 group-hover:text-[var(--text-primary)] transition-colors">
                       {parse(stripHtmlAndTruncate(renderHtml(session.question)))}
                     </div>
                   </div>
                   <span
-                    className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusStyles(
+                    className={`px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider ${getStatusStyles(
                       session.status
-                    )} card-gradient shadow-custom`}
+                    )} shadow-sm`}
                   >
-                    {session.status.charAt(0).toUpperCase() + session.status.slice(1)}
+                    {session.status}
                   </span>
-                </div>
+                </motion.div>
               ))}
             </div>
           )}
 
-          {/* Pagination Controls */}
+          {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex justify-between items-center mt-6">
+            <div className="flex justify-between items-center mt-8">
               <button
                 onClick={handlePreviousPage}
                 disabled={currentPage === 1}
-                className={`btn-secondary px-4 py-2 rounded-lg font-medium text-[var(--text-primary)] cursor-pointer ${
+                className={`px-5 py-2.5 rounded-lg font-medium transition-all ${
                   currentPage === 1
-                    ? "opacity-50 cursor-not-allowed"
-                    : "hover:bg-[var(--primary-hover)] hover:text-white"
+                    ? "bg-[var(--surface-variant)] text-[var(--text-secondary)] opacity-60 cursor-not-allowed"
+                    : "btn-secondary hover:shadow-md"
                 }`}
               >
                 Previous
               </button>
-              <span className="text-[var(--text-secondary)]">
+              <span className="text-sm text-[var(--text-secondary)]">
                 Page {currentPage} of {totalPages}
               </span>
               <button
                 onClick={handleNextPage}
                 disabled={currentPage === totalPages}
-                className={`btn-secondary px-4 py-2 rounded-lg font-medium text-[var(--text-primary)] cursor-pointer ${
+                className={`px-5 py-2.5 rounded-lg font-medium transition-all ${
                   currentPage === totalPages
-                    ? "opacity-50 cursor-not-allowed"
-                    : "hover:bg-[var(--primary-hover)] hover:text-white"
+                    ? "bg-[var(--surface-variant)] text-[var(--text-secondary)] opacity-60 cursor-not-allowed"
+                    : "btn-secondary hover:shadow-md"
                 }`}
               >
                 Next
@@ -322,45 +290,55 @@ export default function ViewSessions() {
 
       {/* Question Modal */}
       {showQuestionModal && selectedSession && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[var(--surface)] p-6 rounded-lg max-w-3xl w-full shadow-custom-lg card-gradient">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg md:text-xl font-semibold text-[var(--text-primary)]">Full Session Question</h3>
-              <button
-                onClick={() => setShowQuestionModal(false)}
-                className="text-[var(--text-primary)] hover:text-[var(--primary-hover)] font-medium cursor-pointer"
-                aria-label="Close modal"
-              >
-                ✕ Close
-              </button>
-            </div>
-            <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] session-detail max-h-[60vh] overflow-y-auto custom-scrollbar">
-              {parse(renderHtml(selectedSession.question))}
-            </div>
+        <Modal onClose={() => setShowQuestionModal(false)}>
+          <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">Full Session Question</h3>
+          <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] max-h-[60vh] overflow-y-auto custom-scrollbar">
+            {parse(renderHtml(selectedSession.question))}
           </div>
-        </div>
+        </Modal>
       )}
 
       {/* Answer Modal */}
-      {showAnswerModal && selectedSession && selectedSession.answer && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[var(--surface)] p-6 rounded-lg max-w-3xl w-full shadow-custom-lg card-gradient">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg md:text-xl font-semibold text-[var(--text-primary)]">Full Session Answer</h3>
-              <button
-                onClick={() => setShowAnswerModal(false)}
-                className="text-[var(--text-primary)] hover:text-[var(--primary-hover)] font-medium cursor-pointer"
-                aria-label="Close modal"
-              >
-                ✕ Close
-              </button>
-            </div>
-            <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] session-detail max-h-[60vh] overflow-y-auto custom-scrollbar">
-              {parse(renderHtml(selectedSession.answer))}
-            </div>
+      {showAnswerModal && selectedSession?.answer && (
+        <Modal onClose={() => setShowAnswerModal(false)}>
+          <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">Full Session Answer</h3>
+          <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] max-h-[60vh] overflow-y-auto custom-scrollbar">
+            {parse(renderHtml(selectedSession.answer))}
           </div>
-        </div>
+        </Modal>
       )}
-    </div>
+    </motion.div>
+  );
+}
+
+// Reusable Modal Component
+function Modal({ children, onClose }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()}
+        className="bg-[var(--surface)] p-6 md:p-8 rounded-lg max-w-3xl w-full shadow-custom-lg card-gradient max-h-[90vh] overflow-y-auto"
+      >
+        <div className="flex justify-end mb-4">
+          <button
+            onClick={onClose}
+            className="text-[var(--text-secondary)] hover:text-[var(--accent)] text-lg font-bold"
+            aria-label="Close modal"
+          >
+            ×
+          </button>
+        </div>
+        {children}
+      </motion.div>
+    </motion.div>
   );
 }

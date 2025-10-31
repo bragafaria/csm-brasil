@@ -1,7 +1,9 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { questions, calculateCSMResults } from "../utils/csm";
+import { motion } from "framer-motion";
 
 export default function Test() {
   const router = useRouter();
@@ -68,60 +70,88 @@ export default function Test() {
   };
 
   const percentage = (((current + 1) / questions.length) * 100).toFixed(0);
-  const minutesLeft = Math.max(0, Math.round((questions.length - current - 1) * 0.15)); // Updated to 0.15 min/question
+  const minutesLeft = Math.max(0, Math.round((questions.length - current - 1) * 0.15));
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)]">
-      <div className="w-full max-w-lg card-gradient p-8 rounded-xl shadow-2xl border border-[var(--border)]">
-        <div className="flex mb-6 items-center justify-center space-x-1">
-          <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
+    <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-[var(--surface)]">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="w-full max-w-lg card-gradient p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
+      >
+        {/* Header */}
+        <div className="flex items-center justify-center mb-6 gap-1">
+          <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
           <h1 className="text-xl font-light text-white">Assessment</h1>
         </div>
-        <p className="text-center text-sm text-[var(--text-secondary)] mb-6">
+
+        <p className="text-center text-sm text-[var(--text-secondary)] mb-6 italic">
           Be honest. Think briefly. Answer what you <em>truly</em> do.
         </p>
+
+        {/* Progress */}
         <div className="flex justify-between items-center mb-4">
           <span className="text-sm font-medium text-[var(--accent)]">{percentage}% Complete</span>
           <span className="text-sm font-medium text-[var(--accent)]">~{minutesLeft} min left</span>
         </div>
-        <progress
-          value={current + 1}
-          max={questions.length}
-          className="w-full h-2 mb-6 rounded-full bg-[var(--border)] [&::-webkit-progress-bar]:bg-[var(--border)] [&::-webkit-progress-value]:bg-[var(--primary)] [&::-moz-progress-bar]:bg-[var(--primary)]"
-        />
-        <h2 className="text-2xl font-semibold mb-6 text-[var(--text-primary)] text-center">{q.text}</h2>
 
-        {error && <p className="text-red-400 text-sm mb-4 text-center">{error}</p>}
+        <div className="w-full h-3 mb-6 bg-[var(--surface-variant)] rounded-full overflow-hidden">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: `${percentage}%` }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="h-full bg-[var(--primary)]"
+          />
+        </div>
 
-        {q.type === "likert" ? (
+        {/* Question */}
+        <h2 className="text-2xl font-semibold mb-6 text-[var(--text-primary)] text-center leading-relaxed">{q.text}</h2>
+
+        {/* Error Message */}
+        {error && (
+          <motion.p
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-red-400 text-sm mb-4 text-center font-medium"
+          >
+            {error}
+          </motion.p>
+        )}
+
+        {/* Likert Scale */}
+        {q.type === "likert" && (
           <div className="flex justify-between gap-2 mb-6">
             {[1, 2, 3, 4, 5].map((v) => (
               <button
                 key={v}
                 onClick={() => handleAnswer(v)}
-                className={`flex-1 py-3 px-4 rounded-lg transition duration-300 cursor-pointer ${
+                className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all ${
                   answers[current] === v
-                    ? "bg-[var(--primary)] text-white shadow-md"
-                    : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[color-mix(in_srgb,var(--surface-variant)_80%,white_10%)]"
+                    ? "btn-primary shadow-md"
+                    : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[var(--surface-variant-hover)]"
                 }`}
-                aria-label={`Rate ${v} out of 5`} // Added for accessibility
+                aria-label={`Rate ${v} out of 5`}
               >
                 {v}
               </button>
             ))}
           </div>
-        ) : (
+        )}
+
+        {/* Forced Select */}
+        {q.type === "forced-select" && (
           <div className="space-y-3 mb-6">
             {q.options.map((opt) => (
               <button
                 key={opt.key}
                 onClick={() => handleAnswer(opt.key)}
-                className={`w-full py-3 px-4 rounded-lg text-left transition duration-300 cursor-pointer ${
+                className={`w-full py-3 px-4 rounded-lg text-left font-medium transition-all ${
                   answers[current] === opt.key
-                    ? "bg-[var(--primary)] text-white shadow-md"
-                    : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[color-mix(in_srgb,var(--surface-variant)_80%,white_10%)]"
+                    ? "btn-primary shadow-md"
+                    : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[var(--surface-variant-hover)]"
                 }`}
-                aria-label={`Select option: ${opt.label}`} // Added for accessibility
+                aria-label={`Select option: ${opt.label}`}
               >
                 {opt.label}
               </button>
@@ -129,24 +159,25 @@ export default function Test() {
           </div>
         )}
 
-        <div className="flex justify-between mt-6">
+        {/* Navigation */}
+        <div className="flex justify-between mt-8">
           <button
             onClick={prev}
             disabled={current === 0}
-            className="py-2 px-6 rounded-lg bg-[var(--surface-variant)] text-[var(--text-secondary)] disabled:opacity-50 transition cursor-pointer"
+            className="py-3 px-6 rounded-lg bg-[var(--surface-variant)] text-[var(--text-secondary)] font-medium hover:bg-[var(--surface-variant-hover)] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
             aria-label="Previous question"
           >
             Prev
           </button>
           <button
             onClick={next}
-            className="py-2 px-6 rounded-lg bg-[var(--primary)] text-white hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] transition cursor-pointer"
+            className="py-3 px-6 rounded-lg btn-primary font-semibold transition-all"
             aria-label={current < questions.length - 1 ? "Next question" : "Finish test"}
           >
             {current < questions.length - 1 ? "Next" : "Finish"}
           </button>
         </div>
-      </div>
+      </motion.div>
     </main>
   );
 }

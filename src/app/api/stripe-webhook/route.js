@@ -104,7 +104,7 @@ export async function POST(request) {
         .from("invite")
         .select("id, invite")
         .eq("user_id", userId)
-        .single();
+        .maybeSingle();
       console.log("Invite check:", { existingInvite, inviteCheckError: inviteCheckError?.message });
 
       if (existingInvite) {

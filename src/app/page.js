@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; // Added for router.push
+import { useRouter } from "next/navigation";
 import {
   Heart,
   Users,
@@ -19,22 +19,17 @@ import { supabase } from "@/app/utils/supabaseClient";
 import { RotatingWord } from "@/app/components/ui/RotatingWord";
 
 export default function Home() {
-  // State for FAQ accordion
   const [expandedFAQ, setExpandedFAQ] = useState(null);
   const [activeNav, setActiveNav] = useState("home");
   const [loggingOut, setLoggingOut] = useState(false);
-  const router = useRouter(); // Added for navigation
+  const router = useRouter();
 
-  // Function to toggle FAQ
   const toggleFAQ = (index) => {
     setExpandedFAQ(expandedFAQ === index ? null : index);
   };
 
   const handleStartTest = async () => {
-    // 1. Clean any old answers
     localStorage.removeItem("csmAnswers");
-
-    // 2. If a session exists → log out via API
     const { data } = await supabase.auth.getSession();
     if (data.session) {
       setLoggingOut(true);
@@ -43,18 +38,14 @@ export default function Home() {
         if (!res.ok) throw new Error("Logout failed");
       } catch (e) {
         console.error(e);
-        // Fallback: client-side sign-out
         await supabase.auth.signOut();
       } finally {
         setLoggingOut(false);
       }
     }
-
-    // 3. Go to the test page
     router.push("/csm-assessment");
   };
 
-  // Animation variants for the headline
   const headlineVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i) => ({
@@ -64,7 +55,6 @@ export default function Home() {
     }),
   };
 
-  // Animation variants for the button
   const buttonVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
@@ -79,7 +69,6 @@ export default function Home() {
     },
   };
 
-  // Animation variants for How It Works items
   const stepVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i) => ({
@@ -98,7 +87,6 @@ export default function Home() {
     },
   };
 
-  // Animation variants for Spectrum Preview card
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -108,7 +96,6 @@ export default function Home() {
     },
   };
 
-  // Animation variants for FAQ header
   const headerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -118,20 +105,24 @@ export default function Home() {
     },
   };
 
-  // Ref for FAQ header
   const faqHeaderRef = useRef(null);
   const isFaqHeaderInView = useInView(faqHeaderRef, { once: true, amount: 0.2 });
+
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setActiveNav(id);
+  };
 
   return (
     <div className="min-h-screen bg-[var(--surface)] text-[var(--text-primary)]">
       {/* Sticky Header */}
-      <header className="fixed top-0 w-full z-50 header-gradient border-[var(--border)]">
+      <header className="fixed top-0 w-full z-50 header-gradient border border-[var(--border)]">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Brain className="h-8 w-8 text-[var(--accent)]" />
               <div className="flex items-center space-x-1">
-                <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
+                <h1 className="text-xl font-bold text-[var(--primary)]">CSM </h1>
                 <h1 className="text-xl font-light text-white">Dynamics</h1>
               </div>
             </div>
@@ -168,13 +159,13 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative section-full flex items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/20 via-transparent to-[var(--accent)]/20"></div>
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--primary)]/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-[var(--accent)]/10 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[rgba(var(--primary-rgb),0.2)] via-transparent to-[rgba(var(--accent-rgb),0.2)]"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-[rgba(var(--primary-rgb),0.1)] rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-[rgba(var(--accent-rgb),0.1)] rounded-full blur-3xl"></div>
 
         <div className="relative max-w-7xl mx-auto mt-20 px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text5xl font-bold leading-tight mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
               <motion.span
                 custom={0}
                 initial="hidden"
@@ -195,45 +186,43 @@ export default function Home() {
               </motion.span>
             </h1>
 
-            <p className="text-lg md:text-lg text-[var(--text-secondary)] mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-[var(--text-secondary)] mb-12 max-w-3xl mx-auto leading-relaxed">
               The Cognitive Spectrum Model (CSM) is a framework that maps how you think and connect, providing clear
               steps for personal growth and stronger relationships.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/csm-assessment">
-                <motion.button
-                  initial="hidden"
-                  animate="visible"
-                  whileHover="hover"
-                  onClick={handleStartTest}
-                  disabled={loggingOut}
-                  variants={buttonVariants}
-                  className="group bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-4 py-2 rounded-full text-lg font-semibold transition-all duration-300 shadow-2xl flex items-center space-x-2 text-[var(--text-primary)] hover:cursor-pointer"
-                >
-                  <span>{loggingOut ? "Preparing…" : "Take Free Test"}</span>
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </motion.button>
-              </Link>
+              <motion.button
+                initial="hidden"
+                animate="visible"
+                whileHover="hover"
+                onClick={handleStartTest}
+                disabled={loggingOut}
+                variants={buttonVariants}
+                className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-4 py-2 rounded-full text-lg font-semibold transition-all duration-300 shadow-2xl flex items-center space-x-2 text-[var(--text-primary)]"
+              >
+                <span>{loggingOut ? "Preparing…" : "Take Free Test"}</span>
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
               <p className="text-[var(--text-secondary)] text-sm">Takes only 10 minutes • Completely free</p>
             </div>
 
             <div className="my-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="p-6 rounded-2xl bg-gradient-to-b from-[var(--primary)]/10 to-transparent border border-[var(--primary)]/20 backdrop-blur-sm">
+              <div className="p-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--primary-rgb),0.1)] to-transparent border border-[rgba(var(--primary-rgb),0.2)] backdrop-blur-sm">
                 <div className="text-3xl font-bold text-white mb-2">
                   <Counter target={250} suffix="k+" duration={3000} />
                 </div>
                 <div className="text-[var(--text-secondary)]">Couples helped</div>
               </div>
-              <div className="p-6 rounded-2xl bg-gradient-to-b from-[var(--accent)]/10 to-transparent border border-[var(--accent)]/20 backdrop-blur-sm">
+              <div className="p-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--accent-rgb),0.1)] to-transparent border border-[rgba(var(--accent-rgb),0.2)] backdrop-blur-sm">
                 <div className="text-3xl font-bold text-white mb-2">
                   <Counter target={94} suffix="%" duration={3000} />
                 </div>
                 <div className="text-[var(--text-secondary)]">Report improvement</div>
               </div>
-              <div className="p-6 rounded-2xl bg-gradient-to-b from-[var(--primary)]/10 to-transparent border border-[var(--primary)]/20 backdrop-blur-sm">
+              <div className="p-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--primary-rgb),0.1)] to-transparent border border-[rgba(var(--primary-rgb),0.2)] backdrop-blur-sm">
                 <div className="text-3xl font-bold text-white mb-2">
-                  <Counter target={4.9} suffix=" ★" duration={3000} decimals={1} />
+                  <Counter target={4.9} suffix=" [star]" duration={3000} decimals={1} />
                 </div>
                 <div className="text-[var(--text-secondary)]">Average rating</div>
               </div>
@@ -242,8 +231,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-20 section-full bg-gradient-to-b from-[var(--surface)] to-[var(--surface-variant)]">
+      {/* How It Works — FULL TEXT, NO ELLIPSES */}
+      <section
+        id="how-it-works"
+        className="py-20 section-full bg-gradient-to-b from-[var(--surface)] to-[var(--surface-variant)]"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--text-primary)]">How It Works</h2>
@@ -252,154 +244,132 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              custom={0}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={stepVariants}
-              className="text-center"
-            >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Take the Free Assessment",
+                text: "Answer a quick, 10-minute questionnaire that uncovers your unique Cognitive Spectrum profile: how you think, decide, feel, and connect. No partner input required. Just honest reflections about you.",
+              },
+              {
+                title: "Get Your Results",
+                text: "Instantly receive your personalized CSM archetype, full personality profile with percentage-based spectrums, and detailed insights into your cognitive strengths, growth areas and blind spots.",
+              },
+              {
+                title: "Access Your Dashboard",
+                text: "Step into your exclusive lifetime dashboard where you can explore your results, track progress, save insights, and access relationship tools anytime, on any device.",
+              },
+              {
+                title: "Invite Your Partner",
+                text: "Send a private invite. Once they complete the assessment, unlock a joint Couple Insights Report that reveals compatibility patterns, communication strategies, and growth opportunities.",
+              },
+            ].map((step, i) => (
               <motion.div
+                key={i}
+                custom={i}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
-                variants={circleVariants}
-                className="w-20 h-20 rounded-full bg-[var(--accent)] flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-[var(--text-primary)]"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={stepVariants}
+                className="text-center"
               >
-                1
+                <motion.div
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={circleVariants}
+                  className="w-20 h-20 rounded-full bg-[var(--accent)] flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-[var(--text-primary)]"
+                >
+                  {i + 1}
+                </motion.div>
+                <h3 className="mx-auto max-w-[200px] text-[clamp(1.125rem,4vw,1.5rem)] font-bold mb-4 text-[var(--text-primary)] leading-tight tracking-tight">
+                  {step.title}
+                </h3>
+                <p className="text-[var(--text-secondary)] leading-relaxed text-sm sm:text-base">{step.text}</p>
               </motion.div>
-              <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Take the Assessment</h3>
-              <p className="text-[var(--text-secondary)] leading-relaxed">
-                Both partners complete our 10-minute scientifically-designed questionnaire about personality traits and
-                relationship preferences.
-              </p>
-            </motion.div>
-
-            <motion.div
-              custom={1}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={stepVariants}
-              className="text-center"
-            >
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={circleVariants}
-                className="w-20 h-20 rounded-full bg-[var(--accent)] flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-[var(--text-primary)]"
-              >
-                2
-              </motion.div>
-              <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Get Your Results</h3>
-              <p className="text-[var(--text-secondary)] leading-relaxed">
-                Receive detailed insights about your individual personalities and how they interact as a couple, with
-                visual compatibility maps.
-              </p>
-            </motion.div>
-
-            <motion.div
-              custom={2}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              variants={stepVariants}
-              className="text-center"
-            >
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={circleVariants}
-                className="w-20 h-20 rounded-full bg-[var(--accent)] flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-[var(--text-primary)]"
-              >
-                3
-              </motion.div>
-              <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Strengthen Your Bond</h3>
-              <p className="text-[var(--text-secondary)] leading-relaxed">
-                Apply personalized recommendations and exercises designed specifically for your relationship dynamic and
-                growth areas.
-              </p>
-            </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section – with rotating headline */}
-      <section className="py-20 relative section-full">
+      {/* Features Section */}
+      <section id="whats-inside" className="py-20 relative section-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* ---------- HEADLINE WITH ROTATING WORD ---------- */}
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 flex flex-wrap items-center justify-center gap-1 md:gap-2">
-              {/* Fixed part */}
               <span className="bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent whitespace-nowrap">
                 Why Couples
               </span>
-
-              {/* ---------- ANIMATED WORD + STATIC RECTANGLE ---------- */}
               <span className="relative inline-block">
-                {/* Static purple rectangle */}
                 <span className="absolute inset-0 bg-[var(--primary)] rounded-md"></span>
-
-                {/* Animated word – perfectly centered */}
                 <RotatingWord
                   words={["Choose", "Love", "Trust", "Value"]}
                   interval={2000}
                   className="relative z-10 text-white font-bold flex items-center justify-center h-full px-3 py-1 md:px-4"
                 />
               </span>
-              {/* ---------------------------------------------------- */}
-
-              {/* Fixed part */}
               <span className="bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent whitespace-nowrap">
                 Our Assessment
               </span>
             </h2>
-
             <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
               Discover insights that strengthen your bond and improve communication
             </p>
           </div>
-          {/* ------------------------------------------------- */}
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <AnimatedCard>
-              <div className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20 hover:border-[var(--primary)]/40 transition-all duration-300 hover:transform hover:scale-105 h-full min-h-[250px] flex flex-col">
+              <div
+                className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] 
+                             border border-[rgba(var(--primary-rgb),0.2)] 
+                             hover:border-[rgba(var(--primary-rgb),0.4)] 
+                             transition-all duration-300 hover:scale-105 
+                             h-full min-h-[250px] flex flex-col"
+              >
                 <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Users className="h-8 w-8 text-[var(--text-primary)]" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Couple-Focused</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
                   Unlike individual personality tests, our framework is specifically designed to understand relationship
-                  dynamics between partners.
+                  dynamics between partners. It reveals how your cognitive styles interact and where growth is possible.
                 </p>
               </div>
             </AnimatedCard>
 
             <AnimatedCard delay={0.2}>
-              <div className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20 hover:border-[var(--primary)]/40 transition-all duration-300 hover:transform hover:scale-105 h-full min-h-[250px] flex flex-col">
+              <div
+                className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] 
+                             border border-[rgba(var(--primary-rgb),0.2)] 
+                             hover:border-[rgba(var(--primary-rgb),0.4)] 
+                             transition-all duration-300 hover:scale-105 
+                             h-full min-h-[250px] flex flex-col"
+              >
                 <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Target className="h-8 w-8 text-[var(--text-primary)]" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Actionable Insights</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
                   Get specific recommendations and strategies tailored to your unique relationship patterns and
-                  communication styles.
+                  communication styles. Turn insights into real-world improvements.
                 </p>
               </div>
             </AnimatedCard>
 
             <AnimatedCard delay={0.4}>
-              <div className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20 hover:border-[var(--primary)]/40 transition-all duration-300 hover:transform hover:scale-105 h-full min-h-[250px] flex flex-col">
+              <div
+                className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] 
+                             border border-[rgba(var(--primary-rgb),0.2)] 
+                             hover:border-[rgba(var(--primary-rgb),0.4)] 
+                             transition-all duration-300 hover:scale-105 
+                             h-full min-h-[250px] flex flex-col"
+              >
                 <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Shield className="h-8 w-8 text-[var(--text-primary)]" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Research-Based</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
                   Built on decades of relationship psychology research and validated by thousands of successful couples.
+                  Science you can trust.
                 </p>
               </div>
             </AnimatedCard>
@@ -407,25 +377,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Preview Your Spectrum Insights */}
+      {/* Spectrum Preview */}
       <section className="py-20 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white ">Preview Your Spectrum Insights</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Preview Your Spectrum Insights</h2>
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
-              See how CSM reveals your unique cognitive preferences with nuanced, percentage-based spectrums,unlocking
-              personalized relationship strategies.
+              See how CSM reveals your unique cognitive preferences with nuanced, percentage-based spectrums
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Example Card for Information Processing */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               variants={cardVariants}
-              className="group bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] p-6 rounded-2xl shadow-lg border border-[var(--primary)]/20 hover:border-[var(--primary)]/40 hover:shadow-2xl transition-all duration-300 hover:transform hover:-translate-y-1 min-h-[400px] flex flex-col space-y-4"
+              className="group bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] p-6 rounded-2xl 
+                        shadow-lg border border-[rgba(var(--primary-rgb),0.2)] 
+                        hover:border-[rgba(var(--primary-rgb),0.4)] 
+                        hover:shadow-2xl transition-all duration-300 
+                        hover:-translate-y-1 min-h-[400px] flex flex-col space-y-4"
             >
               <div className="text-center space-y-2">
                 <h3 className="text-xl font-bold text-[var(--text-primary)]">Information Processing</h3>
@@ -435,12 +407,10 @@ export default function Home() {
               </div>
 
               <div className="space-y-4 flex-grow">
-                {/* Primary Preference */}
                 <div className="bg-gradient-to-r from-green-500/10 to-black/10 p-4 rounded-xl border border-green-400/20 space-y-2">
                   <div className="text-lg font-medium text-[var(--text-primary)] text-center">Concrete Focus (C)</div>
                   <p className="text-sm text-[var(--text-secondary)] text-center italic px-2">
-                    Focuses on tangible, verifiable data; practical, detail-oriented.{" "}
-                    {`Trusts 'what is' over 'what if.'`}
+                    Focuses on tangible, verifiable data and practical details in the present moment.
                   </p>
                   <div className="space-y-2">
                     <div className="text-base font-bold text-green-400 text-center">Mild Dominance</div>
@@ -457,13 +427,10 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Secondary Influence */}
                 <div className="bg-gradient-to-r from-red-500/10 to-black/10 p-4 rounded-xl border border-red-400/20 space-y-2">
                   <div className="text-lg font-medium text-[var(--text-primary)] text-center">Abstract Insight (N)</div>
                   <p className="text-sm text-[var(--text-secondary)] text-center italic px-2">
-                    Focuses on patterns, possibilities, theories; imaginative, forward-looking. Explores
-                    {`'what could
-                    be.'`}
+                    Focuses on patterns, possibilities, and future implications.
                   </p>
                   <div className="space-y-2">
                     <div className="text-base font-bold text-red-400 text-center">High Influence</div>
@@ -481,40 +448,33 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Interpretation Intro */}
-              <div className="bg-[var(--surface-variant)] p-4 rounded-lg border border-[var(--border)]/50 mt-auto">
+              <div className="bg-[var(--surface-variant)] p-4 rounded-lg border border-[rgba(var(--border-rgb),0.5)] mt-auto">
                 <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-2">
                   Balanced Harmony: Concrete Focus and Abstract Insight
                 </h4>
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                  With a Mild primary preference for Concrete Focus (C) at 57% and High secondary influence from
-                  Abstract Insight (N) at 43%, your balanced spectrum suggests versatile application of the {`report's`}
-                  insights. The general analysis provides a flexible foundation,lean into Concrete Focus for core
-                  relational patterns but frequently blend in Abstract Insight elements for nuanced, context-specific
-                  communication strategies. This adaptability makes the report a dynamic guide rather than a rigid
-                  blueprint, allowing you to switch between C and N modes seamlessly across relationship scenarios.
+                  With a Mild primary preference for Concrete Focus (C) at 57% and a strong secondary influence from
+                  Abstract Insight (N) at 43%, you balance practical grounding with forward-thinking vision. This blend
+                  allows you to stay rooted in reality while exploring possibilities.
                 </p>
               </div>
             </motion.div>
 
-            {/* Promotional Text Sidebar */}
             <div className="flex flex-col justify-center space-y-6 lg:pl-8">
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-[var(--text-primary)]">Unlock Nuanced Insights</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed">
-                  Imagine seeing exactly how your mind works,57% grounded in practical details, with 43% room for
-                  creative possibilities. {`CSM's spectrum model doesn't`} box you in; it reveals the balance that makes
-                  your relationships thrive.
+                  Imagine seeing exactly how your mind works across five cognitive spectrums, with percentages showing
+                  your natural tendencies and growth potential.
                 </p>
               </div>
               <div className="space-y-4">
                 <p className="text-[var(--text-secondary)] leading-relaxed">
-                  This is just one dimension. Your full report dives into all five, with tailored advice to bridge gaps
-                  and amplify strengths. Couples report 94% better communication after applying these insights.
+                  This is just one dimension. The full assessment reveals all five spectrums and your unique archetype.
                 </p>
               </div>
               <Link href="/csm-assessment">
-                <button className="w-full bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl text-[var(--text-primary)]">
+                <button className="w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl text-[var(--text-primary)]">
                   Start Your Assessment Now
                 </button>
               </Link>
@@ -533,48 +493,28 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
+            {["Sarah & Mike", "Alex & Jordan", "Emma & David"].map((name) => (
+              <div
+                key={name}
+                className="p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[rgba(var(--primary-rgb),0.2)]"
+              >
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">
+                  This assessment revealed communication patterns we never noticed. We finally understand why we argue
+                  about the same things and how to fix it.
+                </p>
+                <div className="text-[var(--primary)] font-semibold">{name}</div>
               </div>
-              <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">
-                This assessment revealed communication patterns we never noticed. Our relationship has never been
-                stronger!
-              </p>
-              <div className="text-[var(--primary)] font-semibold">, Sarah & Mike</div>
-            </div>
-
-            <div className="p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">
-                Finally, a test that looks at us as a couple, not just individuals. The insights were incredibly
-                accurate.
-              </p>
-              <div className="text-[var(--primary)] font-semibold">, Alex & Jordan</div>
-            </div>
-
-            <div className="p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[var(--primary)]/20">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">
-                The personalized recommendations helped us navigate our differences with so much more understanding.
-              </p>
-              <div className="text-[var(--primary)] font-semibold">, Emma & David</div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ — ALL 10 FULL QUESTIONS & ANSWERS */}
       <section id="faq" className="py-16 px-4 bg-[var(--surface)]">
         <div className="container mx-auto max-w-4xl">
           <motion.div
@@ -585,58 +525,58 @@ export default function Home() {
             className="text-center mb-12 section-header"
           >
             <h2 className="text-4xl font-bold mb-6">
-              Frequently Asked <span className="text-[var(--accent)]">Questions</span>
+              Frequently <span className="text-[var(--accent)]">Questions</span>
             </h2>
           </motion.div>
 
           <div className="space-y-4 mb-12">
             {[
               {
-                question: "1. What is the Cognitive Spectrum Model (CSM), and why should I care?",
+                question: "What is the Cognitive Spectrum Model (CSM), and why should I care?",
                 answer:
                   "The Cognitive Spectrum Model, or CSM, is a modern personality framework that evaluates how individuals think and interact across five key spectrums: Information Processing (Concrete versus Abstract), Decision-Making (Analytical versus Empathic), Energy Orientation (Inward versus Outward), Change Approach (Stable versus Adaptive), and Interpersonal Style (Harmony versus Autonomy). By assessing these dimensions, CSM generates one of 32 archetypes, giving you percentage-based results for nuanced insight. CSM is particularly valuable for improving self-awareness, enhancing communication, and understanding compatibility in relationships or other interpersonal contexts.",
               },
               {
-                question: "2. How is CSM different from MBTI, Enneagram, or Big Five?",
+                question: "How is CSM different from MBTI, Enneagram, or Big Five?",
                 answer:
                   "While MBTI categorizes people into 16 types, Enneagram focuses on motivations, and the Big Five measures broad traits, CSM provides 32 archetypes with spectrum-based percentages, offering far more precision. The model also introduces the unique Harmony/Autonomy dimension, which highlights how you naturally collaborate or seek independence in relationships. By integrating cognitive patterns and interpersonal applications, CSM provides actionable strategies for personal growth and relationship success that other personality frameworks don’t.",
               },
               {
-                question: "3. Why should I trust CSM over free online quizzes?",
+                question: "Why should I trust CSM over free online quizzes?",
                 answer:
                   "Most free personality quizzes oversimplify human behavior. CSM is research-based, psychometrically validated, and designed for practical application in relationships and self-growth. Users consistently report that the insights are accurate, relevant, and immediately actionable, unlike generic quizzes that provide vague or entertainment-focused results.",
               },
               {
-                question: "4. Can CSM really “read” my relationship like a mind reader?",
+                question: "Can CSM really “read” my relationship like a mind reader?",
                 answer:
                   "CSM doesn’t guess emotions or predict outcomes intuitively. Instead, it analyzes cognitive alignments, such as how a partner who prefers Harmony might interact with someone who favors Autonomy. It identifies areas of synergy and potential friction, showing, for example, how Empathic values can complement Analytical logic in decision-making. About 94% of users report that CSM provides clearer insights into relationship dynamics, helping them communicate and connect more effectively.",
               },
               {
-                question: "5. Is CSM scientifically legit, or just another buzzword quiz?",
+                question: "Is CSM scientifically legit, or just another buzzword quiz?",
                 answer:
                   "CSM is grounded in psychological theory, combining Jungian cognitive functions with Big Five traits. Its psychometric validation demonstrates internal consistency above 0.8 and 75% user alignment in pilot studies. Ongoing research supports its reliability in predicting relational patterns, outperforming other popular personality frameworks in actionable insight. CSM is evidence-based and designed for practical application, not entertainment.",
               },
               {
-                question: "6. How does the free assessment work?",
+                question: "How does the free assessment work?",
                 answer:
                   "The free CSM assessment is designed to be concise, typically taking 10 to 15 minutes. It blends Likert-scale ratings with situational questions that reveal your cognitive preferences. Upon completion, you receive a report detailing your archetype, percentage-based spectrum scores, strengths, and preliminary relational insights. The assessment is secure, mobile-friendly, and accessible on any device.",
               },
               {
-                question: "7. Do I need my partner to start?",
+                question: "Do I need my partner to start?",
                 answer:
-                  "No. You can complete the free assessment on your own and explore your personal profile. If you wish to generate a full Couple Insights Report, your partner will also need to take the assessment. Many users prefer to start individually and invite their partner later for a joint analysis.",
+                  "No. You can complete the free assessment on your own and explore your personal profile. If you wish to generate a full Couple Insights Report, your partner will also need to take the assessment. Many662 users prefer to start individually and invite their partner later for a joint analysis.",
               },
               {
-                question: "8. Can CSM predict if we’re soulmates or just spot potential issues?",
+                question: "Can CSM predict if we’re soulmates or just spot potential issues?",
                 answer:
                   "CSM doesn’t predict destiny or label anyone as a soulmate. Instead, it highlights potential compatibilities and challenges, such as Harmony-Autonomy differences or Analytical-Empathic interactions. It provides strategies to navigate common frictions, helping couples focus on growth, understanding, and conscious effort rather than chance.",
               },
               {
-                question: "9. How quickly will I get my results?",
+                question: "How quickly will I get my results?",
                 answer: "Your individual free assessment results are generated immediately.",
               },
               {
-                question: "10. Is CSM therapy or coaching?",
+                question: "Is CSM therapy or coaching?",
                 answer:
                   "No. CSM is not a therapeutic tool and does not diagnose or treat mental health conditions. It is a self-awareness and personal growth framework designed to provide structured insights and strategies for relationships and life challenges. Many users combine it with counseling or coaching, but it is fully effective as a standalone growth tool.",
               },
@@ -664,8 +604,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[var(--primary)]/20 to-[var(--accent)]/20">
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-r from-[rgba(var(--primary-rgb),0.2)] to-[rgba(var(--accent-rgb),0.2)]">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent">
             Ready to Deepen Your Connection?
@@ -673,12 +613,10 @@ export default function Home() {
           <p className="text-xl text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
             Join thousands of couples who have transformed their relationships through understanding
           </p>
-          <Link href="/csm-assessment">
-            <button className="cursor-pointer group bg-[var(--primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] px-12 py-4 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl flex items-center space-x-3 mx-auto text-[var(--text-primary)]">
-              <span>Start Your Free Assessment</span>
-              <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </Link>
+          <button className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-12 py-4 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl flex items-center space-x-3 mx-auto text-[var(--text-primary)]">
+            <span>Start Your Free Assessment</span>
+            <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
+          </button>
           <p className="text-[var(--text-secondary)] mt-4">No credit card required • Results in minutes</p>
         </div>
       </section>
@@ -696,22 +634,13 @@ export default function Home() {
                 Empowering couples with science-backed relationship insights through the Cognitive Spectrum Model.
               </p>
               <div className="flex space-x-4">
-                <a
-                  href="https://twitter.com"
-                  className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
+                <a href="#" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
                   Twitter
                 </a>
-                <a
-                  href="https://facebook.com"
-                  className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
+                <a href="#" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
                   Facebook
                 </a>
-                <a
-                  href="https://instagram.com"
-                  className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
+                <a href="#" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
                   Instagram
                 </a>
               </div>
@@ -719,22 +648,13 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Legal</h4>
               <div className="space-y-2">
-                <a
-                  href="/privacy"
-                  className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
+                <a href="/privacy" className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
                   Privacy Policy
                 </a>
-                <a
-                  href="/terms"
-                  className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
+                <a href="/terms" className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
                   Terms of Service
                 </a>
-                <a
-                  href="/refunds"
-                  className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
+                <a href="/refunds" className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
                   Refund Policy
                 </a>
               </div>
@@ -742,21 +662,15 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Support</h4>
               <div className="space-y-2">
-                <a
-                  href="/contact"
-                  className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
+                <a href="/contact" className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
                   Contact Info
                 </a>
-                <a
-                  href="/help"
-                  className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
+                <a href="/help" className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
                   Help Center
                 </a>
                 <a
                   href="/csm-assessment"
-                  className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                  className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 >
                   Free Assessment
                 </a>
@@ -772,10 +686,9 @@ export default function Home() {
   );
 }
 
-// Counter component for animated numbers
+// Counter Component
 function Counter({ target, suffix = "", duration = 2000, decimals = 0 }) {
   const [count, setCount] = useState(0);
-
   useEffect(() => {
     let start = 0;
     const end = target;
@@ -790,7 +703,6 @@ function Counter({ target, suffix = "", duration = 2000, decimals = 0 }) {
     }, 10);
     return () => clearInterval(timer);
   }, [target, duration]);
-
   return (
     <>
       {count.toFixed(decimals)}
@@ -799,11 +711,10 @@ function Counter({ target, suffix = "", duration = 2000, decimals = 0 }) {
   );
 }
 
-// AnimatedCard component for bottom-up animation on scroll
+// AnimatedCard Component
 function AnimatedCard({ children, delay = 0 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-
   return (
     <motion.div
       ref={ref}

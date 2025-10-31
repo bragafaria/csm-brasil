@@ -31,6 +31,20 @@ export async function GET(request) {
 
     const siteId = user.id; // Enforce Partner A rule (siteId = user.id)
 
+    const { data: userCheck, error: userCheckError } = await supabase
+      .from("users")
+      .select("has_paid")
+      .eq("id", siteId)
+      .single();
+
+    if (userCheckError || !userCheck?.has_paid) {
+      console.log("Payment not completed yet for user:", siteId);
+      return new Response(JSON.stringify({ error: "Payment not completed" }), {
+        status: 402, // Payment Required
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
     const { data, error } = await supabase
       .from("invite")
       .select("invite")

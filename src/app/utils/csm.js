@@ -838,9 +838,7 @@ export function calculateCSMResults(answers) {
 
     if (q.type === "likert" && resp !== null) {
       let points = q.reverse ? 6 - resp : resp;
-      // Determine which pole the *statement* favours
       let favouredPole = q.favoring;
-      // If reverse, the meaning flips
       if (q.reverse) {
         favouredPole = favouredPole === p1 ? p2 : p1;
       }
@@ -860,6 +858,7 @@ export function calculateCSMResults(answers) {
     let p1Pct = (s.pole1 / total) * 100;
     let p2Pct = (s.pole2 / total) * 100;
 
+    // === YOUR ORIGINAL EPSILON LOGIC (KEEP THIS!) ===
     const epsilon = 0.0001;
     if (Math.abs(p1Pct - p2Pct) < epsilon) {
       p1Pct = 51;
@@ -876,8 +875,25 @@ export function calculateCSMResults(answers) {
   const typeCode = dominants.join("-");
   const archetype = archetypes[typeCode] || { name: "Unknown", description: "" };
 
-  const categories = percents.map((p, i) => {
-    /* ... */
+  // === FIXED: Populate categories using your % logic ===
+  const categories = percents.map((p) => {
+    const primaryPct = p.p1 > p.p2 ? p.p1 : p.p2;
+    const secondaryPct = 100 - primaryPct;
+
+    let domLevel, infLevel;
+
+    if (primaryPct >= 86) {
+      domLevel = "Strong";
+      infLevel = "Low";
+    } else if (primaryPct >= 66) {
+      domLevel = "Moderate";
+      infLevel = "Moderate";
+    } else {
+      domLevel = "Mild";
+      infLevel = "High";
+    }
+
+    return { domLevel, infLevel, primaryPct, secondaryPct };
   });
 
   return { percents, dominants, typeCode, archetype, categories };

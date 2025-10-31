@@ -2,23 +2,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams, useRouter } from "next/navigation"; // Added useRouter
+import { useParams, useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
 import Sidebar from "./Sidebar";
 import { supabase } from "@/app/utils/supabaseClient";
+import { motion } from "framer-motion";
 
 export default function DashboardLayout({ children }) {
   const params = useParams();
-  const router = useRouter(); // Added for redirect after logout
-  const siteId = params.siteId; // Use siteId instead of userId
+  const router = useRouter();
+  const siteId = params.siteId;
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      setScreenWidth(width);
       setIsMobile(width < 430);
       if (width >= 430) {
         setSidebarOpen(true);
@@ -33,10 +32,9 @@ export default function DashboardLayout({ children }) {
   }, []);
 
   const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
+    setSidebarOpen((prev) => !prev);
   };
 
-  // src/app/components/DashboardLayout.js
   const handleLogout = async () => {
     try {
       console.log("Logging out...");
@@ -46,7 +44,6 @@ export default function DashboardLayout({ children }) {
         return;
       }
 
-      // Verify session is cleared
       const {
         data: { session },
       } = await supabase.auth.getSession();
@@ -56,7 +53,6 @@ export default function DashboardLayout({ children }) {
       }
 
       console.log("Logged out successfully");
-      // Clear localStorage explicitly to avoid persistence
       localStorage.removeItem("supabase.auth.token");
       router.push("/");
     } catch (err) {
@@ -65,39 +61,69 @@ export default function DashboardLayout({ children }) {
   };
 
   return (
-    <div className="min-h-screen surface">
-      <nav className="fixed top-0 w-full bg-[var(--dashboard)]/80 backdrop-blur-md border-b border-[var(--primary)]/20 z-50">
-        <div className="flex items-center justify-between px-4 py-3 h-full">
-          {!sidebarOpen && (isMobile || !isMobile) && (
-            <div className="ml-4 flex items-center gap-2 cursor-pointer">
-              <Menu onClick={toggleSidebar} size={24} />
-              {!isMobile && <span>Menu</span>}
-            </div>
-          )}
-          <div className="flex items-center space-x-1">
-            <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
+    <div className="min-h-screen bg-[var(--surface)]">
+      {/* Top Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[var(--dashboard)]/90 backdrop-blur-lg border-b border-[var(--border)]">
+        <div className="flex items-center justify-between px-4 py-3 md:px-6">
+          {/* Mobile Menu Toggle */}
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={toggleSidebar}
+            className="flex items-center gap-2 text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors"
+            aria-label="Toggle menu"
+          >
+            <Menu size={24} />
+            {!isMobile && <span className="text-sm font-medium">Menu</span>}
+          </motion.button>
+
+          {/* Logo */}
+          <div className="flex items-center gap-1">
+            <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
             <h1 className="text-xl font-light text-white">Dynamics</h1>
           </div>
-          <div className="flex items-center space-x-2">
+
+          {/* User Actions */}
+          <div className="flex items-center gap-3">
             <button
-              className="text-sm font-medium text-primary hover:underline hover:cursor-pointer"
               onClick={handleLogout}
+              className="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--accent)] hover:underline transition-all"
             >
               Logout
             </button>
-            <div className="w-8 h-8 rounded-full primary-gradient flex items-center justify-center">
-              <span className="text-sm font-medium text-white">U</span>
+            <div className="w-9 h-9 rounded-full primary-gradient flex items-center justify-center shadow-md">
+              <span className="text-sm font-bold text-white">U</span>
             </div>
           </div>
         </div>
       </nav>
 
-      <div className="flex">
+      {/* Main Layout */}
+      <div className="flex pt-16 min-h-screen">
+        {/* Sidebar */}
         <Sidebar sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} isMobile={isMobile} siteId={siteId} />
-        <main className={`flex-1 transition-all duration-300 ${!isMobile && sidebarOpen ? "ml-64" : ""}`}>
-          {(isMobile && !sidebarOpen) || !isMobile ? <div>{children}</div> : null}
-        </main>
+
+        {/* Main Content */}
+        <motion.main
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className={`flex-1 transition-all duration-300 ${!isMobile && sidebarOpen ? "ml-64" : "ml-0"}`}
+        >
+          <div className="p-4 md:p-6 lg:p-8">{(isMobile && !sidebarOpen) || !isMobile ? children : null}</div>
+        </motion.main>
       </div>
+
+      {/* Mobile Overlay */}
+      {isMobile && sidebarOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={toggleSidebar}
+          className="fixed inset-0 bg-black/50 z-20"
+          aria-hidden="true"
+        />
+      )}
     </div>
   );
 }

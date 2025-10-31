@@ -2,11 +2,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/app/utils/supabaseClient"; // Use singleton
+import { supabase } from "@/app/utils/supabaseClient";
 import { useParams, useRouter } from "next/navigation";
-import { Users, Heart, Calendar, Target, Star } from "lucide-react";
-import FinancesPlanningPage from "@/app/components/couples/FinancesPlanningPage";
 import { motion } from "framer-motion";
+import FinancesPlanningPage from "@/app/components/couples/FinancesPlanningPage";
 import CareerPlanningPage from "../../../../components/couples/CarrerPlanningPage"; // Fixed typo
 import LoveRomancePage from "../../../../components/couples/LoveRomancePage";
 import FamilyHomePage from "../../../../components/couples/FamilyHomePage";
@@ -34,7 +33,6 @@ export default function CouplesReportPage() {
       }
 
       try {
-        // Check session
         const {
           data: { session },
           error: sessionError,
@@ -50,12 +48,11 @@ export default function CouplesReportPage() {
 
         const userId = session.user.id;
 
-        // Fetch Partner A's data (siteId is Partner A's id)
         const { data: partnerAData, error: partnerAError } = await supabase
           .from("users")
           .select("id, name, typeCode, dominants, percents, categories, has_assessment, partner_id")
           .eq("id", siteId)
-          .maybeSingle(); // Use maybeSingle
+          .maybeSingle();
 
         if (partnerAError || !partnerAData) {
           console.error("Error fetching Partner A:", partnerAError?.message || "No user found for siteId", siteId);
@@ -64,7 +61,6 @@ export default function CouplesReportPage() {
           return;
         }
 
-        // Validate access: user must be Partner A or Partner B
         const isPartnerA = userId === siteId;
         const isPartnerB = partnerAData.partner_id && userId === partnerAData.partner_id;
 
@@ -75,7 +71,6 @@ export default function CouplesReportPage() {
           return;
         }
 
-        // Check if Partner B exists
         if (!partnerAData.partner_id) {
           console.error("Partner B not found: No partner_id for siteId", siteId);
           setError("Partner B has not signed up yet.");
@@ -83,12 +78,11 @@ export default function CouplesReportPage() {
           return;
         }
 
-        // Fetch Partner B's data
         const { data: partnerBData, error: partnerBError } = await supabase
           .from("users")
           .select("id, name, typeCode, dominants, percents, categories, has_assessment")
           .eq("id", partnerAData.partner_id)
-          .maybeSingle(); // Use maybeSingle
+          .maybeSingle();
 
         if (partnerBError || !partnerBData) {
           console.error(
@@ -101,7 +95,6 @@ export default function CouplesReportPage() {
           return;
         }
 
-        // Handle jsonb data
         const parseJsonb = (data) => {
           if (!data) return [];
           if (typeof data === "string") {
@@ -147,21 +140,29 @@ export default function CouplesReportPage() {
   }, [siteId, router]);
 
   if (!isLoaded) {
-    console.log("Rendering loading state");
-    return <div className="p-6 text-[var(--text-primary)]">Loading report...</div>;
+    return (
+      <div className="flex min-h-screen items-center justify-center p-6 bg-[var(--surface)]">
+        <div className="text-[var(--text-primary)] text-lg font-medium">Loading report...</div>
+      </div>
+    );
   }
+
   if (error) {
-    console.log("Rendering error state:", error);
-    return <div className="p-6 text-red-400">{error}</div>;
+    return (
+      <div className="flex min-h-screen items-center justify-center p-6 bg-[var(--surface)]">
+        <div className="text-red-400 text-center text-lg font-medium">{error}</div>
+      </div>
+    );
   }
 
   if (!reportData?.partnerA.has_assessment || !reportData?.partnerB.has_assessment) {
-    console.log("Rendering assessment incomplete state");
     return (
-      <div className="p-6">
-        <h1 className="text-3xl font-bold text-[var(--text-primary)] mb-6">Couple Insights Report</h1>
-        <div className="card-gradient p-6 rounded-xl shadow-custom">
-          <p className="text-[var(--text-secondary)]">
+      <div className="container mx-auto p-6 mt-20 max-w-7xl">
+        <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-8 text-center">
+          Couple Insights Report
+        </h1>
+        <div className="card-gradient p-6 rounded-lg shadow-custom max-w-2xl mx-auto text-center">
+          <p className="text-[var(--text-secondary)] text-lg">
             Both partners must complete the assessment to view this report.
           </p>
         </div>
@@ -174,26 +175,29 @@ export default function CouplesReportPage() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
-      className="p-6 space-y-8"
+      className="container mx-auto p-6 mt-20 max-w-7xl space-y-12"
     >
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-3xl font-bold text-[var(--text-primary)]"
+        className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] text-center mb-10"
       >
         Couple Insights Report
       </motion.h1>
-      <LoveRomancePage reportData={reportData} />
-      <CareerPlanningPage reportData={reportData} />
-      <FamilyHomePage reportData={reportData} />
-      <FinancesPlanningPage reportData={reportData} />
-      <CommunicationConflictPage reportData={reportData} />
-      <LeisureAdventurePage reportData={reportData} />
-      <PersonalGrowthPage reportData={reportData} />
-      <SocialConnectionsPage reportData={reportData} />
-      <HealthWellnessPage reportData={reportData} />
-      <LegacyImpactPage reportData={reportData} />
+
+      <div className="grid gap-8 md:gap-12">
+        <LoveRomancePage reportData={reportData} />
+        <CareerPlanningPage reportData={reportData} />
+        <FamilyHomePage reportData={reportData} />
+        <FinancesPlanningPage reportData={reportData} />
+        <CommunicationConflictPage reportData={reportData} />
+        <LeisureAdventurePage reportData={reportData} />
+        <PersonalGrowthPage reportData={reportData} />
+        <SocialConnectionsPage reportData={reportData} />
+        <HealthWellnessPage reportData={reportData} />
+        <LegacyImpactPage reportData={reportData} />
+      </div>
     </motion.div>
   );
 }

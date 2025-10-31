@@ -235,13 +235,14 @@ export default function Signup() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen flex items-center justify-center bg-[var(--surface)]"
+      className="min-h-screen flex items-center justify-center bg-[var(--surface)] p-4"
     >
-      <div className="card-gradient p-8 rounded-xl shadow-lg max-w-md w-full">
+      <div className="card-gradient p-8 rounded-lg shadow-custom-lg max-w-md w-full">
         <div className="flex items-center justify-center space-x-1 mb-4">
-          <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
-          <h1 className="text-xl font-light text-white">Dynamics</h1>
+          <h1 className="text-xl font-bold text-[var(--primary)]">CSM </h1>
+          <h1 className="text-xl font-light text-[var(--text-primary)]">Dynamics</h1>
         </div>
+
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -250,6 +251,7 @@ export default function Signup() {
         >
           Sign Up to Get Your Couple Insights Report
         </motion.h1>
+
         {confirmationSent ? (
           <motion.div
             initial={{ opacity: 0 }}
@@ -282,11 +284,12 @@ export default function Signup() {
                   placeholder="Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
+                  className="w-full px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
                   required
                 />
                 {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name[0]}</p>}
               </div>
+
               <div>
                 <motion.input
                   initial={{ opacity: 0, x: -20 }}
@@ -296,11 +299,12 @@ export default function Signup() {
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
+                  className="w-full px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
                   required
                 />
                 {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email[0]}</p>}
               </div>
+
               <div>
                 <motion.input
                   initial={{ opacity: 0, x: -20 }}
@@ -311,11 +315,12 @@ export default function Signup() {
                   value={confirmEmail}
                   onChange={(e) => setConfirmEmail(e.target.value)}
                   onPaste={(e) => e.preventDefault()}
-                  className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
+                  className="w-full px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
                   required
                 />
                 {errors.confirmEmail && <p className="text-red-400 text-sm mt-1">{errors.confirmEmail[0]}</p>}
               </div>
+
               <div>
                 <motion.input
                   initial={{ opacity: 0, x: -20 }}
@@ -325,45 +330,47 @@ export default function Signup() {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
+                  className="w-full px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
                   required
                 />
                 {errors.password && <p className="text-red-400 text-sm mt-1">{errors.password[0]}</p>}
               </div>
+
               {serverError && (
-                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-red-400 text-sm">
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-red-400 text-sm text-center"
+                >
                   {serverError}
                 </motion.p>
               )}
+
               <motion.button
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
                 type="submit"
                 disabled={loading || !assessmentData}
-                className="btn-primary w-full py-3 rounded-lg font-semibold inline-flex items-center justify-center group disabled:opacity-50"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="btn-primary w-full py-3 rounded-lg font-semibold inline-flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed"
+                whileHover={{ scale: !loading && assessmentData ? 1.05 : 1 }}
+                whileTap={{ scale: !loading && assessmentData ? 0.95 : 1 }}
               >
                 {loading ? "Processing..." : "Sign Up and Proceed to Payment"}
                 {!loading && <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />}
               </motion.button>
             </form>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="mt-4 text-center"
-            ></motion.div>
+
             {!assessmentData && (
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
                 className="text-red-400 text-sm mt-4 text-center"
               >
                 Complete your assessment:
-                <a href={`/`} className="text-[var(--accent)] hover:underline ml-1">
-                  <span className="text-[var(--primary)]"> Click here!</span>
+                <a href={`/report/${typeCode}/couples`} className="text-[var(--accent)] hover:underline ml-1">
+                  <span className="text-[var(--primary)] font-medium">Click here!</span>
                 </a>
               </motion.p>
             )}
