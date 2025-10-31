@@ -145,8 +145,8 @@ export default function InviteSection({ siteId }) {
         </p>
       </div>
 
-      <div className="flex items-center gap-3">
-        <div className="flex-1 relative group">
+      <div className="flex items-center justify-center gap-3">
+        {/* <div className="flex-1 relative group">
           <input
             type="text"
             value={inviteLink}
@@ -159,7 +159,7 @@ export default function InviteSection({ siteId }) {
               Click {"Copy"} to share
             </span>
           </div>
-        </div>
+        </div> */}
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

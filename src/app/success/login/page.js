@@ -7,8 +7,6 @@ import { supabase } from "@/app/utils/supabaseClient";
 import { motion } from "framer-motion";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -16,62 +14,54 @@ export default function Login() {
   const sessionId = searchParams.get("session_id");
 
   useEffect(() => {
-    async function checkSession() {
+    async function verifyAndRedirect() {
       try {
-        if (!supabase) {
-          throw new Error("Supabase client is not initialized");
-        }
-
-        console.log("Checking session with session_id:", sessionId);
         const {
           data: { session },
-          error: sessionError,
         } = await supabase.auth.getSession();
-        console.log("Session check result:", { session, error: sessionError?.message });
 
-        if (sessionError) {
-          console.error("Session check error:", sessionError.message, sessionError);
-          setError("Failed to verify session. Please log in.");
+        if (!session) {
           setLoading(false);
           return;
         }
 
-        if (session) {
-          const userId = session.user.id;
-          const { data: userData, error: userError } = await supabase
-            .from("users")
-            .select("id, has_paid")
-            .eq("id", userId)
-            .single();
+        const userId = session.user.id;
 
-          if (userError || !userData) {
-            console.error("User fetch error:", userError?.message || "No user found for userId", userId, userError);
-            setError("User profile not found. Please log in again.");
-            await supabase.auth.signOut();
-            setLoading(false);
-            router.push("/login");
-            return;
-          }
-
-          // Delay redirect to allow webhook processing
-          if (sessionId) {
-            console.log("Post-payment redirect, waiting 2s for webhook...");
-            await new Promise((resolve) => setTimeout(resolve, 2000));
-          }
-
-          console.log("Authenticated user, redirecting:", { userId, redirectPath: `/dashboard/${userId}` });
+        // === STEP 1: If no session_id → just go to dashboard ===
+        if (!sessionId) {
           router.push(`/dashboard/${userId}`);
-        } else {
-          setLoading(false);
+          return;
         }
+
+        // === STEP 2: Verify payment with Stripe API ===
+        const verifyRes = await fetch("/api/verify-payment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session.access_token}`,
+          },
+          body: JSON.stringify({ session_id: sessionId }),
+        });
+
+        const verifyData = await verifyRes.json();
+
+        if (!verifyRes.ok || !verifyData.paid) {
+          setError(verifyData.error || "Payment not confirmed. Please contact support.");
+          setLoading(false);
+          return;
+        }
+
+        // === STEP 3: Payment confirmed → go to dashboard ===
+        console.log("Payment verified via Stripe API, redirecting...");
+        router.push(`/dashboard/${userId}`);
       } catch (err) {
-        console.error("Unexpected error in checkSession:", err.message, err.stack);
-        setError("An unexpected error occurred. Please try again.");
+        console.error("Error in verifyAndRedirect:", err);
+        setError("An unexpected error occurred.");
         setLoading(false);
       }
     }
 
-    checkSession();
+    verifyAndRedirect();
   }, [router, sessionId]);
 
   const handleLogin = async (e) => {

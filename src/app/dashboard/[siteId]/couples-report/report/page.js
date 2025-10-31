@@ -148,14 +148,10 @@ export default function CouplesReportPage() {
   }
 
   if (error) {
-    return (
-      <div className="flex min-h-screen items-center justify-center p-6 bg-[var(--surface)]">
-        <div className="text-red-400 text-center text-lg font-medium">{error}</div>
-      </div>
-    );
+    console.error("Error in CouplesReportPage:", error);
   }
 
-  if (!reportData?.partnerA.has_assessment || !reportData?.partnerB.has_assessment) {
+  if (!reportData?.partnerA.has_assessment || !reportData?.partnerB.has_assessment || !partnerAData.partner_id) {
     return (
       <div className="container mx-auto p-6 mt-20 max-w-7xl">
         <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-8 text-center">

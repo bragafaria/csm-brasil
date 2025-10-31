@@ -160,18 +160,6 @@ export default function SessionsPage() {
               <List className="text-[var(--accent)]" size={20} />
               <span className="text-base md:text-lg">View Sessions</span>
             </button>
-
-            <button
-              onClick={() => setShowContent("coach")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
-                showContent === "coach"
-                  ? "bg-[var(--primary)] text-white shadow-md"
-                  : "text-[var(--text-primary)] hover:bg-[var(--surface-variant-hover)]"
-              }`}
-            >
-              <UserStar className="text-[var(--accent)]" size={20} />
-              <span className="text-base md:text-lg">Coach Profile</span>
-            </button>
           </div>
 
           {/* Tab Content */}

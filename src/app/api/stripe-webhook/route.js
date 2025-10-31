@@ -1,4 +1,4 @@
-// /api/stripe-webhook/route.js
+// src/app/api/stripe-webhook/route.js
 import { createClient } from "@supabase/supabase-js";
 import Stripe from "stripe";
 
@@ -21,14 +21,10 @@ async function buffer(request) {
 export async function POST(request) {
   console.log("Webhook received at:", new Date().toISOString());
 
+  // Validate env vars
   if (!process.env.STRIPE_SECRET_KEY || !webhookSecret || !supabaseUrl || !supabaseServiceKey) {
-    console.error("Missing environment variables:", {
-      stripe: !!process.env.STRIPE_SECRET_KEY,
-      webhookSecret: !!webhookSecret,
-      supabaseUrl: !!supabaseUrl,
-      supabaseServiceKey: !!supabaseServiceKey,
-    });
-    return new Response(JSON.stringify({ error: "Server configuration error: Missing environment variables" }), {
+    console.error("Missing environment variables");
+    return new Response(JSON.stringify({ error: "Server misconfigured" }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
     });
@@ -40,9 +36,9 @@ export async function POST(request) {
   let event;
   try {
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
-    console.log("Webhook event verified:", { type: event.type, id: event.id, metadata: event.data.object.metadata });
+    console.log("Webhook event verified:", { type: event.type, id: event.id });
   } catch (err) {
-    console.error("Webhook signature verification failed:", err.message, err.stack);
+    console.error("Webhook signature verification failed:", err.message);
     return new Response(`Webhook Error: ${err.message}`, { status: 400 });
   }
 
@@ -50,91 +46,61 @@ export async function POST(request) {
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
       const userId = session.metadata?.user_id;
+
       console.log("Processing checkout.session.completed:", {
         sessionId: session.id,
         userId,
-        metadata: session.metadata,
         customerId: session.customer,
       });
 
       if (!userId) {
-        console.error("No user_id found in session metadata");
-        return new Response(JSON.stringify({ error: "No user_id provided in session metadata" }), { status: 400 });
+        console.error("No user_id in metadata");
+        return new Response(JSON.stringify({ error: "Missing user_id" }), { status: 400 });
       }
 
       const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
-        auth: {
-          autoRefreshToken: false,
-          persistSession: false,
-        },
+        auth: { autoRefreshToken: false, persistSession: false },
       });
 
+      // Fetch user
       const { data: userData, error: userError } = await supabaseAdmin
         .from("users")
-        .select("id, has_paid, stripe_customer_id")
+        .select("id, has_paid")
         .eq("id", userId)
         .single();
-      console.log("User check:", { userData, userError: userError?.message });
 
       if (userError || !userData) {
-        console.error("User not found or error:", userError?.message);
+        console.error("User not found:", userError?.message);
         return new Response(JSON.stringify({ error: "User not found" }), { status: 400 });
       }
 
+      // Only update if not already paid
       if (!userData.has_paid) {
-        console.log("Updating users table for user_id:", userId);
-        const { data: updateData, error: userUpdateError } = await supabaseAdmin
+        console.log("Marking user as paid:", userId);
+        const { error: updateError } = await supabaseAdmin
           .from("users")
           .update({ has_paid: true, site_id: userId })
-          .eq("id", userId)
-          .select();
-        console.log("User update result:", { updateData, userUpdateError: userUpdateError?.message });
+          .eq("id", userId);
 
-        if (userUpdateError) {
-          console.error("Supabase user update error:", userUpdateError.message, userUpdateError.details);
-          return new Response(JSON.stringify({ error: `Supabase user update error: ${userUpdateError.message}` }), {
-            status: 500,
-          });
+        if (updateError) {
+          console.error("Failed to update has_paid:", updateError.message);
+          return new Response(JSON.stringify({ error: "DB update failed" }), { status: 500 });
         }
       } else {
-        console.log(`User ${userId} already marked as paid, skipping update`);
+        console.log("User already paid, skipping update");
       }
 
-      const { data: existingInvite, error: inviteCheckError } = await supabaseAdmin
-        .from("invite")
-        .select("id, invite")
-        .eq("user_id", userId)
-        .maybeSingle();
-      console.log("Invite check:", { existingInvite, inviteCheckError: inviteCheckError?.message });
-
-      if (existingInvite) {
-        console.log(`Invite already exists for user ${userId}:`, existingInvite.invite);
-      } else {
-        console.log("Inserting into invite table for user_id:", userId);
-        const { data: inviteData, error: inviteInsertError } = await supabaseAdmin
-          .from("invite")
-          .insert({ user_id: userId })
-          .select("id, invite")
-          .single();
-        console.log("Invite insert result:", { inviteData, inviteInsertError: inviteInsertError?.message });
-
-        if (inviteInsertError) {
-          console.error("Supabase invite insert error:", inviteInsertError.message, inviteInsertError.details);
-          return new Response(JSON.stringify({ error: `Supabase invite insert error: ${inviteInsertError.message}` }), {
-            status: 500,
-          });
-        }
-
-        console.log("Invite created successfully:", { inviteId: inviteData.invite });
-      }
+      // NO INVITE LOGIC HERE
+      // → Handled in /api/verify-payment (synchronous, reliable)
     } else {
-      console.log(`Unhandled event type: ${event.type}`);
+      console.log(`Unhandled event: ${event.type}`);
     }
-  } catch (handlerErr) {
-    console.error("Webhook handler error:", handlerErr.message, handlerErr.stack);
-    return new Response(JSON.stringify({ error: "Webhook processing error: " + handlerErr.message }), { status: 500 });
+  } catch (err) {
+    console.error("Webhook handler error:", err.message, err.stack);
+    return new Response(JSON.stringify({ error: "Processing failed" }), { status: 500 });
   }
 
+  // ALWAYS return 200
   return new Response(JSON.stringify({ received: true }), {
     status: 200,
     headers: { "Content-Type": "application/json" },

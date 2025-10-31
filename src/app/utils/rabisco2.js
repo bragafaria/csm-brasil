@@ -495,21 +495,21 @@
 // 495. N-V-O-S-H/N-V-O-F-H → Ambassador / Catalyst ok
 // 496. N-V-O-S-H/N-V-O-F-A → Ambassador / Wanderer ok
 // 497. N-V-O-S-H/N-V-I-S-H → Ambassador / Mentor ok
-// 498. N-V-O-S-H/N-V-I-S-A → Ambassador / Sage
-// 499. N-V-O-S-H/N-V-I-F-H → Ambassador / Unifier
-// 500. N-V-O-S-H/N-V-I-F-A → Ambassador / Mystic
-// 501. N-V-O-S-A/N-V-O-S-A → Artist / Artist
-// 502. N-V-O-S-A/N-V-O-F-H → Artist / Catalyst
-// 503. N-V-O-S-A/N-V-O-F-A → Artist / Wanderer
-// 504. N-V-O-S-A/N-V-I-S-H → Artist / Mentor
-// 505. N-V-O-S-A/N-V-I-S-A → Artist / Sage
-// 506. N-V-O-S-A/N-V-I-F-H → Artist / Unifier
-// 507. N-V-O-S-A/N-V-I-F-A → Artist / Mystic
-// 508. N-V-O-F-H/N-V-O-F-H → Catalyst / Catalyst
-// 509. N-V-O-F-H/N-V-O-F-A → Catalyst / Wanderer
-// 510. N-V-O-F-H/N-V-I-S-H → Catalyst / Mentor
-// 511. N-V-O-F-H/N-V-I-S-A → Catalyst / Sage
-// 512. N-V-O-F-H/N-V-I-F-H → Catalyst / Unifier
+// 498. N-V-O-S-H/N-V-I-S-A → Ambassador / Sage ok
+// 499. N-V-O-S-H/N-V-I-F-H → Ambassador / Unifier ok
+// 500. N-V-O-S-H/N-V-I-F-A → Ambassador / Mystic ok
+// 501. N-V-O-S-A/N-V-O-S-A → Artist / Artist ok
+// 502. N-V-O-S-A/N-V-O-F-H → Artist / Catalyst ok
+// 503. N-V-O-S-A/N-V-O-F-A → Artist / Wanderer ok
+// 504. N-V-O-S-A/N-V-I-S-H → Artist / Mentor ok
+// 505. N-V-O-S-A/N-V-I-S-A → Artist / Sage ok
+// 506. N-V-O-S-A/N-V-I-F-H → Artist / Unifier ok
+// 507. N-V-O-S-A/N-V-I-F-A → Artist / Mystic ok
+// 508. N-V-O-F-H/N-V-O-F-H → Catalyst / Catalyst ok
+// 509. N-V-O-F-H/N-V-O-F-A → Catalyst / Wanderer ok
+// 510. N-V-O-F-H/N-V-I-S-H → Catalyst / Mentor ok
+// 511. N-V-O-F-H/N-V-I-S-A → Catalyst / Sage ok
+// 512. N-V-O-F-H/N-V-I-F-H → Catalyst / Unifier ok
 // 513. N-V-O-F-H/N-V-I-F-A → Catalyst / Mystic
 // 514. N-V-O-F-A/N-V-O-F-A → Wanderer / Wanderer
 // 515. N-V-O-F-A/N-V-I-S-H → Wanderer / Mentor
