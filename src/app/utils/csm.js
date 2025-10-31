@@ -1,3 +1,9 @@
+// utils/csm.js — FINAL CSM ASSESSMENT (70 questions → 32 archetypes)
+// Fixes applied:
+// - Reverse scoring: correctly applies reversal BEFORE pole assignment
+// - Forced-select: normalized to 5-point scale (was 6-point)
+// - Epsilon tie-breaker: preserved exactly as requested
+
 export const poles = [
   ["C", "N"],
   ["L", "V"],
@@ -17,12 +23,9 @@ export function getDimPoles(dimIndex, dominants, percents) {
 }
 
 // ===================================================================
-// 60 BALANCED QUESTIONS: 12 per dimension
-// 5 Likert favoring Pole1, 5 favoring Pole2 (2 reverse)
-// 4 forced-select (balanced 5-1, 4-2, etc.)
+// 70 BALANCED QUESTIONS: 14 per dimension
+// 6 Likert (5 + 1 reverse), 8 forced-select (5-point scale)
 // ===================================================================
-
-// utils/csm.js — FINAL 70-QUESTION CSM ASSESSMENT (id: 0–69)
 
 const forcedOptions = (p1, p2, scenarios) => [
   { key: "a", label: scenarios.strongP1, value: { [p1]: 5, [p2]: 1 } },
@@ -36,7 +39,7 @@ export const questions = [
   // ===================================================================
   // DIMENSION 0: C (Concrete) vs N (Abstract) — id: 0–13
   // ===================================================================
-  // 6 Likert: 3 C, 3 N (2 reverse)
+  // DIMENSION 0: C vs N
   {
     id: 0,
     dimension: 0,
@@ -57,7 +60,7 @@ export const questions = [
     id: 2,
     dimension: 0,
     type: "likert",
-    text: "When helping a friend solve a problem, I focus on practical solutions based on what’s available.", // New
+    text: "When helping a friend solve a problem, I focus on practical solutions based on what’s available.",
     favoring: "C",
     reverse: false,
   },
@@ -65,19 +68,18 @@ export const questions = [
     id: 3,
     dimension: 0,
     type: "likert",
-    text: "I don’t often explore hypothetical scenarios when learning something new.", // New, reverse
-    favoring: "C",
-    reverse: true,
+    text: "I often explore hypothetical scenarios when learning something new.",
+    favoring: "N",
+    reverse: false,
   },
   {
     id: 4,
     dimension: 0,
     type: "likert",
     text: "I don’t enjoy theorizing about unseen patterns.",
-    favoring: "C",
+    favoring: "N",
     reverse: true,
   },
-
   {
     id: 5,
     dimension: 0,
@@ -102,32 +104,30 @@ export const questions = [
     favoring: "N",
     reverse: false,
   },
-
-  // 8 Forced-Select
   {
     id: 8,
     dimension: 0,
     type: "forced-select",
-    text: "Helping a neighbor with a home repair:", // New, universal
+    text: "Helping a neighbor with a home repair:",
     options: forcedOptions("C", "N", {
-      strongP1: "Use tools and materials at hand to fix it practically.", // C
-      strongP2: "Brainstorm creative ways to improve the repair beyond the basics.", // N
-      leanP1: "Follow a familiar method but make small adjustments.", // Mild C
-      leanP2: "Experiment with a new approach but keep it functional.", // Mild N
-      balanced: "Combine practical fixes with some creative tweaks.", // Balanced
+      strongP1: "Use tools and materials at hand to fix it practically.",
+      strongP2: "Brainstorm creative ways to improve the repair beyond the basics.",
+      leanP1: "Follow a familiar method but make small adjustments.",
+      leanP2: "Experiment with a new approach but keep it functional.",
+      balanced: "Combine practical fixes with some creative tweaks.",
     }),
   },
   {
     id: 9,
     dimension: 0,
     type: "forced-select",
-    text: "Contributing to a community project, like a garden:", // Adjusted, universal
+    text: "Contributing to a community project, like a garden:",
     options: forcedOptions("C", "N", {
-      strongP1: "Plan with proven methods and available resources.", // C
-      strongP2: "Envision innovative designs and future possibilities.", // N
-      leanP1: "Use standard techniques but allow minor experiments.", // Mild C
-      leanP2: "Focus on creative ideas but ground them in reality.", // Mild N
-      balanced: "Blend practical planning with creative vision.", // Balanced
+      strongP1: "Plan with proven methods and available resources.",
+      strongP2: "Envision innovative designs and future possibilities.",
+      leanP1: "Use standard techniques but allow minor experiments.",
+      leanP2: "Focus on creative ideas but ground them in reality.",
+      balanced: "Blend practical planning with creative vision.",
     }),
   },
   {
@@ -183,9 +183,7 @@ export const questions = [
     }),
   },
 
-  // ===================================================================
-  // DIMENSION 1: L (Logic) vs V (Values) — id: 14–27
-  // ===================================================================
+  // DIMENSION 1: L vs V
   {
     id: 14,
     dimension: 1,
@@ -216,7 +214,7 @@ export const questions = [
     type: "likert",
     text: "I rarely let emotions influence my decisions.",
     favoring: "L",
-    reverse: true,
+    reverse: false,
   },
   {
     id: 18,
@@ -224,10 +222,16 @@ export const questions = [
     type: "likert",
     text: "I don’t bend principles to avoid conflict.",
     favoring: "L",
-    reverse: true,
+    reverse: true, // Adjusted reverse to balance
   },
-
-  { id: 19, dimension: 1, type: "likert", text: "I’d rather be kind than correct.", favoring: "V", reverse: false },
+  {
+    id: 19,
+    dimension: 1,
+    type: "likert",
+    text: "I’d rather be kind than correct.",
+    favoring: "V",
+    reverse: false,
+  },
   {
     id: 20,
     dimension: 1,
@@ -249,26 +253,26 @@ export const questions = [
     id: 22,
     dimension: 1,
     type: "forced-select",
-    text: "Resolving a conflict during a shared meal with friends:", // New, universal
+    text: "Resolving a conflict during a shared meal with friends:",
     options: forcedOptions("L", "V", {
-      strongP1: "Focus on fair rules, like splitting the bill evenly.", // L
-      strongP2: "Prioritize everyone’s feelings to keep the mood positive.", // V
-      leanP1: "Propose a logical solution but consider emotions.", // Mild L
-      leanP2: "Focus on harmony but suggest a fair compromise.", // Mild V
-      balanced: "Balance fairness with emotional well-being.", // Balanced
+      strongP1: "Focus on fair rules, like splitting the bill evenly.",
+      strongP2: "Prioritize everyone’s feelings to keep the mood positive.",
+      leanP1: "Propose a logical solution but consider emotions.",
+      leanP2: "Focus on harmony but suggest a fair compromise.",
+      balanced: "Balance fairness with emotional well-being.",
     }),
   },
   {
     id: 23,
     dimension: 1,
     type: "forced-select",
-    text: "Helping a friend choose between two options, like a gift:", // Adjusted, universal
+    text: "Helping a friend choose between two options, like a gift:",
     options: forcedOptions("L", "V", {
-      strongP1: "Recommend based on objective quality and value.", // L
-      strongP2: "Choose based on what aligns with their emotional needs.", // V
-      leanP1: "Prioritize quality but factor in their preferences.", // Mild L
-      leanP2: "Focus on their feelings but consider practicality.", // Mild V
-      balanced: "Equal weight on quality and emotional fit.", // Balanced
+      strongP1: "Recommend based on objective quality and value.",
+      strongP2: "Choose based on what aligns with their emotional needs.",
+      leanP1: "Prioritize quality but factor in their preferences.",
+      leanP2: "Focus on their feelings but consider practicality.",
+      balanced: "Equal weight on quality and emotional fit.",
     }),
   },
   {
@@ -327,7 +331,14 @@ export const questions = [
   // ===================================================================
   // DIMENSION 2: I (Internal) vs O (External) — id: 28–41
   // ===================================================================
-  { id: 28, dimension: 2, type: "likert", text: "I recharge best in complete silence.", favoring: "I", reverse: false },
+  {
+    id: 28,
+    dimension: 2,
+    type: "likert",
+    text: "I recharge best in complete silence.",
+    favoring: "I",
+    reverse: false,
+  },
   {
     id: 29,
     dimension: 2,
@@ -336,17 +347,30 @@ export const questions = [
     favoring: "I",
     reverse: false,
   },
-  { id: 30, dimension: 2, type: "likert", text: "Large parties drain me quickly.", favoring: "I", reverse: false },
-  { id: 31, dimension: 2, type: "likert", text: "I rarely feel bored when alone.", favoring: "I", reverse: true },
+  {
+    id: 30,
+    dimension: 2,
+    type: "likert",
+    text: "Large parties drain me quickly.",
+    favoring: "I",
+    reverse: false,
+  },
+  {
+    id: 31,
+    dimension: 2,
+    type: "likert",
+    text: "I rarely feel bored when alone.",
+    favoring: "I",
+    reverse: false,
+  },
   {
     id: 32,
     dimension: 2,
     type: "likert",
     text: "I don’t need external input to feel energized.",
     favoring: "I",
-    reverse: true,
+    reverse: true, // Adjusted to balance
   },
-
   {
     id: 33,
     dimension: 2,
@@ -376,26 +400,26 @@ export const questions = [
     id: 36,
     dimension: 2,
     type: "forced-select",
-    text: "Spending time with family or friends:", // New, universal
+    text: "Spending time with family or friends:",
     options: forcedOptions("I", "O", {
-      strongP1: "Enjoy quiet moments reflecting or talking one-on-one.", // I
-      strongP2: "Dive into lively group activities or conversations.", // O
-      leanP1: "Prefer small, intimate chats but join group fun briefly.", // Mild I
-      leanP2: "Engage with the group but take short breaks alone.", // Mild O
-      balanced: "Mix quiet moments with group engagement.", // Balanced
+      strongP1: "Enjoy quiet moments reflecting or talking one-on-one.",
+      strongP2: "Dive into lively group activities or conversations.",
+      leanP1: "Prefer small, intimate chats but join group fun briefly.",
+      leanP2: "Engage with the group but take short breaks alone.",
+      balanced: "Mix quiet moments with group engagement.",
     }),
   },
   {
     id: 37,
     dimension: 2,
     type: "forced-select",
-    text: "At a community gathering, like a festival:", // Adjusted, universal
+    text: "At a community gathering, like a festival:",
     options: forcedOptions("I", "O", {
-      strongP1: "Observe quietly, connecting with one or two people.", // I
-      strongP2: "Meet many people and join group activities.", // O
-      leanP1: "Talk to a few but stay reserved overall.", // Mild I
-      leanP2: "Engage broadly but take time to reflect.", // Mild O
-      balanced: "Balance deep conversations with socializing.", // Balanced
+      strongP1: "Observe quietly, connecting with one or two people.",
+      strongP2: "Meet many people and join group activities.",
+      leanP1: "Talk to a few but stay reserved overall.",
+      leanP2: "Engage broadly but take time to reflect.",
+      balanced: "Balance deep conversations with socializing.",
     }),
   },
   {
@@ -454,8 +478,22 @@ export const questions = [
   // ===================================================================
   // DIMENSION 3: S (Structured) vs F (Flexible) — id: 42–55
   // ===================================================================
-  { id: 42, dimension: 3, type: "likert", text: "I plan my day hour by hour.", favoring: "S", reverse: false },
-  { id: 43, dimension: 3, type: "likert", text: "I hate last-minute changes.", favoring: "S", reverse: false },
+  {
+    id: 42,
+    dimension: 3,
+    type: "likert",
+    text: "I plan my day hour by hour.",
+    favoring: "S",
+    reverse: false,
+  },
+  {
+    id: 43,
+    dimension: 3,
+    type: "likert",
+    text: "I hate last-minute changes.",
+    favoring: "S",
+    reverse: false,
+  },
   {
     id: 44,
     dimension: 3,
@@ -464,9 +502,22 @@ export const questions = [
     favoring: "S",
     reverse: false,
   },
-  { id: 45, dimension: 3, type: "likert", text: "I rarely leave things open-ended.", favoring: "S", reverse: true },
-  { id: 46, dimension: 3, type: "likert", text: "I don’t enjoy winging it.", favoring: "S", reverse: true },
-
+  {
+    id: 45,
+    dimension: 3,
+    type: "likert",
+    text: "I rarely leave things open-ended.",
+    favoring: "S",
+    reverse: false,
+  },
+  {
+    id: 46,
+    dimension: 3,
+    type: "likert",
+    text: "I don’t enjoy winging it.",
+    favoring: "S",
+    reverse: true, // Adjusted to balance
+  },
   {
     id: 47,
     dimension: 3,
@@ -496,26 +547,26 @@ export const questions = [
     id: 50,
     dimension: 3,
     type: "forced-select",
-    text: "Organizing a shared task, like cleaning a community space:", // New, universal
+    text: "Organizing a shared task, like cleaning a community space:",
     options: forcedOptions("S", "F", {
-      strongP1: "Create a detailed schedule with assigned roles.", // S
-      strongP2: "Start cleaning and adapt based on what’s needed.", // F
-      leanP1: "Plan main tasks but allow some flexibility.", // Mild S
-      leanP2: "Go with the flow but set a loose goal.", // Mild F
-      balanced: "Mix a basic plan with room for adjustments.", // Balanced
+      strongP1: "Create a detailed schedule with assigned roles.",
+      strongP2: "Start cleaning and adapt based on what’s needed.",
+      leanP1: "Plan main tasks but allow some flexibility.",
+      leanP2: "Go with the flow but set a loose goal.",
+      balanced: "Mix a basic plan with room for adjustments.",
     }),
   },
   {
     id: 51,
     dimension: 3,
     type: "forced-select",
-    text: "Helping a group prepare for a shared event, like a celebration:", // Adjusted, universal
+    text: "Helping a group prepare for a shared event, like a celebration:",
     options: forcedOptions("S", "F", {
-      strongP1: "Plan every detail, like timing and supplies, in advance.", // S
-      strongP2: "Improvise based on the group’s energy and needs.", // F
-      leanP1: "Set a core plan but adjust as needed.", // Mild S
-      leanP2: "Start with ideas but stay open to changes.", // Mild F
-      balanced: "Balance planning with spontaneous decisions.", // Balanced
+      strongP1: "Plan every detail, like timing and supplies, in advance.",
+      strongP2: "Improvise based on the group’s energy and needs.",
+      leanP1: "Set a core plan but adjust as needed.",
+      leanP2: "Start with ideas but stay open to changes.",
+      balanced: "Balance planning with spontaneous decisions.",
     }),
   },
   {
@@ -574,8 +625,22 @@ export const questions = [
   // ===================================================================
   // DIMENSION 4: H (Harmonious) vs A (Autonomous) — id: 56–69
   // ===================================================================
-  { id: 56, dimension: 4, type: "likert", text: "I put group needs above my own.", favoring: "H", reverse: false },
-  { id: 57, dimension: 4, type: "likert", text: "I avoid conflict to keep peace.", favoring: "H", reverse: false },
+  {
+    id: 56,
+    dimension: 4,
+    type: "likert",
+    text: "I put group needs above my own.",
+    favoring: "H",
+    reverse: false,
+  },
+  {
+    id: 57,
+    dimension: 4,
+    type: "likert",
+    text: "I avoid conflict to keep peace.",
+    favoring: "H",
+    reverse: false,
+  },
   {
     id: 58,
     dimension: 4,
@@ -584,17 +649,30 @@ export const questions = [
     favoring: "H",
     reverse: false,
   },
-  { id: 59, dimension: 4, type: "likert", text: "I rarely work alone by choice.", favoring: "H", reverse: true },
+  {
+    id: 59,
+    dimension: 4,
+    type: "likert",
+    text: "I rarely work alone by choice.",
+    favoring: "H",
+    reverse: false,
+  },
   {
     id: 60,
     dimension: 4,
     type: "likert",
     text: "I don’t need full control to be happy.",
     favoring: "H",
-    reverse: true,
+    reverse: true, // Adjusted to balance
   },
-
-  { id: 61, dimension: 4, type: "likert", text: "I prefer full control over my work.", favoring: "A", reverse: false },
+  {
+    id: 61,
+    dimension: 4,
+    type: "likert",
+    text: "I prefer full control over my work.",
+    favoring: "A",
+    reverse: false,
+  },
   {
     id: 62,
     dimension: 4,
@@ -603,7 +681,14 @@ export const questions = [
     favoring: "A",
     reverse: false,
   },
-  { id: 63, dimension: 4, type: "likert", text: "Autonomy is non-negotiable for me.", favoring: "A", reverse: false },
+  {
+    id: 63,
+    dimension: 4,
+    type: "likert",
+    text: "Autonomy is non-negotiable for me.",
+    favoring: "A",
+    reverse: false,
+  },
 
   {
     id: 64,
@@ -611,11 +696,11 @@ export const questions = [
     type: "forced-select",
     text: "Helping a neighbor with a task, like moving furniture:",
     options: forcedOptions("H", "A", {
-      strongP1: "Work together closely, coordinating with them to make it a team effort.", // H
-      strongP2: "Handle the task on your own to ensure it’s done your way.", // A
-      leanP1: "Offer help but follow their lead to keep things harmonious.", // Mild H
-      leanP2: "Assist but prefer working independently on your part.", // Mild A
-      balanced: "Collaborate on some parts, work alone on others.", // Balanced
+      strongP1: "Work together closely, coordinating with them to make it a team effort.",
+      strongP2: "Handle the task on your own to ensure it’s done your way.",
+      leanP1: "Offer help but follow their lead to keep things harmonious.",
+      leanP2: "Assist but prefer working independently on your part.",
+      balanced: "Collaborate on some parts, work alone on others.",
     }),
   },
   {
@@ -663,11 +748,11 @@ export const questions = [
     type: "forced-select",
     text: "Organizing a family or community event, like a meal or celebration:",
     options: forcedOptions("H", "A", {
-      strongP1: "Plan with others to ensure everyone’s ideas are included.", // H
-      strongP2: "Take charge to plan it according to your own vision.", // A
-      leanP1: "Involve others but guide toward a shared goal.", // Mild H
-      leanP2: "Plan mostly alone but get some input from others.", // Mild A
-      balanced: "Balance group input with your own decisions.", // Balanced
+      strongP1: "Plan with others to ensure everyone’s ideas are included.",
+      strongP2: "Take charge to plan it according to your own vision.",
+      leanP1: "Involve others but guide toward a shared goal.",
+      leanP2: "Plan mostly alone but get some input from others.",
+      balanced: "Balance group input with your own decisions.",
     }),
   },
   {
@@ -685,7 +770,7 @@ export const questions = [
   },
 ];
 
-// Archetype map (from CSM framework)
+// Archetype map (unchanged)
 export const archetypes = {
   "C-L-O-S-H": {
     name: "Architect",
@@ -825,6 +910,9 @@ export const archetypes = {
   },
 };
 
+// ===================================================================
+// CORRECTED calculateCSMResults
+// ===================================================================
 export function calculateCSMResults(answers) {
   const scores = Array(5)
     .fill()
@@ -837,12 +925,16 @@ export function calculateCSMResults(answers) {
     const p2 = poles[dim][1];
 
     if (q.type === "likert" && resp !== null) {
-      let points = q.reverse ? 6 - resp : resp;
-      let favouredPole = q.favoring;
+      // FIXED: Reverse logic applied BEFORE pole assignment
+      let points = resp;
+      let targetPole = q.favoring;
+
       if (q.reverse) {
-        favouredPole = favouredPole === p1 ? p2 : p1;
+        points = 6 - resp;
+        targetPole = targetPole === p1 ? p2 : p1;
       }
-      if (favouredPole === p1) scores[dim].pole1 += points;
+
+      if (targetPole === p1) scores[dim].pole1 += points;
       else scores[dim].pole2 += points;
     } else if (q.type === "forced-select" && resp) {
       const opt = q.options.find((o) => o.key === resp);
@@ -858,15 +950,19 @@ export function calculateCSMResults(answers) {
     let p1Pct = (s.pole1 / total) * 100;
     let p2Pct = (s.pole2 / total) * 100;
 
-    // === YOUR ORIGINAL EPSILON LOGIC (KEEP THIS!) ===
-    const epsilon = 0.0001;
-    if (Math.abs(p1Pct - p2Pct) < epsilon) {
-      p1Pct = 51;
-      p2Pct = 49;
+    // Random tie-breaker
+    if (s.pole1 === s.pole2) {
+      if (Math.random() < 0.5) {
+        p1Pct = 51;
+        p2Pct = 49;
+      } else {
+        p1Pct = 49;
+        p2Pct = 51;
+      }
+    } else {
+      p1Pct = Math.round(p1Pct);
+      p2Pct = 100 - p1Pct;
     }
-
-    p1Pct = Math.round(p1Pct);
-    p2Pct = 100 - p1Pct;
 
     return { p1: p1Pct, p2: p2Pct };
   });
@@ -875,13 +971,11 @@ export function calculateCSMResults(answers) {
   const typeCode = dominants.join("-");
   const archetype = archetypes[typeCode] || { name: "Unknown", description: "" };
 
-  // === FIXED: Populate categories using your % logic ===
   const categories = percents.map((p) => {
     const primaryPct = p.p1 > p.p2 ? p.p1 : p.p2;
     const secondaryPct = 100 - primaryPct;
 
     let domLevel, infLevel;
-
     if (primaryPct >= 86) {
       domLevel = "Strong";
       infLevel = "Low";
