@@ -146,7 +146,7 @@ export default function Sales() {
   return (
     <div className="min-h-screen">
       {/* Sticky Header */}
-      <header className="fixed top-0 w-full z-50 card-gradient border-b border-[var(--border)]">
+      <header className="fixed top-0 w-full left-0 right-0 z-50 bg-[var(--dashboard)]/90 backdrop-blur-lg border-b border-[var(--border)]">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">

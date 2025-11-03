@@ -116,7 +116,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[var(--surface)] text-[var(--text-primary)]">
       {/* Sticky Header */}
-      <header className="fixed top-0 w-full z-50 header-gradient border border-[var(--border)]">
+      <header className="fixed top-0 w-full left-0 right-0 z-50 bg-[var(--dashboard)]/90 backdrop-blur-lg border-b border-[var(--border)]">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -240,7 +240,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--text-primary)]">How It Works</h2>
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
-              Simple steps to unlock deeper understanding in your relationship
+              Four simple steps to transform how you understand yourself and each other.
             </p>
           </div>
 
@@ -248,19 +248,19 @@ export default function Home() {
             {[
               {
                 title: "Take the Free Assessment",
-                text: "Answer a quick, 10-minute questionnaire that uncovers your unique Cognitive Spectrum profile: how you think, decide, feel, and connect. No partner input required. Just honest reflections about you.",
+                text: "Answer a quick, 10-minute questionnaire that uncovers your unique Cognitive Spectrum profile: how you think, decide, feel, and connect. No partner needed.",
               },
               {
                 title: "Get Your Results",
-                text: "Instantly receive your personalized CSM archetype, full personality profile with percentage-based spectrums, and detailed insights into your cognitive strengths, growth areas and blind spots.",
+                text: "Instantly receive your CSM Archetype, percentage-based spectrums, and deep insights into your cognitive strengths, growth areas, and blind spots.",
               },
               {
                 title: "Access Your Dashboard",
-                text: "Step into your exclusive lifetime dashboard where you can explore your results, track progress, save insights, and access relationship tools anytime, on any device.",
+                text: "Step into your lifetime dashboard to explore results, track growth, save insights, and use relationship tools - anytime, on any device.",
               },
               {
                 title: "Invite Your Partner",
-                text: "Send a private invite. Once they complete the assessment, unlock a joint Couple Insights Report that reveals compatibility patterns, communication strategies, and growth opportunities.",
+                text: "Send a private invite. When they finish, unlock your joint Couple Insights Report: compatibility patterns, communication strategies, and growth opportunities.",
               },
             ].map((step, i) => (
               <motion.div
@@ -381,9 +381,10 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Preview Your Spectrum Insights</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Your mind mapped. Not labeled.</h2>
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
-              See how CSM reveals your unique cognitive preferences with nuanced, percentage-based spectrums
+              Personality isn’t a box. It’s a spectrum of how your mind actually works. CSM shows you where you shine,
+              where you stretch, and how you connect.
             </p>
           </div>
 
