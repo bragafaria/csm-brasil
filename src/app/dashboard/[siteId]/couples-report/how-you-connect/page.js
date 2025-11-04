@@ -4,9 +4,9 @@
 import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import HowYouConnectPage from "@/app/components/couples/HowYouConnect";
+import IntroContext from "@/app/components/couples/IntroConnectContext";
 import NavButtons from "@/app/components/couples/NavButtons";
 import { getHowYouConnectData } from "@/app/lib/couple/getHowYouConnectData";
-import IntroConnectContext from "@/app/components/couples/IntroConnectContext";
 
 export default function HowYouConnectPageRoute() {
   const params = useParams();
@@ -26,7 +26,6 @@ export default function HowYouConnectPageRoute() {
         setLoading(false);
       }
     }
-
     loadData();
   }, [params.siteId]);
 
@@ -55,17 +54,29 @@ export default function HowYouConnectPageRoute() {
     );
   }
 
+  const pageTitle = `${data.partnerA.name} & ${data.partnerB.name} - How You Connect`;
+
   return (
-    <div className="container mx-auto p-6 mt-20 max-w-7xl">
-      <h1 className="text-3xl md:text-4xl font-bold text-center mb-10 text-[var(--text-primary)]">
-        {data.partnerA.name} & {data.partnerB.name}
-        {" - How you Connect"}
-      </h1>
-      <IntroConnectContext partnerA={data.partnerA} partnerB={data.partnerB} />
+    <>
+      <title>{pageTitle}</title>
+      <meta
+        name="description"
+        content={`Explore the natural chemistry and connection patterns between ${data.partnerA.name} and ${data.partnerB.name}.`}
+      />
 
-      <HowYouConnectPage {...data} />
+      <div className="container mx-auto p-6 mt-20 max-w-7xl">
+        <header className="text-center mb-12">
+          <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)]">{pageTitle}</h1>
+        </header>
 
-      <NavButtons current="connect" siteId={params.siteId} />
-    </div>
+        {/* 1. INTRODUCTION */}
+        <IntroContext partnerA={data.partnerA} partnerB={data.partnerB} />
+
+        {/* 2. DYNAMICS + HARMONY + STRENGTHS/GROWTH */}
+        <HowYouConnectPage dynamics={data.dynamics} />
+
+        <NavButtons current="connect" siteId={params.siteId} />
+      </div>
+    </>
   );
 }

@@ -52,16 +52,18 @@ export async function getLifeChallengesData(siteId) {
     throw new Error("Both partners must complete the assessment.");
   }
 
-  // === NORMALIZE KEY ===
-  const [typeA, typeB] = [partnerAData.typeCode, partnerBData.typeCode];
-  const normalizedKey = typeA < typeB ? `${typeA}/${typeB}` : `${typeB}/${typeA}`;
+  // === TRY BOTH POSSIBLE KEY ORDERS (NO SORTING) ===
+  const key1 = `${partnerAData.typeCode}/${partnerBData.typeCode}`;
+  const key2 = `${partnerBData.typeCode}/${partnerAData.typeCode}`;
 
-  // === ONLY CHALLENGES ===
-  const lifeChallengesArray = LifeAreasChallenges[normalizedKey];
+  let lifeChallengesArray = LifeAreasChallenges[key1] || LifeAreasChallenges[key2];
+
   if (!lifeChallengesArray || !Array.isArray(lifeChallengesArray) || lifeChallengesArray.length === 0) {
-    console.error("Missing life challenges for:", normalizedKey);
-    throw new Error(`No life challenges data for ${normalizedKey}`);
+    console.error("Missing life challenges for:", key1, "or", key2);
+    console.error("Available keys (sample):", Object.keys(LifeAreasChallenges).slice(0, 5));
+    throw new Error(`No life challenges data for ${key1} or ${key2}`);
   }
+
   const lifeChallenges = lifeChallengesArray[0];
 
   return {
