@@ -1,72 +1,95 @@
 // app/blog/[category]/[slug]/page.js
-import { db } from "@/lib/db";
-import { articles } from "@/lib/schema";
-import { compileMDX } from "next-mdx-remote/rsc";
-import { and, eq } from "drizzle-orm"; // ← ADD THIS
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
+import { getPostsWithCategory } from "@/app/lib/neon";
+import { format } from "date-fns";
+import Link from "next/link";
 
-// Optional: Custom components (YouTube, CTA button, etc.)
-const components = {
-  // Example: make CTA a button
-  strong: (props) => {
-    if (props.children?.includes?.("Unlock Your CSM Archetype")) {
-      return (
-        <a
-          href="/assess"
-          className="inline-block mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700"
-        >
-          {props.children}
-        </a>
-      );
-    }
-    return <strong {...props} />;
-  },
-};
+export const revalidate = 86400;
 
 export async function generateMetadata({ params }) {
-  const post = await getPost(params.category, params.slug);
-  if (!post) return { title: "Not Found" };
+  const post = await getPostBySlug(params.slug);
+  if (!post) return { title: "Post Not Found" };
 
   return {
-    title: post.title,
-    description: post.metaDescription,
+    title: `${post.title} | CSM Blog - Expert Advice 2025`,
+    description: post.excerpt,
     openGraph: {
       title: post.title,
-      description: post.metaDescription,
+      description: post.excerpt,
       type: "article",
+      publishedTime: post.published_at,
     },
   };
 }
 
-async function getPost(category, slug) {
-  return await db
-    .select()
-    .from(articles)
-    .where(and(eq(articles.category, category), eq(articles.slug, slug), eq(articles.status, "published")))
-    .limit(1)
-    .then((rows) => rows[0]);
+async function getPostBySlug(slug) {
+  const posts = await getPostsWithCategory({ published: true, limit: 1, slug });
+  return posts[0] || null;
 }
 
 export default async function BlogPost({ params }) {
-  const post = await getPost(params.category, params.slug);
+  const post = await getPostBySlug(params.slug);
   if (!post) notFound();
 
-  const { content } = await compileMDX({
-    source: post.content,
-    components,
-  });
-
   return (
-    <article className="max-w-4xl mx-auto px-6 py-12">
-      <header className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{post.title}</h1>
-        <p className="text-lg text-gray-600">{post.metaDescription}</p>
+    <article className="max-w-4xl mx-auto">
+      {/* Breadcrumb */}
+      <nav className="text-sm text-[var(--text-secondary)] mb-6">
+        <Link href="/blog" className="hover:text-[var(--accent)]">
+          Blog
+        </Link>
+        <span className="mx-2">›</span>
+        <Link href={`/blog/${post.category_slug}`} className="hover:text-[var(--accent)]">
+          {post.category_name}
+        </Link>
+        <span className="mx-2">›</span>
+        <span className="text-[var(--text-primary)]">{post.title}</span>
+      </nav>
+
+      {/* Post */}
+      <header className="mb-10">
+        <h1 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">{post.title}</h1>
+        <div className="flex items-center gap-4 text-sm text-[var(--text-secondary)]">
+          <time>{format(new Date(post.published_at), "MMMM d, yyyy")}</time>
+          <span>•</span>
+          <span className="text-[var(--accent)]">{post.category_name}</span>
+        </div>
       </header>
 
-      <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: content }} />
+      {/* Content */}
+      <div
+        className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-[var(--accent)] prose-img:rounded-lg prose-img:shadow-md"
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
 
-      {/* Optional: Share buttons, related posts */}
+      {/* CTA */}
+      <div className="mt-16 p-8 bg-gradient-to-r from-[var(--accent)] to-blue-600 rounded-2xl text-white text-center">
+        <h3 className="text-2xl font-bold mb-4">Ready to Apply CSM to Your Life?</h3>
+        <Link
+          href="/assessment"
+          className="inline-block bg-white text-[var(--accent)] font-bold px-8 py-3 rounded-full hover:shadow-lg transition"
+        >
+          Take Free CSM Assessment
+        </Link>
+      </div>
+
+      {/* Schema (Article) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.excerpt,
+            datePublished: post.published_at,
+            author: {
+              "@type": "Organization",
+              name: "CSM Dynamics",
+            },
+          }),
+        }}
+      />
     </article>
   );
 }

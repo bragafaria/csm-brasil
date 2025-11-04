@@ -217,3 +217,38 @@ body {
 .section-full {
   @apply min-h-screen md:min-h-[100vh] flex flex-col justify-center;
 }
+
+/* ──────────────────────────────────────────────────────────────
+   BLOG HERO TEXT GRADIENT
+   ────────────────────────────────────────────────────────────── */
+.hero-gradient-text {
+  background: linear-gradient(135deg, #a78bfa, #c4b5fd, #e9d5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   ICONS (Lucide placeholders – replace with real icons later)
+   ────────────────────────────────────────────────────────────── */
+.Heart::before {
+  content: "Heart";
+}
+.Sparkles::before {
+  content: "Sparkles";
+}
+.BrokenHeart::before {
+  content: "BrokenHeart";
+}
+.Flame::before {
+  content: "Flame";
+}
+.ClapperBoard::before {
+  content: "ClapperBoard";
+}
+.GraduationCap::before {
+  content: "GraduationCap";
+}
+.BookOpen::before {
+  content: "BookOpen";
+}
