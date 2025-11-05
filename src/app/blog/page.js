@@ -1,6 +1,6 @@
 // app/blog/page.js
 import Link from "next/link";
-import { getPostsWithCategory, getCategories } from "@/app/lib/neon";
+import { getPostsWithCategory, getCategories, getPostsByCategorySlug } from "@/app/lib/neon";
 import { format } from "date-fns";
 import { Heart, Sparkles, Flame } from "lucide-react";
 
@@ -18,17 +18,55 @@ export async function generateMetadata() {
   };
 }
 
+/* ------------------------------------------------------------------ */
+/*  Image fallback component – tiny, reusable, no extra deps          */
+/* ------------------------------------------------------------------ */
+function PostImage({ src, alt, className }) {
+  if (!src) {
+    return (
+      <div
+        className={`bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 border border-[var(--border)] flex items-center justify-center text-[var(--primary)]/40 ${className}`}
+      >
+        <Heart className="w-12 h-12" />
+      </div>
+    );
+  }
+  return <img src={src} alt={alt} className={`object-cover ${className}`} />;
+}
+
+/* ------------------------------------------------------------------ */
 export default async function BlogHome() {
   const featured = await getPostsWithCategory({ published: true, limit: 1 });
   const categories = await getCategories();
 
-  const postsByCategory = await Promise.all(
+  /* ---- category order ------------------------------------------------ */
+  const categoryOrder = [
+    "love-relationship",
+    "self-wellness",
+    "heartbreak-divorce",
+    "sex-seduction",
+    "entertainment-news",
+    "expert-advice",
+  ];
+
+  const postsByCategoryUnsorted = await Promise.all(
     categories.map(async (cat) => {
-      const posts = await getPostsWithCategory({ published: true, limit: 6 });
-      return { ...cat, posts: posts.slice(0, 3) };
+      const posts = await getPostsByCategorySlug({
+        slug: cat.slug,
+        published: true,
+        limit: 3,
+      });
+      return { ...cat, posts };
     })
   );
 
+  const postsByCategory = postsByCategoryUnsorted.sort((a, b) => {
+    const aIdx = categoryOrder.indexOf(a.slug);
+    const bIdx = categoryOrder.indexOf(b.slug);
+    return aIdx - bIdx;
+  });
+
+  /* ---- icons (still used for the section header) ------------------- */
   const categoryIcons = {
     "love-relationship": <Heart className="w-10 h-10 text-[var(--primary)]" />,
     "self-wellness": <Sparkles className="w-10 h-10 text-[var(--primary)]" />,
@@ -105,10 +143,14 @@ export default async function BlogHome() {
                     Read Full Article
                   </Link>
                 </div>
-                <div className="md:w-1/2 relative h-64 md:h-auto">
-                  <div className="bg-[var(--primary)] border border-[var(--border)] rounded-r-3xl w-full h-full flex items-center justify-center text-white/60 text-6xl">
-                    FEATURED IMAGE
-                  </div>
+
+                {/* FEATURED IMAGE */}
+                <div className="md:w-1/2 relative aspect-[16/9] md:aspect-auto">
+                  <PostImage
+                    src={featured[0].image_url}
+                    alt={featured[0].title}
+                    className="absolute inset-0 w-full h-full object-cover rounded-r-3xl"
+                  />
                 </div>
               </div>
             </div>
@@ -119,7 +161,7 @@ export default async function BlogHome() {
       {/* CATEGORIES GRID */}
       <section className="mt-24 max-w-7xl mx-auto px-6 space-y-20">
         {postsByCategory.map((cat) => {
-          const Icon = categoryIcons[cat.slug] || "BookOpen";
+          const Icon = categoryIcons[cat.slug] || <Heart className="w-10 h-10 text-[var(--primary)]" />;
           return (
             <div key={cat.id}>
               <div className="flex items-center justify-between mb-8">
@@ -140,9 +182,22 @@ export default async function BlogHome() {
                   <Link key={post.id} href={`/blog/${post.category_slug}/${post.slug}`} className="group block">
                     <article className="card-gradient rounded-2xl p-1 h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
                       <div className="bg-[var(--surface2)] rounded-2xl p-5 h-full flex flex-col">
-                        <div className="bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 border border-[var(--border)] rounded-xl w-full h-48 mb-4 flex items-center justify-center text-5xl text-[var(--primary)]/40">
-                          {Icon}
+                        {/* POST IMAGE (replaces icon) */}
+                        <div className="rounded-xl w-full aspect-[16/9] mb-4 overflow-hidden border border-[var(--border)]">
+                          {post.image_url ? (
+                            <img
+                              src={post.image_url}
+                              alt={post.title}
+                              className="w-full h-full object-cover object-center"
+                              loading="lazy"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 flex items-center justify-center">
+                              <Heart className="w-12 h-12 text-[var(--primary)]/40" />
+                            </div>
+                          )}
                         </div>
+
                         <h3 className="font-bold text-lg text-[var(--text-primary)] mb-2 line-clamp-2 group-hover:text-[var(--accent)] transition">
                           {post.title}
                         </h3>

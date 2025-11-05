@@ -1,9 +1,8 @@
-// tailwind.config.js
 import { fontFamily } from "tailwindcss/defaultTheme";
 import typography from "@tailwindcss/typography";
 import animate from "tailwindcss-animate";
+import aspectRatio from "@tailwindcss/aspect-ratio";
 
-// Step 1: Assign config to a named variable
 const tailwindConfig = {
   content: ["./app/**/*.{js,jsx}", "./pages/**/*.{js,jsx}", "./components/**/*.{js,jsx}", "./src/**/*.{js,jsx}"],
   theme: {
@@ -26,8 +25,7 @@ const tailwindConfig = {
       },
     },
   },
-  plugins: [typography, animate],
+  plugins: [typography, animate, aspectRatio],
 };
 
-// Step 2: Export the named variable
 export default tailwindConfig;

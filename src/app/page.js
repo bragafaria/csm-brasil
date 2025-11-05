@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import {
   Heart,
   Users,
@@ -23,6 +23,13 @@ export default function Home() {
   const [activeNav, setActiveNav] = useState("home");
   const [loggingOut, setLoggingOut] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+
+  // Force re-mount of animated sections on route change
+  const [routeKey, setRouteKey] = useState(0);
+  useEffect(() => {
+    setRouteKey((prev) => prev + 1);
+  }, [pathname]);
 
   const toggleFAQ = (index) => {
     setExpandedFAQ(expandedFAQ === index ? null : index);
@@ -106,7 +113,7 @@ export default function Home() {
   };
 
   const faqHeaderRef = useRef(null);
-  const isFaqHeaderInView = useInView(faqHeaderRef, { once: true, amount: 0.2 });
+  const isFaqHeaderInView = useInView(faqHeaderRef, { once: false, amount: 0.2 });
 
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -244,7 +251,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" key={routeKey}>
             {[
               {
                 title: "Take the Free Assessment",
@@ -268,14 +275,14 @@ export default function Home() {
                 custom={i}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: false, amount: 0.2 }}
                 variants={stepVariants}
                 className="text-center"
               >
                 <motion.div
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   variants={circleVariants}
                   className="w-20 h-20 rounded-full bg-[var(--accent)] flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-[var(--text-primary)]"
                 >
@@ -316,8 +323,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <AnimatedCard>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8" key={routeKey}>
+            <AnimatedCard delay={0}>
               <div
                 className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] 
                              border border-[rgba(var(--primary-rgb),0.2)] 
@@ -388,11 +395,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto" key={routeKey}>
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}
               variants={cardVariants}
               className="group bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] p-6 rounded-2xl 
                         shadow-lg border border-[rgba(var(--primary-rgb),0.2)] 
@@ -565,7 +572,7 @@ export default function Home() {
               {
                 question: "Do I need my partner to start?",
                 answer:
-                  "No. You can complete the free assessment on your own and explore your personal profile. If you wish to generate a full Couple Insights Report, your partner will also need to take the assessment. Many662 users prefer to start individually and invite their partner later for a joint analysis.",
+                  "No. You can complete the free assessment on your own and explore your personal profile. If you wish to generate a full Couple Insights Report, your partner will also need to take the assessment. Many users prefer to start individually and invite their partner later for a joint analysis.",
               },
               {
                 question: "Can CSM predict if we’re soulmates or just spot potential issues?",
@@ -712,10 +719,11 @@ function Counter({ target, suffix = "", duration = 2000, decimals = 0 }) {
   );
 }
 
-// AnimatedCard Component
+// AnimatedCard Component — Fixed to re-trigger on navigation
 function AnimatedCard({ children, delay = 0 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, { once: false, amount: 0.2 });
+
   return (
     <motion.div
       ref={ref}

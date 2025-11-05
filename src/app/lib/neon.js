@@ -32,9 +32,10 @@ export async function getCategoryById(id) {
 }
 
 // POSTS WITH CATEGORY
+// src/app/lib/neon.js (updated getPostsWithCategory)
 export async function getPostsWithCategory({ published = true, limit = 10, slug = null } = {}) {
   let q = `
-    SELECT p.*, c.name AS category_name, c.slug AS category_slug
+    SELECT p.*, p.image_url, c.name AS category_name, c.slug AS category_slug
     FROM posts p
     LEFT JOIN categories c ON p.category_id = c.id
     WHERE 1=1
@@ -50,7 +51,8 @@ export async function getPostsWithCategory({ published = true, limit = 10, slug 
     q += ` AND p.slug = $${i++}`;
     params.push(slug);
   }
-  q += ` ORDER BY p.created_at DESC LIMIT $${i}`;
+
+  q += ` ORDER BY p.published_at DESC LIMIT $${i}`;
   params.push(limit);
 
   const result = await query(q, params);
@@ -89,4 +91,44 @@ export async function updatePost(id, { title, slug, content, excerpt, published,
 export async function deletePost(id) {
   const result = await query("DELETE FROM posts WHERE id = $1 RETURNING *", [id]);
   return result.rows.length > 0;
+}
+
+// src/app/lib/neon.js  (add these at the bottom of the file)
+
+export async function getPostsByCategorySlug({ slug, published = true, limit = 6, offset = 0 }) {
+  let q = `
+    SELECT p.*, p.image_url, c.name AS category_name, c.slug AS category_slug
+    FROM posts p
+    LEFT JOIN categories c ON p.category_id = c.id
+    WHERE c.slug = $1
+  `;
+  const params = [slug];
+
+  if (published) {
+    q += ` AND p.published = $2`;
+    params.push(true);
+  }
+
+  q += ` ORDER BY p.published_at DESC, p.created_at DESC
+         LIMIT $${params.length + 1} OFFSET $${params.length + 2}`;
+  params.push(limit, offset);
+
+  const result = await query(q, params);
+  return result.rows;
+}
+
+export async function getCategoryBySlug(slug) {
+  const result = await query("SELECT * FROM categories WHERE slug = $1", [slug]);
+  return result.rows[0] || null;
+}
+
+export async function getTotalPostsCountByCategorySlug(slug, published = true) {
+  let q = `SELECT COUNT(*) FROM posts p JOIN categories c ON p.category_id = c.id WHERE c.slug = $1`;
+  const params = [slug];
+  if (published) {
+    q += ` AND p.published = $2`;
+    params.push(true);
+  }
+  const result = await query(q, params);
+  return parseInt(result.rows[0].count, 10);
 }
