@@ -31,22 +31,22 @@
 // 31. C-L-O-S-H/N-V-I-F-H → Architect / Unifier ok 2
 // 32. C-L-O-S-H/N-V-I-F-A → Architect / Mystic ok 2
 // 33. C-L-O-S-A/C-L-O-S-A → Engineer / Engineer ok 2
-// 34. C-L-O-S-A/C-L-O-F-H → Engineer / Navigator ok
-// 35. C-L-O-S-A/C-L-O-F-A → Engineer / Pioneer ok
-// 36. C-L-O-S-A/C-L-I-S-H → Engineer / Curator ok
-// 37. C-L-O-S-A/C-L-I-S-A → Engineer / Analyst ok
-// 38. C-L-O-S-A/C-L-I-F-H → Engineer / Mediator ok
-// 39. C-L-O-S-A/C-L-I-F-A → Engineer / Maverick ok
-// 40. C-L-O-S-A/C-V-O-S-H → Engineer / Steward ok
-// 41. C-L-O-S-A/C-V-O-S-A → Engineer / Artisan ok
-// 42. C-L-O-S-A/C-V-O-F-H → Engineer / Campaigner ok
-// 43. C-L-O-S-A/C-V-O-F-A → Engineer / Adventurer ok
-// 44. C-L-O-S-A/C-V-I-S-H → Engineer / Counselor ok
-// 45. C-L-O-S-A/C-V-I-S-A → Engineer / Healer ok
-// 46. C-L-O-S-A/C-V-I-F-H → Engineer / Peacemaker ok
-// 47. C-L-O-S-A/C-V-I-F-A → Engineer / Empath ok
-// 48. C-L-O-S-A/N-L-O-S-H → Engineer / Strategist ok
-// 49. C-L-O-S-A/N-L-O-S-A → Engineer / Inventor ok
+// 34. C-L-O-S-A/C-L-O-F-H → Engineer / Navigator ok 2
+// 35. C-L-O-S-A/C-L-O-F-A → Engineer / Pioneer ok 2
+// 36. C-L-O-S-A/C-L-I-S-H → Engineer / Curator ok 2
+// 37. C-L-O-S-A/C-L-I-S-A → Engineer / Analyst ok 2
+// 38. C-L-O-S-A/C-L-I-F-H → Engineer / Mediator ok 2
+// 39. C-L-O-S-A/C-L-I-F-A → Engineer / Maverick ok 2
+// 40. C-L-O-S-A/C-V-O-S-H → Engineer / Steward ok 2
+// 41. C-L-O-S-A/C-V-O-S-A → Engineer / Artisan ok 2
+// 42. C-L-O-S-A/C-V-O-F-H → Engineer / Campaigner ok 2
+// 43. C-L-O-S-A/C-V-O-F-A → Engineer / Adventurer ok 2
+// 44. C-L-O-S-A/C-V-I-S-H → Engineer / Counselor ok 2
+// 45. C-L-O-S-A/C-V-I-S-A → Engineer / Healer ok 2
+// 46. C-L-O-S-A/C-V-I-F-H → Engineer / Peacemaker ok 2
+// 47. C-L-O-S-A/C-V-I-F-A → Engineer / Empath ok 2
+// 48. C-L-O-S-A/N-L-O-S-H → Engineer / Strategist ok 2
+// 49. C-L-O-S-A/N-L-O-S-A → Engineer / Inventor ok 2
 // 50. C-L-O-S-A/N-L-O-F-H → Engineer / Disruptor ok
 // 51. C-L-O-S-A/N-L-O-F-A → Engineer / Revolutionary ok
 // 52. C-L-O-S-A/N-L-I-S-H → Engineer / Academic ok

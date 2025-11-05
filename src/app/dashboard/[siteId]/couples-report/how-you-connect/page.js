@@ -54,7 +54,8 @@ export default function HowYouConnectPageRoute() {
     );
   }
 
-  const pageTitle = `${data.partnerA.name} & ${data.partnerB.name} - How You Connect`;
+  const pageTitle = `How You Connect`;
+  const subHeading = `Explore the natural chemistry and connection patterns between ${data.partnerA.name} and ${data.partnerB.name}.`;
 
   return (
     <>
@@ -64,9 +65,10 @@ export default function HowYouConnectPageRoute() {
         content={`Explore the natural chemistry and connection patterns between ${data.partnerA.name} and ${data.partnerB.name}.`}
       />
 
-      <div className="container mx-auto p-6 mt-20 max-w-7xl">
-        <header className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)]">{pageTitle}</h1>
+      <div className="container mx-auto p-6 max-w-7xl">
+        <header className=" mb-12 py-16 bg-gradient-to-r from-[var(--primary)] to-purple-800 rounded-3xl max-w-4xl mx-auto px-6 text-center">
+          <h1 className="text-4xl md:text-5xl mb-4 font-bold text-[var(--text-primary)]">{pageTitle}</h1>
+          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">{subHeading}</p>
         </header>
 
         {/* 1. INTRODUCTION */}

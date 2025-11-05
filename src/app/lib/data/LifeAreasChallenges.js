@@ -5698,4 +5698,2769 @@ export const LifeAreasChallenges = {
       },
     },
   ],
+  "C-L-O-S-A/C-L-O-F-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You two approach your careers with a shared focus on practical goals, but one of you thrives on building teams around a common mission while the other prefers pursuing individual achievements. This can create a dynamic where collaborative efforts feel energizing to one and restrictive to the other, yet your mutual drive for real-world impact keeps you motivated together. Finding ways to blend your styles often leads to innovative paths forward that honor both your needs.",
+        coreChallenge:
+          "Balancing the desire for group-oriented missions with the need for personal independence in career pursuits, while one partner locks into structured roles and the other shifts directions fluidly, often leads to frustration over mismatched professional rhythms.",
+        whyThisHappens:
+          "- One partner prioritizes team collaboration and shared objectives in their work life, making decisions that consider group input and harmony.\n- The other focuses on self-directed goals and autonomy, preferring to chase opportunities that align with personal ambitions without external constraints.\n- Adding to this, the preference for stable planning clashes with adaptability, causing one to commit long-term while the other pivots quickly to new ideas.\n- This mix can result in one feeling held back by rigid structures and the other overwhelmed by constant changes in focus.",
+        redFlags:
+          "- Frequent arguments arise when one pushes for joint professional ventures and the other resists, leading to feelings of rejection or control.\n- One partner may start resenting the other's unpredictable shifts in career direction, creating ongoing tension about long-term stability.\n- Over time, this could manifest as one withdrawing from shared discussions about future goals, eroding mutual support in professional growth.",
+        resolutionStrategies: [
+          "Schedule regular check-ins where you each share your individual career visions and explore small ways to collaborate without compromising autonomy.",
+          "Create a flexible plan that incorporates stable milestones for one while allowing room for adaptive changes, ensuring both feel secure and excited.",
+          "Celebrate each other's unique approaches by highlighting how your differences have led to unexpected successes in past projects together.",
+        ],
+        growthOutcome:
+          "By embracing these differences, you'll build a partnership where individual ambitions fuel collective inspiration, leading to more fulfilling and resilient career paths.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, you both value practical tools and logical budgeting, but one leans toward strict saving plans while the other enjoys more flexible spending. This shared grounded approach helps you agree on realistic goals, yet your differing levels of structure can spark debates on how to allocate resources. Working through this often strengthens your ability to create a balanced financial life that feels secure and enjoyable.",
+        coreChallenge:
+          "The tension between one partner's need for organized financial structures and the other's preference for adaptable spending choices, amplified by a mutual focus on tangible outcomes, can lead to conflicts over budgeting and long-term security.",
+        whyThisHappens:
+          "- One partner insists on detailed plans and consistent saving habits to build prosperity step by step.\n- The other prefers keeping options open, adjusting expenditures based on current needs or opportunities that arise.\n- Since both view money as a concrete resource, disagreements often center on immediate versus future uses without much room for abstract ideas.\n- Logical decision-making adds to this by making debates feel impersonal, focusing on efficiency rather than emotional needs.\n- Over time, this can cause one to see the other as too rigid or impulsive in handling shared finances.",
+        redFlags:
+          "- Repeated disputes over unplanned purchases escalate into accusations of financial irresponsibility, damaging trust in joint decisions.\n- One partner might begin hiding expenditures to avoid conflict, leading to secrecy that undermines your financial partnership.\n- Growing resentment could result in separate accounts becoming a point of division rather than a practical solution.",
+        resolutionStrategies: [
+          "Develop a hybrid budget that includes fixed savings goals alongside a flexible fund for spontaneous needs, allowing both structure and freedom.",
+          "Discuss financial values openly, focusing on how logical choices can support shared tangible goals without judgment on differing styles.",
+          "Review your finances together monthly, celebrating small wins to reinforce a positive, united approach to building wealth.",
+        ],
+        growthOutcome:
+          "Navigating these challenges will help you create a prosperous life where financial decisions enhance your sense of security and mutual respect.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both draw energy from engaging with the world, making joint activities like workouts or meals appealing, but one craves routine while the other prefers variety. This can lead to fun shared experiences that boost your vitality, though mismatches in scheduling might cause minor frustrations. Over time, blending your approaches often results in a healthier lifestyle that feels dynamic and supportive.",
+        coreChallenge:
+          "Aligning your shared outward energy for health routines becomes tricky when one enforces consistent plans and the other adapts based on the moment, leading to inconsistencies in maintaining vitality together.",
+        whyThisHappens:
+          "- Both of you find stimulation in active pursuits, but one wants predictable schedules for exercise or diet to ensure steady progress.\n- The other thrives on flexibility, changing plans to fit current moods or new ideas without strict adherence.\n- This difference can make joint health efforts feel forced for one and too rigid for the other, disrupting shared motivation.\n- Outward focus amplifies the issue, as external interactions influence how you prioritize health in daily life.",
+        redFlags:
+          "- One partner starts skipping joint activities due to feeling constrained, leading to isolation in personal health journeys.\n- Frustration builds when flexible changes are seen as excuses, causing arguments that affect overall emotional well-being.\n- Over time, this might result in one resenting the other's approach, reducing encouragement for healthy habits.",
+        resolutionStrategies: [
+          "Set core health goals that allow for both routine elements and optional variations, ensuring activities remain enjoyable for you both.",
+          "Alternate leading health initiatives, giving each a turn to plan in their style while committing to participate supportively.",
+          "Incorporate fun, outward-facing rewards like group classes to keep energy high and make vitality a shared adventure.",
+        ],
+        growthOutcome:
+          "Overcoming this will foster a vibrant partnership where health becomes a source of joy and strengthened connection.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "Your romance thrives on active expressions of affection, but one seeks deep emotional alignment with the group while the other values personal space. This mix can create passionate moments intertwined with needs for independence, making your bond feel alive yet occasionally unbalanced. Embracing these differences often deepens your intimacy in unexpected ways.",
+        coreChallenge:
+          "The pull between seeking collective emotional harmony in your relationship and maintaining individual boundaries, combined with outward energy for daily interactions, can make romantic gestures feel mismatched in timing and depth.",
+        whyThisHappens:
+          "- One partner naturally orients toward shared emotional experiences, wanting to sync feelings and include others in your couple's world.\n- The other prioritizes personal freedom, setting limits to preserve autonomy even in intimate moments.\n- Outward engagement amplifies this, as one craves frequent touch and activities while the other needs space to recharge.\n- Logical expressions of love, like practical acts, clash with value-based ones, such as affirming words, adding layers to misunderstandings.\n- This dynamic can lead to one feeling smothered and the other disconnected in your romantic life.",
+        redFlags:
+          "- Attempts at closeness are met with withdrawal, creating cycles of pursuit and distance that erode trust.\n- One partner interprets the need for space as emotional unavailability, leading to hurtful accusations during vulnerable times.\n- Over time, romantic gestures diminish, leaving the relationship feeling more functional than passionate.",
+        resolutionStrategies: [
+          "Establish rituals that blend shared activities with personal time, like alternating date nights with solo evenings to honor both needs.",
+          "Communicate love languages openly, incorporating logical acts and value-driven words to bridge your expression styles effectively.",
+          "Practice empathy by role-reversing in discussions, helping each understand the other's perspective on harmony versus autonomy in romance.",
+        ],
+        growthOutcome:
+          "Resolving this will cultivate a love that's both freeing and deeply connected, enriching your emotional world together.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "In your home, you both appreciate practical setups, but one enforces organized routines while the other adapts fluidly. This can make family life efficient yet flexible, though differing priorities on structure versus accommodation might lead to small conflicts. Navigating this often builds a warm, functional space that suits your shared outward vibe.",
+        coreChallenge:
+          "The contrast between craving stable home structures and preferring open-ended adaptations, intensified by one over-accommodating family needs while the other sets firm boundaries, often disrupts daily harmony.",
+        whyThisHappens:
+          "- One partner focuses on planned chores and rules to keep the household running smoothly and predictably.\n- The other resists fixed systems, adjusting to immediate family demands or moods for a more relaxed environment.\n- Harmony orientation leads one to prioritize group well-being, sometimes at personal cost, while autonomy drives the other to protect individual space.\n- This can result in one feeling overwhelmed by constant adjustments and the other frustrated by rigid expectations.",
+        redFlags:
+          "- Family decisions turn into power struggles, with one imposing rules and the other rebelling, straining relationships at home.\n- Boundaries are repeatedly crossed, leading to resentment and withdrawal from shared family activities.\n- Over time, this might create a divided household where individual needs overshadow collective unity.",
+        resolutionStrategies: [
+          "Design a home routine with core structures that include flexible slots, allowing adaptation without chaos.",
+          "Discuss boundary-setting together, ensuring accommodations respect both personal autonomy and family harmony.",
+          "Involve the whole family in planning sessions to foster buy-in and reduce one-sided adjustments.",
+        ],
+        growthOutcome:
+          "This growth will create a nurturing home where structure and flexibility coexist, strengthening your family bonds.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You both enjoy outward social energy, making community involvement natural, but one commits deeply to groups while the other prefers selective engagement. This can lead to a vibrant social life with varied perspectives, though mismatches in commitment levels might cause occasional tension. Blending your styles often expands your circle in meaningful ways.",
+        coreChallenge:
+          "Navigating the desire for extensive group involvement versus maintaining personal independence in social settings, amplified by shared outward energy, can lead to exhaustion or feelings of isolation in your friendships.",
+        whyThisHappens:
+          "- One partner naturally leans toward building and sustaining community ties, often over-committing to events for collective benefit.\n- The other values autonomy, declining invites to preserve energy for personal priorities or solitude.\n- Outward orientation makes social interactions stimulating, but one drains faster without inward recharge time.\n- This difference can cause one to feel unsupported in group activities and the other pressured to participate unwillingly.\n- Over time, it might lead to unbalanced social calendars that favor one style over the other.",
+        redFlags:
+          "- One partner starts attending events alone frequently, fostering resentment about lack of shared experiences.\n- Declined invitations lead to arguments where autonomy is seen as selfishness, damaging emotional closeness.\n- Community commitments create ongoing fatigue, reducing overall enjoyment in friendships for both.",
+        resolutionStrategies: [
+          "Create a social calendar that balances joint outings with individual choices, ensuring neither feels overwhelmed or left out.",
+          "Encourage open talks about energy levels before events, allowing compromise without guilt or pressure.",
+          "Find hybrid activities like small gatherings that honor harmony while respecting autonomy in participation.",
+        ],
+        growthOutcome:
+          "Embracing this will build a supportive network where your differences enhance rather than hinder connections.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "Your shared concrete focus makes learning practical skills appealing, but one chases depth in familiar areas while the other seeks novelty. This can create a grounded approach to growth, yet differing paces might frustrate joint efforts. Combining your methods often leads to well-rounded personal development.",
+        coreChallenge:
+          "The clash between mastering one area deeply and exploring many new ones, combined with one finishing commitments while the other shifts freely, can stall shared growth journeys.",
+        whyThisHappens:
+          "- Both prioritize tangible, observable progress, but one invests in refining existing knowledge for expertise.\n- The other jumps to fresh ideas, drawn to variety without needing completion in every pursuit.\n- Stable preferences push one to complete courses or projects methodically, while flexibility allows dropping them for better fits.\n- This can lead to one viewing the other as unfocused and the other seeing rigidity as limiting discovery.",
+        redFlags:
+          "- Joint learning initiatives fizzle out repeatedly, leading to discouragement and avoidance of future plans.\n- Criticism of each other's styles escalates, making growth feel like a source of conflict rather than opportunity.\n- Over time, individual pursuits dominate, reducing the enriching exchange of ideas between you.",
+        resolutionStrategies: [
+          "Select growth activities with clear endpoints for one and optional extensions for the other to accommodate both styles.",
+          "Share progress updates regularly, focusing on what each learns to inspire without pressuring completion.",
+          "Alternate choosing discovery topics, blending depth in one with breadth in another for balanced development.",
+        ],
+        growthOutcome: "This process will unlock new levels of self-awareness and mutual inspiration in your journeys.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "Adventures energize you both outwardly, but one plans meticulously while the other embraces spontaneity. This mix can lead to exciting experiences with a touch of structure, though last-minute changes might test patience. Your shared enthusiasm often turns potential hiccups into memorable stories.",
+        coreChallenge:
+          "Reconciling detailed planning with on-the-fly adjustments in fun activities, heightened by outward energy seeking shared thrills, often results in mismatched expectations for joy.",
+        whyThisHappens:
+          "- One partner maps out every aspect of trips or outings to ensure smooth enjoyment and security.\n- The other changes plans based on whims, finding delight in unexpected detours and flexibility.\n- Outward focus drives a need for interactive adventures, but one prefers quiet joys while the other craves group excitement.\n- This can cause one to feel anxious about chaos and the other bored with predictability in leisure time.",
+        redFlags:
+          "- Adventures turn stressful with constant replanning, leading to arguments that spoil the fun.\n- One partner opts out of joint activities, creating emotional distance in shared joy moments.\n- Repeated frustrations build, making future planning feel like a chore rather than an opportunity.",
+        resolutionStrategies: [
+          "Outline adventures with a loose framework that includes planned highlights and flexible free time for both preferences.",
+          "Discuss desired energy levels beforehand, incorporating outward thrills with moments of inward reflection.",
+          "Reflect on past joys together post-adventure, noting what worked to refine future experiences positively.",
+        ],
+        growthOutcome:
+          "Mastering this will infuse your life with more spontaneous and fulfilling moments of happiness.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You both engage outwardly, but one needs more solitude to recharge while the other fills quiet times with interactions. This can make peaceful moments rare yet valued, with your energy creating lively dynamics. Finding balance often leads to deeper appreciation for personal and shared calm.",
+        coreChallenge:
+          "Managing the need for deep alone time against a preference for constant engagement, intensified by one checking in frequently while the other enforces boundaries, can disrupt overall serenity.",
+        whyThisHappens:
+          "- Outward energy draws one to seek connection even in downtime, potentially intruding on the other's need for reflection.\n- The other requires substantial solitude to maintain inner peace, viewing interruptions as overwhelming.\n- Harmony drives frequent emotional check-ins to ensure well-being, while autonomy leads to clear boundary-setting.\n- This mix can leave one feeling rejected and the other drained in your quest for tranquility.\n- Over time, it might escalate into avoidance of shared spaces to preserve personal serenity.",
+        redFlags:
+          "- Solitude requests are ignored, leading to heightened irritation and emotional shutdowns.\n- Check-ins feel like intrusions, sparking defensive reactions that widen the gap in understanding.\n- Serenity becomes elusive, with resentment building over unmet needs for space or connection.",
+        resolutionStrategies: [
+          "Designate specific times for solitude and connection, communicating needs clearly to avoid misunderstandings.",
+          "Practice respectful boundary acknowledgment, using signals like notes to check in without direct interruption.",
+          "Cultivate shared quiet activities that allow outward energy to coexist with inward peace harmoniously.",
+        ],
+        growthOutcome: "This evolution will create a serene foundation where you both feel recharged and closer.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "You aim for tangible impacts, but one builds through community efforts while the other focuses on personal visions. This shared practicality helps ground your legacies, yet differing scopes can challenge alignment. Collaborating often amplifies your combined influence in meaningful ways.",
+        coreChallenge:
+          "Harmonizing community-driven legacies with individually focused ones, amplified by concrete measures of success, can create divides in how you define and pursue lasting contributions.",
+        whyThisHappens:
+          "- One partner orients toward group initiatives, building impact through collaborative projects and shared recognition.\n- The other pursues self-directed goals, emphasizing personal achievements and independent markers of success.\n- Both prioritize measurable, real-world outcomes, but this leads to debates on collective versus solo efforts.\n- Logical approaches add impersonal analysis to value-based motivations, complicating joint legacy planning.\n- This dynamic can result in one feeling their vision is diluted and the other isolated in their pursuits.",
+        redFlags:
+          "- Joint impact projects stall due to conflicting priorities, leading to abandonment and disappointment.\n- One partner's autonomy is perceived as selfishness, sparking arguments that undermine mutual respect.\n- Over time, legacies diverge completely, reducing the sense of a unified partnership in meaningful endeavors.",
+        resolutionStrategies: [
+          "Identify overlapping goals where community efforts can incorporate personal elements, creating hybrid legacy projects.",
+          "Discuss impact metrics openly, blending concrete measures with value-driven aspects to align your visions.",
+          "Support each other's individual pursuits while finding small ways to collaborate, strengthening overall contributions.",
+        ],
+        growthOutcome:
+          "Through this, you'll forge a legacy that's both personally fulfilling and collectively powerful.",
+      },
+    },
+  ],
+  "C-L-O-S-A/C-L-O-F-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both chase personal goals with a strong sense of independence, but one of you sticks to a clear path while the other adapts quickly to new ideas. This can create a dynamic where your careers feel like separate journeys, yet you admire each other's drive. Over time, finding ways to support one another's ambitions brings you closer.",
+        coreChallenge:
+          "Balancing one partner's need for steady career progression with the other's tendency to pivot frequently, all while maintaining individual autonomy in purpose.",
+        whyThisHappens:
+          " - One partner prefers locking into defined roles and long-term plans, leading to consistent advancement in their field.\n - The other thrives on flexibility, often shifting focus to seize new opportunities that align with immediate interests.\n - Both value solo impact, so discussions about shared purpose might feel unnecessary or intrusive at times.\n - This difference in approach can result in mismatched timelines for major life decisions related to work.\n - Independence drives you both, but without communication, it might lead to feeling disconnected from each other's professional worlds.",
+        redFlags:
+          " - Frequent frustration when one partner's sudden career changes disrupt joint plans or stability.\n - Growing resentment if the more structured partner feels the other lacks commitment to long-term goals.\n - Emotional distance building as individual pursuits overshadow any sense of mutual support in purpose.",
+        resolutionStrategies: [
+          "Set aside regular time to share updates on your individual goals, focusing on how they might intersect without forcing alignment.",
+          "Create flexible joint milestones that allow for adaptation while providing some structure to keep both feeling secure.",
+          "Encourage each other by celebrating small wins in your separate paths, building a foundation of mutual respect and independence.",
+        ],
+        growthOutcome:
+          "You'll develop a partnership where individual purposes fuel collective strength, leading to greater fulfillment for both.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing money, one of you focuses on building security through careful planning, while the other prefers a more fluid approach to spending and saving. You both see finances as practical tools, which helps in logical discussions. This setup encourages practical strategies that blend caution with opportunity.",
+        coreChallenge:
+          "Navigating the tension between one partner's disciplined saving habits and the other's impulsive spending, while using logic to view money as a means for real-world goals.",
+        whyThisHappens:
+          " - The structured partner emphasizes saving and budgeting to ensure long-term stability and avoid risks.\n - The adaptable one might spend more freely on immediate needs or chances that feel right in the moment.\n - Both approach wealth practically, focusing on tangible outcomes rather than abstract dreams.\n - Logical decision-making leads to cold calculations, sometimes overlooking emotional aspects of financial choices.\n - Differences in flexibility can cause conflicts over how to allocate resources for shared expenses.",
+        redFlags:
+          " - Repeated arguments over unplanned purchases that strain the budget and erode trust in financial decisions.\n - One partner feeling controlled by the other's rigid rules, leading to secretive spending habits.\n - Long-term resentment building if financial goals remain unaligned, threatening overall security.",
+        resolutionStrategies: [
+          "Establish a shared budget with built-in flexibility, allocating portions for saving, spending, and unexpected opportunities.",
+          "Hold monthly reviews where you logically discuss financial progress, adjusting plans based on real data without judgment.",
+          "Focus on mutual goals like home improvements to make money management feel like a team effort despite differences.",
+        ],
+        growthOutcome:
+          "You'll achieve a balanced prosperity where careful planning meets smart adaptability, creating lasting financial harmony.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both enjoy active lifestyles and engaging with the world, but one insists on consistent routines while the other prefers going with the flow. This can lead to motivating each other in fitness or wellness activities. Finding common ground turns health into a shared adventure.",
+        coreChallenge:
+          "Harmonizing one partner's strict adherence to health plans with the other's tendency to skip routines based on daily energy levels, amid your outward-focused energies.",
+        whyThisHappens:
+          " - Both direct energy outward, often seeking joint activities like group sports or outdoor challenges.\n - The stable partner enforces structured diets or exercise schedules to maintain vitality over time.\n - The flexible one might abandon plans if they feel restrictive, opting for spontaneous wellness choices.\n - Shared outward orientation can make solo recharge times rare, leading to burnout if not addressed.\n - Differences in consistency create friction when trying to align on daily health habits.",
+        redFlags:
+          " - One partner feeling dragged down by the other's inconsistency, leading to solo health pursuits that isolate you.\n - Increasing irritation when skipped routines affect shared activities or overall energy levels.\n - Health goals stalling as blame shifts, weakening your mutual commitment to vitality.",
+        resolutionStrategies: [
+          "Design health routines with core elements that are non-negotiable but allow room for daily adjustments based on mood.",
+          "Incorporate outward activities you both enjoy, like hiking together, to make wellness feel engaging rather than obligatory.",
+          "Check in weekly on energy levels to ensure routines support both structure and spontaneity without overwhelming either.",
+        ],
+        growthOutcome:
+          "You'll cultivate vibrant health practices that energize your relationship and individual well-being alike.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "Your romance thrives on independence and active engagement, with both of you appreciating space while enjoying time together. You express affection through practical actions rather than words. This foundation allows for a relationship that's dynamic and respectful of personal boundaries.",
+        coreChallenge:
+          "Maintaining emotional connection when both need autonomy and show love through deeds, potentially leading to misunderstandings in daily interactions.",
+        whyThisHappens:
+          " - Both prioritize personal freedom, sometimes making deep emotional syncing feel secondary to individual pursuits.\n - Outward energy drives you to seek frequent touch and shared experiences, but without planning, it can feel superficial.\n - Logical approaches mean love is demonstrated via helpful acts, which might not always convey deeper feelings.\n - Independence can lead to assuming the other is fine without regular check-ins on emotional needs.\n - Similar preferences reduce major clashes but highlight subtle gaps in romantic expression.",
+        redFlags:
+          " - Growing emotional distance if actions aren't interpreted as love, leading to feelings of neglect.\n - Frustration when one assumes independence means no need for reassurance, causing unspoken resentments.\n - Romance fading into routine without intentional efforts to deepen connection.",
+        resolutionStrategies: [
+          "Schedule regular date nights focused on shared activities that allow for natural expressions of care through actions.",
+          "Practice verbalizing appreciation for each other's independent strengths to bridge the gap between deeds and words.",
+          "Set boundaries that honor autonomy while committing to small daily gestures that reinforce your bond.",
+        ],
+        growthOutcome:
+          "You'll build a romance that's both freeing and deeply supportive, enhancing your connection over time.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "In home life, one of you craves order and routines, while the other prefers a more relaxed setup, but both value setting personal limits. This can lead to a household that's functional yet adaptable. Working together creates a space that feels secure for everyone.",
+        coreChallenge:
+          "Resolving conflicts over structure in daily chores and rules, especially when both prefer independence in managing family dynamics.",
+        whyThisHappens:
+          " - The structured partner pushes for clear schedules and responsibilities to keep the home running smoothly.\n - The adaptable one resists rigid rules, favoring a go-with-the-flow approach to family tasks.\n - Both set firm boundaries with extended family, avoiding over-involvement in others' issues.\n - Independence means you might handle home matters separately, leading to inconsistencies in routines.\n - Differences amplify when planning family events or dividing household duties.",
+        redFlags:
+          " - Constant bickering over unmet expectations in chores, eroding patience and harmony at home.\n - One partner withdrawing emotionally if boundaries feel violated by the other's flexibility or rigidity.\n - Family life becoming chaotic or overly controlled, straining relationships with kids or relatives.",
+        resolutionStrategies: [
+          "Divide home responsibilities based on strengths, with built-in flexibility for the adaptable partner to adjust as needed.",
+          "Discuss and agree on core family boundaries upfront, ensuring both feel their independence is respected.",
+          "Hold family meetings to align on routines, blending structure with room for spontaneous changes.",
+        ],
+        growthOutcome:
+          "You'll foster a home environment that's organized yet freeing, strengthening your family bonds.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You both approach social life with energy but prioritize personal choices over group obligations, leading to selective engagements. This independence can make your circle feel curated and meaningful. Sharing experiences occasionally deepens your connection through friends.",
+        coreChallenge:
+          "Managing social commitments when both decline invites easily, potentially leading to isolation despite your outgoing natures.",
+        whyThisHappens:
+          " - Independence drives you to skip events that don't align with personal interests or energy levels.\n - Outward orientation makes group settings stimulating, but only on your own terms.\n - Similar autonomy reduces over-commitment, but can result in fewer shared social experiences.\n - You might prefer one-on-one interactions over large gatherings, limiting community involvement.\n - Without effort, social lives remain parallel rather than intertwined.",
+        redFlags:
+          " - Feeling lonely together if individual choices lead to minimal joint social activities.\n - Resentment if one perceives the other as too withdrawn from potential friendships.\n - Community ties weakening, affecting support networks during tough times.",
+        resolutionStrategies: [
+          "Identify mutual interests in social events and commit to attending a few together each month.",
+          "Respect each other's need for autonomy by alternating between group outings and solo friend time.",
+          "Build a small, shared circle of friends where both feel comfortable without pressure to over-engage.",
+        ],
+        growthOutcome:
+          "You'll create a balanced social life that energizes without overwhelming, enriching your partnership.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You both favor practical skills over abstract ideas, but one commits deeply to mastering them while the other explores briefly. This can inspire each other to try new things grounded in reality. Combining approaches leads to steady personal development.",
+        coreChallenge:
+          "Aligning on learning paths when one finishes what they start and the other shifts interests quickly, both focusing on tangible growth.",
+        whyThisHappens:
+          " - Both prefer honing real-world abilities rather than chasing theoretical concepts.\n - The stable partner dedicates time to complete courses or projects for deep expertise.\n - The flexible one drops pursuits if they lose appeal, moving to the next practical idea.\n - Shared concreteness keeps growth focused on observable results, but pacing differs.\n - Without sync, joint learning efforts might fizzle out prematurely.",
+        redFlags:
+          " - Frustration mounting when unfinished projects pile up, making one feel the other lacks follow-through.\n - Stagnation in personal development if differences prevent mutual encouragement.\n - Resentment if one partner's consistency highlights the other's perceived flakiness.",
+        resolutionStrategies: [
+          "Choose short-term, practical goals together that allow for completion while permitting shifts if needed.",
+          "Support individual pursuits by sharing progress updates, fostering appreciation for different styles.",
+          "Blend methods by starting with structured plans that include options for adaptation along the way.",
+        ],
+        growthOutcome:
+          "You'll experience enriched discovery where persistence meets fresh ideas, accelerating mutual growth.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "Adventures excite you both with their active nature, but one plans meticulously while the other embraces changes. This mix can lead to memorable experiences that balance preparation and spontaneity. Enjoying the thrill together strengthens your bond.",
+        coreChallenge:
+          "Coordinating fun activities when one details every aspect and the other alters plans on a whim, amid your shared outward enthusiasm.",
+        whyThisHappens:
+          " - The structured partner maps out trips or events to ensure smooth enjoyment.\n - The adaptable one thrives on last-minute adjustments for added excitement.\n - Both seek shared thrills through external engagements like travel or hobbies.\n - Outward energy amplifies the fun but highlights clashes in execution.\n - Differences can turn potential joy into stress without compromise.",
+        redFlags:
+          " - Adventures turning sour due to unmet expectations or constant plan changes.\n - One partner opting out of joint fun, leading to separate pursuits and emotional disconnect.\n - Joy diminishing as arguments over details overshadow the experience.",
+        resolutionStrategies: [
+          "Plan core elements of adventures together, leaving room for spontaneous decisions during the activity.",
+          "Alternate leading roles in organizing fun, allowing each to experience the other's style.",
+          "Focus on the shared goal of enjoyment by debriefing positively after each outing.",
+        ],
+        growthOutcome: "You'll unlock deeper joy through adventures that feel both secure and exhilarating.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "With your active orientations, quiet times might be scarce, but both value personal boundaries for peace. This independence helps in respecting each other's need for occasional downtime. Cultivating serenity together enhances overall calm.",
+        coreChallenge:
+          "Finding peaceful moments when both prefer engagement over solitude, yet enforce boundaries to protect individual space.",
+        whyThisHappens:
+          " - Outward focus makes constant activity appealing, potentially leaving little room for rest.\n - Independence leads to setting clear limits on interruptions during rare quiet periods.\n - Both might interpret the other's busyness as rejection of shared downtime.\n - Similar energies reduce major needs for isolation but highlight subtle tensions.\n - Without intentional pauses, serenity becomes elusive amid ongoing action.",
+        redFlags:
+          " - Exhaustion building from lack of recharge, straining your interactions.\n - Boundaries feeling too rigid, causing feelings of emotional unavailability.\n - Serenity eroding into constant low-level stress without addressed needs.",
+        resolutionStrategies: [
+          "Schedule short, shared quiet activities like walks to blend engagement with peace.",
+          "Communicate openly about when space is needed, ensuring it's not seen as withdrawal.",
+          "Create home zones for individual serenity while maintaining connection through light check-ins.",
+        ],
+        growthOutcome: "You'll discover a serene balance that rejuvenates your energetic partnership.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "You both aim for personal achievements that have real, measurable effects, approaching legacy with independence. This shared focus on tangible outcomes can inspire joint efforts. Building together creates a lasting mark that's meaningful to you both.",
+        coreChallenge:
+          "Aligning individual visions for impact when both pursue autonomous goals, emphasizing concrete results over abstract meanings.",
+        whyThisHappens:
+          " - Independence motivates solo contributions rather than group-oriented legacies.\n - Both prioritize impacts that are observable and practical in the real world.\n - Logical mindsets focus on efficient, principle-based approaches to long-term influence.\n - Similarities foster respect but can lead to parallel rather than collaborative efforts.\n - Without integration, legacies remain separate, missing potential synergy.",
+        redFlags:
+          " - Diverging paths causing a sense of competing rather than complementing each other.\n - Frustration if one undervalues the other's concrete contributions.\n - Legacy feeling fragmented without shared elements, weakening mutual pride.",
+        resolutionStrategies: [
+          "Identify overlapping areas of impact where your individual strengths can combine for greater effect.",
+          "Share stories of personal achievements regularly to build appreciation and inspire joint ideas.",
+          "Set long-term goals that honor autonomy while including elements of collaboration.",
+        ],
+        growthOutcome: "You'll craft a combined legacy that's powerful and personally fulfilling for both.",
+      },
+    },
+  ],
+  "C-L-O-S-A/C-L-I-S-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "One of you pursues career goals through independent projects, focusing on personal efficiency and self-directed success, while the other builds purpose by organizing shared efforts and team missions for collective wins. Both appreciate stable roles and long-term planning, creating a foundation where individual drives can support group-oriented ambitions without constant shifts. This dynamic allows you to blend solo expertise with collaborative structures for a fulfilling professional life together.",
+        coreChallenge:
+          "The primary tension stems from one partner's need for autonomous control clashing with the other's preference for harmonious team involvement, often leading to conflicts over how to approach shared career decisions or collaborative opportunities.",
+        whyThisHappens:
+          "- One partner prioritizes self-reliant strategies to achieve personal objectives quickly, avoiding group dynamics that could introduce unnecessary complications.\n- The other seeks collaborative missions to ensure everyone benefits equally, sometimes pushing for team involvement that feels restrictive to the independent one.\n- Both lock into organized roles, but disagreements arise when deciding whether to emphasize solo impact or group equity in professional paths.\n- The autonomous style can appear isolating to the harmonious partner, while the team-focused approach might seem overly dependent to the self-directed one.\n- Stable planning helps align goals, yet friction builds if one feels their individual purpose is compromised for collective harmony.",
+        redFlags:
+          "- Ongoing disputes about choosing independent contracts versus team-based positions, leaving one feeling unsupported.\n- One partner withdrawing from joint career planning sessions, causing the other to feel disconnected from shared purpose.\n- Growing frustration when personal achievements are downplayed in favor of group successes, breeding unspoken resentment.",
+        resolutionStrategies: [
+          "Set aside time each month to review individual and shared career goals, ensuring both autonomous pursuits and team missions get equal attention and support.",
+          "Encourage the independent partner to take lead on solo elements within collaborative projects, allowing harmonious input to refine the overall structure.",
+          "Celebrate both personal milestones and team accomplishments equally, using them as opportunities to reinforce how each style contributes to mutual purpose.",
+        ],
+        growthOutcome:
+          "Overcoming these challenges will strengthen your bond, turning career differences into a powerful alliance where individual and collective purposes thrive side by side.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "You both approach finances with a practical mindset, favoring structured budgets and tangible investments that build long-term security through careful planning. One of you organizes resources for efficient personal gains, while the other focuses on equitable systems that benefit shared goals, creating a balanced foundation for prosperity. This shared emphasis on organization helps you avoid impulsive decisions, fostering steady wealth growth as a team.",
+        coreChallenge:
+          "The core issue emerges when rigid planning meets differing views on resource allocation, potentially causing disputes over whether to prioritize personal financial independence or collective equity in savings and spending.",
+        whyThisHappens:
+          "- Both prefer organized financial systems, but one views money as a tool for autonomous goals, leading to solo investment choices that might overlook group needs.\n- The other emphasizes fair distribution for shared prosperity, sometimes insisting on joint decisions that feel limiting to the independent partner.\n- Practical focus on verifiable outcomes means you both avoid risky abstractions, yet clashes occur if one pushes for strict budgets while the other adapts them logically.\n- Logical reasoning guides your choices, but tension builds when impersonal calculations conflict with the need for harmonious financial harmony.\n- Stable habits like consistent saving align you, but friction arises from how to structure prosperity around individual versus team priorities.",
+        redFlags:
+          "- Repeated arguments over dividing shared expenses, with one feeling their personal savings are being encroached upon.\n- One partner making unilateral financial decisions, leading the other to feel excluded from building collective wealth.\n- Building resentment if logical budgets ignore emotional equity, straining your sense of shared prosperity.",
+        resolutionStrategies: [
+          "Create a joint budget that includes sections for personal discretionary funds alongside shared savings goals, ensuring both independence and equity.",
+          "Hold quarterly financial reviews where you logically assess investments, incorporating input on how they support individual and collective prosperity.",
+          "Commit to transparent discussions about spending values, using practical tools like apps to track progress and maintain balanced financial planning.",
+        ],
+        growthOutcome:
+          "By addressing these tensions, you'll cultivate a prosperous partnership where structured finances support both personal freedom and shared abundance effectively.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "One of you energizes through active interactions and shared routines, while the other recharges in quiet reflection, yet both commit to organized health plans that promote consistent well-being. This contrast can enrich your vitality by blending outward motivation with inward recovery, helping you maintain balanced lifestyles. Together, you build sustainable habits that honor individual needs within a structured framework.",
+        coreChallenge:
+          "The main struggle occurs when one partner's outward energy pushes for joint activities that drain the inward-focused one, combined with rigid plans that limit flexibility in health routines.",
+        whyThisHappens:
+          "- The outward partner seeks stimulation from shared exercises or group wellness events, often suggesting plans that feel overwhelming to the reflective one.\n- The inward partner prefers solitary practices like personal meditation or quiet walks, resisting structured schedules that involve constant interaction.\n- Both value organized approaches to health, but clashes happen when enforcing routines ignores the need for personal recharge time.\n- Stable commitments help you stick to goals, yet tension rises if one insists on joint vitality efforts while the other craves independent serenity.\n- Differences in energy direction amplify when planning overlooks how outward engagement exhausts the inward-oriented partner.",
+        redFlags:
+          "- Frequent cancellations of shared health activities, leaving one partner feeling rejected and unmotivated.\n- One imposing strict routines on the other, resulting in burnout or resentment toward wellness efforts.\n- Growing disconnection if personal vitality needs are consistently sidelined for joint plans.",
+        resolutionStrategies: [
+          "Design a weekly health schedule that alternates between shared activities and solo time, allowing both to recharge in their preferred ways while maintaining structure.",
+          "Discuss and adjust routines regularly to ensure they respect energy differences, incorporating flexible elements to avoid rigidity.",
+          "Encourage mutual support by celebrating small wins in each other's health journeys, fostering a balanced approach to vitality together.",
+        ],
+        growthOutcome:
+          "Resolving these dynamics will lead to a healthier partnership, where you both thrive by honoring individual energy styles within organized wellness practices.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "In your relationship, one of you seeks independent space to nurture personal bonds, while the other focuses on building emotional unity through shared experiences and team-like support. Both express affection through practical actions rather than overt sentiment, creating a stable foundation of reliable love. This blend allows for deep connections that respect autonomy while fostering collective warmth.",
+        coreChallenge:
+          "The key conflict arises from one partner's autonomous boundaries clashing with the other's harmonious need for constant emotional alignment, intensified by differing energy flows and logical versus value-based expressions of care.",
+        whyThisHappens:
+          "- The autonomous partner maintains personal space in romance, offering support on their terms, which can feel distant to the one craving group-like unity.\n- The harmonious partner prioritizes shared emotional check-ins and joint activities, sometimes overwhelming the one who needs outward engagement balanced with independence.\n- Outward energy drives one to seek daily interactions, while inward reflection makes the other prefer deeper, less frequent connections.\n- Logical acts of service show love for both, but tension builds when values around empathy aren't addressed in romantic gestures.\n- Stable planning helps organize date nights, yet friction occurs if one pushes for more collaboration while the other guards personal boundaries.",
+        redFlags:
+          "- Persistent feelings of emotional disconnection, with one partner withdrawing during attempts at shared intimacy.\n- Arguments over the frequency of romantic gestures, leading to one feeling unloved or smothered.\n- Resentment if logical problem-solving overrides empathetic listening in moments of vulnerability.",
+        resolutionStrategies: [
+          "Plan regular one-on-one dates that allow for both shared activities and quiet reflection, ensuring emotional needs are met without overwhelming boundaries.",
+          "Practice active listening during discussions about feelings, blending logical solutions with empathetic validation to strengthen your romantic connection.",
+          "Establish clear signals for when space is needed or harmony is sought, helping you navigate energy differences with mutual understanding and care.",
+        ],
+        growthOutcome:
+          "By working through these issues, your love will deepen into a resilient bond that celebrates both independence and unity in meaningful ways.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You both favor organized home environments with clear routines, but one emphasizes autonomous boundaries while the other prioritizes harmonious family interactions. This shared structure creates a stable household where individual needs can align with collective well-being. Together, you build a nurturing space that balances personal freedom with team-oriented support.",
+        coreChallenge:
+          "The central tension involves rigid home structures conflicting with differing approaches to family involvement, where one sets firm personal limits and the other seeks inclusive unity.",
+        whyThisHappens:
+          "- Both commit to planned chores and rules, but one views home life as a space for independent recharge, resisting over-involvement in family dynamics.\n- The other focuses on collaborative family decisions to maintain harmony, sometimes pushing boundaries that the autonomous partner finds intrusive.\n- Stable systems like schedules align you, yet clashes arise when enforcing rules ignores personal space preferences.\n- Harmonious efforts to accommodate everyone can feel unnecessary to the one prioritizing self-reliance in home matters.\n- Differences amplify in shared living, where outward energy seeks more interaction while inward prefers quiet organization.",
+        redFlags:
+          "- Ongoing conflicts over family obligations, with one feeling overwhelmed by constant group activities.\n- One partner enforcing personal rules that exclude the other's harmonious input, leading to household tension.\n- Building isolation if structured routines fail to address emotional unity needs.",
+        resolutionStrategies: [
+          "Develop a home routine that includes dedicated time for individual pursuits alongside family gatherings, ensuring balance between structure and harmony.",
+          "Communicate openly about boundaries during family decisions, allowing autonomous input to shape collaborative plans effectively.",
+          "Review and adjust household rules together monthly, incorporating both personal limits and collective needs for a smoother home life.",
+        ],
+        growthOutcome:
+          "Addressing these challenges will create a harmonious family environment where structure supports both independence and unity seamlessly.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "One of you engages outwardly in social settings for stimulation, while the other reflects inwardly, preferring selective involvement, yet both value harmonious or autonomous ties in their own ways. The harmonious partner builds inclusive networks, and the autonomous one maintains personal connections, enriching your shared social life. This dynamic helps you navigate community with a mix of energy and focus.",
+        coreChallenge:
+          "The primary difficulty lies in one partner's harmonious over-commitment to groups clashing with the other's autonomous preference for independence, amplified by differing energy directions in social interactions.",
+        whyThisHappens:
+          "- The harmonious partner commits to frequent community events for collective bonds, often dragging the autonomous one into unwanted group settings.\n- The autonomous partner declines invites to preserve personal energy, which can seem antisocial to the one seeking shared social harmony.\n- Outward energy thrives in interactive gatherings, while inward reflection drains quickly from prolonged engagements.\n- Both approach friends logically, but tension builds when one pushes for more inclusion while the other guards boundaries.\n- Differences in style lead to imbalances, where harmonious efforts feel exhausting to the independent partner.",
+        redFlags:
+          "- Repeated disagreements about attending social events, leaving one partner feeling isolated or overwhelmed.\n- One withdrawing from joint friendships, causing the other to feel unsupported in community building.\n- Growing resentment if energy mismatches lead to unbalanced social commitments over time.",
+        resolutionStrategies: [
+          "Agree on a social calendar that alternates between group outings and quiet evenings, respecting both energy levels and preferences.",
+          "Support each other's choices by attending select events together while allowing solo participation in others for balance.",
+          "Discuss post-event reflections to understand how interactions affect you, adjusting future plans to foster mutual comfort in friendships.",
+        ],
+        growthOutcome:
+          "Overcoming these hurdles will enhance your social circle, creating connections that honor both individual boundaries and collective enjoyment.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You both lean toward practical skills and tangible learning, but one explores through structured outward actions while the other delves into inward reflection on concrete details. This shared focus on real-world mastery allows for steady progress in personal development. Together, you can support each other's discovery by blending hands-on experiences with thoughtful analysis.",
+        coreChallenge:
+          "The main challenge is when preference for concrete mastery conflicts with structured versus flexible approaches, leading to stalled growth if novelty is avoided or plans are too rigid.",
+        whyThisHappens:
+          "- Both concentrate on building expertise in familiar areas, but one seeks outward opportunities for practical application, while the other prefers inward review of details.\n- Stable planning commits you to finishing pursuits, yet tension arises if one insists on organized courses while the other adapts based on energy.\n- Concrete focus avoids abstract jumps, but clashes occur when harmonious collaboration in learning feels forced on the autonomous learner.\n- Differences in energy amplify, with outward engagement pushing for shared discovery while inward needs solo processing time.\n- Structured habits align goals, but friction builds if one partner's team-oriented growth overlooks the other's independent path.",
+        redFlags:
+          "- Abandoning joint learning projects midway due to mismatched pacing or energy demands.\n- One partner criticizing the other's methodical approach as too slow or uninspiring.\n- Persistent avoidance of new skills, leading to stagnation in personal development together.",
+        resolutionStrategies: [
+          "Choose growth activities that start with concrete goals and allow for both structured plans and personal adaptations to keep momentum.",
+          "Share discoveries through casual discussions, blending outward experiences with inward insights to enrich mutual learning.",
+          "Set small, achievable milestones in discovery pursuits, celebrating progress to maintain motivation and alignment in your journeys.",
+        ],
+        growthOutcome:
+          "By tackling these issues, you'll unlock deeper personal growth, where practical mastery becomes a shared path to ongoing discovery and fulfillment.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "One of you finds joy in outward thrills and shared experiences, while the other enjoys inward quiet pleasures, but both prefer planned adventures with clear structures. This mix can create memorable moments by combining active fun with reflective serenity. Together, you build joy through organized outings that respect individual preferences.",
+        coreChallenge:
+          "The core tension involves structured planning clashing with energy differences, where one seeks joint excitement and the other prefers solitary calm, often leading to unbalanced adventures.",
+        whyThisHappens:
+          "- Both favor detailed itineraries for trips, but one energizes from interactive activities, pushing for shared thrills that exhaust the reflective partner.\n- The inward partner opts for peaceful, solo joys, resisting changes to plans that involve more outward engagement.\n- Stable approaches ensure reliability, yet friction arises when enforcing schedules ignores personal energy needs.\n- Harmonious efforts to include everyone in fun can feel overwhelming to the autonomous one seeking independent adventure.\n- Differences amplify in leisure, where outward stimulation conflicts with inward recharge during joint pursuits.",
+        redFlags:
+          "- Frequent cancellations of planned outings due to one feeling drained or uninterested.\n- Arguments over altering adventure plans, leading to disappointment in shared joy.\n- Resentment if one partner's style dominates, sidelining the other's need for balance.",
+        resolutionStrategies: [
+          "Plan adventures with a mix of group activities and personal downtime, ensuring structures accommodate both energy styles effectively.",
+          "Alternate leading joy-filled outings, incorporating elements that appeal to outward excitement and inward peace.",
+          "Reflect together after experiences to adjust future plans, building a repertoire of joyful activities that suit you both.",
+        ],
+        growthOutcome:
+          "Navigating these challenges will amplify your shared joy, creating adventures that rejuvenate and connect you in meaningful ways.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "One of you recharges through external interactions, finding peace in active environments, while the other seeks deep internal solitude for serenity, creating a dynamic that requires careful balance. The harmonious partner fills quiet moments with check-ins, and the autonomous one enforces personal boundaries, enriching your understanding of rest. This contrast helps you appreciate diverse ways to achieve calm together.",
+        coreChallenge:
+          "The primary issue is when outward energy disrupts inward solitude needs, combined with harmonious check-ins clashing against autonomous boundaries, leading to feelings of intrusion or rejection.",
+        whyThisHappens:
+          "- The outward partner feels uneasy in prolonged silence, seeking engagement that interrupts the inward one's need for reflective peace.\n- The inward partner requires extended alone time to process, viewing harmonious attempts at connection as unnecessary pressure.\n- Harmonious style prioritizes emotional alignment, often leading to check-ins that the autonomous partner sees as boundary violations.\n- Autonomous enforcement of space can seem cold to the one craving unity, amplifying energy mismatches in serene moments.\n- Differences in approach cause tension, where outward stimulation conflicts with inward tranquility during shared downtime.",
+        redFlags:
+          "- Increasing irritation during quiet times, with one partner feeling smothered and the other ignored.\n- Withdrawal into separate spaces without communication, straining your emotional connection.\n- Resentment building if serenity needs are consistently overlooked in favor of interaction.",
+        resolutionStrategies: [
+          "Establish designated times for solitude and connection, allowing each to recharge without feeling rejected or intrusive.",
+          "Use gentle signals to communicate space needs, fostering understanding and respect for energy differences in daily life.",
+          "Incorporate joint serene activities like quiet walks, blending outward and inward styles for shared peace.",
+        ],
+        growthOutcome:
+          "By resolving these tensions, you'll cultivate a serene partnership where space enhances your bond and mutual well-being.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "One of you builds legacy through independent visions and personal achievements, while the other focuses on community-driven impact for shared equity, yet both ground efforts in practical, measurable outcomes. This blend allows for a legacy that combines solo innovation with collective benefits. Together, you create enduring contributions that reflect both autonomous drive and harmonious purpose.",
+        coreChallenge:
+          "The central conflict arises from autonomous personal goals clashing with harmonious community focus, amplified by concrete measurables versus abstract meanings, and logical strategies versus value-based impacts.",
+        whyThisHappens:
+          "- The autonomous partner pursues individual legacies based on self-reliant expertise, often prioritizing personal milestones over group involvement.\n- The harmonious partner emphasizes collective impact, seeking equity in contributions that can seem diffuse to the independent one.\n- Concrete focus on tangible results aligns you, but tension builds when deciding between measurable solo wins and broader communal meanings.\n- Logical planning guides both, yet clashes occur if values around empathy aren't integrated into legacy-building decisions.\n- Differences in style lead to friction, where outward action seeks visible impact while inward reflection deepens personal significance.",
+        redFlags:
+          "- Disputes over dedicating time to personal projects versus community initiatives, feeling like divided loyalties.\n- One partner dismissing the other's approach as impractical, eroding support for shared legacy goals.\n- Resentment if logical priorities override value-driven contributions in impact efforts.",
+        resolutionStrategies: [
+          "Collaborate on legacy projects that incorporate personal visions into community frameworks, ensuring both styles contribute meaningfully.",
+          "Discuss impact goals regularly, blending concrete metrics with value-based outcomes to create balanced legacies.",
+          "Celebrate milestones in both individual and collective achievements, reinforcing how they build a unified enduring influence.",
+        ],
+        growthOutcome:
+          "Working through these dynamics will forge a powerful legacy, where your combined efforts leave a lasting, meaningful mark on the world.",
+      },
+    },
+  ],
+  "C-L-O-S-A/C-L-I-S-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both approach your careers with a strong sense of independence, focusing on personal goals and building stable paths that feel secure and reliable. This shared drive for autonomy lets you respect each other's space while pursuing what matters most to you individually. Together, you create a partnership where purpose aligns through mutual understanding of long-term commitments.",
+        coreChallenge:
+          "The main tension arises when your independent drives lead to parallel but disconnected career paths, making it hard to find shared purpose without feeling like one is compromising their solo focus.",
+        whyThisHappens:
+          "- Both of you prioritize personal achievements over team-oriented missions, which can result in limited collaboration on joint professional endeavors.\n- Your preference for locking into defined roles means changes in one partner's career can disrupt the other's sense of stability without clear communication.\n- Without intentional overlap, your autonomous styles might create isolation in how you define success and fulfillment at work.\n- Stable approaches amplify this by making it tougher to adapt when external demands pull you in different directions.\n- Over time, this can lead to unspoken resentments if one feels their purpose is not supported by the other.",
+        redFlags:
+          "- Watch for signs where one partner starts resenting the other's work commitments because they interfere with shared time or resources.\n- Be cautious if career discussions turn into arguments over whose goals take priority, highlighting a lack of mutual support.\n- Notice if you begin feeling emotionally distant due to focusing too much on individual paths without celebrating each other's wins.",
+        resolutionStrategies: [
+          "Set aside regular time to discuss your individual career goals openly, finding ways to support each other without sacrificing personal independence.",
+          "Create small joint projects related to your purposes, like attending industry events together, to build a sense of shared direction while honoring autonomy.",
+          "Practice acknowledging each other's stable commitments by planning around them, ensuring both feel their paths are valued in the relationship.",
+        ],
+        growthOutcome:
+          "By blending your independent purposes, you build a stronger bond where individual successes enhance your collective sense of fulfillment and security.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, you both favor practical, structured approaches that emphasize saving and budgeting based on real-world needs. This common ground helps you build a solid foundation for prosperity without unnecessary risks. Your logical mindset ensures decisions are grounded in facts, making wealth-building feel straightforward and reliable for both of you.",
+        coreChallenge:
+          "Conflicts emerge when your shared caution leads to overly rigid financial plans that stifle flexibility, potentially missing out on opportunities that could enhance long-term security.",
+        whyThisHappens:
+          "- You both lean toward saving over spending, which can create tension if one wants to allocate funds differently for immediate practical needs.\n- Focusing on tangible tools for wealth means abstract ideas about investments might be dismissed too quickly, limiting growth potential.\n- Logical budgeting can sometimes overlook emotional aspects, leading to disagreements on value-driven purchases even if they're practical.\n- Stable preferences amplify rigidity, making it hard to adjust plans when unexpected expenses arise without feeling stressed.\n- Over time, this approach might result in a sense of stagnation if not balanced with occasional calculated risks.",
+        redFlags:
+          "- Pay attention if financial discussions become blame-filled, with one accusing the other of being too controlling over budgets.\n- Be alert to growing frustration when small spending differences escalate into larger arguments about trust and priorities.\n- Notice if you start hiding purchases to avoid conflict, indicating a breakdown in open communication about money matters.",
+        resolutionStrategies: [
+          "Establish a joint budget that includes categories for both essential savings and small flexible funds, allowing room for individual practical choices.",
+          "Regularly review your financial goals together, incorporating logical analysis of potential investments to ensure balanced decision-making.",
+          "Encourage open talks about how values influence spending, helping you align on purchases that support both security and personal satisfaction.",
+        ],
+        growthOutcome:
+          "Working through these dynamics fosters a prosperous partnership where your combined practicality leads to lasting financial stability and mutual trust.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "Your health routines reflect a mix of outward energy and inward focus, with one thriving on active engagement and the other preferring quiet reflection. Despite this, you both value structured plans for well-being, creating opportunities for supportive habits. This balance can inspire each other to try new ways of maintaining vitality while respecting personal needs.",
+        coreChallenge:
+          "The key issue is balancing one partner's desire for joint activities with the other's need for solo time, especially when enforcing consistent routines feels overwhelming or intrusive.",
+        whyThisHappens:
+          "- Outward energy pushes for shared workouts or meals, while inward reflection requires alone time to recharge, leading to mismatched expectations.\n- Stable approaches mean you both stick to plans rigidly, but differing energy levels can make joint commitments feel forced or draining.\n- Without adjustment, one might feel neglected when the other prioritizes personal routines over combined efforts.\n- This clash intensifies during busy periods, where structured health goals collide with varying needs for interaction or solitude.\n- Over time, unresolved differences can lead to resentment if health becomes a source of obligation rather than mutual care.",
+        redFlags:
+          "- Look out for one partner withdrawing completely from shared activities, signaling frustration with mismatched energy levels.\n- Be wary if attempts to join routines result in arguments, highlighting a deeper issue with respecting individual vitality needs.\n- Notice if health discussions turn into criticisms, like accusing the other of being too social or too isolated in their habits.",
+        resolutionStrategies: [
+          "Design health plans that include both joint and solo elements, allowing each of you to contribute in ways that match your energy preferences.",
+          "Communicate openly about how structured routines affect your well-being, adjusting them together to prevent feelings of imposition.",
+          "Schedule regular check-ins to celebrate personal progress and find compromises that blend interaction with independence for sustained vitality.",
+        ],
+        growthOutcome:
+          "Navigating this helps you create a healthier dynamic where respecting energy differences strengthens your overall vitality and connection.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "In your relationship, you both cherish independence while showing love through practical actions rather than overt expressions. This shared autonomy fosters a respectful space where romance builds on reliable gestures. Together, you navigate intimacy with a focus on meaningful, grounded connections that feel authentic to both.",
+        coreChallenge:
+          "Tension builds when one partner's need for external engagement clashes with the other's preference for internal depth, making romantic moments feel mismatched in timing or intensity despite shared independence.",
+        whyThisHappens:
+          "- Both value personal space, but outward energy seeks frequent interactions while inward focus craves deeper, less frequent connections.\n- This difference can lead to one feeling smothered or the other feeling distant in how affection is expressed daily.\n- Logical ways of showing love, like acts of service, might not always align with emotional needs during inward moments.\n- Without addressing it, autonomy amplifies isolation if romantic gestures aren't adapted to energy levels.\n- Over time, this can create a cycle where small misunderstandings grow into larger emotional gaps.",
+        redFlags:
+          "- Watch for increasing emotional distance, where one avoids initiating romance to prevent rejection or overload.\n- Be cautious if expressions of love start feeling obligatory, leading to resentment over perceived lack of reciprocity.\n- Notice if arguments arise from one pushing for more togetherness while the other pulls away for space.",
+        resolutionStrategies: [
+          "Plan romantic activities that alternate between shared outings and quiet home moments, honoring both energy styles in your love life.",
+          "Discuss how independence influences your romantic needs, finding ways to express affection that feel genuine without overstepping boundaries.",
+          "Incorporate logical gestures like surprise notes or planned dates to bridge the gap between outward enthusiasm and inward depth.",
+        ],
+        growthOutcome:
+          "Overcoming this deepens your romance, turning individual strengths into a more balanced and fulfilling expression of love.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You both prefer structured home environments with clear boundaries, making your family life feel organized and secure. This alignment on stability helps you manage daily routines effectively. Together, you build a home that's practical and respectful of personal space, fostering a sense of reliability.",
+        coreChallenge:
+          "Challenges occur when your shared emphasis on structure leads to rigid rules that limit adaptability, especially in handling family dynamics without enough flexibility for unexpected changes.",
+        whyThisHappens:
+          "- Preferring set chores and rules means deviations can cause stress, amplifying tension during family gatherings or disruptions.\n- Autonomy in both of you leads to setting personal boundaries that might conflict with collective family needs.\n- Without balance, this can result in over-accommodating extended family at the expense of your core unit's harmony.\n- Stable preferences make it hard to shift plans, leading to frustration when home life demands spontaneity.\n- Over time, unresolved rigidity might create a home atmosphere that feels more controlled than nurturing.",
+        redFlags:
+          "- Pay attention if family discussions escalate into power struggles over who sets the home rules or boundaries.\n- Be alert to one partner withdrawing from family activities, indicating overwhelm from inflexible structures.\n- Notice if resentment builds from feeling boundaries are not respected in shared home decisions.",
+        resolutionStrategies: [
+          "Develop a flexible home schedule that includes core structures but allows for adjustments based on family needs and individual input.",
+          "Talk openly about how autonomy affects family roles, ensuring boundaries protect everyone without isolating members.",
+          "Collaborate on small changes to routines, like rotating chores, to keep home life stable yet adaptable for all.",
+        ],
+        growthOutcome:
+          "Addressing this creates a warmer family environment where structure supports growth and deeper connections for everyone involved.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "Your social lives emphasize independence, with one enjoying more external interactions and the other preferring quieter connections. This difference adds variety to how you engage with friends and community. Together, you can balance active involvement with selective participation, enriching your shared experiences.",
+        coreChallenge:
+          "The primary struggle is when one partner's outward social drive conflicts with the other's inward preference, leading to imbalances in community commitments that feel draining or excluding.",
+        whyThisHappens:
+          "- Autonomy makes both of you selective about invites, but outward energy accepts more while inward declines, causing mismatched social calendars.\n- This can lead to one feeling left out or the other overwhelmed by group activities without mutual agreement.\n- Over-committing or under-engaging amplifies isolation if not addressed in how you build friendships together.\n- Energy differences intensify during events, where one thrives and the other needs recovery time afterward.\n- Without communication, this pattern might erode shared social bonds over time.",
+        redFlags:
+          "- Look for signs where one resents the other's social choices, like complaining about too many or too few outings.\n- Be wary if community involvement becomes a solo activity, highlighting a growing divide in your friendship circles.\n- Notice if arguments stem from feeling pressured to join or skip events, indicating unmet needs for balance.",
+        resolutionStrategies: [
+          "Choose social activities that suit both styles, like small gatherings for inward comfort and occasional larger ones for outward fun.",
+          "Discuss your autonomy in social decisions upfront, setting agreements on how to handle invites as a couple.",
+          "Support each other's individual friendships while planning joint community time to maintain a healthy balance.",
+        ],
+        growthOutcome:
+          "Resolving this strengthens your social network, making friendships a source of joy and mutual support in your relationship.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You both approach personal growth through practical, focused efforts, preferring to master skills deeply rather than chase new ideas constantly. This shared practicality helps you commit to meaningful development paths. Together, you encourage each other to build on strengths with steady progress.",
+        coreChallenge:
+          "Difficulties arise when your mutual focus on concrete mastery leads to resistance against exploring fresh opportunities, potentially stalling discovery in favor of familiar routines.",
+        whyThisHappens:
+          "- Emphasizing tangible skills means you both stick to one area, but stable preferences make switching tracks feel unsettling.\n- This can result in dropping new pursuits prematurely if they don't align with current expertise.\n- Without variety, growth might feel limited, amplifying a sense of routine over excitement in learning.\n- Practical views dismiss abstract explorations, leading to missed chances for broader personal development.\n- Over time, this approach could create boredom if not infused with occasional novelty.",
+        redFlags:
+          "- Watch if interest in shared growth activities wanes, leading to separate paths that feel disconnected.\n- Be cautious of frustration when one pushes for consistency while the other senses stagnation.\n- Notice if discussions about discovery turn dismissive, signaling a need for more open-minded approaches.",
+        resolutionStrategies: [
+          "Select growth goals that build on existing skills but include small new elements to keep things engaging and practical.",
+          "Commit to finishing short courses together, using your stable nature to turn discovery into achievable milestones.",
+          "Encourage each other to share insights from individual pursuits, blending them into joint learning experiences for deeper connection.",
+        ],
+        growthOutcome:
+          "Overcoming this unlocks sustained growth, where your practical focus leads to profound discoveries and shared achievements.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "In seeking joy, you both appreciate planned activities, but one leans toward shared thrills while the other enjoys quieter moments. This mix can create memorable experiences tailored to your preferences. Together, you find happiness in balancing adventure with comfort, enhancing your bond.",
+        coreChallenge:
+          "The core tension is reconciling detailed plans with differing energy needs, where one craves joint excitement and the other seeks solitary peace, often leading to compromised fun.",
+        whyThisHappens:
+          "- Stable planning ensures every detail is covered, but outward desires for shared adventures clash with inward quiet joys.\n- This difference can make spontaneous changes feel disruptive, amplifying frustration during outings.\n- Without alignment, one might feel bored or the other exhausted from mismatched activity levels.\n- Energy orientations intensify when plans don't account for recovery needs after adventures.\n- Over time, unresolved clashes could diminish the overall sense of joy in your shared experiences.",
+        redFlags:
+          "- Pay attention if adventures become sources of conflict, with one feeling dragged along or the other left behind.\n- Be alert to declining enthusiasm for joint fun, indicating energy mismatches are wearing on the relationship.\n- Notice if blame arises over ruined plans, highlighting deeper issues with flexibility and understanding.",
+        resolutionStrategies: [
+          "Craft adventure plans that include both high-energy group elements and low-key personal time to satisfy your varying needs.",
+          "Talk about how stability influences your joy, adjusting itineraries together to prevent last-minute tensions.",
+          "Alternate leading fun activities, allowing each to infuse their energy style while supporting the other's preferences.",
+        ],
+        growthOutcome:
+          "Mastering this brings richer joy, where blended adventures foster lasting happiness and stronger emotional ties.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "Your need for serenity varies, with one finding peace in external interactions and the other in deep solitude. Yet, your shared independence allows respect for these differences. Together, you can create spaces that honor both, promoting a calm and supportive atmosphere.",
+        coreChallenge:
+          "Struggles happen when inward needs for solitude conflict with outward desires for connection, leading to feelings of rejection or intrusion in your quest for personal peace.",
+        whyThisHappens:
+          "- Inward focus demands extended alone time, while outward energy interprets it as distancing, creating emotional gaps.\n- Autonomy encourages enforcing boundaries, but without communication, this can feel like rejection to the more engaging partner.\n- Serenity suffers when silence is filled unnecessarily or solitude is interrupted, amplifying stress levels.\n- Energy differences peak during downtime, where one recharges socially and the other internally.\n- Over time, this pattern might lead to chronic misunderstandings about each other's serenity needs.",
+        redFlags:
+          "- Look out for increased irritability when space requests are ignored, signaling building tension.\n- Be wary if one starts avoiding home to find peace, indicating a failure to create shared serene environments.\n- Notice if conversations about needs turn defensive, highlighting autonomy clashing with connection desires.",
+        resolutionStrategies: [
+          "Establish designated times for solitude and interaction, ensuring both feel their serenity needs are respected without compromise.",
+          "Share how autonomy shapes your space preferences, using it to build empathetic boundaries that enhance peace.",
+          "Create shared quiet rituals, like reading together, to bridge energy gaps while maintaining individual serenity.",
+        ],
+        growthOutcome:
+          "Resolving this cultivates deeper serenity, turning your home into a true haven of understanding and calm.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "You both envision legacy through personal visions grounded in measurable achievements, aligning on independent and practical approaches. This shared focus helps you support each other's long-term goals effectively. Together, you build impact that's authentic and enduring, reflecting your values.",
+        coreChallenge:
+          "Issues arise when your autonomous pursuits lead to isolated efforts, making it challenging to weave individual legacies into a unified couple's impact without intentional collaboration.",
+        whyThisHappens:
+          "- Prioritizing solo visions means community aspects might be overlooked, limiting broader collective influence.\n- Concrete preferences favor tangible results, but without blending, legacies remain separate rather than intertwined.\n- Logical decisions guide impact, yet values might differ slightly, causing subtle misalignments in priorities.\n- Autonomy amplifies independence, leading to less emphasis on shared milestones over time.\n- This can result in a sense of parallel paths rather than a joint narrative for legacy.",
+        redFlags:
+          "- Watch for disconnection in discussing future impacts, where one dismisses the other's ideas as unrelated.\n- Be cautious if individual pursuits start overshadowing couple goals, breeding feelings of neglect.\n- Notice if celebrations of achievements feel one-sided, indicating a need for more mutual recognition.",
+        resolutionStrategies: [
+          "Identify overlapping areas in your visions to create joint projects that enhance both personal and shared legacies.",
+          "Regularly share progress on impact goals, using logical analysis to find ways they complement each other.",
+          "Incorporate values into legacy planning, ensuring autonomous drives contribute to a meaningful collective story.",
+        ],
+        growthOutcome:
+          "Through this, your legacies intertwine, creating a powerful impact that reflects your united strengths and aspirations.",
+      },
+    },
+  ],
+  "C-L-O-S-A/C-L-I-F-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You two approach your careers with a mix of independent drive and team-oriented problem-solving, where one prefers building solo projects while the other thrives in collaborative settings. This can create a dynamic where you support each other's goals but sometimes pull in different directions on how to achieve them. Finding common ground helps you both feel fulfilled in your professional lives.",
+        coreChallenge:
+          "The main tension arises from one partner's desire for autonomous achievements clashing with the other's focus on group missions, amplified by differing needs for structure versus flexibility in career paths.",
+        whyThisHappens:
+          "- One of you seeks personal recognition through individual efforts, while the other values contributing to collective successes, leading to mismatched expectations in shared ambitions.\n- The preference for stable roles can conflict with a more adaptable approach, causing frustration when plans change unexpectedly or feel too rigid.\n- This difference often results in one feeling restricted by the other's need for consistency, while the other sees the flexibility as lacking direction.\n- Over time, these contrasting styles can make joint career decisions feel like a tug-of-war between independence and cooperation.",
+        redFlags:
+          "- Watch for resentment building if one consistently prioritizes solo projects over supporting the other's team involvements, leading to feelings of isolation.\n- Be cautious of ongoing debates about career shifts, where one resists change and the other pushes for it, escalating into larger conflicts.\n- Notice if one starts withdrawing from discussions about future goals, signaling a deeper disconnect in how you envision success together.",
+        resolutionStrategies: [
+          "Schedule regular check-ins to discuss individual career goals and find ways to integrate them into a shared vision that honors both autonomy and collaboration.",
+          "Create flexible plans that allow for structure in key areas while leaving room for adjustments, helping you both feel secure without feeling confined.",
+          "Encourage each other to take turns leading on joint decisions, building trust by appreciating the strengths in both independent and group-oriented approaches.",
+        ],
+        growthOutcome:
+          "By navigating these differences, you'll build a partnership where careers enhance your bond, creating mutual inspiration and lasting fulfillment.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, you both prioritize practical tools and logical budgeting, but one leans toward saving consistently while the other adapts spending to current needs. This setup allows for solid foundations yet can spark debates on how money is allocated day-to-day. Working together turns these discussions into opportunities for smarter financial choices.",
+        coreChallenge:
+          "The core issue stems from one partner's structured saving habits conflicting with the other's flexible spending, even as both view money through a tangible, objective lens.",
+        whyThisHappens:
+          "- One of you focuses on long-term security through fixed budgets, while the other adjusts expenditures based on immediate situations, leading to mismatched financial priorities.\n- This often causes tension when planned savings are disrupted by spontaneous decisions, making it hard to align on wealth-building strategies.\n- Differences in approach can result in one feeling the other is too rigid or impulsive, affecting trust in joint financial handling.\n- Over time, these habits may lead to uneven contributions or resentment if not addressed openly.\n- The shared practical mindset helps in recognizing issues, but the stability versus adaptability gap widens without compromise.",
+        redFlags:
+          "- Pay attention if arguments over small purchases escalate, indicating deeper frustrations with overall financial control and freedom.\n- Be alert to one partner hiding expenses to avoid conflict, which erodes transparency and could lead to bigger trust issues.\n- Watch for withdrawal from shared financial planning, as it might signal growing disconnection in how you build prosperity together.",
+        resolutionStrategies: [
+          "Establish a joint budget that includes fixed savings goals alongside a flexible fund for unexpected needs, ensuring both feel their preferences are respected.",
+          "Review finances monthly in a calm setting, discussing adjustments logically to prevent small differences from becoming major disputes.",
+          "Set shared long-term objectives like investments or purchases, using objective criteria to decide, which strengthens your collaborative financial foundation.",
+        ],
+        growthOutcome:
+          "Overcoming this builds a secure financial future where you both thrive, turning potential conflicts into a source of unity and abundance.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You handle health routines differently, with one enjoying active, shared activities and the other preferring quiet, personal recharge times. This contrast can enrich your wellness journeys by introducing variety, but it requires balancing to avoid feeling out of sync. Together, you can create habits that support each other's energy levels effectively.",
+        coreChallenge:
+          "The primary friction comes from differing energy directions in health practices, where one seeks joint exercises while the other needs solitary routines, further complicated by structured versus flexible approaches to wellness.",
+        whyThisHappens:
+          "- One partner gains vitality from outward interactions like group workouts, while the other recharges inwardly through solo activities, leading to mismatched health schedules.\n- The preference for consistent plans clashes with a more adaptive style, causing skipped routines or forced participation that drains energy.\n- This difference often results in one feeling neglected when the other prioritizes personal time over shared health efforts.\n- Over time, these contrasts can lead to inconsistent habits, making it challenging to maintain mutual support in vitality goals.",
+        redFlags:
+          "- Notice if one starts resenting the other's health choices, like avoiding joint activities, which could indicate building emotional distance.\n- Be wary of persistent fatigue from mismatched routines, potentially leading to blame and further withdrawal from shared wellness.\n- Watch for excuses to skip combined efforts, signaling a deeper issue in accommodating each other's needs.",
+        resolutionStrategies: [
+          "Design a weekly health plan that alternates between shared outings and individual sessions, allowing both to recharge in their preferred ways.",
+          "Communicate openly about how structure or flexibility affects your energy, adjusting routines to prevent burnout and foster understanding.",
+          "Incorporate small, daily check-ins on well-being, using them to blend stable elements with adaptable ones for sustained vitality.",
+        ],
+        growthOutcome:
+          "Resolving this leads to a healthier, more energized partnership where you both feel supported in maintaining personal and joint wellness.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "Your romantic connection blends independent space with a desire for emotional closeness, creating a relationship that's both freeing and intimate. One of you expresses love through actions in daily life, while the other seeks deeper, reflective moments. This mix can deepen your bond when you actively bridge the gaps.",
+        coreChallenge:
+          "Tension builds from one partner's need for personal boundaries clashing with the other's collaborative emotional style, heightened by outward engagement versus inward depth, and both relying on logical shows of affection.",
+        whyThisHappens:
+          "- One seeks autonomy in expressing feelings, while the other prioritizes group-like harmony even in the relationship, leading to feelings of emotional misalignment.\n- The outward focus on active interactions contrasts with inward reflection, causing one to feel overwhelmed or the other disconnected.\n- Shared logical decision-making in romance can make expressions feel impersonal, amplifying clashes in how closeness is maintained.\n- These differences often result in one pushing for more interaction while the other pulls back for space, straining the romantic flow.\n- Over time, without adjustment, this can lead to a cycle of misunderstanding each other's affectionate intentions.",
+        redFlags:
+          "- Be cautious if affectionate gestures are consistently misinterpreted, leading to arguments that highlight emotional disconnects.\n- Watch for one partner withdrawing during romantic moments, indicating unresolved tensions in balancing independence and togetherness.\n- Notice increasing criticism of each other's love styles, which could escalate into feeling unappreciated or unloved.",
+        resolutionStrategies: [
+          "Set aside dedicated time for both active dates and quiet reflections, ensuring your romantic needs are met without overwhelming each other.",
+          "Discuss how logic influences your expressions of love, finding ways to incorporate more personal touches that honor both autonomy and harmony.",
+          "Practice active listening during emotional talks, validating each other's preferences to build a stronger, more empathetic connection.",
+        ],
+        growthOutcome:
+          "By addressing these, your love grows deeper and more resilient, creating a romance that's both supportive and liberating for you both.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "In family matters, you navigate between organized routines and flexible adaptations, with one emphasizing personal boundaries and the other focusing on collective well-being. This can lead to a home that's structured yet responsive, but it takes effort to align on daily responsibilities. Your shared practicality helps in resolving home-related issues smoothly.",
+        coreChallenge:
+          "The key conflict emerges from one partner's structured approach to home life clashing with the other's adaptability, further influenced by differing views on family collaboration versus individual limits.",
+        whyThisHappens:
+          "- One prefers set rules and chores for stability, while the other adapts to situations, leading to inconsistent household management.\n- The autonomous style sets firm boundaries with family, contrasting with a harmonious approach that accommodates more, causing tension in decisions.\n- This often results in one feeling overburdened by the lack of structure, while the other sees rigidity as limiting family dynamics.\n- Over time, these differences can create uneven participation in home tasks, fostering resentment if not balanced.",
+        redFlags:
+          "- Look out for frequent disputes over family obligations, where one feels the other is too inflexible or overly accommodating.\n- Be aware if home routines break down repeatedly, leading to blame and a sense of unfair division of responsibilities.\n- Notice withdrawal from family interactions, signaling deeper frustration with the mismatched approaches.",
+        resolutionStrategies: [
+          "Develop a home schedule that combines fixed tasks with flexible slots, allowing for both predictability and spontaneity in family life.",
+          "Talk openly about boundaries and collaboration needs, finding compromises that respect individual comfort while maintaining home harmony.",
+          "Assign roles based on strengths, rotating them periodically to ensure fairness and keep the home environment supportive for everyone.",
+        ],
+        growthOutcome:
+          "Mastering this creates a nurturing home where family thrives, strengthening your partnership through balanced and caring dynamics.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You engage with friends differently, with one enjoying active social scenes and the other preferring smaller, introspective gatherings. This variety can broaden your social circle, but it might cause imbalances in how much time you spend together socially. Finding mutual activities helps keep your community ties strong and enjoyable.",
+        coreChallenge:
+          "Friction arises primarily from one partner's independent social style conflicting with the other's collaborative one, amplified by outward enthusiasm versus inward selectivity in interactions.",
+        whyThisHappens:
+          "- One values self-reliant choices in friendships, often declining group events, while the other seeks to build community ties, leading to mismatched social commitments.\n- The outward energy thrives in lively settings, contrasting with inward reflection that drains quickly in crowds, causing one to feel left out.\n- This difference can result in one pushing for more outings while the other resists, straining shared social experiences.\n- Over time, these contrasts may lead to separate social lives, reducing the sense of partnership in community involvement.",
+        redFlags:
+          "- Be alert if one starts feeling excluded from the other's social plans, fostering jealousy or isolation in the relationship.\n- Watch for arguments about event attendance, where resentment builds from repeated compromises that feel one-sided.\n- Notice if community engagements become sources of stress, indicating a need to reassess how you balance social needs.",
+        resolutionStrategies: [
+          "Plan social activities that alternate between large groups and intimate settings, ensuring both feel comfortable and included.",
+          "Communicate your energy levels before events, setting expectations to avoid last-minute conflicts and build understanding.",
+          "Cultivate a few shared friendships where both styles mesh, strengthening your joint community presence without forcing changes.",
+        ],
+        growthOutcome:
+          "Resolving this enriches your social world, creating deeper connections that enhance your bond and shared experiences.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "Both of you favor practical learning, but one sticks to mastering familiar skills while the other explores them more freely. This can lead to steady progress in personal development, though differences in pace might cause occasional mismatches. Embracing each other's methods fosters a supportive environment for growth.",
+        coreChallenge:
+          "The main challenge is in how your shared focus on tangible skills meets differing attitudes toward commitment, with one preferring to finish what they start and the other shifting interests fluidly.",
+        whyThisHappens:
+          "- One commits to structured learning paths for depth, while the other adapts to new curiosities, leading to incomplete joint pursuits.\n- This often causes frustration when one drops activities the other wants to complete, disrupting shared growth plans.\n- Differences in approach can make one feel the process is too rigid or chaotic, affecting motivation for discovery.\n- Over time, these habits may result in pursuing growth separately, missing opportunities for mutual encouragement.",
+        redFlags:
+          "- Pay attention if enthusiasm for shared learning wanes, leading to criticism of each other's commitment levels.\n- Be cautious of avoiding new challenges together, as it might indicate growing apart in personal development areas.\n- Watch for one dominating growth decisions, causing the other to disengage and feel undervalued.",
+        resolutionStrategies: [
+          "Choose growth activities with clear endpoints but room for exploration, allowing both to engage without feeling trapped or rushed.",
+          "Set personal milestones within joint goals, celebrating achievements to maintain motivation and respect differences.",
+          "Discuss interests regularly, selecting ones that align practically, building a foundation for ongoing discovery together.",
+        ],
+        growthOutcome:
+          "Overcoming this leads to enriched personal journeys where you inspire each other, achieving greater self-awareness and fulfillment.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "Adventures for you involve a blend of planned outings and spontaneous fun, with one leading active explorations and the other enjoying quieter thrills. This combination can make experiences memorable, but aligning on details is key to avoiding disappointments. Your partnership shines when you compromise on adventure styles.",
+        coreChallenge:
+          "Conflict stems from one partner's structured planning for fun clashing with the other's flexible changes, further shaped by outward excitement versus inward preferences for joy.",
+        whyThisHappens:
+          "- One organizes adventures with detailed itineraries for security, while the other alters plans on whims, leading to disrupted expectations.\n- The outward drive for shared excitement contrasts with inward desires for serene enjoyment, causing mismatched energy in activities.\n- This often results in one feeling adventures are too controlled or unpredictable, diminishing the overall fun.\n- Over time, these differences can lead to fewer joint outings, as frustration builds from unaligned approaches.",
+        redFlags:
+          "- Notice if plans frequently fall apart, leading to blame and reluctance to suggest new adventures.\n- Be aware of one opting out of activities, signaling deeper issues in accommodating each other's joy needs.\n- Watch for increasing irritation during outings, which could turn fun times into sources of conflict.",
+        resolutionStrategies: [
+          "Create adventure outlines with built-in flexibility, like core activities and optional add-ons, to satisfy both planning and spontaneity.",
+          "Alternate who plans the next outing, incorporating elements of both outward and inward preferences for balanced enjoyment.",
+          "Reflect after each adventure on what worked, using feedback to refine future plans and strengthen your shared sense of fun.",
+        ],
+        growthOutcome:
+          "Navigating this brings more joyful moments, deepening your connection through exciting and restorative experiences together.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You both value peace, but one finds it in interactive settings while the other seeks deep solitude, influencing how you recharge. This difference can teach you new ways to relax, though it requires sensitivity to each other's needs. Balancing these creates a harmonious home environment.",
+        coreChallenge:
+          "The central issue is one partner's outward need for engagement conflicting with the other's inward solitude, intensified by autonomous boundaries versus harmonious check-ins in quiet times.",
+        whyThisHappens:
+          "- One recharges through external stimuli, feeling lonely in silence, while the other needs uninterrupted alone time, leading to interrupted serenity.\n- The autonomous style enforces personal space strictly, clashing with harmonious tendencies to connect during downtime.\n- This often causes one to interpret solitude as rejection, while the other sees interruptions as invasive.\n- Over time, these mismatches can build tension, making shared spaces feel less peaceful.",
+        redFlags:
+          "- Be alert if requests for space lead to arguments, indicating unresolved feelings of neglect or intrusion.\n- Watch for one retreating more often, potentially creating emotional distance in the relationship.\n- Notice persistent discomfort in quiet moments, signaling a need for better boundary discussions.",
+        resolutionStrategies: [
+          "Establish designated times for solitude and connection, ensuring both get the space they need without feeling isolated.",
+          "Communicate signals for needing serenity, like simple phrases, to respect boundaries while maintaining harmony.",
+          "Incorporate joint relaxing activities that allow for minimal interaction, bridging outward and inward preferences effectively.",
+        ],
+        growthOutcome:
+          "Addressing this fosters a serene partnership where you both recharge fully, enhancing overall well-being and closeness.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "In building a legacy, you combine personal visions with community efforts, using practical measures to gauge success. This approach can lead to meaningful contributions, but differing motivations require alignment to feel unified. Your logical mindset aids in creating lasting impacts together.",
+        coreChallenge:
+          "The primary clash is between one partner's independent legacy-building and the other's community-focused efforts, with both emphasizing tangible outcomes in a logical framework.",
+        whyThisHappens:
+          "- One pursues self-directed goals for personal fulfillment, while the other aims for group benefits, leading to divergent paths in impact creation.\n- Shared concrete focus helps in measuring success, but the autonomy versus harmony gap causes disagreements on priorities.\n- This difference often results in one feeling their vision is sidelined by the other's collaborative needs.\n- Over time, these contrasts can fragment joint efforts, reducing the sense of shared accomplishment.\n- Logical decision-making amplifies tensions when values on individual versus collective impact don't align.",
+        redFlags:
+          "- Pay attention if discussions on future contributions turn contentious, highlighting unaddressed motivational differences.\n- Be cautious of pursuing separate legacies, which might weaken your partnership's unified front.\n- Watch for diminished enthusiasm in supporting each other's goals, indicating potential resentment.",
+        resolutionStrategies: [
+          "Identify overlapping areas where personal and community impacts align, focusing efforts there to build a cohesive legacy.",
+          "Set measurable milestones for joint projects, using logic to track progress and adjust for both preferences.",
+          "Regularly share visions for the future, finding compromises that honor independence while fostering collaborative achievements.",
+        ],
+        growthOutcome:
+          "By resolving this, you create a powerful legacy that reflects your strengths, inspiring others and solidifying your bond.",
+      },
+    },
+  ],
+  "C-L-O-S-A/C-L-I-F-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both chase personal goals with strong independence, focusing on what feels right for each of you individually. The Engineer often builds structured career paths that emphasize efficiency and long-term plans, while the Maverick prefers to adapt quickly to new ideas without rigid commitments. This can create a supportive space where you respect each other's drive but sometimes struggle to align on shared ambitions.",
+        coreChallenge:
+          "Balancing your mutual desire for autonomy with differing needs for structure versus flexibility can lead to parallel career paths that rarely intersect, making it hard to support each other in meaningful ways.",
+        whyThisHappens:
+          " - You both prioritize personal achievements over team efforts, which keeps things independent but limits joint motivation.\n - The Engineer's preference for planned roles clashes with the Maverick's tendency to shift focus based on current interests.\n - Without shared missions, individual pursuits can feel isolated even when you're both successful.\n - Autonomy drives you to avoid compromising on goals, amplifying the gap in how you approach career stability.\n - Flexibility in one partner frustrates the other's need for predictable progress.",
+        redFlags:
+          " - One partner feeling unsupported during career changes because the other is too focused on their own structured plans.\n - Growing resentment when personal goals pull you in different directions without any effort to find common ground.\n - Avoiding discussions about future ambitions, leading to emotional distance over time.",
+        resolutionStrategies: [
+          "Set aside time each month to share your individual career updates and find small ways to celebrate each other's progress without forcing joint plans.",
+          "Create flexible check-ins where the Engineer outlines stable elements and the Maverick suggests adaptive tweaks to keep things balanced.",
+          "Encourage mutual respect for autonomy by discussing how each person's unique approach can inspire the other in their pursuits.",
+        ],
+        growthOutcome:
+          "By embracing your shared independence while blending structure and flexibility, you build a partnership that fuels individual success and mutual inspiration.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "You approach money with a practical mindset, seeing it as a tool for real-world security and efficiency. The Engineer likes to budget meticulously and stick to plans, while the Maverick adapts spending based on immediate needs and opportunities. This mix can lead to solid financial foundations but also tensions around how rigidly to manage resources.",
+        coreChallenge:
+          "The clash between a structured saving approach and flexible spending habits can create ongoing disputes about financial priorities, risking instability if not addressed early.",
+        whyThisHappens:
+          " - The Engineer's focus on organized budgets conflicts with the Maverick's preference for adjusting plans on the fly.\n - Both view money concretely, but differing levels of adaptability lead to frustration over unplanned expenses.\n - Logical decisions dominate, yet one partner's cold calculations ignore the other's need for spontaneous resource use.\n - Stability-seeking behaviors in saving amplify tensions when flexibility demands quick shifts in allocation.\n - Without alignment, small financial choices escalate into larger disagreements about prosperity goals.",
+        redFlags:
+          " - Repeated arguments over unexpected purchases that disrupt carefully laid financial plans and breed mistrust.\n - One partner withdrawing from joint money talks, leading to separate accounts and emotional separation.\n - Ignoring shared prosperity goals, causing resentment and a sense of unequal contribution to security.",
+        resolutionStrategies: [
+          "Develop a hybrid budget that includes fixed savings from the Engineer and a flexible fund for the Maverick's adaptive needs.",
+          "Hold regular, calm discussions about financial logic to ensure both feel heard in decisions about spending and investing.",
+          "Focus on concrete tools like apps to track progress, blending structure with room for adjustments to build trust.",
+        ],
+        growthOutcome:
+          "Navigating these differences strengthens your ability to create lasting wealth that supports both security and spontaneous opportunities.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both handle health in grounded, logical ways, but your energy styles differ in how you engage with routines. The Engineer thrives on active, outward habits like group exercises, while the Maverick prefers inward, solo activities for recharge. This can result in mismatched efforts to stay vital, yet it offers chances to learn from each other's approaches.",
+        coreChallenge:
+          "Differing energy directions and attitudes toward routines can make it tough to maintain consistent health practices together, leading to one feeling drained or the other restricted.",
+        whyThisHappens:
+          " - The Engineer's outward engagement pushes for shared activities, clashing with the Maverick's need for internal reflection time.\n - Structured plans for diet and exercise frustrate the adaptive partner who prefers going with the flow based on mood.\n - Outward focus amplifies the inward partner's sense of overwhelm during joint health efforts.\n - Flexibility in routines leads to skipped commitments, irritating the stability-seeking partner.\n - Without balance, individual vitality suffers from mismatched expectations in daily habits.",
+        redFlags:
+          " - One partner consistently opting out of shared health activities, creating feelings of rejection and isolation.\n - Building resentment when flexible changes disrupt planned routines, leading to separate lifestyles.\n - Neglecting personal vitality needs, resulting in burnout or health declines over time.",
+        resolutionStrategies: [
+          "Alternate between outward group activities and inward solo sessions to respect each other's energy preferences while building vitality.",
+          "Create adaptable health plans that include core structures but allow for mood-based adjustments to keep both engaged.",
+          "Discuss openly how each approach contributes to overall well-being, fostering support without forcing conformity.",
+        ],
+        growthOutcome:
+          "Finding harmony in your health styles leads to a more balanced vitality that energizes your partnership long-term.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "You connect through independent spirits, valuing space in your relationship while showing love in practical ways. The Engineer brings outward energy to daily interactions, while the Maverick seeks deeper, inward connections. This dynamic fosters respect for individuality but can sometimes leave emotional needs unmet if not communicated.",
+        coreChallenge:
+          "Your shared autonomy combined with differing energy flows can create distance in romance, where one craves more engagement and the other more reflection, risking emotional disconnect.",
+        whyThisHappens:
+          " - Both prioritize personal space, but outward desires for frequent touchpoints clash with inward preferences for solitude.\n - Autonomy makes it hard to sync emotionally without intentional effort, amplifying isolation feelings.\n - Logical expressions of love, like acts of service, may not fulfill the need for deeper verbal affirmation in quiet moments.\n - Energy differences lead to one partner feeling rejected when the other pulls back for recharge.\n - Without addressing values in romance, small mismatches grow into larger gaps.",
+        redFlags:
+          " - Increasing emotional withdrawal where daily interactions feel forced or avoided altogether.\n - Arguments stemming from unmet needs for either more action or more introspection in showing love.\n - A sense of romance fading as independence overshadows efforts to build intimacy.",
+        resolutionStrategies: [
+          "Schedule intentional time for both outward activities and inward conversations to balance your romantic energies.",
+          "Express love through a mix of practical actions and empathetic words to align with your logical yet personal styles.",
+          "Regularly check in on each other's autonomy needs to ensure space enhances rather than hinders your connection.",
+        ],
+        growthOutcome:
+          "Embracing your differences deepens a romance built on mutual respect and genuine understanding.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You manage home life with a focus on practicality and independence, each handling responsibilities in your own way. The Engineer prefers organized systems for chores and rules, while the Maverick adapts flexibly to situations. This can lead to a functional household but tensions arise when structure meets spontaneity.",
+        coreChallenge:
+          "The contrast between a structured home environment and adaptive approaches can cause chaos in daily routines, straining your ability to maintain a peaceful family life together.",
+        whyThisHappens:
+          " - The Engineer's need for planned schedules conflicts with the Maverick's resistance to fixed rules and commitments.\n - Autonomy in both leads to setting personal boundaries that sometimes overlook shared family needs.\n - Structured preferences amplify frustrations when flexibility results in last-minute changes at home.\n - Independence drives individual handling of tasks, reducing collaboration in family dynamics.\n - Without alignment, home life feels disjointed despite practical intentions.",
+        redFlags:
+          " - Frequent disputes over unfinished chores due to differing views on structure and adaptability.\n - One partner imposing boundaries that make the other feel excluded from family decisions.\n - Growing disconnection as home routines become entirely separate rather than shared.",
+        resolutionStrategies: [
+          "Establish core home rules that allow for structure while incorporating flexible elements to suit both your styles.",
+          "Discuss autonomy openly to set boundaries that support family unity without over-accommodating.",
+          "Divide tasks based on strengths, blending planned and adaptive methods for smoother daily life.",
+        ],
+        growthOutcome:
+          "Resolving these challenges creates a home that's both organized and adaptable, strengthening your family bond.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You both value independence in social circles, often preferring selective involvement over constant group activities. The Engineer engages outwardly with communities when it suits, while the Maverick reflects inwardly and participates sporadically. This approach keeps things low-pressure but can limit shared social experiences.",
+        coreChallenge:
+          "Your mutual autonomy paired with energy differences can result in mismatched social commitments, where one feels overextended and the other isolated, weakening community ties.",
+        whyThisHappens:
+          " - Autonomy leads to declining invites independently, reducing opportunities for joint social growth.\n - Outward energy pushes for more interactions, clashing with inward preferences for minimal engagement.\n - Independence amplifies the drain on the inward partner during group events.\n - Without balance, social lives remain separate, missing out on shared community benefits.\n - Energy mismatches cause one to feel rejected when the other opts out.",
+        redFlags:
+          " - Consistent avoidance of each other's social circles, leading to feelings of exclusion and resentment.\n - Arguments about over-committing or under-participating in community events that strain your connection.\n - Drifting apart as individual friendships take precedence over building joint ones.",
+        resolutionStrategies: [
+          "Choose selective social activities that respect autonomy while alternating between outward and inward preferences.",
+          "Communicate openly about energy levels to avoid overwhelming one partner with too many commitments.",
+          "Build a small shared community circle that allows for independence without complete separation.",
+        ],
+        growthOutcome: "Navigating social differences fosters a balanced network that enriches your lives together.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You pursue growth through tangible skills and real-world applications, focusing on what you can master practically. The Engineer sticks to planned learning paths, while the Maverick explores flexibly based on curiosity. This can create steady progress but also frustrations when approaches don't align.",
+        coreChallenge:
+          "Differing attitudes toward structure in learning can stall joint discovery efforts, with one dropping pursuits prematurely and the other insisting on completion, hindering shared growth.",
+        whyThisHappens:
+          " - Both favor concrete skills, but the Engineer's structured plans clash with the Maverick's adaptive shifts.\n - Stability in finishing tasks frustrates the flexible partner who chases new interests freely.\n - Practical focus amplifies tensions when one abandons courses mid-way.\n - Without compromise, individual growth paths diverge, reducing mutual inspiration.\n - Flexibility leads to scattered efforts, irritating the need for organized mastery.",
+        redFlags:
+          " - One partner criticizing the other's unfinished projects, leading to defensiveness and stalled personal development.\n - Avoiding joint learning activities due to repeated clashes over commitment levels.\n - A sense of stagnation as growth becomes solitary rather than a shared journey.",
+        resolutionStrategies: [
+          "Select growth activities that combine concrete mastery with room for adaptive exploration to keep both engaged.",
+          "Set milestones that honor structure while allowing flexibility in how you reach them together.",
+          "Encourage sharing discoveries regularly to inspire each other without enforcing rigid plans.",
+        ],
+        growthOutcome:
+          "Blending your styles leads to richer, more sustainable personal and shared development over time.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "You find joy in practical, real-life experiences, but your planning styles vary greatly. The Engineer organizes adventures with details in mind, while the Maverick embraces spontaneous changes. This dynamic adds excitement but can cause stress when expectations differ.",
+        coreChallenge:
+          "The tension between detailed planning and last-minute adaptations can turn fun outings into sources of conflict, diminishing the shared sense of adventure and joy.",
+        whyThisHappens:
+          " - Structured preferences for trips clash with flexible desires to alter plans based on the moment.\n - Outward energy seeks thrills in groups, while inward focus prefers quieter, personal joys.\n - Stability amplifies frustrations over disrupted itineraries during adventures.\n - Energy differences lead to one feeling overwhelmed or the other bored in shared activities.\n - Without balance, joy becomes individual rather than a bonding experience.",
+        redFlags:
+          " - Canceled plans due to arguments over changes, leading to missed opportunities for fun together.\n - One partner feeling controlled or restricted, causing emotional withdrawal from joint adventures.\n - Decreasing enthusiasm for shared joy as conflicts overshadow positive moments.",
+        resolutionStrategies: [
+          "Plan adventures with a loose structure that includes built-in flexibility for spontaneous adjustments.",
+          "Alternate between outward thrills and inward quiet joys to satisfy both energy needs.",
+          "Focus on the fun of compromise, discussing preferences upfront to enhance mutual enjoyment.",
+        ],
+        growthOutcome: "Overcoming these hurdles creates adventures that bring deeper joy and stronger connection.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You both appreciate personal boundaries, seeking serenity in ways that suit your independent natures. The Engineer finds peace through external engagements that wind down actively, while the Maverick needs deep internal solitude. This respect for space is strong, yet energy differences can challenge harmony.",
+        coreChallenge:
+          "Differing needs for outward versus inward recharge can disrupt serenity, with one interpreting the other's space as rejection, leading to unnecessary tension in your quiet moments.",
+        whyThisHappens:
+          " - Outward energy fills silence with activities, clashing with inward desires for uninterrupted reflection.\n - Autonomy enforces boundaries strongly, but mismatches amplify feelings of disconnection.\n - Independence leads to separate serenity practices without shared understanding.\n - Energy flows cause one to feel intruded upon during recharge times.\n - Without communication, space becomes a source of isolation rather than peace.",
+        redFlags:
+          " - Increasing irritation when one partner's recharge style interrupts the other's need for solitude.\n - Emotional distance growing as boundaries are enforced without empathy for differences.\n - Avoiding shared quiet time, leading to a lack of serene connection in the relationship.",
+        resolutionStrategies: [
+          "Designate specific times for individual recharge that respect outward and inward preferences without overlap.",
+          "Talk about how autonomy in serenity strengthens your bond, ensuring boundaries enhance closeness.",
+          "Incorporate light joint activities that transition into personal space for balanced peace.",
+        ],
+        growthOutcome:
+          "Mastering space dynamics cultivates a serene partnership where independence fuels mutual tranquility.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "You build legacies through personal visions grounded in practical outcomes, each focusing on individual contributions. The Engineer structures efficient projects for lasting effect, while the Maverick adapts ideas logically to forge unique paths. This shared drive creates inspiration but requires alignment for joint impact.",
+        coreChallenge:
+          "Your aligned autonomy and practical focus can lead to separate legacies that rarely merge, missing opportunities to amplify each other's influence through collaboration.",
+        whyThisHappens:
+          " - Both pursue solo impacts, reducing chances for combined efforts despite similar motivations.\n - Concrete views emphasize measurable results, but independence keeps visions personal.\n - Logical approaches align, yet without integration, legacies remain isolated.\n - Autonomy amplifies the preference for self-reliant contributions over group-oriented ones.\n - Practicality drives efficiency, but differing expressions limit shared meaning.",
+        redFlags:
+          " - Dismissing each other's ideas as too independent, leading to unsupported personal endeavors.\n - A growing sense of competition rather than partnership in building lasting impact.\n - Neglecting to discuss legacy goals, resulting in disconnected long-term visions.",
+        resolutionStrategies: [
+          "Share your individual visions regularly to identify overlaps where you can support each other's impact without compromising autonomy.",
+          "Focus on concrete, logical steps to blend personal legacies into a meaningful joint narrative.",
+          "Celebrate each other's achievements as part of a shared story, fostering inspiration through independence.",
+        ],
+        growthOutcome:
+          "Uniting your strengths creates a powerful legacy that reflects both personal and partnered accomplishments.",
+      },
+    },
+  ],
+  "C-L-O-S-A/C-V-O-S-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both value stable career paths that provide security and clear direction, but one of you thrives on pursuing individual goals independently while the other prefers building shared missions with a team. This creates an interesting mix where your structured approaches can support each other in planning long-term objectives, yet it sometimes leads to differing views on what true purpose looks like in a professional setting. Together, you can inspire one another to blend personal ambitions with collective efforts for more fulfilling work lives.",
+        coreChallenge:
+          "The primary tension stems from one partner's drive for solo achievements clashing with the other's focus on collaborative team goals, amplified by your mutual tendency to lock into specific roles that may not easily adapt to each other's styles.",
+        whyThisHappens:
+          "- One of you naturally seeks out group projects and shared visions to feel purposeful, while the other finds motivation in independent pursuits that highlight personal expertise.\n- Your shared preference for planning and committing to defined career tracks can make it hard to shift when one wants to collaborate and the other prefers autonomy.\n- This difference often surfaces because team-oriented approaches emphasize collective success, but independent ones prioritize self-directed impact without relying on others.\n- Over time, the structured nature you both enjoy might reinforce rigid roles that don't account for the varying needs for group versus solo involvement.\n- Ultimately, these dynamics arise from core motivations where harmony in work comes from teamwork for one and from personal freedom for the other.",
+        redFlags:
+          "- Watch for resentment building when one partner feels dragged into group activities that dilute their individual focus, leading to disengagement from shared career discussions.\n- Be cautious if the team-focused partner starts feeling isolated because the independent one consistently opts out of collaborative opportunities, straining your emotional connection.\n- Notice if rigid planning causes one to criticize the other's approach as either too solitary or overly dependent on others, escalating into frequent arguments about purpose.",
+        resolutionStrategies: [
+          "Schedule regular check-ins where you discuss individual and shared career goals, ensuring both autonomous pursuits and team efforts are respected and integrated into your plans.",
+          "Encourage each other to explore small collaborative projects that allow for personal input, helping to bridge the gap between solo achievements and group missions without forcing changes.",
+          "Set clear boundaries on how much team involvement is expected, while committing to support one another's structured paths to prevent feelings of imbalance in your professional lives.",
+        ],
+        growthOutcome:
+          "By navigating these differences, you two can create a balanced approach to purpose that combines independent success with collaborative fulfillment, strengthening your partnership along the way.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, you both lean toward practical and organized methods, focusing on tangible results like saving and budgeting wisely. However, one of you makes money decisions based on logical efficiency, while the other considers how spending aligns with personal values and relationships. This blend allows you to build a solid financial foundation together, but it requires understanding each other's priorities to avoid conflicts over what constitutes a worthwhile expense.",
+        coreChallenge:
+          "The main issue emerges from your shared structured saving habits clashing when one views money through a cold, efficient lens and the other through value-driven choices, especially since you both see finances as practical tools rather than abstract opportunities.",
+        whyThisHappens:
+          "- Your mutual preference for planning and stability leads to consistent saving, but differences in logic versus values cause disagreements on whether to prioritize efficiency or emotional significance in purchases.\n- One partner often budgets strictly based on cause-and-effect outcomes, while the other factors in how money affects people and relationships, amplifying tensions in concrete financial matters.\n- This occurs because both of you focus on real-world financial security, yet the logical approach dismisses value-based spending as unnecessary, creating friction in daily decisions.\n- Over time, the structured mindset you share reinforces habits that don't easily accommodate the other's perspective, leading to repeated debates over resource allocation.",
+        redFlags:
+          "- Pay attention if one partner starts hiding purchases to avoid judgment, as this erodes trust and signals deeper divides in how you handle value-driven versus logical financial choices.\n- Be alert to growing frustration when budget discussions turn into arguments about priorities, where one feels their emotional considerations are ignored in favor of pure efficiency.\n- Notice if financial planning sessions lead to one feeling controlled, as the mix of structure and differing decision styles heightens feelings of restriction in prosperity building.",
+        resolutionStrategies: [
+          "Create a joint budget that allocates sections for logical necessities and value-aligned treats, ensuring both perspectives are honored in your structured financial planning.",
+          "Hold monthly reviews where you openly share why certain expenses matter to each of you, fostering understanding between efficiency-focused and relationship-oriented approaches to money.",
+          "Agree on small flexible funds for personal spending without oversight, allowing independence within your shared practical framework to reduce conflicts over prosperity decisions.",
+        ],
+        growthOutcome:
+          "Overcoming these challenges can lead to a more harmonious financial life where logic and values complement each other, building lasting security and satisfaction for you both.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You two both enjoy engaging with the world actively and prefer consistent routines for maintaining health, like sticking to exercise plans or meal schedules. This shared outward energy helps you motivate each other to stay vital, but it can sometimes result in mismatched paces if one pushes for more joint activities than the other is ready for. Overall, your structured approaches create a supportive environment for building healthy habits together.",
+        coreChallenge:
+          "The key friction comes from your mutual outward engagement clashing with structured routines, where one might overwhelm the other with constant shared activities while both insist on rigid health plans that limit flexibility.",
+        whyThisHappens:
+          "- Both of you direct energy externally, leading to a desire for joint workouts or diets, but this can feel exhausting if not balanced with individual needs within your fixed schedules.\n- Your preference for organized systems means you enforce strict health regimens, yet the active orientation amplifies pressure to include each other in every routine.\n- This dynamic arises because outward focus seeks stimulation through interaction, but combined with stability, it creates inflexible plans that don't allow for spontaneous adjustments.\n- Over time, the shared commitment to consistency reinforces habits that prioritize group vitality over personal recovery, heightening potential burnout.",
+        redFlags:
+          "- Look out for one partner withdrawing from shared health activities, indicating overwhelm from the constant outward push within unyielding routines.\n- Be wary if arguments erupt over skipped plans, as this signals growing resentment from the rigid structure clashing with varying energy levels.\n- Notice if health discussions turn critical, where one accuses the other of not committing enough to joint efforts, straining your connection.",
+        resolutionStrategies: [
+          "Incorporate flexible elements into your health routines, like alternating between joint and solo sessions, to honor your outward energy without enforcing total rigidity.",
+          "Discuss and adjust plans weekly to ensure both feel energized by shared activities, preventing the structured approach from becoming a source of stress.",
+          "Set personal health goals alongside couple ones, allowing space for individual vitality while maintaining the outward engagement you both enjoy.",
+        ],
+        growthOutcome:
+          "Resolving this can foster a vibrant health partnership where your shared routines enhance vitality without overwhelming each other, leading to sustained well-being.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "In your relationship, one of you seeks deep emotional connections through collaboration and shared experiences, while the other values personal space and independence in expressing affection. Since you both engage outwardly, this can lead to frequent interactions that feel loving, but differences in decision styles sometimes cause misunderstandings about how to show care. Together, you create a dynamic romance filled with active gestures, yet it thrives when you bridge your unique approaches to harmony and autonomy.",
+        coreChallenge:
+          "The central tension involves one partner's need for collaborative emotional sync conflicting with the other's desire for independent space, heightened by your shared outward engagement and differing ways of showing love through actions versus words.",
+        whyThisHappens:
+          "- One naturally orients toward group-like harmony even in romance, seeking constant check-ins, while the other prioritizes self-reliance, leading to clashes in emotional needs.\n- Your mutual external focus drives frequent interactions, but this amplifies feelings of intrusion when autonomy is craved amidst collaborative expectations.\n- Differences in logic versus values mean one expresses love practically, like through helpful acts, while the other prefers verbal affirmations, creating mismatched romantic signals.\n- This occurs because harmonious styles emphasize collective well-being, but autonomous ones guard personal boundaries, especially in active daily engagements.\n- Over time, these preferences build friction as outward energy pushes for more connection than the independent partner comfortably allows.",
+        redFlags:
+          "- Be mindful if one starts feeling smothered by constant emotional check-ins, leading to withdrawal that deepens the divide in your romantic bond.\n- Watch for escalating arguments about affection styles, where practical gestures are seen as cold or verbal expressions as insufficient, eroding trust.\n- Notice if independence leads to perceived neglect, causing the collaborative partner to overcompensate and heighten tensions in love.",
+        resolutionStrategies: [
+          "Establish dedicated times for shared romantic activities while respecting personal space, allowing both collaboration and autonomy to coexist in your outward expressions of love.",
+          "Practice expressing affection in each other's preferred ways, like blending practical help with heartfelt words, to bridge the gap between logical and value-based romance.",
+          "Communicate openly about emotional needs during calm moments, ensuring your active engagements enhance rather than overwhelm your unique approaches to harmony.",
+        ],
+        growthOutcome:
+          "By addressing these dynamics, you can cultivate a romance that honors both independence and collaboration, deepening your connection through mutual understanding and support.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You both appreciate a structured home environment with clear routines and responsibilities, making your family life feel organized and reliable. However, one tends to accommodate family needs extensively, while the other sets firmer personal boundaries, creating a balance that can strengthen your household when aligned. This shared stability helps you build a nurturing space, but it requires effort to harmonize your differing interpersonal styles.",
+        coreChallenge:
+          "The core issue arises from your mutual structured approach to home life clashing when one over-accommodates family demands and the other enforces personal limits, leading to imbalances in daily routines and responsibilities.",
+        whyThisHappens:
+          "- Both of you prefer planning and organization in family matters, but one focuses on collective harmony by yielding to others, while the other prioritizes individual boundaries.\n- This difference surfaces because stable systems encourage fixed roles, yet harmonious tendencies extend to over-involvement, contrasting with autonomous protection of personal space.\n- Your shared commitment to structure reinforces habits like chore schedules, but it amplifies friction when accommodation disrupts the independent partner's sense of control.\n- Over time, these styles lead to uneven distribution of family efforts, as one absorbs more emotional labor to maintain peace.",
+        redFlags:
+          "- Be alert if one partner resents the other's boundary-setting as selfish, leading to passive-aggressive behaviors around home responsibilities.\n- Watch for exhaustion in the accommodating partner from constant family concessions, which can spill over into arguments about fairness in your structured life.\n- Notice if rigid routines become battlegrounds, where differences in harmony versus autonomy cause ongoing disputes over home priorities.",
+        resolutionStrategies: [
+          "Develop a shared family plan that includes clear roles and boundaries, ensuring accommodation doesn't override personal needs in your organized home setup.",
+          "Rotate responsibilities to balance involvement, allowing the autonomous partner space while encouraging the harmonious one to practice self-care amid family demands.",
+          "Hold family meetings to discuss adjustments, fostering understanding between over-accommodation and boundary-setting for a more equitable home life.",
+        ],
+        growthOutcome:
+          "Successfully managing this can lead to a harmonious family environment where structure supports both collective needs and individual well-being, enhancing your bond.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "In social circles, one of you enjoys committing to group activities and building connections, while the other prefers selective involvement to maintain personal freedom. Since you both engage outwardly, this can result in lively shared experiences when you align, but it often requires compromise to avoid overextension. Your relationship benefits from this mix, as it encourages a balanced approach to community life.",
+        coreChallenge:
+          "The main conflict stems from one partner's tendency to over-commit to social events clashing with the other's preference for declining invites, intensified by your shared outward energy that seeks constant interaction.",
+        whyThisHappens:
+          "- One naturally leans toward collaborative social harmony, accepting invitations to foster group ties, while the other values autonomy by choosing solitude over obligations.\n- Your mutual external orientation drives a desire for active engagements, but this heightens pressure when commitments pile up against personal boundaries.\n- This dynamic occurs because harmonious styles prioritize collective enjoyment, yet autonomous ones guard against draining interactions in busy social settings.\n- Over time, the difference builds as outward focus amplifies invitations, making it hard for the independent partner to opt out without conflict.\n- Ultimately, these preferences create uneven social loads, where one feels pulled in too many directions.",
+        redFlags:
+          "- Pay attention if the social partner feels lonely when the other skips events, leading to accusations of disinterest in your shared community life.\n- Be cautious of building resentment when over-commitments cause fatigue, spilling into arguments about balancing friendships with personal needs.\n- Notice if outward engagements turn obligatory, where one partner's autonomy is compromised, straining your emotional connection.",
+        resolutionStrategies: [
+          "Agree on a social calendar that includes both joint and optional events, respecting autonomy while nurturing harmonious community ties through selective participation.",
+          "Encourage open talks about comfort levels before accepting invites, ensuring your outward energy enhances rather than overwhelms your friendship dynamics.",
+          "Alternate leading social plans, allowing each to incorporate their style of harmony or independence for a more balanced community experience.",
+        ],
+        growthOutcome:
+          "Overcoming this fosters a supportive social network where you both feel free yet connected, enriching your relationship through shared and individual friendships.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You two both favor practical learning and mastering tangible skills, preferring to build on real-world knowledge rather than chasing abstract ideas. This shared focus creates opportunities for joint growth through hands-on activities, but your structured approaches can sometimes limit exploration if not encouraged. Together, you build a solid foundation for personal development that feels grounded and achievable.",
+        coreChallenge:
+          "The primary tension involves your mutual emphasis on concrete mastery clashing with structured commitments, where both tend to stick with one skill deeply but struggle to finish when novelty tempts, though it rarely does given your practical bent.",
+        whyThisHappens:
+          "- Both of you prioritize observable, practical growth, leading to dedicated pursuits, but stability reinforces completing what you start without much deviation.\n- This occurs because concrete focus values depth in known areas, combined with planning that locks you into courses or skills without flexibility for change.\n- Your shared preferences mean you rarely chase new ideas, but when minor shifts happen, the rigid structure makes adaptation feel disruptive.\n- Over time, these habits build a routine of steady progress, yet they can stifle broader discovery if not intentionally varied.",
+        redFlags:
+          "- Be aware if one loses interest in shared learning goals, signaling that the structured depth feels too confining without enough practical variety.\n- Watch for frustration when plans to master skills drag on, leading to blame over perceived lack of commitment in your growth journeys.\n- Notice if discovery discussions become rare, indicating your concrete stability is limiting mutual inspiration for new pursuits.",
+        resolutionStrategies: [
+          "Choose practical projects that build on each other's strengths, incorporating small milestones to maintain structure while allowing room for tangible adjustments.",
+          "Set aside time for reviewing progress together, ensuring your concrete approaches lead to completed goals without rigid enforcement that hinders discovery.",
+          "Explore related skills in a planned way, blending your preference for depth with occasional expansions to keep growth engaging and sustainable.",
+        ],
+        growthOutcome:
+          "Addressing this can result in a partnership where practical mastery fuels ongoing discovery, empowering you both to evolve together with confidence.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "In seeking fun, you both like planning activities in detail and sharing them actively, creating memorable experiences that feel exciting and connected. This mutual outward orientation helps you bond over adventures, but your structured styles can sometimes make spontaneity a challenge. Overall, your approach brings reliability to joy, ensuring you make the most of your time together.",
+        coreChallenge:
+          "The key issue arises from your shared planning tendencies clashing during adventures, where detailed itineraries limit changes, amplified by outward energy that craves constant shared thrills without room for quiet moments.",
+        whyThisHappens:
+          "- Both of you prefer organized outings, leading to well-thought-out plans, but this rigidity resists on-the-fly adjustments that could enhance fun.\n- Your external focus seeks interactive excitement, yet combined with stability, it creates pressure to stick to schedules even when moods shift.\n- This dynamic stems from a desire for reliable joy, but it amplifies frustration when one wants to alter plans amid active engagements.\n- Over time, these preferences reinforce habits of controlled adventures, reducing the element of surprise in your shared pursuits.",
+        redFlags:
+          "- Look for signs of boredom in planned activities, where the lack of flexibility leads to disengagement from your joint joy-seeking efforts.\n- Be cautious if arguments arise over itinerary changes, indicating the structured outward approach is causing stress instead of relaxation.\n- Notice if adventures feel obligatory, with one partner pushing for more interaction while the other craves simpler, quieter fun.",
+        resolutionStrategies: [
+          "Build in buffer times to your adventure plans, allowing for small spontaneous tweaks while keeping the overall structure that you both appreciate.",
+          "Alternate between high-energy shared thrills and calmer activities, balancing your outward orientations to prevent overwhelm in joy pursuits.",
+          "Reflect after each outing on what worked, adjusting future plans to incorporate more flexibility within your preferred organized framework.",
+        ],
+        growthOutcome:
+          "Navigating this leads to adventures that are both planned and playful, deepening your shared sense of joy and strengthening your bond through fun.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You both draw energy from external interactions, making quiet times together feel refreshing when balanced, but one seeks more collaborative downtime while the other needs independent recharge. This can create a lively home atmosphere, yet it requires awareness to ensure personal serenity isn't overlooked. Your relationship grows when you find ways to blend engagement with peaceful moments.",
+        coreChallenge:
+          "The central friction comes from your mutual outward focus needing constant connection, clashing when one fills silences with check-ins while the other enforces boundaries for solitude, disrupting overall serenity.",
+        whyThisHappens:
+          "- Both direct energy externally, leading to a preference for interactive relaxation, but harmonious styles add emotional check-ins that autonomous ones view as intrusive.\n- This difference arises because outward orientation avoids deep isolation, yet autonomy demands personal space amid collaborative tendencies.\n- Your shared active nature amplifies the need for engagement, making true serenity hard when boundaries are tested by check-ins.\n- Over time, these preferences create uneven downtime, where one feels rejected by enforced solitude.\n- Ultimately, the mix leads to filled silences that prevent the independent partner from recharging fully.",
+        redFlags:
+          "- Be alert if one partner starts avoiding shared spaces to gain solitude, signaling growing discomfort with the constant outward pull.\n- Watch for irritation during quiet times, where check-ins lead to snaps about needing space, escalating tensions in your serenity dynamics.\n- Notice if feelings of rejection build, as boundary enforcement is misinterpreted as disinterest in the relationship.",
+        resolutionStrategies: [
+          "Designate specific times for independent recharge alongside joint relaxation, honoring both outward energy and personal boundaries in your daily routines.",
+          "Communicate needs for space gently before tensions rise, ensuring harmonious check-ins don't override autonomous serenity requirements.",
+          "Create serene rituals that allow optional participation, balancing engagement with solitude to foster peaceful coexistence.",
+        ],
+        growthOutcome:
+          "By resolving this, you cultivate a space where serenity supports both connection and independence, enhancing emotional well-being in your partnership.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "In building a lasting impact, one of you focuses on community-driven legacies through collaboration, while the other pursues personal visions independently. Your shared practical mindset helps ground these efforts in measurable outcomes, but differences in decision styles can influence how you define success. This creates a partnership where you inspire each other to blend collective and individual contributions for meaningful change.",
+        coreChallenge:
+          "The primary conflict involves one partner's community-oriented legacy building clashing with the other's independent personal objectives, heightened by your concrete focus on tangible results and differing logical versus value-based approaches.",
+        whyThisHappens:
+          "- One naturally builds impact through group efforts and shared goals, while the other emphasizes self-directed achievements, leading to divergent paths in legacy planning.\n- Your mutual preference for real-world, observable outcomes amplifies tensions when community focus seems diffuse compared to personal precision.\n- Differences in logic versus values mean one measures legacy by efficient results, while the other by relational significance, creating mismatched priorities.\n- This occurs because harmonious styles seek collective meaning, but autonomous ones prioritize individual freedom in tangible pursuits.\n- Over time, these dynamics reinforce separate visions, making unified impact hard without compromise.",
+        redFlags:
+          "- Pay attention if one dismisses the other's approach as either too scattered or overly self-centered, leading to disengagement from joint legacy discussions.\n- Be wary of resentment when value-based community efforts are critiqued logically as inefficient, straining your shared sense of purpose.\n- Notice if tangible goals become competitive, where differences in harmony and autonomy escalate into arguments about true impact.",
+        resolutionStrategies: [
+          "Identify overlapping areas where community and personal legacies intersect, collaborating on tangible projects that honor both value-driven and logical perspectives.",
+          "Share visions regularly to align on measurable outcomes, ensuring autonomous goals complement harmonious ones without forcing conformity.",
+          "Support each other's initiatives independently while celebrating joint contributions, building a balanced legacy that reflects your unique strengths.",
+        ],
+        growthOutcome:
+          "Mastering this can result in a powerful legacy that combines personal innovation with community influence, leaving a lasting positive mark together.",
+      },
+    },
+  ],
+  "C-L-O-S-A/C-V-O-S-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both chase your own goals with a strong sense of independence, often focusing on building stable careers that feel personally rewarding. This shared drive for autonomy can make you supportive of each other's ambitions, but it might also lead to parallel paths rather than a united front. Over time, your structured approaches help you both stay committed to long-term objectives.",
+        coreChallenge:
+          "The main issue arises when your mutual desire for individual control over career choices creates a lack of joint purpose, making it hard to blend your professional lives into a shared mission that strengthens your bond.",
+        whyThisHappens:
+          "- Both of you prioritize personal freedom in your work, which can result in pursuing separate trajectories without much overlap or collaboration.\n- Your preference for stability means you lock into routines that suit your own needs, potentially overlooking opportunities to align your efforts for mutual benefit.\n- Without intentional teamwork, this independence might foster feelings of isolation in your professional journeys, even as you respect each other's space.\n- The focus on self-directed goals can sometimes make shared aspirations feel secondary, leading to missed chances for deeper partnership.",
+        redFlags:
+          "- One partner starts resenting the other's solo focus, feeling like their own career sacrifices go unnoticed or unappreciated.\n- Discussions about future plans turn into debates over whose path takes priority, eroding the sense of being a true team.\n- You notice a growing emotional distance as work consumes individual energies without joint celebrations of achievements.",
+        resolutionStrategies: [
+          "Set aside regular time to discuss how your individual careers can intersect, like exploring joint projects that play to both your strengths and create a sense of shared accomplishment.",
+          "Create a vision board together that maps out personal and couple goals, ensuring your stable structures include room for collaborative milestones that honor your independence.",
+          "Practice active listening during career talks, validating each other's autonomous drives while brainstorming ways to support one another without compromising personal freedom.",
+        ],
+        growthOutcome:
+          "By weaving your independent paths into a supportive framework, you'll build a partnership where individual successes amplify your collective purpose and deepen your connection.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "Your shared love for planning and tangible results means you both approach money with a practical mindset, often agreeing on building secure foundations. This common ground helps you create budgets that feel reliable, but differences in how you value spending can spark tensions. Together, you can turn these into opportunities for balanced financial growth.",
+        coreChallenge:
+          "The core tension comes from one viewing finances through a logical lens of efficiency while the other prioritizes values like generosity, leading to conflicts over how to allocate resources in ways that satisfy both perspectives.",
+        whyThisHappens:
+          "- Both of you favor structured financial habits, but one might insist on cold calculations for investments while the other wants to factor in emotional or ethical considerations.\n- Your concrete focus keeps discussions grounded in real numbers, yet this can amplify disagreements when personal values clash with objective logic.\n- Stability is key for you both, so deviations from planned budgets due to value-driven choices can feel disruptive and cause frustration.\n- Without alignment, small spending decisions escalate into arguments about what's truly important in building prosperity together.\n- The emphasis on practical outcomes means emotional spending might be seen as illogical, widening the gap in your approaches.",
+        redFlags:
+          "- Financial talks frequently end in stalemates, with one feeling their logical plans are undermined by the other's value-based impulses.\n- Resentment builds when one partner's spending on meaningful causes is labeled as wasteful, eroding trust in joint decision-making.\n- You start hiding purchases or financial choices to avoid conflict, which signals a breakdown in open communication about money matters.",
+        resolutionStrategies: [
+          "Develop a joint budget that includes categories for both logical investments and value-aligned spending, ensuring each feels their priorities are respected and integrated.",
+          "Hold monthly financial check-ins where you discuss decisions using a mix of data and personal feelings, fostering understanding without judgment.",
+          "Set shared long-term goals that blend efficiency with meaningful pursuits, like saving for experiences that honor both your practical and heartfelt approaches to wealth.",
+        ],
+        growthOutcome:
+          "Embracing your differing views on money will lead to a more holistic prosperity, where logic and values combine to create lasting security and fulfillment.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both thrive on engaging with the world actively, often motivating each other to maintain energetic lifestyles through shared activities. This outward focus brings excitement to your health routines, but your structured preferences can sometimes make flexibility a challenge. Working together, you can build habits that keep you both vibrant and connected.",
+        coreChallenge:
+          "The primary struggle is balancing your joint enthusiasm for routines with the need for adaptability, as rigid plans can lead to burnout when life demands change.",
+        whyThisHappens:
+          "- Your shared outward energy pushes for group exercises or social health goals, but sticking too strictly to schedules can ignore individual fluctuations in mood or energy.\n- Both preferring stability means you set firm diets or workout plans, yet this can cause tension when one wants to adjust for variety or rest.\n- Without room for spontaneity, your active approaches might turn health into a chore, reducing motivation over time.\n- The focus on external engagement can overlook personal signals for downtime, leading to overcommitment in pursuit of vitality.",
+        redFlags:
+          "- One partner feels pressured to keep up with the other's energy levels, resulting in exhaustion or resentment toward shared health activities.\n- Arguments arise over skipping planned workouts, with accusations of laziness undermining your supportive dynamic.\n- Health goals start feeling like obligations rather than joys, signaling a loss of balance in your joint vitality efforts.",
+        resolutionStrategies: [
+          "Incorporate flexible elements into your health plans, like alternative options for days when the original routine doesn't fit, to maintain structure without rigidity.",
+          "Schedule regular check-ins to discuss how your outward activities are affecting each person's well-being, adjusting as needed to keep things enjoyable.",
+          "Blend your energies by trying new, low-pressure activities together that allow for both planning and impromptu fun, strengthening your bond through shared vitality.",
+        ],
+        growthOutcome:
+          "By adding adaptability to your structured health pursuits, you'll cultivate a sustainable vitality that energizes your relationship and individual lives.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "Your mutual independence allows for a relationship where each feels free to be themselves, fostering respect and space that keeps things fresh. However, expressing affection differently can sometimes leave emotional needs unmet despite your shared active energy. Navigating this with openness can deepen your romantic connection over time.",
+        coreChallenge:
+          "The key difficulty lies in bridging the gap between one showing love through practical actions and the other through emotional expressions, especially when both crave autonomy and outward interaction.",
+        whyThisHappens:
+          "- Both valuing personal space means you give each other freedom, but this can sometimes feel like emotional distance without intentional romantic gestures.\n- Your active orientations lead to shared experiences, yet one might interpret logical help as love while the other seeks verbal affirmations.\n- Independence is core for you both, so over-relying on self-sufficiency can neglect the need for deeper relational syncing.\n- When decision-making styles differ, romantic plans might clash, with one focusing on efficiency and the other on heartfelt impact.\n- Without addressing these, small misunderstandings build into feelings of being underappreciated in the romance department.",
+        redFlags:
+          "- Affectionate moments become rare, with one feeling their practical efforts aren't recognized as loving by the other.\n- Conversations about needs turn defensive, highlighting a growing divide in how you each experience and express romance.\n- You start questioning the emotional depth of the relationship, as independence overshadows intimate connections.",
+        resolutionStrategies: [
+          "Make a habit of sharing what makes each of you feel loved, then incorporate both practical acts and verbal expressions into daily interactions to bridge the gap.",
+          "Plan romantic outings that combine your outward energies with personal space, like separate hobbies followed by shared reflections on the day.",
+          "Discuss differences in love languages openly, using them to create a balanced approach that honors both logic and values in your romantic life.",
+        ],
+        growthOutcome:
+          "Integrating your unique ways of showing love will create a romance that's both independent and intimately connected, enriching your partnership.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You both appreciate order in your home, working together to create a stable environment that supports your individual lives. This shared structure brings reliability, but your independent streaks can make coordinating family matters tricky at times. With effort, you can turn this into a harmonious household dynamic.",
+        coreChallenge:
+          "The central issue is maintaining boundaries in family interactions while keeping the home structured, as your mutual autonomy might lead to uneven sharing of responsibilities.",
+        whyThisHappens:
+          "- Preferring stability, you both set clear rules for home life, but independence can cause reluctance to compromise on personal preferences.\n- Your autonomous natures mean you handle tasks solo, potentially leading to imbalances if one takes on more without discussion.\n- Family commitments might feel intrusive to your self-reliance, causing tension when group needs clash with individual space.\n- Without joint planning, structured routines become rigid, limiting adaptability to changing family dynamics.\n- This setup can foster isolation within the home, as each focuses on their own contributions rather than collaborative efforts.",
+        redFlags:
+          "- Household chores spark arguments over fairness, with one feeling their independence is being encroached upon by the other's expectations.\n- Family decisions lead to standoffs, where autonomy trumps compromise and erodes the sense of teamwork in home life.\n- You notice emotional withdrawal during family gatherings, signaling unmet needs for personal boundaries.",
+        resolutionStrategies: [
+          "Divide home responsibilities based on strengths and preferences, reviewing them periodically to ensure they respect each person's autonomy while maintaining structure.",
+          "Establish family rituals that include time for individual pursuits, balancing group harmony with personal freedom in your daily routines.",
+          "Communicate openly about boundary needs in family settings, creating agreements that support stability without sacrificing independence.",
+        ],
+        growthOutcome:
+          "Balancing structure with autonomy will foster a home life that's supportive and respectful, strengthening your family bonds.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "Your independent approaches mean you each cultivate social circles that fit your personal interests, allowing for diverse friendships without pressure. This freedom keeps things light, but your active energies might pull you in different directions socially. Finding common ground can enhance your shared community experiences.",
+        coreChallenge:
+          "The main hurdle is avoiding social isolation as a couple, since your strong autonomy combined with outward engagement can lead to separate rather than joint community involvement.",
+        whyThisHappens:
+          "- Both prioritizing self-reliance means you often attend events alone, missing opportunities to build couple-based friendships.\n- Your outward focus energizes social interactions, but without coordination, it results in overlapping schedules that leave little room for shared activities.\n- Independence can make committing to group events feel restrictive, leading to frequent declines of invitations as a pair.\n- This pattern might create a divide where each has their own network, reducing the sense of a united front in community settings.",
+        redFlags:
+          "- One partner feels left out when the other pursues solo social plans, breeding jealousy or disconnection in your relationship.\n- Community commitments cause friction, with arguments over why joint participation isn't prioritized over individual preferences.\n- You realize your social lives are drifting apart, weakening the couple's role in broader friendships.",
+        resolutionStrategies: [
+          "Identify overlapping interests and plan occasional joint outings with friends, blending your independent styles into shared experiences that build community ties.",
+          "Set boundaries for social time that respect autonomy, like alternating between couple events and personal ones to maintain balance.",
+          "Discuss your social needs regularly, ensuring outward energies are channeled into activities that strengthen both individual and couple connections.",
+        ],
+        growthOutcome:
+          "Integrating your independent social lives will create a richer community network that supports your relationship's growth.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You both prefer building on practical skills, approaching learning with a hands-on mindset that leads to tangible progress. This shared practicality makes joint discoveries enjoyable, but your structured ways can limit exploration of new ideas. Embracing some flexibility can open up more growth opportunities together.",
+        coreChallenge:
+          "The key problem is getting stuck in familiar routines, as your mutual focus on concrete mastery and stability hinders diving into novel experiences that could spark deeper personal development.",
+        whyThisHappens:
+          "- Favoring real-world applications, you both stick to skills with immediate benefits, potentially overlooking broader horizons for growth.\n- Your stable preferences mean committing to long-term learning paths, but this can prevent switching to fresh pursuits when interest wanes.\n- Without variety, discovery feels repetitive, reducing enthusiasm for joint exploration and self-improvement.\n- The emphasis on practicality might dismiss abstract ideas as irrelevant, narrowing the scope of what you consider worthwhile growth.",
+        redFlags:
+          "- Attempts at new hobbies fizzle out quickly, with one blaming the other's rigidity for lack of progress in shared learning.\n- Conversations about personal development turn critical, highlighting frustration over unmet desires for more dynamic discovery.\n- You feel stagnant as a couple, with growth efforts reinforcing old patterns instead of inspiring change.",
+        resolutionStrategies: [
+          "Choose practical courses or workshops together that allow for structured progression while incorporating elements of surprise to keep things engaging.",
+          "Allocate time for individual explorations and share findings, using your stable base to integrate new insights without overwhelming your routines.",
+          "Challenge yourselves with small, low-risk experiments in learning, gradually building confidence in adapting to novel discoveries as a team.",
+        ],
+        growthOutcome:
+          "Adding flexibility to your practical growth paths will unlock new levels of discovery, enriching your personal and shared journeys.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "Your structured planning brings reliability to fun activities, ensuring adventures are well-organized and enjoyable for both. This shared approach creates memorable experiences, but your active energies might make spontaneity rare. Loosening up a bit can infuse more excitement into your joyful moments.",
+        coreChallenge:
+          "The central tension is over-planning adventures to the point where they lose their thrill, as your mutual stability and outward focus can turn fun into a scheduled task rather than a free-flowing joy.",
+        whyThisHappens:
+          "- Both loving structure, you map out every detail of trips or outings, which can stifle the unexpected elements that make adventures lively.\n- Your outward orientations seek shared thrills, yet rigid itineraries leave little room for impromptu detours or relaxations.\n- This setup might make joy feel predictable, reducing the sense of discovery in your joint escapades.\n- Without balance, adventures become sources of stress when plans go awry, overshadowing the fun.",
+        redFlags:
+          "- Fun outings end in disappointment, with one feeling the other's need for control ruins the spontaneous spirit of adventure.\n- Arguments during activities highlight a mismatch in expectations, eroding the joy you seek to create together.\n- You start avoiding joint plans altogether, signaling a deeper issue in finding shared happiness.",
+        resolutionStrategies: [
+          "Build itineraries with built-in free time, allowing your stable plans to accommodate unexpected joys without derailing the overall structure.",
+          "Alternate planning roles for adventures, incorporating each other's ideas to blend organization with elements of surprise and outward fun.",
+          "Reflect after each outing on what brought the most joy, using insights to refine future plans that honor both stability and excitement.",
+        ],
+        growthOutcome:
+          "Infusing flexibility into your adventures will heighten your shared joy, making every experience more vibrant and connecting.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You both engage actively with the world, which can make quiet moments together feel energizing when balanced right. However, your independent needs might compete for personal space in busy lives. Finding ways to recharge side by side can enhance your serenity as a couple.",
+        coreChallenge:
+          "The main issue is carving out peaceful downtime amid your active lifestyles, as your shared outward energy and autonomy can lead to clashing needs for solitude without clear boundaries.",
+        whyThisHappens:
+          "- Preferring external stimulation, you both fill schedules densely, leaving limited windows for the serenity that requires inward focus.\n- Your autonomous styles mean enforcing personal space firmly, which might come across as rejection during shared quiet times.\n- Without intentional pauses, constant engagement breeds fatigue, making space feel scarce and contentious.\n- This dynamic can amplify stress, as independence clashes with the need for mutual understanding in serene moments.",
+        redFlags:
+          "- Requests for alone time spark hurt feelings, with one interpreting it as disinterest in the relationship.\n- Serenity-seeking efforts turn into conflicts over how to spend quiet hours, highlighting unresolved boundary issues.\n- You feel increasingly drained, as outward activities overshadow the restorative space needed for balance.",
+        resolutionStrategies: [
+          "Designate specific times for individual serenity practices, then reconvene to share experiences, respecting autonomy while building connection.",
+          "Create a shared quiet zone in your home where outward energies can pause, using it for low-key activities that foster mutual peace.",
+          "Communicate your space needs proactively, framing them as ways to recharge for better engagement in the relationship overall.",
+        ],
+        growthOutcome:
+          "Honoring each other's space will cultivate a deeper serenity, allowing your active lives to coexist with peaceful harmony.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "Your independent visions drive you to create meaningful impacts in practical ways, often aligning on tangible goals that last. This shared concreteness builds a strong foundation, but differing priorities can complicate joint legacies. Collaborating thoughtfully can merge your efforts into something enduring.",
+        coreChallenge:
+          "The primary conflict emerges from one pursuing legacy through efficient, logical means while the other emphasizes value-driven contributions, potentially fragmenting your shared sense of lasting impact despite mutual autonomy and practicality.",
+        whyThisHappens:
+          "- Both autonomous, you craft personal legacies, but this can sideline collaborative efforts that amplify your combined influence.\n- Your concrete focuses keep goals realistic, yet clashes arise when logic overrides values or vice versa in decision-making.\n- Independence might lead to separate paths of impact, reducing the couple's unified footprint in the world.\n- Without alignment, value differences make joint projects feel mismatched, hindering a cohesive legacy.\n- The emphasis on tangible results can dismiss emotional aspects, widening the gap in your approaches to meaningful contributions.",
+        redFlags:
+          "- Discussions on future impact devolve into debates over methods, with one feeling their values are dismissed as impractical.\n- Solo pursuits of legacy create emotional distance, making the relationship feel secondary to individual ambitions.\n- You sense a lack of shared purpose, as differing styles erode confidence in building something lasting together.",
+        resolutionStrategies: [
+          "Identify overlapping areas of impact where logic and values intersect, developing joint initiatives that honor both perspectives for a unified legacy.",
+          "Share stories of what legacy means to each of you, using concrete examples to bridge differences and foster mutual support.",
+          "Set long-term goals that incorporate autonomous elements with collaborative check-ins, ensuring your practical approaches build a meaningful shared narrative.",
+        ],
+        growthOutcome:
+          "Merging your unique styles will forge a powerful legacy that reflects both logic and values, strengthening your enduring bond.",
+      },
+    },
+  ],
+  "C-L-O-S-A/C-V-O-F-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both bring a hands-on approach to your careers, with one of you focusing on building efficient systems independently while the other rallies people toward meaningful causes. This mix can create a dynamic where individual goals sometimes pull against team-oriented pursuits, but it also offers chances to support each other's ambitions in practical ways. Together, you might find that blending personal drive with collective efforts leads to fulfilling professional paths.",
+        coreChallenge:
+          "Balancing one partner's need for autonomous career control with the other's desire for collaborative missions often leads to frustration when solo projects clash with group initiatives.",
+        whyThisHappens:
+          "- One of you prefers pursuing career goals on your own terms without needing input from others, while the other thrives on involving teams to achieve shared purposes.\n- The structured planner in your pair likes locking into long-term roles for stability, but the adaptable one shifts focus based on emerging opportunities, causing misalignment in career directions.\n- This difference creates tension because independent efforts can feel isolating to the team-oriented partner, who sees value in joint missions.\n- Meanwhile, the autonomous approach resists group dynamics that might dilute personal objectives, amplifying the drift in shared purpose.\n- Over time, these preferences lead to mismatched pacing, where one pushes for quick adaptations and the other insists on planned consistency.",
+        redFlags:
+          "- Frequent arguments arise when one dismisses team projects as unnecessary distractions from individual efficiency.\n- Resentment builds if the adaptable partner feels confined by the other's rigid career structures and unwillingness to pivot.\n- One partner starts pursuing opportunities alone, leading to emotional distance in discussions about future goals.",
+        resolutionStrategies: [
+          "Set aside regular time to discuss each other's career visions openly, finding ways to integrate solo projects with collaborative elements that honor both styles.",
+          "Create a joint plan that allows for structured milestones while building in flexibility for new ideas, ensuring neither feels overly restricted or directionless.",
+          "Encourage mutual support by celebrating individual achievements as team wins, helping bridge the gap between personal autonomy and shared missions.",
+        ],
+        growthOutcome:
+          "By navigating these differences, you two can build careers that combine independent innovation with collective impact, leading to deeper mutual respect and shared success.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, you both prioritize practical realities, but one leans toward strict budgeting while the other adapts spending to current needs. This can cause debates over saving versus enjoying money in the moment, yet it also helps you cover both security and spontaneity. Working together, you might discover a balanced way to build wealth that feels rewarding for both.",
+        coreChallenge:
+          "The tension between one partner's rigid saving habits and the other's flexible spending often results in conflicts over how to allocate resources without feeling deprived or wasteful.",
+        whyThisHappens:
+          "- One of you sticks to detailed plans for financial stability, preferring to save consistently, while the other adjusts budgets based on immediate situations and impulses.\n- Both focus on tangible outcomes, but this shared practicality highlights differences when structured approaches clash with adaptive ones in daily money decisions.\n- Logical budgeting feels cold and restrictive to the values-driven spender, who prioritizes meaningful experiences over strict calculations.\n- Meanwhile, empathetic spending on people or causes can seem illogical and risky to the analytical planner, leading to ongoing disputes.\n- These patterns create friction because fixed structures limit flexibility, while loose adaptations undermine long-term security goals.",
+        redFlags:
+          "- Repeated fights erupt over unplanned purchases that derail carefully set budgets, breeding ongoing mistrust in financial handling.\n- One partner hides expenses to avoid judgment, which erodes transparency and leads to bigger surprises down the line.\n- Growing resentment makes joint financial planning sessions tense, with one feeling controlled and the other feeling unsupported in their goals.",
+        resolutionStrategies: [
+          "Develop a shared budget that includes fixed savings goals alongside a flexible fund for spontaneous values-based spending, allowing both to feel secure and fulfilled.",
+          "Hold monthly check-ins to review finances without blame, focusing on how decisions align with your joint priorities in practical and meaningful ways.",
+          "Seek neutral advice from a financial advisor to blend logical strategies with empathetic considerations, ensuring decisions respect both your approaches to prosperity.",
+        ],
+        growthOutcome:
+          "Overcoming these challenges can lead to a prosperous life where you both enjoy financial stability enriched by meaningful investments in what matters most.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both draw energy from engaging with the world, making joint activities appealing, but one prefers consistent routines while the other adapts to changing moods. This shared outward focus can energize your health efforts, though it sometimes leads to mismatched pacing in wellness habits. By aligning your approaches, you can create vibrant routines that keep you both motivated and healthy.",
+        coreChallenge:
+          "Maintaining consistent health practices becomes difficult when one partner's structured plans conflict with the other's flexible adjustments to daily energy levels and interests.",
+        whyThisHappens:
+          "- Both of you energize through external activities, but this similarity amplifies issues when one wants predictable group exercises and the other prefers varying solo or social options.\n- The stable one enforces fixed schedules for meals or workouts to build habits, while the adaptive partner skips or changes them based on current feelings.\n- Outward engagement means you both seek stimulation outside, yet rigid structures can feel boring to the flexible one, leading to dropped commitments.\n- Meanwhile, constant adaptations frustrate the structured partner, who sees them as excuses that hinder long-term vitality.\n- These dynamics create inconsistency because shared energy sources don't always translate to aligned methods for sustaining health.",
+        redFlags:
+          "- One partner frequently cancels joint health activities, leaving the other feeling unsupported and demotivated in their efforts.\n- Health goals start strong but fizzle out due to mismatched commitment levels, leading to blame and reduced overall well-being.\n- Physical exhaustion builds as the structured one pushes too hard, while the adaptive one avoids routines, straining your emotional connection.",
+        resolutionStrategies: [
+          "Design health plans that combine set weekly goals with options for variety, allowing outward energy to flow without rigid constraints overwhelming flexibility.",
+          "Incorporate joint check-ins to adjust routines collaboratively, ensuring both feel involved in maintaining vitality through engaging activities.",
+          "Explore new wellness ideas together periodically to keep things fresh, blending structure with adaptation for sustained motivation and health.",
+        ],
+        growthOutcome:
+          "Resolving these issues helps you cultivate a lively, supportive approach to health that boosts your energy and strengthens your bond through shared vitality.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "Your romance thrives on active engagement, with one of you seeking independent space and the other craving close harmony. This can lead to moments where affection feels mismatched, but it also encourages you to appreciate each other's unique ways of showing love. By communicating openly, you can build a connection that's both freeing and intimate.",
+        coreChallenge:
+          "The pull between one partner's need for personal boundaries in love and the other's drive for constant emotional alignment often creates feelings of disconnection or smothering.",
+        whyThisHappens:
+          "- One of you values autonomy in expressing affection, preferring space to recharge, while the other seeks ongoing collaboration to maintain romantic unity.\n- Both engage outwardly in relationships, but this amplifies tension when daily interactions feel intrusive to the independent one or insufficient to the harmonious partner.\n- Logical acts of service might come across as detached to the values-oriented lover, who craves verbal affirmations and emotional depth.\n- Meanwhile, empathetic gestures can seem overly demanding to the analytical partner, leading to misinterpretations of care.\n- These differences foster imbalance because independent space clashes with collaborative closeness, making romance feel uneven.",
+        redFlags:
+          "- Affectionate gestures are met with withdrawal, causing the harmonious partner to feel rejected and unloved in the relationship.\n- Arguments escalate over perceived lack of effort, with one accusing the other of being too distant or too clingy.\n- Emotional intimacy dwindles as boundaries harden, leading to a cycle of resentment that threatens your romantic foundation.",
+        resolutionStrategies: [
+          "Schedule dedicated time for both independent pursuits and joint romantic activities, ensuring space and connection are balanced in your daily lives.",
+          "Practice expressing love in ways that honor each other's preferences, like combining practical help with heartfelt words to bridge logical and empathetic styles.",
+          "Engage in open dialogues about emotional needs regularly, fostering understanding that turns potential clashes into opportunities for deeper romantic bonds.",
+        ],
+        growthOutcome:
+          "Working through these dynamics can create a romance that's resilient, where autonomy and harmony blend to nurture lasting love and mutual fulfillment.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "In your home, one of you aims for organized routines while the other prefers going with the flow, affecting how you handle family matters. This difference can spark debates over structure, but your shared practical focus helps ground decisions. Together, you can craft a home environment that's both stable and welcoming.",
+        coreChallenge:
+          "Clashes arise when one partner's structured approach to family rules and chores conflicts with the other's adaptable style, leading to chaos or rigidity in daily home life.",
+        whyThisHappens:
+          "- The stable one insists on set schedules for household tasks to maintain order, while the flexible partner resists, preferring to adapt based on current needs.\n- One of you prioritizes group accommodation in family decisions, often overextending to please everyone, whereas the other sets firm personal boundaries.\n- These preferences create tension because rigid plans feel stifling to the adapter, who sees them as barriers to natural family flow.\n- Meanwhile, loose approaches frustrate the structurer, who views them as unreliable in building a cohesive home.\n- Over time, this leads to uneven distribution of responsibilities, amplifying feelings of unfairness in shared spaces.",
+        redFlags:
+          "- Family gatherings become stressful as one overcommits to pleasing relatives, while the other withdraws to protect their independence.\n- Home chores pile up or get done inconsistently, sparking blame and resentment that seeps into other areas of your relationship.\n- Boundaries around family involvement harden, causing isolation or over-involvement that strains your partnership.",
+        resolutionStrategies: [
+          "Establish core home routines that include flexible elements, allowing structure to provide security without limiting spontaneous family moments.",
+          "Discuss boundaries for family interactions openly, finding compromises that respect autonomy while fostering harmonious connections.",
+          "Divide tasks based on strengths, with regular reviews to ensure fairness and adapt as needs change in your home life.",
+        ],
+        growthOutcome:
+          "By addressing these challenges, you can create a nurturing home where structure and flexibility support a balanced, loving family dynamic.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You both enjoy outward connections, but one leans toward selective involvement while the other embraces broader social harmony. This can make social planning tricky, yet it enriches your circle with diverse perspectives. Finding common ground helps you build meaningful relationships together.",
+        coreChallenge:
+          "The contrast between one partner's preference for independent social choices and the other's commitment to group activities often results in mismatched engagement levels in friendships.",
+        whyThisHappens:
+          "- One of you tends to decline invites to preserve personal energy, while the other over-commits to maintain community ties and collective well-being.\n- Both draw from external interactions, but this shared trait heightens friction when one drains from prolonged group time and the other thrives in it.\n- Autonomous boundaries make the harmonious partner feel like social efforts are one-sided, leading to loneliness in shared circles.\n- Meanwhile, constant commitments overwhelm the independent one, who sees them as intrusions on personal freedom.\n- These patterns foster imbalance because differing social orientations turn potential fun into sources of exhaustion or resentment.",
+        redFlags:
+          "- Social events lead to arguments, with one feeling dragged along and the other feeling abandoned in group settings.\n- Friendships suffer as over-commitment from one breeds burnout, while withdrawal from the other creates awkward dynamics in your community.\n- Emotional distance grows when social differences make you question compatibility in building a shared network.",
+        resolutionStrategies: [
+          "Plan social activities that allow for individual opt-outs without judgment, ensuring both can engage at their comfort levels while supporting each other.",
+          "Alternate between group outings and quieter gatherings, balancing outward energy with needs for personal space in friendships.",
+          "Communicate openly about social expectations upfront, turning potential conflicts into opportunities to strengthen your joint community ties.",
+        ],
+        growthOutcome:
+          "Navigating this area fosters a vibrant social life where autonomy and harmony coexist, enriching your connections and partnership.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You share a grounded view on learning, focusing on real-world applications, but one prefers deep mastery while the other chases variety. This can slow progress in joint pursuits, but it also broadens your horizons. Collaborating allows you to grow in ways that feel authentic and exciting.",
+        coreChallenge:
+          "Differences in pursuing focused skill-building versus exploring new ideas create hurdles in shared growth, often leading to incomplete projects or scattered efforts.",
+        whyThisHappens:
+          "- Both prioritize tangible knowledge, yet one commits to mastering one area thoroughly, while the other shifts to novel topics for fresh stimulation.\n- The stable partner finishes structured learning paths methodically, but the adaptive one drops them when interest wanes or new options arise.\n- Practical focus means you both seek useful outcomes, but rigidity in one clashes with flexibility in the other, stalling mutual discovery.\n- These tendencies lead to frustration because completed goals feel limiting to the explorer, while unfinished ones undermine the builder's sense of achievement.\n- Over time, this mismatch hinders joint growth initiatives, making personal development feel isolated rather than shared.",
+        redFlags:
+          "- Joint courses or hobbies get abandoned midway, causing one to feel their efforts are wasted and unappreciated.\n- Criticism mounts over perceived lack of commitment, eroding motivation for future shared learning experiences.\n- Individual pursuits dominate, leading to a sense of growing apart in areas meant to bring you closer through discovery.",
+        resolutionStrategies: [
+          "Choose growth activities that blend deep dives with exploratory elements, allowing structure to guide flexibility in your learning journeys.",
+          "Set short-term milestones within longer goals to satisfy completion needs while accommodating shifts in interest and direction.",
+          "Share progress regularly in supportive ways, celebrating small wins to keep motivation high and turn differences into complementary strengths.",
+        ],
+        growthOutcome:
+          "Overcoming these dynamics leads to enriched personal growth where you inspire each other to explore and master new skills together.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "Adventures energize you both outwardly, but one plans meticulously while the other embraces spontaneity, affecting how you seek fun. This mix can lead to thrilling experiences, though sometimes with last-minute changes. By compromising, you create joyful moments that suit your styles.",
+        coreChallenge:
+          "Planning fun activities becomes contentious when one partner's detailed itineraries clash with the other's preference for impromptu adjustments, dampening shared excitement.",
+        whyThisHappens:
+          "- The structured one maps out every detail of trips for security, while the flexible partner alters plans based on mood or new discoveries.\n- Both seek external thrills, but this amplifies issues when rigid schedules feel constraining and spontaneous changes seem chaotic.\n- Outward engagement draws you to shared adventures, yet mismatches in approach turn potential joy into sources of stress.\n- These differences create tension because fixed plans limit fun for the adapter, while constant shifts unsettle the planner.\n- Over time, this leads to reluctance in joint outings, reducing opportunities for lighthearted connection.",
+        redFlags:
+          "- Trips end in disappointment as changes frustrate the planner, leading to blame and avoidance of future adventures.\n- One partner opts out of activities, causing the other to feel their enthusiasm for joy is not reciprocated.\n- Resentment builds from perceived selfishness, straining the playful side of your relationship over time.",
+        resolutionStrategies: [
+          "Craft adventure plans with built-in flexibility, like core activities alongside free time, to honor both structure and spontaneity in your pursuits.",
+          "Discuss expectations before outings, agreeing on key elements while allowing room for on-the-spot decisions to keep things enjoyable.",
+          "Reflect on past experiences together to learn what works, turning challenges into tools for creating more harmonious and fun-filled moments.",
+        ],
+        growthOutcome:
+          "Resolving this fosters adventures that bring lasting joy, deepening your bond through shared excitement and mutual understanding.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You both recharge through external stimuli, making quiet times challenging to balance with active lives. One seeks collaborative peace, while the other guards personal solitude, affecting downtime. This dynamic encourages finding serene moments that refresh you together and apart.",
+        coreChallenge:
+          "Achieving personal peace is tough when one partner's need for independent quiet clashes with the other's tendency to fill silence with relational check-ins.",
+        whyThisHappens:
+          "- Both energize outwardly, but this similarity heightens tension as one craves deep alone time and the other interprets it as emotional distance.\n- The autonomous one enforces boundaries for serenity, while the harmonious partner seeks shared calm through ongoing connections.\n- External focus means downtime often involves activities, yet mismatches lead to feelings of rejection or intrusion.\n- These patterns foster unease because solitary needs feel selfish to the connector, while constant interactions drain the independent one.\n- Over time, this imbalance disrupts overall serenity, making relaxation feel elusive in your shared space.",
+        redFlags:
+          "- Attempts at quiet time spark arguments, with one feeling smothered and the other feeling ignored in the relationship.\n- Serenity seekers withdraw more, leading to emotional gaps that widen over unresolved tensions.\n- Chronic fatigue sets in from unmet needs, affecting your ability to support each other effectively.",
+        resolutionStrategies: [
+          "Establish designated times for individual serenity and joint relaxation, ensuring outward energy doesn't overwhelm personal peace needs.",
+          "Communicate boundaries kindly during downtime, helping each understand how space contributes to a healthier connection.",
+          "Incorporate low-key shared activities that promote calm, bridging autonomy with harmony in your pursuit of serenity.",
+        ],
+        growthOutcome:
+          "Mastering this area creates a peaceful foundation where you both feel recharged and connected in meaningful ways.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "You both aim for tangible impacts, with one focusing on personal achievements and the other on community contributions. This can inspire diverse legacies, though it sometimes divides efforts. Collaborating helps you weave individual and collective goals into a lasting mark.",
+        coreChallenge:
+          "Divergent views on building legacy through solo visions versus group efforts often lead to conflicts over how to invest time and resources for meaningful change.",
+        whyThisHappens:
+          "- One of you pursues independent objectives for personal fulfillment, while the other orients toward collaborative projects that benefit the wider community.\n- Both emphasize concrete results, but this grounds differences when autonomous paths feel isolating to the team builder.\n- Logical strategies for impact might overlook emotional aspects valued by the empathetic partner, causing misaligned priorities.\n- Meanwhile, values-driven group focuses can seem inefficient to the analytical one, leading to debates on effectiveness.\n- These contrasts create friction because individual freedom clashes with collective harmony in shaping your shared legacy.",
+        redFlags:
+          "- Joint initiatives falter as one pulls toward personal goals, leaving the other feeling their communal vision is undervalued.\n- Resentment grows from perceived selfishness or impracticality, hindering progress on meaningful endeavors.\n- Legacy discussions turn divisive, threatening your ability to create a unified impact together.",
+        resolutionStrategies: [
+          "Identify overlapping areas where personal visions align with community needs, channeling efforts into projects that satisfy both autonomous and harmonious drives.",
+          "Blend measurable goals with meaningful values by reviewing plans together, ensuring logic and empathy guide your legacy-building decisions.",
+          "Celebrate each other's contributions regularly, fostering appreciation that turns differences into strengths for greater overall impact.",
+        ],
+        growthOutcome:
+          "Through this, you can forge a legacy that's personally fulfilling and collectively inspiring, solidifying your partnership's enduring influence.",
+      },
+    },
+  ],
+  "C-L-O-S-A/C-V-O-F-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both thrive on pursuing individual goals that feel personally meaningful, often prioritizing your own paths over group efforts. One of you tends to commit deeply to structured roles and long-term plans, while the other enjoys switching directions based on new opportunities. This mix can create a supportive space where you inspire each other to chase ambitions without feeling tied down.",
+        coreChallenge:
+          "Balancing one partner's need for consistent career structure with the other's desire for flexible exploration can lead to frustration when plans clash or shift unexpectedly.",
+        whyThisHappens:
+          "- Both of you focus on personal achievements rather than team-based missions, which amplifies individual drives but highlights differences in approach. - The preference for stability means one locks into specific roles and routines to build purpose steadily. - Adaptability drives the other to pivot frequently, seeking fresh challenges that align with evolving interests. - Without alignment, these styles create tension around shared decisions on career moves or support.",
+        redFlags:
+          "- One partner feels the other is too rigid, refusing to adapt to new ideas that could enhance their joint purpose. - Frequent changes from the flexible one make the structured partner question reliability in long-term goals. - Growing resentment if individual pursuits overshadow mutual encouragement in career paths.",
+        resolutionStrategies: [
+          "Set aside time each month to discuss your individual goals openly, finding ways to support each other without compromising personal autonomy.",
+          "Create a flexible plan that includes core stable elements for one while allowing room for spontaneous shifts for the other.",
+          "Celebrate small wins in each other's pursuits to build a sense of shared pride in independent successes.",
+        ],
+        growthOutcome:
+          "By embracing your differences, you cultivate a partnership where personal purpose fuels mutual inspiration and deeper fulfillment.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, one of you focuses on building security through careful planning and saving, while the other approaches money with more spontaneity. You both see wealth as a tool for real-world enjoyment, but decisions often weigh logic against values. This dynamic can lead to practical strategies that blend caution with meaningful spending.",
+        coreChallenge:
+          "The clash between a structured saving mindset and a flexible spending style, combined with concrete views on money, can create ongoing disputes over budgeting and investments when logical priorities conflict with value-driven choices.",
+        whyThisHappens:
+          "- Preference for stability leads to strict budgets and long-term saving plans to ensure prosperity. - Adaptability encourages impulsive purchases or adjustments based on current needs or opportunities. - Both view money tangibly, but one analyzes costs logically while the other considers emotional or relational impacts. - These differences surface in daily decisions, like saving versus spending on experiences. - Without communication, minor choices escalate into larger financial misalignments.",
+        redFlags:
+          "- One partner accuses the other of being too reckless with money, leading to trust issues around shared resources. - Logical budgeting feels cold and restrictive to the values-oriented one, causing emotional withdrawal. - Repeated conflicts over spending priorities erode your sense of financial partnership.",
+        resolutionStrategies: [
+          "Develop a joint budget that allocates portions for stable savings and flexible fun funds to honor both styles.",
+          "Discuss how each purchase aligns with your shared values and logical goals before making big decisions.",
+          "Review finances quarterly in a calm setting, focusing on progress rather than blame to build unity.",
+        ],
+        growthOutcome:
+          "Navigating these differences strengthens your ability to create lasting prosperity that feels both secure and fulfilling.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both draw energy from engaging with the world, but one prefers consistent routines while the other adapts based on the moment. This can make joint health activities exciting yet unpredictable. Together, you motivate each other to stay active in ways that suit your outgoing natures.",
+        coreChallenge:
+          "Maintaining consistent health habits becomes difficult when one partner's structured routines collide with the other's flexible, mood-driven approach to wellness and vitality.",
+        whyThisHappens:
+          "- Outward energy pushes both of you toward social or active health pursuits, but consistency varies. - Stability favors enforced plans like regular workouts or meal preps for sustained vitality. - Flexibility leads to skipping routines when something more appealing comes up. - These habits clash during shared activities, like planning gym time together. - Over time, mismatched pacing affects mutual motivation for health goals.",
+        redFlags:
+          "- One feels dragged down by the other's inconsistency, leading to solo health efforts that isolate you. - Frustration builds if structured plans are frequently disrupted by spontaneous changes. - Neglecting joint wellness due to ongoing mismatches harms your overall vitality.",
+        resolutionStrategies: [
+          "Design health routines with built-in flexibility, like core weekly activities plus optional add-ons for variety.",
+          "Share your energy levels daily to align on when to push for joint efforts or allow solo recharge.",
+          "Track progress together monthly, adjusting plans to keep both engaged and committed.",
+        ],
+        growthOutcome:
+          "Overcoming this fosters a vibrant partnership where you energize each other's health journeys effectively.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "In your relationship, both of you value personal space, but one seeks structured expressions of love while the other prefers spontaneous gestures. Your outgoing energies bring fun to romance, yet decisions often balance logic with emotional warmth. This creates a bond that's independent yet connected.",
+        coreChallenge:
+          "Finding harmony in romance is tough when both prioritize autonomy, but outward engagement needs differ, and logical acts of love sometimes feel impersonal compared to value-based affirmations.",
+        whyThisHappens:
+          "- Autonomy means both need independence, but it can limit deep emotional syncing in romance. - Outward focus encourages daily interactions, yet one craves more depth over time. - Logical choices show love through practical help, while values emphasize words and feelings. - These layers create mismatches in how affection is expressed and received. - Without balance, small gestures feel insufficient or mismatched.",
+        redFlags:
+          "- One partner senses emotional distance due to too much focus on independence over connection. - Conflicts arise when logical actions are seen as lacking warmth, hurting romantic bonds. - Gradual erosion of intimacy if autonomy overshadows shared romantic efforts.",
+        resolutionStrategies: [
+          "Schedule regular check-ins to express needs for space and connection, ensuring both feel heard.",
+          "Blend logical and value-based gestures, like planning a surprise that aligns with personal meanings.",
+          "Practice daily small acts that honor each other's style to keep romance alive and balanced.",
+        ],
+        growthOutcome:
+          "This growth leads to a romance that's deeply respectful of individuality while nurturing closeness.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "At home, one of you aims for organized routines and clear rules, while the other prefers going with the flow. Both value personal boundaries over excessive family involvement. This setup allows for a comfortable space where independence is respected.",
+        coreChallenge:
+          "Creating a stable home environment is challenging when structured preferences for chores and rules conflict with a flexible approach, especially since both prioritize personal boundaries over family accommodations.",
+        whyThisHappens:
+          "- Stability pushes for consistent systems like scheduled tasks to keep the home running smoothly. - Flexibility resists rigid rules, preferring adjustments based on daily moods or needs. - Autonomy leads both to set firm boundaries with extended family, limiting over-involvement. - These traits clash in daily operations, like handling household responsibilities. - Mismatches can disrupt the sense of peace in shared living spaces.",
+        redFlags:
+          "- One feels overwhelmed by the lack of structure, leading to arguments over home duties. - Boundaries become too rigid, isolating you from family support when needed. - Ongoing tension erodes the comfort of your home life together.",
+        resolutionStrategies: [
+          "Agree on core home rules that provide structure but include flexibility for personal adjustments.",
+          "Discuss boundary-setting with family regularly to ensure it supports your partnership.",
+          "Divide tasks based on strengths, reviewing them periodically to maintain balance.",
+        ],
+        growthOutcome: "Resolving this builds a home that's organized yet adaptable, enhancing your shared security.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You both approach social circles with a focus on personal choice, often opting out of commitments that don't align. Your outgoing sides enjoy interactions, but one needs more alone time. This can lead to a selective yet fulfilling network.",
+        coreChallenge:
+          "Navigating friendships becomes tricky when both avoid over-committing, amplified by outward energy that thrives in groups but drains one who needs inward recovery faster.",
+        whyThisHappens:
+          "- Autonomy drives selective participation, declining invites that don't feel personally rewarding. - Outward orientation enjoys social energy, but it can overwhelm without balance. - One drains quicker from group settings, preferring quieter recoveries. - These preferences lead to mismatched social paces in shared friendships. - Over time, it affects how you build community together.",
+        redFlags:
+          "- One partner feels isolated when the other frequently opts out of social events. - Resentment grows if outward enthusiasm pushes boundaries on personal space. - Weakening ties to friends due to inconsistent participation as a couple.",
+        resolutionStrategies: [
+          "Plan social outings that allow for individual opt-outs without judgment to respect autonomy.",
+          "Alternate between group activities and quiet evenings to balance energy needs.",
+          "Build a core group of friends who understand your selective style for deeper connections.",
+        ],
+        growthOutcome: "This fosters a community that's meaningful and energizing for both of you long-term.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "In personal development, both of you lean toward practical skills, but one commits to mastering them steadily while the other explores freely. This can make learning journeys complementary. You motivate each other to grow in tangible ways.",
+        coreChallenge:
+          "Pursuing growth is hindered when concrete focus on one skill clashes with abstract novelty-seeking, worsened by structured completion versus flexible dropping of pursuits.",
+        whyThisHappens:
+          "- Concrete preferences favor building expertise in familiar, real-world areas for discovery. - One insists on finishing what they start, like completing courses methodically. - The other drops activities if interest wanes, chasing new ones spontaneously. - These approaches create friction in joint learning or self-improvement plans. - Without sync, individual growth paths diverge too much.",
+        redFlags:
+          "- One views the other's unfinished projects as a lack of commitment to growth. - Frustration when structured plans are abandoned for novelty, stalling progress. - Diminishing mutual support for each other's discovery journeys over time.",
+        resolutionStrategies: [
+          "Choose growth activities that start with practical bases but allow branching into new ideas.",
+          "Set milestones that honor completion for one while permitting pivots for the other.",
+          "Share learnings weekly to inspire each other without forcing alignment.",
+        ],
+        growthOutcome: "Embracing this leads to richer, more balanced personal development for your partnership.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "For fun, one of you plans activities meticulously, while the other thrives on last-minute changes. Both enjoy outward thrills, making adventures lively. This blend keeps things exciting and shared.",
+        coreChallenge:
+          "Planning joyful outings turns contentious when detailed structures meet spontaneous alterations, especially since both seek shared experiences but differ in execution.",
+        whyThisHappens:
+          "- Stability requires every detail mapped out for reliable enjoyment. - Flexibility embraces plan changes for better opportunities in the moment. - Outward energy wants joint thrills, but mismatches disrupt flow. - These styles clash during trips or events, affecting mutual joy. - Over-planning or under-planning leads to missed fun.",
+        redFlags:
+          "- One feels anxious from constant changes, reducing overall adventure enthusiasm. - Resentment if structured efforts are dismissed as too rigid. - Fewer shared joyful moments due to planning fatigue.",
+        resolutionStrategies: [
+          "Outline adventures with a loose framework that includes options for on-the-spot adjustments.",
+          "Take turns leading plans to experience each other's style fully and appreciatively.",
+          "Debrief after activities to refine what brings joy to both in future outings.",
+        ],
+        growthOutcome: "This creates adventures that are planned yet spontaneous, amplifying your shared happiness.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You both need personal freedom, but outward energies can make quiet time feel neglected. One might fill gaps with activity, while the other enforces boundaries. This dynamic encourages respect for individual peace.",
+        coreChallenge:
+          "Achieving serenity is hard when outward engagement seeks constant interaction, but autonomy demands solitude, leading to feelings of rejection or intrusion.",
+        whyThisHappens:
+          "- Outward focus naturally leads to filling time with shared activities or talks. - One feels drained without enough inward reflection for recharge. - Autonomy enforces personal boundaries, sometimes abruptly. - These needs conflict in daily routines, disrupting peace. - Mismatched timing for space affects emotional balance.",
+        redFlags:
+          "- One interprets the need for space as emotional distancing, causing insecurity. - Pushback against boundaries leads to arguments over personal time. - Chronic tension reduces overall serenity in your relationship.",
+        resolutionStrategies: [
+          "Establish signals for when space is needed to prevent misunderstandings and honor autonomy.",
+          "Schedule solo time alongside joint activities to balance outward and inward energies.",
+          "Practice empathy by discussing how space contributes to your shared well-being.",
+        ],
+        growthOutcome: "Mastering this builds a serene foundation where independence enhances your connection.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "In building legacy, both pursue personal visions, focusing on tangible results. One plans methodically, the other adapts fluidly, with logic and values guiding choices. This can create a powerful, individualized impact.",
+        coreChallenge:
+          "Crafting a shared legacy struggles when autonomous personal objectives dominate, amplified by concrete measurable goals versus abstract meanings, and logical strategies conflict with value-based approaches.",
+        whyThisHappens:
+          "- Autonomy prioritizes individual legacies over collective ones, focusing on self-driven impacts. - Concrete views emphasize visible, practical outcomes for lasting effects. - Logical planning clashes with values in deciding what matters most. - These elements lead to divergent paths in long-term contributions. - Without integration, joint impact feels fragmented.",
+        redFlags:
+          "- One dismisses the other's vision as impractical, undermining mutual respect for legacy. - Conflicts over priorities erode enthusiasm for shared endeavors. - Growing apart in pursuits diminishes your combined influence.",
+        resolutionStrategies: [
+          "Identify overlapping personal visions to collaborate on projects that honor both autonomy and impact.",
+          "Blend concrete metrics with meaningful values in planning your legacy goals together.",
+          "Review progress annually, adjusting to incorporate each other's logical and value insights.",
+        ],
+        growthOutcome:
+          "This evolution forges a legacy that's personally fulfilling and collectively resonant for you both.",
+      },
+    },
+  ],
+  "C-L-O-S-A/C-V-I-S-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You two approach your careers with a mix of independent drive and team-oriented support, where one focuses on personal achievements while the other thrives in collaborative environments. This can create a dynamic where you inspire each other to balance solo pursuits with shared goals, leading to a fulfilling sense of purpose when you align your efforts.",
+        coreChallenge:
+          "The main tension arises from one partner's preference for independent career paths clashing with the other's desire for collective missions, amplified by both wanting stable roles but struggling to integrate their approaches without one feeling overshadowed.",
+        whyThisHappens:
+          "- One of you prioritizes personal objectives and self-reliant expertise in work, often leading to solo projects that feel empowering but isolating to the other.\n- The other seeks group dynamics and shared successes, which can make individual pursuits seem disconnected from the relationship's mutual support.\n- Both value organized systems and long-term planning, yet this shared stability can highlight differences when career shifts feel too rigid or unaccommodating.\n- Independent motivations may overlook team needs, causing frustration when collaborative opportunities are dismissed.\n- Harmony-focused goals can feel restrictive to autonomous ambitions, leading to mismatched expectations in professional growth.",
+        redFlags:
+          "- Watch for resentment building if one consistently pursues solo promotions while the other feels left out of decision-making processes.\n- Be aware of stalled progress when team-oriented ideas are rejected, leading to one partner withdrawing emotional support.\n- Notice if stable routines turn into stubborn resistance against necessary career changes, exacerbating feelings of isolation.",
+        resolutionStrategies: [
+          "Encourage open discussions about individual career aspirations and find ways to incorporate elements of collaboration, like joint networking events, to bridge the gap between solo and team focuses.",
+          "Set shared long-term purpose goals that allow for personal autonomy while including mutual check-ins to ensure both feel supported in their stable paths.",
+          "Practice appreciating each other's strengths by celebrating independent wins as team victories and involving the other in planning to foster a sense of unity.",
+        ],
+        growthOutcome:
+          "By navigating these differences, you'll build a stronger partnership where individual purposes enhance your collective journey, leading to deeper fulfillment.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, you both prefer practical, tangible approaches with a focus on stability, but your decision styles create nuances in how you budget and spend. This shared grounding can lead to effective saving strategies when you align on priorities, fostering a sense of security together.",
+        coreChallenge:
+          "The core issue stems from one partner's logical, impersonal budgeting clashing with the other's value-driven spending, all within a structured framework that both value but interpret differently through concrete lenses.",
+        whyThisHappens:
+          "- Both of you aim for organized financial plans, yet one applies cold efficiency that can overlook emotional attachments to purchases.\n- The other bases decisions on personal impacts and relationships, sometimes leading to expenditures that feel illogical to the logic-focused partner.\n- Your mutual preference for real-world, verifiable data means debates often center on immediate needs versus long-term values.\n- Stability in finances is important to both, but this can amplify tensions when spending habits disrupt carefully laid plans.\n- Differences in judgment can turn minor disagreements into ongoing conflicts over what constitutes necessary versus meaningful investments.",
+        redFlags:
+          "- Look out for growing frustration when logical cutbacks ignore value-based needs, leading to secret spending or withholding information.\n- Be cautious if structured budgets become battlegrounds, causing one to feel undervalued or controlled in financial matters.\n- Notice patterns of resentment if prosperity goals shift from shared security to individual justifications for decisions.",
+        resolutionStrategies: [
+          "Create a joint budget that incorporates logical categories for essentials and dedicated sections for value-aligned spending to honor both perspectives.",
+          "Hold regular financial reviews where you discuss impacts on people alongside efficiency metrics, ensuring decisions feel balanced and respectful.",
+          "Explore compromise tools like apps that track tangible outcomes while allowing flexibility for meaningful purchases, building trust in your shared approach.",
+        ],
+        growthOutcome:
+          "Overcoming this will strengthen your financial partnership, turning potential conflicts into opportunities for mutual prosperity and deeper understanding.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "Your health routines reflect a blend of outward energy and inward reflection, with both appreciating structured habits but differing in how you engage with them. This can result in motivating each other to maintain vitality through a mix of shared and personal activities.",
+        coreChallenge:
+          "The primary friction comes from one partner's outward drive for joint health pursuits conflicting with the other's need for solitary recharge, both within stable routines that can feel imposed or isolating.",
+        whyThisHappens:
+          "- One of you draws energy from interactive exercises like group classes, which can overwhelm the partner who prefers quiet, personal wellness practices.\n- The inward-focused partner needs time alone to reflect and restore, often seeing shared activities as draining rather than invigorating.\n- Both value consistent plans for health, but this stability can lead to resistance when one pushes for changes to accommodate the other's style.\n- Outward engagement might interpret inward preferences as disinterest, sparking misunderstandings about commitment to mutual well-being.\n- Structured approaches amplify differences, making it hard to adapt without feeling like routines are being disrupted.",
+        redFlags:
+          "- Pay attention if one starts avoiding joint activities, leading to feelings of rejection and reduced motivation for health goals.\n- Be alert to burnout when inward needs are ignored, causing resentment toward the partner's energetic pushes.\n- Watch for rigid adherence to plans that exclude flexibility, resulting in health routines becoming sources of ongoing tension.",
+        resolutionStrategies: [
+          "Design a weekly schedule that alternates between shared outdoor activities and solo wellness time, ensuring both feel energized without compromise.",
+          "Communicate openly about energy levels and adjust routines together, incorporating elements like quiet walks that blend interaction with reflection.",
+          "Encourage mutual support by celebrating personal health milestones as couple achievements, fostering a balanced approach to vitality.",
+        ],
+        growthOutcome:
+          "Resolving this will lead to a healthier, more harmonious lifestyle where you both thrive individually and together.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "In your relationship, one brings outward expressiveness while the other offers inward depth, creating a rich emotional landscape when you connect. Your differing styles can complement each other, building a bond that's both active and introspective.",
+        coreChallenge:
+          "The key struggle involves one partner's autonomous need for space clashing with the other's harmonious desire for emotional closeness, intensified by outward versus inward energies and logical versus empathic expressions of love.",
+        whyThisHappens:
+          "- One of you values independence and personal boundaries in romance, which can feel distant to the partner who seeks constant group-like unity and connection.\n- Outward engagement leads to frequent gestures of affection, while inward reflection prefers deeper, less frequent interactions, causing mismatched rhythms.\n- Logical acts of service might not resonate with value-based words of affirmation, leading to feelings of unappreciated efforts.\n- Harmony-driven approaches can pressure the autonomous partner, amplifying tensions in daily romantic expressions.\n- Differences in decision-making add layers, where impersonal logic overlooks personal impacts on emotional well-being.",
+        redFlags:
+          "- Be mindful if space requests lead to accusations of emotional unavailability, eroding trust over time.\n- Notice when outward initiatives are met with withdrawal, creating cycles of pursuit and distance in your intimacy.\n- Watch for unresolved conflicts where logical explanations dismiss value concerns, deepening romantic disconnects.",
+        resolutionStrategies: [
+          "Schedule dedicated times for deep conversations that honor inward needs while incorporating outward activities like date nights to balance closeness.",
+          "Practice expressing love in each other's preferred ways, such as combining practical help with heartfelt affirmations to bridge logical and empathic gaps.",
+          "Foster understanding by discussing personal boundaries and harmony goals regularly, turning potential clashes into opportunities for stronger emotional bonds.",
+        ],
+        growthOutcome:
+          "By addressing these, your love will grow more resilient, blending independence with unity for lasting romance.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You both prioritize stable home environments, but your approaches to family interactions differ in focus on group harmony versus personal boundaries. This can lead to a well-organized household when you collaborate effectively.",
+        coreChallenge:
+          "The central tension arises from one partner's structured yet autonomous boundaries in family matters conflicting with the other's harmonious accommodation, all within a shared preference for organized systems.",
+        whyThisHappens:
+          "- Both value planning and rules for home life, but one enforces personal limits that can seem uncooperative to the harmony-seeking partner.\n- The harmonious approach often involves over-extending to family needs, which clashes with the autonomous desire for self-reliance and independence.\n- Structured routines highlight differences when one accommodates extended family while the other prioritizes couple privacy.\n- Family decisions can become strained as harmony drives consensus-building, overlooking autonomous needs for individual space.\n- Shared stability amplifies frustrations when flexible adjustments feel like disruptions to established plans.",
+        redFlags:
+          "- Look for patterns where boundary-setting leads to feelings of exclusion, straining family relationships.\n- Be aware if over-accommodation causes resentment, with one partner feeling burdened by unshared responsibilities.\n- Notice if home life becomes a source of conflict, with rigid structures ignoring emotional needs.",
+        resolutionStrategies: [
+          "Establish clear family guidelines that respect personal boundaries while encouraging collaborative decisions to maintain harmony at home.",
+          "Divide home tasks in ways that play to each other's strengths, ensuring autonomy in some areas and joint efforts in others for balance.",
+          "Hold family meetings to discuss needs openly, blending structured plans with empathetic adjustments to foster a supportive environment.",
+        ],
+        growthOutcome:
+          "This resolution will create a more peaceful home where stability supports both individual and collective well-being.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "Your social lives blend outward enthusiasm with inward selectivity, offering opportunities for diverse connections when you find common ground. This mix can enrich your community involvement through balanced participation.",
+        coreChallenge:
+          "The main issue is one partner's autonomous selectivity in social engagements clashing with the other's harmonious commitment to groups, exacerbated by outward energy versus inward drain from interactions.",
+        whyThisHappens:
+          "- One of you prefers independent choices in friendships, often declining invites that feel obligatory to the partner who values collective bonds.\n- Outward orientation thrives on frequent social activities, while inward preferences lead to quick exhaustion from group settings.\n- Harmony drives over-commitment to community events, which can overwhelm the autonomous partner's need for solitude.\n- Social decisions highlight differences, with one seeing gatherings as essential and the other as optional drains.\n- Mismatched energies amplify tensions, making shared social plans feel forced or unfulfilling.",
+        redFlags:
+          "- Be cautious if repeated declines lead to isolation, with one feeling unsupported in community efforts.\n- Watch for resentment when inward needs result in missed opportunities, straining your joint social circle.\n- Notice patterns of withdrawal that deepen divides in how you engage with friends.",
+        resolutionStrategies: [
+          "Plan social outings that alternate between group events and quieter gatherings, allowing both to participate without overwhelming either.",
+          "Discuss friendship priorities openly to align on key commitments, respecting autonomy while nurturing harmonious connections.",
+          "Support each other's social styles by attending some events alone and sharing highlights, building mutual appreciation for differences.",
+        ],
+        growthOutcome:
+          "Navigating this will enhance your social harmony, creating a vibrant community life that respects individual needs.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You both lean toward practical learning, focusing on tangible skills with a structured approach that can lead to steady progress together. This shared foundation supports mutual encouragement in personal development.",
+        coreChallenge:
+          "The primary challenge involves both preferring concrete mastery but within stable frameworks that can limit exploration, potentially leading to stagnation if not addressed.",
+        whyThisHappens:
+          "- Your mutual focus on real-world skills means growth often stays in familiar areas, missing out on broader discoveries.\n- Stable preferences lead to completing set paths, but this can feel restrictive when new interests arise unexpectedly.\n- Both value organized learning, yet without variety, routines become repetitive and less motivating over time.\n- Concrete approaches emphasize verifiable progress, sometimes overlooking the joy in trying unrelated pursuits.\n- Shared structures amplify the risk of dropping novel ideas before they fully develop.",
+        redFlags:
+          "- Pay attention if learning routines lead to boredom, with one or both losing interest in shared growth activities.\n- Be alert to resistance against new courses, causing missed opportunities for personal expansion.\n- Watch for frustration when stability hinders adaptability in discovery processes.",
+        resolutionStrategies: [
+          "Incorporate short, structured experiments into your routines to introduce novelty while maintaining focus on practical skills.",
+          "Set joint goals for skill-building that include milestones for celebration, ensuring steady progress feels rewarding.",
+          "Encourage each other to share learnings from individual pursuits, blending stability with fresh insights for mutual growth.",
+        ],
+        growthOutcome:
+          "This will foster a lifelong journey of discovery, where stability enhances rather than limits your development.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "In seeking fun, you combine planned outings with reflective enjoyment, creating memorable experiences when you adapt to each other's paces. Your shared structure provides a reliable base for adventures.",
+        coreChallenge:
+          "The core friction stems from both favoring detailed plans but differing in outward thrill-seeking versus inward quiet joys, making shared activities feel mismatched in energy.",
+        whyThisHappens:
+          "- Stable planning ensures organized fun, yet one pushes for interactive adventures while the other prefers calmer, personal delights.\n- Outward energy seeks shared excitement, which can exhaust the inward partner who finds joy in solitude.\n- Both value consistency, but this can lead to rigid schedules that don't accommodate varying energy levels.\n- Adventure ideas highlight differences, with one seeing spontaneity as chaotic and the other as unnecessary.\n- Mismatched approaches amplify disappointments when plans don't align with individual preferences for enjoyment.",
+        redFlags:
+          "- Look out for canceled plans due to energy mismatches, leading to feelings of unmet expectations in fun times.\n- Be aware if inward preferences cause outward frustration, reducing overall joy in your relationship.\n- Notice if structures become barriers to trying new things, stifling adventure altogether.",
+        resolutionStrategies: [
+          "Create flexible itineraries for outings that include options for high-energy and low-key moments to suit both styles.",
+          "Alternate leading adventure planning, incorporating elements that energize each of you for balanced enjoyment.",
+          "Reflect together after activities on what brought joy, using insights to refine future plans for more harmonious fun.",
+        ],
+        growthOutcome:
+          "Overcoming this will unlock greater joy, with adventures that recharge and connect you both deeply.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "Your needs for peace involve a balance of active and reflective spaces, offering chances for mutual understanding when you respect differences. This can lead to a supportive environment for recharge.",
+        coreChallenge:
+          "The main tension is one partner's outward need for engagement conflicting with the other's inward desire for solitude, intensified by autonomous boundaries versus harmonious check-ins.",
+        whyThisHappens:
+          "- Outward orientation fills quiet times with interactions, which can intrude on the inward partner's need for deep alone time.\n- Autonomous preferences enforce personal space, sometimes coming across as rejection to the harmony-seeking partner.\n- Serenity seeks vary, with one finding peace in activity and the other in stillness, leading to mismatched recovery methods.\n- Harmonious inclinations prompt frequent emotional check-ins, clashing with autonomous desires for independence.\n- Energy differences amplify feelings of neglect when space needs aren't communicated clearly.",
+        redFlags:
+          "- Be mindful if solitude requests spark arguments, leading to emotional distance in your daily lives.\n- Watch for over-check-ins causing irritation, eroding the serenity you both seek.\n- Notice patterns where outward needs overwhelm, resulting in burnout and resentment.",
+        resolutionStrategies: [
+          "Establish designated quiet zones and times in your home, allowing inward recharge while scheduling brief check-ins for harmony.",
+          "Communicate space needs proactively, framing them as self-care rather than rejection to build understanding.",
+          "Practice solo activities that indirectly support each other, like pursuing hobbies that enhance shared serenity later.",
+        ],
+        growthOutcome:
+          "This will cultivate a peaceful partnership where space strengthens your connection and mutual respect.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "In building your legacy, you blend personal visions with community focuses, creating meaningful impacts when you integrate your approaches. Your shared practical lens grounds these efforts effectively.",
+        coreChallenge:
+          "The central challenge is one partner's autonomous, individual-driven legacy clashing with the other's harmonious, group-oriented impact, nuanced by logical versus value-based decisions in concrete terms.",
+        whyThisHappens:
+          "- Autonomous motivations prioritize personal achievements, which can seem self-centered to the partner focused on collective contributions.\n- Harmonious goals emphasize community benefits, potentially overlooking the value of independent pursuits.\n- Both view impact through tangible results, but logical efficiency might dismiss value-driven meanings.\n- Legacy planning highlights differences, with one seeking measurable outcomes and the other relational significance.\n- Shared concreteness amplifies tensions when decisions ignore either personal or group aspects.",
+        redFlags:
+          "- Pay attention if individual projects lead to feelings of exclusion from shared legacy-building.\n- Be alert to value conflicts causing logical dismissals, straining your joint vision.\n- Watch for resentment when community commitments override personal goals.",
+        resolutionStrategies: [
+          "Collaborate on legacy projects that combine personal expertise with community involvement, ensuring both feel their contributions matter.",
+          "Discuss impact priorities regularly, blending logical metrics with value assessments for a balanced approach.",
+          "Celebrate milestones that reflect both individual and collective successes, fostering a unified sense of purpose.",
+        ],
+        growthOutcome: "Resolving this will create a lasting legacy that honors your unique strengths and shared bond.",
+      },
+    },
+  ],
+  "C-L-O-S-A/C-V-I-S-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both approach your careers with a strong sense of independence, focusing on personal goals while building stable paths forward. The Engineer often takes charge in organizing efficient strategies for success, while the Healer prefers a quieter role centered on meaningful, hands-on support that aligns with their ethics. Together, you create a partnership where individual pursuits can complement each other if you communicate openly about your visions.",
+        coreChallenge:
+          "Balancing the Engineer's drive for autonomous efficiency in career goals with the Healer's need for independent, value-driven contributions can lead to mismatched expectations around collaboration and shared purpose.",
+        whyThisHappens:
+          "- The Engineer prioritizes self-reliant projects that emphasize logical outcomes and personal achievement, often overlooking group-oriented missions.\n- The Healer focuses on solitary roles that nurture others based on personal ethics, which may not align with the Engineer's independent strategic planning.\n- Both prefer stable roles but the Engineer's outward energy pushes for action while the Healer's inward focus seeks deeper reflection, causing drift in joint career discussions.\n- Without clear boundaries, the Engineer's autonomy can feel isolating to the Healer's desire for meaningful connections in purpose.\n- The lack of shared team dynamics means individual paths may diverge without intentional alignment.",
+        redFlags:
+          "- One partner feels their career input is dismissed, leading to resentment over unequal recognition in shared decisions.\n- Persistent avoidance of joint planning results in separate professional lives that weaken the relationship's supportive foundation.\n- Frustration builds when the Engineer's efficiency clashes with the Healer's ethical priorities, sparking arguments over purpose.",
+        resolutionStrategies: [
+          "Set aside dedicated time each month to discuss career goals individually and find small ways to support each other's independent paths without forcing collaboration.",
+          "Encourage the Engineer to appreciate the Healer's value-based insights by actively listening and incorporating them into personal strategies where possible.",
+          "Create a shared vision board for purpose that honors both autonomy and stability, allowing each to contribute without compromising their core approaches.",
+        ],
+        growthOutcome:
+          "By respecting each other's independent drives, you build a stronger foundation where individual successes enhance your shared sense of purpose and fulfillment.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, you both value stability and practical approaches, focusing on building secure foundations through careful planning. The Engineer excels at logical budgeting and efficient resource allocation, while the Healer brings a personal touch, ensuring spending aligns with deeply held values. This combination can lead to a balanced financial life if you blend your strengths thoughtfully.",
+        coreChallenge:
+          "The shared preference for structure in finances can become rigid, especially when the Engineer's logical calculations clash with the Healer's value-driven spending choices, leading to conflicts over priorities.",
+        whyThisHappens:
+          "- Both lean toward stable saving habits, but the Engineer views money as a tool for efficiency while the Healer sees it as a means to support personal ethics.\n- The Concrete focus means you both deal with tangible realities, yet the Engineer's outward strategies may push for quick investments that the Healer finds misaligned.\n- Logical decisions from the Engineer can feel cold to the Healer's empathic approach, causing disputes over what constitutes worthwhile expenditures.\n- Without flexibility, the stable mindset leads to overly strict budgets that ignore emotional needs.\n- The autonomous styles mean each handles money independently, potentially missing opportunities for joint prosperity.",
+        redFlags:
+          "- Repeated arguments over spending reveal deeper value mismatches, eroding trust in financial decisions.\n- One partner secretly manages funds to avoid conflict, leading to transparency issues and resentment.\n- Stagnant financial growth occurs when rigidity prevents adapting to new opportunities.",
+        resolutionStrategies: [
+          "Develop a joint budget that includes sections for logical efficiency and value-based spending, reviewing it together quarterly to ensure balance.",
+          "The Engineer can learn to incorporate the Healer's ethical perspectives by discussing purchases that align with both logic and values before deciding.",
+          "Set up separate personal funds within the shared plan to honor autonomy while maintaining overall stability in prosperity goals.",
+        ],
+        growthOutcome:
+          "Embracing each other's approaches to wealth creates a more harmonious and prosperous life, where stability supports both personal and shared aspirations.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "Your health routines reflect your individual energies, with the Engineer thriving on active engagement and the Healer finding strength in quiet reflection. Together, you can inspire each other to try new ways of maintaining vitality, blending outward action with inward care. This dynamic offers potential for a well-rounded approach to wellness if you respect differing needs.",
+        coreChallenge:
+          "The Engineer's outward drive for shared activities often conflicts with the Healer's inward need for solitary recharge, making it hard to sustain consistent health habits as a couple.",
+        whyThisHappens:
+          "- The Engineer directs energy externally, preferring joint exercises or plans that the Healer may find overwhelming due to their internal focus.\n- Both value stability in routines, but the Engineer's push for structure can feel imposing on the Healer's flexible, mood-based approach.\n- Outward engagement energizes the Engineer while draining the Healer, leading to mismatched participation in health activities.\n- Without understanding, the stable preference turns into rigid expectations that ignore personal vitality needs.\n- The autonomous styles mean each prioritizes their own methods, potentially neglecting mutual support in health.",
+        redFlags:
+          "- One partner consistently opts out of joint health efforts, leading to feelings of rejection and isolation.\n- Health goals falter due to unmet expectations, causing frustration and demotivation over time.\n- Ignoring energy differences results in burnout for the Healer or boredom for the Engineer.",
+        resolutionStrategies: [
+          "Schedule health activities that alternate between shared outward experiences and individual inward practices to honor both energies.",
+          "The Engineer can support the Healer's need for solitude by planning flexible routines that allow for personal adjustments without pressure.",
+          "Discuss and set stable yet adaptable health goals together, ensuring each feels their vitality preferences are respected and integrated.",
+        ],
+        growthOutcome:
+          "By balancing your energy orientations, you achieve greater vitality and a deeper appreciation for each other's unique paths to health.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "In your relationship, independence shapes how you express love, with each of you valuing personal space while building a stable connection. The Engineer shows affection through practical actions, and the Healer offers quiet, empathetic support. This can create a grounded romance if you nurture it with intentional understanding.",
+        coreChallenge:
+          "The shared autonomy can lead to emotional distance, especially when the Engineer's outward expressions of love through logic clash with the Healer's inward need for deep, value-based connections.",
+        whyThisHappens:
+          "- Both prioritize independence, but the Engineer seeks harmony through action while the Healer needs solitary emotional processing.\n- Outward energy from the Engineer pushes for frequent interactions that may overwhelm the Healer's inward reflection.\n- Logical acts of service from the Engineer feel impersonal to the Healer's empathic desire for verbal affirmations.\n- Without bridging, autonomy turns into isolation, missing opportunities for romantic depth.\n- The stable approach means routines become predictable, lacking the spontaneity needed for passion.",
+        redFlags:
+          "- Emotional needs go unaddressed, leading to a sense of disconnection and unmet intimacy.\n- Arguments arise from misinterpretations of independence as lack of care.\n- Romance fades when one partner's style dominates, causing resentment.",
+        resolutionStrategies: [
+          "Make time for both outward dates and inward quiet evenings to balance your energies in expressing love.",
+          "The Engineer can practice verbalizing feelings to meet the Healer's value-based needs, while the Healer shares more about their inner world.",
+          "Establish rituals that honor autonomy, like personal love notes or acts, to strengthen romantic bonds without overwhelming each other.",
+        ],
+        growthOutcome:
+          "Navigating these differences fosters a more authentic and fulfilling romance, where independence enhances mutual respect and love.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You both approach family life with a focus on structure, creating organized homes that reflect your personal values and logic. The Engineer handles practical setups efficiently, while the Healer ensures emotional comfort through quiet care. This can build a solid foundation if you align on boundaries.",
+        coreChallenge:
+          "The preference for stability in home routines can become overly rigid, particularly when the Engineer's autonomous organization conflicts with the Healer's independent nurturing style.",
+        whyThisHappens:
+          "- Both seek structured environments, but the Engineer enforces rules independently while the Healer sets personal boundaries for emotional well-being.\n- Autonomous motivations mean each manages family aspects solo, potentially leading to uncoordinated efforts.\n- The outward Engineer pushes for active family involvement that the inward Healer may find draining.\n- Without compromise, stability turns into resistance to change, stifling home dynamics.\n- Differences in logic versus values cause clashes over family decisions.",
+        redFlags:
+          "- Family responsibilities become uneven, leading to burnout and arguments over fairness.\n- Emotional disconnect grows when independence overrides shared home goals.\n- Rigid routines cause tension, making home feel less like a sanctuary.",
+        resolutionStrategies: [
+          "Divide home tasks based on strengths, with the Engineer handling logistics and the Healer focusing on emotional aspects, reviewing together regularly.",
+          "Create flexible structures that allow for personal autonomy while ensuring family needs are met collaboratively.",
+          "Discuss boundaries openly to prevent over-accommodation, fostering a home where both feel supported.",
+        ],
+        growthOutcome:
+          "Resolving these challenges leads to a more balanced and nurturing family life, strengthening your shared home as a place of comfort.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "Your social lives emphasize independence, with each of you choosing connections that align with personal interests. The Engineer engages actively in groups for practical reasons, while the Healer prefers deeper, one-on-one interactions. Together, you can enjoy a mix of social experiences if you respect differing paces.",
+        coreChallenge:
+          "The autonomous approach to friendships can result in mismatched social commitments, where the Engineer's outward engagement overwhelms the Healer's inward preference for solitude.",
+        whyThisHappens:
+          "- Both value self-reliance in social choices, but the Engineer seeks collaborative opportunities while the Healer avoids over-commitment.\n- Outward energy drives the Engineer to participate more, contrasting with the Healer's need for internal recharge.\n- Independence leads to separate social circles, missing shared community bonds.\n- Without alignment, one may feel dragged into events or left out.\n- The stable mindset prefers routine interactions that may not suit varying energies.",
+        redFlags:
+          "- Social fatigue builds for the Healer, leading to withdrawal and resentment toward the Engineer's activities.\n- Isolation occurs when independence prevents joint friendships, weakening couple bonds.\n- Conflicts arise from unmet expectations in community involvement.",
+        resolutionStrategies: [
+          "Plan social outings that include options for both group engagement and quiet time, allowing each to participate at their comfort level.",
+          "Encourage the Engineer to join the Healer in selective, meaningful interactions to build shared friendships gradually.",
+          "Set personal social limits and communicate them clearly to maintain harmony in community life.",
+        ],
+        growthOutcome:
+          "By honoring each other's social styles, you cultivate richer friendships and a stronger sense of community together.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "In pursuing growth, you both ground your explorations in practical realities, focusing on tangible skills and experiences. The Engineer structures learning efficiently, while the Healer approaches it with personal ethics in mind. This shared concreteness can lead to steady progress if you embrace variety.",
+        coreChallenge:
+          "The Concrete focus on real-world mastery can limit novelty, especially when combined with stable habits that resist the flexibility needed for new discoveries.",
+        whyThisHappens:
+          "- Both prefer tangible, observable growth paths, but the Engineer sticks to logical plans while the Healer follows value-driven interests.\n- Stability leads to committing deeply to one area, making it hard to shift to new pursuits.\n- Without adaptability, routines become repetitive, stifling curiosity.\n- Autonomous motivations mean individual growth paths diverge.\n- The outward Engineer pushes for action-oriented learning that the inward Healer may find too fast-paced.",
+        redFlags:
+          "- Stagnation sets in when one partner drops interests, leading to boredom and disconnection.\n- Frustration grows from mismatched paces in discovery, causing arguments over priorities.\n- Lack of shared growth experiences weakens the relationship's evolving bond.",
+        resolutionStrategies: [
+          "Choose growth activities that start with practical skills but allow for flexible exploration to keep things engaging for both.",
+          "The Engineer can support the Healer's deeper reflections by incorporating pauses in structured learning plans.",
+          "Commit to trying one new tangible experience together quarterly to balance stability with discovery.",
+        ],
+        growthOutcome:
+          "Embracing flexibility in growth leads to more fulfilling personal and shared discoveries, enriching your lives together.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "You find joy in structured activities that reflect your individual energies, with the Engineer organizing exciting outings and the Healer enjoying quieter, meaningful moments. Together, you can create memorable experiences by blending planning with personal touches. This approach offers potential for balanced adventures.",
+        coreChallenge:
+          "The stable preference for planned adventures can clash with differing energies, where the Engineer's outward thrill-seeking overwhelms the Healer's inward desire for serene joy.",
+        whyThisHappens:
+          "- Both like organized fun, but the Engineer changes plans less often while the Healer adapts based on mood.\n- Outward engagement energizes the Engineer for shared thrills, contrasting the Healer's need for quiet reflection.\n- Stability leads to detailed itineraries that may feel restrictive.\n- Autonomous styles mean preferences for solo joy go unshared.\n- Without compromise, adventures become sources of stress instead of delight.",
+        redFlags:
+          "- One partner consistently feels dragged into unwanted activities, leading to resentment and avoidance.\n- Joy diminishes when plans go awry, sparking conflicts over expectations.\n- Lack of mutual enjoyment erodes the relationship's playful side.",
+        resolutionStrategies: [
+          "Design adventures with built-in flexibility, like planned days with optional quiet breaks to suit both energies.",
+          "Alternate leading activities, allowing the Engineer to organize outward fun and the Healer to suggest inward joys.",
+          "Discuss post-adventure reflections to adjust future plans for more inclusive happiness.",
+        ],
+        growthOutcome:
+          "Navigating these differences brings deeper joy and more adventurous spirits, strengthening your bond through shared delight.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "Your need for space reflects your energies, with the Engineer finding peace in active pursuits and the Healer in deep solitude. Together, you can create a harmonious environment by understanding these needs. This dynamic supports personal serenity if communicated well.",
+        coreChallenge:
+          "The inward Healer's requirement for extensive solitude often conflicts with the outward Engineer's preference for interaction, leading to feelings of rejection or intrusion in shared spaces.",
+        whyThisHappens:
+          "- The Healer directs energy internally for recharge, while the Engineer seeks external stimulation even in quiet times.\n- Autonomous motivations amplify the need for personal boundaries, making shared serenity hard to achieve.\n- Without awareness, the Engineer's check-ins feel intrusive to the Healer.\n- Stability in routines can lock in patterns that ignore differing serenity needs.\n- The logical Engineer may not grasp the Healer's value-based need for emotional space.",
+        redFlags:
+          "- Persistent intrusions lead to emotional withdrawal and strained communication.\n- Feelings of neglect build when space needs are misinterpreted as disinterest.\n- Serenity erodes, causing overall relationship tension.",
+        resolutionStrategies: [
+          "Establish designated times for solitude and interaction to balance your energies without misunderstanding.",
+          "The Engineer can learn to give space by engaging in personal activities during the Healer's recharge periods.",
+          "Use gentle check-ins to ensure boundaries are respected while maintaining connection.",
+        ],
+        growthOutcome:
+          "Respecting space differences cultivates deeper serenity and a more peaceful, understanding partnership.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "In building legacy, you both pursue independent visions grounded in practical realities, with the Engineer focusing on efficient structures and the Healer on ethical contributions. Together, you can create meaningful impacts by aligning your efforts. This approach offers potential for lasting achievements.",
+        coreChallenge:
+          "The autonomous drive for personal legacy can diverge, especially when the Engineer's logical, measurable goals clash with the Healer's value-based, meaningful pursuits in concrete ways.",
+        whyThisHappens:
+          "- Both prioritize self-reliant impacts, but the Engineer builds through efficiency while the Healer focuses on personal ethics.\n- Concrete preferences mean tangible outcomes are key, yet visions differ in scope.\n- Logical strategies from the Engineer feel detached to the Healer's empathic approach.\n- Without integration, individual legacies remain separate.\n- The outward Engineer pushes for visible results that the inward Healer may approach more privately.",
+        redFlags:
+          "- Disconnected efforts lead to feelings of unsupported ambitions and resentment.\n- Conflicts over priorities erode shared sense of impact.\n- Legacy goals stall due to unaligned visions.",
+        resolutionStrategies: [
+          "Identify overlapping areas of impact where logical efficiency meets value-driven goals to collaborate effectively.",
+          "The Engineer can incorporate the Healer's ethical insights into strategies for more holistic legacies.",
+          "Plan long-term visions together, honoring autonomy while finding ways to support each other's concrete contributions.",
+        ],
+        growthOutcome:
+          "Aligning your impacts creates a powerful legacy that reflects both your strengths, fostering deeper fulfillment together.",
+      },
+    },
+  ],
+  "C-L-O-S-A/C-V-I-F-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You two approach your careers with a mix of independence and group focus that can create both drive and tension in finding shared purpose. The Engineer thrives on building efficient personal projects, while the Peacemaker seeks ways to support others emotionally in their roles. Together, you can inspire each other to balance solo ambitions with collaborative efforts, making your paths more fulfilling.",
+        coreChallenge:
+          "Balancing the Engineer's desire for autonomous achievements with the Peacemaker's need for team-oriented missions often leads to mismatched priorities in career goals and daily work styles.",
+        whyThisHappens:
+          "- The Engineer prefers pursuing individual objectives without relying on group input, which can feel isolating to the Peacemaker who values collective harmony in professional settings.\n- The Peacemaker aims to create supportive environments for everyone involved, clashing with the Engineer's focus on self-reliant efficiency and structured plans.\n- When changes arise, the Engineer's stable approach resists shifts, while the Peacemaker adapts flexibly but may prioritize emotional balance over quick decisions.\n- This difference in orientation can cause the Engineer to view team efforts as inefficient, and the Peacemaker to see solo pursuits as disconnected from shared goals.",
+        redFlags:
+          "- The Engineer starts withdrawing from joint career discussions, feeling frustrated by what they see as unnecessary group considerations in planning.\n- The Peacemaker begins to feel undervalued when their efforts to foster collaboration are dismissed as irrelevant to personal success.\n- Resentment builds if one partner consistently prioritizes their style, leading to arguments about whose purpose matters more in the relationship.",
+        resolutionStrategies: [
+          "Set aside time each month to discuss individual career goals openly, then find one small way to support each other's paths without compromising personal autonomy.",
+          "Create a shared vision board for your combined purposes, incorporating elements of independence and harmony to bridge your different approaches effectively.",
+          "Practice active listening during career talks, where each person summarizes the other's perspective to ensure both feel heard and valued in the process.",
+        ],
+        growthOutcome:
+          "By integrating your styles, you'll build careers that honor personal drive while nurturing supportive connections, leading to deeper mutual fulfillment.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, you both value practical approaches but differ in how you plan and spend, creating opportunities for stability alongside potential conflicts. The Engineer focuses on efficient, structured budgeting for long-term security, while the Peacemaker considers emotional impacts in money decisions. This blend can help you create a balanced financial life that feels secure and caring.",
+        coreChallenge:
+          "The Engineer's rigid saving and planning clashes with the Peacemaker's flexible spending based on current needs and values, often resulting in disputes over financial priorities and resource allocation.",
+        whyThisHappens:
+          "- The Engineer prefers organized systems for wealth building, seeing money as a tool for personal efficiency, which can seem too strict to the Peacemaker.\n- The Peacemaker adapts spending to maintain harmony and support others, potentially overlooking long-term structures that the Engineer values highly.\n- Both focus on tangible realities, but the Engineer's logical budgeting may ignore the Peacemaker's value-driven choices, like helping family or friends.\n- Differences in adaptability lead to frustration when unexpected expenses arise, with the Engineer wanting to stick to plans and the Peacemaker adjusting for emotional reasons.\n- This can create cycles where one feels controlled and the other feels financial decisions lack compassion or foresight.",
+        redFlags:
+          "- The Engineer becomes increasingly secretive about finances, avoiding discussions to prevent perceived emotional interference in their plans.\n- The Peacemaker starts making unilateral spending decisions to preserve peace, leading to hidden debts or unbalanced accounts over time.\n- Ongoing arguments escalate into blame, where each accuses the other of being either too rigid or too impulsive with money matters.",
+        resolutionStrategies: [
+          "Establish a joint budget with fixed categories for essentials and flexible ones for values-based spending, reviewing it together every quarter to adapt as needed.",
+          "Assign each partner responsibility for specific financial areas, like the Engineer handling investments and the Peacemaker managing charitable giving, to leverage strengths.",
+          "Hold regular money meetings focused on positive outcomes, starting with appreciation for each other's contributions to build trust in shared prosperity.",
+        ],
+        growthOutcome:
+          "Working through these differences will lead to a more resilient financial foundation that combines structure with compassion, enhancing your overall security.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "Your health routines reflect your energy directions, with one craving shared activities and the other needing personal space, but this can foster a supportive wellness dynamic. The Engineer enjoys engaging outwardly in structured exercises, while the Peacemaker prefers inward-focused, gentle practices. Together, you can encourage each other toward balanced vitality that respects both styles.",
+        coreChallenge:
+          "The Engineer's outward energy for joint health pursuits often overwhelms the Peacemaker's inward need for solo recharge, leading to mismatched routines and potential burnout for both.",
+        whyThisHappens:
+          "- The Engineer directs energy externally, pushing for planned group activities like gym sessions, which can drain the Peacemaker who thrives on reflective, personal wellness.\n- The Peacemaker's flexible approach to health allows for mood-based adjustments, clashing with the Engineer's preference for consistent, organized schedules.\n- This outward-inward divide means the Engineer may interpret the Peacemaker's need for alone time as disinterest in shared health goals.\n- Stability versus adaptability creates tension when plans change, with the Engineer resisting shifts and the Peacemaker adapting easily but feeling pressured.",
+        redFlags:
+          "- The Engineer starts criticizing the Peacemaker for skipping joint activities, leading to feelings of rejection and escalating emotional distance.\n- The Peacemaker withdraws further into solo routines, avoiding discussions about health to prevent conflict over differing energy needs.\n- Physical symptoms like fatigue emerge as one partner pushes the other into incompatible routines, straining the relationship's overall vitality.",
+        resolutionStrategies: [
+          "Design a weekly health plan that includes both shared outings and individual time, ensuring each person's energy preferences are equally prioritized.",
+          "Share personal health goals openly and find one overlapping activity, like a walk, that can be done together or alone based on daily needs.",
+          "Encourage check-ins after activities to discuss what felt energizing or draining, fostering understanding and adjustments for better mutual support.",
+        ],
+        growthOutcome:
+          "Embracing these contrasts will help you cultivate sustainable health habits that energize both, strengthening your bond through shared vitality.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "In your romantic life, you bring a blend of independence and harmony that can deepen your connection when navigated thoughtfully. The Engineer values personal space in expressing love logically, while the Peacemaker seeks emotional closeness through shared feelings. This dynamic allows you to learn from each other, creating a relationship full of genuine care.",
+        coreChallenge:
+          "The Engineer's autonomous need for independence in romance often conflicts with the Peacemaker's harmonious desire for constant emotional alignment, causing feelings of disconnection despite shared affection.",
+        whyThisHappens:
+          "- The Engineer orients toward self-reliance, showing love through practical actions, which may feel distant to the Peacemaker who craves group-like emotional unity.\n- The Peacemaker's inward focus needs deep, reflective intimacy, contrasting with the Engineer's outward engagement in daily interactions.\n- Logical expressions of love from the Engineer, like problem-solving, can overlook the Peacemaker's value-based needs for words of affirmation and empathy.\n- This mix leads to the Peacemaker feeling unsupported in emotional moments, while the Engineer perceives requests for closeness as intrusive on their autonomy.\n- Over time, these differences amplify, making romantic gestures feel mismatched and less fulfilling for both partners.",
+        redFlags:
+          "- The Engineer begins to pull away during emotional discussions, viewing them as unnecessary, which leaves the Peacemaker feeling unloved and isolated.\n- The Peacemaker overcompensates by constantly seeking reassurance, leading to the Engineer feeling overwhelmed and resentful in the relationship.\n- Intimacy fades as unresolved tensions build, with arguments centering on one being too detached and the other too clingy.",
+        resolutionStrategies: [
+          "Schedule regular date nights where you alternate between active outings and quiet, reflective time to honor both outward and inward romantic needs.",
+          "Practice expressing love in the other's preferred way, like the Engineer using empathetic words and the Peacemaker appreciating logical acts of service.",
+          "Create a safe space for discussing feelings without judgment, starting each talk with something positive about your connection to build emotional security.",
+        ],
+        growthOutcome:
+          "By addressing these challenges, you'll develop a romance that beautifully merges independence with harmony, fostering lasting emotional depth.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "Managing home and family involves your differing approaches to structure and harmony, but it can lead to a nurturing environment when balanced. The Engineer prioritizes organized systems for efficiency, while the Peacemaker focuses on emotional well-being in the household. This combination helps you create a space that's both functional and warm.",
+        coreChallenge:
+          "The Engineer's stable preference for strict rules and plans in family life often clashes with the Peacemaker's flexible adaptations for maintaining emotional peace, leading to ongoing tensions over household routines.",
+        whyThisHappens:
+          "- The Engineer seeks closure through planned chores and organized systems, which can feel restrictive to the Peacemaker who prefers spontaneity in home matters.\n- The Peacemaker orients toward group dynamics, over-accommodating family needs, contrasting with the Engineer's autonomous boundaries for personal space.\n- This stability-flexibility divide causes frustration when plans shift, with the Engineer resisting changes and the Peacemaker adjusting to keep harmony.\n- Differences in motivation mean the Engineer views family obligations as tasks to complete efficiently, while the Peacemaker sees them as opportunities for emotional connection.",
+        redFlags:
+          "- The Engineer imposes rigid schedules without input, making the Peacemaker feel their emotional needs in the home are ignored completely.\n- The Peacemaker avoids enforcing rules to prevent conflict, leading to chaos that frustrates the Engineer's need for order and predictability.\n- Family gatherings become sources of stress, with one partner withdrawing and the other overextending to compensate.",
+        resolutionStrategies: [
+          "Develop a flexible home routine with core structured elements and room for adjustments, discussing changes together to respect both preferences.",
+          "Divide family responsibilities based on strengths, like the Engineer handling planning and the Peacemaker managing emotional support aspects.",
+          "Hold family meetings focused on positive feedback first, then addressing issues, to build a harmonious yet organized home environment.",
+        ],
+        growthOutcome:
+          "Overcoming these dynamics will result in a family life that's structured yet compassionate, enhancing your sense of home together.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "Your social lives blend independence with a desire for connection, offering chances to expand your circle in meaningful ways. The Engineer enjoys selective engagements on their terms, while the Peacemaker thrives on building group bonds. This can help you find a comfortable balance in friendships that feels authentic to both.",
+        coreChallenge:
+          "The Engineer's autonomous preference for limited social commitments often conflicts with the Peacemaker's harmonious drive to nurture extensive community ties, resulting in mismatched social energies and potential isolation for one or both.",
+        whyThisHappens:
+          "- The Engineer focuses on self-reliance, declining invites to preserve personal time, which can seem aloof to the Peacemaker who values collaborative social dynamics.\n- The Peacemaker's inward reflection drains quickly in large groups, yet they over-commit to maintain harmony, clashing with the Engineer's outward but selective interactions.\n- This orientation difference leads to the Engineer feeling pressured into unwanted events, while the Peacemaker feels unsupported in their community efforts.\n- Over time, these contrasts create resentment, with one viewing the other as either too withdrawn or too socially demanding.",
+        redFlags:
+          "- The Engineer consistently opts out of joint social plans, leaving the Peacemaker to attend alone and feeling abandoned in friendships.\n- The Peacemaker pushes for more group activities, overwhelming the Engineer and leading to arguments about personal boundaries being ignored.\n- Social circles shrink as unresolved issues cause both to retreat, diminishing your shared sense of community over time.",
+        resolutionStrategies: [
+          "Agree on a social calendar that includes a mix of couple outings, individual friend time, and rest periods to suit both your energies.",
+          "Support each other's social choices by attending key events together while respecting declines for others, building mutual understanding.",
+          "Discuss post-event reflections to share what felt good or challenging, helping you refine your approach to friendships collaboratively.",
+        ],
+        growthOutcome:
+          "Navigating this will strengthen your social bonds, creating a community that honors independence while fostering meaningful connections.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "In pursuing growth, you both appreciate tangible progress but approach it differently, allowing for shared learning experiences. The Engineer builds mastery through structured exploration, while the Peacemaker seeks adaptable, insightful paths. This dynamic can motivate you to try new things together with patience.",
+        coreChallenge:
+          "The shared concrete focus on practical skills is disrupted by differing attitudes toward commitment, with the Engineer's stability clashing against the Peacemaker's flexibility, often leading to unfinished projects and frustration in personal development.",
+        whyThisHappens:
+          "- Both prioritize observable results, but the Engineer commits to one skill deeply with plans, while the Peacemaker shifts interests based on current inspirations.\n- The Engineer's stable structure pushes for completing courses methodically, contrasting with the Peacemaker's adaptive openness to dropping pursuits mid-way.\n- This creates tension when novelty tempts the Peacemaker away from shared goals, making the Engineer feel their efforts are undermined.\n- Differences in change approach mean the Engineer resists pivots, while the Peacemaker embraces them, leading to mismatched pacing in growth activities.\n- Over time, this can stall joint discovery, with one feeling bored and the other overwhelmed by inconsistency.",
+        redFlags:
+          "- The Engineer criticizes the Peacemaker for abandoning shared learning goals, breeding resentment and halting motivation for growth.\n- The Peacemaker feels confined by rigid plans, withdrawing from joint activities and pursuing solo paths secretly.\n- Enthusiasm for new discoveries fades, replaced by avoidance of discussions about personal development to prevent conflict.",
+        resolutionStrategies: [
+          "Choose short-term growth projects with clear endpoints to accommodate flexibility while providing structure, celebrating completions together.",
+          "Alternate leading discovery activities, where one plans a structured session and the other introduces adaptable elements for balance.",
+          "Set mutual check-ins to assess interest levels in ongoing pursuits, allowing graceful shifts without judgment to keep motivation high.",
+        ],
+        growthOutcome:
+          "By blending your approaches, you'll achieve deeper personal growth that feels both grounded and inspiring, enriching your lives together.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "Seeking joy, you mix planned outings with spontaneous fun, creating memorable experiences when aligned. The Engineer organizes adventures for efficiency, while the Peacemaker enjoys flexible, shared moments. This can lead to adventures that surprise and delight you both.",
+        coreChallenge:
+          "The Engineer's stable planning for every detail in adventures often frustrates the Peacemaker's flexible desire for last-minute changes, resulting in tensions that diminish the overall enjoyment and spontaneity of shared experiences.",
+        whyThisHappens:
+          "- The Engineer prefers organized itineraries to ensure smooth fun, clashing with the Peacemaker's adaptability to mood and circumstances.\n- The Peacemaker's inward need for quiet joy contrasts with the Engineer's outward thrill-seeking in group or active settings.\n- This stability-flexibility gap leads to arguments when plans alter, with the Engineer feeling disrupted and the Peacemaker feeling restricted.\n- Differences in energy mean the Engineer pushes for shared excitement, while the Peacemaker seeks serene, personal happiness moments.",
+        redFlags:
+          "- The Engineer insists on sticking to plans rigidly, making the Peacemaker feel their input for changes is dismissed outright.\n- The Peacemaker suggests frequent alterations, leading the Engineer to cancel adventures out of frustration with unpredictability.\n- Joyful activities become rare as both avoid proposing them, fearing inevitable conflicts over how to approach them.",
+        resolutionStrategies: [
+          "Plan adventures with a core structure but built-in flexible time slots for spontaneous decisions, satisfying both needs effectively.",
+          "Take turns organizing outings, incorporating elements the other enjoys to build appreciation for different styles of fun.",
+          "After each adventure, share highlights and adjustments needed, turning experiences into opportunities for closer connection.",
+        ],
+        growthOutcome:
+          "Mastering this will unlock more joyful adventures that blend structure with freedom, bringing lasting happiness to your relationship.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "Finding peace involves respecting your energy flows, with one needing interaction and the other solitude, but it can enhance your mutual understanding. The Engineer seeks outward engagement for calm, while the Peacemaker values inward reflection. Together, you can create serene spaces that recharge both.",
+        coreChallenge:
+          "The Engineer's outward orientation toward shared activities for serenity often invades the Peacemaker's inward need for deep solitude, leading to feelings of overwhelm and emotional disconnection in your daily lives.",
+        whyThisHappens:
+          "- The Engineer finds peace through external interactions, like discussions, which can feel intrusive to the Peacemaker's preference for internal processing.\n- The Peacemaker orients toward harmony by filling quiet moments with check-ins, clashing with the Engineer's autonomous need for independent boundaries.\n- This inward-outward divide causes the Peacemaker to feel rejected when space is requested, and the Engineer to feel smothered by constant connection.\n- Differences in motivation amplify tensions, making serene times rare as needs go unmet.",
+        redFlags:
+          "- The Engineer enforces strict alone time without explanation, leaving the Peacemaker feeling excluded and anxious about the relationship.\n- The Peacemaker interrupts solitude frequently for reassurance, prompting the Engineer to withdraw further and communicate less.\n- Serenity erodes into constant irritation, with small interactions sparking disproportionate arguments over personal space.",
+        resolutionStrategies: [
+          "Establish daily serenity rituals that include separate time for reflection and joint quiet activities, like reading side by side.",
+          "Communicate space needs in advance with loving language, ensuring both understand it's about recharge, not rejection.",
+          "Create a shared calm zone in your home where rules for interaction are agreed upon, promoting peaceful coexistence.",
+        ],
+        growthOutcome:
+          "Addressing this will foster a relationship where space enhances intimacy, leading to profound serenity and stronger bonds.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "Building a legacy, you combine personal vision with community focus, offering a rich path to meaningful contributions. The Engineer pursues independent achievements, while the Peacemaker emphasizes collective impact. This blend can inspire you to create lasting effects that honor both views.",
+        coreChallenge:
+          "The Engineer's autonomous drive for personal legacy through efficient projects often conflicts with the Peacemaker's harmonious focus on community-oriented contributions, leading to divergent paths in creating meaningful long-term impact together.",
+        whyThisHappens:
+          "- The Engineer orients toward self-reliant goals, building legacy solo, which can feel disconnected to the Peacemaker who values group collaboration.\n- Both emphasize tangible outcomes, but the Engineer measures success concretely, while the Peacemaker seeks abstract, meaningful connections in impact.\n- Logical decisions from the Engineer prioritize efficiency over the Peacemaker's value-based approach to legacy, like helping others emotionally.\n- This difference causes the Peacemaker to view the Engineer's efforts as self-centered, and the Engineer to see group focus as inefficient.\n- Over time, shared legacy goals fragment, reducing motivation for joint contributions to society.",
+        redFlags:
+          "- The Engineer dismisses community ideas as impractical, isolating the Peacemaker from feeling involved in legacy-building efforts.\n- The Peacemaker pushes for group involvement, overwhelming the Engineer and leading to abandonment of shared impact projects.\n- Discussions about future contributions turn into blame sessions, eroding trust in each other's visions for lasting change.",
+        resolutionStrategies: [
+          "Identify one joint legacy project that merges personal efficiency with community harmony, like a local initiative you both contribute to uniquely.",
+          "Discuss individual impact goals regularly, finding ways to support each other without forcing alignment on every aspect.",
+          "Celebrate small wins in your combined efforts, using them to build momentum toward a legacy that reflects both your strengths.",
+        ],
+        growthOutcome:
+          "By harmonizing your approaches, you'll craft a legacy that's personally fulfilling and collectively impactful, leaving a positive mark.",
+      },
+    },
+  ],
+  "C-L-O-S-A/C-V-I-F-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both value pursuing your own individual goals and making a personal mark on the world, which can create a supportive environment where each encourages the other's independence. However, one of you prefers sticking to a clear, structured career path while the other thrives on adapting to new opportunities as they arise. This mix can lead to inspiring each other to balance stability with flexibility in your professional lives.",
+        coreChallenge:
+          "The main tension arises from your shared desire for autonomy clashing with differing approaches to structure, where one locks into long-term roles and the other frequently shifts focus, potentially causing frustration over perceived lack of commitment or rigidity in career pursuits.",
+        whyThisHappens:
+          " - You both prioritize personal objectives over group missions, leading to parallel rather than joint career paths that sometimes feel disconnected.\n - One partner's preference for organized plans means they commit deeply to specific roles, while the other's adaptability results in exploring various directions without firm closure.\n - This difference in handling change can make shared purpose feel uneven, as one seeks predictability and the other embraces spontaneity in professional growth.\n - Your independent styles amplify these issues, since neither naturally leans toward compromising for collective goals.\n - Over time, without alignment, this can create a sense of drifting apart in how you each define success and fulfillment.",
+        redFlags:
+          " - One partner frequently criticizes the other for being too rigid or too flighty in career decisions, leading to ongoing arguments about commitment.\n - You start pursuing completely separate professional lives without discussing how they impact your shared future, fostering emotional distance.\n - Resentment builds when one feels their structured approach is undermined by the other's constant shifts, eroding mutual respect.",
+        resolutionStrategies: [
+          "Take time each month to share your individual career goals openly, then find one small way to support each other without compromising your autonomy.",
+          "Create a flexible joint vision board for your purposes that allows for structure in some areas and adaptability in others, reviewing it together quarterly.",
+          "Practice active listening during discussions about work, validating each other's preferences before suggesting compromises that honor both stability and change.",
+        ],
+        growthOutcome:
+          "By embracing your differences, you'll build a partnership where independence fuels mutual inspiration, leading to richer personal and shared achievements.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, one of you focuses on careful planning and saving for the future, while the other is more open to spontaneous spending based on current needs. You both see money as a practical tool for real-world security, which helps ground your decisions in tangible outcomes. This can create a balanced approach if you communicate well, but differences in logic versus values might add layers to your discussions.",
+        coreChallenge:
+          "The core issue stems from one partner's structured saving habits conflicting with the other's flexible spending tendencies, amplified by viewing money practically but differing on whether to budget strictly or allocate based on personal ethics, potentially leading to disputes over financial priorities.",
+        whyThisHappens:
+          " - The structured partner prefers building wealth through consistent plans and reserves, while the flexible one adjusts spending to immediate situations or moods.\n - Both approach money as a concrete resource, but this shared realism highlights clashes when one sees impulsive buys as risky and the other as necessary for well-being.\n - Logical budgeting feels cold and restrictive to the values-driven partner, who prioritizes expenditures that align with emotions or relationships.\n - Without alignment, small daily choices accumulate into larger imbalances, straining trust in each other's financial judgment.\n - Over time, these differences can lead to one feeling controlled and the other feeling insecure about long-term stability.",
+        redFlags:
+          " - Arguments escalate over everyday purchases, with one accusing the other of being too tight or too reckless, damaging emotional connection.\n - Secret spending or hidden accounts emerge as a way to avoid conflict, eroding transparency and trust in the relationship.\n - One partner starts making unilateral financial decisions, leading to feelings of exclusion and resentment in shared prosperity goals.",
+        resolutionStrategies: [
+          "Set up a joint budget that includes categories for both structured savings and flexible fun money, ensuring each has input and veto power on major changes.",
+          "Hold regular money talks where you discuss purchases in terms of practical needs and personal values, finding compromises that satisfy both perspectives.",
+          "Explore financial tools or apps together that track spending in a way that honors structure while allowing adaptability, reviewing progress monthly.",
+        ],
+        growthOutcome:
+          "Navigating these challenges will strengthen your financial teamwork, turning potential conflicts into opportunities for building lasting security together.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "One of you enjoys engaging in shared activities to stay healthy, while the other prefers solo time for recharging and personal routines. This difference can enrich your lives by introducing variety, but it might require effort to find common ground. Adding structure versus flexibility to health habits can further shape how you support each other's vitality.",
+        coreChallenge:
+          "The primary friction comes from one partner's outward energy pushing for joint health routines clashing with the other's inward need for independent recharge, intensified by structured plans versus adaptable approaches, which can lead to one feeling overwhelmed and the other neglected in maintaining well-being.",
+        whyThisHappens:
+          " - The outgoing partner seeks stimulation through shared exercises or meals, but the inward one finds such interactions draining without alone time.\n - Structured preferences mean enforcing consistent diets or workouts, while flexibility leads to skipping them based on daily energy levels.\n - This mismatch in energy direction causes misunderstandings, as one interprets the other's solitude as disinterest in joint health efforts.\n - Over time, without balance, it can result in inconsistent habits where neither feels fully supported in their vitality goals.\n - The combination amplifies isolation or pressure, making health feel like a solo burden rather than a shared priority.",
+        redFlags:
+          " - One partner consistently declines joint activities, leading the other to feel rejected and unmotivated in their own health journey.\n - Resentment grows from perceived selfishness, with accusations of not caring about the relationship's well-being during health discussions.\n - Health routines become entirely separate, causing a disconnect in how you each prioritize physical and emotional vitality together.",
+        resolutionStrategies: [
+          "Schedule a mix of shared and solo health activities weekly, ensuring both get time for outward engagement and inward reflection without pressure.",
+          "Discuss and agree on flexible structure for routines, like core habits that allow adjustments based on each other's energy levels that day.",
+          "Encourage each other by celebrating small wins in personal vitality, fostering empathy for differing needs in maintaining overall health.",
+        ],
+        growthOutcome:
+          "Overcoming this will help you create a harmonious approach to health, where differences enhance rather than hinder your shared vitality.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "You both appreciate having personal space in your relationship, which allows for individual growth and prevents feeling smothered. However, one craves more frequent interactions while the other seeks deeper, less frequent connections. This can be complicated by showing love through practical actions versus emotional expressions, but it also offers chances to learn from each other.",
+        coreChallenge:
+          "The key tension is your mutual need for independence clashing with differing energy flows, where one wants daily outward affection and the other prefers inward emotional depth, further strained by logical acts of service versus value-based words of affirmation, risking feelings of emotional disconnect.",
+        whyThisHappens:
+          " - Both valuing autonomy means you give each other room, but this can make the outgoing partner feel starved for regular romantic engagement.\n - The inward partner needs time alone to process feelings, which the other might misread as withdrawal from the relationship.\n - Logical expressions of love, like fixing things, contrast with empathic ones, such as verbal affirmations, leading to mismatched expectations.\n - Without addressing this, small gestures get overlooked, amplifying a sense of unmet needs in intimacy.\n - Over time, these layers create cycles where independence turns into isolation rather than strengthening bonds.",
+        redFlags:
+          " - Affectionate gestures are met with resistance, leading to one partner feeling unloved and the other overwhelmed by demands.\n - Conversations about romance turn into blame sessions, with each accusing the other of not understanding their way of showing care.\n - Physical and emotional intimacy dwindles, creating a rift that makes the relationship feel more like roommates than lovers.",
+        resolutionStrategies: [
+          "Plan regular but low-pressure check-ins where you express love in both practical and verbal ways, respecting each other's space needs.",
+          "Explore activities that blend outward fun with inward depth, like quiet walks where you can share thoughts without constant interaction.",
+          "Practice translating your love languages, such as combining acts of service with words of affirmation to meet both preferences effectively.",
+        ],
+        growthOutcome:
+          "Resolving this will deepen your romantic connection, turning independence into a foundation for more fulfilling intimacy together.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "In handling home and family matters, one of you leans toward clear rules and organization, while the other prefers going with the flow. You both set personal boundaries easily, which helps maintain individual sanity amid family demands. This setup can lead to a home that's structured in some ways and relaxed in others, fostering a unique balance.",
+        coreChallenge:
+          "The central conflict arises from one partner's drive for structured home routines clashing with the other's adaptive style, amplified by your shared autonomy that emphasizes personal boundaries over group accommodation, potentially leading to disputes over chores, rules, and family obligations.",
+        whyThisHappens:
+          " - The structured partner insists on schedules for tasks like cleaning or meals, but the flexible one resists, preferring to handle things as they come.\n - Both being independent means you prioritize your own limits, which can make compromising on shared responsibilities feel like a personal infringement.\n - This independence reduces over-accommodation, but it heightens friction when family needs require collective effort without natural inclination.\n - Over time, uneven distribution of duties builds, with one feeling burdened by enforcing order and the other by perceived nagging.\n - Without dialogue, home life becomes a battleground for control versus freedom, straining family harmony.",
+        redFlags:
+          " - Family decisions lead to standoffs, with each refusing to budge, causing ongoing tension and unresolved issues in the household.\n - One partner withdraws from family activities, leaving the other to handle everything alone, fostering resentment and disconnection.\n - Boundaries turn rigid, making the home feel divided rather than unified, impacting overall relationship satisfaction.",
+        resolutionStrategies: [
+          "Divide home tasks based on each other's strengths, with built-in flexibility for the adaptive partner and checkpoints for the structured one.",
+          "Hold family meetings where you set minimal shared rules while honoring personal boundaries, ensuring everyone feels heard and respected.",
+          "Encourage small acts of support in home life, like helping without being asked, to build trust and reduce autonomy-driven isolation.",
+        ],
+        growthOutcome:
+          "Mastering this will transform your home into a supportive space where differences promote harmony and mutual respect.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You both tend to be selective about social commitments, often choosing solitude over obligatory gatherings, which can keep your lives stress-free. However, one enjoys more external interactions while the other recharges internally, creating varied social rhythms. This dynamic allows for independent social lives but requires coordination to avoid isolation.",
+        coreChallenge:
+          "The main issue is your shared preference for independence leading to frequent declines of invites, compounded by one thriving in group settings and the other draining quickly, which can result in unbalanced social lives and feelings of disconnection from each other's worlds.",
+        whyThisHappens:
+          " - Both prioritizing autonomy means you often opt out of events that don't align personally, limiting shared community experiences.\n - The outgoing partner finds energy in social groups, but the inward one feels exhausted, leading to mismatched participation levels.\n - This difference in energy makes joint friendships hard to maintain, as one pushes for more involvement and the other pulls back.\n - Over time, separate social circles emerge, reducing opportunities for mutual support in community ties.\n - Without effort, this can make the relationship feel inwardly focused, missing out on external enrichment.",
+        redFlags:
+          " - One partner attends events alone repeatedly, leading to jealousy or suspicion about time spent apart from each other.\n - Social invitations cause arguments, with accusations of being too antisocial or too demanding, straining your bond.\n - Community involvement dwindles, leaving you both feeling isolated and unsupported in broader networks.",
+        resolutionStrategies: [
+          "Alternate between shared social outings and solo time, choosing events that suit both energy levels to build inclusive friendships.",
+          "Discuss and set boundaries for community commitments upfront, ensuring neither feels pressured while supporting each other's choices.",
+          "Introduce each other to personal friends gradually, fostering a blended network that respects independence and builds connection.",
+        ],
+        growthOutcome:
+          "Addressing this will enrich your social world, creating a balance where independence enhances rather than limits your community ties.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "When it comes to learning new things, you both focus on practical skills that have real-world applications, which keeps your growth grounded and useful. However, one likes to commit to and finish projects thoroughly, while the other might switch interests more freely. This can lead to motivating each other to persist or explore more.",
+        coreChallenge:
+          "The core tension lies in your mutual emphasis on concrete mastery being disrupted by one partner's structured completion drive versus the other's flexible dropping of pursuits, potentially causing frustration over unfinished goals or stifled curiosity in personal development.",
+        whyThisHappens:
+          " - Both prefer tangible skills over abstract ideas, but this shared focus highlights clashes when one insists on depth in one area and the other seeks variety.\n - The structured approach leads to finishing courses or hobbies methodically, while adaptability results in starting many but completing few.\n - This difference creates uneven progress, where one feels held back by the other's shifts and vice versa.\n - Over time, joint growth efforts falter, leading to separate paths that miss shared inspiration.\n - Without alignment, discovery becomes a source of criticism rather than mutual encouragement.",
+        redFlags:
+          " - One mocks the other's unfinished projects, leading to defensiveness and reluctance to share new interests openly.\n - Growth activities turn competitive or judgmental, eroding the supportive atmosphere needed for personal development.\n - You stop discussing discoveries altogether, causing stagnation in your individual and shared evolution.",
+        resolutionStrategies: [
+          "Choose joint learning goals that allow for structured milestones with room for flexible adjustments, reviewing progress together regularly.",
+          "Encourage each other's pursuits by asking curious questions without judgment, fostering an environment of mutual motivation.",
+          "Set personal discovery time alongside shared sessions, balancing individual mastery with collaborative exploration.",
+        ],
+        growthOutcome:
+          "By working through this, you'll cultivate a partnership that accelerates personal growth through understanding and support.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "For fun and excitement, one of you plans activities in detail to ensure everything goes smoothly, while the other enjoys improvising along the way. Your differing energy levels mean one seeks shared thrills and the other quieter pleasures. This contrast can make adventures more dynamic if you blend your styles effectively.",
+        coreChallenge:
+          "The primary conflict emerges from one partner's detailed planning clashing with the other's spontaneous changes, heightened by preferences for outward shared experiences versus inward quiet joys, which can turn potential fun into sources of stress and disappointment.",
+        whyThisHappens:
+          " - Structured planning aims for predictable enjoyment, but flexible adaptations often alter those plans, causing irritation.\n - The outgoing partner craves interactive adventures, while the inward one prefers serene, low-key fun, leading to mismatched expectations.\n - This energy difference makes compromises hard, as one feels bored and the other overwhelmed during activities.\n - Over time, repeated conflicts reduce willingness to try new things together, limiting joy.\n - Without resolution, adventures become rare, replaced by separate pursuits that weaken your bond.",
+        redFlags:
+          " - Planned outings frequently end in arguments over last-minute changes, leaving both feeling unappreciated and frustrated.\n - One partner opts out of activities consistently, leading to resentment and a sense of missing out on shared happiness.\n - Joy feels forced or absent, turning what should be fun into a chore that strains the relationship.",
+        resolutionStrategies: [
+          "Design adventures with a loose structure that includes planned highlights and open slots for spontaneous decisions, suiting both styles.",
+          "Alternate leading fun activities, where one plans shared thrills and the other suggests quiet joys, building empathy through experience.",
+          "Reflect after each outing on what worked and what didn't, adjusting future plans to better align with each other's energy needs.",
+        ],
+        growthOutcome:
+          "Conquering this will unlock more joyful experiences, strengthening your ability to find adventure in everyday moments together.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "In seeking peace, one of you might feel the need for constant connection, while the other requires substantial alone time to recharge. You both enforce personal boundaries well, which helps prevent overstepping. This can create a respectful space if you communicate your needs clearly and supportively.",
+        coreChallenge:
+          "The main strain comes from one partner's outward need for interaction conflicting with the other's inward desire for deep solitude, reinforced by your shared autonomy that prioritizes boundaries, potentially leading to feelings of rejection or intrusion in moments of needed serenity.",
+        whyThisHappens:
+          " - The outgoing partner interprets solitude as avoidance, seeking check-ins that the inward one finds disruptive to their peace.\n - Both valuing independence means you set firm limits, but this can make accommodating the other's energy feel like a violation.\n - This setup amplifies isolation, as natural boundaries turn into walls during times of needed connection or space.\n - Over time, misunderstandings build, making serenity a solo endeavor rather than a shared refuge.\n - Without balance, it leads to cycles of pursuit and withdrawal that erode emotional safety.",
+        redFlags:
+          " - Requests for space trigger arguments, with one feeling pushed away and the other suffocated, escalating tensions.\n - Boundaries become excuses for avoidance, leading to prolonged silences that damage trust and intimacy.\n - Serenity time is resented, creating a home environment filled with unspoken frustrations instead of peace.",
+        resolutionStrategies: [
+          "Establish daily routines that include designated alone time for the inward partner and connection moments for the outgoing one, with clear signals.",
+          "Practice expressing needs without blame, like saying what you require for serenity and how the other can support it lovingly.",
+          "Create shared quiet activities, such as reading together, to blend solitude with subtle companionship that honors both energies.",
+        ],
+        growthOutcome:
+          "Handling this well will foster a deeper sense of peace, where space strengthens rather than separates your connection.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "You both aim to leave a mark through personal achievements rather than group efforts, focusing on tangible results that matter. This shared outlook can inspire individual pursuits, but differences in logical versus values-based approaches might influence how you define success. Together, you can build a legacy that reflects your unique paths.",
+        coreChallenge:
+          "The central difficulty is your mutual focus on autonomous legacies clashing with concrete measurable impacts, further divided by logical principles versus empathic values, which can lead to diverging visions of what constitutes meaningful long-term contributions and shared remembrance.",
+        whyThisHappens:
+          " - Both prioritize personal visions over collective ones, leading to parallel legacies that sometimes lack integration as a couple.\n - A concrete focus emphasizes visible, practical outcomes, but differing judgments make one see impact through efficiency and the other through emotional resonance.\n - Logical strategies clash with values-driven choices, causing debates over how to allocate time and resources for lasting effects.\n - Over time, without synergy, individual pursuits overshadow joint aspirations, diluting a unified legacy.\n - This can result in one feeling their approach is undervalued, straining mutual support for each other's goals.",
+        redFlags:
+          " - Discussions about future impact turn into competitions, with each dismissing the other's methods as impractical or unfeeling.\n - Legacy planning is avoided, leading to uncertainty and anxiety about what you'll leave behind together as a pair.\n - One partner's pursuits dominate, causing the other to feel sidelined in shaping their shared story.",
+        resolutionStrategies: [
+          "Brainstorm legacy goals that combine personal visions with measurable steps, incorporating both logical and values-based elements for balance.",
+          "Support each other's individual impacts by attending events or helping with projects, building a foundation for joint contributions.",
+          "Reflect annually on your progress, adjusting plans to ensure both feel their preferences shape the legacy you're creating together.",
+        ],
+        growthOutcome:
+          "By aligning on this, you'll craft a powerful legacy that honors your independence while amplifying your combined influence.",
+      },
+    },
+  ],
+  "C-L-O-S-A/N-L-O-S-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You two bring different approaches to your careers, with one focusing on independent projects that highlight personal skills and the other on team efforts that build group success. This mix can create a balanced dynamic where solo achievements inspire collective goals, but it might also lead to moments where one feels pulled between personal drive and shared missions. Together, you can support each other's ambitions by blending autonomy with collaboration in meaningful ways.",
+        coreChallenge:
+          "The main tension arises from one partner's desire for solo recognition in their work clashing with the other's need for joint purpose that benefits everyone involved.",
+        whyThisHappens:
+          "- One of you prefers tackling career goals alone to maintain full control over outcomes, while the other thrives on involving others to create a unified direction.\n- Both of you like having clear plans and structures in your professional lives, which can amplify frustrations when those plans don't align on whether to go solo or team up.\n- This difference often shows up in how you define success, with one seeing it as personal accomplishments and the other as group wins.\n- Stable routines in your careers make it harder to adjust when one wants independence and the other seeks inclusion.\n- Over time, these preferences can lead to mismatched expectations about support in professional endeavors.",
+        redFlags:
+          "- Watch out if one starts resenting the other's involvement in work matters, leading to withdrawn behavior or secret projects that exclude the partner.\n- Be cautious when discussions about career moves turn into arguments over whether to prioritize individual freedom or team harmony.\n- Notice if one feels undervalued because their solo efforts aren't celebrated in a group context, causing emotional distance.",
+        resolutionStrategies: [
+          "Set aside time each month to discuss career goals openly, ensuring both independent pursuits and shared contributions are acknowledged and supported.",
+          "Create a joint vision board for your purposes that includes elements of personal achievement alongside collaborative elements to bridge the gap.",
+          "Practice alternating leadership in planning sessions, where one leads with autonomous ideas and the other incorporates harmonious aspects for balance.",
+        ],
+        growthOutcome:
+          "By navigating these differences, you'll build a stronger sense of mutual respect that enhances both your individual and shared purposes.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, you both appreciate organized approaches, but one tends to focus on practical, immediate tools while the other looks toward long-term visions. This can lead to productive discussions where concrete steps meet innovative ideas, yet it might cause friction when deciding on investments or budgets. Working together, you can create a solid financial plan that feels secure and forward-thinking for both.",
+        coreChallenge:
+          "The key issue is balancing a preference for tangible, current financial strategies with a desire for abstract, future-oriented wealth building that sometimes overlooks immediate details.",
+        whyThisHappens:
+          "- Both of you value structure in handling money, like setting budgets and sticking to plans, but this rigidity can highlight differences in what you prioritize.\n- One sees wealth as something built through observable, step-by-step actions, while the other views it as a way to fund bigger dreams and possibilities.\n- Logical decisions play a role, with both analyzing costs coldly, but this can lead to debates when one wants proven methods and the other innovative risks.\n- Stable habits make it tough to adapt when financial choices don't match in terms of focusing on the now versus the potential.\n- Over time, these views can create tension in how you allocate resources, with one feeling too restricted and the other too speculative.",
+        redFlags:
+          "- Pay attention if one starts hiding purchases or investments because they fear the other's judgment on practicality versus vision.\n- Be alert when budget talks escalate into blame over being too conservative or too dreamy in financial planning.\n- Notice if shared goals suffer because one insists on immediate returns while the other pushes for long-term gambles.",
+        resolutionStrategies: [
+          "Develop a shared budget that allocates portions for practical needs and visionary investments, reviewing it together quarterly to adjust as needed.",
+          "Take turns presenting financial ideas, with one explaining the concrete benefits and the other the potential outcomes, to foster understanding.",
+          "Incorporate logical tools like spreadsheets that track both current assets and future projections to align your approaches effectively.",
+        ],
+        growthOutcome:
+          "Overcoming this will lead to a more prosperous partnership where you both feel confident in your combined financial strategy.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both enjoy engaging with the world actively in your health routines, but one leans toward consistent plans while the other might adapt more flexibly, though you share a structured base. This shared outward energy can make joint activities fun, yet differences in sticking to schedules could create minor hurdles. By combining your energies, you can motivate each other to maintain vitality in enjoyable ways.",
+        coreChallenge:
+          "The primary strain comes from aligning your shared outgoing approaches to health with preferences for structure that might not always sync perfectly in daily routines.",
+        whyThisHappens:
+          "- Both direct energy outward, wanting to involve each other in fitness or wellness activities, but this can lead to overload if not balanced.\n- A mutual preference for organized systems means you both like planned workouts or diets, yet small variations in adaptability can cause skips or changes.\n- Outward focus makes it easy to push for group exercises, but without alignment, one might feel dragged into unwanted commitments.\n- Stable attitudes toward change amplify issues when one wants rigid schedules and the other slight flexibility, even if minimal.\n- These patterns can build up, making health feel more like a chore than a shared benefit if not addressed.",
+        redFlags:
+          "- Look out if one begins avoiding joint health activities, leading to separate routines that weaken your connection in this area.\n- Be wary when reminders about plans turn into nagging, causing resentment over perceived lack of commitment.\n- Notice if energy levels drop because outward engagements become exhausting without proper recharge time.",
+        resolutionStrategies: [
+          "Plan weekly health check-ins where you both share what works in your routines and adjust plans to include more mutual enjoyment.",
+          "Alternate between structured activities you both agree on and allowing some leeway for personal adaptations to keep things fresh.",
+          "Incorporate fun, outward-focused elements like classes together while respecting individual needs for consistency in your approaches.",
+        ],
+        growthOutcome:
+          "Resolving this will help you both achieve greater vitality through a supportive and energized partnership.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "In your relationship, one brings a focus on personal space while the other emphasizes emotional connection, creating a dynamic where independence meets togetherness. Your shared outgoing nature adds lively interactions, but decisions on showing affection might differ in style. This blend can deepen your bond if you navigate the balance thoughtfully.",
+        coreChallenge:
+          "The central difficulty is reconciling a need for individual freedom in love with a desire for close, group-like harmony that sometimes feels too encompassing.",
+        whyThisHappens:
+          "- One values autonomy in expressing romance, preferring personal gestures, while the other seeks shared emotional experiences to build unity.\n- Both engage outwardly, wanting frequent interactions, but this can intensify clashes when one wants space and the other closeness.\n- Logical versus value-based choices appear in how love is shown, with one practical and the other heartfelt, adding layers to misunderstandings.\n- These differences often emerge in daily affections, where outward energy pushes for more engagement than one might want.\n- Over time, without balance, it can lead to one feeling smothered and the other disconnected.",
+        redFlags:
+          "- Be cautious if one starts pulling away during romantic moments, indicating a buildup of resentment over lack of space.\n- Watch for arguments where affection styles are criticized, like calling one too detached or the other too needy.\n- Notice if shared activities lose their spark because underlying tensions about harmony versus autonomy go unaddressed.",
+        resolutionStrategies: [
+          "Schedule regular date nights that alternate between independent surprises and joint experiences to honor both needs.",
+          "Communicate openly about love languages, incorporating practical acts and emotional words to bridge your differences.",
+          "Practice giving space during high-energy times while ensuring check-ins maintain the connection you both value.",
+        ],
+        growthOutcome: "By addressing this, you'll cultivate a romance that's both freeing and intimately connected.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You approach home life with a shared sense of structure, but one prioritizes personal boundaries while the other focuses on family unity. This can lead to a well-organized household with room for individual needs, yet tensions might arise in how you handle routines. Together, you can create a nurturing environment that respects both views.",
+        coreChallenge:
+          "The main hurdle is managing structured home routines while differing on whether to emphasize collective harmony or individual limits within the family.",
+        whyThisHappens:
+          "- Both prefer organized systems like set chores and rules, but this stability can highlight conflicts over involvement levels.\n- One tends to set personal boundaries in family matters, while the other over-accommodates to keep everyone happy.\n- Structured attitudes make it hard to flex when one wants more independence and the other more inclusion in home decisions.\n- These preferences often show in daily interactions, where one might resist group activities and the other pushes for them.\n- Over time, it can create uneven dynamics where home feels more controlled by one approach.",
+        redFlags:
+          "- Pay attention if family gatherings become sources of stress, with one withdrawing to avoid over-commitment.\n- Be alert to resentment building when boundaries are ignored or harmony is forced without consent.\n- Notice if home rules start causing divisions instead of unity due to mismatched priorities.",
+        resolutionStrategies: [
+          "Establish clear home guidelines that include space for personal time alongside family activities to satisfy both preferences.",
+          "Hold family meetings where everyone voices needs, balancing autonomy with collective decisions for fairness.",
+          "Rotate responsibilities in a structured way that allows independence in execution while maintaining overall harmony.",
+        ],
+        growthOutcome: "This will result in a more balanced family life where everyone feels respected and connected.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "In social circles, one enjoys independent choices while the other leans toward group involvement, with your shared outward energy making interactions lively. This can enrich your network through diverse connections, but it might lead to differing commitments. By supporting each other, you can build fulfilling relationships together.",
+        coreChallenge:
+          "The core issue is navigating a preference for solo social decisions against a need for inclusive, group-focused engagements that can feel overwhelming.",
+        whyThisHappens:
+          "- One might decline invites to preserve personal energy, while the other over-commits to maintain community ties.\n- Both engage outwardly, thriving in social settings, but this amplifies drains when preferences clash on participation levels.\n- Differences emerge in how you handle invitations, with one prioritizing autonomy and the other harmony.\n- Outward orientations make it easy to get pulled into events, but without alignment, it leads to exhaustion or isolation.\n- These patterns can strain your joint social life if not balanced properly.",
+        redFlags:
+          "- Watch if one starts avoiding shared friends, leading to separate social lives that weaken your bond.\n- Be cautious when disagreements over events turn into blame about being too solitary or too obliging.\n- Notice if community involvement causes burnout for one while the other feels unsupported.",
+        resolutionStrategies: [
+          "Discuss upcoming social plans in advance, agreeing on which to attend together and which to handle individually.",
+          "Encourage each other to express comfort levels in groups, finding compromises like shorter visits or solo outings.",
+          "Build a mix of joint and personal friendships to honor both independent and harmonious social needs.",
+        ],
+        growthOutcome: "You'll develop a vibrant community life that energizes rather than depletes your relationship.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You pursue learning with one grounded in practical skills and the other in broad ideas, sharing a structured approach that helps in completing goals. This difference can spark inspiring exchanges, but it might cause friction in choosing paths. Collaborating allows you to expand horizons effectively.",
+        coreChallenge:
+          "The primary tension is between focusing on mastering tangible abilities and chasing diverse, conceptual explorations in a structured yet differing way.",
+        whyThisHappens:
+          "- One prefers honing specific, real-world skills deeply, while the other jumps into new ideas and possibilities frequently.\n- Both like organized progress, such as finishing what you start, but this can frustrate when one drops pursuits the other sees as essential.\n- Differences in focus lead to mismatched enthusiasm for activities, with one wanting depth and the other breadth.\n- Stable preferences amplify issues when adapting to each other's styles proves challenging.\n- Over time, it can hinder shared growth if not addressed with flexibility.",
+        redFlags:
+          "- Be alert if one dismisses the other's interests as too narrow or too scattered, stifling mutual support.\n- Watch for abandonment of joint learning goals due to frustration over pace or direction.\n- Notice if personal development feels sidelined because preferences aren't integrated.",
+        resolutionStrategies: [
+          "Choose growth activities that blend practical application with idea exploration, like workshops that build skills through innovative methods.",
+          "Set structured timelines for pursuits, allowing switches if needed but committing to completion where possible.",
+          "Share discoveries regularly, appreciating how concrete mastery and abstract insights complement each other in your journeys.",
+        ],
+        growthOutcome: "This will foster a partnership rich in continuous, meaningful personal development for both.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "In seeking fun, you both plan carefully, but one enjoys shared thrills outwardly while the other might approach with personal twists, though sharing structure. This can lead to memorable experiences, yet differences in energy could arise. Together, you can create joyful moments that suit you both.",
+        coreChallenge:
+          "The key struggle is aligning detailed plans for adventures with outward engagements that sometimes conflict in how independence or harmony is prioritized.",
+        whyThisHappens:
+          "- Both prefer organized outings, like scheduled trips, but changes can disrupt when one wants adjustments and the other sticks firm.\n- Outward energy drives shared excitement, yet one might seek personal joy while the other group fun, causing mismatches.\n- Stable planning amplifies tensions when spontaneity creeps in unexpectedly.\n- These differences show in activity choices, where outward focus pushes for more but preferences differ.\n- Over time, it can make adventures feel less enjoyable if not balanced.",
+        redFlags:
+          "- Pay attention if plans frequently change, leading to disappointment or arguments over reliability.\n- Be wary when one feels adventures are too group-oriented or too solitary, reducing shared happiness.\n- Notice if joy diminishes because outward energies aren't synced properly.",
+        resolutionStrategies: [
+          "Plan adventures with built-in flexibility, like having backup options that allow for personal or shared adjustments.",
+          "Alternate between high-energy group activities and quieter, individual joys to keep balance in your fun times.",
+          "Discuss expectations before outings, ensuring both structure and outward engagement meet your needs.",
+        ],
+        growthOutcome:
+          "You'll discover deeper joy through adventures that strengthen your connection and individual happiness.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You both engage outwardly, but one needs more personal boundaries for peace while the other fills quiet times with connections. This dynamic can bring lively balance to downtime, yet it might lead to feelings of intrusion. By respecting each other, you can find true serenity together.",
+        coreChallenge:
+          "The main challenge is providing enough solitude for recharge amid outward energies that push for constant interaction or check-ins.",
+        whyThisHappens:
+          "- Both direct energy externally, making silence feel like an opportunity for engagement rather than rest for one.\n- One enforces personal space strictly, while the other seeks harmonious check-ins, leading to perceived rejections.\n- Outward orientations intensify the need for balance, as constant activity drains without alone time.\n- Differences in handling quiet moments create ongoing tensions if not managed.\n- These habits can disrupt overall peace if preferences aren't honored.",
+        redFlags:
+          "- Watch if requests for space lead to hurt feelings or accusations of distance.\n- Be cautious when serenity times turn into conflicts over involvement levels.\n- Notice if one starts seeking peace outside the relationship due to unmet needs.",
+        resolutionStrategies: [
+          "Establish designated quiet hours where both can pursue individual serenity without interruptions or expectations.",
+          "Communicate needs for space gently, framing it as essential for recharging to maintain your outward energies.",
+          "Incorporate joint relaxation activities that allow for personal boundaries while fostering harmony.",
+        ],
+        growthOutcome: "This will create a peaceful foundation that enhances your overall well-being as a couple.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "In building your mark on the world, one focuses on personal visions through concrete means, while the other on community through abstract ideas, sharing logical bases. This can inspire a powerful combined influence, but differences might cause alignment issues. Together, you can craft a meaningful legacy.",
+        coreChallenge:
+          "The central tension is blending individual, tangible impacts with collective, meaningful ones in ways that sometimes feel at odds despite shared structures.",
+        whyThisHappens:
+          "- One builds legacy through personal, measurable achievements, while the other through group efforts that foster shared purpose.\n- Differences in concrete versus abstract focus lead to varying ideas on what constitutes lasting impact.\n- Logical approaches help analyze, but can turn decisions cold when values on independence versus harmony clash.\n- These preferences often emerge in planning long-term goals, with one wanting solo control and the other inclusion.\n- Over time, it can dilute joint efforts if not integrated properly.",
+        redFlags:
+          "- Be alert if one downplays the other's contributions, leading to feelings of insignificance in shared legacies.\n- Watch for disputes over resources allocated to personal versus community projects.\n- Notice if visions diverge so much that collaborative impact suffers.",
+        resolutionStrategies: [
+          "Collaborate on legacy projects that incorporate measurable steps with broader meanings, assigning roles that play to your strengths.",
+          "Discuss impact goals regularly, valuing both autonomous pursuits and harmonious initiatives equally in your plans.",
+          "Use logical frameworks to evaluate progress, ensuring decisions respect personal values and collective aims.",
+        ],
+        growthOutcome:
+          "You'll achieve a legacy that's both personally fulfilling and widely influential through your partnership.",
+      },
+    },
+  ],
+  "C-L-O-S-A/N-L-O-S-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both chase your own goals with a strong sense of independence, focusing on what feels right for each of you without needing much input from others. This setup lets you support each other's ambitions while keeping things personal and straightforward. Still, blending your practical approach with their big-picture ideas can spark some interesting discussions about where you're both headed.",
+        coreChallenge:
+          "The main hurdle comes from both of you prioritizing personal achievements over team efforts, which might make it hard to align on a shared sense of purpose without feeling like you're compromising your individual paths.",
+        whyThisHappens:
+          "- You each lean toward handling your careers solo, which means joint projects or mutual support can sometimes feel like an afterthought rather than a priority.\n- With a preference for sticking to defined roles, changing directions together might create tension if one wants to pivot while the other stays locked in.\n- Your independent styles amplify when combined with rigid planning, leading to parallel paths that rarely intersect meaningfully.\n- This dynamic stems from valuing self-reliance so much that collaborative purpose-building takes a back seat.\n- Over time, without intentional merging, your purposes might drift apart even if they start aligned.",
+        redFlags:
+          "- Watch out if one starts resenting the other's focus on their own goals, leading to feelings of isolation in what should be a partnered journey.\n- Be cautious when rigid plans clash with emerging opportunities, causing arguments over whether to stick to the script or adapt slightly.\n- Notice if conversations about future ambitions turn into monologues, signaling a lack of true integration in your shared vision.",
+        resolutionStrategies: [
+          "Try setting aside time each month to discuss your individual goals openly, finding small ways to link them so you feel like you're building something together without losing your independence.",
+          "Experiment with joint planning sessions where you map out personal milestones but highlight overlaps, helping you both appreciate how your paths can support one another.",
+          "Encourage each other by celebrating solo wins as team victories, fostering a sense of unity in your purposes even when they're pursued separately.",
+        ],
+        growthOutcome:
+          "By navigating this, you'll create a partnership where individual purposes strengthen your bond, leading to mutual inspiration and deeper fulfillment.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "You both approach money with a structured mindset, aiming for stability through careful planning and logical choices. This shared focus helps you build a solid foundation, but your differing views on practical versus visionary investments can lead to debates. Overall, it creates a balanced dynamic where security meets innovation in your financial life.",
+        coreChallenge:
+          "The key issue arises from your preference for steady, organized saving clashing with tangible tools versus broader possibilities, potentially causing friction in how you allocate resources long-term.",
+        whyThisHappens:
+          "- You both favor structured financial habits like budgeting strictly, but one sees money as immediate tools while the other views it as fuel for future ideas.\n- This leads to disagreements when deciding on investments, as practical choices might seem too limiting to the one chasing bigger visions.\n- Logical budgeting dominates your talks, yet values creep in when spending on what feels meaningful versus purely efficient.\n- Over-reliance on plans without flexibility can make adapting to new financial opportunities feel disruptive to your established systems.\n- The combination of stability-seeking and differing perceptions amplifies small mismatches into ongoing debates about priorities.",
+        redFlags:
+          "- Pay attention if one starts overriding the other's input on spending, leading to built-up resentment over feeling undervalued in financial decisions.\n- Be alert to patterns where logical arguments turn emotional, especially when values like security clash with ambitious pursuits.\n- Notice if your joint accounts or plans stagnate because neither wants to compromise on their view of prosperity.",
+        resolutionStrategies: [
+          "Start by creating a shared budget that includes sections for practical needs and visionary goals, ensuring both perspectives get equal weight in your planning.",
+          "Hold regular check-ins to review financial progress, using logic to evaluate options while respecting each other's values in the final choices.",
+          "Build a compromise fund where a portion of savings goes toward experimental investments, blending stability with room for innovative ideas.",
+        ],
+        growthOutcome:
+          "Overcoming this will help you achieve a prosperous life where structure supports both immediate security and long-term dreams.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both bring energy to your health routines by engaging actively with the world around you, making it easier to motivate each other for workouts or activities. This outward focus creates fun, shared experiences that boost your vitality together. However, sticking to plans can sometimes clash with life's unpredictability, requiring some adjustments.",
+        coreChallenge:
+          "The primary tension stems from your shared outward energy needing joint routines, but combined with a preference for strict plans that might not always allow for necessary flexibility in maintaining health.",
+        whyThisHappens:
+          "- You both thrive on interacting with others or the environment for health boosts, yet enforcing rigid schedules can lead to burnout if one needs a break.\n- This dynamic intensifies because stable structures feel essential, making spontaneous changes to routines feel like a threat to consistency.\n- Outward engagement means you push for group activities, but without built-in adaptability, skipped sessions due to mood or events cause guilt.\n- The preference for organization amplifies the issue, as deviations from the plan disrupt the flow you both rely on for vitality.\n- Over time, this can create a cycle where health goals feel more like obligations than energizing pursuits.",
+        redFlags:
+          "- Look out for signs where one partner feels overwhelmed by the constant push for shared activities, leading to quiet withdrawal from joint health efforts.\n- Be wary if rigid plans result in arguments over missed workouts, turning health into a source of stress rather than strength.\n- Notice patterns of fatigue from over-scheduling, indicating that your outward energy isn't being balanced with rest.",
+        resolutionStrategies: [
+          "Incorporate flexible elements into your health plans, like optional solo days, to allow for personal recharge while keeping the outward momentum going.",
+          "Discuss and agree on core routines that you both commit to, but build in buffers for life's surprises to avoid frustration from derailed schedules.",
+          "Celebrate small wins in your vitality journey together, using positive reinforcement to make health feel more collaborative and less regimented.",
+        ],
+        growthOutcome:
+          "Mastering this will lead to a vibrant partnership where health becomes a source of shared joy and sustained energy.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "You both express love through practical actions and logical gestures, creating a reliable foundation in your relationship. This shared approach builds trust over time, but blending independence with daily connections requires effort. Your romance thrives on mutual respect for personal space while finding ways to engage closely.",
+        coreChallenge:
+          "The central difficulty lies in balancing your mutual need for autonomy with the desire for emotional closeness, especially when outward energy calls for frequent interactions but logic sometimes overlooks heartfelt expressions.",
+        whyThisHappens:
+          "- You each value independence highly, which can make deep emotional syncing feel secondary to maintaining personal freedom in the relationship.\n- Outward orientations push for regular touchpoints, yet without intentional depth, these can stay surface-level and unsatisfying.\n- Logical ways of showing love, like acts of service, might not always convey the warmth that values-based affirmations provide.\n- This clash grows because autonomy prioritizes self over sync, amplifying tensions in romantic gestures that feel mismatched.\n- Over time, the focus on independence can lead to moments where one feels emotionally distant despite physical presence.",
+        redFlags:
+          "- Be mindful if independence turns into avoidance, causing one to pull away during times when closeness is needed most.\n- Watch for debates where logic dismisses emotional needs, leading to feelings of being undervalued in the romance.\n- Notice if daily interactions become routine without passion, signaling a drift in your romantic connection.",
+        resolutionStrategies: [
+          "Make a habit of scheduling quality time that includes both active outings and quiet talks, ensuring your outward energy supports deeper emotional bonds.",
+          "Practice expressing appreciation in ways that blend logic with warmth, like explaining why a gesture matters to you personally.",
+          "Set boundaries that honor autonomy while committing to small daily affirmations, helping romance feel secure and exciting.",
+        ],
+        growthOutcome:
+          "Resolving this will deepen your love, turning independence into a strength that enhances your romantic intimacy.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You both prefer organized home environments with clear rules and structures, making your daily life run smoothly together. This alignment helps in managing chores and family matters efficiently. However, incorporating independence into family dynamics can sometimes create boundaries that need careful navigation.",
+        coreChallenge:
+          "The main struggle emerges from your shared emphasis on structure in home life clashing with individual autonomy, potentially leading to tensions over how much to accommodate family versus setting personal limits.",
+        whyThisHappens:
+          "- You both like established routines for chores and rules, but autonomy means one might resist if it feels too group-oriented.\n- This intensifies because stable preferences lock in systems, making changes for family needs feel disruptive to personal space.\n- Independence drives boundary-setting, which can conflict with the need to over-accommodate in shared home settings.\n- The dynamic arises from prioritizing organization, yet personal objectives sometimes override collective home harmony.\n- Over time, this can result in uneven participation in family activities if autonomy takes precedence.",
+        redFlags:
+          "- Keep an eye on situations where one enforces boundaries too strictly, causing the other to feel excluded from home decisions.\n- Be cautious if structured plans lead to rigidity, sparking conflicts over adapting to family changes or needs.\n- Notice if independence results in parallel living at home, reducing the sense of a unified family unit.",
+        resolutionStrategies: [
+          "Develop a home routine that includes flexible slots for personal time, ensuring structure supports both family unity and individual needs.",
+          "Talk openly about boundaries in family interactions, finding compromises that respect autonomy while fostering a welcoming home.",
+          "Assign roles based on strengths, blending organization with independence to make home life feel balanced and fair.",
+        ],
+        growthOutcome:
+          "By addressing this, your home will become a nurturing space where structure and autonomy coexist harmoniously.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You both navigate social circles with an independent streak, choosing engagements that align with your own interests. This allows for a supportive partnership where you encourage each other's connections. Yet, blending outward energy with autonomy can lead to differing levels of commitment to group activities.",
+        coreChallenge:
+          "The core issue is managing your shared independence in social settings alongside a desire for outward interactions, which might cause imbalances in how much you invest in friendships and community.",
+        whyThisHappens:
+          "- You each prefer self-reliant social choices, leading to declining invites if they don't fit personal agendas, affecting joint commitments.\n- Outward energy draws you to groups, but autonomy can make over-committing feel burdensome to your individual freedom.\n- This clash builds because independence prioritizes solo decisions, amplifying drains from too many social obligations.\n- The preference for personal objectives means community involvement varies, creating mismatches in participation levels.\n- Over time, this can lead to one feeling pulled in directions that don't align with their energy needs.",
+        redFlags:
+          "- Be alert if one starts resenting the other's selective social choices, leading to isolation in shared friendships.\n- Watch for exhaustion from mismatched energy in groups, where outward push meets independent pullback.\n- Notice if community ties weaken because autonomy overrides collective opportunities repeatedly.",
+        resolutionStrategies: [
+          "Plan social outings that allow for individual opt-outs, respecting autonomy while encouraging shared experiences when possible.",
+          "Discuss your social energy levels regularly, finding a balance that lets you both engage without feeling overwhelmed.",
+          "Build a core group of friends that aligns with both your interests, making community feel like a natural extension of your partnership.",
+        ],
+        growthOutcome:
+          "Tackling this will enrich your social life, creating meaningful connections that enhance your bond together.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You both pursue personal development with a structured approach, committing to goals that build over time. This shared stability helps you motivate each other in learning. However, your concrete focus versus their abstract explorations can create varied paths in discovery.",
+        coreChallenge:
+          "The fundamental challenge is bridging your preference for mastering tangible skills with their pursuit of novel ideas, especially when combined with a stable mindset that resists shifting directions mid-way.",
+        whyThisHappens:
+          "- One gravitates toward practical, observable growth areas, while the other seeks patterns and possibilities, leading to divergent interests.\n- Stable preferences mean you both like finishing what you start, but novelty chases can make completing courses feel constraining.\n- This dynamic heightens because concrete mastery clashes with abstract novelty, amplifying frustrations in joint learning efforts.\n- The focus on organization makes dropping pursuits for new ones seem wasteful to the more grounded partner.\n- Over time, without alignment, your growth journeys might run parallel without much intersection or mutual enrichment.",
+        redFlags:
+          "- Pay attention if one dismisses the other's interests as impractical, stifling shared enthusiasm for discovery.\n- Be wary of unfinished projects piling up, indicating a clash between stability and the pull of new ideas.\n- Notice if growth discussions turn competitive, highlighting unaddressed differences in your approaches.",
+        resolutionStrategies: [
+          "Choose joint growth activities that blend practical skills with innovative elements, allowing both of you to contribute uniquely.",
+          "Set milestones for personal discoveries and share progress, using structure to support exploration without rigid constraints.",
+          "Encourage trying each other's preferred methods occasionally, fostering empathy and broader perspectives in your development.",
+        ],
+        growthOutcome:
+          "Conquering this will lead to expansive personal growth that strengthens your relationship through shared insights.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "You both enjoy planning adventures with a clear structure, ensuring they're well-organized and exciting. This alignment makes for memorable experiences that you can look forward to together. Still, incorporating outward energy means balancing shared thrills with individual preferences.",
+        coreChallenge:
+          "The key tension involves your mutual love for detailed planning in adventures clashing with the need for spontaneity, particularly when outward engagement seeks constant shared excitement but resists last-minute changes.",
+        whyThisHappens:
+          "- You both prefer mapping out every detail of trips, but flexibility demands can disrupt the comfort of set plans.\n- Outward orientations crave joint thrills, yet rigid structures make adapting feel like a loss of control.\n- This intensifies because stable mindsets lock in itineraries, amplifying stress from deviations.\n- The dynamic stems from valuing organization, leading to conflicts when one wants to alter plans for more joy.\n- Over time, adventures might become predictable if flexibility isn't integrated, reducing the sense of true adventure.",
+        redFlags:
+          "- Look for signs where planning becomes a battleground, with one feeling restricted by the other's inflexibility.\n- Be cautious if shared activities lead to disappointment, as outward energy unmet turns into resentment.\n- Notice if joy diminishes because routines override the excitement of spontaneous moments.",
+        resolutionStrategies: [
+          "Incorporate buffer time in your adventure plans for unexpected fun, blending structure with room for outward spontaneity.",
+          "Alternate leading trips, allowing each to infuse their style while committing to support the other's choices fully.",
+          "Reflect after each adventure on what brought joy, using insights to refine future plans for better balance.",
+        ],
+        growthOutcome:
+          "Overcoming this will fill your life with adventures that bring lasting joy and closer connection.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You both draw serenity from engaging with the world, finding peace in active pursuits rather than isolation. This shared outward focus helps you recharge together through experiences. However, independence means carving out personal space amid constant interaction.",
+        coreChallenge:
+          "The primary difficulty is providing enough solitude for recharge when your outward energies pull toward constant engagement, especially as independence enforces boundaries that might feel rejecting to the other.",
+        whyThisHappens:
+          "- Outward preferences mean you seek stimulation externally, but deep solitude needs can clash with this constant pull.\n- Independence amplifies the issue by prioritizing personal boundaries, making shared time feel intrusive at times.\n- This dynamic grows because filling silence with check-ins contradicts the need for autonomous quiet.\n- The focus on self-reliance leads to enforced alone time that one might interpret as emotional distance.\n- Over time, without balance, serenity suffers as energies misalign in your quest for peace.",
+        redFlags:
+          "- Be mindful if requests for space lead to feelings of rejection, straining your emotional connection.\n- Watch for buildup of tension from unmet solitude needs, manifesting in irritability during shared moments.\n- Notice if independence turns into isolation, reducing the serenity you both seek in the relationship.",
+        resolutionStrategies: [
+          "Establish signals for when one needs solitude, respecting them without question to maintain trust and peace.",
+          "Schedule short solo activities regularly, ensuring outward energy is balanced with independent recharge time.",
+          "Create shared quiet rituals, like silent walks, to blend engagement with serenity in a way that suits you both.",
+        ],
+        growthOutcome: "Navigating this will cultivate a serene space where you both feel recharged and connected.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "You both aim to leave a mark through personal visions, driven by independence and logical planning. This shared drive inspires each other to pursue meaningful goals. Yet, blending concrete measures with abstract meanings requires thoughtful integration.",
+        coreChallenge:
+          "The central hurdle is aligning your independent approaches to legacy-building, where one focuses on tangible impacts and the other on broader significance, potentially clashing in how you define lasting contributions.",
+        whyThisHappens:
+          "- Independence means you each build legacies solo, making collaborative efforts feel secondary to personal objectives.\n- Concrete views seek measurable results, while abstract ones prioritize deeper meanings, leading to mismatched priorities.\n- Logical decisions dominate, but values influence when assessing impact on people versus principles.\n- This intensifies because autonomy resists group-oriented paths, amplifying differences in perception.\n- Over time, without syncing, your legacies might diverge, reducing the sense of a joint enduring influence.",
+        redFlags:
+          "- Pay attention if one downplays the other's vision as unrealistic, eroding mutual support for legacy goals.\n- Be wary of conflicts where logic overrides values, causing emotional disconnect in your shared aspirations.\n- Notice if independence leads to separate pursuits, weakening the potential for a combined impactful legacy.",
+        resolutionStrategies: [
+          "Identify overlapping elements in your visions and collaborate on those, building a legacy that honors both tangible and abstract aspects.",
+          "Use logical frameworks to evaluate joint projects, incorporating values to ensure they feel meaningful to you both.",
+          "Share stories of your inspirations regularly, fostering understanding and alignment in your independent paths.",
+        ],
+        growthOutcome:
+          "By resolving this, you'll craft a powerful legacy that reflects your unique strengths and shared bond.",
+      },
+    },
+  ],
 };

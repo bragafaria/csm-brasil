@@ -10,6 +10,7 @@
 :root {
   /* ── Core ──────────────────────────────────────── */
   --surface: #0b0e11;
+  --surface2: #1b1b1b;
   --surface-variant: #171a21;
   --dashboard: #0b0e11;
 

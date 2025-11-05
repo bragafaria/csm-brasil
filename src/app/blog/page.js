@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { getPostsWithCategory, getCategories } from "@/app/lib/neon";
 import { format } from "date-fns";
+import { Heart, Sparkles, Flame } from "lucide-react";
 
 export const revalidate = 86400;
 
@@ -29,12 +30,12 @@ export default async function BlogHome() {
   );
 
   const categoryIcons = {
-    "love-relationship": "Heart",
-    "self-wellness": "Sparkles",
-    "heartbreak-divorce": "BrokenHeart",
-    "sex-seduction": "Flame",
-    "entertainment-news": "ClapperBoard",
-    "expert-advice": "GraduationCap",
+    "love-relationship": <Heart className="w-10 h-10 text-[var(--primary)]" />,
+    "self-wellness": <Sparkles className="w-10 h-10 text-[var(--primary)]" />,
+    "heartbreak-divorce": <Heart className="w-10 h-10 text-[var(--primary)]" />,
+    "sex-seduction": <Flame className="w-10 h-10 text-[var(--primary)]" />,
+    "entertainment-news": <Heart className="w-10 h-10 text-[var(--primary)]" />,
+    "expert-advice": <Heart className="w-10 h-10 text-[var(--primary)]" />,
   };
 
   return (
@@ -77,7 +78,7 @@ export default async function BlogHome() {
       {featured[0] && (
         <section id="featured" className="relative -mt-16 max-w-7xl mx-auto px-6">
           <div className="card-gradient rounded-3xl p-1 shadow-2xl">
-            <div className="bg-[var(--surface)] rounded-3xl overflow-hidden">
+            <div className="bg-[var(--surface2)] rounded-3xl overflow-hidden">
               <div className="md:flex">
                 <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
                   <div className="inline-flex items-center gap-2 bg-[var(--primary)]/20 text-[var(--primary)] px-3 py-1 rounded-full text-xs font-bold w-fit mb-4">
@@ -105,9 +106,8 @@ export default async function BlogHome() {
                   </Link>
                 </div>
                 <div className="md:w-1/2 relative h-64 md:h-auto">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent z-10"></div>
-                  <div className="bg-gradient-to-br from-[var(--primary)] to-purple-800 border-2 border-dashed border-[var(--border)] rounded-r-3xl w-full h-full flex items-center justify-center text-white/60 text-6xl">
-                    CSM
+                  <div className="bg-[var(--primary)] border border-[var(--border)] rounded-r-3xl w-full h-full flex items-center justify-center text-white/60 text-6xl">
+                    FEATURED IMAGE
                   </div>
                 </div>
               </div>
@@ -139,8 +139,8 @@ export default async function BlogHome() {
                 {cat.posts.map((post) => (
                   <Link key={post.id} href={`/blog/${post.category_slug}/${post.slug}`} className="group block">
                     <article className="card-gradient rounded-2xl p-1 h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
-                      <div className="bg-[var(--surface)] rounded-2xl p-5 h-full flex flex-col">
-                        <div className="bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 border-2 border-dashed border-[var(--border)] rounded-xl w-full h-48 mb-4 flex items-center justify-center text-5xl text-[var(--primary)]/40">
+                      <div className="bg-[var(--surface2)] rounded-2xl p-5 h-full flex flex-col">
+                        <div className="bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 border border-[var(--border)] rounded-xl w-full h-48 mb-4 flex items-center justify-center text-5xl text-[var(--primary)]/40">
                           {Icon}
                         </div>
                         <h3 className="font-bold text-lg text-[var(--text-primary)] mb-2 line-clamp-2 group-hover:text-[var(--accent)] transition">
