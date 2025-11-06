@@ -34,7 +34,7 @@ export default async function BlogPost({ params }) {
   return (
     <article className="max-w-4xl mx-auto">
       {/* Breadcrumb */}
-      <nav className="text-sm text-[var(--text-secondary)] mb-6">
+      <nav className="mt-20 p-2 text-sm text-[var(--text-secondary)] mb-6">
         <Link href="/blog" className="hover:text-[var(--accent)]">
           Blog
         </Link>
@@ -47,8 +47,7 @@ export default async function BlogPost({ params }) {
       </nav>
 
       {/* Post */}
-      <header className="mb-10">
-        <h1 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">{post.title}</h1>
+      <header className="my-20">
         <div className="flex items-center gap-4 text-sm text-[var(--text-secondary)]">
           <time>{format(new Date(post.published_at), "MMMM d, yyyy")}</time>
           <span>•</span>
@@ -58,7 +57,19 @@ export default async function BlogPost({ params }) {
 
       {/* Content */}
       <div
-        className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-[var(--accent)] prose-img:rounded-lg prose-img:shadow-md"
+        className="prose pl-4 pr-2 prose-lg max-w-none 
+             prose-p:text-white 
+             prose-li:text-white 
+             prose-blockquote:text-white 
+             prose-code:text-white 
+             prose-pre:bg-[var(--surface2)] prose-pre:text-white 
+             prose-a:text-purple-600 prose-a:hover:text-purple-400 prose-a:underline 
+             prose-img:rounded-lg prose-img:shadow-md 
+             prose-headings:text-white prose-headings:font-bold 
+             prose-strong:text-white prose-em:text-white prose-u:text-white 
+             prose-iframe:w-full prose-iframe:h-auto 
+             prose-figure:flex prose-figure:justify-center 
+             prose-figcaption:text-center prose-figcaption:text-sm prose-figcaption:text-[var(--text-secondary)]"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
 

@@ -7,6 +7,7 @@ import Underline from "@tiptap/extension-underline";
 import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
 import Youtube from "@tiptap/extension-youtube";
+import TextAlign from "@tiptap/extension-text-align"; // ← NEW
 import BlogMenu from "./BlogMenu";
 
 export default function BlogEditor({ content, onChange }) {
@@ -21,7 +22,7 @@ export default function BlogEditor({ content, onChange }) {
       Link.configure({
         openOnClick: false,
         autolink: true,
-        HTMLAttributes: { class: "text-blue-600 underline hover:text-blue-800" },
+        HTMLAttributes: { class: "text-[var(--accent)] underline hover:opacity-80" },
       }),
       Image.configure({
         inline: false,
@@ -41,13 +42,26 @@ export default function BlogEditor({ content, onChange }) {
           class: "mx-auto my-8 rounded-lg overflow-hidden shadow-lg",
         },
       }),
+      // ← TEXT ALIGNMENT
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+        alignments: ["left", "center", "right", "justify"],
+        defaultAlignment: "left",
+      }),
     ],
-    content: content || "<h1>Draft Title...</h1><p>Start writing...</p>",
+    content: content || "",
     immediatelyRender: false,
     editorProps: {
       attributes: {
         class:
-          "prose prose-lg dark:prose-invert max-w-none min-h-[600px] p-6 border border-[var(--border)] rounded-2xl bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20",
+          "prose prose-lg max-w-none min-h-[600px] p-6 border border-[var(--border)] rounded-2xl " +
+          "bg-[var(--surface2)] text-white " +
+          "prose-headings:text-white prose-headings:font-bold " +
+          "prose-p:text-white prose-li:text-white prose-strong:text-white " +
+          "prose-blockquote:text-white prose-code:text-white " +
+          "prose-pre:bg-[var(--surface)] prose-pre:text-white " +
+          "prose-a:text-[var(--accent)] prose-a:hover:underline " +
+          "focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/30",
       },
     },
     onUpdate: ({ editor }) => {

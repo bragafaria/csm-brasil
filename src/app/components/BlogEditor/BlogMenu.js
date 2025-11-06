@@ -17,6 +17,10 @@ import {
   Undo,
   Redo,
   Unlink,
+  AlignLeft,
+  AlignCenter,
+  AlignRight,
+  AlignJustify,
 } from "lucide-react";
 
 export default function BlogMenu({ editor }) {
@@ -162,6 +166,34 @@ export default function BlogMenu({ editor }) {
         title="Redo"
       >
         <Redo size={16} />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().setTextAlign("left").run()}
+        className={`${btn} ${editor.isActive({ textAlign: "left" }) ? active : ""}`}
+        title="Align Left"
+      >
+        <AlignLeft size={16} />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().setTextAlign("center").run()}
+        className={`${btn} ${editor.isActive({ textAlign: "center" }) ? active : ""}`}
+        title="Align Center"
+      >
+        <AlignCenter size={16} />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().setTextAlign("right").run()}
+        className={`${btn} ${editor.isActive({ textAlign: "right" }) ? active : ""}`}
+        title="Align Right"
+      >
+        <AlignRight size={16} />
+      </button>
+      <button
+        onClick={() => editor.chain().focus().setTextAlign("justify").run()}
+        className={`${btn} ${editor.isActive({ textAlign: "justify" }) ? active : ""}`}
+        title="Justify"
+      >
+        <AlignJustify size={16} />
       </button>
     </div>
   );

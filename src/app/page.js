@@ -238,6 +238,104 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Spectrum Preview */}
+      <section className="py-20 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Your mind mapped. Not labeled.</h2>
+            <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
+              Personality isn’t a box. It’s a spectrum of how your mind actually works. CSM shows you where you shine,
+              where you stretch, and how you connect.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto" key={routeKey}>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }}
+              variants={cardVariants}
+              className="group bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] p-6 rounded-2xl 
+                        shadow-lg border border-[rgba(var(--primary-rgb),0.2)] 
+                        hover:border-[rgba(var(--primary-rgb),0.4)] 
+                        hover:shadow-2xl transition-all duration-300 
+                        hover:-translate-y-1 min-h-[400px] flex flex-col space-y-4"
+            >
+              <div className="text-center space-y-2">
+                <h3 className="text-xl font-bold text-[var(--text-primary)]">Information Processing</h3>
+                <p className="text-sm text-[var(--text-secondary)] italic">
+                  How do you naturally perceive information?
+                </p>
+              </div>
+
+              <div className="space-y-4 flex-grow">
+                <div className="bg-gradient-to-r from-green-500/10 to-black/10 p-4 rounded-xl border border-green-400/20 space-y-2">
+                  <div className="text-lg font-medium text-[var(--text-primary)] text-center">Concrete Focus (C)</div>
+                  <p className="text-sm text-[var(--text-secondary)] text-center italic px-2">
+                    Focuses on tangible, verifiable data and practical details in the present moment.
+                  </p>
+                  <div className="space-y-2">
+                    <div className="text-base font-bold text-green-400 text-center">Mild Dominance</div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <span className="text-sm font-medium text-[var(--text-primary)]">Primary Preference</span>
+                        <HelpCircle className="h-4 w-4 text-green-400" />
+                      </div>
+                      <span className="text-xl font-bold text-green-400">57%</span>
+                    </div>
+                    <div className="w-full bg-gray-100 rounded-full h-2">
+                      <div className="bg-green-400 h-2 rounded-full" style={{ width: "57%" }}></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-red-500/10 to-black/10 p-4 rounded-xl border border-red-400/20 space-y-2">
+                  <div className="text-lg font-medium text-[var(--text-primary)] text-center">Abstract Insight (N)</div>
+                  <p className="text-sm text-[var(--text-secondary)] text-center italic px-2">
+                    Focuses on patterns, possibilities, and future implications.
+                  </p>
+                  <div className="space-y-2">
+                    <div className="text-base font-bold text-red-400 text-center">High Influence</div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <span className="text-sm font-medium text-[var(--text-primary)]">Secondary Influence</span>
+                        <HelpCircle className="h-4 w-4 text-red-400" />
+                      </div>
+                      <span className="text-xl font-bold text-red-400">43%</span>
+                    </div>
+                    <div className="w-full bg-gray-100 rounded-full h-2">
+                      <div className="bg-red-400 h-2 rounded-full" style={{ width: "43%" }}></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <div className="flex flex-col justify-center space-y-6 lg:pl-8">
+              <div className="space-y-4">
+                <h3 className="text-2xl font-bold text-[var(--primary)]">Five Spectrum Cross-Analysis</h3>
+                <p className="text-[var(--text-secondary)] leading-relaxed">
+                  See how your mind works across the key dimensions that shape your cognition
+                  <strong>
+                    {" "}
+                    (Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal
+                    Style).
+                  </strong>{" "}
+                  Percentage values quantify the relative influence of each pole, offering a precise view of your
+                  cognitive orientation and growth potential.
+                </p>
+              </div>
+              <div className="space-y-4">
+                <p className="text-[var(--text-secondary)] leading-relaxed">
+                  This reflects just one dimension of the full CSM Assessment, which unveils your complete archetype and
+                  relationship-ready insights.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How It Works — FULL TEXT, NO ELLIPSES */}
       <section
         id="how-it-works"
@@ -400,104 +498,6 @@ export default function Home() {
                 </p>
               </div>
             </AnimatedCard>
-          </div>
-        </div>
-      </section>
-
-      {/* Spectrum Preview */}
-      <section className="py-20 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Your mind mapped. Not labeled.</h2>
-            <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
-              Personality isn’t a box. It’s a spectrum of how your mind actually works. CSM shows you where you shine,
-              where you stretch, and how you connect.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto" key={routeKey}>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.2 }}
-              variants={cardVariants}
-              className="group bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] p-6 rounded-2xl 
-                        shadow-lg border border-[rgba(var(--primary-rgb),0.2)] 
-                        hover:border-[rgba(var(--primary-rgb),0.4)] 
-                        hover:shadow-2xl transition-all duration-300 
-                        hover:-translate-y-1 min-h-[400px] flex flex-col space-y-4"
-            >
-              <div className="text-center space-y-2">
-                <h3 className="text-xl font-bold text-[var(--text-primary)]">Information Processing</h3>
-                <p className="text-sm text-[var(--text-secondary)] italic">
-                  How do you naturally perceive information?
-                </p>
-              </div>
-
-              <div className="space-y-4 flex-grow">
-                <div className="bg-gradient-to-r from-green-500/10 to-black/10 p-4 rounded-xl border border-green-400/20 space-y-2">
-                  <div className="text-lg font-medium text-[var(--text-primary)] text-center">Concrete Focus (C)</div>
-                  <p className="text-sm text-[var(--text-secondary)] text-center italic px-2">
-                    Focuses on tangible, verifiable data and practical details in the present moment.
-                  </p>
-                  <div className="space-y-2">
-                    <div className="text-base font-bold text-green-400 text-center">Mild Dominance</div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2">
-                        <span className="text-sm font-medium text-[var(--text-primary)]">Primary Preference</span>
-                        <HelpCircle className="h-4 w-4 text-green-400" />
-                      </div>
-                      <span className="text-xl font-bold text-green-400">57%</span>
-                    </div>
-                    <div className="w-full bg-gray-100 rounded-full h-2">
-                      <div className="bg-green-400 h-2 rounded-full" style={{ width: "57%" }}></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-r from-red-500/10 to-black/10 p-4 rounded-xl border border-red-400/20 space-y-2">
-                  <div className="text-lg font-medium text-[var(--text-primary)] text-center">Abstract Insight (N)</div>
-                  <p className="text-sm text-[var(--text-secondary)] text-center italic px-2">
-                    Focuses on patterns, possibilities, and future implications.
-                  </p>
-                  <div className="space-y-2">
-                    <div className="text-base font-bold text-red-400 text-center">High Influence</div>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2">
-                        <span className="text-sm font-medium text-[var(--text-primary)]">Secondary Influence</span>
-                        <HelpCircle className="h-4 w-4 text-red-400" />
-                      </div>
-                      <span className="text-xl font-bold text-red-400">43%</span>
-                    </div>
-                    <div className="w-full bg-gray-100 rounded-full h-2">
-                      <div className="bg-red-400 h-2 rounded-full" style={{ width: "43%" }}></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            <div className="flex flex-col justify-center space-y-6 lg:pl-8">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-[var(--primary)]">Five Spectrum Cross-Analysis</h3>
-                <p className="text-[var(--text-secondary)] leading-relaxed">
-                  See how your mind works across the key dimensions that shape your cognition
-                  <strong>
-                    {" "}
-                    (Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal
-                    Style).
-                  </strong>{" "}
-                  Percentage values quantify the relative influence of each pole, offering a precise view of your
-                  cognitive orientation and growth potential.
-                </p>
-              </div>
-              <div className="space-y-4">
-                <p className="text-[var(--text-secondary)] leading-relaxed">
-                  This reflects just one dimension of the full CSM Assessment, which unveils your complete archetype and
-                  relationship-ready insights.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>

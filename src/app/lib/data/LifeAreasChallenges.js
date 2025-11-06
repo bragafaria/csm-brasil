@@ -2945,4 +2945,1902 @@ export const LifeAreasChallenges = {
       },
     },
   ],
+  "C-L-O-S-H/N-L-O-S-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both approach your careers with a structured mindset, but The Architect thrives on team-oriented missions while The Inventor focuses on independent innovations. This can create a dynamic where collaborative projects feel fulfilling for one and restricting for the other. Together, you can blend group efforts with personal breakthroughs to achieve meaningful goals.",
+        coreChallenge:
+          "Balancing The Architect's desire for shared team purposes with The Inventor's need for autonomous creative pursuits often leads to frustration when one feels pulled into group roles and the other feels isolated in solo endeavors.",
+        whyThisHappens:
+          "- The Architect naturally seeks out collaborative environments where everyone works toward a common objective, making individual paths seem less impactful.\n- The Inventor prefers forging ahead alone with unique ideas, viewing team dependencies as potential roadblocks to efficiency.\n- Both value stable plans, but The Architect integrates others into those plans while The Inventor keeps them personal.\n- This difference in harmony versus autonomy can make joint career decisions feel uneven, with one pushing for inclusion and the other for independence.\n- Over time, rigid structures amplify these tensions if not addressed early.",
+        redFlags:
+          "- The Architect starts resenting The Inventor's solo projects as selfish, leading to arguments about shared responsibilities in career growth.\n- The Inventor feels overwhelmed by The Architect's constant inclusion of others, resulting in withdrawal from joint planning sessions.\n- Persistent mismatches lead to one partner dominating career discussions, causing the other to disengage entirely from mutual goals.",
+        resolutionStrategies: [
+          "Schedule regular check-ins where The Architect shares team insights and The Inventor presents independent ideas, finding ways to merge them without forcing collaboration.",
+          "Set personal career milestones that respect The Inventor's autonomy while allowing The Architect to involve supportive networks in a non-intrusive manner.",
+          "Explore hybrid roles or projects that let you both contribute structured plans, with room for individual innovation and group feedback as needed.",
+        ],
+        growthOutcome:
+          "By harmonizing your approaches, you build careers that are both innovative and collaborative, leading to greater fulfillment and mutual support.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "Your shared preference for stable financial planning provides a solid foundation, but The Architect's practical focus clashes with The Inventor's visionary ideas on money. This can lead to debates on how to allocate resources effectively. Still, your logical mindset helps you navigate these differences toward prosperous outcomes.",
+        coreChallenge:
+          "The tension arises from The Architect's emphasis on tangible, immediate financial tools versus The Inventor's pursuit of abstract opportunities, often resulting in conflicting investment strategies despite your mutual structured approach.",
+        whyThisHappens:
+          "- Both prioritize organized budgeting, but The Architect sticks to proven, concrete methods while The Inventor chases potential high-reward concepts.\n- The Architect views wealth as built through reliable, observable steps, making risky ventures seem unnecessary.\n- The Inventor sees money as a gateway to broader visions, leading to impatience with slow, steady accumulation.\n- Your analytical nature means decisions are logic-based, but differing perceptions create stalls in agreement.\n- Without alignment, small disagreements escalate into larger financial rifts over time.",
+        redFlags:
+          "- The Architect dismisses The Inventor's ideas as impractical, causing The Inventor to make unilateral financial moves without discussion.\n- The Inventor grows frustrated with The Architect's caution, leading to impulsive spending that undermines joint stability.\n- Ongoing conflicts result in separate financial accounts, eroding trust in shared prosperity goals.",
+        resolutionStrategies: [
+          "Create a joint budget that allocates portions for safe, concrete investments favored by The Architect and exploratory ones preferred by The Inventor.",
+          "Use logical tools like spreadsheets to evaluate risks together, ensuring both perspectives are weighed before decisions.",
+          "Set long-term financial goals that incorporate stable structures with room for innovative growth, reviewing progress quarterly.",
+        ],
+        growthOutcome:
+          "Overcoming these challenges leads to a balanced wealth strategy that combines reliability with creativity, enhancing your overall security.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both enjoy engaging with the world actively and value consistent routines, making joint health activities appealing. However, maintaining motivation can vary when life gets busy. Your partnership supports each other in building sustainable habits that boost vitality.",
+        coreChallenge:
+          "Sustaining shared health routines becomes difficult when external demands pull you in different directions, despite your mutual outward energy and structured preferences.",
+        whyThisHappens:
+          "- Both thrive on interactive wellness like group classes, but individual commitments can disrupt consistency.\n- Your stable approach means you plan diets or exercises meticulously, yet flexibility is needed when plans falter.\n- Outward focus leads to overcommitting socially, sometimes at the expense of personal recovery time.\n- Without adjustments, rigid schedules create burnout rather than sustained energy.\n- Shared enthusiasm wanes if one partner's structure feels too imposing on the other.",
+        redFlags:
+          "- One partner skips joint workouts repeatedly, leading to accusations of lacking commitment to health goals.\n- Frustration builds when planned routines are abandoned, causing resentment over uneven effort in vitality maintenance.\n- Persistent issues result in abandoning shared health pursuits altogether, harming long-term well-being.",
+        resolutionStrategies: [
+          "Develop flexible routines that allow for outward engagement while incorporating buffers for unexpected changes in your schedules.",
+          "Track progress together using apps or journals, celebrating small wins to keep motivation high for both of you.",
+          "Incorporate variety in activities to maintain interest, ensuring they align with your structured yet active lifestyles.",
+        ],
+        growthOutcome:
+          "Addressing these areas fosters a vibrant, supportive health dynamic that energizes your relationship long-term.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "Your romance benefits from outward expressions and logical gestures, but The Architect's collaborative style contrasts with The Inventor's independent needs. This can make emotional connections feel mismatched at times. Yet, your shared stability helps ground the relationship in meaningful ways.",
+        coreChallenge:
+          "The core issue stems from The Architect's need for harmonious, group-influenced romance clashing with The Inventor's desire for autonomous, personal expressions, even as both enjoy active interactions.",
+        whyThisHappens:
+          "- The Architect seeks emotional alignment through shared experiences involving others, while The Inventor prefers one-on-one without external input.\n- Both express love through practical actions, but differing motivations lead to misunderstandings in intent.\n- Outward energy drives frequent interactions, yet autonomy versus harmony creates gaps in perceived affection.\n- Logical decisions in romance mean gestures are planned, but one may see them as too collective or too isolated.\n- Over time, these differences amplify if not openly discussed.",
+        redFlags:
+          "- The Architect feels neglected when The Inventor prioritizes solo time over couple activities, sparking arguments about commitment.\n- The Inventor resents The Architect's inclusion of friends in romantic plans, leading to emotional withdrawal.\n- Unresolved tensions result in a cycle of miscommunication, weakening the romantic bond over time.",
+        resolutionStrategies: [
+          "Plan dates that blend shared social elements with private moments, respecting The Inventor's need for independence while fulfilling The Architect's collaborative spirit.",
+          "Communicate love languages openly, using logical frameworks to understand how each prefers to give and receive affection.",
+          "Establish boundaries for external influences in your romance, ensuring decisions remain couple-focused with room for personal space.",
+        ],
+        growthOutcome:
+          "Navigating this builds a deeper, more authentic romantic connection that honors both your needs.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You both appreciate organized home environments, providing a stable base for family life. The Architect's team-oriented approach complements The Inventor's self-reliant style in unique ways. Together, you create a nurturing space through combined efforts.",
+        coreChallenge:
+          "Conflicts emerge when The Architect's emphasis on family harmony clashes with The Inventor's preference for personal boundaries, despite your mutual structured routines.",
+        whyThisHappens:
+          "- Both favor clear rules and chores, but The Architect involves everyone collaboratively while The Inventor handles tasks independently.\n- The Architect accommodates extended family needs, potentially overwhelming The Inventor's desire for autonomy.\n- Stable preferences mean plans are set, yet differing interpersonal styles lead to uneven participation.\n- Home decisions become contentious if one pushes for group consensus and the other for quick, solo resolutions.\n- These dynamics intensify during family gatherings or home projects.",
+        redFlags:
+          "- The Architect overcommits to family obligations, leaving The Inventor feeling sidelined and resentful.\n- The Inventor sets strict boundaries that The Architect sees as uncooperative, sparking disputes over home responsibilities.\n- Ongoing issues lead to a divided household where shared activities diminish.",
+        resolutionStrategies: [
+          "Divide home tasks based on strengths, allowing The Inventor independent projects while The Architect coordinates family involvement.",
+          "Discuss family boundaries regularly, finding compromises that respect autonomy without sacrificing harmony.",
+          "Create structured home routines that include flexibility for personal needs, reviewing them together monthly.",
+        ],
+        growthOutcome: "Resolving these fosters a balanced, supportive family life that strengthens your bond.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "Your social lives are energized by outward engagement, but The Architect's collaborative tendencies differ from The Inventor's independent choices. This can lead to varied social calendars. Still, you support each other's connections in meaningful ways.",
+        coreChallenge:
+          "The main struggle is The Architect's inclination to commit to group activities versus The Inventor's preference to select involvements autonomously, even with shared active lifestyles.",
+        whyThisHappens:
+          "- The Architect enjoys building community ties through frequent events, while The Inventor picks selective, personal interactions.\n- Both thrive in social settings, but differing motivations cause one to feel overcommitted and the other underinvolved.\n- Harmony focus leads The Architect to include others often, clashing with The Inventor's boundary-setting.\n- Outward energy amplifies participation, yet mismatches create fatigue or isolation.\n- Over time, unaddressed differences strain joint friendships.",
+        redFlags:
+          "- The Architect pushes for more social outings, making The Inventor feel pressured and leading to refusals.\n- The Inventor declines invites repeatedly, causing The Architect to feel unsupported in community efforts.\n- Persistent conflicts result in separate social circles, reducing shared experiences.",
+        resolutionStrategies: [
+          "Alternate between group events favored by The Architect and solo or small gatherings preferred by The Inventor.",
+          "Communicate openly about social energy levels, setting limits that respect both harmony and autonomy.",
+          "Build a core group of friends that aligns with your shared interests, attending together when it feels right.",
+        ],
+        growthOutcome: "Overcoming this creates a vibrant, balanced social life that enriches your relationship.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You both pursue growth with a planned approach, but The Architect's concrete methods contrast with The Inventor's abstract explorations. This diversity can spark inspiring discussions. Your partnership encourages steady progress in learning.",
+        coreChallenge:
+          "The key tension lies in The Architect's focus on mastering practical skills versus The Inventor's chase for novel ideas, often leading to divergent paths in personal development despite structured intentions.",
+        whyThisHappens:
+          "- The Architect builds expertise through tangible, step-by-step learning, while The Inventor jumps between conceptual pursuits.\n- Both commit to plans, but The Architect finishes thoroughly whereas The Inventor shifts if interest wanes.\n- Concrete preferences make real-world applications central for The Architect, clashing with The Inventor's visionary leaps.\n- Structured mindsets help set goals, yet differences cause one to view the other as unfocused or rigid.\n- Without synergy, joint growth efforts stall.",
+        redFlags:
+          "- The Architect criticizes The Inventor's unfinished projects as wasteful, leading to defensive arguments.\n- The Inventor finds The Architect's methods too limiting, resulting in disinterest in shared learning activities.\n- Repeated mismatches cause abandonment of mutual discovery goals.",
+        resolutionStrategies: [
+          "Select growth activities that start with practical foundations and evolve into creative explorations, satisfying both styles.",
+          "Set short-term milestones within long-term plans, allowing flexibility for new ideas while maintaining structure.",
+          "Share insights from individual pursuits regularly, using them to inspire joint development sessions.",
+        ],
+        growthOutcome: "Addressing this leads to enriched personal growth that blends practicality with innovation.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "Adventures bring excitement to your lives with your active and structured natures aligning well. You plan fun outings that suit both. Your relationship thrives on these shared joys.",
+        coreChallenge:
+          "Maintaining spontaneity within your planned adventures becomes challenging when external factors disrupt, despite your mutual outward enthusiasm and stability.",
+        whyThisHappens:
+          "- Both enjoy detailed trip planning, but life interruptions can make adjustments feel stressful.\n- Outward energy fuels shared thrills, yet rigid structures limit on-the-fly changes.\n- Preferences for organization mean surprises are rare, potentially dulling excitement over time.\n- Without flexibility, adventures turn into obligations rather than joys.\n- Shared activities wane if one insists on sticking to plans too strictly.",
+        redFlags:
+          "- One partner cancels plans frequently, leading to disappointment and blame in the relationship.\n- Frustration mounts when adventures feel too scripted, causing avoidance of future outings.\n- Ongoing issues result in solo pursuits replacing couple joys.",
+        resolutionStrategies: [
+          "Incorporate buffer time in plans for unexpected fun, balancing structure with adaptability.",
+          "Alternate planning roles to bring fresh ideas, keeping adventures engaging for both.",
+          "Reflect on past joys together, using them to inspire future activities that match your energies.",
+        ],
+        growthOutcome: "This cultivates lasting joy through well-balanced adventures that strengthen your connection.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "Your outward orientations make quiet times less frequent, but you value peace in your own ways. The Architect seeks shared calm, while The Inventor needs solo recharge. Balancing this enhances your serenity.",
+        coreChallenge:
+          "Finding mutual serenity is tough when The Architect's harmonious check-ins interrupt The Inventor's autonomous quiet, even as both engage actively with the world.",
+        whyThisHappens:
+          "- Both are energized externally, making solitude scarce and leading to overlooked personal needs.\n- The Architect fills pauses with relational touches, clashing with The Inventor's boundary preferences.\n- Outward focus means space is often invaded by activities, amplifying tensions.\n- Harmony versus autonomy creates misinterpretations of rejection during alone time.\n- Without boundaries, serenity erodes into constant interaction.",
+        redFlags:
+          "- The Architect interprets The Inventor's space needs as distancing, leading to insecure probing.\n- The Inventor enforces boundaries harshly, making The Architect feel excluded.\n- Chronic issues cause emotional exhaustion in the partnership.",
+        resolutionStrategies: [
+          "Designate specific times for individual serenity, communicating needs clearly to avoid misunderstandings.",
+          "Practice active listening during check-ins, ensuring they enhance rather than disrupt peace.",
+          "Create shared quiet rituals that respect autonomy, like parallel reading sessions.",
+        ],
+        growthOutcome: "Mastering this brings deeper peace and understanding to your relationship.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "You both aim for lasting impact with logical, structured visions, but approaches differ in scope. The Architect builds through teams, The Inventor through ideas. This complementarity can create powerful legacies.",
+        coreChallenge:
+          "The primary conflict is The Architect's community-focused legacy clashing with The Inventor's personal, abstract ambitions, often resulting in misaligned efforts despite shared analytical drives.",
+        whyThisHappens:
+          "- The Architect emphasizes collective achievements, while The Inventor pursues unique, independent contributions.\n- Concrete views make The Architect seek measurable results, contrasting The Inventor's meaningful, conceptual goals.\n- Both use logic for decisions, but differing perceptions lead to undervaluing each other's methods.\n- Harmony and autonomy create divides in how impact is defined and pursued.\n- Over time, these gaps hinder joint legacy-building.",
+        redFlags:
+          "- The Architect views The Inventor's solo efforts as isolated, leading to criticism of selfishness.\n- The Inventor dismisses The Architect's group involvements as diluted, causing withdrawal from shared plans.\n- Unresolved differences result in parallel legacies without mutual support.",
+        resolutionStrategies: [
+          "Collaborate on projects that merge community reach with innovative ideas, leveraging both strengths.",
+          "Define legacy goals together, incorporating concrete metrics and abstract meanings equally.",
+          "Review progress logically, celebrating contributions from each perspective to build unity.",
+        ],
+        growthOutcome: "This leads to a profound, multifaceted legacy that reflects your combined visions.",
+      },
+    },
+  ],
+  "C-L-O-S-H/N-L-O-F-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both thrive on collaborative goals, with the Architect focusing on building stable team structures and the Disruptor pushing for innovative group changes. This creates a dynamic where your shared outward energy fuels joint pursuits, but differing approaches to stability can lead to tension. Together, you can blend practical planning with fresh ideas for meaningful careers.",
+        coreChallenge:
+          "Balancing the Architect's need for structured roles and long-term plans with the Disruptor's desire for flexible shifts and new possibilities often leads to frustration over career direction.",
+        whyThisHappens:
+          "- The Architect prefers locking into defined positions that ensure group consistency, while the Disruptor seeks to adapt and explore emerging opportunities within the team.\n- Your shared harmony orientation means you both aim for collective success, but the Architect's stability focus clashes with the Disruptor's adaptability in fast-changing environments.\n- The Disruptor might view the Architect's planning as too rigid, limiting group innovation, whereas the Architect sees the Disruptor's flexibility as unreliable for team goals.\n- Outward engagement from both amplifies these differences during collaborative projects, making career decisions feel mismatched.",
+        redFlags:
+          "- Growing resentment when the Architect feels the Disruptor is derailing carefully built career paths with sudden changes, leading to heated arguments over priorities.\n- The Disruptor becoming disengaged if the Architect insists on sticking to plans, causing a sense of stagnation in shared professional endeavors.\n- Repeated conflicts over team roles where neither feels their approach is valued, potentially harming your mutual sense of purpose.",
+        resolutionStrategies: [
+          "Schedule regular check-ins where the Architect outlines stable frameworks and the Disruptor suggests adaptive tweaks, ensuring both voices shape your career paths collaboratively.",
+          "Set shared milestones that combine the Architect's structured timelines with the Disruptor's flexible explorations, allowing for progress without feeling constrained.",
+          "Encourage each other to appreciate the strengths in your differences by discussing how stability and adaptability together create resilient team successes.",
+        ],
+        growthOutcome:
+          "By integrating your approaches, you build careers that are both solid and innovative, fostering deeper mutual respect and shared fulfillment.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, the Architect leans toward organized saving and practical investments, while the Disruptor favors adaptable strategies tied to bigger visions. Your logical mindset helps you both analyze options effectively, but differences in focus can spark debates. Overall, this pairing allows for a balanced path to prosperity when you communicate openly.",
+        coreChallenge:
+          "The Architect's emphasis on structured budgeting and tangible security often conflicts with the Disruptor's preference for flexible spending on abstract opportunities, leading to ongoing financial disagreements.",
+        whyThisHappens:
+          "- The Architect prioritizes stable plans like consistent savings accounts, seeing money as a concrete tool for reliability, but the Disruptor views it as a means to fund innovative ideas.\n- Adaptability from the Disruptor means quick shifts in financial priorities, which frustrates the Architect's need for organized systems and predictable outcomes.\n- Both being logical thinkers, you analyze finances impersonally, yet the Architect's concrete approach clashes with the Disruptor's abstract one in investment choices.\n- Outward energy amplifies these issues during joint decisions, making it hard to align on long-term wealth building without tension.\n- Harmony orientation pushes you to seek group benefits, but differing stability levels create misalignment in how you handle shared resources.",
+        redFlags:
+          "- Escalating arguments over impulsive purchases by the Disruptor that undermine the Architect's carefully crafted budgets, eroding trust in financial partnership.\n- The Architect feeling overwhelmed by the Disruptor's visionary risks, leading to a breakdown in open discussions about money matters.\n- Persistent imbalance where one dominates decisions, causing resentment and potential long-term financial instability for you both.",
+        resolutionStrategies: [
+          "Create a joint financial plan that allocates portions for the Architect's stable savings and the Disruptor's flexible investments, reviewing it together monthly.",
+          "Use logical discussions to evaluate risks and benefits of each idea, ensuring decisions incorporate both concrete details and abstract possibilities.",
+          "Build a buffer fund for spontaneous opportunities, allowing the Disruptor freedom while maintaining the Architect's sense of security.",
+        ],
+        growthOutcome:
+          "Embracing your differences leads to a prosperous life where stability supports innovation, strengthening your financial harmony.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both draw energy from external activities, with the Architect preferring planned routines and the Disruptor enjoying spontaneous ones. This shared outward focus can make joint exercises fun, but varying levels of structure might cause inconsistencies. Working together, you can create vibrant health habits that energize your relationship.",
+        coreChallenge:
+          "Aligning the Architect's structured health plans with the Disruptor's adaptive, mood-based approach often results in skipped routines and frustration over inconsistent vitality efforts.",
+        whyThisHappens:
+          "- Both outward-oriented, you seek stimulation through action, but the Architect enforces organized schedules like set workout times, while the Disruptor prefers flexibility.\n- The Disruptor's adaptability leads to changing plans based on current feelings, which disrupts the Architect's need for reliable systems in health maintenance.\n- Shared harmony means you aim for mutual well-being, yet the clash in stability creates tension during joint health activities.\n- Outward energy makes these differences more pronounced in group settings, like classes, where one feels constrained and the other disorganized.",
+        redFlags:
+          "- Increasing irritation when the Disruptor abandons planned health goals, leaving the Architect feeling unsupported in maintaining consistent vitality.\n- The Architect imposing rigid routines that exhaust the Disruptor, leading to avoidance and a decline in shared health pursuits.\n- Buildup of unspoken resentment over mismatched energy levels, potentially harming your overall physical and emotional well-being.",
+        resolutionStrategies: [
+          "Develop hybrid routines where the Architect sets core structures and the Disruptor adds flexible elements, making health efforts enjoyable for both.",
+          "Communicate openly about daily energy levels to adjust plans collaboratively, ensuring neither feels forced into unwanted activities.",
+          "Incorporate fun, outward-focused challenges like team sports that blend structure with spontaneity to keep you motivated together.",
+        ],
+        growthOutcome:
+          "By harmonizing your styles, you achieve sustained vitality that enhances your connection and daily joy.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "Your romance flourishes through collaborative expressions, with the Architect building steady gestures and the Disruptor introducing novel ones. Outward energy keeps things active, but differences in planning can create mismatches. Embracing each other's styles deepens your emotional bond.",
+        coreChallenge:
+          "The Architect's preference for planned, logical acts of love often clashes with the Disruptor's flexible, insightful approaches, making romantic connection feel out of sync at times.",
+        whyThisHappens:
+          "- Both harmony-focused, you prioritize emotional unity, but the Architect needs structured interactions while the Disruptor thrives on adaptive, spontaneous moments.\n- Outward engagement means the Architect expresses through organized dates, whereas the Disruptor seeks deeper, evolving connections.\n- Logical decision-making leads the Architect to show love via practical support, but the Disruptor values empathetic, value-based affirmations.\n- The clash amplifies in daily life, where the Architect's stability feels limiting to the Disruptor's need for romantic exploration.\n- Shared outward orientation pushes for active romance, yet differing abstract versus concrete views create misunderstandings in intent.",
+        redFlags:
+          "- Emotional distance growing when the Disruptor feels confined by the Architect's routines, leading to fewer intimate moments.\n- The Architect perceiving the Disruptor's flexibility as inconsistency, causing doubts about commitment in the relationship.\n- Unresolved conflicts over expression styles that escalate into arguments, weakening your romantic foundation.",
+        resolutionStrategies: [
+          "Plan romantic activities that start with the Architect's structure but allow the Disruptor to add spontaneous twists for excitement.",
+          "Discuss love languages regularly, blending the Architect's acts of service with the Disruptor's words of affirmation to meet both needs.",
+          "Create rituals that honor your harmony by alternating leadership in planning dates, fostering mutual appreciation.",
+        ],
+        growthOutcome:
+          "Navigating these dynamics strengthens your romance, creating a love that's both reliable and endlessly evolving.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "In family matters, the Architect establishes clear rules for harmony, while the Disruptor adapts to changing needs collaboratively. Your shared focus on group well-being helps, but structure differences can lead to chaos. Together, you build a supportive home environment.",
+        coreChallenge:
+          "The Architect's drive for organized home routines and boundaries often conflicts with the Disruptor's preference for flexible, go-with-the-flow family dynamics, causing ongoing tension.",
+        whyThisHappens:
+          "- Stability from the Architect means enforcing schedules and rules for smooth family life, but the Disruptor's adaptability resists such rigidity.\n- Both harmony-oriented, you over-accommodate family needs, yet the Architect sets firm boundaries while the Disruptor adjusts freely.\n- Outward energy amplifies issues in shared spaces, where planned chores clash with spontaneous adjustments.\n- The concrete focus of the Architect prioritizes practical home setups, contrasting the Disruptor's abstract, evolving views on family roles.",
+        redFlags:
+          "- Rising frustration when the Disruptor changes plans, disrupting the Architect's organized family structure and leading to blame.\n- The Architect's strict rules feeling oppressive to the Disruptor, resulting in withdrawal from home responsibilities.\n- Accumulated stress from mismatched approaches that affects family unity and your partnership.",
+        resolutionStrategies: [
+          "Establish core family rules with the Architect's input, while allowing the Disruptor to handle flexible daily adjustments for balance.",
+          "Hold weekly family meetings to discuss needs collaboratively, ensuring both your voices shape home life harmoniously.",
+          "Divide tasks based on strengths, with the Architect managing structure and the Disruptor facilitating adaptive fun.",
+        ],
+        growthOutcome:
+          "Resolving these challenges creates a home that's structured yet adaptable, enhancing family bonds.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You both enjoy social harmony, with the Architect organizing group events and the Disruptor exploring new connections. Outward energy keeps you engaged, but pacing differences might overwhelm. Your pairing fosters rich community ties when balanced.",
+        coreChallenge:
+          "The Architect's structured social commitments often clash with the Disruptor's flexible explorations, leading to imbalances in how you engage with friends and community.",
+        whyThisHappens:
+          "- Harmony drives both to commit socially, but the Architect prefers planned gatherings while the Disruptor over-commits to spontaneous ones.\n- Outward focus means the Architect thrives in organized groups, whereas the Disruptor drains less but seeks novel interactions.\n- The Architect might decline invites for stability, contrasting the Disruptor's adaptive enthusiasm for community events.\n- Concrete versus abstract views make the Architect focus on reliable friends, while the Disruptor pursues broader possibilities.",
+        redFlags:
+          "- The Disruptor feeling restricted by the Architect's selective social choices, leading to solo outings and isolation.\n- Buildup of exhaustion for the Architect from the Disruptor's frequent commitments, straining your shared social life.\n- Conflicts over priorities that erode trust in handling friendships together.",
+        resolutionStrategies: [
+          "Plan social calendars together, blending the Architect's organized events with the Disruptor's spontaneous additions for variety.",
+          "Set boundaries on commitments by discussing energy levels beforehand, ensuring neither overextends.",
+          "Celebrate each other's strengths in building community, like appreciating the Disruptor's networking alongside the Architect's reliability.",
+        ],
+        growthOutcome: "Harmonizing your styles leads to fulfilling friendships that enrich your lives together.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "In personal growth, the Architect masters practical skills steadily, while the Disruptor chases novel insights adaptively. Your logical approach aids analysis, but focus differences can scatter efforts. Collaborating creates comprehensive development paths.",
+        coreChallenge:
+          "The Architect's concrete, structured learning style often conflicts with the Disruptor's abstract, flexible pursuit of new ideas, hindering joint growth experiences.",
+        whyThisHappens:
+          "- Concrete focus leads the Architect to deepen one skill methodically, but the Disruptor chases diverse novelties without completion.\n- Stability means the Architect finishes courses systematically, while the Disruptor's adaptability results in dropping them for fresh starts.\n- Shared outward energy amplifies exploration in groups, yet clashing preferences create frustration in shared learning.\n- Harmony orientation pushes for collective growth, but differing C/N makes alignment on discovery methods challenging.\n- Logical thinking helps evaluate options, but abstract versus concrete views lead to mismatched priorities.",
+        redFlags:
+          "- The Architect growing irritated by the Disruptor's unfinished projects, leading to criticism that stifles motivation.\n- The Disruptor feeling bored with the Architect's focused approach, causing disengagement from joint growth activities.\n- Persistent mismatches that prevent meaningful progress, affecting your personal development as a couple.",
+        resolutionStrategies: [
+          "Choose growth activities that start with the Architect's structured plan but incorporate the Disruptor's novel elements for engagement.",
+          "Track progress together using milestones that honor completion while allowing pivots, balancing your styles.",
+          "Encourage sharing insights from each approach, fostering appreciation for how concrete mastery complements abstract discovery.",
+        ],
+        growthOutcome: "Integrating your methods results in profound growth that inspires ongoing discovery together.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "For fun, the Architect plans detailed outings, while the Disruptor embraces spontaneous thrills. Outward energy makes adventures exciting, but planning clashes can disrupt. Your harmony creates joyful shared memories when flexible.",
+        coreChallenge:
+          "The Architect's need for planned adventures often clashes with the Disruptor's preference for changing plans on a whim, leading to mismatched expectations in seeking joy.",
+        whyThisHappens:
+          "- Stability drives the Architect to organize every detail for security, but the Disruptor's adaptability shifts directions impulsively.\n- Outward focus means both want shared experiences, yet the Architect prefers structured thrills while the Disruptor seeks quiet or varied joys.\n- Concrete approach makes the Architect focus on tangible fun, contrasting the Disruptor's abstract, evolving ideas for adventure.\n- Harmony pushes for collective enjoyment, but S/F differences amplify tension during outings.",
+        redFlags:
+          "- Frustration building when the Disruptor alters plans, leaving the Architect feeling unprepared and anxious.\n- The Architect's rigidity causing the Disruptor to feel constrained, reducing spontaneous joy in your activities.\n- Repeated disappointments that diminish your enthusiasm for adventures together.",
+        resolutionStrategies: [
+          "Design adventures with a loose framework from the Architect, allowing the Disruptor room to suggest on-the-spot changes.",
+          "Alternate planning roles for trips, ensuring each gets to lead and experience the other's style fully.",
+          "Focus on the shared outward joy by debriefing after activities, highlighting what worked for both.",
+        ],
+        growthOutcome: "Balancing your approaches unlocks endless joy and memorable adventures in your life.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "In seeking peace, both value external harmony, but the Architect structures downtime while the Disruptor adapts freely. Outward energy can make solitude tricky, yet you support each other's needs. This fosters a serene home when communicated.",
+        coreChallenge:
+          "Managing the shared outward energy with individual needs for space often leads to the Architect feeling interrupted and the Disruptor sensing rejection in quiet times.",
+        whyThisHappens:
+          "- Outward orientation means both gain energy from interaction, but the Architect needs planned solitude while the Disruptor fills gaps with check-ins.\n- Harmony drives the Architect to accommodate, yet enforces boundaries, clashing with the Disruptor's adaptive style.\n- Concrete focus helps the Architect define clear space, but the Disruptor's abstract view sees serenity as fluid.\n- Shared energy amplifies feelings of intrusion during recharge periods.",
+        redFlags:
+          "- The Disruptor interpreting the Architect's boundaries as emotional distance, leading to unnecessary conflicts.\n- Buildup of exhaustion for both from unmet serenity needs, straining your relationship daily.\n- Avoidance of discussing space, resulting in passive resentment over time.",
+        resolutionStrategies: [
+          "Establish designated times for solitude that respect the Architect's structure and the Disruptor's flexibility in harmony.",
+          "Communicate needs openly without judgment, using outward energy to plan joint recharges afterward.",
+          "Create shared serene activities that transition into personal space, balancing your harmony focus.",
+        ],
+        growthOutcome: "Mastering this creates a peaceful dynamic where space enhances your connection.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "You both aim for collaborative legacies, with the Architect building tangible systems and the Disruptor inspiring abstract changes. Logical thinking guides your efforts, but visions differ. Together, you create meaningful impacts when aligned.",
+        coreChallenge:
+          "The Architect's focus on measurable, structured contributions often conflicts with the Disruptor's emphasis on meaningful, evolving ideas, complicating your shared legacy building.",
+        whyThisHappens:
+          "- Harmony means both build through community, but the Architect seeks concrete results while the Disruptor pursues abstract meanings.\n- Logical approach leads to impersonal planning, with the Architect prioritizing efficiency and the Disruptor values-driven shifts.\n- Outward energy amplifies joint efforts, yet C/N differences create misalignment in impact strategies.\n- The Disruptor's flexibility challenges the Architect's stability in long-term legacy goals.\n- Shared H orientation pushes for collective good, but varying focuses lead to debates on priorities.",
+        redFlags:
+          "- Disagreements escalating over project directions, with the Architect feeling the Disruptor's ideas lack practicality.\n- The Disruptor perceiving the Architect's methods as too rigid, stalling innovative legacy pursuits.\n- Loss of motivation when impacts feel unaligned, threatening your joint aspirations.",
+        resolutionStrategies: [
+          "Define legacy goals that merge the Architect's tangible metrics with the Disruptor's inspirational elements for comprehensive impact.",
+          "Collaborate on projects where logical analysis incorporates both concrete and abstract perspectives equally.",
+          "Celebrate milestones that honor your harmony by reflecting on how your differences amplify collective contributions.",
+        ],
+        growthOutcome: "Uniting your strengths forges a legacy that's enduring and transformative for others.",
+      },
+    },
+  ],
+  "C-L-O-S-H/N-L-O-F-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "In your careers, you both bring strong outward energy to pursue goals, but The Architect focuses on building stable team structures while The Revolutionary thrives on shaking up ideas independently. This mix can create a dynamic where collaborative planning meets bold innovation, leading to exciting progress when aligned. Together, you inspire each other to blend reliable systems with fresh perspectives for meaningful work.",
+        coreChallenge:
+          "The main tension arises from The Architect's preference for team-oriented missions and steady roles clashing with The Revolutionary's drive for solo impact and frequent shifts in focus, often causing frustration over mismatched approaches to purpose.",
+        whyThisHappens:
+          "- The Architect seeks to organize groups around clear, enduring objectives to foster collective success, while The Revolutionary pursues personal breakthroughs without needing group input.\n- The Architect values locking into consistent career paths for stability, but The Revolutionary adapts quickly to new ideas, leading to perceived inconsistency.\n- This difference in harmony versus autonomy makes joint career planning feel restrictive to one and disorganized to the other.\n- The structured approach of The Architect can seem limiting to The Revolutionary's flexible mindset, amplifying feelings of being held back.",
+        redFlags:
+          "- Growing resentment when The Architect feels The Revolutionary is too unpredictable in career choices, leading to arguments about reliability.\n- The Revolutionary becoming isolated in their pursuits, causing The Architect to feel excluded from shared purpose discussions.\n- Persistent mismatches resulting in one partner sacrificing their goals, breeding long-term dissatisfaction in professional fulfillment.",
+        resolutionStrategies: [
+          "Schedule regular check-ins where The Architect outlines team goals and The Revolutionary shares independent ideas, finding ways to integrate both for mutual support.",
+          "Encourage The Architect to allow more flexibility in plans while The Revolutionary commits to some stable elements, creating a balanced approach to career shifts.",
+          "Celebrate each other's strengths by collaborating on small projects that combine structured teamwork with innovative autonomy to build trust in shared purpose.",
+        ],
+        growthOutcome:
+          "By bridging these styles, you'll cultivate a partnership where careers become a source of inspired stability and bold evolution.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "You approach money with a shared logical mindset, but The Architect emphasizes organized saving while The Revolutionary sees it as fuel for visionary changes. This can lead to productive discussions on balancing security with opportunity. Over time, your combined perspectives help build a resilient financial foundation that supports both practical needs and exciting possibilities.",
+        coreChallenge:
+          "Conflicts emerge from The Architect's structured saving habits clashing with The Revolutionary's adaptive spending on abstract goals, compounded by concrete versus visionary views on wealth as a tool or means to bigger ideas.",
+        whyThisHappens:
+          "- The Architect prefers detailed budgets and long-term plans to ensure stability, while The Revolutionary adjusts spending based on emerging opportunities.\n- The Architect views money through a tangible lens, focusing on immediate practicality, but The Revolutionary treats it as a gateway to innovative pursuits.\n- Both being logical, decisions can turn impersonal, making emotional alignment on financial priorities harder to achieve.\n- This stable versus flexible dynamic often leads to disagreements on risk levels in investments or purchases.\n- The difference in concrete focus versus abstract insight amplifies tensions when short-term needs compete with long-range visions.",
+        redFlags:
+          "- Repeated arguments over impulsive buys by The Revolutionary that undermine The Architect's carefully crafted financial plans.\n- The Architect's rigid budgeting making The Revolutionary feel constrained, leading to secretive spending habits.\n- Escalating stress where logical debates turn into blame, eroding trust in each other's financial judgment.",
+        resolutionStrategies: [
+          "Create a joint budget that allocates funds for stable savings as The Architect prefers and flexible innovation as The Revolutionary enjoys, reviewing it monthly together.",
+          "Discuss how concrete tools like accounts can support abstract goals, helping The Revolutionary appreciate structure while The Architect embraces some adaptability.",
+          "Use logical tools like apps to track spending patterns, allowing both to see the value in blending practical security with visionary investments for prosperity.",
+        ],
+        growthOutcome:
+          "Resolving this builds a wealthy life where stability empowers bold dreams, strengthening your financial harmony.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "Both of you draw energy from outward activities, making shared workouts or routines enjoyable when they align. The Architect brings organization to health plans, while The Revolutionary adds spontaneity to keep things fresh. This synergy can motivate consistent vitality through a mix of structure and variety.",
+        coreChallenge:
+          "Tensions build as your shared outward focus on joint health efforts clashes with The Architect's need for enforced plans versus The Revolutionary's mood-based flexibility, leading to inconsistent routines.",
+        whyThisHappens:
+          "- You both energize through external engagement, but The Architect insists on scheduled diets or exercises for reliability.\n- The Revolutionary prefers adapting health choices to current feelings, often skipping plans that feel too rigid.\n- This outward similarity amplifies frustrations when one pushes for group activities and the other wants solo tweaks.\n- The stable approach of The Architect can seem controlling to The Revolutionary's adaptive style in maintaining vitality.",
+        redFlags:
+          "- The Architect growing irritated by The Revolutionary's frequent changes to shared health goals, causing motivational dips.\n- Health routines breaking down entirely, leading to blame and reduced overall well-being for both partners.\n- One partner withdrawing from joint efforts, resulting in isolated habits that weaken your mutual support system.",
+        resolutionStrategies: [
+          "Plan health activities that start structured as The Architect likes but include flexible options for The Revolutionary to adjust based on energy levels.",
+          "Share outward experiences like walks together while respecting individual needs for variety in routines to sustain vitality.",
+          "Track progress collaboratively with apps, allowing The Architect's organization to meet The Revolutionary's adaptability for lasting health improvements.",
+        ],
+        growthOutcome:
+          "Overcoming this fosters vibrant health where shared energy and flexible structures enhance your well-being together.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "Your romance thrives on outward expressions of affection, with The Architect building team-like bonds and The Revolutionary bringing independent sparks. This creates passionate moments when you connect through actions and ideas. Together, you nurture a relationship full of logical gestures that feel meaningful and evolving.",
+        coreChallenge:
+          "The key issue is The Architect's desire for emotional group sync clashing with The Revolutionary's need for personal space, heightened by shared outward energy and logical ways of showing love through acts rather than words.",
+        whyThisHappens:
+          "- The Architect orients toward collaborative harmony in love, seeking constant alignment, while The Revolutionary values autonomous freedom.\n- Both outward, you express affection via interactions, but The Architect wants planned gestures and The Revolutionary prefers spontaneous ones.\n- As logical types, love shows through practical deeds, which can feel impersonal if not balanced with verbal affirmation.\n- This harmony versus autonomy split makes one feel smothered and the other neglected in romantic dynamics.\n- Shared outward focus intensifies the need for daily touch, but differing styles lead to mismatched expectations.",
+        redFlags:
+          "- The Revolutionary pulling away for independence, making The Architect question the relationship's emotional security.\n- Logical debates over affection turning cold, leading to a romance that feels more like a partnership than passion.\n- Unresolved space issues causing resentment, where one partner feels their needs are consistently overlooked.",
+        resolutionStrategies: [
+          "Carve out time for collaborative dates as The Architect enjoys while ensuring The Revolutionary has solo recharge periods to maintain balance in romance.",
+          "Practice expressing love through both planned acts and spontaneous words, blending your logical styles to deepen emotional connections.",
+          "Discuss openly how outward interactions can include personal boundaries, helping you both feel valued in your unique ways of loving.",
+        ],
+        growthOutcome:
+          "Navigating this deepens your romance into a supportive space of shared actions and individual freedom.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "In family matters, you collaborate with outward enthusiasm, but The Architect sets clear rules while The Revolutionary adapts freely. This can lead to a home that's organized yet open to change. Your logical approach ensures practical solutions that benefit everyone involved.",
+        coreChallenge:
+          "Struggles occur when The Architect's structured rules for home clash with The Revolutionary's flexible flow, amplified by The Architect's over-accommodation to family versus The Revolutionary's boundary-setting.",
+        whyThisHappens:
+          "- The Architect prefers chore schedules and organized systems for stability in home life.\n- The Revolutionary resists rigid rules, favoring spontaneous adjustments to family dynamics.\n- The Architect tends to prioritize group needs, sometimes at personal cost, while The Revolutionary maintains individual limits.\n- This stable versus adaptive tension makes daily routines feel chaotic or constricting alternately.\n- Harmony focus leads The Architect to overcommit, contrasting The Revolutionary's autonomous protection of self.",
+        redFlags:
+          "- Family decisions becoming battlegrounds, with The Architect feeling overwhelmed by lack of structure.\n- The Revolutionary setting boundaries that exclude The Architect's input, leading to feelings of disconnection at home.\n- Ongoing conflicts eroding the nurturing environment, causing stress for the whole family unit.",
+        resolutionStrategies: [
+          "Establish core home rules that The Architect values while allowing The Revolutionary room to adapt them as situations change.",
+          "Balance family accommodations by discussing boundaries together, ensuring both collaborative and individual needs are met.",
+          "Create a flexible schedule for chores that incorporates input from both, fostering a harmonious yet autonomous home life.",
+        ],
+        growthOutcome:
+          "Addressing this creates a family home that's stably nurturing and adaptively free, enhancing your bond.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You engage socially with outward vigor, where The Architect builds group ties and The Revolutionary explores independently. This results in a diverse circle that mixes stable connections with new encounters. Together, you enrich each other's community experiences through shared activities.",
+        coreChallenge:
+          "Friction builds from The Architect's tendency to over-commit to social groups versus The Revolutionary's preference to decline for autonomy, with your shared outward energy making group interactions draining or obligatory.",
+        whyThisHappens:
+          "- The Architect orients toward collaborative events to maintain harmony in friendships.\n- The Revolutionary prioritizes personal freedom, often opting out of invites to preserve independence.\n- Both outward, you thrive in interactions, but The Architect seeks collective involvement while The Revolutionary needs selective engagement.\n- This difference leads to one feeling pulled into too many commitments and the other isolated.\n- Shared energy amplifies the contrast, making social plans feel mismatched in frequency and style.",
+        redFlags:
+          "- The Architect resenting The Revolutionary's frequent no-shows at community events, straining joint friendships.\n- Social exhaustion leading to withdrawal, where one partner avoids group settings altogether to cope.\n- Conflicts escalating to arguments about loyalty, damaging your mutual trust in handling community ties.",
+        resolutionStrategies: [
+          "Alternate between group activities that suit The Architect and solo pursuits for The Revolutionary, finding a rhythm that respects both styles.",
+          "Communicate openly about social energy levels, allowing The Architect to attend events while The Revolutionary joins selectively.",
+          "Build a shared calendar for friendships, incorporating harmonious commitments with autonomous choices to strengthen community bonds.",
+        ],
+        growthOutcome:
+          "Resolving this expands your friendships into a balanced network of collective and personal connections.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "In personal growth, The Architect focuses on mastering practical skills steadily, while The Revolutionary chases novel ideas adaptively. This blend encourages a journey that's grounded yet exploratory. You motivate each other to expand horizons in meaningful ways.",
+        coreChallenge:
+          "Challenges stem from The Architect's concrete mastery of one area clashing with The Revolutionary's abstract novelty-seeking, worsened by The Architect's commitment to finishing versus The Revolutionary's tendency to drop pursuits.",
+        whyThisHappens:
+          "- The Architect prefers tangible, observable progress in familiar skills for reliable development.\n- The Revolutionary thrives on patterns and possibilities, jumping between new concepts eagerly.\n- The Architect commits to structured courses or goals, while The Revolutionary adapts by shifting focus often.\n- This concrete versus abstract divide makes joint learning feel too narrow or scattered alternately.\n- Stable planning contrasts flexible exploration, leading to incomplete projects and frustration.",
+        redFlags:
+          "- The Architect viewing The Revolutionary's shifts as lack of dedication, causing criticism in growth efforts.\n- Abandoned shared discovery activities piling up, leading to disillusionment with mutual learning goals.\n- One partner halting personal growth to accommodate the other, stunting individual development over time.",
+        resolutionStrategies: [
+          "Choose growth activities that start with concrete steps as The Architect prefers and evolve into abstract explorations for The Revolutionary.",
+          "Set flexible milestones where The Architect can finish segments while The Revolutionary introduces new elements to keep it engaging.",
+          "Reflect together on discoveries, blending stable mastery with adaptive novelty to create fulfilling personal evolution paths.",
+        ],
+        growthOutcome:
+          "Overcoming this leads to profound growth where practical depth meets innovative breadth in your journeys.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "Adventures bring out your outward excitement, with The Architect planning details and The Revolutionary embracing changes. This creates fun experiences that are organized yet spontaneous. You discover joy in blending reliability with surprise.",
+        coreChallenge:
+          "Issues arise when The Architect's detailed planning for trips conflicts with The Revolutionary's plan changes, with shared outward energy pushing for thrills that feel overstructured or chaotic.",
+        whyThisHappens:
+          "- The Architect seeks closure through organized itineraries to ensure enjoyable adventures.\n- The Revolutionary prefers open options, altering plans based on new information or moods.\n- Both outward, you crave shared excitement, but differing styles lead to mismatched expectations.\n- Stable structure makes The Architect anxious about deviations, while flexibility feels essential to The Revolutionary.\n- This dynamic amplifies tensions during joint outings, turning potential joy into stress.",
+        redFlags:
+          "- Vacations turning into arguments over itinerary changes, spoiling the overall adventure experience.\n- One partner opting out of future plans due to repeated frustrations, reducing shared joy opportunities.\n- Persistent mismatches leading to separate adventures, weakening your bond through isolated fun.",
+        resolutionStrategies: [
+          "Design adventures with a loose structure that The Architect can rely on while allowing The Revolutionary room for on-the-spot adjustments.",
+          "Incorporate outward thrills that both enjoy, like group outings, but build in flexibility to accommodate changing preferences.",
+          "Review past joys together to identify patterns that mix planning with spontaneity for more harmonious experiences.",
+        ],
+        growthOutcome:
+          "Mastering this turns adventures into sources of lasting joy and connected excitement in your lives.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You both energize externally, but The Architect seeks group check-ins for peace while The Revolutionary enforces personal boundaries. This can lead to a serenity that's socially connected yet individually respected. Together, you find calm in balanced interactions.",
+        coreChallenge:
+          "The primary strain comes from your shared outward need for engagement clashing with The Architect's harmonious fill of silence versus The Revolutionary's autonomous boundaries, making solitude feel rejected or intrusive.",
+        whyThisHappens:
+          "- Both outward, you find stimulation in action, but The Architect uses conversations to maintain serenity.\n- The Revolutionary needs independent quiet to recharge, viewing interruptions as boundary violations.\n- Harmony orientation leads The Architect to seek emotional alignment, contrasting The Revolutionary's self-reliance.\n- This shared energy heightens the need for interaction, but differing styles create feelings of neglect or overwhelm.\n- Outward focus amplifies the contrast, turning space into a point of misunderstanding.",
+        redFlags:
+          "- The Architect interpreting The Revolutionary's need for alone time as emotional distance, sparking insecurity.\n- Boundaries leading to isolation, where partners retreat further and serenity becomes elusive.\n- Repeated intrusions causing resentment, eroding the peaceful foundation of your relationship.",
+        resolutionStrategies: [
+          "Establish signals for when The Revolutionary needs space, allowing The Architect to engage harmoniously without feeling rejected.",
+          "Balance outward activities with scheduled serenity periods that respect both collaborative and autonomous needs.",
+          "Discuss how filling silence can coexist with boundaries, creating a serene environment that nurtures your connection.",
+        ],
+        growthOutcome: "Addressing this cultivates a serene space where outward energy harmonizes with personal peace.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "In building legacy, you logically pursue outward goals, with The Architect focusing on community systems and The Revolutionary on personal revolutions. This inspires a blend of collective and individual contributions. Together, you create lasting impacts that are structured yet transformative.",
+        coreChallenge:
+          "Disagreements surface from The Architect's community-built legacy clashing with The Revolutionary's personal vision, intensified by concrete measurable effects versus abstract meanings, all through a logical lens.",
+        whyThisHappens:
+          "- The Architect orients toward group dynamics for enduring collective achievements.\n- The Revolutionary focuses on self-reliant breakthroughs for independent significance.\n- The Architect seeks tangible, observable results, while The Revolutionary values theoretical, possible influences.\n- Both logical, approaches can seem impersonal, prioritizing principles over emotional ties in legacy planning.\n- Harmony versus autonomy splits motivations, making joint efforts feel diluted or domineering.",
+        redFlags:
+          "- The Revolutionary dismissing The Architect's group-focused ideas as too conventional, leading to devalued contributions.\n- Conflicting visions causing stalled progress, where legacy goals remain unfulfilled and frustrating.\n- Logical debates turning competitive, undermining the supportive partnership needed for lasting impact.",
+        resolutionStrategies: [
+          "Collaborate on legacy projects that incorporate The Architect's community elements with The Revolutionary's visionary independence for balanced outcomes.",
+          "Measure impact through both concrete metrics and abstract meanings, using logic to bridge your differing views.",
+          "Share stories of personal and collective successes to align on a legacy that honors both harmonious and autonomous strengths.",
+        ],
+        growthOutcome:
+          "By integrating these, your legacy becomes a powerful blend of community depth and revolutionary innovation.",
+      },
+    },
+  ],
+  "C-L-O-S-H/N-L-I-S-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both pursue careers with a strong sense of collaboration, aiming to contribute to group efforts and build meaningful paths together. The Architect often takes charge in practical, team-oriented projects that deliver clear results, while The Academic prefers diving into thoughtful explorations of ideas that shape broader understanding. This mix can inspire each other, blending hands-on action with deep insight for fulfilling professional lives.",
+        coreChallenge:
+          "The key struggle comes when The Architect's drive for immediate, tangible outcomes in team settings conflicts with The Academic's focus on long-term conceptual development in a more solitary manner, risking misalignment in how you support each other's ambitions and shared goals.",
+        whyThisHappens:
+          "- Both of you value working within teams to achieve purpose, but The Architect pushes for quick, organized progress while The Academic needs time for reflective analysis.\n- Your shared preference for stable roles can make changes feel disruptive, especially when one wants to pivot toward new ideas.\n- The Architect's outward energy seeks active collaboration, whereas The Academic's inward focus leads to independent pondering that might slow joint initiatives.\n- Differences in viewing opportunities arise, with The Architect sticking to proven methods and The Academic exploring uncharted theories.\n- Over time, this can create a gap where practical steps overshadow visionary thinking or vice versa.",
+        redFlags:
+          "- The Architect starts feeling frustrated by what seems like endless deliberation from The Academic, leading to impatience during planning phases.\n- The Academic might withdraw more when pressured for faster results, causing a breakdown in communication about career directions.\n- Shared projects stall because one prioritizes structure while the other seeks deeper meaning, resulting in unspoken resentment.",
+        resolutionStrategies: [
+          "Set up regular check-ins where The Architect shares actionable steps and The Academic contributes big-picture ideas, ensuring both feel heard in career discussions.",
+          "Create a joint vision board that combines practical goals with conceptual aspirations, helping you align on purpose without forcing one style over the other.",
+          "Encourage each other to take turns leading initiatives, allowing The Architect to handle execution while The Academic guides the overarching strategy for balanced growth.",
+        ],
+        growthOutcome:
+          "By bridging your approaches, you'll cultivate careers that are both impactful and innovative, strengthening your bond through mutual inspiration.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "You handle finances with a structured mindset, prioritizing stability and long-term security in your shared resources. The Architect focuses on organizing budgets and investments in practical ways that yield immediate benefits, while The Academic thinks about money in terms of supporting broader visions and ideas. Together, this can lead to a solid foundation where careful planning meets thoughtful allocation for prosperity.",
+        coreChallenge:
+          "The primary tension emerges when The Architect's emphasis on concrete, everyday financial tools clashes with The Academic's view of wealth as a means to fund abstract dreams, potentially causing disputes over spending priorities and risk levels in your joint financial decisions.",
+        whyThisHappens:
+          "- Both prefer organized financial systems, but The Architect sees money as a straightforward resource while The Academic ties it to larger possibilities.\n- Your logical approach to budgeting can become rigid, especially when one wants to invest in tangible assets and the other in innovative ventures.\n- The Architect's outward drive leads to active management of finances, contrasting with The Academic's inward reflection on what wealth truly means.\n- Differences in perception create friction, as practical saving habits meet desires for funding exploratory pursuits.\n- Over-reliance on structure without flexibility can amplify small disagreements into ongoing financial stress.",
+        redFlags:
+          "- The Architect begins criticizing The Academic's ideas as too vague or risky, leading to defensive arguments about money choices.\n- The Academic feels constrained by strict budgets, withdrawing from discussions and making unilateral decisions that unsettle your stability.\n- Joint accounts or investments suffer from mismatched expectations, resulting in blame and eroded trust in handling prosperity.",
+        resolutionStrategies: [
+          "Develop a budget that allocates portions for practical needs and visionary projects, allowing The Architect to manage daily finances while The Academic oversees growth-oriented investments.",
+          "Hold monthly financial reviews where you discuss goals logically, ensuring both concrete and abstract perspectives shape your prosperity plan.",
+          "Explore educational resources together on balanced investing, helping you appreciate each other's views and build a more harmonious approach to wealth.",
+        ],
+        growthOutcome:
+          "Embracing these differences will lead to a prosperous life that's secure yet expansive, fostering deeper financial harmony and shared success.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You approach health with a commitment to routines that support overall well-being, valuing consistency in your lifestyles. The Architect enjoys engaging in group activities or shared exercises that keep things active and structured, while The Academic prefers quieter, personal practices like reading or meditating for vitality. This combination can create a supportive environment where energy levels complement each other through balanced habits.",
+        coreChallenge:
+          "The main issue arises when The Architect's desire for outward, joint health routines conflicts with The Academic's need for inward, solitary recharge time, leading to potential burnout or resentment in maintaining vitality together.",
+        whyThisHappens:
+          "- The Architect's external focus pushes for planned group workouts or social health goals, while The Academic thrives on independent, thoughtful self-care.\n- Both value stable health structures, but enforcing them can feel overwhelming when one needs interaction and the other solitude.\n- Differences in energy direction cause mismatches, as active engagement meets a preference for reflective recovery.\n- Over time, skipped joint activities or forced participation can disrupt your shared commitment to vitality.\n- Rigid routines without adaptation amplify feelings of disconnection in health pursuits.",
+        redFlags:
+          "- The Architect starts pushing for more shared exercises, making The Academic feel drained and leading to avoidance of health talks.\n- The Academic retreats into solo habits, causing The Architect to feel excluded and sparking arguments about commitment to wellness.\n- Overall vitality suffers as one partner's needs dominate, resulting in physical or emotional fatigue that strains your relationship.",
+        resolutionStrategies: [
+          "Schedule alternating health activities where The Architect plans interactive sessions and The Academic suggests peaceful, individual ones to blend your styles effectively.",
+          "Discuss energy levels openly each week, adjusting routines so The Architect gets social boosts while The Academic enjoys quiet recharge without pressure.",
+          "Incorporate hybrid practices like walking together in silence, allowing outward engagement to meet inward reflection for sustained vitality.",
+        ],
+        growthOutcome:
+          "Navigating this will result in a healthier, more energized partnership where you both thrive individually and together.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "You express love with a collaborative heart, seeking to build emotional connections that feel secure and meaningful. The Architect shows affection through organized gestures and active involvement in daily life, while The Academic offers deep, thoughtful expressions that stem from inner reflection. This dynamic can foster a romance that's both practical and profound, enriching your bond over time.",
+        coreChallenge:
+          "The central difficulty occurs when The Architect's need for harmonious, outward displays of love clashes with The Academic's preference for introspective, personal intimacy, potentially creating misunderstandings about emotional needs and romantic fulfillment.",
+        whyThisHappens:
+          "- Both prioritize group-like harmony in your relationship, but The Architect seeks frequent interactions while The Academic values deeper, quieter moments.\n- Outward energy drives The Architect to plan dates or acts of service, contrasting with The Academic's inward focus on meaningful conversations.\n- Logical decisions in romance can feel impersonal, as one wants structured expressions and the other abstract connections.\n- Differences in engagement levels lead to one feeling overwhelmed and the other underserved.\n- Without balance, small romantic gestures can escalate into feelings of disconnection.",
+        redFlags:
+          "- The Architect interprets The Academic's need for space as disinterest, leading to overcompensation with constant check-ins that feel intrusive.\n- The Academic withdraws during conflicts, making The Architect feel unloved and prompting escalated demands for attention.\n- Romantic routines become stale, with blame arising from mismatched ways of showing care and affection.",
+        resolutionStrategies: [
+          "Plan romantic activities that alternate between active outings led by The Architect and quiet evenings curated by The Academic to honor both preferences.",
+          "Communicate love languages regularly, ensuring The Architect's actions align with The Academic's need for thoughtful depth in expressions of romance.",
+          "Practice empathy exercises where you role-swap perspectives, helping The Architect appreciate solitude and The Academic value shared interactions for stronger bonds.",
+        ],
+        growthOutcome:
+          "Overcoming this will deepen your romance, creating a love that's actively supportive and introspectively rich.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You manage family and home with a structured approach, creating environments that feel organized and welcoming. The Architect excels at coordinating household tasks and family events in a hands-on way, while The Academic contributes by thinking through long-term family dynamics and values. This can lead to a home life that's efficient yet thoughtful, strengthening your family unit.",
+        coreChallenge:
+          "The biggest hurdle is when your shared structure meets differing views on collaboration, with The Architect pushing for active involvement and The Academic preferring reflective contributions, risking imbalances in daily family responsibilities.",
+        whyThisHappens:
+          "- Both favor organized home systems, but The Architect implements them outwardly while The Academic plans them inwardly.\n- Harmony in family means accommodating everyone, yet energy differences make joint efforts feel uneven.\n- The Architect's concrete focus on chores contrasts with The Academic's abstract view of family growth.\n- Stability is key, but without flexibility, one can feel overburdened by practical tasks.\n- Over time, this leads to resentment if roles aren't adjusted for personal styles.",
+        redFlags:
+          "- The Architect takes on too much, resenting The Academic's more observational role in family matters.\n- The Academic feels pressured into activities, leading to withdrawal and leaving The Architect handling everything alone.\n- Family decisions stall, with arguments over who contributes how, eroding your home's peace.",
+        resolutionStrategies: [
+          "Divide home tasks based on strengths, letting The Architect handle daily organization while The Academic focuses on long-term family planning for better balance.",
+          "Hold family meetings where you discuss roles collaboratively, ensuring both feel involved without overwhelming each other's energy preferences.",
+          "Create flexible routines that allow for structured days with built-in reflection time, helping you maintain harmony in home life.",
+        ],
+        growthOutcome:
+          "Resolving this will build a more cohesive family life, where structure supports everyone's needs effectively.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You engage with friends and community through a harmonious lens, valuing connections that bring people together. The Architect actively participates in group events and organizes social gatherings, while The Academic enjoys deeper, one-on-one interactions or thoughtful contributions to community discussions. This blend can enrich your social circle with both energy and insight.",
+        coreChallenge:
+          "The primary conflict surfaces when The Architect's enthusiasm for outward social engagement overwhelms The Academic's need for inward, selective interactions, potentially leading to exhaustion or feelings of isolation in your shared social life.",
+        whyThisHappens:
+          "- Both seek collaborative social ties, but The Architect thrives in bustling groups while The Academic prefers quieter settings.\n- Outward focus pushes The Architect to commit to many events, contrasting with The Academic's inward recharge needs.\n- Harmony means including others, yet energy mismatches can make shared outings feel draining.\n- Differences in participation styles create gaps, as active involvement meets reflective observation.\n- Without boundaries, one partner may overextend while the other withdraws.",
+        redFlags:
+          "- The Architect commits to too many social plans, leaving The Academic feeling obligated and resentful of the constant activity.\n- The Academic declines invitations frequently, making The Architect feel unsupported in community efforts and sparking loneliness.\n- Social circles shrink as conflicts arise, with blame for unbalanced friendships straining your relationship.",
+        resolutionStrategies: [
+          "Alternate social activities between large group events chosen by The Architect and intimate gatherings selected by The Academic to satisfy both needs.",
+          "Set personal boundaries for community involvement, discussing in advance how much energy each can commit to avoid overextension.",
+          "Build a mixed friend group that allows for both active and thoughtful interactions, fostering a community that suits your combined styles.",
+        ],
+        growthOutcome:
+          "Addressing this will create a vibrant social life that's energizing for both, enhancing your connections together.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You pursue growth with curiosity, seeking ways to expand your knowledge and skills in meaningful directions. The Architect focuses on mastering practical abilities through structured learning, while The Academic dives into abstract concepts and theories for personal development. This can lead to a discovery process that's grounded yet expansive, motivating each other forward.",
+        coreChallenge:
+          "The core tension happens when The Architect's preference for concrete, hands-on learning clashes with The Academic's attraction to theoretical explorations, causing potential frustration over how to approach personal growth and new discoveries together.",
+        whyThisHappens:
+          "- The Architect sticks to tangible skills with clear applications, while The Academic chases novel ideas without immediate utility.\n- Both value stable progress, but The Architect finishes tasks methodically whereas The Academic shifts between interests.\n- Differences in focus amplify, as practical mastery meets boundless curiosity.\n- Structured plans can feel limiting to one, while open-ended pursuits seem scattered to the other.\n- Over time, joint learning efforts falter without compromise.",
+        redFlags:
+          "- The Architect dismisses The Academic's ideas as impractical, leading to defensiveness and halted shared growth activities.\n- The Academic loses interest in structured courses, frustrating The Architect and causing abandonment of mutual goals.\n- Discovery becomes solitary, with resentment building over unsupported personal development paths.",
+        resolutionStrategies: [
+          "Choose growth activities that blend practical applications with theoretical depth, like workshops where The Architect handles execution and The Academic provides insights.",
+          "Set milestones for discovery projects that allow flexibility, ensuring The Architect sees progress while The Academic explores freely.",
+          "Share learnings weekly, appreciating how concrete skills complement abstract thinking for richer personal evolution.",
+        ],
+        growthOutcome:
+          "Mastering this will unlock profound growth, where your discoveries become more innovative and fulfilling as a team.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "You find joy in adventures that are planned and shared, creating memorable experiences with a sense of order. The Architect organizes exciting outings with clear itineraries for fun, while The Academic enjoys adventures that allow for thoughtful reflection and discovery. This can result in joyful moments that are both active and introspective, enhancing your happiness.",
+        coreChallenge:
+          "The main challenge is balancing The Architect's structured approach to fun with The Academic's need for spontaneous, inward-focused enjoyment, which can lead to conflicts over how to experience joy and adventure without one feeling restricted or the other disorganized.",
+        whyThisHappens:
+          "- Both prefer planned adventures, but The Architect wants detailed schedules while The Academic allows for detours.\n- Outward energy makes The Architect seek shared thrills, contrasting with The Academic's inward preference for quiet delights.\n- Stability in fun means sticking to plans, yet differences cause last-minute changes to feel disruptive.\n- Joy arises from engagement, but mismatched paces lead to one feeling rushed or bored.\n- Without adaptation, adventures become sources of stress instead of happiness.",
+        redFlags:
+          "- The Architect insists on rigid plans, making The Academic feel confined and leading to canceled outings.\n- The Academic suggests changes mid-adventure, frustrating The Architect and sparking arguments during supposed fun times.\n- Shared joy diminishes, with blame for ruined experiences eroding your adventurous spirit together.",
+        resolutionStrategies: [
+          "Design adventures with a loose structure, where The Architect outlines the basics and The Academic adds flexible elements for balanced enjoyment.",
+          "Alternate planning roles for trips, allowing The Architect to handle logistics while The Academic chooses reflective activities to incorporate.",
+          "Reflect post-adventure on what brought joy, adjusting future plans to better suit both outward excitement and inward peace.",
+        ],
+        growthOutcome:
+          "Conquering this will bring more spontaneous yet secure joy, making your adventures truly rejuvenating for your relationship.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You value space and serenity as essential for recharging, approaching it with a harmonious intent to maintain peace. The Architect finds calm in organized environments with some interaction, while The Academic seeks deep, uninterrupted solitude for inner tranquility. This can create a serene home where both needs are acknowledged, promoting overall well-being.",
+        coreChallenge:
+          "The key struggle is when The Architect's occasional need for external connection disrupts The Academic's profound requirement for solitude, potentially causing tension in how you both achieve personal space and serenity without feeling neglected.",
+        whyThisHappens:
+          "- Both aim for collaborative peace, but The Architect fills quiet with light check-ins while The Academic needs complete isolation.\n- Inward focus dominates for The Academic, making outward interruptions feel invasive.\n- Harmony means respecting boundaries, yet energy differences make shared spaces challenging.\n- Serenity comes from balance, but mismatches lead to one feeling rejected or overwhelmed.\n- Over time, unaddressed needs amplify into emotional distance.",
+        redFlags:
+          "- The Architect interprets solitude as avoidance, leading to persistent interruptions that heighten The Academic's frustration.\n- The Academic enforces strict alone time, making The Architect feel isolated and prompting compensatory closeness.\n- Serenity erodes, with arguments over space turning your home into a tense environment.",
+        resolutionStrategies: [
+          "Establish designated serenity zones in your home, where The Academic can retreat undisturbed while The Architect engages in light activities nearby.",
+          "Schedule solo time explicitly, ensuring The Architect respects it and uses the opportunity for their own harmonious pursuits.",
+          "Practice mutual check-ins after solitude periods, sharing how the space refreshed you to build understanding and closeness.",
+        ],
+        growthOutcome:
+          "Resolving this will cultivate a peaceful partnership, where space enhances your connection rather than divides it.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "You build impact and legacy with a collaborative vision, aiming to leave a positive mark through joint efforts. The Architect focuses on creating tangible, community-based achievements that stand the test of time, while The Academic pursues meaningful, idea-driven contributions that inspire broader change. This can lead to a legacy that's both practical and profound, amplifying your influence.",
+        coreChallenge:
+          "The central issue arises when The Architect's emphasis on measurable, group-oriented impact conflicts with The Academic's pursuit of conceptual, thoughtful legacies, risking disagreements on how to define and achieve lasting significance together.",
+        whyThisHappens:
+          "- Both seek harmonious legacies, but The Architect builds through concrete actions while The Academic shapes through abstract ideas.\n- Logical approaches guide you, yet one wants efficient systems and the other deep principles.\n- Differences in focus create divides, as tangible results meet visionary meanings.\n- Collaborative goals can falter when priorities misalign on what constitutes true impact.\n- Over time, this leads to undervaluing each other's contributions to your shared legacy.",
+        redFlags:
+          "- The Architect views The Academic's ideas as too intangible, dismissing them and causing defensiveness about legacy plans.\n- The Academic critiques The Architect's methods as shortsighted, leading to stalled joint initiatives and resentment.\n- Impact efforts fragment, with separate paths eroding the collaborative spirit you both value.",
+        resolutionStrategies: [
+          "Collaborate on legacy projects that integrate The Architect's practical execution with The Academic's conceptual framework for comprehensive results.",
+          "Discuss impact goals regularly, using logical analysis to blend measurable outcomes with meaningful visions.",
+          "Mentor each other in strengths, where The Architect teaches implementation and The Academic shares inspirational insights for unified legacy building.",
+        ],
+        growthOutcome:
+          "Overcoming this will forge a powerful legacy that's enduring and inspiring, solidifying your partnership's lasting influence.",
+      },
+    },
+  ],
+  "C-L-O-S-H/N-L-I-S-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both approach your careers with a strong sense of structure and planning, creating stable paths forward that feel reliable and well-thought-out. The Architect often focuses on organizing teams and building practical systems that benefit everyone involved, finding fulfillment in shared achievements and group progress. The Theorist, however, dives into independent explorations of complex ideas, seeking personal breakthroughs through solitary analysis and long-term theoretical development.",
+        coreChallenge:
+          "The main tension arises from The Architect's desire for collaborative missions that unite people toward common goals clashing with The Theorist's preference for solo pursuits that prioritize individual insights and autonomy over group involvement.",
+        whyThisHappens:
+          "- The Architect naturally gravitates toward roles that involve leading or coordinating others, emphasizing team dynamics and collective success in their professional life. - The Theorist feels most productive when working alone on abstract concepts, avoiding the distractions of group interactions to maintain focus on their unique visions. - Both of you value organized approaches, but The Architect applies this to shared projects while The Theorist uses it for personal intellectual frameworks. - This difference can lead to frustration when one partner's career choices seem too isolated or overly interdependent to the other.",
+        redFlags:
+          "- The Architect starts feeling unfulfilled without joint professional discussions, leading to resentment over The Theorist's independent work habits. - The Theorist begins withdrawing further, perceiving The Architect's team-oriented suggestions as intrusive on their personal purpose. - Career decisions become points of silent conflict, with neither fully supporting the other's path due to mismatched collaboration needs.",
+        resolutionStrategies: [
+          "Set aside regular time to share individual career updates in a low-pressure way, allowing The Architect to feel connected while respecting The Theorist's need for independence.",
+          "Explore ways to blend your strengths, like The Architect incorporating The Theorist's ideas into team projects without requiring direct involvement from them.",
+          "Encourage each other to pursue separate professional networks that align with your preferences, then celebrate small wins together to build mutual appreciation.",
+        ],
+        growthOutcome:
+          "By balancing collaboration with independence, you create careers that support each other's purpose while fostering a deeper respect for individual paths.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "You share a preference for stable financial planning, which helps you build a secure foundation through consistent saving and organized budgeting strategies. The Architect tends to view money as a tool for practical, group-oriented investments that ensure long-term stability for everyone. The Theorist approaches wealth through abstract lenses, focusing on how it enables personal intellectual pursuits and innovative ideas rather than immediate tangible needs.",
+        coreChallenge:
+          "Friction builds when your shared structured approach to finances clashes with differing views on what money represents, as The Architect prioritizes concrete tools for collective security while The Theorist sees it as fuel for visionary personal goals, leading to analytical disagreements on spending priorities.",
+        whyThisHappens:
+          "- Both of you like clear financial plans, but The Architect focuses on logical, impersonal budgets that support shared responsibilities and efficiency. - The Theorist incorporates abstract possibilities into their financial thinking, sometimes allocating resources toward theoretical investments that feel risky to The Architect. - Decisions about money often involve cold logic from both, yet The Architect emphasizes practical impacts while The Theorist weighs personal ethical alignments. - This can cause tension in how you save versus invest, with one seeing the other's choices as either too rigid or overly speculative.",
+        redFlags:
+          "- Arguments escalate over budget allocations, with The Architect accusing The Theorist of impractical spending on ideas that lack immediate returns. - The Theorist feels constrained by The Architect's focus on tangible security, leading to secretive financial decisions that erode trust. - Shared financial goals stall, creating resentment as neither adapts to the other's perspective on prosperity.",
+        resolutionStrategies: [
+          "Create a joint budget that includes sections for both practical needs and innovative pursuits, ensuring each partner's priorities get equal consideration in planning.",
+          "Discuss financial values openly using logical frameworks, helping The Theorist explain abstract benefits while The Architect outlines concrete risks.",
+          "Set up separate personal funds within your overall plan to allow independence in spending, reducing conflicts over individual choices.",
+        ],
+        growthOutcome:
+          "Embracing your differences leads to a balanced prosperity where stability meets innovation, strengthening your financial future together.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "Your health routines benefit from a mutual appreciation for structure, making it easier to stick to consistent plans that promote long-term well-being. The Architect enjoys engaging outwardly in activities that involve others, like group exercises or shared wellness goals. The Theorist prefers inward-focused practices, such as solo reflection or personal research into health theories, to maintain their vitality.",
+        coreChallenge:
+          "The core issue stems from The Architect's outward energy pushing for joint health activities that energize them but drain The Theorist, who needs solitary routines, compounded by your shared structured habits that can feel rigid when not aligned.",
+        whyThisHappens:
+          "- The Architect finds motivation in interactive wellness, like planning group walks or classes, which contrasts with The Theorist's need for quiet, independent exercises. - Both value organized health schedules, but The Architect applies this to social settings while The Theorist uses it for personal introspection. - This mismatch can lead to skipped joint plans, as The Theorist feels overwhelmed by external engagement and The Architect sees it as disinterest.",
+        redFlags:
+          "- The Architect pushes for more shared activities, leading to The Theorist feeling exhausted and withdrawing from health discussions altogether. - Resentment builds when structured plans fail, with The Theorist accusing The Architect of ignoring their need for alone time in wellness. - Overall vitality suffers as neither adapts, resulting in inconsistent routines and mutual frustration over unmet health goals.",
+        resolutionStrategies: [
+          "Alternate between joint and solo health activities in your weekly schedule, allowing The Architect social time while giving The Theorist space for personal recharge.",
+          "Develop flexible structures that accommodate both preferences, like starting with individual routines and ending with a brief shared check-in.",
+          "Encourage open talks about energy levels to adjust plans dynamically, ensuring health efforts feel supportive rather than obligatory.",
+        ],
+        growthOutcome:
+          "Finding harmony in your health approaches creates a vibrant life where energy flows freely, enhancing your overall well-being as a couple.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "In your relationship, you both bring a structured approach to romance, planning meaningful gestures that build lasting connections. The Architect expresses love through collaborative efforts and outward interactions, focusing on shared experiences that strengthen the bond. The Theorist seeks deeper, independent expressions of affection, valuing personal space and thoughtful, inward reflections on your connection.",
+        coreChallenge:
+          "Tension emerges from The Architect's collaborative style craving emotional sync through group-like interactions clashing with The Theorist's autonomous need for space, amplified by outward versus inward energies, and sometimes differing ways of showing love through actions or words.",
+        whyThisHappens:
+          "- The Architect thrives on harmonious check-ins and joint activities to feel connected, while The Theorist prefers solitary processing of emotions. - Outward engagement from The Architect can overwhelm The Theorist's inward focus, leading to mismatched timing in romantic expressions. - Both use logic in decisions, but The Architect applies it to practical acts of love, whereas The Theorist leans toward value-based, personal affirmations. - This can result in The Architect feeling neglected without frequent interactions and The Theorist feeling pressured by constant togetherness.",
+        redFlags:
+          "- The Architect interprets The Theorist's need for space as emotional distance, leading to increased demands for reassurance that push them further away. - Romantic gestures become one-sided, with The Theorist withdrawing into independence, causing The Architect to question the relationship's depth. - Conflicts arise over how love is shown, escalating into arguments where logic overrides empathy, eroding your romantic foundation.",
+        resolutionStrategies: [
+          "Schedule dedicated time for both shared romantic activities and individual reflection, balancing The Architect's need for engagement with The Theorist's space.",
+          "Practice expressing love in ways that honor each other's styles, like The Architect planning thoughtful dates and The Theorist sharing deep personal insights.",
+          "Use logical discussions to understand value differences in romance, turning potential clashes into opportunities for more meaningful connections.",
+        ],
+        growthOutcome:
+          "Navigating these differences deepens your romance, creating a love that's both collaborative and respectfully independent.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You manage home life with a shared sense of structure, establishing clear routines that make your space feel organized and predictable. The Architect brings a collaborative touch, often involving family in decisions to foster unity and shared responsibilities. The Theorist prefers an autonomous approach, setting personal boundaries while contributing through independent tasks that align with their ideas.",
+        coreChallenge:
+          "The primary friction comes from your mutual structured habits clashing in execution, as The Architect pushes for collaborative family involvement while The Theorist seeks autonomy, leading to imbalances in how rules and chores are handled at home.",
+        whyThisHappens:
+          "- Both appreciate organized home systems, but The Architect orients them toward group harmony, like joint chore schedules. - The Theorist focuses on personal freedom within the structure, sometimes resisting collective family obligations. - This difference can cause uneven distribution of tasks, with The Architect over-accommodating and The Theorist enforcing individual limits. - Tensions rise when family dynamics feel too interdependent for The Theorist or not cohesive enough for The Architect.",
+        redFlags:
+          "- The Architect resents handling most family interactions alone, feeling The Theorist's independence as detachment from home life. - The Theorist sets rigid boundaries that exclude shared activities, leading to a divided household and growing isolation. - Home routines break down, with arguments over rules escalating into broader conflicts about family priorities.",
+        resolutionStrategies: [
+          "Divide home responsibilities to play to each other's strengths, with The Architect managing group aspects and The Theorist handling solo tasks within the overall structure.",
+          "Hold regular family meetings that respect autonomy, allowing input without mandatory participation to maintain harmony.",
+          "Adapt routines flexibly when needed, discussing changes openly to ensure both feel their preferences are valued in home life.",
+        ],
+        growthOutcome:
+          "Resolving these dynamics creates a home that's structured yet flexible, nurturing a family environment full of mutual respect.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "Your social life reflects a blend of collaborative and independent styles, with structured plans helping you navigate connections reliably. The Architect enjoys building community through group events and harmonious interactions that strengthen ties. The Theorist leans toward selective, inward-focused friendships, prioritizing deep personal conversations over frequent outward engagements.",
+        coreChallenge:
+          "Challenges arise from The Architect's harmonious drive for community involvement conflicting with The Theorist's autonomous preference for solitude, intensified by outward energy seeking group activities while inward focus drains quickly in social settings.",
+        whyThisHappens:
+          "- The Architect naturally commits to social gatherings to foster collective bonds, contrasting The Theorist's desire for minimal, meaningful interactions. - Outward orientation energizes The Architect in groups, but The Theorist needs quiet recovery after even small engagements. - This can lead to imbalanced social calendars, where one feels overextended and the other isolated. - Differences in approach make joint friendships feel forced for The Theorist or superficial for The Architect.",
+        redFlags:
+          "- The Architect pushes for more joint outings, causing The Theorist to retreat further and decline invitations repeatedly. - Resentment grows as The Theorist perceives social demands as intrusive, leading to separate friend circles that divide your community life. - Community ties weaken, with arguments highlighting mismatched energy levels and eroding shared social enjoyment.",
+        resolutionStrategies: [
+          "Plan social activities that alternate between group events for The Architect and quieter, one-on-one meetups for The Theorist to balance energies.",
+          "Respect each other's limits by setting clear expectations for participation, allowing opt-outs without judgment to maintain harmony.",
+          "Build a shared community network gradually, focusing on quality connections that satisfy both collaborative and independent preferences.",
+        ],
+        growthOutcome:
+          "Embracing your social differences enriches your friendships, creating a supportive community that honors both togetherness and space.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You pursue personal growth with structured methods, committing to plans that allow steady progress in learning and self-improvement. The Architect focuses on concrete, practical skills that can be applied in real-world, collaborative settings. The Theorist explores abstract concepts and theories, seeking deep, independent discoveries that expand their intellectual horizons.",
+        coreChallenge:
+          "The key tension is between The Architect's concrete focus on mastering tangible skills clashing with The Theorist's abstract pursuit of novel ideas, amplified by structured approaches that can feel limiting when one drops pursuits for new explorations.",
+        whyThisHappens:
+          "- The Architect prefers building expertise in observable, useful areas through organized steps, while The Theorist chases interconnected possibilities. - Both value stability in growth, but The Architect applies it to practical outcomes and The Theorist to theoretical frameworks. - This difference can cause incomplete projects, as The Theorist's shifts feel unfocused to The Architect. - Joint discovery efforts stall when concrete details bore The Theorist or abstract tangents frustrate The Architect.",
+        redFlags:
+          "- The Architect criticizes The Theorist's unfinished courses as wasteful, leading to defensiveness and halted shared learning. - The Theorist dismisses The Architect's practical focus as narrow, creating distance in growth discussions. - Motivation wanes, with neither supporting the other's discovery style, resulting in stagnant personal development.",
+        resolutionStrategies: [
+          "Choose growth activities that blend concrete applications with abstract explorations, like applying theories to real projects together.",
+          "Set structured timelines for individual pursuits, sharing progress to inspire each other without forcing alignment.",
+          "Encourage flexibility in plans, allowing shifts when new ideas emerge while committing to core goals for balance.",
+        ],
+        growthOutcome:
+          "Integrating your approaches fosters profound discovery, where practical mastery meets innovative thinking for mutual growth.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "Your adventures are grounded in structured planning, ensuring experiences are well-prepared and enjoyable for both. The Architect seeks outward, shared thrills that involve others and create collective memories. The Theorist finds joy in inward, quiet explorations that allow personal reflection and independent discoveries.",
+        coreChallenge:
+          "Friction occurs when your shared structured planning meets differing energies, as The Architect's outward push for group adventures clashes with The Theorist's inward preference for solitary joys, leading to last-minute changes or unmet expectations.",
+        whyThisHappens:
+          "- Both like organized outings, but The Architect orients them toward interactive, social elements for excitement. - The Theorist needs adaptable, low-key activities that accommodate their need for internal processing. - This can result in planned trips feeling too hectic for The Theorist or too subdued for The Architect. - Differences amplify when spontaneity disrupts structures, causing one to feel controlled or the other bored.",
+        redFlags:
+          "- The Architect insists on detailed itineraries that overwhelm The Theorist, leading to cancellations and disappointment. - The Theorist suggests quiet alternatives that The Architect finds unexciting, sparking arguments over adventure styles. - Joy diminishes as adventures become sources of stress, eroding your shared sense of fun.",
+        resolutionStrategies: [
+          "Design adventures with built-in flexibility, starting with a loose structure that allows for both shared thrills and personal downtime.",
+          "Alternate planning responsibilities, letting The Architect handle outward elements and The Theorist add inward-focused activities.",
+          "Discuss energy needs before outings to adjust plans, ensuring experiences bring joy without exhaustion.",
+        ],
+        growthOutcome:
+          "Balancing your adventure styles creates lasting joy, where structured plans meet personal fulfillment in exciting ways.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You value organized ways to find peace, creating routines that support relaxation and recharge in your daily lives. The Architect draws serenity from outward engagements that feel connected and harmonious with others. The Theorist seeks deep, inward solitude for true calm, focusing on personal boundaries to maintain inner balance.",
+        coreChallenge:
+          "The main challenge is The Theorist's inward need for extensive alone time conflicting with The Architect's outward preference for shared serenity, intensified by collaborative check-ins that can feel intrusive to one partner's autonomous space requirements.",
+        whyThisHappens:
+          "- The Architect finds peace in light interactions and group harmony, while The Theorist requires prolonged isolation for reflection. - Both approach serenity structurally, but The Architect includes others, contrasting The Theorist's self-reliant methods. - This mismatch can lead to interrupted solitude, making The Theorist feel encroached upon. - Tensions build when harmonious intentions from The Architect are seen as disruptive by The Theorist.",
+        redFlags:
+          "- The Architect's frequent check-ins cause The Theorist to enforce stricter boundaries, leading to feelings of rejection. - The Theorist withdraws excessively, making The Architect question the relationship's closeness and serenity. - Space becomes a battleground, with serenity eroded by ongoing conflicts over alone time.",
+        resolutionStrategies: [
+          "Establish designated times for solitude and connection, respecting The Theorist's inward needs while fulfilling The Architect's outward preferences.",
+          "Communicate boundaries clearly without judgment, using harmonious discussions to find mutually agreeable serenity routines.",
+          "Incorporate independent activities into shared plans, allowing space that rejuvenates both without compromising togetherness.",
+        ],
+        growthOutcome:
+          "Honoring each other's space needs cultivates deeper serenity, strengthening your bond through balanced independence and connection.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "You build legacies with a structured mindset, planning long-term contributions that feel meaningful and enduring. The Architect focuses on collaborative impacts that benefit communities through practical, team-based efforts. The Theorist pursues autonomous legacies rooted in abstract ideas and personal visions that reshape thinking independently.",
+        coreChallenge:
+          "Divergence happens in how you define impact, with The Architect's harmonious, community-oriented approach clashing against The Theorist's autonomous, personal focus, further differing on concrete measurable results versus abstract meaningful changes, and logical versus value-driven priorities.",
+        whyThisHappens:
+          "- The Architect orients legacies toward group achievements and equity, while The Theorist emphasizes individual breakthroughs and freedom. - Abstract insights drive The Theorist to visionary outcomes, contrasting The Architect's concrete, observable contributions. - Both use logic in planning, but The Architect applies it to collective principles and The Theorist to personal ethics. - This can lead to mismatched efforts, where one sees the other's legacy as either too diffuse or overly insular.",
+        redFlags:
+          "- The Architect dismisses The Theorist's abstract pursuits as intangible, leading to undervalued contributions and resentment. - The Theorist views The Architect's community focus as diluting personal impact, causing withdrawal from joint legacy discussions. - Legacy goals fragment, with analytical conflicts preventing unified progress and shared fulfillment.",
+        resolutionStrategies: [
+          "Combine your strengths by integrating The Theorist's abstract ideas into The Architect's community projects for broader, innovative impacts.",
+          "Discuss legacy visions using logical frameworks that honor both concrete and abstract elements, aligning on shared values.",
+          "Pursue parallel paths with mutual support, celebrating individual achievements to build a combined legacy over time.",
+        ],
+        growthOutcome:
+          "Merging your approaches creates a powerful legacy that blends collaboration with independence, leaving a lasting positive mark.",
+      },
+    },
+  ],
+  "C-L-O-S-H/N-L-I-F-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both bring a team-oriented approach to your careers, focusing on collective goals that make a difference together. The Architect often takes charge in organizing practical steps for shared missions, while the Innovator contributes fresh ideas to keep things evolving. This combination helps you support each other in pursuing meaningful work that aligns with group efforts.",
+        coreChallenge:
+          "Balancing the Architect's need for stable roles and clear plans with the Innovator's preference for shifting directions and exploring new possibilities can lead to frustration when career paths feel too rigid or unpredictable.",
+        whyThisHappens:
+          "- Both of you value collaborative purposes, but the Architect seeks consistent team structures while the Innovator adapts to emerging opportunities.\n- The Architect prefers locking into defined career tracks to build reliability, creating tension with the Innovator's flexible shifts in focus.\n- Shared harmonious goals get disrupted when one wants to plan ahead and the other responds to changing ideas.\n- The Innovator's adaptability can make the Architect feel like progress is unsteady, leading to mismatched expectations in joint professional endeavors.\n- Without alignment, small differences in approach amplify into larger conflicts over long-term career visions.",
+        redFlags:
+          "- The Architect starts resenting the Innovator for frequently changing career ideas, leading to arguments about commitment.\n- The Innovator feels stifled by the Architect's insistence on sticking to original plans, causing withdrawal from shared discussions.\n- Joint projects stall because one pushes for structure while the other seeks freedom, resulting in unmet professional goals.",
+        resolutionStrategies: [
+          "Set aside time each month to discuss career goals openly, allowing the Architect to outline stable elements while the Innovator suggests adaptive adjustments.",
+          "Create a shared vision board that combines fixed milestones with flexible options, helping you both feel involved in the process.",
+          "Encourage each other to take turns leading decisions, where the Architect handles planning phases and the Innovator explores new angles.",
+        ],
+        growthOutcome:
+          "By blending stability with flexibility, you create a dynamic career path that fosters mutual growth and lasting fulfillment.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, you approach wealth with a practical mindset, but differences in planning create interesting dynamics. The Architect focuses on organized budgets and tangible investments, while the Innovator brings abstract ideas to long-term prosperity. Together, you can build security that feels both grounded and visionary.",
+        coreChallenge:
+          "The Architect's structured saving clashes with the Innovator's adaptive spending on new concepts, potentially causing disputes over how to allocate resources logically versus creatively.",
+        whyThisHappens:
+          "- The Architect prefers detailed financial plans and consistent saving, while the Innovator shifts priorities based on emerging visions.\n- Concrete tools like budgets appeal to the Architect for immediate control, but the Innovator sees money as fuel for broader possibilities.\n- Logical decisions dominate for both, yet the Architect's stability needs conflict with the Innovator's flexibility in investments.\n- Without coordination, one views the other's approach as too rigid or impulsive, leading to tension in shared financial goals.\n- Abstract insights from the Innovator can overlook practical details that the Architect values for building prosperity.",
+        redFlags:
+          "- The Architect becomes frustrated with the Innovator's unexpected expenses on ideas, leading to heated budget arguments.\n- The Innovator feels restricted by the Architect's strict financial rules, causing secret spending or avoidance of money talks.\n- Joint accounts suffer from mismatched priorities, resulting in resentment over perceived irresponsible handling of wealth.",
+        resolutionStrategies: [
+          "Develop a hybrid budget that includes fixed savings for the Architect and a flexible fund for the Innovator's innovative pursuits.",
+          "Review finances quarterly, using logical analysis to balance concrete needs with abstract opportunities for growth.",
+          "Assign roles where the Architect manages daily expenses and the Innovator researches future investments to align efforts.",
+        ],
+        growthOutcome:
+          "Embracing both structured and adaptive strategies leads to a prosperous life where you achieve financial security and exciting ventures.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You handle health with outward energy from one side and inward focus from the other, creating a mix of shared and personal routines. The Architect enjoys group activities for vitality, while the Innovator prefers reflective practices. This blend encourages you to support each other's wellness in complementary ways.",
+        coreChallenge:
+          "The Architect's desire for joint health routines conflicts with the Innovator's need for solo recharge time, especially when structured plans meet flexible moods.",
+        whyThisHappens:
+          "- Outward engagement drives the Architect to suggest shared exercises, but the Innovator requires internal reflection for energy restoration.\n- Stable structures like set workout schedules suit the Architect, while the Innovator adapts based on daily feelings.\n- Differences in energy direction make one feel dragged into activities while the other senses rejection from independent choices.\n- Without understanding, planned health goals get derailed by the Innovator's spontaneous shifts.\n- Group-oriented vitality for the Architect clashes with the Innovator's preference for quiet, personal health approaches.",
+        redFlags:
+          "- The Architect pushes for more couple workouts, leading the Innovator to withdraw and skip sessions altogether.\n- The Innovator's flexible habits frustrate the Architect, causing criticism that harms motivation for health goals.\n- Unresolved tensions result in one partner neglecting shared wellness, straining overall vitality in the relationship.",
+        resolutionStrategies: [
+          "Schedule a mix of joint and solo health activities, ensuring the Architect gets social elements while the Innovator has personal time.",
+          "Discuss mood-based adjustments openly, allowing the Innovator to suggest changes to the Architect's structured plans.",
+          "Track progress together weekly, celebrating small wins to keep both engaged in maintaining vitality.",
+        ],
+        growthOutcome:
+          "Finding harmony in energy styles results in a balanced health routine that energizes you both for a vibrant life.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "Your romance thrives on collaborative harmony, with outward expressions meeting inward depth for meaningful connections. The Architect shows love through organized gestures, while the Innovator offers thoughtful insights. This pairing allows you to build a bond that's both active and reflective.",
+        coreChallenge:
+          "The shared harmonious style is tested when the Architect's outward interactions clash with the Innovator's inward depth, especially in logical versus value-based expressions of affection.",
+        whyThisHappens:
+          "- Both prioritize emotional sync in relationships, but the Architect seeks daily touch while the Innovator craves deeper conversations.\n- Outward energy from the Architect drives active dates, contrasting the Innovator's preference for quiet, introspective moments.\n- Logical acts of service from the Architect may feel impersonal to the Innovator if not paired with empathetic words.\n- Without balance, one partner feels overwhelmed by constant engagement while the other longs for more profound connections.\n- Value-driven romance gets complicated when outward plans don't align with inward needs.",
+        redFlags:
+          "- The Architect's frequent check-ins start feeling intrusive to the Innovator, leading to emotional distance.\n- The Innovator's need for space makes the Architect question commitment, sparking insecure arguments.\n- Mismatched love languages result in one feeling unappreciated, eroding the romantic foundation over time.",
+        resolutionStrategies: [
+          "Plan regular dates that alternate between active outings for the Architect and quiet evenings for the Innovator to meet both needs.",
+          "Express appreciation daily using both logical actions and empathetic words to bridge your styles.",
+          "Set boundaries for personal space while committing to weekly deep talks to strengthen your harmonious bond.",
+        ],
+        growthOutcome:
+          "Navigating these differences deepens your romance, creating a love that's supportive and intimately connected.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "In family matters, you create a nurturing home with structured elements blending with adaptive flows. The Architect establishes clear rules for harmony, while the Innovator adjusts to changing needs. This dynamic helps you maintain a balanced household together.",
+        coreChallenge:
+          "The Architect's preference for organized chores and rules conflicts with the Innovator's flexible approach, especially in how collaboration plays out in daily family life.",
+        whyThisHappens:
+          "- Stable structures like set routines appeal to the Architect for smooth home operations, but the Innovator prefers responding to immediate family dynamics.\n- Collaborative efforts get strained when the Architect over-plans while the Innovator sets looser boundaries.\n- Differences in adaptability make one feel the home is too rigid or chaotic without mutual adjustments.\n- Family decisions become tense if the Innovator's shifts disrupt the Architect's need for consistency.\n- Harmonious goals are challenged by varying levels of structure in shared responsibilities.",
+        redFlags:
+          "- The Architect enforces strict schedules, causing the Innovator to rebel and avoid family duties.\n- The Innovator's casual attitude leads to unfinished tasks, frustrating the Architect and sparking blame.\n- Ongoing conflicts erode family unity, making home life feel more like a battleground than a sanctuary.",
+        resolutionStrategies: [
+          "Divide home tasks with the Architect handling planning and the Innovator managing spontaneous needs to play to strengths.",
+          "Hold family meetings to agree on flexible rules that satisfy the Architect's structure while allowing Innovator input.",
+          "Celebrate small successes in home management to build positive momentum and collaborative spirit.",
+        ],
+        growthOutcome:
+          "Resolving these challenges fosters a home that's organized yet adaptable, strengthening your family bonds.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You engage with friends and community through a shared collaborative lens, but energy differences add variety. The Architect thrives in group interactions, while the Innovator enjoys deeper, selective connections. This mix enriches your social life with balance.",
+        coreChallenge:
+          "Your harmonious social styles are challenged when the Architect's outward enthusiasm for events clashes with the Innovator's inward preference for quieter gatherings.",
+        whyThisHappens:
+          "- Both value group dynamics, but the Architect commits to many invites while the Innovator selects fewer for depth.\n- Outward energy pushes the Architect toward active community roles, contrasting the Innovator's need for reflective interactions.\n- Social commitments become overwhelming if one drags the other into draining activities.\n- Without compromise, the Innovator may withdraw, leaving the Architect feeling unsupported in shared circles.\n- Harmonious intentions get lost in mismatched energy levels during community engagements.",
+        redFlags:
+          "- The Architect over-schedules social plans, leading the Innovator to cancel and create tension.\n- The Innovator's reluctance makes the Architect feel isolated in friendships, breeding resentment.\n- Persistent mismatches result in separate social lives, weakening your couple's community ties.",
+        resolutionStrategies: [
+          "Alternate between large group events for the Architect and small gatherings for the Innovator to keep social life balanced.",
+          "Discuss upcoming invites together, respecting each other's energy limits before committing.",
+          "Build a core group of friends that suits both styles, fostering deeper connections over time.",
+        ],
+        growthOutcome:
+          "Embracing social differences expands your network, creating fulfilling friendships that enhance your bond.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "In personal growth, you pursue discovery with concrete mastery meeting abstract novelty for well-rounded development. The Architect focuses on practical skills, while the Innovator explores broad ideas. Together, you inspire each other to learn in diverse ways.",
+        coreChallenge:
+          "The Architect's dedication to deepening one skill contrasts with the Innovator's chase for new concepts, especially when stable completion meets adaptive exploration.",
+        whyThisHappens:
+          "- Concrete focus drives the Architect to master tangible abilities, while the Innovator seeks patterns in various fields.\n- Stable approaches make the Architect finish projects thoroughly, clashing with the Innovator's flexible shifts to fresh interests.\n- Growth paths diverge when one sticks to plans and the other drops pursuits for novelty.\n- Shared discovery gets hindered by differing paces in learning and application.\n- Without alignment, motivation wanes as preferences pull in opposite directions.",
+        redFlags:
+          "- The Architect criticizes the Innovator for abandoning courses, leading to defensive arguments.\n- The Innovator finds the Architect's focus too narrow, causing disinterest in joint learning.\n- Unaddressed frustrations stall personal development, making growth feel like a solo endeavor.",
+        resolutionStrategies: [
+          "Choose joint learning activities where the Architect handles practical steps and the Innovator introduces new angles.",
+          "Set goals with built-in flexibility, allowing completion for the Architect and exploration for the Innovator.",
+          "Share progress stories regularly to appreciate each other's unique paths to discovery.",
+        ],
+        growthOutcome:
+          "Integrating your styles leads to comprehensive growth that enriches both your lives profoundly.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "You find joy in adventures that mix planned outings with spontaneous twists, creating memorable experiences. The Architect organizes details for fun, while the Innovator adds unexpected elements. This partnership keeps your leisure exciting and varied.",
+        coreChallenge:
+          "The Architect's detailed planning for trips conflicts with the Innovator's desire to change plans on the fly, particularly in shared versus quiet joys.",
+        whyThisHappens:
+          "- Stable preferences lead the Architect to map out every aspect, while the Innovator adapts to moods and opportunities.\n- Outward thrills energize the Architect in group settings, contrasting the Innovator's inward quiet pleasures.\n- Adventure styles clash when one insists on schedules and the other seeks freedom.\n- Without flexibility, fun turns into stress from unmet expectations.\n- Energy differences amplify tensions during shared leisure activities.",
+        redFlags:
+          "- The Architect's rigid itineraries frustrate the Innovator, leading to on-trip conflicts.\n- The Innovator's changes make the Architect anxious, spoiling the overall joy.\n- Repeated issues result in avoiding adventures together, diminishing shared happiness.",
+        resolutionStrategies: [
+          "Plan trips with a loose outline that includes must-dos for the Architect and free time for the Innovator.",
+          "Incorporate both outward activities and inward reflections to satisfy your energy needs.",
+          "Debrief after adventures to refine future plans based on what brought the most joy.",
+        ],
+        growthOutcome: "Balancing your approaches creates adventures that bring deeper joy and stronger connections.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "In seeking serenity, you navigate space with outward engagement meeting inward solitude for a harmonious balance. The Architect fills quiet with interactions, while the Innovator cherishes deep alone time. This dynamic teaches you to respect each other's peace.",
+        coreChallenge:
+          "The Architect's outward need for check-ins disrupts the Innovator's inward solitude, especially when harmonious intentions cross boundaries.",
+        whyThisHappens:
+          "- Inward reflection is essential for the Innovator's recharge, but the Architect's external energy seeks constant connection.\n- Collaborative harmony prompts the Architect to fill silences, while the Innovator enforces personal space.\n- Differences in energy make one feel rejected and the other overwhelmed.\n- Serenity gets compromised without clear boundaries for alone time.\n- Shared living amplifies clashes in how you achieve inner peace.",
+        redFlags:
+          "- The Architect interprets the Innovator's solitude as avoidance, leading to needy behaviors.\n- The Innovator snaps at interruptions, causing the Architect to feel unwanted.\n- Ongoing invasions of space erode trust and serenity in the relationship.",
+        resolutionStrategies: [
+          "Establish dedicated alone times for the Innovator while scheduling check-ins that suit the Architect's needs.",
+          "Communicate openly about space requirements to prevent misunderstandings and build empathy.",
+          "Create shared rituals for reconnection after solitude to maintain harmonious bonds.",
+        ],
+        growthOutcome:
+          "Respecting space differences cultivates a serene environment where you both thrive independently and together.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "You build legacy through community efforts blended with personal visions, creating a meaningful impact. The Architect organizes tangible contributions, while the Innovator dreams of broader influences. Together, you craft a lasting mark that's collaborative and inspired.",
+        coreChallenge:
+          "Your shared harmonious drive for legacy is challenged by the Architect's focus on measurable community results versus the Innovator's abstract, meaningful pursuits, with logical decisions adding complexity.",
+        whyThisHappens:
+          "- Both aim for collective impact, but the Architect prioritizes concrete achievements while the Innovator seeks deeper significance.\n- Tangible metrics guide the Architect's efforts, clashing with the Innovator's visionary possibilities.\n- Logical planning from the Architect may overlook value-based inspirations that the Innovator values.\n- Without integration, legacies feel either too practical or too intangible.\n- Differences in focus amplify when deciding on joint contributions to society.",
+        redFlags:
+          "- The Architect dismisses the Innovator's ideas as unrealistic, stifling collaborative efforts.\n- The Innovator resists the Architect's structured approaches, leading to stalled projects.\n- Unresolved visions result in separate legacies, weakening your shared impact.",
+        resolutionStrategies: [
+          "Combine forces by having the Architect handle execution while the Innovator shapes the visionary aspects of legacy projects.",
+          "Discuss impact goals regularly, balancing concrete outcomes with abstract meanings to align logically and valuably.",
+          "Volunteer together in causes that blend community service with innovative ideas to build a unified legacy.",
+        ],
+        growthOutcome:
+          "Merging your strengths creates a powerful legacy that inspires others and fulfills you both deeply.",
+      },
+    },
+  ],
+  "C-L-O-S-H/N-L-I-F-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "In your careers, The Architect thrives by leading teams toward clear, shared goals with organized plans, while The Visionary pursues independent ideas that evolve over time. You both value logic in your work, but one focuses on building stable group efforts and the other on flexible personal breakthroughs. This mix can create a partnership where structured support meets innovative thinking, helping you cover more ground together.",
+        coreChallenge:
+          "The main tension arises when The Architect's need for team-oriented missions clashes with The Visionary's drive for solo pursuits, amplified by one locking into roles while the other shifts focus often, leading to frustration over mismatched career paths.",
+        whyThisHappens:
+          "- The Architect prefers collaborative projects that align everyone toward a common purpose, but The Visionary seeks freedom to follow their own direction without group input.\n- Stable planning from The Architect can feel restrictive to The Visionary, who adapts quickly to new opportunities and changes course as needed.\n- Group consistency matters to The Architect in building careers, while The Visionary prioritizes individual innovation that may not fit team structures.\n- Fixed roles provide security for The Architect, yet The Visionary finds them limiting and prefers exploring varied interests freely.",
+        redFlags:
+          "- Resentment builds if The Architect views The Visionary's changing focuses as unreliable, leading to arguments about commitment in joint professional endeavors.\n- The Visionary might feel smothered by The Architect's emphasis on team roles, causing withdrawal from shared career discussions and growing isolation.\n- Over time, mismatched priorities could result in one partner sacrificing their goals, fostering unspoken bitterness in the relationship.",
+        resolutionStrategies: [
+          "Set aside time each month to discuss individual career goals openly, then find one small way to support each other's paths without forcing collaboration.",
+          "Create a flexible plan that includes both stable team elements for The Architect and room for independent shifts for The Visionary, reviewing it quarterly together.",
+          "Encourage each other to pursue separate professional networks while sharing key insights, building mutual respect for your different approaches to purpose.",
+        ],
+        growthOutcome:
+          "By balancing team missions with solo freedom, you cultivate a supportive dynamic that enriches both your careers and deepens your connection.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "When managing finances, The Architect leans toward careful saving and organized budgets based on real-world needs, while The Visionary thinks big about money as a tool for future ideas. You share a logical approach to decisions, but one emphasizes practical stability and the other imaginative possibilities. This can lead to a well-rounded strategy where immediate security supports long-term visions.",
+        coreChallenge:
+          "Conflicts emerge from The Architect's preference for structured saving clashing with The Visionary's adaptable spending on ideas, heightened by tangible tools versus visionary means, and both applying cold logic that overlooks emotional needs in money talks.",
+        whyThisHappens:
+          "- The Architect focuses on building wealth through consistent plans and avoiding risks, but The Visionary adjusts budgets fluidly to chase new concepts.\n- Practical, observable financial tools appeal to The Architect for security, while The Visionary sees money as fuel for abstract potentials and bigger pictures.\n- Logical budgeting from both can turn discussions impersonal, making it hard to address how spending affects personal values or feelings.\n- Stable routines in saving provide comfort to The Architect, yet The Visionary prefers flexibility that allows spontaneous investments in innovative pursuits.\n- Concrete data drives The Architect's choices, contrasting with The Visionary's pattern-based thinking that prioritizes future opportunities over current limits.",
+        redFlags:
+          "- Financial arguments escalate if The Visionary's idea-driven purchases are seen as wasteful by The Architect, leading to trust issues over shared resources.\n- The Architect might impose strict budgets that stifle The Visionary, causing secret spending or resentment that erodes your financial partnership.\n- Overemphasis on logic without empathy could result in emotional distance, where money decisions feel like battles rather than joint efforts.",
+        resolutionStrategies: [
+          "Develop a joint budget that allocates funds for stable savings as The Architect prefers and flexible innovation as The Visionary needs, reviewing it together monthly.",
+          "Discuss how each financial choice aligns with your shared values, using logic to find compromises that respect both practical and visionary perspectives.",
+          "Set up separate personal accounts for individual spending freedom, while maintaining a unified approach to major investments to build prosperity harmoniously.",
+        ],
+        growthOutcome:
+          "Embracing both structured saving and visionary investing strengthens your financial foundation and fosters greater trust in each other's approaches.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "In health routines, The Architect enjoys active, shared activities with clear schedules, while The Visionary seeks quiet, personal ways to recharge without strict plans. You both approach wellness logically, but one draws energy from external engagement and the other from internal reflection. This difference can inspire a balanced lifestyle where joint efforts complement solo practices.",
+        coreChallenge:
+          "Tensions build when The Architect's desire for joint routines conflicts with The Visionary's need for solo time, worsened by one enforcing plans and the other skipping them based on current feelings or ideas.",
+        whyThisHappens:
+          "- Outward focus makes The Architect energized by group exercises or shared goals, but The Visionary recharges through inward, solitary activities like meditation.\n- Stable structures in health plans appeal to The Architect for consistency, while The Visionary adapts flexibly and may change routines spontaneously.\n- Joint vitality efforts feel stimulating to The Architect, yet overwhelming to The Visionary who prefers independent paths to well-being.\n- Enforced diets or schedules from The Architect can seem rigid to The Visionary, who adjusts based on mood or new insights rather than fixed rules.",
+        redFlags:
+          "- Frustration grows if The Architect pushes for shared workouts, making The Visionary feel drained and leading to avoidance of health discussions altogether.\n- The Visionary's inconsistent routines might be viewed as lazy by The Architect, sparking judgments that harm your emotional bond over time.\n- Neglected personal needs could result in burnout for one or both, weakening your ability to support each other in maintaining vitality.",
+        resolutionStrategies: [
+          "Alternate between joint health activities that suit The Architect and solo sessions for The Visionary, creating a schedule that allows flexibility in participation.",
+          "Share your individual health goals openly and find one overlapping area to pursue together, respecting each other's energy sources without pressure.",
+          "Incorporate adaptive elements into stable plans, like optional variations, to honor The Visionary's style while providing structure for The Architect.",
+        ],
+        growthOutcome:
+          "Finding harmony in joint and solo health practices enhances your overall vitality and brings you closer through mutual understanding.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "Your romantic life blends The Architect's team-like affection with The Visionary's independent expressions, creating a bond that's both supportive and freeing. You connect through logical acts of love, but one seeks daily interactions and the other deeper, quieter moments. This can build a relationship where practical gestures meet profound insights.",
+        coreChallenge:
+          "Romantic friction stems from The Architect's need for emotional sync in a group-like way clashing with The Visionary's preference for personal space, intensified by outward daily touch versus inward depth, and logical acts that may overlook verbal affirmations.",
+        whyThisHappens:
+          "- Harmonious orientation drives The Architect to seek constant connection and unity, but The Visionary values autonomy and individual boundaries in love.\n- Outward energy makes The Architect express romance through frequent actions, while The Visionary focuses on internal, reflective depth in emotional exchanges.\n- Logical decisions in showing love mean both prioritize practical help over words, yet this can leave emotional needs unaddressed without discussion.\n- Group dynamics influence The Architect's romantic style toward shared experiences, contrasting with The Visionary's solo-oriented approach to intimacy.\n- Daily engagement feels natural to The Architect, but The Visionary may find it intrusive, preferring sporadic, meaningful connections instead.",
+        redFlags:
+          "- Emotional disconnect arises if The Architect's check-ins feel smothering to The Visionary, leading to withdrawal and unspoken hurt in your romance.\n- The Visionary's need for space might be misinterpreted as disinterest by The Architect, causing insecurity and frequent arguments about commitment.\n- Over-reliance on logical acts without verbal warmth could erode passion, making your love feel more functional than affectionate over time.",
+        resolutionStrategies: [
+          "Schedule regular but flexible romantic check-ins that allow The Visionary space while giving The Architect the connection they crave, focusing on quality time.",
+          "Express love through a mix of practical actions and deeper conversations, ensuring both logical gestures and emotional words are part of your routine.",
+          "Respect each other's boundaries by discussing needs openly, then create personal rituals that blend shared harmony with independent freedom in romance.",
+        ],
+        growthOutcome:
+          "Navigating these romantic differences deepens your empathy and creates a more resilient, affectionate bond between you.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "At home, The Architect organizes family life with clear rules and collaborative efforts, while The Visionary adapts flexibly with personal boundaries. You both use logic for decisions, but one emphasizes structure and the other flow. This can foster a household that's efficient yet open to change.",
+        coreChallenge:
+          "Home tensions occur when The Architect's structured rules clash with The Visionary's resistance to routines, amplified by one over-accommodating family needs and the other setting firm personal limits.",
+        whyThisHappens:
+          "- Stable preferences lead The Architect to establish organized chores and rules for consistency, but The Visionary prefers adapting without fixed obligations.\n- Harmonious style makes The Architect prioritize family unity by accommodating everyone, while The Visionary focuses on autonomous boundaries to protect their space.\n- Structured home life provides security for The Architect, yet feels constraining to The Visionary who thrives on spontaneous adjustments.\n- Over-accommodation from The Architect can lead to resentment if The Visionary's boundaries are seen as selfish in family dynamics.\n- Flexible approaches allow The Visionary creativity at home, contrasting with The Architect's need for predictable systems in daily life.",
+        redFlags:
+          "- Conflicts intensify if The Architect enforces rules that The Visionary ignores, leading to chaos and blame in your shared home environment.\n- The Visionary's boundaries might isolate them from family activities, causing The Architect to feel overburdened and unappreciated.\n- Unresolved differences could create a divided household, where emotional distance grows and family harmony suffers long-term.",
+        resolutionStrategies: [
+          "Agree on core home rules that are minimal and flexible, allowing The Visionary room to adapt while giving The Architect some needed structure.",
+          "Discuss family accommodations together, balancing The Architect's collaborative spirit with The Visionary's need for personal limits to avoid overextension.",
+          "Divide chores based on preferences, with The Architect handling organized tasks and The Visionary taking adaptable ones, reviewing as needed.",
+        ],
+        growthOutcome:
+          "Resolving home dynamics builds a more balanced family life that respects both structure and freedom, strengthening your partnership.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "Socially, The Architect engages actively in group events with a collaborative mindset, while The Visionary selects connections independently and prefers smaller interactions. You both approach relationships logically, but one energizes from crowds and the other from solitude. This can create a social circle that's diverse and thoughtful.",
+        coreChallenge:
+          "Social strains develop from The Architect's tendency to over-commit to community contrasting with The Visionary's choice to decline, heightened by outward thriving in groups versus inward draining quickly.",
+        whyThisHappens:
+          "- Harmonious drive pushes The Architect toward frequent social commitments for unity, but The Visionary prioritizes autonomy and selective involvement.\n- Outward orientation makes The Architect gain energy from interactions, while The Visionary needs inward time to recharge after socializing.\n- Group activities feel fulfilling to The Architect, yet exhausting to The Visionary who prefers independent or one-on-one connections.\n- Over-committing from The Architect can lead to burnout if The Visionary's declinations are not understood as self-care.\n- Community focus for The Architect contrasts with The Visionary's preference for personal space in friendships.",
+        redFlags:
+          "- Resentment forms if The Architect pressures The Visionary into events, leading to arguments and withdrawal from shared social plans.\n- The Visionary's frequent no's might make The Architect feel unsupported, causing loneliness despite active community involvement.\n- Imbalanced social lives could widen emotional gaps, where one feels overwhelmed and the other isolated in your relationship.",
+        resolutionStrategies: [
+          "Plan social outings that include options for The Visionary to join or skip, respecting their energy while fulfilling The Architect's group needs.",
+          "Build a mix of joint and separate friendships, allowing The Architect community time and The Visionary quieter connections without guilt.",
+          "Communicate openly about social limits each week, finding compromises like shorter events to accommodate both styles effectively.",
+        ],
+        growthOutcome:
+          "Harmonizing your social approaches enriches your friendships and brings greater understanding to your shared life.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "In personal growth, The Architect masters skills through steady, practical steps, while The Visionary explores broad ideas with quick shifts. You both think logically, but one stays grounded in reality and the other in possibilities. This can lead to discoveries that are both deep and wide-ranging.",
+        coreChallenge:
+          "Challenges arise when The Architect's focus on one tangible skill conflicts with The Visionary's chase for novel concepts, exacerbated by one finishing commitments and the other dropping them midway.",
+        whyThisHappens:
+          "- Concrete preferences guide The Architect to build expertise in observable areas, but The Visionary seeks abstract patterns and new theories constantly.\n- Stable habits help The Architect complete growth paths thoroughly, while The Visionary adapts and may abandon pursuits for fresher ones.\n- Mastery of specifics satisfies The Architect, contrasting with The Visionary's need for expansive, evolving discoveries.\n- Planned progress from The Architect can seem boring to The Visionary, who thrives on spontaneous intellectual shifts.",
+        redFlags:
+          "- Frustration mounts if The Visionary's unfinished projects are criticized by The Architect, leading to defensiveness about growth efforts.\n- The Architect might feel their steady approach is undervalued, causing reluctance to share discovery experiences together.\n- Persistent mismatches could stall mutual encouragement, diminishing motivation for personal development in your partnership.",
+        resolutionStrategies: [
+          "Choose joint growth activities that start with concrete steps for The Architect and allow idea exploration for The Visionary, adjusting as you go.",
+          "Set short-term goals that The Visionary can adapt, while ensuring The Architect sees progress through consistent check-ins and completions.",
+          "Encourage separate pursuits in discovery, then share learnings weekly to appreciate each other's unique paths without judgment.",
+        ],
+        growthOutcome:
+          "Blending your growth styles fosters richer personal development and inspires deeper respect for each other's journeys.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "For fun, The Architect plans detailed outings with others in mind, while The Visionary enjoys spontaneous, introspective experiences. You both decide logically, but one seeks external thrills and the other internal peace. This can result in adventures that are organized yet open to surprises.",
+        coreChallenge:
+          "Joy conflicts when The Architect's detailed planning clashes with The Visionary's plan changes, intensified by shared outward thrills versus quiet inward pleasures.",
+        whyThisHappens:
+          "- Stable planning makes The Architect outline every adventure aspect for reliability, but The Visionary prefers flexible alterations based on the moment.\n- Outward energy drives The Architect to seek exciting group activities, while The Visionary finds joy in solitary or reflective pursuits.\n- Structured fun provides enjoyment for The Architect, yet restricts The Visionary's adaptive spirit in exploring new directions.\n- Shared thrills appeal to The Architect's social side, contrasting with The Visionary's need for serene, personal happiness.",
+        redFlags:
+          "- Annoyance builds if The Visionary alters plans last-minute, making The Architect feel disorganized and less joyful in outings.\n- The Architect's insistence on details might overwhelm The Visionary, leading to canceled adventures and missed opportunities for fun.\n- Unaddressed differences could turn joy-seeking into stress, reducing spontaneity and excitement in your relationship.",
+        resolutionStrategies: [
+          "Design adventures with a loose structure that The Architect can plan initially, but include options for The Visionary to modify on the go.",
+          "Alternate between outgoing group fun for The Architect and quieter personal activities for The Visionary to balance your energy needs.",
+          "Discuss adventure preferences before starting, ensuring both feel heard and incorporating elements of thrill and serenity equally.",
+        ],
+        growthOutcome:
+          "Overcoming adventure challenges creates more fulfilling joyful moments and strengthens your ability to enjoy life together.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "In seeking peace, The Architect fills quiet times with interactions, while The Visionary craves deep alone time with clear limits. You both value logic in boundaries, but one energizes externally and the other internally. This can lead to a serene space that's respectful and connected.",
+        coreChallenge:
+          "Serenity issues stem from The Visionary's deep solitude needs conflicting with The Architect's sense of rejection from lack of engagement, worsened by one filling silence collaboratively and the other enforcing autonomous boundaries.",
+        whyThisHappens:
+          "- Inward focus allows The Visionary to recharge in isolation, but The Architect gains peace through outward connections and shared moments.\n- Harmonious style prompts The Architect to check in during quiet times, while The Visionary sets firm boundaries for personal tranquility.\n- Solitude feels essential to The Visionary's serenity, yet intrusive interactions from The Architect can disrupt that needed space.\n- Group-oriented peace for The Architect contrasts with The Visionary's independent approach to finding calm.",
+        redFlags:
+          "- Emotional hurt grows if The Architect interprets solitude as avoidance, leading to unnecessary conflicts over space needs.\n- The Visionary's boundaries might seem cold to The Architect, causing feelings of exclusion and tension in daily life.\n- Ignored serenity differences could foster resentment, making home feel less peaceful and more divided over time.",
+        resolutionStrategies: [
+          "Establish designated alone times for The Visionary while scheduling short check-ins that satisfy The Architect without overwhelming either of you.",
+          "Communicate openly about how space contributes to your well-being, helping The Architect understand it's not rejection but a personal need.",
+          "Create shared serene activities that are low-key, blending The Architect's collaborative style with The Visionary's preference for quiet autonomy.",
+        ],
+        growthOutcome:
+          "Mastering space dynamics cultivates a more peaceful home and enhances your emotional intimacy through better respect.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "For lasting impact, The Architect builds through community efforts with practical steps, while The Visionary crafts personal visions with abstract depth. You share logical thinking, but one focuses on measurable results and the other on meaningful ideas. This can create a legacy that's both tangible and inspirational.",
+        coreChallenge:
+          "Legacy tensions come from The Architect's community-built approach clashing with The Visionary's personal vision, amplified by concrete measurable effects versus abstract meanings, and logical decisions that may sideline values in planning.",
+        whyThisHappens:
+          "- Harmonious motivation leads The Architect to create impact via group contributions, but The Visionary pursues autonomous, individual achievements.\n- Concrete focus makes The Architect value observable, real-world legacies, while The Visionary emphasizes theoretical, pattern-based significance.\n- Logical frameworks guide both, yet without addressing values, discussions can become too impersonal for emotional buy-in.\n- Community legacy feels fulfilling to The Architect, contrasting with The Visionary's independent path to meaningful contributions.\n- Measurable outcomes satisfy The Architect, but The Visionary seeks deeper, conceptual influences that evolve over time.",
+        redFlags:
+          "- Disagreements intensify if The Visionary's abstract goals are dismissed as impractical by The Architect, leading to undermined mutual support.\n- The Architect might feel their community efforts are undervalued, causing frustration and reduced collaboration on shared legacies.\n- Overlooked values in logic-driven talks could create emotional voids, weakening your joint commitment to impact.",
+        resolutionStrategies: [
+          "Blend your legacies by identifying one community project for The Architect and one personal idea for The Visionary, then link them meaningfully.",
+          "Discuss impact goals with a focus on both measurable results and deeper meanings, incorporating logical steps that honor your shared values.",
+          "Support each other's paths independently while finding overlaps, like using The Visionary's ideas to enhance The Architect's group initiatives.",
+        ],
+        growthOutcome:
+          "Integrating your legacy styles results in a more profound impact and a stronger sense of shared purpose in life.",
+      },
+    },
+  ],
+  "C-L-O-S-H/N-V-O-S-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "As a couple, you both thrive on building meaningful careers through teamwork and shared goals, with The Architect focusing on practical steps and The Ambassador emphasizing connections with others. You enjoy collaborating on projects that align with your values, creating a sense of unity in your professional lives. Together, you balance structure with inspiration, making your paths feel purposeful and supportive.",
+        coreChallenge:
+          "The main tension arises when The Architect's preference for concrete plans clashes with The Ambassador's desire for a vision that evolves around people and ideas, leading to frustration over how to define success.",
+        whyThisHappens:
+          "- The Architect seeks stable roles and clear objectives to build a reliable career foundation, while The Ambassador looks for opportunities that foster group harmony and broader impact.\n- Both of you value organization, but The Architect focuses on tangible outcomes, whereas The Ambassador prioritizes abstract possibilities that benefit everyone involved.\n- This difference can cause The Architect to feel The Ambassador's approach lacks focus, and The Ambassador to see The Architect's methods as too rigid for true fulfillment.\n- Your shared collaborative style amplifies these issues when joint decisions feel mismatched in priority.",
+        redFlags:
+          "- One partner starts dismissing the other's career ideas as impractical or overly idealistic, leading to resentment over time.\n- You avoid discussing long-term goals, resulting in parallel but disconnected professional paths that weaken your bond.\n- Frustration builds if The Architect insists on immediate results while The Ambassador pushes for more inclusive, visionary pursuits.",
+        resolutionStrategies: [
+          "Set aside time each month to share your individual career visions and find common ground by blending practical steps with inspirational elements that excite both of you.",
+          "Encourage each other to take turns leading on joint projects, allowing The Architect to handle structure and The Ambassador to focus on team dynamics for balanced progress.",
+          "Celebrate small wins together, like completing a task or building a new connection, to reinforce how your differences create a stronger, more comprehensive approach to purpose.",
+        ],
+        growthOutcome:
+          "By integrating your styles, you'll create careers that are both grounded and inspiring, leading to deeper mutual respect and shared achievements.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "You approach finances with a structured mindset, appreciating security and long-term planning as a team. The Architect handles money through logical budgeting, while The Ambassador infuses it with a focus on shared values and future dreams. This combination helps you build prosperity that feels meaningful and connected.",
+        coreChallenge:
+          "Conflicts emerge when The Architect's practical, fact-based financial decisions clash with The Ambassador's idealistic view of money as a tool for broader visions, especially in budgeting versus value-driven spending.",
+        whyThisHappens:
+          "- Both prefer organized financial habits, but The Architect sees wealth as a concrete resource to manage efficiently, while The Ambassador views it as enabling abstract goals like community support.\n- The Architect's analytical approach leads to strict budgets, whereas The Ambassador's empathic style may prioritize spending on relationships or causes.\n- This can create tension in decisions, with The Architect feeling The Ambassador is too loose with funds, and The Ambassador seeing The Architect as overly restrictive.\n- Your shared stability amplifies frustrations when plans don't align with differing priorities on logic versus values.\n- Over time, these mismatches can lead to arguments about investments that feel too risky or too conservative.",
+        redFlags:
+          "- Secret spending or hidden financial decisions start occurring because one feels judged by the other's approach, eroding trust in your partnership.\n- Repeated arguments over small purchases escalate into bigger fights about control and priorities in your shared life.\n- One partner withdraws from joint financial planning, leading to unbalanced responsibilities and growing resentment.",
+        resolutionStrategies: [
+          "Create a joint budget that includes categories for both practical needs and value-based goals, reviewing it together regularly to ensure it reflects your combined priorities.",
+          "Discuss financial decisions openly by sharing how each choice aligns with your personal views, helping The Architect appreciate emotional aspects and The Ambassador value logical structure.",
+          "Set shared prosperity milestones, like saving for a trip or donation, to turn potential conflicts into opportunities for celebrating your teamwork and growth.",
+        ],
+        growthOutcome:
+          "Resolving these differences will lead to a balanced financial life that supports both security and meaningful pursuits, strengthening your bond through trust.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both enjoy active, outward-focused health routines, like group exercises or shared meals, making wellness a fun part of your relationship. The Architect brings organization to fitness plans, while The Ambassador adds a caring touch to motivate each other. This synergy keeps you energized and connected in daily life.",
+        coreChallenge:
+          "Tensions build when your shared outward energy leads to over-scheduling health activities, but The Architect's structure clashes with The Ambassador's flexible, people-oriented adjustments, causing burnout or skipped routines.",
+        whyThisHappens:
+          "- Both thrive on engaging with the world, but The Architect enforces consistent plans like set workout times, while The Ambassador adapts based on mood or social needs.\n- Your stable preferences amplify this when The Architect feels routines are disrupted, and The Ambassador sees strictness as lacking empathy.\n- This difference can make joint health efforts feel obligatory rather than enjoyable, leading to frustration.\n- Over time, one may push for more activity while the other seeks variety, straining your shared vitality.",
+        redFlags:
+          "- One partner frequently cancels joint health plans, leading to feelings of unreliability and disappointment in the relationship.\n- Arguments arise over minor changes in routines, escalating into broader issues about commitment to each other's well-being.\n- Physical or emotional exhaustion sets in from mismatched energy levels, causing withdrawal from shared activities.",
+        resolutionStrategies: [
+          "Plan health routines together with built-in flexibility, allowing The Architect to set the framework and The Ambassador to suggest adjustments based on daily feelings.",
+          "Incorporate social elements into wellness, like group classes, to satisfy your outward orientations while balancing structure with adaptability for sustained motivation.",
+          "Check in weekly on how health habits are working for both, adjusting as needed to prevent burnout and foster a supportive environment.",
+        ],
+        growthOutcome:
+          "Overcoming these challenges will create a vibrant, sustainable health dynamic that enhances your energy and deepens your partnership.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "Your romance flourishes through collaborative gestures and outward expressions of affection, like planning dates or showing care in public ways. The Architect contributes practical acts of love, while The Ambassador brings emotional warmth and connection. This makes your bond feel alive and harmonious.",
+        coreChallenge:
+          "The key issue is when The Architect's logical expressions of love, like problem-solving, don't match The Ambassador's need for value-based affirmations, leading to feelings of emotional disconnect despite shared harmony.",
+        whyThisHappens:
+          "- Both value group-oriented romance, but The Architect shows love through actions and plans, whereas The Ambassador craves words and shared values.\n- Your outward energies amplify this in daily interactions, with The Architect focusing on tangible support and The Ambassador on deeper emotional sync.\n- This can cause The Architect to feel unappreciated for efforts, while The Ambassador senses a lack of heartfelt connection.\n- Decision conflicts arise in romantic choices, where logic versus values create mismatched expectations.\n- Over time, small gestures may be misinterpreted, building subtle tensions in intimacy.",
+        redFlags:
+          "- Affectionate moments turn into debates about how love should be shown, creating emotional distance over time.\n- One partner feels their efforts are overlooked, leading to reduced initiative in romantic gestures and growing resentment.\n- Avoidance of deep conversations about needs results in a surface-level relationship that lacks true vulnerability.",
+        resolutionStrategies: [
+          "Share your preferred ways of receiving love regularly, blending The Architect's practical acts with The Ambassador's emotional words for a fuller expression of care.",
+          "Plan romantic activities that incorporate both logic and values, like a thoughtful outing that also allows for meaningful talks, to strengthen your connection.",
+          "Practice active listening during check-ins, validating each other's feelings to bridge the gap between analytical and empathic approaches in romance.",
+        ],
+        growthOutcome:
+          "Addressing this will foster a romance that's both practical and deeply emotional, enriching your love with greater understanding.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You manage home life with a stable, collaborative approach, enjoying routines that build a nurturing environment together. The Architect organizes tasks efficiently, while The Ambassador focuses on emotional bonds within the family. This creates a warm, structured household.",
+        coreChallenge:
+          "Friction occurs when The Architect's concrete focus on rules and chores conflicts with The Ambassador's abstract emphasis on family harmony and flexibility, disrupting your shared stability.",
+        whyThisHappens:
+          "- Both prefer organized home structures, but The Architect insists on clear, tangible systems, while The Ambassador prioritizes relational dynamics over strict plans.\n- Your harmonious styles amplify issues when The Architect sees disorganization in adaptations, and The Ambassador feels rules stifle connections.\n- This leads to tensions in daily chores, with differing views on what's essential for a happy home.\n- Over time, one may over-accommodate while the other enforces boundaries, straining family interactions.",
+        redFlags:
+          "- Household tasks become sources of ongoing arguments, leading to uneven distribution of responsibilities and bitterness.\n- Family decisions feel one-sided, causing one partner to withdraw emotionally from home life discussions.\n- Avoidance of conflict results in unspoken resentments that affect your overall relationship harmony.",
+        resolutionStrategies: [
+          "Divide home responsibilities by playing to strengths, with The Architect handling organization and The Ambassador nurturing relationships, then review together for balance.",
+          "Establish flexible routines that allow for adjustments, ensuring both feel heard in how the home operates day to day.",
+          "Spend time as a family sharing appreciations, reinforcing how your combined approaches create a supportive and loving environment.",
+        ],
+        growthOutcome:
+          "Resolving these will lead to a home that's efficiently run and emotionally fulfilling, enhancing your family bonds.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You both love building social networks through collaborative efforts, enjoying group events and community involvement as a couple. The Architect contributes by planning gatherings, while The Ambassador excels at creating connections. This makes your social life vibrant and inclusive.",
+        coreChallenge:
+          "Challenges arise when your shared outward energy leads to over-commitment, but The Architect's practical focus clashes with The Ambassador's idealistic pursuit of deeper group ties, causing social fatigue.",
+        whyThisHappens:
+          "- Both lean toward harmony in friendships, but The Architect prefers structured interactions, while The Ambassador seeks expansive, meaningful engagements.\n- Your engaging styles amplify this in community settings, with The Architect feeling overwhelmed by too many invites and The Ambassador drained by superficial plans.\n- This can lead to mismatched social paces, where one pushes for more and the other pulls back.\n- Over time, decisions about events highlight differences, straining your joint social experiences.",
+        redFlags:
+          "- Frequent cancellations or excuses to avoid social plans signal growing discomfort and disconnection in your shared life.\n- Arguments about time spent with friends escalate, leading to isolation from your community and each other.\n- One partner starts pursuing separate social circles, weakening the teamwork in your relationship.",
+        resolutionStrategies: [
+          "Discuss social commitments in advance, agreeing on a balance that satisfies The Architect's need for structure and The Ambassador's desire for meaningful interactions.",
+          "Alternate between planned events and spontaneous gatherings, allowing both to contribute their strengths to your friendships.",
+          "Reflect together after social outings on what worked well, using insights to build a more enjoyable community life as a team.",
+        ],
+        growthOutcome:
+          "Overcoming this will enrich your friendships with depth and organization, making your community ties stronger and more rewarding.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You pursue personal growth with a structured approach, supporting each other's development through planned steps and shared insights. The Architect focuses on mastering practical skills, while The Ambassador explores ideas that inspire change. This blend keeps your journeys motivating.",
+        coreChallenge:
+          "The core tension is The Architect's preference for concrete, focused learning clashing with The Ambassador's chase for novel, abstract discoveries, especially within your stable frameworks, leading to stalled progress.",
+        whyThisHappens:
+          "- The Architect builds on tangible knowledge step by step, while The Ambassador jumps to new possibilities and connections.\n- Both value closure in growth, but this amplifies frustrations when The Architect sees distractions and The Ambassador feels limited.\n- This difference can cause incomplete projects, with mismatched interests in what to learn next.\n- Over time, one may dominate choices, reducing enthusiasm for joint discovery efforts.\n- Decisions about courses or books highlight how concrete versus abstract views create barriers.",
+        redFlags:
+          "- One partner loses interest in shared growth activities, leading to separate paths and diminished support for each other.\n- Criticism of the other's learning style builds resentment, hindering open discussions about personal development.\n- Avoidance of new challenges results in stagnation, affecting your overall sense of progress as a couple.",
+        resolutionStrategies: [
+          "Choose growth activities that start with The Architect's practical base and incorporate The Ambassador's innovative ideas, reviewing progress together to stay aligned.",
+          "Set short-term goals for discovery, allowing flexibility for new interests while maintaining structure to ensure completion and satisfaction.",
+          "Encourage sharing what you've learned individually, turning differences into opportunities to teach and inspire one another in meaningful ways.",
+        ],
+        growthOutcome:
+          "Bridging this gap will lead to well-rounded growth that's both grounded and expansive, fostering lifelong learning together.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "You find joy in planned adventures that engage the world, like organized trips or shared hobbies, bringing excitement to your life. The Architect ensures details are handled, while The Ambassador adds a relational spark. This makes your fun times memorable and connected.",
+        coreChallenge:
+          "Issues surface when your shared stability leads to rigid plans, but The Architect's concrete details conflict with The Ambassador's desire for spontaneous, idea-driven changes, dampening the adventure spirit.",
+        whyThisHappens:
+          "- Both prefer structured fun, but The Architect focuses on practical arrangements, while The Ambassador seeks to adapt for more inspiring experiences.\n- Your outward orientations amplify this during activities, with The Architect resisting shifts and The Ambassador feeling constrained.\n- This can turn joyful outings into stressful events over differing expectations.\n- Over time, one may avoid suggesting new adventures, reducing spontaneity in your relationship.",
+        redFlags:
+          "- Adventures become routine and predictable, leading to boredom and less enthusiasm for spending time together.\n- Disagreements during outings escalate into fights, spoiling the joy and creating negative associations with shared fun.\n- One partner opts out of plans more often, signaling emotional withdrawal from joint experiences.",
+        resolutionStrategies: [
+          "Plan adventures with a loose itinerary that allows The Architect to cover essentials and The Ambassador to suggest on-the-spot adjustments for more excitement.",
+          "Incorporate elements of surprise within structure, like themed days, to satisfy both your needs for organization and novelty in fun.",
+          "Debrief after each adventure on what brought joy, using feedback to refine future plans and build stronger shared memories.",
+        ],
+        growthOutcome:
+          "Resolving these will create adventures that are reliably fun and flexibly exciting, enhancing your happiness as a couple.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You both seek serenity through outward connections, but also value quiet moments together in harmonious ways. The Architect organizes peaceful routines, while The Ambassador nurtures emotional calm. This helps you maintain balance in busy lives.",
+        coreChallenge:
+          "The primary strain is your shared outward focus making solitude scarce, with The Architect's structured downtime clashing with The Ambassador's need for relational check-ins, disrupting personal peace.",
+        whyThisHappens:
+          "- Both direct energy externally, but The Architect prefers planned alone time, while The Ambassador fills gaps with conversations.\n- Your harmonious styles amplify this when The Architect feels interrupted and The Ambassador senses rejection.\n- This leads to tensions in shared spaces, where needs for quiet versus connection conflict.\n- Over time, mismatched approaches can cause emotional drain without adequate recharge.",
+        redFlags:
+          "- Increasing irritation during quiet times leads to avoidance of shared spaces, weakening your daily connection.\n- One partner demands more interaction, resulting in feelings of suffocation or neglect in the relationship.\n- Chronic fatigue sets in from unbalanced energy, affecting your overall well-being and intimacy.",
+        resolutionStrategies: [
+          "Schedule dedicated alone time for each, respecting The Architect's need for structure and The Ambassador's preference for gentle check-ins afterward.",
+          "Create serene shared rituals, like quiet walks, that allow outward engagement without overwhelming either of you.",
+          "Communicate openly about serenity needs, validating feelings to foster understanding and prevent misunderstandings in your space.",
+        ],
+        growthOutcome:
+          "Addressing this will cultivate a peaceful dynamic where both feel recharged and connected, improving your serenity together.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "You build legacy through collaborative efforts, focusing on meaningful contributions that last. The Architect emphasizes practical systems, while The Ambassador highlights values and connections. This partnership creates impactful, shared endeavors.",
+        coreChallenge:
+          "Disagreements occur when The Architect's concrete, measurable goals for impact conflict with The Ambassador's abstract, value-oriented vision, especially in how logic and empathy shape your joint legacy.",
+        whyThisHappens:
+          "- Both aim for harmonious legacies, but The Architect seeks tangible results, while The Ambassador pursues inspirational, people-centered outcomes.\n- This amplifies in planning, with The Architect focusing on efficiency and The Ambassador on broader meaning.\n- Decision conflicts arise where analytical strategies clash with empathic considerations.\n- Over time, one may feel their contributions are undervalued, straining collaborative efforts.\n- Mismatched views on success can lead to redirected energies away from shared goals.",
+        redFlags:
+          "- Diverging individual projects emerge, signaling a split in your united front for impact and legacy building.\n- Criticism of each other's ideas escalates, hindering progress and creating division in your partnership.\n- Avoidance of legacy discussions results in unfulfilled aspirations and regret over missed opportunities together.",
+        resolutionStrategies: [
+          "Define legacy goals that merge The Architect's practical metrics with The Ambassador's value-driven inspirations, reviewing them periodically for alignment.",
+          "Collaborate on initiatives where logic handles execution and empathy guides purpose, leveraging your strengths for greater impact.",
+          "Celebrate milestones in your shared efforts, reinforcing how your differences contribute to a lasting, meaningful legacy as a team.",
+        ],
+        growthOutcome:
+          "Overcoming these will result in a legacy that's both effective and heartfelt, solidifying your bond through enduring contributions.",
+      },
+    },
+  ],
+  "C-L-O-S-H/N-V-O-S-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both approach your careers with a strong sense of structure, but The Architect thrives on building team-oriented missions while The Artist focuses on personal creative expression. This can create a dynamic where collaborative projects feel fulfilling for one and restricting for the other. Together, you can blend organized teamwork with individual innovation to pursue meaningful goals.",
+        coreChallenge:
+          "The main tension arises from The Architect's preference for group-aligned purposes clashing with The Artist's drive for autonomous creative fulfillment, especially when both want stable roles but in different contexts.",
+        whyThisHappens:
+          "- The Architect seeks to organize collective efforts toward shared objectives, leading to frustration when The Artist prioritizes solo artistic pursuits over team commitments.\n- The Artist values independent paths that reflect personal visions, which can seem uncooperative to The Architect's harmony-focused approach in professional settings.\n- Both prefer stable career structures, but this similarity amplifies conflicts when their interpersonal styles pull in opposite directions on collaboration.\n- The Architect's outward energy pushes for planned group advancements, while The Artist's abstract focus introduces unpredictable creative shifts that disrupt stability.\n- Differences in how each defines purpose create ongoing debates about whether careers should serve the group or the self.",
+        redFlags:
+          "- Frequent arguments over joining team projects versus pursuing individual passions, leading to resentment about unequal support.\n- One partner feeling neglected when the other prioritizes personal goals, eroding mutual encouragement in career growth.\n- Stagnation in shared ambitions as clashing styles prevent committing to joint professional ventures.",
+        resolutionStrategies: [
+          "Schedule regular discussions where The Architect outlines team benefits and The Artist shares personal inspirations, finding ways to integrate both into career plans.",
+          "Set aside dedicated time for each to pursue independent goals while committing to support the other's structured roles through active listening and encouragement.",
+          "Create a joint vision board that combines collaborative elements with autonomous creativity, reviewing it monthly to align on stable, shared purposes.",
+        ],
+        growthOutcome:
+          "By balancing team harmony with personal autonomy, you build careers that honor both collective impact and individual expression, leading to deeper mutual respect.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, you both favor structured approaches, but The Architect's practical logic contrasts with The Artist's visionary values. This leads to practical budgeting from one side and inspirational spending from the other. You can find common ground in creating secure plans that allow for creative investments.",
+        coreChallenge:
+          "Conflicts emerge when The Architect's emphasis on organized, tangible financial strategies clashes with The Artist's flexible, meaning-driven spending habits, especially amplified by their differing views on money's purpose.",
+        whyThisHappens:
+          "- The Architect prefers detailed budgets based on observable facts, which can feel too rigid for The Artist's abstract ideas about using wealth for personal fulfillment.\n- The Artist tends to invest in experiences or visions that align with inner values, frustrating The Architect's logical need for efficient, impersonal resource allocation.\n- Both seek financial stability, but this shared trait heightens tensions when concrete planning meets imaginative expenditures without compromise.\n- Differences in decision-making lead to disputes over whether funds should prioritize practical outcomes or emotional significance.\n- The Artist's outward energy might push for spontaneous value-based purchases, while The Architect enforces structured savings to maintain prosperity.",
+        redFlags:
+          "- Repeated disagreements on budget allocations, where one sees the other's choices as irresponsible, straining trust in financial matters.\n- Growing debt or missed savings goals due to unaligned spending, leading to blame and emotional distance.\n- Avoidance of money talks, resulting in hidden purchases or secret accounts that undermine partnership security.",
+        resolutionStrategies: [
+          "Develop a shared budget that allocates portions for practical needs and creative pursuits, reviewing it together every quarter to adjust based on both perspectives.",
+          "Assign roles where The Architect handles day-to-day tracking and The Artist suggests value-aligned investments, ensuring decisions incorporate logic and empathy.",
+          "Attend financial workshops as a couple to learn tools that blend structured planning with meaningful goals, fostering understanding of each other's approaches.",
+        ],
+        growthOutcome:
+          "Resolving these differences leads to a prosperous life where stability supports creative freedom, strengthening your bond through shared financial success.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both enjoy engaging with the world actively and value consistent routines for health. The Architect brings organized group activities, while The Artist adds expressive, personal touches to wellness. This synergy can make your health journeys motivating and balanced when you align on structured plans.",
+        coreChallenge:
+          "The key issue is aligning your shared outward energy for joint health efforts with individual needs for structure, as The Architect may push for team routines that feel overwhelming to The Artist's independent style.",
+        whyThisHappens:
+          "- Both prefer external stimulation in health practices, but The Architect's harmony-seeking leads to suggesting group classes that clash with The Artist's autonomous preferences.\n- Stable structures like set workout schedules appeal to both, yet The Artist might adapt them creatively, frustrating The Architect's need for consistency.\n- Outward orientations make you both eager for shared vitality activities, but differing interpersonal styles create friction in how routines are maintained.\n- The Architect enforces planned health regimes for group well-being, while The Artist seeks personal expression within them, leading to mismatched expectations.\n- Similar energy directions amplify small differences, turning potential synergies into debates over routine flexibility.",
+        redFlags:
+          "- One partner skipping joint health commitments, leading to feelings of abandonment and reduced motivation for both.\n- Escalating frustration over inconsistent routines, causing blame for health setbacks and emotional strain.\n- Avoidance of shared activities, resulting in isolated wellness paths that weaken your couple's vitality bond.",
+        resolutionStrategies: [
+          "Plan weekly health check-ins to discuss routines, allowing The Artist to suggest personal tweaks while The Architect ensures overall structure.",
+          "Incorporate both styles by alternating group classes with solo sessions, then sharing experiences to build mutual support.",
+          "Set flexible goals that honor outward energy, like trying new activities together while respecting individual paces for consistency.",
+        ],
+        growthOutcome:
+          "Overcoming these challenges creates a vibrant health partnership where structure enhances personal vitality, deepening your connection through shared energy.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "Your romance thrives on outward expressions of affection, with The Architect focusing on collaborative gestures and The Artist emphasizing personal connections. This can lead to heartfelt interactions when you both commit to stable romantic plans. Together, you build a loving bond that mixes logic and values in meaningful ways.",
+        coreChallenge:
+          "Tension builds from The Architect's desire for harmonious, group-oriented romance clashing with The Artist's need for autonomous emotional space, especially in how affection is shown through actions versus words.",
+        whyThisHappens:
+          "- The Architect seeks to create shared romantic experiences that foster unity, which can feel intrusive to The Artist's preference for independent expressions of love.\n- Both outward energies drive active romance, but The Artist's value-based approach prioritizes personal depth over The Architect's logical acts of service.\n- Harmony versus autonomy creates mismatches in emotional syncing, with The Architect pushing for constant check-ins and The Artist needing boundaries.\n- Stable preferences make both want planned dates, yet differing decision styles lead to conflicts over whether romance should be practical or empathetic.\n- Outward engagements amplify frictions when collaborative efforts meet individualist tendencies in expressing affection.",
+        redFlags:
+          "- Frequent misunderstandings where gestures of love are misinterpreted, leading to feelings of rejection or pressure.\n- Emotional withdrawal from one partner, causing cycles of pursuit and distance that erode romantic trust.\n- Arguments over affection styles escalating to resentment, threatening the stability of your intimate connection.",
+        resolutionStrategies: [
+          "Establish a routine of daily appreciations where The Architect shares logical compliments and The Artist expresses value-based feelings, bridging their styles.",
+          "Create personal space agreements during romantic times, allowing The Artist autonomy while The Architect organizes harmonious activities that respect boundaries.",
+          "Explore couple's exercises focused on blending outward energies, like joint hobbies that incorporate both logical planning and empathetic sharing.",
+        ],
+        growthOutcome:
+          "Navigating these dynamics fosters a romance where harmony and autonomy complement each other, creating lasting emotional fulfillment for both.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You handle family and home with a structured approach, where The Architect emphasizes collaborative environments and The Artist brings personal creativity. This shared stability helps in building a secure nest. Your outward energies make home life active and engaging when aligned.",
+        coreChallenge:
+          "The primary friction stems from The Architect's collaborative style in family matters conflicting with The Artist's autonomous boundaries, particularly in enforcing rules and accommodating relatives.",
+        whyThisHappens:
+          "- The Architect prefers organized home systems that promote group cohesion, which can overwhelm The Artist's need for independent decision-making in family dynamics.\n- Both value stable structures like set chores, but The Artist resists when they feel too group-oriented, leading to boundary disputes.\n- Harmony-driven accommodations by The Architect clash with The Artist's self-reliant approach to family interactions and home management.\n- Shared outward orientations push for active family engagements, amplifying tensions when interpersonal styles differ on collaboration levels.\n- Stable preferences heighten conflicts over whether home life should prioritize collective harmony or personal freedom.",
+        redFlags:
+          "- Ongoing disputes about family obligations, leading to one partner feeling overburdened and resentful.\n- Boundary violations causing emotional distance, with avoidance of shared home responsibilities.\n- Escalating tensions during family events, resulting in isolation and weakened home bonds.",
+        resolutionStrategies: [
+          "Define clear home roles that allow The Artist personal space while The Architect facilitates collaborative tasks, reviewing them bi-weekly for adjustments.",
+          "Implement family meetings where both express needs, blending structured plans with autonomous choices to maintain balance.",
+          "Designate individual zones in the home for personal expression, ensuring collaborative areas foster harmony without intrusion.",
+        ],
+        growthOutcome:
+          "Resolving these issues leads to a harmonious home where structure supports individual creativity, enhancing family closeness and security.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "In social circles, The Architect excels at building group connections, while The Artist prefers selective, personal interactions. Your shared outward energy keeps things lively. Together, you can create a balanced network that values both community and individuality.",
+        coreChallenge:
+          "Challenges occur when The Architect's commitment to social harmony overextends into The Artist's desire for autonomous friendships, leading to exhaustion or resentment in group settings.",
+        whyThisHappens:
+          "- The Architect thrives on collaborative community involvement, which can drain The Artist who prefers independent, one-on-one connections.\n- Outward energies make both enjoy social engagements, but The Artist declines invites that feel too group-focused, frustrating The Architect.\n- Harmony versus autonomy creates imbalances in social calendars, with The Architect over-committing and The Artist pulling back.\n- Shared active orientations amplify frictions when interpersonal styles clash on the depth versus breadth of friendships.\n- Differences in community participation lead to feelings of mismatch in how relationships are nurtured outside the couple.",
+        redFlags:
+          "- One partner feeling isolated due to mismatched social energies, leading to separate friend groups and emotional disconnect.\n- Resentment building from forced participation, causing arguments and reduced shared enjoyment in community activities.\n- Avoidance of joint outings, weakening the couple's social bond and support network.",
+        resolutionStrategies: [
+          "Alternate social plans between group events favored by The Architect and intimate gatherings preferred by The Artist, ensuring equal input.",
+          "Set boundaries for commitments, where The Artist communicates needs for solitude and The Architect respects them while planning harmonious outings.",
+          "Build a shared friend list through mutual introductions, focusing on quality connections that satisfy both collaborative and autonomous preferences.",
+        ],
+        growthOutcome:
+          "Overcoming these hurdles strengthens your social world, where harmony and independence create fulfilling, supportive friendships for both.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You pursue personal development with structure, but The Architect focuses on practical mastery while The Artist chases abstract explorations. This difference sparks diverse learning paths. Your stable approaches help in committing to growth when you find overlaps.",
+        coreChallenge:
+          "The core tension is The Architect's preference for tangible, focused skill-building conflicting with The Artist's pursuit of novel, visionary discoveries, leading to mismatched learning paces.",
+        whyThisHappens:
+          "- The Architect builds expertise through concrete, observable progress, which can seem limiting to The Artist's abstract quest for new ideas and meanings.\n- Both prefer stable growth plans, but The Artist drops routines for fresh inspirations, frustrating The Architect's need for completion.\n- Concrete versus abstract orientations create divergences in what counts as meaningful discovery, amplifying structural similarities into conflicts.\n- The Artist's outward energy introduces spontaneous explorations, clashing with The Architect's organized, step-by-step approach to learning.\n- Differences in information processing lead to debates over prioritizing depth in one area versus breadth across many.",
+        redFlags:
+          "- Stalled joint learning projects, with one partner losing interest and the other feeling unsupported in growth efforts.\n- Criticism of each other's methods, eroding motivation and creating barriers to shared discovery.\n- Avoidance of development discussions, resulting in individual paths that distance the couple emotionally.",
+        resolutionStrategies: [
+          "Choose growth activities that start with structured plans but allow for creative detours, reviewing progress together to blend perspectives.",
+          "Dedicate time slots for individual pursuits, then share insights to enrich each other's discoveries without imposition.",
+          "Enroll in courses that combine practical skills with abstract concepts, ensuring both feel engaged and challenged.",
+        ],
+        growthOutcome:
+          "Bridging these styles fosters a rich growth journey where practical mastery inspires visionary insights, enhancing your mutual development.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "Adventures bring excitement to your lives, with both favoring planned outings that engage the world. The Architect organizes group fun, while The Artist adds personal flair. This shared outward vibe makes experiences memorable when coordinated.",
+        coreChallenge:
+          "Friction arises from aligning structured plans with individual preferences, as The Architect's collaborative adventures may clash with The Artist's autonomous twists, disrupting shared joy.",
+        whyThisHappens:
+          "- Both prefer detailed adventure planning, but The Artist changes itineraries for personal inspiration, frustrating The Architect's stability needs.\n- Outward energies fuel shared thrills, yet differing interpersonal styles lead to conflicts over group versus solo elements in fun activities.\n- Stable approaches amplify small changes into major disruptions, turning potential enjoyment into arguments.\n- The Architect seeks harmonious group adventures, while The Artist prioritizes independent expressions of joy within them.\n- Similar orientations heighten tensions when autonomy overrides collaborative planning in spontaneous moments.",
+        redFlags:
+          "- Canceled plans due to last-minute changes, leading to disappointment and reluctance for future adventures.\n- One partner feeling controlled or ignored, causing emotional withdrawal from shared joyful experiences.\n- Reduced frequency of outings, diminishing the couple's sense of adventure and connection.",
+        resolutionStrategies: [
+          "Create flexible itineraries that outline key activities but include free time for personal explorations, satisfying both needs.",
+          "Alternate planning roles, with The Architect handling structure and The Artist suggesting creative additions for balanced joy.",
+          "Reflect after each adventure on what worked, using insights to refine future plans that enhance shared excitement.",
+        ],
+        growthOutcome:
+          "Mastering these dynamics leads to adventures filled with structured fun and personal delight, deepening your joyful bond.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You both draw energy from external interactions, making quiet times a deliberate choice. The Architect fills pauses with check-ins for harmony, while The Artist enforces personal boundaries. This can create a lively home that values peace when balanced.",
+        coreChallenge:
+          "The main issue is managing shared outward energy in serene moments, where The Architect's harmonious intrusions conflict with The Artist's autonomous need for uninterrupted space.",
+        whyThisHappens:
+          "- Outward orientations make both uncomfortable with prolonged silence, but The Artist seeks solitary recharge that The Architect interprets as disengagement.\n- Harmony-driven behaviors lead The Architect to initiate conversations, clashing with The Artist's preference for independent serenity.\n- Similar energy sources amplify frictions when interpersonal styles differ on handling quiet times together.\n- The Architect feels rejected by boundaries, while The Artist feels overwhelmed by constant check-ins in shared spaces.\n- Differences in autonomy create ongoing negotiations over the balance between connection and personal peace.",
+        redFlags:
+          "- Increasing irritation during downtime, leading to arguments that disrupt overall serenity.\n- One partner retreating excessively, causing feelings of loneliness and emotional imbalance.\n- Avoidance of shared relaxation, weakening the couple's ability to find peace together.",
+        resolutionStrategies: [
+          "Designate specific times for individual serenity, communicating needs clearly to prevent misunderstandings and foster respect.",
+          "Practice short, joint quiet activities like reading together, gradually building comfort with shared silence.",
+          "Use signals for needing space, allowing The Artist autonomy while The Architect maintains harmony through understanding.",
+        ],
+        growthOutcome:
+          "Addressing this cultivates a serene environment where outward energies recharge harmoniously, strengthening your peaceful connection.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "You envision legacies with structure, but The Architect focuses on community contributions and The Artist on personal visions. This blend can inspire meaningful impacts. Your outward approaches make pursuits active and engaging.",
+        coreChallenge:
+          "Conflicts arise from The Architect's group-oriented legacy building clashing with The Artist's independent, abstract aspirations, especially when logic and values diverge on measurable versus meaningful outcomes.",
+        whyThisHappens:
+          "- The Architect builds legacies through collaborative efforts for collective good, which can seem too impersonal to The Artist's autonomous, visionary focus.\n- Abstract insights drive The Artist toward symbolic impacts, frustrating The Architect's preference for concrete, observable results.\n- Harmony versus autonomy creates divides in how legacies are pursued, with group projects meeting individual resistance.\n- Decision differences amplify tensions, as logical strategies conflict with value-driven meanings in long-term planning.\n- Shared stable orientations heighten frictions when differing poles pull legacies in opposite directions.",
+        redFlags:
+          "- Diverging paths in contributions, leading to unsupported efforts and resentment over unequal involvement.\n- Debates escalating to dismissals of each other's visions, eroding shared purpose and motivation.\n- Stagnation in joint impacts, resulting in isolated legacies that weaken couple unity.",
+        resolutionStrategies: [
+          "Collaborate on projects that merge community focus with personal creativity, defining roles that play to each strength.",
+          "Discuss legacy goals annually, incorporating concrete measures and abstract meanings to align on blended outcomes.",
+          "Seek mentorship or groups that value both logical and empathetic approaches, enriching your shared impact strategies.",
+        ],
+        growthOutcome:
+          "Harmonizing these views creates a legacy of collective and personal significance, fostering enduring pride in your joint achievements.",
+      },
+    },
+  ],
+  "C-L-O-S-H/N-V-O-F-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both approach career and purpose with a strong desire to contribute to team efforts and collective goals, creating a shared sense of direction in your professional lives. The Architect often focuses on building stable structures and organized plans to achieve long-term success, while the Catalyst brings energy to inspiring change and exploring new ideas together. This combination allows you to support each other in pursuing meaningful work that benefits others.",
+        coreChallenge:
+          "Balancing the Architect's need for structured roles and consistent progress with the Catalyst's preference for shifting focus and adapting to emerging opportunities can lead to frustration when career paths feel too rigid or too unpredictable.",
+        whyThisHappens:
+          "- You both value collaborative missions, but the Architect seeks locked-in plans while the Catalyst thrives on flexibility, causing misalignment in how you define success.\n- The Architect's stable approach ensures steady advancement, yet it may clash with the Catalyst's adaptive style that embraces sudden changes in direction.\n- Shared harmony in team-oriented goals is strong, but differences in handling change can make joint career decisions feel disjointed.\n- The Catalyst's openness to new paths amplifies the challenge when the Architect prefers clear, organized trajectories.\n- Over time, this dynamic can highlight how your collaborative spirits are expressed through contrasting attitudes toward stability.",
+        redFlags:
+          "- The Architect starts feeling overwhelmed by the Catalyst's frequent shifts in career interests, leading to arguments about commitment and reliability.\n- The Catalyst feels constrained by the Architect's insistence on detailed plans, resulting in resentment toward perceived lack of excitement in shared goals.\n- Joint projects stall because neither fully adapts, causing a buildup of unspoken frustrations about each other's work styles.",
+        resolutionStrategies: [
+          "Schedule regular check-ins where the Architect outlines stable milestones and the Catalyst shares emerging ideas, allowing you to blend structure with flexibility in your career paths.",
+          "Create a joint vision board that incorporates the Architect's organized goals and the Catalyst's adaptive explorations, helping you both feel involved in shaping your shared purpose.",
+          "Encourage each other to take turns leading decisions, with the Architect handling planning phases and the Catalyst guiding adaptive adjustments, fostering mutual respect for your approaches.",
+        ],
+        growthOutcome:
+          "By integrating stability and adaptability, you build a resilient partnership that turns individual purposes into a powerful, collaborative legacy.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing wealth and prosperity, the Architect emphasizes practical budgeting and long-term security through organized systems, while the Catalyst focuses on using resources to fuel inspiring visions and collective growth. You both approach finances with a harmonious mindset, but your differences in structure and flexibility influence how you save and spend. This dynamic can create a balanced foundation where careful planning meets opportunistic investments.",
+        coreChallenge:
+          "The Architect's preference for strict saving and structured financial plans often conflicts with the Catalyst's flexible spending on meaningful experiences, leading to tensions over how to build lasting abundance without feeling restricted or reckless.",
+        whyThisHappens:
+          "- The Architect's stable nature drives a focus on detailed budgets and conservative investments, while the Catalyst's adaptability leads to impulsive expenditures on ideas that promise future potential.\n- Differences in concrete versus abstract views amplify this, as the Architect sees money as a tangible tool for security, but the Catalyst views it as a means to broader visions.\n- Logical budgeting from the Architect clashes with the Catalyst's value-based spending, especially when decisions involve people or causes.\n- Shared outward energy pushes for active financial engagement, but without alignment, it results in mismatched priorities.\n- Over time, these contrasts highlight how your approaches to prosperity stem from differing needs for control and exploration.",
+        redFlags:
+          "- The Architect becomes increasingly frustrated with the Catalyst's unplanned purchases, leading to heated discussions about financial responsibility and trust.\n- The Catalyst feels judged by the Architect's rigid rules, resulting in secretive spending or avoidance of money talks altogether.\n- Ongoing disagreements erode your sense of partnership, making it hard to celebrate financial wins together.",
+        resolutionStrategies: [
+          "Develop a hybrid budget where the Architect sets core savings goals and the Catalyst allocates a flexible fund for value-driven opportunities, ensuring both feel secure and inspired.",
+          "Hold monthly financial reviews focusing on concrete data from the Architect and abstract possibilities from the Catalyst, using logic and values to make joint decisions.",
+          "Explore educational resources together, like books on balanced investing, to bridge your logical and empathetic perspectives on building wealth.",
+        ],
+        growthOutcome:
+          "Embracing both structure and flexibility transforms your financial life into a source of shared empowerment and abundance.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both bring outward energy to health and vitality, enjoying active pursuits and engaging with the world to maintain well-being. The Architect prefers structured routines and consistent habits, while the Catalyst adapts to moods and new ideas for staying healthy. This shared enthusiasm creates opportunities for motivating each other in fitness and self-care.",
+        coreChallenge:
+          "The Architect's commitment to planned diets and exercise schedules often clashes with the Catalyst's spontaneous approach, making it difficult to sustain joint health routines without one feeling too rigid or the other too inconsistent.",
+        whyThisHappens:
+          "- Both of you direct energy externally, but the Architect's stable preference leads to enforced plans, while the Catalyst's flexibility causes skips based on current feelings.\n- Outward engagement means you want shared activities, yet differences in structure create friction in coordinating them.\n- The Architect seeks closure through organized systems for health, but the Catalyst prefers open options that adapt to new information.\n- This dynamic is amplified by your collaborative styles, as harmony in group wellness efforts is desired but hard to maintain consistently.\n- Over time, these contrasts reveal how your energies flow differently in pursuing vitality.",
+        redFlags:
+          "- The Architect starts criticizing the Catalyst for missing workouts, leading to defensiveness and reduced motivation for both.\n- The Catalyst feels pressured by the Architect's rules, resulting in avoidance of health discussions and solo pursuits instead.\n- Persistent mismatches lead to burnout, where neither supports the other's needs effectively.",
+        resolutionStrategies: [
+          "Design weekly health plans that the Architect structures with built-in flexibility for the Catalyst to adjust based on energy levels, promoting consistency without rigidity.",
+          "Incorporate joint activities like group classes where your outward energies align, allowing the Architect to plan and the Catalyst to adapt spontaneously.",
+          "Practice empathy by discussing how stability and flexibility each contribute to vitality, helping you appreciate and integrate both approaches.",
+        ],
+        growthOutcome:
+          "Harmonizing your energies leads to a vibrant, supportive health journey that energizes your partnership.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "In love and romance, you both seek emotional connection through collaboration and shared experiences, fostering a warm and engaging bond. The Architect expresses affection through practical actions and planned gestures, while the Catalyst brings spontaneity and heartfelt empathy. This mix creates a relationship filled with both stability and excitement.",
+        coreChallenge:
+          "The Architect's need for structured expressions of love often conflicts with the Catalyst's adaptive, value-driven approach, making it hard to feel consistently connected without one seeming too predictable or the other too erratic.",
+        whyThisHappens:
+          "- Both value harmony, but the Architect's outward energy drives planned interactions, while the Catalyst's flexibility leads to impromptu moments.\n- Differences in handling emotions arise, as the Architect uses logic for acts of service, but the Catalyst prefers empathetic words and shared values.\n- Collaborative spirits are strong, yet amplifying with outward engagement can overwhelm when not balanced.\n- The Catalyst's abstract focus adds layers of meaning, contrasting the Architect's concrete preferences in romantic gestures.\n- Over time, these elements show how your romantic styles stem from distinct ways of orienting toward each other.",
+        redFlags:
+          "- The Architect feels unappreciated when the Catalyst changes plans last-minute, leading to withdrawal from romantic efforts.\n- The Catalyst perceives the Architect's structure as lacking passion, resulting in emotional distance and unmet needs.\n- Repeated misunderstandings build resentment, eroding the trust in your collaborative bond.",
+        resolutionStrategies: [
+          "Create a romance calendar where the Architect plans core dates and the Catalyst adds spontaneous twists, blending structure with empathy to keep things fresh.",
+          "Share daily appreciations focusing on logical acts from the Architect and value-based affirmations from the Catalyst, strengthening your emotional sync.",
+          "Attend couples workshops on communication, using your harmonious natures to practice balancing outward expressions with personal boundaries.",
+        ],
+        growthOutcome:
+          "Navigating these dynamics deepens your romantic connection, turning differences into sources of enduring affection.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "You handle family and home life with a collaborative spirit, working together to create nurturing environments. The Architect likes clear rules and organized chores for stability, while the Catalyst prefers going with the flow and adapting to family needs. This approach fosters a home filled with shared responsibilities and warmth.",
+        coreChallenge:
+          "The Architect's insistence on structured routines in family matters often clashes with the Catalyst's flexible adaptations, leading to conflicts over how to maintain harmony without feeling overly controlled or chaotic.",
+        whyThisHappens:
+          "- Stable preferences from the Architect drive organized systems for home life, but the Catalyst's flexibility resists rigid rules in favor of spontaneous adjustments.\n- Both seek collaborative harmony, yet this amplifies tensions when family decisions require balancing structure with openness.\n- The Architect focuses on practical details to ensure consistency, while the Catalyst emphasizes empathetic responses to changing dynamics.\n- Outward energies push for active involvement, but differences in approach can make joint efforts feel mismatched.\n- These contrasts highlight how your attitudes toward change influence family cohesion over time.",
+        redFlags:
+          "- The Architect becomes irritated by the Catalyst's leniency with rules, leading to arguments about fairness in home responsibilities.\n- The Catalyst feels micromanaged by the Architect's plans, resulting in withdrawal from family discussions.\n- Unresolved issues create a tense home atmosphere, affecting your overall partnership.",
+        resolutionStrategies: [
+          "Establish core home guidelines that the Architect designs with input from the Catalyst on flexible elements, ensuring everyone feels heard and supported.",
+          "Rotate leadership in family activities, allowing the Architect to handle structured events and the Catalyst to manage adaptive ones for balance.",
+          "Discuss family values regularly, using your harmonious styles to integrate stability and flexibility into a cohesive home life.",
+        ],
+        growthOutcome:
+          "Resolving these challenges strengthens your family bond, creating a stable yet adaptable home environment.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "In friendships and community, you both thrive on collaborative involvement, enjoying building connections and participating in group activities. The Architect organizes social events with structure, while the Catalyst brings adaptive energy to foster inclusive interactions. This dynamic creates a vibrant social life centered on shared harmony.",
+        coreChallenge:
+          "The Architect's preference for planned social commitments often conflicts with the Catalyst's spontaneous approach, making it challenging to maintain community ties without one feeling overcommitted or the other disengaged.",
+        whyThisHappens:
+          "- Both prioritize harmony in groups, but the Architect's outward energy leads to structured engagements, while the Catalyst's flexibility favors impromptu gatherings.\n- Differences in energy orientation amplify this, as shared outward focus can lead to exhaustion if not balanced with personal needs.\n- The Architect seeks organized systems for friendships, contrasting the Catalyst's adaptive exploration of connections.\n- Collaborative motivations are strong, yet they highlight frictions in how you engage with communities over time.\n- These elements show how your social styles stem from distinct ways of directing energy externally.",
+        redFlags:
+          "- The Architect resents the Catalyst for flaking on plans, leading to reduced enthusiasm for joint social activities.\n- The Catalyst feels drained by the Architect's constant scheduling, resulting in isolation from shared circles.\n- Ongoing mismatches erode your enjoyment of community, straining the partnership.",
+        resolutionStrategies: [
+          "Plan social calendars together, with the Architect setting key events and the Catalyst suggesting flexible options to keep things engaging for both.",
+          "Set boundaries for social time, respecting your outward energies while allowing space for individual recharge when needed.",
+          "Join community groups that align with your harmonious values, using discussions to appreciate each other's contributions to friendships.",
+        ],
+        growthOutcome:
+          "Balancing your social dynamics enriches your community life, fostering deeper and more fulfilling connections.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "You approach growth and discovery with curiosity, where the Architect builds mastery through practical skills, and the Catalyst explores novel ideas for personal expansion. Both enjoy outward engagement in learning, creating opportunities for shared adventures in development. This mix supports a partnership focused on continuous improvement.",
+        coreChallenge:
+          "The Architect's focus on deepening one skill with structure often clashes with the Catalyst's chase for new experiences and flexibility, leading to difficulties in pursuing joint growth without feeling stuck or scattered.",
+        whyThisHappens:
+          "- Concrete preferences from the Architect drive mastery in tangible areas, while the Catalyst's abstract insight seeks diverse possibilities.\n- Stable approaches ensure the Architect finishes pursuits, but the Catalyst's adaptability leads to dropping them for fresh starts.\n- Shared harmonious motivations amplify explorations, yet differences create friction in commitment levels.\n- Outward energies push for active learning, but contrasting views on change make alignment challenging.\n- Over time, these dynamics reveal how your discovery styles influence mutual growth.",
+        redFlags:
+          "- The Architect criticizes the Catalyst for lack of follow-through, leading to defensiveness about personal development paths.\n- The Catalyst feels bored by the Architect's repetitive focus, resulting in separate pursuits that distance you.\n- Unaddressed issues stall your shared growth, creating stagnation in the relationship.",
+        resolutionStrategies: [
+          "Select joint learning projects where the Architect provides structure and the Catalyst introduces new angles, blending depth with variety for satisfying progress.",
+          "Set short-term goals that honor the Architect's stability and the Catalyst's flexibility, celebrating small wins to maintain motivation.",
+          "Reflect on discoveries together weekly, using your collaborative spirits to integrate concrete and abstract insights into your paths.",
+        ],
+        growthOutcome:
+          "Integrating your approaches leads to profound personal and shared growth, enhancing your life's journey.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "In joy and adventure, you both seek outward thrills, with the Architect planning detailed outings and the Catalyst embracing spontaneous fun. This creates exciting experiences that strengthen your bond through shared excitement. Your harmonious approach adds warmth to these moments.",
+        coreChallenge:
+          "The Architect's detailed planning for adventures often conflicts with the Catalyst's desire to change plans flexibly, making it hard to enjoy outings without tension over control or unpredictability.",
+        whyThisHappens:
+          "- Stable preferences lead the Architect to organize every aspect, while the Catalyst's adaptability shifts based on moods or ideas.\n- Outward energies amplify the need for shared activities, but differences in structure create mismatches in execution.\n- Both value collaboration, yet this highlights frictions when adventures don't go as envisioned.\n- Concrete focus from the Architect contrasts the Catalyst's abstract explorations in fun.\n- These elements show how your attitudes toward change affect joyful experiences over time.",
+        redFlags:
+          "- The Architect becomes stressed by last-minute changes from the Catalyst, leading to canceled plans and disappointment.\n- The Catalyst feels restricted by the Architect's rigidity, resulting in solo adventures that exclude the other.\n- Repeated conflicts diminish the fun in your relationship, affecting overall happiness.",
+        resolutionStrategies: [
+          "Plan adventures with a loose framework from the Architect and room for the Catalyst's inputs, ensuring enjoyment for both.",
+          "Alternate leading trips, allowing the Architect to handle structured ones and the Catalyst flexible ones to balance perspectives.",
+          "Debrief after outings, focusing on what brought joy and how to incorporate both styles moving forward.",
+        ],
+        growthOutcome: "Harmonizing your adventure styles creates lasting memories and deeper joy in your partnership.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You navigate space and serenity with outward orientations, but the Architect seeks organized quiet times, while the Catalyst adapts to find peace in varied ways. Both value harmonious downtime, creating a supportive environment for recharge. This dynamic allows for mutual understanding in personal needs.",
+        coreChallenge:
+          "The Architect's need for planned solitude often clashes with the Catalyst's spontaneous breaks, leading to feelings of rejection or intrusion when seeking serenity together or apart.",
+        whyThisHappens:
+          "- Outward energies make you both active, but the Architect's stability prefers scheduled peace, while the Catalyst's flexibility leads to impromptu rests.\n- Harmonious styles drive check-ins during alone time, yet this can feel boundary-violating to the other.\n- Differences in energy direction amplify tensions in balancing shared and solo serenity.\n- Concrete versus abstract views influence how you perceive and pursue inner calm.\n- Over time, these contrasts reveal needs for adjusting how you respect space.",
+        redFlags:
+          "- The Architect withdraws when the Catalyst interrupts planned downtime, leading to emotional distance.\n- The Catalyst feels neglected by the Architect's rigid boundaries, resulting in arguments about connection.\n- Unresolved issues create a cycle of misunderstanding, harming your serenity.",
+        resolutionStrategies: [
+          "Establish signals for needing space that respect the Architect's structure and the Catalyst's adaptability, ensuring clear communication without resentment.",
+          "Schedule shared quiet activities alongside individual time, using your outward energies to reconnect gently afterward.",
+          "Practice active listening about serenity needs, fostering empathy to bridge your harmonious yet distinct approaches.",
+        ],
+        growthOutcome: "Finding balance in space enhances your serenity, strengthening emotional resilience together.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "In impact and legacy, you both aim for collaborative contributions, with the Architect building tangible systems and the Catalyst inspiring meaningful change. This creates a powerful duo for lasting influence. Your shared harmony drives efforts toward collective good.",
+        coreChallenge:
+          "The Architect's focus on measurable, structured legacies often conflicts with the Catalyst's emphasis on abstract, value-driven impacts, making it challenging to align on how to create enduring significance without one feeling too practical or the other too idealistic.",
+        whyThisHappens:
+          "- Both seek harmonious legacies, but the Architect's concrete approach prioritizes verifiable results, while the Catalyst's abstract insight values broader meanings.\n- Logical strategies from the Architect clash with the Catalyst's empathetic visions, especially in decision-making.\n- Outward energies amplify collaborative efforts, yet differences create friction in execution.\n- Stable versus flexible attitudes influence how you plan long-term impacts.\n- These elements highlight how your motivations shape shared legacies over time.",
+        redFlags:
+          "- The Architect dismisses the Catalyst's ideas as unrealistic, leading to demotivation in joint endeavors.\n- The Catalyst overlooks the Architect's need for structure, resulting in fragmented efforts and frustration.\n- Persistent disagreements weaken your commitment to shared goals, affecting legacy-building.",
+        resolutionStrategies: [
+          "Define legacy projects where the Architect handles concrete plans and the Catalyst infuses values, blending logic with empathy for comprehensive impact.",
+          "Review progress quarterly, appreciating measurable wins from the Architect and meaningful insights from the Catalyst to stay aligned.",
+          "Seek mentorship from harmonious figures, using their guidance to integrate your abstract and concrete perspectives effectively.",
+        ],
+        growthOutcome:
+          "Uniting your strengths crafts a profound legacy that reflects both practicality and inspiration.",
+      },
+    },
+  ],
+  "C-L-O-S-H/N-V-O-F-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both bring energy to your careers, with The Architect focusing on building team-based goals and The Wanderer chasing personal passions that evolve over time. This mix can create a supportive dynamic where structured plans meet creative exploration, helping you both find fulfillment in work. Yet, differences in approach might lead to moments where one feels the path is too rigid or too scattered.",
+        coreChallenge:
+          "The main tension arises when The Architect's desire for collaborative missions clashes with The Wanderer's need for independent pursuits, amplified by The Architect's preference for steady roles versus The Wanderer's shifting interests.",
+        whyThisHappens:
+          "- The Architect thrives on organizing group efforts toward a common purpose, while The Wanderer prefers following their own curiosities without team obligations.\n- The Architect seeks stability in career paths with clear plans, but The Wanderer adapts quickly to new ideas, leading to frequent changes in direction.\n- This combination can make joint professional goals feel mismatched, as one values collective achievement and the other prioritizes personal freedom.\n- Over time, The Architect might see The Wanderer's flexibility as unreliable, while The Wanderer views The Architect's structure as limiting.",
+        redFlags:
+          "- Resentment builds if The Architect feels burdened by carrying team responsibilities alone, or if The Wanderer senses pressure to conform to group expectations.\n- Career decisions stall when The Architect insists on long-term planning and The Wanderer wants to pivot based on emerging opportunities.\n- One partner withdraws from shared discussions about purpose, leading to a sense of disconnection in your mutual ambitions.",
+        resolutionStrategies: [
+          "Set aside time each month to discuss individual career goals openly, allowing The Architect to outline team aspects while The Wanderer shares evolving ideas without judgment.",
+          "Create a flexible joint plan that incorporates The Architect's need for structure with room for The Wanderer's adaptations, like setting core milestones that can be adjusted.",
+          "Celebrate small wins in each other's pursuits to build appreciation, helping The Architect value independence and The Wanderer see the benefits of collaboration.",
+        ],
+        growthOutcome:
+          "By blending your approaches, you can achieve a balanced purpose where collaboration fuels innovation and personal freedom enhances team strength.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, The Architect emphasizes organized saving and practical investments, while The Wanderer looks for ways to fund inspiring visions through flexible spending. This can lead to a complementary system where structure meets opportunity, but it often sparks debates on how money should be handled day-to-day. You might find that combining your views creates a more resilient financial plan over time.",
+        coreChallenge:
+          "Conflicts emerge from The Architect's structured saving habits clashing with The Wanderer's spontaneous expenditures, intensified by concrete tools versus abstract means, and logical budgeting against value-driven choices.",
+        whyThisHappens:
+          "- The Architect prefers detailed budgets and consistent saving for security, but The Wanderer spends on experiences that align with personal meaning, causing imbalances.\n- The Architect views money as a practical resource to build stability, while The Wanderer sees it as a tool for broader dreams, leading to differing priorities.\n- Logical decisions from The Architect might overlook The Wanderer's emotional attachments to certain purchases, heightening tensions during financial planning.\n- The Wanderer's adaptability can result in impulsive buys, frustrating The Architect's need for predictable financial structures.\n- Overlaps in outward energy make discussions lively, but without alignment, they turn into arguments about responsibility versus fulfillment.",
+        redFlags:
+          "- Frequent disagreements over bills or investments lead to one partner feeling controlled or the other feeling unsupported in their aspirations.\n- Hidden spending or separate accounts emerge as a way to avoid conflict, eroding trust in your shared financial future.\n- Stress from financial instability causes withdrawal, where The Architect becomes overly rigid and The Wanderer avoids money talks altogether.",
+        resolutionStrategies: [
+          "Develop a shared budget that allocates funds for both stable savings as The Architect prefers and flexible fun money for The Wanderer's inspirations.",
+          "Hold regular check-ins to review finances logically while honoring value-based choices, ensuring The Architect's plans incorporate The Wanderer's visions.",
+          "Explore joint investments that blend practical tools with meaningful goals, helping you both feel invested in a prosperous path together.",
+        ],
+        growthOutcome:
+          "Resolving these differences can lead to a wealthy life where structure supports dreams, creating lasting prosperity for both of you.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both enjoy active lifestyles, with The Architect pushing for consistent group routines and The Wanderer seeking varied personal activities. This shared outward focus can make health pursuits fun and motivating when aligned. However, variations in consistency might create hurdles in maintaining joint habits.",
+        coreChallenge:
+          "The key issue is balancing your mutual outward energy for shared wellness with The Architect's structured plans versus The Wanderer's flexible moods, often leading to skipped routines.",
+        whyThisHappens:
+          "- Both of you draw energy from external interactions, but The Architect wants enforced schedules like regular gym sessions, while The Wanderer adapts based on current feelings.\n- The Architect's stability preference clashes with The Wanderer's spontaneity, making it hard to stick to diet or exercise plans without resentment.\n- Outward orientations mean you both like involving others in health goals, yet differing paces cause one to feel dragged along or held back.\n- The Wanderer's mood-driven choices can disrupt The Architect's organized approach, leading to inconsistent health efforts over time.",
+        redFlags:
+          "- One partner starts pursuing health goals alone, feeling the other's style is too rigid or too erratic, weakening your bond.\n- Frustration leads to blame during low-energy periods, where The Architect criticizes flexibility and The Wanderer resents structure.\n- Neglected shared activities result in declining vitality, as motivation wanes without mutual support.",
+        resolutionStrategies: [
+          "Design health plans that include core structured elements for The Architect with options for adaptation to suit The Wanderer's moods.",
+          "Incorporate joint outward activities like group classes that energize both, while allowing personal time for individual preferences.",
+          "Track progress together weekly, celebrating consistencies and adjustments to foster a supportive environment for vitality.",
+        ],
+        growthOutcome:
+          "Overcoming this builds a vibrant health routine where energy flows freely, enhancing your overall well-being as a couple.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "Your romance thrives on active expressions of affection, with The Architect building steady connections and The Wanderer adding spontaneous warmth. This can create a lively partnership full of shared moments. Still, underlying differences might make emotional sync challenging at times.",
+        coreChallenge:
+          "Tension builds when The Architect's collaborative emotional needs meet The Wanderer's independent space requirements, heightened by outward daily interactions versus deeper connections, and acts of service against affirming words.",
+        whyThisHappens:
+          "- The Architect seeks harmony through group-like bonding in the relationship, but The Wanderer values autonomy, leading to feelings of smothering or distance.\n- Outward energy drives both to engage actively, yet The Architect wants planned gestures while The Wanderer prefers impulsive ones.\n- The Architect shows love through logical actions, clashing with The Wanderer's value-based words, causing misunderstandings in affection.\n- Stability for The Architect means consistent routines, but The Wanderer's flexibility can make romance feel unpredictable.\n- These dynamics amplify when decision conflicts arise, making one feel undervalued in their preferred love language.",
+        redFlags:
+          "- Emotional disconnect grows if The Architect pushes for more togetherness and The Wanderer pulls away for independence.\n- Arguments over small gestures escalate, with The Architect feeling unappreciated in acts and The Wanderer in words.\n- Romance fades as one partner stops initiating, leading to a cycle of resentment and withdrawal.",
+        resolutionStrategies: [
+          "Schedule regular date nights that blend The Architect's planned activities with The Wanderer's spontaneous ideas to keep romance fresh.",
+          "Practice expressing love in both styles, like The Architect using words and The Wanderer focusing on consistent actions.",
+          "Discuss space needs openly, ensuring The Architect's harmony desires align with The Wanderer's autonomy without compromise.",
+        ],
+        growthOutcome:
+          "Navigating this fosters a deeper, more balanced love where independence strengthens your collaborative bond.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "In family matters, The Architect brings order to daily life, while The Wanderer introduces adaptable energy. You can create a warm home by combining structure with flexibility. However, this often leads to friction over routines and boundaries.",
+        coreChallenge:
+          "The primary struggle is The Architect's structured rules clashing with The Wanderer's go-with-the-flow style, complicated by collaborative accommodations versus personal boundaries in family settings.",
+        whyThisHappens:
+          "- The Architect insists on organized chores and clear family rules for stability, but The Wanderer resists, preferring spontaneous adjustments.\n- Collaborative spirit from The Architect leads to over-involving family, while The Wanderer's autonomy sets firm personal limits.\n- This mismatch can make home life feel chaotic to The Architect or restrictive to The Wanderer.\n- Outward energies make interactions lively, yet without alignment, they result in unresolved tensions over responsibilities.\n- Over time, one might dominate decisions, eroding the sense of shared home harmony.",
+        redFlags:
+          "- Constant bickering over household tasks leads to one partner disengaging from family activities entirely.\n- Boundaries are ignored, causing The Wanderer to feel overwhelmed or The Architect to sense a lack of teamwork.\n- Family events become sources of stress, with planning differences turning into larger conflicts.",
+        resolutionStrategies: [
+          "Divide home responsibilities with a mix of fixed tasks for The Architect and flexible ones for The Wanderer to maintain balance.",
+          "Establish clear boundaries that respect The Wanderer's independence while incorporating The Architect's collaborative input.",
+          "Hold family meetings to discuss adjustments, ensuring both styles contribute to a nurturing environment.",
+        ],
+        growthOutcome:
+          "This resolution creates a harmonious home where structure and adaptability support your family life beautifully.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You engage socially with enthusiasm, The Architect organizing group events and The Wanderer exploring connections freely. This can build a rich network together. But preferences might cause imbalances in commitments.",
+        coreChallenge:
+          "Challenges occur as The Architect's over-commitment to social harmony contrasts with The Wanderer's selective independence, worsened by outward thriving in groups versus quicker inward drain.",
+        whyThisHappens:
+          "- The Architect commits to many community activities for collective bonds, but The Wanderer declines to preserve personal energy.\n- Outward focus energizes both in social settings, yet The Architect pushes for more involvement while The Wanderer needs space.\n- This leads to The Architect feeling unsupported and The Wanderer overwhelmed by expectations.\n- Differences amplify in group dynamics, where one sees value in harmony and the other in autonomy.",
+        redFlags:
+          "- Social plans fall apart when The Wanderer backs out, leaving The Architect to handle commitments alone.\n- Resentment grows if The Architect pressures for more outings and The Wanderer withdraws further.\n- Friendships suffer as the couple's mismatched energy leads to inconsistent participation in community.",
+        resolutionStrategies: [
+          "Plan social calendars together, selecting events that excite both while allowing opt-outs for The Wanderer.",
+          "Balance group activities with quiet time, respecting The Architect's harmony needs and The Wanderer's independence.",
+          "Build a core circle of friends where collaborative and autonomous styles can coexist without strain.",
+        ],
+        growthOutcome:
+          "Mastering this enhances your social life, creating meaningful connections that energize you both.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "Personal growth excites you, with The Architect mastering practical skills and The Wanderer pursuing novel ideas. Your outward approaches can inspire joint learning. Yet, paces might not always align.",
+        coreChallenge:
+          "Friction stems from The Architect's focus on concrete mastery clashing with The Wanderer's chase for abstract novelty, intensified by stable completion versus adaptive dropping of pursuits.",
+        whyThisHappens:
+          "- The Architect hones one skill deeply for tangible results, while The Wanderer jumps between ideas for fresh insights.\n- Stability drives The Architect to finish courses methodically, but The Wanderer's flexibility leads to abandoning them midway.\n- This creates tension in shared growth activities, as one values depth and the other breadth.\n- Outward energy makes exploration active, yet mismatched preferences cause frustration in joint efforts.\n- Over time, one might feel the other's approach lacks commitment or practicality.",
+        redFlags:
+          "- Growth stalls when The Wanderer loses interest in The Architect's structured plans, leading to unfinished projects.\n- Criticism arises, with The Architect seeing The Wanderer as flaky and vice versa as too rigid.\n- Individual pursuits dominate, reducing opportunities for mutual discovery and bonding.",
+        resolutionStrategies: [
+          "Choose growth activities that start with The Architect's structure but allow The Wanderer's explorations to branch out.",
+          "Set milestones that honor completion for The Architect while permitting shifts for The Wanderer.",
+          "Share learnings regularly to appreciate each other's styles, fostering a supportive discovery journey.",
+        ],
+        growthOutcome:
+          "This leads to enriched personal development where practical depth meets innovative breadth for both.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "Adventures bring you together, The Architect planning details and The Wanderer embracing changes. Your shared outward vibe makes experiences thrilling. However, planning styles can cause hiccups.",
+        coreChallenge:
+          "The core issue is The Architect's detailed planning conflicting with The Wanderer's plan changes, amplified by shared thrills versus quiet joys in activities.",
+        whyThisHappens:
+          "- The Architect maps out every aspect of trips for security, but The Wanderer alters them on whim for excitement.\n- Outward energy fuels joint fun, yet The Architect's stability clashes with The Wanderer's adaptability.\n- This results in stress during outings, as one feels unprepared and the other constrained.\n- Preferences for shared versus personal joys add layers, making alignment tricky.\n- Overlaps in energy can turn small changes into big disagreements.",
+        redFlags:
+          "- Trips become arguments, with The Architect frustrated by deviations and The Wanderer by rigidity.\n- One partner opts out of adventures, diminishing your shared joy over time.\n- Unresolved tensions lead to fewer spontaneous or planned fun moments together.",
+        resolutionStrategies: [
+          "Craft adventure plans with core elements fixed for The Architect and flexible parts for The Wanderer.",
+          "Alternate leading outings, allowing each to incorporate their style while supporting the other.",
+          "Reflect on past joys to identify blends of structure and change that work for both.",
+        ],
+        growthOutcome:
+          "Resolving this unlocks endless adventures filled with balanced excitement and security for you.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You both seek external stimulation, but need breaks differently, with The Architect filling gaps collaboratively and The Wanderer enforcing alone time. This can lead to understanding each other's needs. Yet, it often sparks feelings of rejection.",
+        coreChallenge:
+          "Struggles arise from your outward preferences making solitude rare, worsened by The Architect's check-ins versus The Wanderer's boundaries, leading to perceived rejection.",
+        whyThisHappens:
+          "- Outward focus means both recharge through action, but The Architect seeks harmony via constant connection while The Wanderer needs independent peace.\n- The Architect fills quiet moments with talks, clashing with The Wanderer's desire for uninterrupted serenity.\n- This dynamic heightens when one interprets space as disinterest, amplifying emotional strain.\n- Shared energy makes alone time feel unnatural, yet essential differences cause ongoing adjustments.",
+        redFlags:
+          "- Persistent intrusions lead to The Wanderer withdrawing more, frustrating The Architect's harmony efforts.\n- Serenity turns tense, with arguments over why space is needed or not respected.\n- Emotional exhaustion builds as neither gets the recharge they crave without conflict.",
+        resolutionStrategies: [
+          "Establish signals for needing space that both understand, allowing The Wanderer autonomy without hurting The Architect.",
+          "Schedule shared and solo serene times, balancing outward energy with personal peace.",
+          "Communicate openly about feelings during quiet periods to prevent misunderstandings and build trust.",
+        ],
+        growthOutcome: "This creates a peaceful space where you both find serenity without sacrificing connection.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "Building legacy motivates you, The Architect through community efforts and The Wanderer via personal visions. Your outward drives can amplify joint impacts. But visions might diverge.",
+        coreChallenge:
+          "The main conflict is The Architect's community-focused legacy versus The Wanderer's individual one, deepened by measurable results against meaningful pursuits, and logical versus value-based approaches.",
+        whyThisHappens:
+          "- The Architect builds through group contributions for collective good, while The Wanderer focuses on unique personal marks.\n- Concrete impacts appeal to The Architect, clashing with The Wanderer's abstract meanings.\n- Logical planning from The Architect contrasts The Wanderer's value-driven choices, causing priority shifts.\n- Outward energy pushes for action, yet mismatched motivations lead to fragmented efforts.\n- Over time, one might feel their legacy vision is sidelined by the other's style.",
+        redFlags:
+          "- Disagreements halt progress on shared projects, with The Architect pushing teams and The Wanderer solo paths.\n- Resentment if impacts feel uneven, like The Architect's measurable wins versus The Wanderer's intangible ones.\n- Legacy talks become avoided, weakening your joint sense of purpose.",
+        resolutionStrategies: [
+          "Define a legacy vision that merges The Architect's community focus with The Wanderer's personal meaning.",
+          "Pursue projects blending concrete measures and abstract values, using logical and empathetic decisions.",
+          "Review contributions regularly to celebrate both styles, strengthening your combined impact.",
+        ],
+        growthOutcome:
+          "This fosters a powerful legacy where collaboration and independence create lasting change together.",
+      },
+    },
+  ],
 };

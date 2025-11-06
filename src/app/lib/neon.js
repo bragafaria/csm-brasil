@@ -64,13 +64,13 @@ export async function getPostBySlug(slug) {
   return posts[0] || null;
 }
 
-export async function createPost({ title, slug, content, excerpt = "", published = false, category_id }) {
+export async function createPost({ title, slug, content, excerpt = "", published = false, category_id, image_url }) {
   const result = await query(
     `INSERT INTO posts 
-       (title, slug, content, excerpt, published, published_at, category_id)
-     VALUES ($1,$2,$3,$4,$5,NOW(),$6)
+       (title, slug, content, excerpt, published, published_at, category_id, image_url)
+     VALUES ($1,$2,$3,$4,$5,NOW(),$6,$7)
      RETURNING *`,
-    [title, slug, content, excerpt, published, category_id]
+    [title, slug, content, excerpt, published, category_id, image_url]
   );
   return result.rows[0];
 }
