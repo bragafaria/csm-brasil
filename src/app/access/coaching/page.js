@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import parse from "html-react-parser";
 import { useDebounce } from "use-debounce";
 import sanitizeHtml from "sanitize-html";
+import Spinner from "@/app/components/ui/Spinner";
 
 export default function Coaching() {
   const [coaches, setCoaches] = useState([]);
@@ -236,8 +237,7 @@ export default function Coaching() {
     return (
       <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center p-6">
         <div className="flex items-center gap-3">
-          <div className="w-6 h-6 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin"></div>
-          <span className="text-[var(--text-secondary)] font-medium">Loading dashboard...</span>
+          <Spinner>Loading Dashboard...</Spinner>
         </div>
       </div>
     );

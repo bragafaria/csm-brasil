@@ -82,7 +82,7 @@ export default function LoadMoreClient({ slug, initialPosts }) {
             disabled={isLoading}
             className="inline-block bg-[var(--primary)] text-white font-bold px-8 py-3 rounded-full hover:bg-[var(--primary-dark)] transition disabled:opacity-50"
           >
-            {isLoading ? "Loading..." : "Load More"}
+            {isLoading ? "Fetching..." : "Load More"}
           </button>
         </div>
       )}

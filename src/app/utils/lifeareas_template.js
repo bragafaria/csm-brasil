@@ -26,14 +26,14 @@
 // 26. C-L-O-S-H/N-V-O-S-A → Architect / Artist ok 2
 // 27. C-L-O-S-H/N-V-O-F-H → Architect / Catalyst ok 2
 // 28. C-L-O-S-H/N-V-O-F-A → Architect / Wanderer ok 2
-// 29. C-L-O-S-H/N-V-I-S-H → Architect / Mentor ok
-// 30. C-L-O-S-H/N-V-I-S-A → Architect / Sage ok
-// 31. C-L-O-S-H/N-V-I-F-H → Architect / Unifier ok
-// 32. C-L-O-S-H/N-V-I-F-A → Architect / Mystic ok
-// 33. C-L-O-S-A/C-L-O-S-A → Engineer / Engineer ok
-// 34. C-L-O-S-A/C-L-O-F-H → Engineer / Navigator ok
-// 35. C-L-O-S-A/C-L-O-F-A → Engineer / Pioneer ok
-// 36. C-L-O-S-A/C-L-I-S-H → Engineer / Curator ok
+// 29. C-L-O-S-H/N-V-I-S-H → Architect / Mentor ok 2
+// 30. C-L-O-S-H/N-V-I-S-A → Architect / Sage ok 2
+// 31. C-L-O-S-H/N-V-I-F-H → Architect / Unifier ok 2
+// 32. C-L-O-S-H/N-V-I-F-A → Architect / Mystic ok 2
+// 33. C-L-O-S-A/C-L-O-S-A → Engineer / Engineer ok 2
+// 34. C-L-O-S-A/C-L-O-F-H → Engineer / Navigator ok 2
+// 35. C-L-O-S-A/C-L-O-F-A → Engineer / Pioneer ok 2
+// 36. C-L-O-S-A/C-L-I-S-H → Engineer / Curator ok 2
 // 37. C-L-O-S-A/C-L-I-S-A → Engineer / Analyst ok
 // 38. C-L-O-S-A/C-L-I-F-H → Engineer / Mediator ok
 // 39. C-L-O-S-A/C-L-I-F-A → Engineer / Maverick ok

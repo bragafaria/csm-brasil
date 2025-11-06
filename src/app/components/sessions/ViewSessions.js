@@ -10,6 +10,7 @@ import Underline from "@tiptap/extension-underline";
 import sanitizeHtml from "sanitize-html";
 import parse from "html-react-parser";
 import { motion } from "framer-motion";
+import Spinner from "@/app/components/ui/Spinner";
 
 export default function ViewSessions() {
   const [sessions, setSessions] = useState([]);
@@ -155,8 +156,7 @@ export default function ViewSessions() {
     return (
       <div className="flex items-center justify-center p-8">
         <div className="flex items-center gap-3">
-          <div className="w-6 h-6 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin"></div>
-          <span className="text-[var(--text-secondary)] text-sm font-medium">Loading sessions...</span>
+          <Spinner>Loading sessions...</Spinner>
         </div>
       </div>
     );

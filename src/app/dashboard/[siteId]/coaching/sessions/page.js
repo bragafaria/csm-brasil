@@ -9,6 +9,7 @@ import CoachProfile from "@/app/components/sessions/CoachProfile";
 import ViewSessions from "@/app/components/sessions/ViewSessions";
 import WriteSession from "@/app/components/sessions/WriteSession";
 import { motion } from "framer-motion";
+import Spinner from "@/app/components/ui/Spinner";
 
 export default function SessionsPage() {
   const router = useRouter();
@@ -99,7 +100,7 @@ export default function SessionsPage() {
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center p-6 bg-[var(--surface)]">
-        <div className="text-[var(--text-primary)] text-lg font-medium">Loading...</div>
+        <Spinner>Loading...</Spinner>
       </div>
     );
   }

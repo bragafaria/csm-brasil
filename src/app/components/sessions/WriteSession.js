@@ -6,6 +6,7 @@ import { supabase } from "@/app/utils/supabaseClient";
 import Editor from "@/app/components/tiptap/Editor";
 import SalesSession from "@/app/components/sessions/SalesSession";
 import { motion } from "framer-motion";
+import Spinner from "@/app/components/ui/Spinner";
 
 export default function WriteSession({ isPartnerA, onTabChange }) {
   const [content, setContent] = useState("");
@@ -158,8 +159,7 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
     return (
       <div className="flex items-center justify-center p-8">
         <div className="flex items-center gap-3">
-          <div className="w-6 h-6 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin"></div>
-          <span className="text-[var(--text-secondary)] text-sm font-medium">Loading session status...</span>
+          <Spinner>Loading session status...</Spinner>
         </div>
       </div>
     );

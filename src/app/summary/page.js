@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { poles } from "@/app/utils/csm";
 import { motion } from "framer-motion";
 import { HelpCircle, X } from "lucide-react";
+import Spinner from "@/app/components/ui/Spinner";
 
 export default function Summary() {
   const router = useRouter();
@@ -48,8 +49,7 @@ export default function Summary() {
     return (
       <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center p-6">
         <div className="flex items-center gap-3">
-          <div className="w-6 h-6 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin"></div>
-          <span className="text-[var(--text-secondary)] font-medium">Loading your results...</span>
+          <Spinner>Loading your results...</Spinner>
         </div>
       </div>
     );

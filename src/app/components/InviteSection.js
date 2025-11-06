@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
 import { motion } from "framer-motion";
+import Spinner from "@/app/components/ui/Spinner.js";
 
 export default function InviteSection({ siteId }) {
   const [inviteLink, setInviteLink] = useState("");
@@ -109,8 +110,7 @@ export default function InviteSection({ siteId }) {
         className="card-gradient p-6 rounded-lg shadow-custom"
       >
         <div className="flex items-center space-x-3">
-          <div className="w-6 h-6 bg-[var(--accent)]/20 rounded-full animate-pulse"></div>
-          <span className="text-[var(--text-secondary)] text-sm font-medium">Loading invite...</span>
+          <Spinner>{"Loading invite..."}</Spinner>
         </div>
       </motion.div>
     );

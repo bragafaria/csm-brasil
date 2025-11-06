@@ -7,6 +7,7 @@ import Link from "next/link";
 import { supabase } from "@/app/utils/supabaseClient";
 import { User, Users, BookOpen, Lightbulb, Settings, HelpCircle, X, ChevronLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import Spinner from "@/app/components/ui/Spinner";
 
 export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }) {
   const [expandedItems, setExpandedItems] = useState([]);
@@ -47,7 +48,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
     },
     {
       id: "coaching",
-      label: "Life Coaching",
+      label: "CSM Sessions",
       icon: BookOpen,
       subItems: [{ label: "Sessions", route: `/dashboard/${siteId}/coaching/sessions` }],
     },
@@ -134,7 +135,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
 
         const personalReportSubItems = [
           {
-            label: `${partnerAName} ${!hasAssessmentA ? "(No Assessment)" : ""}`,
+            label: `${partnerAName}`,
             route: `/dashboard/${site_id}/personal-report/${partnerASlug}`,
           },
         ];
@@ -156,7 +157,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
             hasAssessmentB = partnerBData.has_assessment;
 
             personalReportSubItems.push({
-              label: `${partnerBName} ${!hasAssessmentB ? "(No Assessment)" : ""}`,
+              label: `${partnerBName}`,
               route: `/dashboard/${site_id}/personal-report/${partnerBSlug}`,
             });
           }
@@ -188,7 +189,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full p-6 bg-[var(--surface)]">
-        <div className="text-[var(--text-primary)] text-sm font-medium">Loading sidebar...</div>
+        <Spinner>Loading...</Spinner>
       </div>
     );
   }

@@ -7,6 +7,7 @@ import HowYouConnectPage from "@/app/components/couples/HowYouConnect";
 import IntroContext from "@/app/components/couples/IntroConnectContext";
 import NavButtons from "@/app/components/couples/NavButtons";
 import { getHowYouConnectData } from "@/app/lib/couple/getHowYouConnectData";
+import Spinner from "@/app/components/ui/Spinner";
 
 export default function HowYouConnectPageRoute() {
   const params = useParams();
@@ -32,7 +33,7 @@ export default function HowYouConnectPageRoute() {
   if (loading) {
     return (
       <div className="container mx-auto p-6 mt-20 max-w-7xl flex items-center justify-center min-h-[60vh]">
-        <div className="text-[var(--text-primary)] text-lg font-medium">Loading report...</div>
+        <Spinner>Loading report...</Spinner>
       </div>
     );
   }

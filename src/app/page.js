@@ -315,20 +315,14 @@ export default function Home() {
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-[var(--primary)]">Five Spectrum Cross-Analysis</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed">
-                  See how your mind works across the key dimensions that shape your cognition
-                  <strong>
-                    {" "}
-                    (Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal
-                    Style).
-                  </strong>{" "}
-                  Percentage values quantify the relative influence of each pole, offering a precise view of your
-                  cognitive orientation and growth potential.
+                  Explore how your mind operates across the five core dimensions of cognition - Information Processing,
+                  Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style.
                 </p>
               </div>
               <div className="space-y-4">
                 <p className="text-[var(--text-secondary)] leading-relaxed">
-                  This reflects just one dimension of the full CSM Assessment, which unveils your complete archetype and
-                  relationship-ready insights.
+                  Percentage values quantify the relative dominance of one pole and the corresponding influence of its
+                  opposite, providing a precise view of your cognitive orientation and areas for potential growth.
                 </p>
               </div>
             </div>

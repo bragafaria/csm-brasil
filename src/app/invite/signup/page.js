@@ -18,13 +18,13 @@ export default function InviteSignupPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const createSlug = (name) => {
-    if (!name) return "";
-    return name
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "");
-  };
+  // const createSlug = (name) => {
+  //   if (!name) return "";
+  //   return name
+  //     .toLowerCase()
+  //     .replace(/[^a-z0-9]+/g, "-")
+  //     .replace(/(^-|-$)/g, "");
+  // };
 
   useEffect(() => {
     const invite = searchParams.get("invite");
@@ -115,7 +115,7 @@ export default function InviteSignupPage() {
       const { data: partnerA } = await supabase.from("users").select("site_id").eq("id", siteId).single();
 
       const dashboardId = partnerA?.site_id || siteId;
-      router.push(`/dashboard/${dashboardId}/personal-report/${createSlug(name)}`);
+      router.push(`/dashboard/${dashboardId}`);
     } catch (err) {
       setServerError(err.message || "An unexpected error occurred.");
       setShowModal(true);

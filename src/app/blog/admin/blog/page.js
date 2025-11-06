@@ -142,7 +142,7 @@ export default function AdminBlog() {
         </div>
 
         <button type="submit" disabled={loading} className="btn-primary px-8 py-3 text-lg">
-          {loading ? "Saving..." : "Create Post"}
+          {loading ? "Creating Post..." : "Create Post"}
         </button>
       </form>
     </div>

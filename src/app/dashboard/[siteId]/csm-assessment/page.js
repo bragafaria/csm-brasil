@@ -6,6 +6,7 @@ import { useRouter, useParams } from "next/navigation";
 import { questions, calculateCSMResults } from "@/app/utils/csm";
 import { supabase } from "@/app/utils/supabaseClient";
 import { motion } from "framer-motion";
+import Spinner from "@/app/components/ui/Spinner";
 
 export default function DashboardTest() {
   const router = useRouter();
@@ -201,6 +202,7 @@ export default function DashboardTest() {
       console.log("Cleared localStorage: csmAnswers, csmAssessmentData");
 
       router.push(`/dashboard/${siteId}`);
+      router.refresh();
     } catch (err) {
       console.error("Unexpected error in next:", err.message, err);
       setError("An unexpected error occurred while saving results. Please try again.");
@@ -223,7 +225,7 @@ export default function DashboardTest() {
   if (loading) {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-[var(--surface)]">
-        <div className="text-[var(--text-primary)] text-lg font-medium">Loading assessment...</div>
+        <Spinner>Loading assessment...</Spinner>
       </main>
     );
   }
@@ -249,10 +251,10 @@ export default function DashboardTest() {
           Assessment already completed or not needed.
         </div>
         <button
-          onClick={() => router.push(`/dashboard/${siteId}/summary`)}
+          onClick={() => router.push(`/dashboard/${siteId}`)}
           className="mt-6 btn-primary py-3 px-6 rounded-lg font-semibold transition-all"
         >
-          View Summary
+          Go Back
         </button>
       </main>
     );

@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import NavButtons from "@/app/components/couples/NavButtons";
+import Spinner from "@/app/components/ui/Spinner";
 // import { validateAndGetCoupleData } from "@/app/lib/couple/";
 
 export default function AnalyticsPage() {
@@ -31,7 +32,7 @@ export default function AnalyticsPage() {
   if (loading) {
     return (
       <div className="container mx-auto p-6 mt-20 max-w-7xl flex items-center justify-center min-h-[60vh]">
-        <div className="text-[var(--text-primary)] text-lg font-medium">Loading report...</div>
+        <Spinner>Loading report...</Spinner>
       </div>
     );
   }
