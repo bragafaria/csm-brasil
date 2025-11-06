@@ -2771,4 +2771,178 @@ export const LifeAreasChallenges = {
       },
     },
   ],
+  "C-L-O-S-H/N-L-O-S-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics:
+          "You both thrive on building meaningful careers through teamwork and shared goals, with The Architect focusing on practical, hands-on projects and The Strategist envisioning long-term strategies. This combination lets you create stable paths forward, blending real-world execution with innovative planning. Together, you support each other in pursuing purposes that feel collaborative and structured.",
+        coreChallenge:
+          "Balancing The Architect's preference for tangible, immediate results with The Strategist's focus on abstract, future-oriented visions can lead to frustration when one wants quick wins and the other pushes for broader possibilities.",
+        whyThisHappens:
+          "- Both of you value team missions, but The Architect grounds ideas in what's practical now, while The Strategist explores what could be later.\n- Your shared stable approach locks you into roles, yet differing views on details versus big pictures cause misalignment in career steps.\n- The Architect's concrete style clashes with The Strategist's abstract insights, making joint purpose feel uneven at times.\n- You both aim for organized growth, but one may see the other's method as too rigid or too dreamy.",
+        redFlags:
+          "- The Architect feeling overwhelmed by The Strategist's constant shift to new ideas without finishing current tasks.\n- The Strategist growing bored with The Architect's emphasis on routine details over exciting innovations.\n- Ongoing debates about whether to stick to proven methods or chase untested opportunities in your careers.",
+        resolutionStrategies: [
+          "Set joint career goals that incorporate The Architect's practical steps and The Strategist's visionary elements, reviewing progress together monthly to ensure balance.",
+          "Alternate leading projects where The Architect handles execution phases and The Strategist focuses on planning stages to leverage each other's strengths.",
+          "Discuss how your shared collaborative spirit can turn differences into complementary forces, perhaps by co-creating a purpose map that blends immediate actions with long-term dreams.",
+        ],
+        growthOutcome:
+          "By merging your approaches, you build fulfilling careers that are both grounded and innovative, strengthening your shared sense of purpose over time.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics:
+          "In managing finances, you both prioritize structured plans and logical decisions, with The Architect handling day-to-day budgeting and The Strategist thinking about future investments. This allows for a solid foundation where practical tools meet visionary growth. You work as a team to build prosperity that feels secure and forward-thinking.",
+        coreChallenge:
+          "The Architect's focus on concrete, immediate financial tools clashes with The Strategist's abstract view of money as a means to bigger visions, leading to conflicts over spending versus saving for uncertain futures.",
+        whyThisHappens:
+          "- Your shared stable mindset pushes for organized budgets, but The Architect sees money as a practical resource while The Strategist treats it as fuel for ideas.\n- Both make analytical choices, yet one may prioritize verifiable expenses and the other theoretical opportunities.\n- The Architect's tangible approach can make The Strategist's expansive plans seem risky or unfocused.\n- You both aim for prosperity through structure, but differing perceptions create tension in how to allocate resources effectively.\n- Logical values guide your decisions, but concrete versus abstract lenses amplify disagreements on investments.",
+        redFlags:
+          "- Frequent arguments about whether to invest in safe, immediate options or riskier, long-term ventures that align with visions.\n- The Strategist feeling restricted by The Architect's insistence on detailed tracking over flexible growth.\n- Building resentment if one perceives the other's financial style as too cautious or too speculative.",
+        resolutionStrategies: [
+          "Create a joint budget that divides funds into practical categories for The Architect and visionary ones for The Strategist, revisiting it quarterly to adjust based on shared goals.",
+          "Use analytical tools like spreadsheets to map out how concrete steps can support abstract investments, ensuring both feel involved in prosperity building.",
+          "Encourage open talks about values in wealth, where The Architect shares tangible concerns and The Strategist explains future potentials to find common ground.",
+        ],
+        growthOutcome:
+          "Overcoming these differences leads to a balanced prosperity that combines security with opportunity, enhancing your financial harmony as a couple.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics:
+          "You both enjoy engaging with the world actively in health routines, often motivating each other to stay consistent and structured. The Architect brings practical habits to the mix, while The Strategist adds forward-thinking wellness goals. This creates a supportive environment for vitality that feels energetic and planned.",
+        coreChallenge:
+          "Maintaining joint health routines becomes tricky when The Architect wants observable, routine practices and The Strategist seeks innovative, evolving methods, causing inconsistency in shared efforts.",
+        whyThisHappens:
+          "- Your outward energy drives you to pursue health together, but one prefers stable diets and the other adapts based on new ideas.\n- Both value structured approaches, yet The Architect's concrete focus clashes with The Strategist's abstract explorations in wellness.\n- The Strategist may introduce changes that disrupt The Architect's established routines for vitality.\n- You share a preference for engagement, but differing information styles lead to mismatched pacing in health goals.\n- Stable mindsets lock in plans, amplifying friction when adaptations feel too frequent or too rigid.",
+        redFlags:
+          "- The Architect becoming frustrated with The Strategist's frequent shifts in exercise or diet plans without completion.\n- The Strategist feeling limited by The Architect's resistance to trying new health trends or ideas.\n- Avoiding joint activities altogether, leading to separate health paths that weaken your connection.",
+        resolutionStrategies: [
+          "Develop a flexible yet structured health plan where The Architect outlines daily routines and The Strategist suggests periodic updates to keep it fresh.",
+          "Schedule regular check-ins to discuss how outward activities can incorporate both practical habits and innovative tweaks for better vitality.",
+          "Alternate choosing health activities, allowing The Architect to pick consistent ones and The Strategist to introduce new elements to maintain engagement.",
+        ],
+        growthOutcome:
+          "Resolving this builds a vibrant health dynamic where stability meets innovation, boosting your overall energy and well-being as partners.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics:
+          "Your romance flourishes through collaborative expressions of affection, with The Architect showing love in practical ways and The Strategist through visionary gestures. This blend creates a relationship that's both grounded and inspiring. You connect deeply by engaging outwardly in shared romantic moments.",
+        coreChallenge:
+          "The Architect's tangible, action-oriented love language may not fully align with The Strategist's abstract, idea-driven expressions, leading to misunderstandings about emotional needs and romantic fulfillment.",
+        whyThisHappens:
+          "- Both seek emotional sync in harmony, but The Architect prefers observable interactions while The Strategist envisions deeper connections.\n- Your outward orientations push for daily touch, yet concrete versus abstract views create gaps in how romance is perceived.\n- The Architect might use logical acts of service, clashing with The Strategist's value-based words of affirmation.\n- Collaborative spirits unite you, but amplifying outward energy amplifies differences in romantic pacing.\n- Decision conflicts arise when one wants planned gestures and the other spontaneous, visionary ones.",
+        redFlags:
+          "- The Strategist feeling unappreciated if The Architect's practical help overlooks emotional depth.\n- The Architect sensing a lack of concreteness in The Strategist's dreamy romantic ideas.\n- Growing emotional distance if mismatches lead to reduced affectionate interactions over time.",
+        resolutionStrategies: [
+          "Plan regular date nights where The Architect handles the logistics and The Strategist adds creative, visionary elements to keep romance alive.",
+          "Discuss love languages openly, blending The Architect's acts of service with The Strategist's affirming words to meet both needs effectively.",
+          "Create shared rituals that incorporate outward engagement, like joint hobbies, while respecting each other's concrete or abstract preferences in expressions.",
+        ],
+        growthOutcome:
+          "Navigating these differences deepens your romantic bond, creating a love that's both practical and visionary in its expression.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics:
+          "In family matters, you both approach home life with a structured mindset, creating organized environments that feel collaborative. The Architect focuses on practical setups, and The Strategist on future-oriented family plans. This helps build a stable, team-like household dynamic.",
+        coreChallenge:
+          "Clashing on how to structure family routines, with The Architect emphasizing tangible rules and The Strategist pushing for adaptable visions, can disrupt home harmony and lead to ongoing tensions.",
+        whyThisHappens:
+          "- Your stable preferences demand clear chores and rules, but The Architect grounds them in reality while The Strategist envisions ideals.\n- Both value collaboration in family, yet abstract insights may make plans seem too fluid for concrete needs.\n- The Strategist accommodates family broadly, potentially overwhelming The Architect's practical boundaries.\n- Structured approaches amplify differences, as one sees home as current setup and the other as evolving space.\n- Harmony drives teamwork, but mismatched perceptions create uneven contributions to home life.",
+        redFlags:
+          "- The Architect feeling burdened by The Strategist's ever-changing family plans without solid execution.\n- The Strategist perceiving The Architect's routines as too rigid, stifling family growth.\n- Escalating conflicts over daily chores turning into larger disputes about home priorities.",
+        resolutionStrategies: [
+          "Establish a family schedule that combines The Architect's practical rules with The Strategist's flexible adjustments, reviewing it together weekly.",
+          "Divide home tasks based on strengths, with The Architect managing daily operations and The Strategist handling long-term family goals.",
+          "Foster open dialogues about boundaries, ensuring collaborative decisions respect both concrete needs and abstract visions for home harmony.",
+        ],
+        growthOutcome:
+          "Overcoming this fosters a nurturing home where structure supports growth, enhancing your family connection significantly.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics:
+          "You engage with friends and community through a harmonious lens, often participating together in group activities. The Architect brings practical involvement, while The Strategist adds visionary contributions. This creates social circles that feel connected and purposeful.",
+        coreChallenge:
+          "Balancing social commitments becomes challenging when The Architect prefers tangible, routine interactions and The Strategist seeks abstract, idea-sharing gatherings, leading to exhaustion or disconnection in shared circles.",
+        whyThisHappens:
+          "- Both commit to social harmony, but The Architect focuses on observable group needs while The Strategist explores collective futures.\n- Your outward energies thrive in groups, yet concrete styles clash with abstract ones in choosing events.\n- The Strategist may over-commit to visionary causes, draining The Architect's preference for structured meetups.\n- Collaborative spirits push for inclusion, amplifying mismatches in social pacing and depth.\n- One sees friends as current support, the other as partners in bigger ideas, creating uneven engagement.",
+        redFlags:
+          "- The Architect declining invites that feel too abstract, leaving The Strategist to attend alone frequently.\n- The Strategist overwhelming The Architect with too many social plans, leading to burnout.\n- Drifting apart in community roles if differences cause avoidance of joint social activities.",
+        resolutionStrategies: [
+          "Plan social outings that alternate between The Architect's practical gatherings and The Strategist's idea-focused events to keep balance.",
+          "Set boundaries on commitments by discussing how outward energy can be directed without overextending in community ties.",
+          "Build a shared friend list where you co-host events, blending concrete fun with abstract discussions for mutual enjoyment.",
+        ],
+        growthOutcome:
+          "Resolving this strengthens your social bonds, creating a vibrant community life that's engaging for both of you.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics:
+          "In pursuing growth, you both appreciate structured learning, with The Architect mastering practical skills and The Strategist exploring theoretical concepts. This allows for a balanced journey of discovery that's collaborative. Together, you motivate each other to evolve in meaningful ways.",
+        coreChallenge:
+          "The Architect's desire for concrete skill mastery conflicts with The Strategist's chase for novel ideas, making it hard to commit to shared growth paths without one feeling restricted or the other overwhelmed.",
+        whyThisHappens:
+          "- Your differing perceptions drive The Architect to tangible mastery and The Strategist to endless novelty in learning.\n- Both prefer stable finishes, but abstract pursuits may lead to dropping courses that feel too routine.\n- The Strategist's expansive style clashes with The Architect's focused, verifiable progress.\n- Structured mindsets lock in goals, amplifying friction when one wants depth in one area and the other breadth.\n- Discovery feels uneven as concrete facts compete with abstract connections in your joint efforts.",
+        redFlags:
+          "- The Architect becoming irritated by The Strategist's habit of starting new projects without completing old ones.\n- The Strategist losing interest in The Architect's methodical approach to skill-building.\n- Avoiding shared learning activities, leading to individual growth that weakens your connection.",
+        resolutionStrategies: [
+          "Choose growth activities that start with The Architect's practical foundation and evolve into The Strategist's exploratory elements for a complete experience.",
+          "Set timelines for discovery goals, where stability ensures completion while allowing flexibility for new insights.",
+          "Encourage mutual teaching sessions, with The Architect sharing hands-on knowledge and The Strategist introducing conceptual ideas.",
+        ],
+        growthOutcome:
+          "By integrating your styles, you achieve profound personal development that enriches your relationship deeply.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics:
+          "You find joy in planned adventures that engage the world, with The Architect enjoying tangible experiences and The Strategist dreaming up unique outings. This mix creates fun that's structured yet exciting. Together, you build memorable moments through shared enthusiasm.",
+        coreChallenge:
+          "Planning adventures turns tense when The Architect insists on detailed itineraries and The Strategist wants to incorporate abstract twists, leading to conflicts over spontaneity versus preparation in joyful pursuits.",
+        whyThisHappens:
+          "- Your stable preferences demand thorough planning, but The Architect focuses on practical details while The Strategist adds visionary changes.\n- Both seek outward thrills, yet concrete approaches clash with abstract ones in executing fun.\n- The Strategist may alter plans mid-way, frustrating The Architect's need for organization.\n- Structured mindsets amplify differences, as one sees adventure as set activities and the other as evolving ideas.\n- Joy feels mismatched when tangible fun competes with conceptual excitement in your outings.",
+        redFlags:
+          "- Frequent cancellations or arguments during trips due to last-minute idea shifts by The Strategist.\n- The Architect feeling stressed by lack of control in adventures planned loosely.\n- Reducing shared joyful activities, opting for solo fun that diminishes your bond.",
+        resolutionStrategies: [
+          "Design adventures with a core plan from The Architect and built-in flexible slots for The Strategist's ideas to satisfy both.",
+          "Alternate planning roles for outings, ensuring outward energy flows while respecting stable structures.",
+          "Reflect after each adventure on what brought joy, adjusting future plans to blend practical and visionary elements better.",
+        ],
+        growthOutcome:
+          "Mastering this creates endless joyful experiences that invigorate your partnership with balanced excitement.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics:
+          "You both value engaging with the world, but also need moments of peace, with The Architect finding serenity in practical quiet and The Strategist in reflective visions. This helps create a balanced space for recharge. Together, you support each other's need for calm amidst activity.",
+        coreChallenge:
+          "Achieving personal space is difficult when both your outward energies lead to constant interaction, with The Architect needing tangible alone time and The Strategist seeking abstract solitude, often resulting in feelings of rejection or intrusion.",
+        whyThisHappens:
+          "- Your outward orientations make solitude challenging, as The Architect prefers structured breaks and The Strategist visionary ones.\n- Both seek harmony in space, but concrete needs clash with abstract reflections during downtime.\n- The Strategist may fill quiet with ideas, disrupting The Architect's practical serenity.\n- Collaborative spirits push for check-ins, amplifying friction in enforcing boundaries.\n- One sees space as current recharge, the other as future musing, creating uneven peace.",
+        redFlags:
+          "- The Architect feeling overwhelmed by The Strategist's need to discuss visions during supposed quiet times.\n- The Strategist interpreting The Architect's boundaries as emotional distance.\n- Increasing tension leading to arguments about personal time versus togetherness.",
+        resolutionStrategies: [
+          "Schedule dedicated serenity periods where The Architect enjoys practical hobbies alone and The Strategist pursues reflective activities separately.",
+          "Communicate needs for space openly, using harmonious check-ins to ensure both feel supported without intrusion.",
+          "Create shared quiet rituals that transition into individual time, balancing outward energy with personal peace.",
+        ],
+        growthOutcome:
+          "This resolution fosters deeper serenity, allowing you to recharge effectively and strengthen your connection.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics:
+          "In building legacy, you collaborate on meaningful impacts, with The Architect focusing on practical contributions and The Strategist on visionary ones. This creates a powerful team for lasting change. Together, you blend real-world actions with future-oriented goals.",
+        coreChallenge:
+          "Aligning on legacy becomes complex as The Architect prioritizes measurable, concrete impacts while The Strategist emphasizes abstract, meaningful visions, often leading to disagreements on what truly matters in your shared contributions.",
+        whyThisHappens:
+          "- Both build through community, but The Architect seeks tangible results and The Strategist deeper meanings.\n- Your abstract versus concrete lenses create tension in defining success for legacy.\n- Harmonious motivations unite you, yet amplifying perceptions leads to mismatched priorities.\n- Logical values guide decisions, but one may see the other's approach as too narrow or too vague.\n- Collaborative efforts falter when verifiable actions compete with theoretical connections in impact.",
+        redFlags:
+          "- The Architect dismissing The Strategist's ideas as impractical for real-world legacy.\n- The Strategist overlooking The Architect's need for observable progress in joint efforts.\n- Stalling on shared projects due to ongoing debates about measurable versus meaningful outcomes.",
+        resolutionStrategies: [
+          "Develop a legacy plan that starts with The Architect's practical steps and incorporates The Strategist's visionary goals for comprehensive impact.",
+          "Discuss values in legacy building, ensuring logical choices respect both concrete and abstract perspectives.",
+          "Collaborate on community projects where you alternate focus between tangible actions and broader meanings to create balanced contributions.",
+        ],
+        growthOutcome:
+          "By uniting your strengths, you craft a profound legacy that inspires others and fulfills you both deeply.",
+      },
+    },
+  ],
 };

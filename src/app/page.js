@@ -217,7 +217,7 @@ export default function Home() {
             <div className="my-16 grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="p-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--primary-rgb),0.1)] to-transparent border border-[rgba(var(--primary-rgb),0.2)] backdrop-blur-sm">
                 <div className="text-3xl font-bold text-white mb-2">
-                  <Counter target={250} suffix="k+" duration={3000} />
+                  <Counter target={25} suffix="k+" duration={3000} />
                 </div>
                 <div className="text-[var(--text-secondary)]">Couples helped</div>
               </div>
@@ -229,7 +229,7 @@ export default function Home() {
               </div>
               <div className="p-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--primary-rgb),0.1)] to-transparent border border-[rgba(var(--primary-rgb),0.2)] backdrop-blur-sm">
                 <div className="text-3xl font-bold text-white mb-2">
-                  <Counter target={4.9} suffix=" [star]" duration={3000} decimals={1} />
+                  <Counter target={4.9} suffix=" ★" duration={3000} decimals={1} />
                 </div>
                 <div className="text-[var(--text-secondary)]">Average rating</div>
               </div>
@@ -319,18 +319,38 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
-              Discover insights that strengthen your bond and improve communication
+              Understand each other like never before.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8" key={routeKey}>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8" key={routeKey}>
+            {/* NEW: Self-Awareness Card - First Position */}
             <AnimatedCard delay={0}>
               <div
                 className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] 
-                             border border-[rgba(var(--primary-rgb),0.2)] 
-                             hover:border-[rgba(var(--primary-rgb),0.4)] 
-                             transition-all duration-300 hover:scale-105 
-                             h-full min-h-[250px] flex flex-col"
+                       border border-[rgba(var(--primary-rgb),0.2)] 
+                       hover:border-[rgba(var(--primary-rgb),0.4)] 
+                       transition-all duration-300 hover:scale-105 
+                       h-full min-h-[250px] flex flex-col"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Brain className="h-8 w-8 text-[var(--text-primary)]" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Self-Awareness</h3>
+                <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
+                  Gain a precise profile of your cognitive and emotional patterns. This establishes the essential
+                  foundation for authentic connection and mutual understanding in your relationship.
+                </p>
+              </div>
+            </AnimatedCard>
+
+            <AnimatedCard delay={0.1}>
+              <div
+                className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] 
+                       border border-[rgba(var(--primary-rgb),0.2)] 
+                       hover:border-[rgba(var(--primary-rgb),0.4)] 
+                       transition-all duration-300 hover:scale-105 
+                       h-full min-h-[250px] flex flex-col"
               >
                 <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Users className="h-8 w-8 text-[var(--text-primary)]" />
@@ -338,7 +358,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Couple-Focused</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
                   Unlike individual personality tests, our framework is specifically designed to understand relationship
-                  dynamics between partners. It reveals how your cognitive styles interact and where growth is possible.
+                  dynamics between partners. It reveals how you interact and where growth is possible.
                 </p>
               </div>
             </AnimatedCard>
@@ -346,10 +366,10 @@ export default function Home() {
             <AnimatedCard delay={0.2}>
               <div
                 className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] 
-                             border border-[rgba(var(--primary-rgb),0.2)] 
-                             hover:border-[rgba(var(--primary-rgb),0.4)] 
-                             transition-all duration-300 hover:scale-105 
-                             h-full min-h-[250px] flex flex-col"
+                       border border-[rgba(var(--primary-rgb),0.2)] 
+                       hover:border-[rgba(var(--primary-rgb),0.4)] 
+                       transition-all duration-300 hover:scale-105 
+                       h-full min-h-[250px] flex flex-col"
               >
                 <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Target className="h-8 w-8 text-[var(--text-primary)]" />
@@ -362,13 +382,13 @@ export default function Home() {
               </div>
             </AnimatedCard>
 
-            <AnimatedCard delay={0.4}>
+            <AnimatedCard delay={0.3}>
               <div
                 className="group p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] 
-                             border border-[rgba(var(--primary-rgb),0.2)] 
-                             hover:border-[rgba(var(--primary-rgb),0.4)] 
-                             transition-all duration-300 hover:scale-105 
-                             h-full min-h-[250px] flex flex-col"
+                       border border-[rgba(var(--primary-rgb),0.2)] 
+                       hover:border-[rgba(var(--primary-rgb),0.4)] 
+                       transition-all duration-300 hover:scale-105 
+                       h-full min-h-[250px] flex flex-col"
               >
                 <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Shield className="h-8 w-8 text-[var(--text-primary)]" />
@@ -455,37 +475,28 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
-              <div className="bg-[var(--surface-variant)] p-4 rounded-lg border border-[rgba(var(--border-rgb),0.5)] mt-auto">
-                <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-2">
-                  Balanced Harmony: Concrete Focus and Abstract Insight
-                </h4>
-                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                  With a Mild primary preference for Concrete Focus (C) at 57% and a strong secondary influence from
-                  Abstract Insight (N) at 43%, you balance practical grounding with forward-thinking vision. This blend
-                  allows you to stay rooted in reality while exploring possibilities.
-                </p>
-              </div>
             </motion.div>
 
             <div className="flex flex-col justify-center space-y-6 lg:pl-8">
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-[var(--text-primary)]">Unlock Nuanced Insights</h3>
+                <h3 className="text-2xl font-bold text-[var(--primary)]">Five Spectrum Cross-Analysis</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed">
-                  Imagine seeing exactly how your mind works across five cognitive spectrums, with percentages showing
-                  your natural tendencies and growth potential.
+                  See how your mind works across the key dimensions that shape your cognition
+                  <strong>
+                    {" "}
+                    (Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal
+                    Style).
+                  </strong>{" "}
+                  Percentage values quantify the relative influence of each pole, offering a precise view of your
+                  cognitive orientation and growth potential.
                 </p>
               </div>
               <div className="space-y-4">
                 <p className="text-[var(--text-secondary)] leading-relaxed">
-                  This is just one dimension. The full assessment reveals all five spectrums and your unique archetype.
+                  This reflects just one dimension of the full CSM Assessment, which unveils your complete archetype and
+                  relationship-ready insights.
                 </p>
               </div>
-              <Link href="/csm-assessment">
-                <button className="w-full bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl text-[var(--text-primary)]">
-                  Start Your Assessment Now
-                </button>
-              </Link>
             </div>
           </div>
         </div>
@@ -501,23 +512,61 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {["Sarah & Mike", "Alex & Jordan", "Emma & David"].map((name) => (
-              <div
-                key={name}
-                className="p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[rgba(var(--primary-rgb),0.2)]"
-              >
-                <div className="flex items-center mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">
-                  This assessment revealed communication patterns we never noticed. We finally understand why we argue
-                  about the same things and how to fix it.
-                </p>
-                <div className="text-[var(--primary)] font-semibold">{name}</div>
+            {/* Sarah & Mike */}
+            <div className="p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[rgba(var(--primary-rgb),0.2)] flex flex-col h-full">
+              <div className="flex items-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                ))}
               </div>
-            ))}
+              <p className="text-[var(--text-secondary)] mb-6 leading-relaxed flex-grow">
+                This assessment revealed communication patterns we never noticed. Our relationship has never been
+                stronger!
+              </p>
+              <div className="flex items-center gap-3 mt-auto">
+                <div className="w-10 h-10 rounded-full bg-[var(--primary)] flex items-center justify-center text-white font-bold text-sm">
+                  S
+                </div>
+                <div className="text-[var(--primary)] font-semibold">Sarah & Mike</div>
+              </div>
+            </div>
+
+            {/* Alex & Jordan */}
+            <div className="p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[rgba(var(--primary-rgb),0.2)] flex flex-col h-full">
+              <div className="flex items-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-[var(--text-secondary)] mb-6 leading-relaxed flex-grow">
+                Finally, a test that looks at us as a couple, not just individuals. The insights were incredibly
+                accurate.
+              </p>
+              <div className="flex items-center gap-3 mt-auto">
+                <div className="w-10 h-10 rounded-full bg-[var(--accent)] flex items-center justify-center text-white font-bold text-sm">
+                  A
+                </div>
+                <div className="text-[var(--primary)] font-semibold">Alex & Jordan</div>
+              </div>
+            </div>
+
+            {/* Emma & David */}
+            <div className="p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[rgba(var(--primary-rgb),0.2)] flex flex-col h-full">
+              <div className="flex items-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-[var(--text-secondary)] mb-6 leading-relaxed flex-grow">
+                The personalized recommendations helped us navigate our differences with so much more understanding.
+              </p>
+              <div className="flex items-center gap-3 mt-auto">
+                <div className="w-10 h-10 rounded-full bg-[var(--primary)] flex items-center justify-center text-white font-bold text-sm">
+                  E
+                </div>
+                <div className="text-[var(--primary)] font-semibold">Emma & David</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

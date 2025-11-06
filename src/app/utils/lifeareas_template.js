@@ -14,7 +14,7 @@
 // 14. C-L-O-S-H/C-V-I-S-A → Architect / Healer ok 2
 // 15. C-L-O-S-H/C-V-I-F-H → Architect / Peacemaker ok 2
 // 16. C-L-O-S-H/C-V-I-F-A → Architect / Empath ok 2
-// 17. C-L-O-S-H/N-L-O-S-H → Architect / Strategist ok
+// 17. C-L-O-S-H/N-L-O-S-H → Architect / Strategist ok  2
 // 18. C-L-O-S-H/N-L-O-S-A → Architect / Inventor ok
 // 19. C-L-O-S-H/N-L-O-F-H → Architect / Disruptor ok
 // 20. C-L-O-S-H/N-L-O-F-A → Architect / Revolutionary ok
