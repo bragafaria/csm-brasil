@@ -195,15 +195,21 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
       transition={{ duration: 0.4 }}
       className="card-gradient p-6 md:p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
     >
-      <div className="max-w-4xl mx-auto space-y-6">
+      <div className="max-w-4xl mx-auto space-y-6 mt-10">
         {/* Header */}
-        <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-3">
-            Submit Your Reflection Question
+        <div className="flex flex-col items-center">
+          <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-3 text-center">
+            Submit Your Session Entry
           </h1>
-          <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed">
-            Describe your challenge in detail, including how it relates to your CSM type.{" "}
-            <span className="text-[var(--accent)] font-medium">(1 active session at a time)</span>
+          <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mb-2 md:mb-4">
+            Describe your challenge, question, or general doubt in as much detail as possible: from practical concerns
+            to broader life uncertainties. You may also include any thoughts, feelings, or patterns that seem to shape
+            your experience.
+          </p>
+          <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center">
+            <strong>Note:</strong> This chat is completely private. Only you have access to your questions and
+            responses. Your partner cannot view or edit anything you share here, though you’re welcome to share your
+            reflections later if you wish.
           </p>
         </div>
 
