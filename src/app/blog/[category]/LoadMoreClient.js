@@ -5,6 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { format } from "date-fns";
 import { Heart } from "lucide-react";
+import Spinner from "@/app/components/ui/Spinner.js";
 
 export default function LoadMoreClient({ slug, initialPosts }) {
   const [posts, setPosts] = useState(initialPosts);
@@ -82,7 +83,7 @@ export default function LoadMoreClient({ slug, initialPosts }) {
             disabled={isLoading}
             className="inline-block bg-[var(--primary)] text-white font-bold px-8 py-3 rounded-full hover:bg-[var(--primary-dark)] transition disabled:opacity-50"
           >
-            {isLoading ? "Fetching..." : "Load More"}
+            {isLoading ? <Spinner>Fetching...</Spinner> : "Load More"}
           </button>
         </div>
       )}

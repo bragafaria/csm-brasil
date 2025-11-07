@@ -83,16 +83,10 @@ export default function DashboardLayout({ children }) {
           </div>
 
           {/* User Actions */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={handleLogout}
-              className="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--accent)] hover:underline transition-all"
-            >
+          <div className="flex items-center gap-3 mr-4 border border-white rounded-lg px-4 py-2 hover:border-[var(--primary)] hover:bg-[var(--primary)] cursor-pointer">
+            <button onClick={handleLogout} className="text-sm font-medium text-[var(--text-secondary)] ">
               Logout
             </button>
-            <div className="w-9 h-9 rounded-full primary-gradient flex items-center justify-center shadow-md">
-              <span className="text-sm font-bold text-white">U</span>
-            </div>
           </div>
         </div>
       </nav>

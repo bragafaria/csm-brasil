@@ -17,6 +17,8 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { supabase } from "@/app/utils/supabaseClient";
 import { RotatingWord } from "@/app/components/ui/RotatingWord";
+import ConnectionsParticles from "@/app/components/ConnectionsParticles";
+import ConnectionsTitle from "@/app/components/ConnectionsTitle";
 
 export default function Home() {
   const [expandedFAQ, setExpandedFAQ] = useState(null);
@@ -163,7 +165,6 @@ export default function Home() {
           </div>
         </nav>
       </header>
-
       {/* Hero Section */}
       <section className="relative section-full flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-[rgba(var(--primary-rgb),0.2)] via-transparent to-[rgba(var(--accent-rgb),0.2)]"></div>
@@ -237,7 +238,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Spectrum Preview */}
       <section className="py-20 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -389,7 +389,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Features Section */}
       <section id="whats-inside" className="py-20 relative section-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -495,7 +494,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Testimonials */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -564,7 +562,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* FAQ — ALL 10 FULL QUESTIONS & ANSWERS */}
       <section id="faq" className="py-16 px-4 bg-[var(--surface)]">
         <div className="container mx-auto max-w-4xl">
@@ -654,7 +651,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-[rgba(var(--primary-rgb),0.2)] to-[rgba(var(--accent-rgb),0.2)]">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
@@ -665,13 +661,30 @@ export default function Home() {
             Join thousands of couples who have transformed their relationships through understanding
           </p>
           <button className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-12 py-4 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl flex items-center space-x-3 mx-auto text-[var(--text-primary)]">
-            <span>Start Your Free Assessment</span>
+            <span>Take Free Test</span>
             <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
           </button>
           <p className="text-[var(--text-secondary)] mt-4">No credit card required • Results in minutes</p>
         </div>
       </section>
+      {/* CONNECTIONS PARTICLE SECTION - FULL WIDTH, CONTAINED */}
+      <section className="relative overflow-hidden bg-[var(--surface)]">
+        <div className="relative w-full mx-auto px-2">
+          <div className="relative h-[600px] min-h-[600px] flex items-center justify-center rounded-3xl overflow-hidden">
+            {/* Canvas container - particles stay inside */}
+            <div className="absolute inset-0">
+              <ConnectionsParticles />
+            </div>
 
+            {/* Title */}
+            <ConnectionsTitle />
+
+            {/* Subtle corner glows */}
+            <div className="absolute top-10 left-10 w-96 h-96 bg-[#5033c0]/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#bf00ff]/20 rounded-full blur-3xl animate-pulse"></div>
+          </div>
+        </div>
+      </section>
       {/* Footer */}
       <footer className="py-12 px-4 bg-[var(--surface-variant)] border-t border-[var(--border)]">
         <div className="container mx-auto max-w-6xl">
@@ -679,7 +692,10 @@ export default function Home() {
             <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
                 <Brain className="h-8 w-8 text-[var(--accent)]" />
-                <span className="text-xl font-bold">CSM Insights</span>
+                <div className="flex items-center space-x-1">
+                  <h1 className="text-2xl font-bold text-[var(--primary)]">CSM </h1>
+                  <h1 className="text-2xl font-light text-white">Dynamics</h1>
+                </div>
               </div>
               <p className="text-[var(--text-secondary)] mb-4">
                 Empowering couples with science-backed relationship insights through the Cognitive Spectrum Model.
