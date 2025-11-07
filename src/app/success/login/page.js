@@ -7,8 +7,6 @@ import { supabase } from "@/app/utils/supabaseClient";
 import { motion } from "framer-motion";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -16,62 +14,54 @@ export default function Login() {
   const sessionId = searchParams.get("session_id");
 
   useEffect(() => {
-    async function checkSession() {
+    async function verifyAndRedirect() {
       try {
-        if (!supabase) {
-          throw new Error("Supabase client is not initialized");
-        }
-
-        console.log("Checking session with session_id:", sessionId);
         const {
           data: { session },
-          error: sessionError,
         } = await supabase.auth.getSession();
-        console.log("Session check result:", { session, error: sessionError?.message });
 
-        if (sessionError) {
-          console.error("Session check error:", sessionError.message, sessionError);
-          setError("Failed to verify session. Please log in.");
+        if (!session) {
           setLoading(false);
           return;
         }
 
-        if (session) {
-          const userId = session.user.id;
-          const { data: userData, error: userError } = await supabase
-            .from("users")
-            .select("id, has_paid")
-            .eq("id", userId)
-            .single();
+        const userId = session.user.id;
 
-          if (userError || !userData) {
-            console.error("User fetch error:", userError?.message || "No user found for userId", userId, userError);
-            setError("User profile not found. Please log in again.");
-            await supabase.auth.signOut();
-            setLoading(false);
-            router.push("/login");
-            return;
-          }
-
-          // Delay redirect to allow webhook processing
-          if (sessionId) {
-            console.log("Post-payment redirect, waiting 2s for webhook...");
-            await new Promise((resolve) => setTimeout(resolve, 2000));
-          }
-
-          console.log("Authenticated user, redirecting:", { userId, redirectPath: `/dashboard/${userId}` });
+        // === STEP 1: If no session_id → just go to dashboard ===
+        if (!sessionId) {
           router.push(`/dashboard/${userId}`);
-        } else {
-          setLoading(false);
+          return;
         }
+
+        // === STEP 2: Verify payment with Stripe API ===
+        const verifyRes = await fetch("/api/verify-payment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session.access_token}`,
+          },
+          body: JSON.stringify({ session_id: sessionId }),
+        });
+
+        const verifyData = await verifyRes.json();
+
+        if (!verifyRes.ok || !verifyData.paid) {
+          setError(verifyData.error || "Payment not confirmed. Please contact support.");
+          setLoading(false);
+          return;
+        }
+
+        // === STEP 3: Payment confirmed → go to dashboard ===
+        console.log("Payment verified via Stripe API, redirecting...");
+        router.push(`/dashboard/${userId}`);
       } catch (err) {
-        console.error("Unexpected error in checkSession:", err.message, err.stack);
-        setError("An unexpected error occurred. Please try again.");
+        console.error("Error in verifyAndRedirect:", err);
+        setError("An unexpected error occurred.");
         setLoading(false);
       }
     }
 
-    checkSession();
+    verifyAndRedirect();
   }, [router, sessionId]);
 
   const handleLogin = async (e) => {
@@ -152,10 +142,10 @@ export default function Login() {
       transition={{ duration: 0.5 }}
       className="min-h-screen flex items-center justify-center bg-[var(--surface)]"
     >
-      <div className="card-gradient p-8 rounded-xl shadow-lg max-w-md w-full">
+      <div className="card-gradient p-8 rounded-lg shadow-custom max-w-md w-full">
         <div className="flex items-center justify-center space-x-1 mb-4">
-          <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
-          <h1 className="text-xl font-light text-white">Dynamics</h1>
+          <h1 className="text-xl font-bold text-[var(--primary)]">CSM </h1>
+          <h1 className="text-xl font-light text-[var(--text-primary)]">Dynamics</h1>
         </div>
         <motion.h1
           initial={{ opacity: 0 }}
@@ -174,7 +164,7 @@ export default function Login() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
+            className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:outline-none focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] transition-[var(--transition)]"
             required
           />
           <motion.input
@@ -185,7 +175,7 @@ export default function Login() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
+            className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:outline-none focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] transition-[var(--transition)]"
             required
           />
           {error && (
@@ -199,7 +189,7 @@ export default function Login() {
             transition={{ duration: 0.5, delay: 0.2 }}
             type="submit"
             disabled={loading}
-            className="btn-primary w-full py-3 rounded-lg font-semibold disabled:opacity-50 hover:cursor-pointer"
+            className="btn-primary w-full py-3 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

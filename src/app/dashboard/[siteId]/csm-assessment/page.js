@@ -3,9 +3,10 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { questions, calculateCSMResults } from "@/utils/csm";
-import { supabase } from "@/app/utils/supabaseClient"; // Use singleton
+import { questions, calculateCSMResults } from "@/app/utils/csm";
+import { supabase } from "@/app/utils/supabaseClient";
 import { motion } from "framer-motion";
+import Spinner from "@/app/components/ui/Spinner";
 
 export default function DashboardTest() {
   const router = useRouter();
@@ -28,7 +29,7 @@ export default function DashboardTest() {
         setAnswers(parsedAnswers);
       } catch (e) {
         console.error("Invalid localStorage data:", e.message, e);
-        localStorage.removeItem("csmAnswers"); // Clear corrupt data
+        localStorage.removeItem("csmAnswers");
       }
     }
   }, []);
@@ -63,7 +64,7 @@ export default function DashboardTest() {
           .from("users")
           .select("id, partner_id, has_assessment")
           .eq("id", userId)
-          .maybeSingle(); // Use maybeSingle
+          .maybeSingle();
 
         if (userError || !userData) {
           console.error("User fetch error:", userError?.message || "No user found for userId", userId, userError);
@@ -142,7 +143,6 @@ export default function DashboardTest() {
     }
 
     try {
-      // Calculate results
       const results = calculateCSMResults(answers);
       if (
         !results ||
@@ -154,11 +154,11 @@ export default function DashboardTest() {
         setError("Failed to calculate assessment results. Please try again.");
         return;
       }
+
       localStorage.setItem("csmAssessmentData", JSON.stringify({ answers, results }));
       setAssessmentData(results);
       console.log("Assessment results calculated:", results);
 
-      // Get user session
       const {
         data: { session },
         error: sessionError,
@@ -170,27 +170,20 @@ export default function DashboardTest() {
         router.push("/login");
         return;
       }
-      console.log("Updating for userId:", userId);
 
-      // Prepare update data for JSONB columns
       const updateData = {
         has_assessment: true,
-        typeCode: results.dominants?.length === 5 ? results.dominants.join("-") : null, // Text: string
-        percents: results.percents?.length === 5 ? results.percents : [], // jsonb: raw array
-        dominants: results.dominants?.length === 5 ? results.dominants : [], // jsonb: raw array
-        categories: results.categories?.length === 5 ? results.categories : [], // jsonb: raw array
+        typeCode: results.dominants?.length === 5 ? results.dominants.join("-") : null,
+        percents: results.percents?.length === 5 ? results.percents : [],
+        dominants: results.dominants?.length === 5 ? results.dominants : [],
+        categories: results.categories?.length === 5 ? results.categories : [],
       };
 
-      console.log("Update data prepared (raw for jsonb):", updateData);
-
-      // Update Supabase
       const { data: updateResponse, error: supabaseError } = await supabase
         .from("users")
         .update(updateData)
         .eq("id", userId)
         .select("id, has_assessment, typeCode, dominants, percents, categories");
-
-      console.log("Update response:", { data: updateResponse, error: supabaseError });
 
       if (supabaseError) {
         console.error("Supabase update error details:", supabaseError.message, supabaseError);
@@ -204,15 +197,12 @@ export default function DashboardTest() {
         return;
       }
 
-      // Verify saved data
-      console.log("Saved row:", updateResponse[0]);
-
-      // Clear localStorage
       localStorage.removeItem("csmAnswers");
       localStorage.removeItem("csmAssessmentData");
       console.log("Cleared localStorage: csmAnswers, csmAssessmentData");
 
       router.push(`/dashboard/${siteId}`);
+      router.refresh();
     } catch (err) {
       console.error("Unexpected error in next:", err.message, err);
       setError("An unexpected error occurred while saving results. Please try again.");
@@ -221,7 +211,6 @@ export default function DashboardTest() {
 
   const prev = () => current > 0 && setCurrent(current - 1);
 
-  // Validate points: Ensure total points sum to 10 for rank questions
   const isRankValid = () => {
     if (q.type !== "rank") return answers[current] !== null;
     const totalPoints = Object.values(ranks).reduce((sum, val) => sum + (parseInt(val) || 0), 0);
@@ -235,17 +224,20 @@ export default function DashboardTest() {
 
   if (loading) {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)]">
-        <div className="text-[var(--text-primary)]">Loading assessment...</div>
+      <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-[var(--surface)]">
+        <Spinner>Loading assessment...</Spinner>
       </main>
     );
   }
 
   if (error) {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)] cursor-pointer">
-        <div className="text-red-400 text-center">{error}</div>
-        <button onClick={() => router.push("/login")} className="mt-4 btn-primary">
+      <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-[var(--surface)]">
+        <div className="text-red-400 text-center text-lg font-medium">{error}</div>
+        <button
+          onClick={() => router.push("/login")}
+          className="mt-6 btn-primary py-3 px-6 rounded-lg font-semibold transition-all"
+        >
           Go to Login
         </button>
       </main>
@@ -254,10 +246,15 @@ export default function DashboardTest() {
 
   if (!showAssessment) {
     return (
-      <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)]">
-        <div className="text-[var(--text-primary)] text-center">Assessment already completed or not needed.</div>
-        <button onClick={() => router.push(`/dashboard/${siteId}/summary`)} className="mt-4 btn-primary cursor-pointer">
-          View Summary
+      <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-[var(--surface)]">
+        <div className="text-[var(--text-primary)] text-center text-lg font-medium">
+          Assessment already completed or not needed.
+        </div>
+        <button
+          onClick={() => router.push(`/dashboard/${siteId}`)}
+          className="mt-6 btn-primary py-3 px-6 rounded-lg font-semibold transition-all"
+        >
+          Go Back
         </button>
       </main>
     );
@@ -268,74 +265,98 @@ export default function DashboardTest() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="flex min-h-screen flex-col items-center justify-center p-4 bg-[var(--surface)]"
+      className="flex min-h-screen flex-col items-center justify-center p-6 bg-[var(--surface)]"
     >
-      <div className="w-full max-w-lg card-gradient p-8 rounded-xl shadow-2xl border border-[var(--border)]">
-        <div className="flex justify-between items-center mb-4">
-          <span className="text-sm font-medium text-[#BF00FF]">{percentage}% Complete</span>
-          <span className="text-sm font-medium text-[#BF00FF]">~{minutesLeft} min left</span>
+      <div className="w-full max-w-lg card-gradient p-8 rounded-lg shadow-custom-lg border border-[var(--border)]">
+        {/* Header */}
+        <div className="flex items-center justify-center mb-6 gap-1">
+          <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
+          <h1 className="text-xl font-light text-white">Assessment</h1>
         </div>
-        <progress
-          value={current + 1}
-          max={questions.length}
-          className="w-full h-2 mb-6 rounded-full bg-[var(--border)] [&::-webkit-progress-bar]:bg-[var(--border)] [&::-webkit-progress-value]:bg-[var(--primary)] [&::-moz-progress-bar]:bg-[var(--primary)]"
-        />
-        <h2 className="text-2xl font-semibold mb-6 text-[var(--text-primary)] text-center">{q.text}</h2>
-        {q.type === "likert" ? (
+
+        <p className="text-center text-sm text-[var(--text-secondary)] mb-6 italic">
+          Be honest. Think briefly. Answer what you <em>truly</em> do.
+        </p>
+        {/* Progress Header */}
+        <div className="flex justify-between items-center mb-4">
+          <span className="text-sm font-medium text-[var(--accent)]">{percentage}% Complete</span>
+          <span className="text-sm font-medium text-[var(--accent)]">~{minutesLeft} min left</span>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="w-full h-3 mb-6 bg-[var(--surface-variant)] rounded-full overflow-hidden">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: `${percentage}%` }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="h-full bg-[var(--primary)]"
+          />
+        </div>
+
+        {/* Question */}
+        <h2 className="text-2xl font-semibold mb-6 text-[var(--text-primary)] text-center leading-relaxed">{q.text}</h2>
+
+        {/* Likert Scale */}
+        {q.type === "likert" && (
           <div className="flex justify-between gap-2 mb-6">
             {[1, 2, 3, 4, 5].map((v) => (
               <button
                 key={v}
                 onClick={() => handleAnswer(v)}
-                className={`flex-1 py-3 px-4 cursor-pointer rounded-lg transition duration-300 ${
+                className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all ${
                   answers[current] === v
-                    ? "bg-[var(--primary)] text-[var(--text-primary)] shadow-md"
-                    : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[color-mix(in_srgb,var(--surface-variant)_80%,white_10%)]"
+                    ? "btn-primary shadow-md"
+                    : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[var(--surface-variant-hover)]"
                 }`}
               >
                 {v}
               </button>
             ))}
           </div>
-        ) : q.type === "forced-select" ? (
+        )}
+
+        {/* Forced Select */}
+        {q.type === "forced-select" && (
           <div className="space-y-3 mb-6">
             {q.options.map((opt) => (
               <button
                 key={opt.key}
                 onClick={() => handleAnswer(opt.key)}
-                className={`w-full cursor-pointer py-3 px-4 rounded-lg text-left transition duration-300 ${
+                className={`w-full py-3 px-4 rounded-lg text-left font-medium transition-all ${
                   answers[current] === opt.key
-                    ? "bg-[var(--primary)] text-[var(--text-primary)] shadow-md"
-                    : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[color-mix(in_srgb,var(--surface-variant)_80%,white_10%)]"
+                    ? "btn-primary shadow-md"
+                    : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[var(--surface-variant-hover)]"
                 }`}
               >
                 {opt.label}
               </button>
             ))}
           </div>
-        ) : (
-          // Rank: Point-allocation system
+        )}
+
+        {/* Rank Allocation */}
+        {q.type === "rank" && (
           <div className="mb-6">
-            <div className="space-y-4 bg-[var(--surface-variant)] p-4 rounded-lg">
+            <div className="space-y-4 card-gradient p-5 rounded-lg border border-[var(--border)]">
               <p className="text-sm text-[var(--text-secondary)] italic">
                 Allocate 10 points across the options to reflect your preference (e.g., 5-3-2 or 4-4-2). Total must sum
                 to 10.
               </p>
               {q.options.map((opt) => (
                 <div key={opt.key} className="flex items-center justify-between gap-4">
-                  <label className="text-[var(--text-secondary)] flex-1">{opt.label}</label>
+                  <label className="text-[var(--text-secondary)] flex-1 text-sm font-medium">{opt.label}</label>
                   <input
                     type="number"
                     min="0"
                     max="10"
                     value={ranks[opt.key] || 0}
                     onChange={(e) => handleRankChange(opt.key, e.target.value)}
-                    className="w-16 p-2 rounded-lg bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border)] focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)]"
+                    className="w-16 p-2 rounded-lg bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border)] focus:border-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/20 transition-[var(--transition)]"
                     placeholder="0"
                   />
                 </div>
               ))}
-              <div className="text-sm text-[var(--text-secondary)]">
+              <div className="text-sm font-medium text-[var(--text-secondary)]">
                 Total Points: {Object.values(ranks).reduce((sum, val) => sum + (parseInt(val) || 0), 0)}/10
               </div>
               {!isRankValid() && (
@@ -344,18 +365,20 @@ export default function DashboardTest() {
             </div>
           </div>
         )}
-        <div className="flex justify-between mt-6">
+
+        {/* Navigation */}
+        <div className="flex justify-between mt-8">
           <button
             onClick={prev}
             disabled={current === 0}
-            className="py-2 px-6 rounded-lg bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[color-mix(in_srgb,var(--surface-variant)_80%,white_10%)] disabled:opacity-50 transition duration-300 cursor-pointer"
+            className="py-3 px-6 rounded-lg bg-[var(--surface-variant)] text-[var(--text-secondary)] font-medium hover:bg-[var(--surface-variant-hover)] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             Prev
           </button>
           <button
             onClick={next}
             disabled={!isRankValid()}
-            className="py-2 px-6 rounded-lg bg-[var(--primary)] text-[var(--text-primary)] hover:bg-[color-mix(in_srgb,var(--primary)_80%,black)] disabled:opacity-50 transition duration-300 cursor-pointer"
+            className="py-3 px-6 rounded-lg btn-primary font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
             {current < questions.length - 1 ? "Next" : "Finish"}
           </button>

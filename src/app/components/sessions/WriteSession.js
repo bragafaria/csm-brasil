@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/app/utils/supabaseClient";
 import Editor from "@/app/components/tiptap/Editor";
 import SalesSession from "@/app/components/sessions/SalesSession";
+import { motion } from "framer-motion";
+import Spinner from "@/app/components/ui/Spinner";
 
 export default function WriteSession({ isPartnerA, onTabChange }) {
   const [content, setContent] = useState("");
@@ -34,10 +36,12 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
           },
           credentials: "include",
         });
+
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({ error: "No response body" }));
           throw new Error(errorData.error || `Failed to fetch status (Status: ${response.status})`);
         }
+
         const status = await response.json();
         setUserStatus(status);
 
@@ -55,52 +59,48 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
     }
 
     fetchUserStatus();
-  }, []); // Empty dependency array is now safe
+  }, [justPaid]); // Re-fetch when justPaid changes
 
   const handleStartFree = () => {
     setUseFreeSession(true);
     setShowSalesPage(false);
   };
 
-  const handlePaymentSuccess = () => {
+  const handlePaymentSuccess = async () => {
     setJustPaid(true);
-    async function fetchUserStatus() {
-      try {
-        const {
-          data: { session },
-          error: sessionError,
-        } = await supabase.auth.getSession();
-        if (sessionError || !session) throw new Error("Please log in again");
+    setShowSalesPage(false);
+    // Re-fetch status after payment
+    await fetchUserStatus();
+  };
 
-        const response = await fetch("/api/get-blueprint-status", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${session.access_token}`,
-            "Refresh-Token": session.refresh_token,
-          },
-          credentials: "include",
-        });
-        if (!response.ok) {
-          const errorData = await response.json().catch(() => ({ error: "No response body" }));
-          throw new Error(errorData.error || `Failed to fetch status (Status: ${response.status})`);
-        }
-        const status = await response.json();
-        setUserStatus(status);
+  const fetchUserStatus = async () => {
+    try {
+      const {
+        data: { session },
+        error: sessionError,
+      } = await supabase.auth.getSession();
+      if (sessionError || !session) throw new Error("Please log in again");
 
-        setShowSalesPage(
-          !status.isActiveSubscriber &&
-            (status.hasActiveSession || (!status.hasAvailablePerSession && !status.hasFreeSessionAvailable)) &&
-            !justPaid
-        );
-      } catch (err) {
-        console.error("Client-side error:", err.message);
-        setError(err.message);
-      } finally {
-        setLoadingStatus(false);
+      const response = await fetch("/api/get-blueprint-status", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.access_token}`,
+          "Refresh-Token": session.refresh_token,
+        },
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: "No response body" }));
+        throw new Error(errorData.error || `Failed to fetch status (Status: ${response.status})`);
       }
+
+      const status = await response.json();
+      setUserStatus(status);
+    } catch (err) {
+      console.error("Error refreshing status:", err.message);
     }
-    fetchUserStatus();
   };
 
   async function handleSubmit() {
@@ -119,7 +119,6 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
         : useFreeSession || userStatus.hasFreeSessionAvailable
         ? "free"
         : "per_session";
-      const paymentId = null;
 
       const response = await fetch("/api/create-session", {
         method: "POST",
@@ -129,8 +128,9 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
           "Refresh-Token": session.refresh_token,
         },
         credentials: "include",
-        body: JSON.stringify({ question: content, paymentType, paymentId }),
+        body: JSON.stringify({ question: content, paymentType, paymentId: null }),
       });
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || "Submission failed");
@@ -142,11 +142,11 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
         hasFreeSessionAvailable: paymentType === "free" ? false : prev.hasFreeSessionAvailable,
         hasAvailablePerSession: paymentType === "per_session" ? false : prev.hasAvailablePerSession,
       }));
-      setJustPaid(false);
-      alert("Session submitted! Report in 24 hours.");
+
       setContent("");
       setUseFreeSession(false);
       setShowSalesPage(true);
+      alert("Session submitted! Report in 24 hours.");
       onTabChange("view");
     } catch (err) {
       setError(err.message);
@@ -155,8 +155,26 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
     }
   }
 
-  if (loadingStatus) return <div>Loading status...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loadingStatus) {
+    return (
+      <div className="flex items-center justify-center p-8">
+        <div className="flex items-center gap-3">
+          <Spinner>Loading session status...</Spinner>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-6 bg-[var(--surface-variant)] rounded-lg border border-red-400/20 shadow-custom">
+        <p className="text-red-400 text-sm font-medium">Error: {error}</p>
+        <button onClick={() => window.location.reload()} className="mt-3 text-xs text-[var(--accent)] hover:underline">
+          Refresh
+        </button>
+      </div>
+    );
+  }
 
   if (showSalesPage) {
     return (
@@ -171,46 +189,66 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
   }
 
   return (
-    <div className="space-y-6 w-full bg-[var(--surface-variant)] p-4 md:p-6 rounded-lg border border-[var(--border)] shadow-custom">
-      <div className="max-w-4xl mx-auto space-y-4">
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      className="card-gradient p-6 md:p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
+    >
+      <div className="max-w-4xl mx-auto space-y-6">
+        {/* Header */}
         <div>
-          <h1 className="text-xl md:text-2xl font-semibold text-[var(--text-primary)]">
+          <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-3">
             Submit Your Reflection Question
           </h1>
-          <p className="text-[var(--text-secondary)] text-sm md:text-base mt-2">
-            Describe your challenge in detail, including how it relates to your CSM type.
-            <span className="text-[var(--accent)]"> (1 active session at a time)</span>
+          <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed">
+            Describe your challenge in detail, including how it relates to your CSM type.{" "}
+            <span className="text-[var(--accent)] font-medium">(1 active session at a time)</span>
           </p>
         </div>
 
-        <Editor content={content} onChange={setContent} />
+        {/* Editor */}
+        <div className="bg-[var(--surface)] rounded-lg border border-[var(--border)] shadow-sm overflow-hidden">
+          <Editor content={content} onChange={setContent} />
+        </div>
 
+        {/* Live Preview */}
         {content && (
-          <div className="border-t pt-4 border-[var(--border)]">
-            <h2 className="text-lg font-medium text-[var(--text-primary)] mb-3">Live Preview:</h2>
-            <div
-              className="prose dark:prose-invert max-w-none p-4 bg-[var(--surface)] rounded-lg border border-[var(--border)]"
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
-          </div>
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            className="border-t border-[var(--border)] pt-6"
+          >
+            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-3">Live Preview:</h2>
+            <div className="p-5 bg-[var(--surface)] rounded-lg border border-[var(--border)] shadow-inner">
+              <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)]">
+                <div dangerouslySetInnerHTML={{ __html: content }} />
+              </div>
+            </div>
+          </motion.div>
         )}
 
-        <button
-          onClick={handleSubmit}
-          disabled={isSubmitting || !content.trim() || userStatus.hasActiveSession}
-          className={`w-full md:w-auto px-8 py-3 rounded-lg font-medium shadow-custom transition-all duration-200 hover:cursor-pointer ${
-            isSubmitting || !content.trim() || userStatus.hasActiveSession
-              ? "bg-gray-500 cursor-not-allowed"
-              : "bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white"
-          }`}
-        >
-          {isSubmitting
-            ? "Submitting..."
-            : userStatus.hasActiveSession
-            ? "Awaiting Response..."
-            : `Submit Session (${content.length} chars)`}
-        </button>
+        {/* Submit Button */}
+        <div className="flex justify-end">
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={handleSubmit}
+            disabled={isSubmitting || !content.trim() || userStatus.hasActiveSession}
+            className={`px-8 py-3 rounded-lg font-semibold transition-all shadow-md ${
+              isSubmitting || !content.trim() || userStatus.hasActiveSession
+                ? "bg-[var(--surface-variant)] text-[var(--text-secondary)] cursor-not-allowed opacity-70"
+                : "btn-primary hover:shadow-lg"
+            }`}
+          >
+            {isSubmitting
+              ? "Submitting..."
+              : userStatus.hasActiveSession
+              ? "Awaiting Response..."
+              : `Submit Session (${content.length} chars)`}
+          </motion.button>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

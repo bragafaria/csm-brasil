@@ -80,20 +80,21 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[var(--surface)]">
-      <div className="card-gradient p-8 rounded-xl shadow-lg max-w-md w-full">
+    <div className="min-h-screen flex items-center justify-center bg-[var(--surface)] p-4">
+      <div className="card-gradient p-8 rounded-lg shadow-custom-lg max-w-md w-full">
         <div className="flex items-center justify-center space-x-1 mb-4">
-          <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
-          <h1 className="text-xl font-light text-white">Dynamics</h1>
+          <h1 className="text-xl font-bold text-[var(--primary)]">CSM </h1>
+          <h1 className="text-xl font-light text-[var(--text-primary)]">Dynamics</h1>
         </div>
         <h1 className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]">Login to Your Account</h1>
+
         <form onSubmit={handleLogin} className="space-y-4">
           <input
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
+            className="w-full px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
             required
           />
           <input
@@ -101,36 +102,38 @@ export default function Login() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] focus:border-[var(--accent)] text-[var(--text-primary)] placeholder-[var(--text-secondary)]"
+            className="w-full px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
             required
           />
-          {error && <p className="text-red-400 text-sm">{error}</p>}
+          {error && <p className="text-red-400 text-sm text-center">{error}</p>}
           <button
             type="submit"
             disabled={loading}
-            className="btn-primary w-full py-3 rounded-lg font-semibold hover:cursor-pointer"
+            className="btn-primary w-full py-3 rounded-lg font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
-        <p className="text-center mt-4 text-[var(--text-secondary)] hover:cursor-pointer">
+
+        <p className="text-center mt-6 text-[var(--text-secondary)] text-sm">
           {`Don't have an account?`}{" "}
-          <a href="/csm-assessment" className="text-[var(--accent)] hover:underline">
+          <a href="/csm-assessment" className="text-[var(--accent)] hover:underline font-medium">
             Take your free assessment now!
           </a>
         </p>
       </div>
 
+      {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="card-gradient p-6 rounded-xl shadow-lg max-w-sm w-full">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 p-4">
+          <div className="card-gradient p-6 rounded-lg shadow-custom-lg max-w-sm w-full">
             <h2 className="text-xl font-semibold mb-4 text-[var(--text-primary)]">Action Required</h2>
-            <p className="text-[var(--text-secondary)] mb-6">
+            <p className="text-[var(--text-secondary)] mb-6 text-sm leading-relaxed">
               Please complete the personal assessment test and purchase the couple’s report to access your dashboard.
             </p>
             <button
               onClick={handleModalClose}
-              className="btn-primary w-full py-3 rounded-lg font-semibold hover:cursor-pointer"
+              className="btn-primary w-full py-3 rounded-lg font-semibold transition-all"
             >
               Ok
             </button>

@@ -1,16 +1,18 @@
+// app/report/[typeCode]/page.js
 "use client";
+
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { archetypes, getDimPoles, poles } from "../../utils/csm";
-import { reportTemplates } from "../../lib/personal/ReportTemplates";
-import { HelpCircle, ArrowRight } from "lucide-react";
+import { archetypes, getDimPoles, poles } from "@/app/utils/csm";
+import { reportTemplates } from "@/app/lib/personal/ReportTemplates";
+import { HelpCircle, ArrowRight, X } from "lucide-react";
 
 const fixedNextSteps = `You’ve uncovered the map to your unique cognitive blueprint, a crucial step toward self-insight. Now, explore how your mind connects with your partner’s. Your strengths, style, and vulnerabilities interplay with theirs, shaping your relationship’s dynamic. The CSM Couple’s Insight Report illuminates this connection, offering a tailored guide to navigate alignments, resolve tensions, and build a stronger, more aware partnership through mutual understanding. Discover how your blueprints harmonize to create a shared journey.`;
 
 export default function Report() {
   const params = useParams();
-  const typeCode = params.typeCode;
+  const typeCode = params.typeCode?.toUpperCase();
   const router = useRouter();
   const [data, setData] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -45,9 +47,13 @@ export default function Report() {
 
   if (!data || !reportTemplates[typeCode] || !archetypes[typeCode]) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[var(--surface)] text-[var(--text-primary)]">
-        <div className="text-center p-8 text-xl font-medium">Loading or Report Not Found for {typeCode}</div>
-      </main>
+      <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center p-6">
+        <div className="text-center p-8 bg-[var(--surface-variant)] rounded-lg border border-[var(--border)] shadow-md">
+          <p className="text-lg font-medium text-[var(--text-primary)]">
+            Loading or Report Not Found for <span className="text-red-400">{typeCode}</span>
+          </p>
+        </div>
+      </div>
     );
   }
 
@@ -55,17 +61,19 @@ export default function Report() {
 
   if (typeCode !== archetypeType) {
     return (
-      <main className="flex flex-col gap-2 min-h-screen items-center justify-center bg-[var(--surface)] text-[var(--text-primary)]">
-        <div className="text-center text-lg font-medium">
-          Your assessment report is for <span className="text-lg text-red-800"> {archetypeType}</span>, not{" "}
-          <span className="text-lg text-red-800"> {typeCode}.</span>
+      <div className="min-h-screen bg-[var(--surface)] flex flex-col items-center justify-center p-6 gap-4">
+        <div className="text-center p-8 bg-red-500/10 border border-red-500/30 rounded-lg shadow-md max-w-md">
+          <p className="text-lg font-medium text-red-400">
+            Your assessment report is for <strong className="text-red-500">{archetypeType}</strong>, not{" "}
+            <strong className="text-red-500">{typeCode}</strong>.
+          </p>
+          <p className="text-sm text-[var(--text-secondary)] mt-2">Please check your URL and try again.</p>
         </div>
-        <div className="text-center text-sm font-medium">Please, check your Url and try again.</div>
-      </main>
+      </div>
     );
   }
 
-  // FIXED: Returns lowercase
+  // Calculate overall dominance level
   const overallDomLevel = (() => {
     const counts = categories.reduce((acc, { domLevel }) => {
       const key = domLevel.toLowerCase();
@@ -135,31 +143,22 @@ export default function Report() {
 
   const getPrimaryDesc = (primaryFull, primaryPole, domLevel) => {
     const templates = {
-      Mild: "Your primary preference for {primaryFull} ({primaryPole}) has a slight advantage (51-65%), indicating good flexibility and frequent access to the secondary pole. You may switch between the two more easily in different contexts, leading to a balanced but gently tilted approach. This corresponds to a High secondary influence, making your style adaptable and versatile.",
-      Moderate:
-        "Your primary preference for {primaryFull} ({primaryPole}) is clearly dominant (66-85%), with noticeable but not overwhelming influence from the secondary. This common range suggests a reliable lean toward one side while still allowing for adaptability and growth through the other. This corresponds to a Moderate secondary influence, providing a solid foundation with room for balance.",
-      Strong:
-        "Your primary preference for {primaryFull} ({primaryPole}) heavily dominates (86-100%), highlighting a core strength but potential blind spots in the secondary pole. This can manifest as exceptional proficiency in the primary but may require intentional effort to engage the secondary for well-roundedness. This corresponds to a Low secondary influence, emphasizing focused expertise with targeted growth opportunities.",
-      Balanced:
-        "Your preference for {primaryFull} ({primaryPole}) is perfectly balanced with its opposite (50%), showing exceptional cognitive flexibility. You use both poles with equal ease, adapting fluidly to context. This rare equilibrium makes you highly versatile and adaptable across all situations.",
+      Mild: `Your primary preference for **${primaryFull} (${primaryPole})** has a slight advantage (51–65%), indicating good flexibility and frequent access to the secondary pole. You may switch between the two more easily in different contexts, leading to a balanced but gently tilted approach. This corresponds to a **High** secondary influence, making your style adaptable and versatile.`,
+      Moderate: `Your primary preference for **${primaryFull} (${primaryPole})** is clearly dominant (66–85%), with noticeable but not overwhelming influence from the secondary. This common range suggests a reliable lean toward one side while still allowing for adaptability and growth through the other. This corresponds to a **Moderate** secondary influence, providing a solid foundation with room for balance.`,
+      Strong: `Your primary preference for **${primaryFull} (${primaryPole})** heavily dominates (86–100%), highlighting a core strength but potential blind spots in the secondary pole. This can manifest as exceptional proficiency in the primary but may require intentional effort to engage the secondary for well-roundedness. This corresponds to a **Low** secondary influence, emphasizing focused expertise with targeted growth opportunities.`,
+      Balanced: `Your preference for **${primaryFull} (${primaryPole})** is perfectly balanced with its opposite (50%), showing exceptional cognitive flexibility. You use both poles with equal ease, adapting fluidly to context. This rare equilibrium makes you highly versatile and adaptable across all situations.`,
     };
-    return (templates[domLevel] || templates.Mild)
-      .replace("{primaryFull}", primaryFull)
-      .replace("{primaryPole}", primaryPole);
+    return templates[domLevel] || templates.Mild;
   };
 
   const getSecondaryDesc = (secondaryFull, secondaryPole, infLevel) => {
     const templates = {
-      High: "The secondary preference for {secondaryFull} ({secondaryPole}) is close to the primary (35-49%), suggesting strong accessibility and frequent use in certain contexts. You can easily tap into this pole, making it a reliable complement to your primary preference. This corresponds to a Mild primary dominance (51-65%), fostering a highly balanced and flexible cognitive style.",
-      Moderate:
-        "The secondary preference for {secondaryFull} ({secondaryPole}) has a noticeable but not dominant presence (15-34%). It emerges in specific situations but requires some effort to engage fully. This corresponds to a Moderate primary dominance (66-85%), offering a dependable core preference with accessible support for varied challenges.",
-      Low: "The secondary preference for {secondaryFull} ({secondaryPole}) is rarely used naturally (0-14%), often functioning as a blind spot or area of discomfort. Engaging it requires significant conscious effort and may be a key growth area. This corresponds to a Strong primary dominance (86-100%), where your expertise shines but intentional development of this area can unlock greater versatility.",
-      Balanced:
-        "Your secondary preference for {secondaryFull} ({secondaryPole}) is equal in strength to the primary (50%), indicating full cognitive integration. You access both poles seamlessly, with no dominant bias. This perfect balance is a rare strength, enabling fluid adaptation in any context.",
+      High: `The secondary preference for **${secondaryFull} (${secondaryPole})** is close to the primary (35–49%), suggesting strong accessibility and frequent use in certain contexts. You can easily tap into this pole, making it a reliable complement to your primary preference. This corresponds to a **Mild** primary dominance (51–65%), fostering a highly balanced and flexible cognitive style.`,
+      Moderate: `The secondary preference for **${secondaryFull} (${secondaryPole})** has a noticeable but not dominant presence (15–34%). It emerges in specific situations but requires some effort to engage fully. This corresponds to a **Moderate** primary dominance (66–85%), offering a dependable core preference with accessible support for varied challenges.`,
+      Low: `The secondary preference for **${secondaryFull} (${secondaryPole})** is rarely used naturally (0–14%), often functioning as a blind spot or area of discomfort. Engaging it requires significant conscious effort and may be a key growth area. This corresponds to a **Strong** primary dominance (86–100%), where your expertise shines but intentional development of this area can unlock greater versatility.`,
+      Balanced: `Your secondary preference for **${secondaryFull} (${secondaryPole})** is equal in strength to the primary (50%), indicating full cognitive integration. You access both poles seamlessly, with no dominant bias. This perfect balance is a rare strength, enabling fluid adaptation in any context.`,
     };
-    return (templates[infLevel] || templates.High)
-      .replace("{secondaryFull}", secondaryFull)
-      .replace("{secondaryPole}", secondaryPole);
+    return templates[infLevel] || templates.High;
   };
 
   const getInterpretationTitle = (primaryFull, secondaryFull, domLevel, infLevel) => {
@@ -169,8 +168,7 @@ export default function Report() {
       "Strong-Low": "Focused Edge",
       "Balanced-Balanced": "Perfect Equilibrium",
     };
-    const key = `${domLevel}-${infLevel}`;
-    return `${levelPhrases[key] || "Dynamic Balance"}: ${primaryFull} and ${secondaryFull}`;
+    return `${levelPhrases[`${domLevel}-${infLevel}`] || "Dynamic Balance"}: ${primaryFull} & ${secondaryFull}`;
   };
 
   const getInterpretationIntro = (
@@ -183,31 +181,32 @@ export default function Report() {
     index
   ) => {
     const templates = {
-      "Mild-High": `With a Mild primary preference for ${primaryFull} and High secondary influence from ${secondaryFull}, your balanced spectrum suggests versatile application of the report's insights. The general analysis provides a flexible foundation—lean into ${primaryFull} for core relational patterns but frequently blend in ${secondaryFull} elements for nuanced, context-specific communication strategies. This adaptability makes the report a dynamic guide rather than a rigid blueprint, allowing you to switch between ${primaryPole} and ${secondaryPole} modes seamlessly across relationship scenarios.`,
-      "Moderate-Moderate": `Your Moderate primary preference for ${primaryFull} paired with Moderate secondary influence from ${secondaryFull} indicates a reliable yet adjustable lens for interpreting the report. Use ${primaryFull} as your steady anchor for key themes in couple dynamics, while ${secondaryFull} offers practical support in everyday interactions. The report's general ideas shine here as a balanced roadmap: emphasize ${primaryPole} strengths for consistency, but integrate ${secondaryPole} perspectives to avoid over-reliance and enhance relational flexibility.`,
-      "Strong-Low": `Featuring a Strong primary preference for ${primaryFull} and Low secondary influence from ${secondaryFull}, approach the report with focused intensity on ${primaryFull} while mindfully cultivating ${secondaryFull} as a growth edge. The general content highlights your core expertise in ${primaryPole}-driven approaches—apply it deeply where it excels in partnerships—but use the spectrum to identify blind spots, intentionally stretching into ${secondaryPole} areas for comprehensive interpretation. This transforms the report into a targeted tool for mastery and balanced development in relationships.`,
-      "Balanced-Balanced": `Your perfect balance between ${primaryFull} and ${secondaryFull} reflects exceptional cognitive flexibility. You seamlessly integrate both ${primaryPole} and ${secondaryPole} approaches, adapting fluidly to any context. The report serves as a mirror of your versatility—use it to refine your already strong ability to shift between modes as needed in relationships. This equilibrium empowers you to navigate any dynamic with ease, making you a natural bridge-builder in partnerships.`,
+      "Mild-High": `With a **Mild** primary preference for **${primaryFull}** and **High** secondary influence from **${secondaryFull}**, your balanced spectrum suggests versatile application of the report's insights. The general analysis provides a flexible foundation—lean into **${primaryFull}** for core relational patterns but frequently blend in **${secondaryFull}** elements for nuanced, context-specific communication strategies. This adaptability makes the report a **dynamic guide** rather than a rigid blueprint, allowing you to switch between **${primaryPole}** and **${secondaryPole}** modes seamlessly across relationship scenarios.`,
+      "Moderate-Moderate": `Your **Moderate** primary preference for **${primaryFull}** paired with **Moderate** secondary influence from **${secondaryFull}** indicates a reliable yet adjustable lens for interpreting the report. Use **${primaryFull}** as your steady anchor for key themes in couple dynamics, while **${secondaryFull}** offers practical support in everyday interactions. The report's general ideas shine here as a **balanced roadmap**: emphasize **${primaryPole}** strengths for consistency, but integrate **${secondaryPole}** perspectives to avoid over-reliance and enhance relational flexibility.`,
+      "Strong-Low": `Featuring a **Strong** primary preference for **${primaryFull}** and **Low** secondary influence from **${secondaryFull}**, approach the report with focused intensity on **${primaryFull}** while mindfully cultivating **${secondaryFull}** as a growth edge. The general content highlights your core expertise in **${primaryPole}**-driven approaches—apply it deeply where it excels in partnerships—but use the spectrum to identify blind spots, intentionally stretching into **${secondaryPole}** areas for comprehensive interpretation. This transforms the report into a **targeted tool** for mastery and balanced development in relationships.`,
+      "Balanced-Balanced": `Your perfect balance between **${primaryFull}** and **${secondaryFull}** reflects exceptional cognitive flexibility. You seamlessly integrate both **${primaryPole}** and **${secondaryPole}** approaches, adapting fluidly to any context. The report serves as a **mirror of your versatility**—use it to refine your already strong ability to shift between modes as needed in relationships. This equilibrium empowers you to navigate any dynamic with ease, making you a natural bridge-builder in partnerships.`,
     };
 
     const fullText =
       templates[`${domLevel}-${infLevel}`] ||
-      `Leverage your ${primaryFull} dominance while exploring ${secondaryFull} for fuller insights.`;
+      `Leverage your **${primaryFull}** dominance while exploring **${secondaryFull}** for fuller insights.`;
+    const previewLength = 160;
 
-    const previewLength = 140;
-    if (fullText.length <= previewLength) {
+    if (fullText.length <= previewLength || expanded[index]) {
       return <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{fullText}</p>;
     }
+
     const previewText = fullText.slice(0, previewLength).replace(/\s+\S*$/, "...");
     return (
       <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-        {expanded[index] ? fullText : previewText}
+        {previewText}
         <motion.button
           whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          whileTap={{ scale: 0.9 }}
           onClick={() => toggleExpand(index)}
-          className="ml-2 text-[var(--accent)] hover:underline text-sm"
+          className="ml-2 text-[var(--accent)] hover:underline text-xs font-medium"
         >
-          {expanded[index] ? "(Show less)" : "(Read more)"}
+          (Read more)
         </motion.button>
       </p>
     );
@@ -215,26 +214,14 @@ export default function Report() {
 
   const getColorClass = (level) => {
     const colors = {
-      Mild: "text-green-400 border-green-400/20",
-      Moderate: "text-yellow-400 border-yellow-400/20",
-      Strong: "text-red-400 border-red-400/20",
-      High: "text-red-400 border-red-400/20",
-      Low: "text-green-400 border-green-400/20",
-      Balanced: "text-blue-400 border-blue-400/20",
+      Mild: "text-green-400 border-green-400/30",
+      Moderate: "text-yellow-400 border-yellow-400/30",
+      Strong: "text-red-400 border-red-400/30",
+      High: "text-green-400 border-green-400/30",
+      Low: "text-red-400 border-red-400/30",
+      Balanced: "text-blue-400 border-blue-400/30",
     };
-    return colors[level] || "text-gray-400 border-gray-400/20";
-  };
-
-  const getGradientClass = (level) => {
-    const gradients = {
-      Mild: "from-green-500/10 to-black/10",
-      Moderate: "from-yellow-500/10 to-black/10",
-      Strong: "from-red-500/10 to-black/10",
-      High: "from-red-500/10 to-black/10",
-      Low: "from-green-500/10 to-black/10",
-      Balanced: "from-blue-500/10 to-black/10",
-    };
-    return gradients[level] || "from-gray-500/10 to-black/10";
+    return colors[level] || "text-gray-400 border-gray-400/30";
   };
 
   const getProgressColor = (level) => {
@@ -242,8 +229,8 @@ export default function Report() {
       Mild: "bg-green-400",
       Moderate: "bg-yellow-400",
       Strong: "bg-red-400",
-      High: "bg-red-400",
-      Low: "bg-green-400",
+      High: "bg-green-400",
+      Low: "bg-red-400",
       Balanced: "bg-blue-400",
     };
     return colors[level] || "bg-gray-400";
@@ -255,12 +242,7 @@ export default function Report() {
 
     if (sectionKey === "dimensionalProfile") {
       return (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="space-y-8 max-w-3xl mx-auto"
-        >
+        <div className="space-y-8 max-w-4xl mx-auto">
           {templates.dimensions.map((dimTemp, dimIdx) => {
             const dim = { ...dimensionData[dimIdx], index: dimIdx };
             const primaryPole = dominants[dimIdx];
@@ -297,110 +279,112 @@ export default function Report() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: dimIdx * 0.1 }}
-                className="bg-[var(--surface-v-secondary)] p-6 rounded-xl shadow-lg border border-[var(--border)] flex flex-col space-y-6"
+                className="card-gradient p-6 md:p-8 rounded-2xl shadow-custom-lg border border-[var(--border)]"
               >
-                <div className="text-center space-y-3">
-                  <h3 className="text-xl font-semibold text-[var(--text-primary)]">{dim.title}</h3>
-                  <p className="text-sm text-[var(--text-secondary)] italic">{dim.subtitle}</p>
+                <div className="text-center mb-6">
+                  <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)]">{dim.title}</h3>
+                  <p className="text-sm text-[var(--text-secondary)] italic mt-2">{dim.subtitle}</p>
                 </div>
 
-                <div className="space-y-6">
-                  <div className={`card-gradient p-5 rounded-lg border ${primaryColor} space-y-3`}>
-                    <div className="text-lg font-medium text-[var(--text-primary)] text-center">
-                      {primaryFull} ({primaryPole})
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                  {/* Primary */}
+                  <div
+                    className={`bg-gradient-to-br from-[var(--surface)] to-[var(--surface-variant)] p-5 rounded-xl border ${primaryColor}`}
+                  >
+                    <div className="text-center mb-3">
+                      <p className="text-lg font-bold text-[var(--text-primary)]">
+                        {primaryFull} <span className="text-sm font-normal">({primaryPole})</span>
+                      </p>
+                      <p className="text-sm text-[var(--text-secondary)] italic mt-1">{primaryDesc}</p>
                     </div>
-                    <p className="text-sm text-[var(--text-secondary)] text-center italic px-4">{primaryDesc}</p>
-                    <div className="space-y-3">
-                      <div className={`text-base font-semibold ${primaryColor} text-center`}>{domLevel} Dominance</div>
-                      <div className="flex items-center justify-between px-4">
-                        <div className="flex items-center space-x-2">
-                          <span className="text-sm font-medium text-[var(--text-primary)]">Primary Preference</span>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-sm">
+                        <div className="flex items-center gap-2">
+                          <span className="font-medium text-[var(--text-primary)]">Primary</span>
                           <motion.button
-                            whileHover={{ scale: 1.2 }}
+                            whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() =>
-                              openModal(
-                                "Primary Preference Explanation",
-                                getPrimaryDesc(primaryFull, primaryPole, domLevel)
-                              )
+                              openModal("Primary Preference", getPrimaryDesc(primaryFull, primaryPole, domLevel))
                             }
-                            className={`p-1 rounded-full ${primaryColor}`}
+                            className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                            aria-label="Explain primary"
                           >
-                            <HelpCircle className="h-4 w-4" />
+                            <HelpCircle size={16} />
                           </motion.button>
                         </div>
-                        <span className={`text-xl font-bold ${primaryColor}`}>{primPct}%</span>
+                        <span className={`font-bold ${primaryColor.split(" ")[0]}`}>{primPct}%</span>
                       </div>
-                      <div className="w-full bg-[var(--surface-variant)] rounded-full h-3">
+                      <div className="w-full bg-[var(--surface)] rounded-full h-2 overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: `${primPct}%` }}
-                          transition={{ duration: 1, ease: "easeOut" }}
-                          className={`${primaryProgressColor} h-3 rounded-full`}
-                        ></motion.div>
+                          transition={{ duration: 0.8, ease: "easeOut" }}
+                          className={`${primaryProgressColor} h-full rounded-full`}
+                        />
                       </div>
                     </div>
                   </div>
 
-                  <div className={`card-gradient p-5 rounded-lg border ${secondaryColor} space-y-3`}>
-                    <div className="text-lg font-medium text-[var(--text-primary)] text-center">
-                      {secondaryFull} ({secondaryPole})
+                  {/* Secondary */}
+                  <div
+                    className={`bg-gradient-to-br from-[var(--surface)] to-[var(--surface-variant)] p-5 rounded-xl border ${secondaryColor}`}
+                  >
+                    <div className="text-center mb-3">
+                      <p className="text-lg font-bold text-[var(--text-primary)]">
+                        {secondaryFull} <span className="text-sm font-normal">({secondaryPole})</span>
+                      </p>
+                      <p className="text-sm text-[var(--text-secondary)] italic mt-1">{secondaryDesc}</p>
                     </div>
-                    <p className="text-sm text-[var(--text-secondary)] text-center italic px-4">{secondaryDesc}</p>
-                    <div className="space-y-3">
-                      <div className={`text-base font-semibold ${secondaryColor} text-center`}>
-                        {infLevel} Influence
-                      </div>
-                      <div className="flex items-center justify-between px-4">
-                        <div className="flex items-center space-x-2">
-                          <span className="text-sm font-medium text-[var(--text-primary)]">Secondary Influence</span>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-sm">
+                        <div className="flex items-center gap-2">
+                          <span className="font-medium text-[var(--text-primary)]">Secondary</span>
                           <motion.button
-                            whileHover={{ scale: 1.2 }}
+                            whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() =>
-                              openModal(
-                                "Secondary Influence Explanation",
-                                getSecondaryDesc(secondaryFull, secondaryPole, infLevel)
-                              )
+                              openModal("Secondary Influence", getSecondaryDesc(secondaryFull, secondaryPole, infLevel))
                             }
-                            className={`p-1 rounded-full ${secondaryColor}`}
+                            className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                            aria-label="Explain secondary"
                           >
-                            <HelpCircle className="h-4 w-4" />
+                            <HelpCircle size={16} />
                           </motion.button>
                         </div>
-                        <span className={`text-xl font-bold ${secondaryColor}`}>{secPct}%</span>
+                        <span className={`font-bold ${secondaryColor.split(" ")[0]}`}>{secPct}%</span>
                       </div>
-                      <div className="w-full bg-[var(--surface-variant)] rounded-full h-3">
+                      <div className="w-full bg-[var(--surface)] rounded-full h-2 overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: `${secPct}%` }}
-                          transition={{ duration: 1, ease: "easeOut" }}
-                          className={`${secondaryProgressColor} h-3 rounded-full`}
-                        ></motion.div>
+                          transition={{ duration: 0.8, ease: "easeOut" }}
+                          className={`${secondaryProgressColor} h-full rounded-full`}
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="card-gradient p-5 rounded-lg border border-[var(--border)]/50">
-                  <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-3">{interpretationTitle}</h4>
+                {/* Interpretation */}
+                <div className="bg-[var(--surface)] p-5 rounded-lg border border-[var(--border)] mb-6">
+                  <h4 className="text-sm font-bold text-[var(--text-primary)] mb-3">{interpretationTitle}</h4>
                   {interpretationIntro}
                 </div>
 
-                <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-[var(--accent)]">{profileTitle}</h4>
-                  <div className="space-y-4">
-                    {profileParas.map((p, pIdx) => (
-                      <p key={pIdx} className="text-base leading-relaxed text-[var(--text-secondary)]">
-                        {p}
-                      </p>
+                {/* Profile */}
+                <div>
+                  <h4 className="text-lg font-bold text-[var(--accent)] mb-3">{profileTitle}</h4>
+                  <div className="space-y-3 text-sm text-[var(--text-secondary)] leading-relaxed prose dark:prose-invert max-w-none">
+                    {profileParas.map((p, i) => (
+                      <p key={i}>{p}</p>
                     ))}
                   </div>
                 </div>
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
       );
     }
 
@@ -409,18 +393,13 @@ export default function Report() {
     if (!content) return null;
 
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="space-y-6"
-      >
+      <div className="space-y-4 max-w-4xl mx-auto">
         {content.map((para, idx) => (
-          <p key={idx} className="text-lg leading-relaxed text-[var(--text-secondary)] max-w-3xl mx-auto">
+          <p key={idx} className="text-base md:text-lg leading-relaxed text-[var(--text-secondary)]">
             {para}
           </p>
         ))}
-      </motion.div>
+      </div>
     );
   };
 
@@ -663,7 +642,7 @@ export default function Report() {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.4, delay: i * 0.1 }}
-        className="text-base text-[var(--text-secondary)] leading-relaxed"
+        className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed"
       >
         {summaries[dimensionKey]?.[domLevel] || fallback}
       </motion.li>
@@ -674,175 +653,154 @@ export default function Report() {
     <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      className="flex min-h-screen flex-col items-center py-12 px-4 bg-[var(--surface)] text-[var(--text-primary)]"
+      className="min-h-screen bg-[var(--surface)] p-6 md:p-8"
     >
-      <div className="w-full max-w-6xl bg-[var(--surface-variant)] p-10 rounded-2xl shadow-xl border border-[var(--border)] space-y-12">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center space-y-4 hero-gradient rounded-2xl p-8 mb-8 shadow-custom-lg"
+          className="card-gradient p-8 md:p-12 rounded-2xl shadow-custom-lg border border-[var(--border)] space-y-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] tracking-tight">
-            Your CSM Personality Report
-          </h1>
-          <p className="text-xl italic text-[var(--text-secondary)] max-w-2xl mx-auto">
-            Uncover your cognitive blueprint, revealing how you think, connect, and evolve. Understanding yourself is
-            the first step to exploring how you relate to others through the Couple Insights Report.
-          </p>
-        </motion.div>
-
-        <section className="space-y-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="section-header text-3xl font-semibold text-[var(--text-primary)] border-b-2 border-[var(--accent)]/20 pb-3"
-          >
-            Summary
-          </motion.h2>
+          {/* Hero */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="card-gradient p-8 rounded-xl shadow-lg border border-[var(--border)] space-y-6"
+            className="text-center space-y-4 p-8 md:p-12 bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-2xl shadow-md"
           >
-            <div>
-              <p className="text-base font-medium text-[var(--text-primary)]">Your Type:</p>
-              <p className="text-xl font-semibold text-[var(--text-primary)]">{archetype.name}</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] tracking-tight">
+              Your CSM Personality Report
+            </h1>
+            <p className="text-lg md:text-xl italic text-[var(--text-secondary)] max-w-4xl mx-auto leading-relaxed">
+              Uncover your cognitive blueprint, revealing how you think, connect, and evolve. Understanding yourself is
+              the first step to exploring how you relate to others through the Couple Insights Report.
+            </p>
+          </motion.div>
+
+          {/* Summary */}
+          <section className="space-y-6">
+            <h2 className="section-header text-3xl md:text-4xl font-bold text-[var(--text-primary)] border-b-2 border-[var(--accent)]/20 pb-3">
+              Summary
+            </h2>
+            <div className="card-gradient p-6 md:p-8 rounded-2xl shadow-md border border-[var(--border)] space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <p className="text-sm font-medium text-[var(--text-secondary)]">Your Type:</p>
+                  <p className="text-2xl font-bold text-[var(--text-primary)]">{archetype.name}</p>
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-[var(--text-secondary)]">5-letter Spectrum:</p>
+                  <p className="text-xl font-mono text-[var(--accent)]">{typeCode}</p>
+                </div>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-[var(--text-secondary)]">Your Essence:</p>
+                <p className="text-base italic text-[var(--text-primary)] leading-relaxed">
+                  {archetype.essencePhrase ||
+                    "A wise nurturer who guides others toward their potential using deep insight and compassion."}
+                </p>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Primary Spectrum:</p>
+                <p className="text-base text-[var(--text-secondary)]">{spectrumBalance}</p>
+              </div>
+              <div>
+                <ul className="space-y-3 text-sm md:text-base">{dimensionSummaries}</ul>
+              </div>
             </div>
-            <div className="space-y-2">
-              <p className="text-base font-medium text-[var(--text-primary)]">5-letter Spectrum:</p>
-              <p className="text-base font-semibold text-[var(--text-secondary)]">{typeCode}</p>
-            </div>
-            <div className="space-y-2">
-              <p className="text-base font-medium text-[var(--text-primary)]">Your Essence:</p>
-              <p className="text-base italic text-[var(--text-primary)] max-w-2xl">
-                {archetype.essencePhrase ||
-                  "A wise nurturer who guides others toward their potential using deep insight and compassion."}
+          </section>
+
+          {/* Essence */}
+          <section className="space-y-6">
+            <h2 className="section-header text-3xl md:text-4xl font-bold text-[var(--text-primary)] border-b-2 border-[var(--accent)]/20 pb-3">
+              The Essence of the {archetype.name}
+            </h2>
+            {renderSection("essence")}
+          </section>
+
+          {/* Dimensional Profile */}
+          <section className="space-y-6">
+            <h2 className="section-header text-3xl md:text-4xl font-bold text-[var(--text-primary)] border-b-2 border-[var(--accent)]/20 pb-3">
+              Your Dimensional Profile
+            </h2>
+            <div className="text-center space-y-4 max-w-4xl mx-auto mb-8">
+              <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                The following section outlines your cognitive dimensions, highlighting your primary and secondary
+                preferences across five key areas: Information Processing, Decision-Making, Energy Orientation, Change
+                Approach, and Interpersonal Style.
+              </p>
+              <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                Your primary preference represents your dominant cognitive approach, while the secondary indicates a
+                less frequent but accessible style. Understanding both reveals your core strengths and growth areas.
               </p>
             </div>
-            <div className="space-y-2">
-              <p className="text-base font-medium text-[var(--text-primary)]">Primary Spectrum:</p>
-              <p className="text-base text-[var(--text-secondary)]">{spectrumBalance}</p>
-            </div>
-            <div>
-              <ul className="list-disc list-inside text-base text-[var(--text-secondary)] space-y-3">
-                {dimensionSummaries}
-              </ul>
-            </div>
-          </motion.div>
-        </section>
+            {renderSection("dimensionalProfile")}
+          </section>
 
-        <section className="space-y-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="section-header text-3xl font-semibold text-[var(--text-primary)] border-b-2 border-[var(--accent)]/20 pb-3"
-          >
-            The Essence of the {archetype.name}
-          </motion.h2>
-          {renderSection("essence")}
-        </section>
+          {/* Next Steps */}
+          <section className="space-y-6">
+            <h2 className="section-header text-3xl md:text-4xl font-bold text-[var(--text-primary)] border-b-2 border-[var(--accent)]/20 pb-3">
+              Next Steps: Understanding Your Relational Blueprint
+            </h2>
+            <div className="max-w-4xl mx-auto space-y-4 text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+              {reportTemplates[typeCode]?.relationships?.[overallDomLevel.toLowerCase()] && (
+                <p>{reportTemplates[typeCode].relationships[overallDomLevel.toLowerCase()][0]}</p>
+              )}
+              <div
+                className="prose dark:prose-invert max-w-none"
+                dangerouslySetInnerHTML={{ __html: fixedNextSteps.replace(/\n/g, "<br/><br/>") }}
+              />
+            </div>
+          </section>
 
-        <section className="space-y-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="section-header text-3xl font-semibold text-[var(--text-primary)] border-b-2 border-[var(--accent)]/20 pb-3"
-          >
-            Your Dimensional Profile
-          </motion.h2>
-          <div className="space-y-4 max-w-3xl mx-auto">
-            <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
-              The following section outlines your cognitive dimensions, highlighting your primary and secondary
-              preferences across five key areas: Information Processing, Decision-Making, Energy Orientation, Change
-              Approach, and Interpersonal Style. Each dimension reflects how you naturally perceive, process, and
-              interact with the world, providing a foundation for understanding your unique cognitive style.
-            </p>
-            <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
-              Your primary preference represents your dominant cognitive approach in each dimension, guiding your
-              natural tendencies, while the secondary preference indicates a less frequent but still accessible style.
-              Understanding both is crucial for interpreting this report, as it reveals your core strengths and
-              potential growth areas, enabling you to leverage your dominant traits effectively and develop flexibility
-              through your secondary preferences for a more balanced and adaptive approach in relationships and
-              decision-making.
-            </p>
+          {/* CTA */}
+          <div className="text-center pt-8">
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={handleCouplesReportClick}
+              className="btn-primary py-4 px-10 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl inline-flex items-center gap-3 group"
+            >
+              Get Your Couple Insight Report
+              <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
           </div>
-          {renderSection("dimensionalProfile")}
-        </section>
-
-        <section className="space-y-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="section-header text-3xl font-semibold text-[var(--text-primary)] border-b-2 border-[var(--accent)]/20 pb-3"
-          >
-            Next Steps: Understanding Your Relational Blueprint
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-lg leading-relaxed text-[var(--text-secondary)] max-w-3xl mx-auto space-y-4"
-          >
-            {reportTemplates[typeCode]?.relationships?.[overallDomLevel.toLowerCase()] && (
-              <p>{reportTemplates[typeCode].relationships[overallDomLevel.toLowerCase()][0]}</p>
-            )}
-            <div dangerouslySetInnerHTML={{ __html: fixedNextSteps.replace(/\n/g, "<br/><br/>") }} />
-          </motion.div>
-        </section>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={handleCouplesReportClick}
-            className="btn-primary font-semibold py-3 px-10 rounded-lg shadow-lg inline-flex items-center group"
-          >
-            Get Your Couple Insight Report
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
         </motion.div>
       </div>
 
+      {/* Modal */}
       <AnimatePresence>
         {showModal && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            onClick={closeModal}
             className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4"
           >
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="card-gradient p-8 rounded-2xl max-w-md w-full max-h-[80vh] overflow-y-auto shadow-xl border border-[var(--border)]"
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-[var(--surface)] rounded-2xl p-6 md:p-8 max-w-lg w-full max-h-[85vh] overflow-y-auto shadow-custom-lg border border-[var(--border)] card-gradient"
             >
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-xl font-semibold text-[var(--text-primary)]">{modalContent.title}</h3>
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] pr-8">{modalContent.title}</h3>
                 <motion.button
-                  whileHover={{ scale: 1.2 }}
+                  whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={closeModal}
-                  className="text-[var(--text-secondary)] hover:text-[var(--accent)]"
+                  className="p-2 rounded-full hover:bg-[var(--surface-variant)] transition-colors"
+                  aria-label="Close"
                 >
-                  ×
+                  <X size={20} />
                 </motion.button>
               </div>
-              <p className="text-base text-[var(--text-secondary)] leading-relaxed">{modalContent.body}</p>
+              <div className="prose dark:prose-invert max-w-none text-[var(--text-secondary)] text-sm md:text-base leading-relaxed">
+                {modalContent.body.split("\n").map((line, i) => (
+                  <p key={i} className="mb-3 last:mb-0" dangerouslySetInnerHTML={{ __html: line }} />
+                ))}
+              </div>
             </motion.div>
           </motion.div>
         )}

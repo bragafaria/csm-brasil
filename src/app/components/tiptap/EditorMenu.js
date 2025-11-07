@@ -87,21 +87,21 @@ export default function EditorMenu({ editor }) {
         <ListOrdered size={16} />
       </button>
       <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+        onClick={() => editor.chain().focus().setHeading({ level: 1 }).run()}
         className={`${btnBase} ${editor.isActive("heading", { level: 1 }) ? active : ""}`}
         title="Heading 1"
       >
         <Heading1 size={16} />
       </button>
       <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+        onClick={() => editor.chain().focus().setHeading({ level: 2 }).run()}
         className={`${btnBase} ${editor.isActive("heading", { level: 2 }) ? active : ""}`}
         title="Heading 2"
       >
         <Heading2 size={16} />
       </button>
       <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+        onClick={() => editor.chain().focus().setHeading({ level: 3 }).run()}
         className={`${btnBase} ${editor.isActive("heading", { level: 3 }) ? active : ""}`}
         title="Heading 3"
       >

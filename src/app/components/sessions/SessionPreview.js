@@ -4,120 +4,144 @@
 import { generateHTML } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
-import sanitizeHtml from "sanitize-html"; // Use sanitize-html
-import parse from "html-react-parser"; // Use html-react-parser
+import sanitizeHtml from "sanitize-html";
+import parse from "html-react-parser";
+import { motion } from "framer-motion";
 
 export default function SessionPreview({ session, onClose, onOpenQuestionModal, onOpenAnswerModal }) {
-  // Function to strip HTML and truncate text
-  const stripHtmlAndTruncate = (html, maxLength = 100) => {
+  const stripHtmlAndTruncate = (html, maxLength = 120) => {
     if (!html) return "";
-    // Parse HTML to plain text
     const doc = new DOMParser().parseFromString(html, "text/html");
     const text = doc.body.textContent || "";
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   };
 
-  // Generate and sanitize HTML for display
   const renderHtml = (content) => {
     if (!content) return "";
     try {
-      // Attempt to parse as JSONB (Tiptap format)
       const parsed = JSON.parse(content);
       const output = generateHTML(parsed, [
         StarterKit.configure({
           heading: { levels: [1, 2, 3] },
-          bulletList: { keepMarks: true, keepAttributes: false },
-          orderedList: { keepMarks: true, keepAttributes: false },
+          bulletList: { keepMarks: true },
+          orderedList: { keepMarks: true },
         }),
         Underline,
       ]);
-      // Sanitize Tiptap output
       return sanitizeHtml(output, {
-        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["h1", "h2", "h3", "underline"]),
-        allowedAttributes: {
-          ...sanitizeHtml.defaults.allowedAttributes,
-          "*": ["class"],
-        },
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["h1", "h2", "h3", "u"]),
+        allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, "*": ["class"] },
       });
-    } catch (e) {
-      // If not valid JSON, treat as raw HTML and sanitize
+    } catch {
       return sanitizeHtml(content, {
-        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["h1", "h2", "h3", "underline"]),
-        allowedAttributes: {
-          ...sanitizeHtml.defaults.allowedAttributes,
-          "*": ["class"],
-        },
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["h1", "h2", "h3", "u"]),
+        allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, "*": ["class"] },
       });
     }
   };
 
-  // Status message for unanswered sessions
   const getAnswerStatusMessage = (status) => {
-    switch (status) {
-      case "pending":
-        return "Awaiting coach assignment. Response expected within 1-2 business days.";
-      case "assigned":
-        return "Assigned to a coach. Response expected within 1-2 business days.";
-      case "canceled":
-        return "Session canceled.";
-      default:
-        return "Status unavailable.";
-    }
+    const messages = {
+      pending: "Awaiting coach assignment. Response expected within 1–2 business days.",
+      assigned: "Assigned to a coach. Response expected within 1–2 business days.",
+      canceled: "Session canceled.",
+    };
+    return messages[status] || "Status unavailable.";
   };
 
-  // Status color mapping
   const getStatusStyles = (status) => {
-    switch (status) {
-      case "pending":
-        return "text-red-500 border-red-500/30 bg-red-500/10";
-      case "assigned":
-        return "text-orange-500 border-orange-500/30 bg-orange-500/10";
-      case "answered":
-        return "text-green-500 border-green-500/30 bg-green-500/10";
-      case "canceled":
-        return "text-purple-500 border-purple-500/30 bg-purple-500/10";
-      default:
-        return "text-gray-500 border-gray-500/30 bg-gray-500/10";
-    }
+    const styles = {
+      pending: "text-red-500 bg-red-500/10 border-red-500/30",
+      assigned: "text-orange-500 bg-orange-500/10 border-orange-500/30",
+      answered: "text-green-500 bg-green-500/10 border-green-500/30",
+      canceled: "text-purple-500 bg-purple-500/10 border-purple-500/30",
+    };
+    return styles[status] || "text-[var(--text-secondary)] bg-[var(--surface-variant)] border-[var(--border)]";
   };
 
   return (
-    <div className="space-y-6 w-full bg-[var(--surface-variant)] p-4 md:p-6 rounded-lg border border-[var(--border)] shadow-custom">
-      <div className="flex justify-between items-center">
-        <h3 className="text-lg md:text-xl font-semibold text-[var(--text-primary)]">Session Preview</h3>
-        <button
+    <motion.div
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.98 }}
+      transition={{ duration: 0.3 }}
+      className="card-gradient p-6 md:p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
+    >
+      {/* Header */}
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="text-2xl font-bold text-[var(--text-primary)]">Session Preview</h3>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           onClick={onClose}
-          className="btn-secondary px-4 py-2 rounded-lg cursor-pointer font-medium text-[var(--text-primary)] hover:bg-[var(--primary-hover)] hover:text-white"
+          className="btn-secondary px-5 py-2.5 rounded-lg font-medium shadow-md hover:shadow-lg transition-all"
+          aria-label="Close preview"
         >
           Close
-        </button>
+        </motion.button>
       </div>
-      <div className="space-y-4">
-        <div
-          className="p-4 rounded-lg border border-[var(--primary)] bg-[var(--surface)] card-gradient hover:bg-[var(--primary-hover)] hover:text-white transition-all duration-300 transform hover:scale-[1.02] cursor-pointer"
+
+      <div className="space-y-5">
+        {/* Question Card */}
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={onOpenQuestionModal}
+          className="p-5 bg-[var(--surface)] rounded-lg border border-[var(--primary)]/30 shadow-sm card-gradient hover:shadow-md transition-all cursor-pointer group"
         >
-          <p className="text-[var(--text-secondary)] font-semibold mb-1">Question:</p>
-          <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)]">
+          <p className="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-2">
+            Your Question
+          </p>
+          <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] text-sm md:text-base line-clamp-3 group-hover:text-[var(--accent)] transition-colors">
             {parse(stripHtmlAndTruncate(renderHtml(session.question)))}
           </div>
-        </div>
-        <div
-          className={`p-4 rounded-lg border border-[var(--accent)] bg-[var(--surface-variant)] card-gradient hover:bg-[var(--primary-hover)] hover:text-white transition-all duration-300 transform hover:scale-[1.02] ${
-            session.answer ? "cursor-pointer" : "cursor-default"
-          }`}
+          <p className="mt-3 text-xs text-[var(--accent)] font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+            Click to view full question
+          </p>
+        </motion.div>
+
+        {/* Answer Card */}
+        <motion.div
+          whileHover={session.answer ? { scale: 1.02 } : {}}
+          whileTap={session.answer ? { scale: 0.98 } : {}}
           onClick={session.answer ? onOpenAnswerModal : undefined}
+          className={`p-5 rounded-lg border shadow-sm transition-all ${
+            session.answer
+              ? "bg-[var(--surface)] border-[var(--accent)]/30 card-gradient hover:shadow-md cursor-pointer group"
+              : "bg-[var(--surface-variant)] border-[var(--border)] cursor-default"
+          }`}
         >
-          <p className="text-[var(--text-secondary)] font-semibold mb-1">Answer:</p>
+          <p className="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-2">
+            Coach Response
+          </p>
+
           {session.answer ? (
-            <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)]">
-              {parse(stripHtmlAndTruncate(renderHtml(session.answer)))}
-            </div>
+            <>
+              <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] text-sm md:text-base line-clamp-3 group-hover:text-[var(--accent)] transition-colors">
+                {parse(stripHtmlAndTruncate(renderHtml(session.answer)))}
+              </div>
+              <p className="mt-3 text-xs text-[var(--accent)] font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                Click to view full answer
+              </p>
+            </>
           ) : (
-            <p className={`text-sm ${getStatusStyles(session.status)}`}>{getAnswerStatusMessage(session.status)}</p>
+            <p className={`text-sm font-medium ${getStatusStyles(session.status)}`}>
+              {getAnswerStatusMessage(session.status)}
+            </p>
           )}
-        </div>
+        </motion.div>
       </div>
-    </div>
+
+      {/* Status Badge */}
+      <div className="mt-6 flex justify-end">
+        <span
+          className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-sm ${getStatusStyles(
+            session.status
+          )}`}
+        >
+          {session.status}
+        </span>
+      </div>
+    </motion.div>
   );
 }

@@ -1,5 +1,6 @@
 // app/dashboard/[siteId]/coaching/sessions/page.js
 "use client";
+
 import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { supabase } from "@/app/utils/supabaseClient";
@@ -7,6 +8,8 @@ import { BookOpen, SquarePen, List, UserStar } from "lucide-react";
 import CoachProfile from "@/app/components/sessions/CoachProfile";
 import ViewSessions from "@/app/components/sessions/ViewSessions";
 import WriteSession from "@/app/components/sessions/WriteSession";
+import { motion } from "framer-motion";
+import Spinner from "@/app/components/ui/Spinner";
 
 export default function SessionsPage() {
   const router = useRouter();
@@ -18,7 +21,6 @@ export default function SessionsPage() {
   const [isPartnerA, setIsPartnerA] = useState(false);
   const [isPartnerB, setIsPartnerB] = useState(false);
 
-  // Callback to allow child components to change tabs
   const handleTabChange = (tab) => {
     setShowContent(tab);
   };
@@ -46,7 +48,6 @@ export default function SessionsPage() {
           router.push("/login");
           return;
         }
-        console.log("SessionsPage session user ID:", session.user.id);
 
         const userId = session.user.id;
 
@@ -97,22 +98,32 @@ export default function SessionsPage() {
   }, [router, siteId]);
 
   if (loading) {
-    return <div className="flex justify-center items-center h-screen text-[var(--text-primary)]">Loading...</div>;
+    return (
+      <div className="flex min-h-screen items-center justify-center p-6 bg-[var(--surface)]">
+        <Spinner>Loading...</Spinner>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="p-6 text-red-400">{error}</div>;
+    return (
+      <div className="flex min-h-screen items-center justify-center p-6 bg-[var(--surface)]">
+        <div className="text-red-400 text-center text-lg font-medium">{error}</div>
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen bg-[var(--surface)] p-4 md:p-8 lg:p-12">
-      <div
-        className={`max-w-7xl mx-auto transition-all duration-700 ${
-          isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}
+    <div className="min-h-screen bg-[var(--surface)] py-8 px-4 md:px-8 lg:px-12">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        className="container mx-auto max-w-7xl"
       >
-        <div className="hero-gradient rounded-2xl p-6 md:p-8 mb-8 shadow-custom-lg">
-          <div className="flex flex-col md:flex-row items-start md:items-center mb-4 space-y-4 md:space-y-0 md:space-x-4">
+        {/* Hero Header */}
+        <div className="hero-gradient rounded-lg p-6 md:p-8 mb-8 shadow-custom-lg">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
             <BookOpen className="text-white flex-shrink-0" size={32} />
             <div>
               <h1 className="text-2xl md:text-3xl font-bold text-white">Blueprint Dialogue Sessions</h1>
@@ -123,44 +134,49 @@ export default function SessionsPage() {
           </div>
         </div>
 
-        <div className="card-gradient rounded-xl shadow-custom overflow-hidden">
+        {/* Tabbed Content */}
+        <div className="card-gradient rounded-lg shadow-custom overflow-hidden">
+          {/* Tab Navigation */}
           <div className="flex flex-wrap md:flex-nowrap items-center justify-around p-4 md:p-6 gap-4 md:gap-6 border-b border-[var(--border)]">
             <button
-              className={`flex items-center hover:cursor-pointer transition-colors p-2 rounded-md ${
-                showContent === "write" ? "bg-[var(--primary-hover)] text-white" : "text-[var(--text-primary)]"
-              }`}
               onClick={() => setShowContent("write")}
-            >
-              <SquarePen className="mr-2 text-[var(--accent)]" size={20} />
-              <span className="text-base md:text-lg font-semibold">Start Session</span>
-            </button>
-            <button
-              className={`flex items-center hover:cursor-pointer transition-colors p-2 rounded-md ${
-                showContent === "view" ? "bg-[var(--primary-hover)] text-white" : "text-[var(--text-primary)]"
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
+                showContent === "write"
+                  ? "bg-[var(--primary)] text-white shadow-md"
+                  : "text-[var(--text-primary)] hover:bg-[var(--surface-variant-hover)]"
               }`}
+            >
+              <SquarePen className="text-[var(--accent)]" size={20} />
+              <span className="text-base md:text-lg">Start Session</span>
+            </button>
+
+            <button
               onClick={() => setShowContent("view")}
-            >
-              <List className="mr-2 text-[var(--accent)]" size={20} />
-              <span className="text-base md:text-lg font-semibold">View Sessions</span>
-            </button>
-            <button
-              className={`flex items-center hover:cursor-pointer transition-colors p-2 rounded-md ${
-                showContent === "coach" ? "bg-[var(--primary-hover)] text-white" : "text-[var(--text-primary)]"
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
+                showContent === "view"
+                  ? "bg-[var(--primary)] text-white shadow-md"
+                  : "text-[var(--text-primary)] hover:bg-[var(--surface-variant-hover)]"
               }`}
-              onClick={() => setShowContent("coach")}
             >
-              <UserStar className="mr-2 text-[var(--accent)]" size={20} />
-              <span className="text-base md:text-lg font-semibold">Coach Profile</span>
+              <List className="text-[var(--accent)]" size={20} />
+              <span className="text-base md:text-lg">View Sessions</span>
             </button>
           </div>
 
-          <div className="p-4 md:p-6">
+          {/* Tab Content */}
+          <motion.div
+            key={showContent}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="p-6 md:p-8"
+          >
             {showContent === "write" && <WriteSession isPartnerA={isPartnerA} onTabChange={handleTabChange} />}
             {showContent === "view" && <ViewSessions />}
             {showContent === "coach" && <CoachProfile />}
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -31,7 +31,6 @@ export default function Sales() {
   const [isEmailSubmitted, setIsEmailSubmitted] = useState(false);
 
   useEffect(() => {
-    // Store typeCode in localStorage for purchase flow
     if (typeCode) {
       localStorage.setItem("userTypeCode", typeCode);
     }
@@ -46,9 +45,7 @@ export default function Sales() {
         }
         return false;
       });
-      if (currentSection) {
-        setActiveNav(currentSection);
-      }
+      if (currentSection) setActiveNav(currentSection);
 
       const elements = document.querySelectorAll(".section-header");
       elements.forEach((el) => {
@@ -66,9 +63,7 @@ export default function Sales() {
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleEmailSubmit = (e) => {
@@ -82,7 +77,6 @@ export default function Sales() {
   };
 
   const handlePurchase = () => {
-    // Pass typeCode to purchase route
     router.push(`/report/${typeCode}/couples/signup`);
   };
 
@@ -152,14 +146,14 @@ export default function Sales() {
   return (
     <div className="min-h-screen">
       {/* Sticky Header */}
-      <header className="fixed top-0 w-full z-50 card-gradient border-b border-[var(--border)]">
+      <header className="fixed top-0 w-full left-0 right-0 z-50 bg-[var(--dashboard)]/90 backdrop-blur-lg border-b border-[var(--border)]">
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Brain className="h-8 w-8 text-[var(--accent)]" />
               <div className="flex items-center space-x-1">
-                <h1 className="text-xl font-bold text-primary text-[var(--primary)] ">CSM </h1>
-                <h1 className="text-xl font-light text-white">Dynamics</h1>
+                <h1 className="text-xl font-bold text-[var(--primary)]">CSM </h1>
+                <h1 className="text-xl font-light text-[var(--text-primary)]">Dynamics</h1>
               </div>
             </div>
             <div className="hidden md:flex space-x-8">
@@ -226,7 +220,7 @@ export default function Sales() {
               </div>
             </div>
             <div className="relative">
-              <div className="relative w-full h-96 bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 rounded-3xl overflow-hidden">
+              <div className="relative w-full h-96 bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 rounded-lg overflow-hidden">
                 <img
                   src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800"
                   alt="Happy diverse couple looking thoughtfully into the distance together"
@@ -283,7 +277,7 @@ export default function Sales() {
                 desc: "Turn individual strengths into a powerful, shared superpower.",
               },
             ].map((item, index) => (
-              <div key={index} className="card-gradient p-6 rounded-xl text-center">
+              <div key={index} className="card-gradient p-6 rounded-lg text-center">
                 <item.icon className="h-12 w-12 text-[var(--accent)] mx-auto mb-4" />
                 <h3 className="text-lg font-semibold mb-3">{item.title}</h3>
                 <p className="text-[var(--text-secondary)] text-sm">{item.desc}</p>
@@ -310,7 +304,7 @@ export default function Sales() {
       {/* Email Signup Form */}
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-2xl text-center">
-          <div className="card-gradient p-8 rounded-2xl">
+          <div className="card-gradient p-8 rounded-lg">
             <h3 className="text-2xl font-bold mb-4">Get Free Relationship Tips</h3>
             <p className="text-[var(--text-secondary)] mb-6">
               {`Sign up for our weekly insights and get 10% off your couple's report`}
@@ -322,7 +316,7 @@ export default function Sales() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
-                  className="flex-1 px-4 py-3 rounded-lg bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)]"
+                  className="flex-1 px-4 py-3 rounded-lg bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
                   required
                 />
                 <button type="submit" className="btn-primary px-6 py-3 rounded-lg font-semibold whitespace-nowrap">
@@ -472,7 +466,7 @@ export default function Sales() {
                   <p className="text-[var(--text-secondary)] text-lg">{feature.desc}</p>
                 </div>
                 <div className={`${feature.reverse ? "lg:col-start-1" : ""}`}>
-                  <div className="relative rounded-xl overflow-hidden">
+                  <div className="relative rounded-lg overflow-hidden">
                     <img
                       src={feature.image}
                       alt={`${feature.title} visualization`}
@@ -529,7 +523,7 @@ export default function Sales() {
             ))}
           </div>
 
-          <div className="text-center card-gradient p-6 rounded-xl">
+          <div className="text-center card-gradient p-6 rounded-lg">
             <p className="text-lg mb-4">Got more questions?</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -561,7 +555,7 @@ export default function Sales() {
           <div className="grid lg:grid-cols-3 gap-8 mb-12">
             {/* Pricing Card */}
             <div className="lg:col-span-2">
-              <div className="card-gradient p-8 rounded-2xl mb-8">
+              <div className="card-gradient p-8 rounded-lg mb-8">
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <h3 className="text-2xl font-bold">CSM Couple Insights Report</h3>
@@ -591,7 +585,7 @@ export default function Sales() {
 
                 <div className="bg-[var(--accent)]/10 p-4 rounded-lg mb-6">
                   <p className="text-[var(--accent)] font-semibold text-center">
-                    🎯 Limited Offer: Free coach session available to first 500 sign-ups
+                    Limited Offer: Free coach session available to first 500 sign-ups
                   </p>
                 </div>
 
@@ -620,7 +614,7 @@ export default function Sales() {
 
             {/* Testimonials */}
             <div className="space-y-6">
-              <div className="card-gradient p-6 rounded-xl">
+              <div className="card-gradient p-6 rounded-lg">
                 <div className="flex mb-3">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
@@ -635,7 +629,7 @@ export default function Sales() {
                 </div>
               </div>
 
-              <div className="card-gradient p-6 rounded-xl">
+              <div className="card-gradient p-6 rounded-lg">
                 <div className="flex mb-3">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
@@ -652,7 +646,7 @@ export default function Sales() {
             </div>
           </div>
 
-          <div className="text-center card-gradient p-6 rounded-xl">
+          <div className="text-center card-gradient p-6 rounded-lg">
             <p className="text-[var(--text-secondary)] mb-4">
               One-time payment of $49. Backed by our 14-day satisfaction guarantee,no questions asked.
             </p>
