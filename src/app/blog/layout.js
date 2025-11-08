@@ -1,6 +1,7 @@
 // app/blog/layout.js
 import Link from "next/link";
 import { getCategories } from "@/app/lib/neon";
+import Image from "next/image";
 
 export default async function BlogLayout({ children }) {
   const categories = await getCategories();
@@ -11,10 +12,12 @@ export default async function BlogLayout({ children }) {
       <header className="sticky top-0 z-50 header-gradient shadow-lg backdrop-blur-sm border-b border-[var(--border)]">
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
           <Link
-            href="/"
-            className="text-3xl font-bold bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent"
+            href="/blog"
+            className="flex items-center space-x-2 text-xl font-bold bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent"
           >
-            CSM Blog
+            <Image src="/logo_transparent_svg.svg" alt="CSM Blog Logo" width={28} height={28} className="h-8 w-8" />
+            <span>CSM</span>
+            <span className="text-white font-light text-xl">Blog</span>
           </Link>
           <nav className="hidden md:flex items-center gap-8">
             {categories.map((cat) => (
@@ -27,9 +30,6 @@ export default async function BlogLayout({ children }) {
               </Link>
             ))}
           </nav>
-          <Link href="/admin/blog" className="btn-primary text-sm px-5 py-2.5 rounded-full">
-            Admin
-          </Link>
         </div>
       </header>
 

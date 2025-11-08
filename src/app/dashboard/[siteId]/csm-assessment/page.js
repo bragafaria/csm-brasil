@@ -7,6 +7,7 @@ import { questions, calculateCSMResults } from "@/app/utils/csm";
 import { supabase } from "@/app/utils/supabaseClient";
 import { motion } from "framer-motion";
 import Spinner from "@/app/components/ui/Spinner";
+import Image from "next/image";
 
 export default function DashboardTest() {
   const router = useRouter();
@@ -269,9 +270,12 @@ export default function DashboardTest() {
     >
       <div className="w-full max-w-lg card-gradient p-8 rounded-lg shadow-custom-lg border border-[var(--border)]">
         {/* Header */}
-        <div className="flex items-center justify-center mb-6 gap-1">
-          <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
-          <h1 className="text-xl font-light text-white">Assessment</h1>
+        <div className="flex items-center justify-center mb-6 gap-2">
+          <Image src="/logo_transparent_svg.svg" alt="CSM Dynamics Logo" width={28} height={28} className="h-7 w-7" />
+          <div className="flex items-center gap-1">
+            <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
+            <h1 className="text-xl font-light text-white">Assessment</h1>
+          </div>
         </div>
 
         <p className="text-center text-sm text-[var(--text-secondary)] mb-6 italic">
