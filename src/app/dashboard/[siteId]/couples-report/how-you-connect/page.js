@@ -66,10 +66,14 @@ export default function HowYouConnectPageRoute() {
         content={`Explore the natural chemistry and connection patterns between ${data.partnerA.name} and ${data.partnerB.name}.`}
       />
 
-      <div className="container mx-auto p-6 max-w-7xl">
-        <header className=" mb-12 py-16 bg-gradient-to-r from-[var(--primary)] to-purple-800 rounded-3xl max-w-4xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl mb-4 font-bold text-[var(--text-primary)]">{pageTitle}</h1>
-          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">{subHeading}</p>
+      <div className="container mx-auto p-6 max-w-4xl">
+        <header className="hero-gradient rounded-lg p-6 md:p-8 mb-8 shadow-custom-lg">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+            <div>
+              <h1 className="text-2xl md:text-3xl font-bold text-white">{pageTitle}</h1>
+              <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">{subHeading}</p>
+            </div>
+          </div>
         </header>
 
         {/* 1. INTRODUCTION */}
