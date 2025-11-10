@@ -33,16 +33,16 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
       icon: Users,
       subItems: [
         {
+          label: "Analytics",
+          route: `/dashboard/${siteId}/couples-report/analytics`,
+        },
+        {
           label: "How You Connect",
           route: `/dashboard/${siteId}/couples-report/how-you-connect`,
         },
         {
           label: "Your 10 Life Challenges",
           route: `/dashboard/${siteId}/couples-report/your-10-life-challenges`,
-        },
-        {
-          label: "Analytics",
-          route: `/dashboard/${siteId}/couples-report/analytics`,
         },
       ],
     },
