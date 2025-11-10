@@ -11,6 +11,7 @@ import { CSM_DIMENSIONS } from "@/app/lib/data/csmConfig";
 import Spinner from "@/app/components/ui/Spinner";
 import CompatibilityRiskRanking from "@/app/components/couples/CompatibilityRiskRanking";
 import IntroAnalytics from "@/app/components/couples/IntroAnalytics";
+import IntroCsmDimension from "@/app/components/couples/IntroCsmDimension";
 
 export default function CoupleAnalyticsPage() {
   const params = useParams();
@@ -78,7 +79,7 @@ export default function CoupleAnalyticsPage() {
       <title>{pageTitle}</title>
       <meta name="description" content={subHeading} />
 
-      <div className="container mx-auto p-6 max-w-4xl">
+      <div className="container mx-auto max-w-4xl">
         <header className="hero-gradient rounded-lg p-6 md:p-8 mb-8 shadow-custom-lg">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
             <div>
@@ -91,16 +92,22 @@ export default function CoupleAnalyticsPage() {
         <div className="space-y-8">
           <IntroAnalytics />
         </div>
+        <div className="space-y-8">
+          <IntroCsmDimension />
+        </div>
+
         {/* POLE 1 CHART + ANALYSIS */}
         <div className="space-y-8">
           <CsmRadarChart
             partnerA={{ name: data.partnerA.name, values: pole1A }}
             partnerB={{ name: data.partnerB.name, values: pole1B }}
             metrics={metricsPole1}
-            title="Chart 1: Foundational Orientation Poles"
+            title="Foundational Orientation Poles"
           />
           <div className="space-y-4">
-            <h3 className="text-xl font-bold text-[var(--text-primary)]">Chart 1 Poles Analysis:</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-center">
+              Foundational Orientation Analysis:
+            </h3>
             <div className="grid md:grid-cols-2 gap-4">
               {CSM_DIMENSIONS.map((dim, i) => (
                 <CsmDimensionAnalysis
@@ -131,10 +138,12 @@ export default function CoupleAnalyticsPage() {
             partnerA={{ name: data.partnerA.name, values: pole2A }}
             partnerB={{ name: data.partnerB.name, values: pole2B }}
             metrics={metricsPole2}
-            title="Chart 2: Expansive Orientation Poles"
+            title="Expansive Orientation Poles"
           />
           <div className="space-y-4">
-            <h3 className="text-xl font-bold text-[var(--text-primary)]">Chart 2 Poles Analysis:</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-center">
+              Expansive Orientation Analysis:
+            </h3>
             <div className="grid md:grid-cols-2 gap-4">
               {CSM_DIMENSIONS.map((dim, i) => (
                 <CsmDimensionAnalysis

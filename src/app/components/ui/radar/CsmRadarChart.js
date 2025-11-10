@@ -1,4 +1,3 @@
-// app/components/couples/CsmRadarChart.jsx
 "use client";
 
 import * as React from "react";
@@ -40,9 +39,31 @@ export default function CsmRadarChart({ partnerA, partnerB, metrics, title }) {
     ];
   }, [partnerA, partnerB, highlightedSeries]);
 
+  // Define poles dynamically based on chart type
+  const poles =
+    title === "Foundational Orientation Poles"
+      ? [
+          { letter: "C", name: "Concrete Focus" },
+          { letter: "L", name: "Analytical Logic" },
+          { letter: "I", name: "Inward Reflection" },
+          { letter: "S", name: "Stable Structure" },
+          { letter: "H", name: "Collaborative Harmony" },
+        ]
+      : [
+          { letter: "N", name: "Abstract Insight" },
+          { letter: "V", name: "Empathic Values" },
+          { letter: "O", name: "Outward Engagement" },
+          { letter: "F", name: "Adaptive Flexibility" },
+          { letter: "A", name: "Independent Autonomy" },
+        ];
+
   return (
     <section className="card-gradient p-6 rounded-lg shadow-custom max-w-4xl mx-auto">
-      <h2 className="text-lg md:text-xl font-bold text-[var(--text-primary)] mb-6 text-left">{title}</h2>
+      <h3 className="text-sm md:text-lg font-bold text-[var(--accent)] mb-4 text-center">
+        {title === "Foundational Orientation Poles" ? "Chart 1" : "Chart 2"}
+      </h3>
+      <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-8 text-center">{title}</h2>
+
       <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <div className="radar-dark" style={{ width: "100%", maxWidth: 500 }}>
           <RadarChart
@@ -59,6 +80,21 @@ export default function CsmRadarChart({ partnerA, partnerB, metrics, title }) {
           />
         </div>
       </Box>
+
+      {/* Poles list */}
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 justify-items-start">
+        {poles.map((pole) => (
+          <div key={pole.letter} className="flex items-center">
+            <div
+              className="bg-[var(--surface3)] text-white font-black text-sm w-6 h-6 rounded-full 
+                         flex items-center justify-center shadow-lg"
+            >
+              {pole.letter}
+            </div>
+            <h4 className="ml-4 text-sm font-medium text-[var(--text-primary)]">{pole.name}</h4>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

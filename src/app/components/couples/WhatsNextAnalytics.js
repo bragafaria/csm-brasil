@@ -1,5 +1,5 @@
 // app/components/couples/IntroContext.jsx
-export default function IntroAnalytics({ partnerA, partnerB }) {
+export default function WhatsNextAnalytics({}) {
   return (
     <div className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-8">
       <div className="card-gradient p-6 rounded-lg shadow-custom">

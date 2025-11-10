@@ -23,15 +23,17 @@ export default function CompatibilityRiskRanking({ rankedDimensions }) {
     <section className="card-gradient p-6 rounded-lg shadow-custom max-w-4xl mx-auto mt-12">
       <div className="flex items-start gap-3 mb-6">
         <div>
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)]">Compatibility Risk Ranking</h2>
-          <p className="text-lg text-[var(--text-secondary)] mt-1">
+          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4 mt-8 text-left">
+            Compatibility Risk Ranking
+          </h2>
+          <p className="text-lg text-[var(--text-secondary)] mt-">
             Dimensions ranked from <strong>most challenging</strong> to <strong>most aligned</strong> based on the
-            Compatibility Alignment Score (CAS) score. Lower scores indicate higher friction.
+            Compatibility Alignment Score (CAS). Lower scores indicate higher friction.
           </p>
         </div>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-6 mt-8">
         {rankedDimensions.map((item, index) => {
           const dim = item.dim;
           const isPole1Dominant = item.pole === dim.pole1.name;
