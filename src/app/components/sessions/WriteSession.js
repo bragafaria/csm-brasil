@@ -197,11 +197,11 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
     >
       <div className="max-w-4xl mx-auto space-y-6 mt-10">
         {/* Header */}
-        <div className="flex flex-col items-center mb-20">
+        <div className="flex flex-col items-center mb-20 md:px-20">
           <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-10 text-center">
             Submit Your Session Entry
           </h1>
-          <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mb-2 md:mb-4">
+          <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mb-2 md:mb-4 ">
             Describe your challenge, question, or general doubt in as much detail as possible: from practical concerns
             to broader life uncertainties. You may also include any thoughts, feelings, or patterns that seem to shape
             your experience.

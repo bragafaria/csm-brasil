@@ -214,7 +214,9 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
       } bg-[var(--dashboard)] z-30 flex flex-col`}
     >
       <div className="flex items-center justify-between p-4 ">
-        <h2 className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-widest">Dashboard</h2>
+        <h2 className="text-xs md:text-base font-semibold text-[var(--text-secondary)] uppercase tracking-widest">
+          Dashboard
+        </h2>
         <button
           onClick={toggleSidebar}
           className="p-1 rounded-lg hover:bg-[var(--surface-variant-hover)] transition-all"

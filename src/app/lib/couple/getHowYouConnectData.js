@@ -1,6 +1,6 @@
 // app/lib/couple/getHowYouConnectData.js
 import { supabase } from "@/app/utils/supabaseClient";
-import { coupleDynamics } from "@/app/lib/data/CoupleDynamics";
+import { coupleDynamics } from "@/app/lib/data/couple-dynamics-data";
 
 export async function getHowYouConnectData(siteId) {
   const {
@@ -53,15 +53,23 @@ export async function getHowYouConnectData(siteId) {
   }
 
   // === NORMALIZE KEY ===
+  // === NORMALIZE KEY: TRY BOTH ORDERS ===
   const [typeA, typeB] = [partnerAData.typeCode, partnerBData.typeCode];
-  const normalizedKey = typeA < typeB ? `${typeA}/${typeB}` : `${typeB}/${typeA}`;
 
-  // === ONLY DYNAMICS ===
-  const dynamics = coupleDynamics[normalizedKey];
+  const tryKey = (a, b) => {
+    const k1 = a > b ? `${a}/${b}` : `${b}/${a}`;
+    if (coupleDynamics[k1]) return coupleDynamics[k1];
+    const k2 = a < b ? `${a}/${b}` : `${b}/${a}`;
+    if (coupleDynamics[k2]) return coupleDynamics[k2];
+    return null;
+  };
+
+  const dynamics = tryKey(typeA, typeB);
   if (!dynamics) {
-    console.error("Missing dynamics for:", normalizedKey);
+    const attempted = typeA > typeB ? `${typeA}/${typeB}` : `${typeB}/${typeA}`;
+    console.error("Missing dynamics for:", attempted);
     console.error("Available keys (first 3):", Object.keys(coupleDynamics).slice(0, 3));
-    throw new Error(`No dynamics data for ${normalizedKey}`);
+    throw new Error(`No dynamics data for ${attempted}`);
   }
 
   return {

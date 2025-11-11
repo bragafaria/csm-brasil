@@ -12,6 +12,7 @@ import Spinner from "@/app/components/ui/Spinner";
 import CompatibilityRiskRanking from "@/app/components/couples/CompatibilityRiskRanking";
 import IntroAnalytics from "@/app/components/couples/IntroAnalytics";
 import IntroCsmDimension from "@/app/components/couples/IntroCsmDimension";
+import WhatsNextAnalytics from "@/app/components/couples/WhatsNextAnalytics";
 
 export default function CoupleAnalyticsPage() {
   const params = useParams();
@@ -105,7 +106,7 @@ export default function CoupleAnalyticsPage() {
             title="Foundational Orientation Poles"
           />
           <div className="space-y-4">
-            <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-center">
+            <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] my-8 text-start">
               Foundational Orientation Analysis:
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
@@ -141,7 +142,7 @@ export default function CoupleAnalyticsPage() {
             title="Expansive Orientation Poles"
           />
           <div className="space-y-4">
-            <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-center">
+            <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] my-8 text-start">
               Expansive Orientation Analysis:
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
@@ -170,6 +171,8 @@ export default function CoupleAnalyticsPage() {
 
         {/* COMPATIBILITY RISK RANKING */}
         <CompatibilityRiskRanking rankedDimensions={rankedDimensions} />
+
+        <WhatsNextAnalytics />
 
         <NavButtons current="analytics" siteId={params.siteId} />
       </div>

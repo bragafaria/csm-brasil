@@ -11,7 +11,7 @@ export async function generateMetadata() {
     title: "CSM Blog - Expert Relationship & Wellness Advice 2025",
     description: "Science-backed CSM insights on love, heartbreak, self-growth, and wellness. Updated daily.",
     openGraph: {
-      title: "CSM Blog",
+      title: "CSM Insights",
       description: "Expert advice powered by CSM archetypes.",
       type: "website",
     },
@@ -82,7 +82,7 @@ export default async function BlogHome() {
       <section className="relative overflow-hidden bg-gradient-to-br from-[var(--primary)] via-purple-900 to-[var(--accent)] py-20 px-6 text-center">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative max-w-5xl mx-auto my-20">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">The Modern Self</h1>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">The Blog of the Modern Self</h1>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
             Stories and expert perspectives on love, wellness, and personal transformation.
           </p>

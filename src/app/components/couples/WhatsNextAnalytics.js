@@ -1,34 +1,53 @@
-// app/components/couples/IntroContext.jsx
-export default function WhatsNextAnalytics({}) {
+// app/components/couples/WhatsNextAnalytics.js
+
+import { useParams, useRouter } from "next/navigation";
+
+export default function WhatsNextAnalytics() {
+  const { siteId } = useParams();
+  const router = useRouter();
+
   return (
-    <div className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-8">
-      <div className="card-gradient p-6 rounded-lg shadow-custom">
-        <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
-          Important Context Before Reading
-        </h2>
+    <div className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed my-8">
+      <div className="card-gradient p-6 rounded-2xl shadow-custom">
+        <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 mt-4 text-left">What’s Next?</h2>
 
-        <div className="space-y-6">
-          <div>
-            <p className="text-lg leading-relaxed">
-              This section helps you see where your minds naturally differ, and how those differences shape your daily
-              interactions. It gently highlights where tension, miscommunication, or emotional friction might arise, not
-              as warnings, but as <span className="font-medium">invitations to understand each other more deeply</span>.
-            </p>
+        <div className="space-y-6 text-[var(--text-secondary)]">
+          <p className="text-lg leading-relaxed">
+            Your CSM results have revealed the unique patterns that shape how you think, decide, and connect. Growth
+            happens when reflection turns into action.
+          </p>
 
-            <p className="text-lg leading-relaxed mt-3">
-              The radar charts and cognitive dimensions reveal how each partner naturally thinks, feels, and responds to
-              the world. Your <span className="font-medium">Compatibility Alignment Score (CAS)</span> measures how
-              closely your mental styles align, while the{" "}
-              <span className="font-medium">Compatibility Risk Ranking</span> highlights which areas may need a little
-              extra awareness and care.
-            </p>
+          <p className="text-lg leading-relaxed">
+            That’s where <span className="font-semibold text-[var(--text-primary)]">CSM Sessions</span> come in. These
+            guided self-reflection dialogues are designed to help you apply your CSM blueprint to real situations: from
+            everyday communication and emotional balance to deeper questions about direction, purpose, or connection.
+          </p>
 
-            <p className="text-lg leading-relaxed mt-3">
-              Think of this not as a label, but as a <span className="font-medium">relationship map</span>, one that
-              points out where challenges are likely to surface and shows how they can become powerful growth
-              opportunities. When you understand the small ways your minds don’t quite sync, you gain the ability to
-              meet each other with empathy, patience, and clarity.
+          <p className="text-lg leading-relaxed">
+            Each session is private and personally reviewed by a{" "}
+            <span className="font-semibold text-[var(--text-primary)]">CSM Certified Expert</span>, ensuring your
+            reflections are understood with depth, care, and precision. You’ll receive insights that connect your unique
+            cognitive style to real-life situations, turning self-awareness into meaningful action and helping you move
+            forward with greater clarity and confidence.
+          </p>
+
+          <p className="text-lg leading-relaxed">
+            You can open a session whenever you need clarity, perspective, or support. Simply describe what’s on your
+            mind - whether it’s a challenge, a question about your results, or a situation you want to better understand
+            - and you’ll receive a private, in-depth report.
+          </p>
+
+          <div className="flex flex-col items-center mt-10 space-y-4 gap-6">
+            <p className="italic text-lg text-[var(--text-primary)] text-center">
+              Your CSM results give you the map.
+              <span className="font-semibold"> CSM Sessions</span> help you walk the path.
             </p>
+            <button
+              onClick={() => router.push(`/dashboard/${siteId}/coaching/sessions`)}
+              className="px-6 py-3 rounded-full font-medium transition-all bg-[var(--primary)] text-white shadow-md hover:scale-105"
+            >
+              Go to CSM Sessions
+            </button>
           </div>
         </div>
       </div>

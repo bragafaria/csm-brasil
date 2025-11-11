@@ -8,6 +8,7 @@ import IntroContext from "@/app/components/couples/IntroConnectContext";
 import NavButtons from "@/app/components/couples/NavButtons";
 import { getHowYouConnectData } from "@/app/lib/couple/getHowYouConnectData";
 import Spinner from "@/app/components/ui/Spinner";
+import WhatsNextYouConnect from "@/app/components/couples/WhatsNextYouConnect";
 
 export default function HowYouConnectPageRoute() {
   const params = useParams();
@@ -81,6 +82,7 @@ export default function HowYouConnectPageRoute() {
 
         {/* 2. DYNAMICS + HARMONY + STRENGTHS/GROWTH */}
         <HowYouConnectPage dynamics={data.dynamics} />
+        <WhatsNextYouConnect />
 
         <NavButtons current="connect" siteId={params.siteId} />
       </div>
