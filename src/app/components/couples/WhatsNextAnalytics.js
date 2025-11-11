@@ -37,7 +37,7 @@ export default function WhatsNextAnalytics() {
             - and you’ll receive a private, in-depth report.
           </p>
 
-          <div className="flex flex-col items-center mt-10 space-y-4 gap-6">
+          <div className="flex flex-col items-center mt-10 pb-8 space-y-4 gap-6">
             <p className="italic text-lg text-[var(--text-primary)] text-center">
               Your CSM results give you the map.
               <span className="font-semibold"> CSM Sessions</span> help you walk the path.

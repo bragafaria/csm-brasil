@@ -164,7 +164,8 @@ export default function CsmDimensionAnalysis({
           </div>
         </div>
         <p className="text-center mt-4 text-base font-medium text-[var(--text-secondary)]">
-          <span className={"font-bold text-lg"}>{casTier.label}:</span> {casTier.desc}
+          <span className={"font-bold text-lg leading-relaxed"}>{casTier.label}:</span>{" "}
+          <span className="leading-relaxed">{casTier.desc}</span>
         </p>
       </div>
     </div>

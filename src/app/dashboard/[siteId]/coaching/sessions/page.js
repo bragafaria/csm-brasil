@@ -126,7 +126,7 @@ export default function SessionsPage() {
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
             <BookOpen className="text-white flex-shrink-0" size={32} />
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-white">CSM Sessions</h1>
+              <h1 className="text-2xl md:text-4xl font-bold text-white">CSM Sessions</h1>
               <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">
                 Engage in guided self-reflection tailored to your CSM archetype.
               </p>

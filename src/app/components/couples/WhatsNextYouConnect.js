@@ -36,7 +36,7 @@ export default function WhatsNextYouConnect() {
             challenge, or simply grow together with greater awareness.
           </p>
 
-          <div className="flex flex-col items-center mt-10 space-y-4 gap-6">
+          <div className="flex flex-col items-center space-y-4 gap-6 pb-8">
             <p className="italic text-lg text-[var(--text-primary)] text-center">
               Your report shows what’s possible.
               <span className="font-semibold"> CSM Sessions</span> help you make it real.

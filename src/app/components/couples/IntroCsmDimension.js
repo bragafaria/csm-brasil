@@ -2,7 +2,7 @@
 export default function IntroCsmDimension() {
   return (
     <div className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed mb-8">
-      <div className="card-gradient p-6 rounded-lg shadow-custom">
+      <div className="card-gradient p-6 rounded-lg shadow-custom pb-10">
         <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
           A Quick Look at the CSM Dimensions
         </h2>
@@ -17,8 +17,8 @@ export default function IntroCsmDimension() {
         <div className="space-y-8">
           {/* Dimension 1 */}
           <div>
-            <h4 className="text-[var(--text-primary)] font-semibold text-lg mb-2">1. Information Processing</h4>
-            <em>How you perceive and interpret information.</em>
+            <h4 className="text-[var(--accent)] font-semibold text-xl md:text-2xl mb-2">1. Information Processing</h4>
+            <em className="font-light">How you perceive and interpret information.</em>
             <p className="font-bold mt-6">Poles:</p>
             <ul className="list-disc list-inside mt-2 space-y-1">
               <li>
@@ -32,8 +32,8 @@ export default function IntroCsmDimension() {
 
           {/* Dimension 2 */}
           <div>
-            <h4 className="text-[var(--text-primary)] font-semibold text-lg mb-2">2. Decision-Making</h4>
-            <em>How you make judgments and reach conclusions.</em>
+            <h4 className="text-[var(--accent)] font-semibold text-xl md:text-2xl  mb-2">2. Decision-Making</h4>
+            <em className="font-light">How you make judgments and reach conclusions.</em>
             <p className="font-bold mt-6">Poles:</p>
             <ul className="list-disc list-inside mt-2 space-y-1">
               <li>
@@ -47,8 +47,8 @@ export default function IntroCsmDimension() {
 
           {/* Dimension 3 */}
           <div>
-            <h4 className="text-[var(--text-primary)] font-semibold text-lg mb-2">3. Energy Orientation</h4>
-            <em>Where your mental energy naturally flows.</em>
+            <h4 className="text-[var(--accent)] font-semibold text-xl md:text-2xl mb-2">3. Energy Orientation</h4>
+            <em className="font-light">Where your mental energy naturally flows.</em>
             <p className="font-bold mt-6">Poles:</p>
             <ul className="list-disc list-inside mt-2 space-y-1">
               <li>
@@ -62,8 +62,8 @@ export default function IntroCsmDimension() {
 
           {/* Dimension 4 */}
           <div>
-            <h4 className="text-[var(--text-primary)] font-semibold text-lg mb-2">4. Change Approach</h4>
-            <em>How you handle change, emlanning, and uncertainty.</em>
+            <h4 className="text-[var(--accent)] font-semibold text-xl md:text-2xl mb-2">4. Change Approach</h4>
+            <em className="font-light">How you handle change, emlanning, and uncertainty.</em>
             <p className="font-bold mt-6">Poles:</p>
             <ul className="list-disc list-inside mt-2 space-y-1">
               <li>
@@ -78,8 +78,8 @@ export default function IntroCsmDimension() {
 
           {/* Dimension 5 */}
           <div>
-            <h4 className="text-[var(--text-primary)] font-semibold text-lg mb-2">5. Interpersonal Style</h4>
-            <em>How you connect and collaborate with others.</em>
+            <h4 className="text-[var(--accent)] font-semibold text-xl md:text-2xl mb-2">5. Interpersonal Style</h4>
+            <em className="font-light">How you connect and collaborate with others.</em>
             <p className="font-bold mt-6">Poles:</p>
             <ul className="list-disc list-inside mt-2 space-y-1">
               <li>
