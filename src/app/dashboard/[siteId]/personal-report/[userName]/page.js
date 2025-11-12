@@ -379,12 +379,7 @@ export default function PersonalReportPage() {
 
     if (sectionKey === "dimensionalProfile") {
       return (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="space-y-8 max-w-3xl mx-auto"
-        >
+        <section className="card-gradient p-6 rounded-lg shadow-custom max-w-4xl mx-auto">
           {templates.dimensions.map((dimTemp, dimIdx) => {
             const dim = { ...dimensionData[dimIdx], index: dimIdx };
             const primaryPole = dominants[dimIdx];
@@ -416,13 +411,7 @@ export default function PersonalReportPage() {
             const profileParas = dimTemp[domLevel.toLowerCase()] || dimTemp.mild || [];
 
             return (
-              <motion.div
-                key={dimIdx}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: dimIdx * 0.1 }}
-                className="card-gradient p-6 rounded-lg shadow-custom border border-[var(--border)] flex flex-col space-y-6"
-              >
+              <section key={dimIdx} className="card-gradient p-6 rounded-lg shadow-custom max-w-4xl mx-auto">
                 <div className="text-center space-y-3">
                   <h3 className="text-xl font-semibold text-[var(--text-primary)]">{dim.title}</h3>
                   <p className="text-sm text-[var(--text-secondary)] italic">{dim.subtitle}</p>
@@ -521,10 +510,10 @@ export default function PersonalReportPage() {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </section>
             );
           })}
-        </motion.div>
+        </section>
       );
     }
 
@@ -871,7 +860,7 @@ export default function PersonalReportPage() {
           {renderSection("essence")}
         </section>
 
-        <section className="space-y-6">
+        <section className="card-gradient p-6 rounded-lg shadow-custom max-w-4xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -899,7 +888,7 @@ export default function PersonalReportPage() {
           {renderSection("dimensionalProfile")}
         </section>
 
-        <section className="space-y-6">
+        <section className="card-gradient p-6 rounded-lg shadow-custom max-w-4xl mx-auto space-y-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
