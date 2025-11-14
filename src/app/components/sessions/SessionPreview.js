@@ -9,7 +9,7 @@ import parse from "html-react-parser";
 import { motion } from "framer-motion";
 
 export default function SessionPreview({ session, onClose, onOpenQuestionModal, onOpenAnswerModal }) {
-  const stripHtmlAndTruncate = (html, maxLength = 120) => {
+  const stripHtmlAndTruncate = (html, maxLength = 70) => {
     if (!html) return "";
     const doc = new DOMParser().parseFromString(html, "text/html");
     const text = doc.body.textContent || "";
@@ -43,7 +43,7 @@ export default function SessionPreview({ session, onClose, onOpenQuestionModal, 
   const getAnswerStatusMessage = (status) => {
     const messages = {
       pending: "Awaiting coach assignment. Response expected within 1–2 business days.",
-      assigned: "Assigned to a coach. Response expected within 1–2 business days.",
+      assigned: "Assigned to a CSM Certified Expert. Response expected within 1–2 business days.",
       canceled: "Session canceled.",
     };
     return messages[status] || "Status unavailable.";
@@ -60,16 +60,23 @@ export default function SessionPreview({ session, onClose, onOpenQuestionModal, 
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.98 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.98 }}
-      transition={{ duration: 0.3 }}
-      className="card-gradient p-6 md:p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
-    >
+    <>
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <h3 className="text-2xl font-bold text-[var(--text-primary)]">Session Preview</h3>
+        <div className="flex flex-col items-start gap-8 mt-5 mb-10">
+          {/* Status Badge */}
+          <div className="mt-6 flex justify-end items-center">
+            <p className="text-sm font-semibold text-[var(--text-secondary)] mr-2">Status:</p>
+            <span
+              className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-sm ${getStatusStyles(
+                session.status
+              )}`}
+            >
+              {session.status}
+            </span>
+          </div>
+          <h3 className="text-2xl font-bold text-white">Session Preview</h3>
+        </div>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -81,67 +88,69 @@ export default function SessionPreview({ session, onClose, onOpenQuestionModal, 
         </motion.button>
       </div>
 
-      <div className="space-y-5">
+      <div className="space-y-10">
         {/* Question Card */}
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={onOpenQuestionModal}
-          className="p-5 bg-[var(--surface)] rounded-lg border border-[var(--primary)]/30 shadow-sm card-gradient hover:shadow-md transition-all cursor-pointer group"
-        >
-          <p className="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-2">
-            Your Question
+        <div className="flex flex-col">
+          <p className="text-sm md:text-base font-bold text-[var(--text-secondary)] uppercase tracking-wider mb-2">
+            Your Session Entry:
           </p>
-          <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] text-sm md:text-base line-clamp-3 group-hover:text-[var(--accent)] transition-colors">
-            {parse(stripHtmlAndTruncate(renderHtml(session.question)))}
-          </div>
-          <p className="mt-3 text-xs text-[var(--accent)] font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-            Click to view full question
+          <p className="mb-4">
+            This is the entry you submitted for your session. It guides the expert’s analysis and the focus of your
+            personalized report. Click to view.
           </p>
-        </motion.div>
+
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={onOpenQuestionModal}
+            className="p-5 bg-[var(--surface3)] hover:bg-[var(--accent)] rounded-lg border border-[var(--border)] hover:shadow-md transition-all cursor-pointer group"
+          >
+            <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] text-sm md:text-base line-clamp-3 group-hover:text-[var(--text-primary)] transition-colors">
+              {parse(stripHtmlAndTruncate(renderHtml(session.question)))}
+            </div>
+            <p className="mt-3 text-xs text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+              Click to view full session entry
+            </p>
+          </motion.div>
+        </div>
 
         {/* Answer Card */}
-        <motion.div
-          whileHover={session.answer ? { scale: 1.02 } : {}}
-          whileTap={session.answer ? { scale: 0.98 } : {}}
-          onClick={session.answer ? onOpenAnswerModal : undefined}
-          className={`p-5 rounded-lg border shadow-sm transition-all ${
-            session.answer
-              ? "bg-[var(--surface)] border-[var(--accent)]/30 card-gradient hover:shadow-md cursor-pointer group"
-              : "bg-[var(--surface-variant)] border-[var(--border)] cursor-default"
-          }`}
-        >
-          <p className="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-2">
-            Coach Response
+        <div className="flex flex-col">
+          <p className="text-sm md:text-base font-bold text-[var(--text-secondary)] uppercase tracking-wider mb-2">
+            CSM Session Report:
+          </p>
+          <p className="mb-4">
+            This section contains your expert’s detailed analysis and personalized insights based on your session entry.
+            Review the responses, reflections, and key recommendations. Click to view.
           </p>
 
-          {session.answer ? (
-            <>
-              <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] text-sm md:text-base line-clamp-3 group-hover:text-[var(--accent)] transition-colors">
-                {parse(stripHtmlAndTruncate(renderHtml(session.answer)))}
-              </div>
-              <p className="mt-3 text-xs text-[var(--accent)] font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                Click to view full answer
+          <motion.div
+            whileHover={session.answer ? { scale: 1.02 } : {}}
+            whileTap={session.answer ? { scale: 0.98 } : {}}
+            onClick={session.answer ? onOpenAnswerModal : undefined}
+            className={`p-5 rounded-lg border shadow-sm transition-all ${
+              session.answer
+                ? "bg-[var(--surface3)] hover:bg-[var(--accent)] border-[var(--border)] hover:shadow-md cursor-pointer group"
+                : "bg-[var(--surface-variant)] border-[var(--border)] cursor-default"
+            }`}
+          >
+            {session.answer ? (
+              <>
+                <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] text-sm md:text-base line-clamp-3 group-hover:text-[var(--text-primary)] transition-colors">
+                  {parse(stripHtmlAndTruncate(renderHtml(session.answer)))}
+                </div>
+                <p className="mt-3 text-xs text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  Click to view full report
+                </p>
+              </>
+            ) : (
+              <p className={`text-sm font-medium ${getStatusStyles(session.status)}`}>
+                {getAnswerStatusMessage(session.status)}
               </p>
-            </>
-          ) : (
-            <p className={`text-sm font-medium ${getStatusStyles(session.status)}`}>
-              {getAnswerStatusMessage(session.status)}
-            </p>
-          )}
-        </motion.div>
+            )}
+          </motion.div>
+        </div>
       </div>
-
-      {/* Status Badge */}
-      <div className="mt-6 flex justify-end">
-        <span
-          className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-sm ${getStatusStyles(
-            session.status
-          )}`}
-        >
-          {session.status}
-        </span>
-      </div>
-    </motion.div>
+    </>
   );
 }

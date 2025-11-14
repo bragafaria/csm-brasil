@@ -19,6 +19,7 @@ import { supabase } from "@/app/utils/supabaseClient";
 import { RotatingWord } from "@/app/components/ui/RotatingWord";
 import ConnectionsParticles from "@/app/components/ConnectionsParticles";
 import ConnectionsTitle from "@/app/components/ConnectionsTitle";
+import Image from "next/image";
 
 export default function Home() {
   const [expandedFAQ, setExpandedFAQ] = useState(null);
@@ -129,9 +130,15 @@ export default function Home() {
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Brain className="h-8 w-8 text-[var(--accent)]" />
+              <Image
+                src="/logo_transparent_svg.svg"
+                alt="CSM Dynamics Logo"
+                width={32} // same visual size as h-8 w-8
+                height={32}
+                className="h-8 w-8"
+              />
               <div className="flex items-center space-x-1">
-                <h1 className="text-xl font-bold text-[var(--primary)]">CSM </h1>
+                <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
                 <h1 className="text-xl font-light text-white">Dynamics</h1>
               </div>
             </div>
@@ -691,10 +698,17 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
-                <Brain className="h-8 w-8 text-[var(--accent)]" />
+                <Image
+                  src="/logo_transparent_svg.svg"
+                  alt="CSM Dynamics Logo"
+                  width={40}
+                  height={40}
+                  className="h-8 w-8"
+                />
                 <div className="flex items-center space-x-1">
-                  <h1 className="text-2xl font-bold text-[var(--primary)]">CSM </h1>
+                  <h1 className="text-2xl font-bold text-[var(--primary)]">CSM</h1>
                   <h1 className="text-2xl font-light text-white">Dynamics</h1>
+                  <sup className="text-sm md:text-base align-super">&reg;</sup>
                 </div>
               </div>
               <p className="text-[var(--text-secondary)] mb-4">
@@ -745,7 +759,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-[var(--border)] mt-8 pt-8 text-center text-[var(--text-secondary)]">
-            <p>&copy; 2025 CSM Insights. All rights reserved.</p>
+            <p>&copy; 2025 CSM Dynamics. All rights reserved.</p>
           </div>
         </div>
       </footer>

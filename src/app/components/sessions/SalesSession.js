@@ -104,8 +104,7 @@ export default function SalesSession({
             className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg mb-6"
           >
             <p className="text-red-500 text-sm md:text-base font-medium">
-              Your session is being processed. View it in <strong>View Sessions</strong>. To submit another, buy credit
-              or subscribe.
+              Your session is being processed. View it in <strong>View Sessions</strong>.
             </p>
           </motion.div>
         )}

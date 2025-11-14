@@ -126,7 +126,7 @@ export default function SessionsPage() {
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
             <BookOpen className="text-white flex-shrink-0" size={32} />
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-white">Blueprint Dialogue Sessions</h1>
+              <h1 className="text-2xl md:text-4xl font-bold text-white">CSM Sessions</h1>
               <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">
                 Engage in guided self-reflection tailored to your CSM archetype.
               </p>
@@ -136,31 +136,35 @@ export default function SessionsPage() {
 
         {/* Tabbed Content */}
         <div className="card-gradient rounded-lg shadow-custom overflow-hidden">
-          {/* Tab Navigation */}
-          <div className="flex flex-wrap md:flex-nowrap items-center justify-around p-4 md:p-6 gap-4 md:gap-6 border-b border-[var(--border)]">
-            <button
-              onClick={() => setShowContent("write")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
-                showContent === "write"
-                  ? "bg-[var(--primary)] text-white shadow-md"
-                  : "text-[var(--text-primary)] hover:bg-[var(--surface-variant-hover)]"
-              }`}
-            >
-              <SquarePen className="text-[var(--accent)]" size={20} />
-              <span className="text-base md:text-lg">Start Session</span>
-            </button>
+          <div className="flex flex-col pl-2 md:pl-10 sm:flex-row flex-wrap justify-start items-center gap-6 mt-10  sm:text-left">
+            <p className="text-sm md:text-base font-semibold">Choose:</p>
 
-            <button
-              onClick={() => setShowContent("view")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
-                showContent === "view"
-                  ? "bg-[var(--primary)] text-white shadow-md"
-                  : "text-[var(--text-primary)] hover:bg-[var(--surface-variant-hover)]"
-              }`}
-            >
-              <List className="text-[var(--accent)]" size={20} />
-              <span className="text-base md:text-lg">View Sessions</span>
-            </button>
+            {/* Tab Navigation */}
+            <div className="flex flex-wrap justify-center sm:justify-start gap-4">
+              <button
+                onClick={() => setShowContent("write")}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
+                  showContent === "write"
+                    ? "bg-[var(--primary)] text-white shadow-md"
+                    : "text-[var(--text-primary)] hover:bg-[var(--primary)] border border-[var(--border)]"
+                }`}
+              >
+                <SquarePen className="text-[var(--accent)]" size={20} />
+                <span className="text-base md:text-lg">Start Session</span>
+              </button>
+
+              <button
+                onClick={() => setShowContent("view")}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
+                  showContent === "view"
+                    ? "bg-[var(--primary)] text-white shadow-md"
+                    : "text-[var(--text-primary)] hover:bg-[var(--primary)] border border-[var(--border)]"
+                }`}
+              >
+                <List className="text-[var(--accent)]" size={20} />
+                <span className="text-base md:text-lg">View Sessions</span>
+              </button>
+            </div>
           </div>
 
           {/* Tab Content */}

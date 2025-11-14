@@ -33,6 +33,10 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
       icon: Users,
       subItems: [
         {
+          label: "Analytics",
+          route: `/dashboard/${siteId}/couples-report/analytics`,
+        },
+        {
           label: "How You Connect",
           route: `/dashboard/${siteId}/couples-report/how-you-connect`,
         },
@@ -40,17 +44,13 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
           label: "Your 10 Life Challenges",
           route: `/dashboard/${siteId}/couples-report/your-10-life-challenges`,
         },
-        {
-          label: "Analytics",
-          route: `/dashboard/${siteId}/couples-report/analytics`,
-        },
       ],
     },
     {
       id: "coaching",
       label: "CSM Sessions",
       icon: BookOpen,
-      subItems: [{ label: "Sessions", route: `/dashboard/${siteId}/coaching/sessions` }],
+      subItems: [{ label: "Private Sessions", route: `/dashboard/${siteId}/coaching/sessions` }],
     },
     {
       id: "learn",
@@ -189,7 +189,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full p-6 bg-[var(--surface)]">
-        <Spinner>Loading...</Spinner>
+        <Spinner></Spinner>
       </div>
     );
   }
@@ -213,8 +213,10 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
         isMobile ? "w-full" : "w-64"
       } bg-[var(--dashboard)] z-30 flex flex-col`}
     >
-      <div className="flex items-center justify-between p-4 border-b border-[var(--border)]">
-        <h2 className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-widest">Dashboard</h2>
+      <div className="flex items-center justify-between p-4 ">
+        <h2 className="text-xs md:text-base font-semibold text-[var(--text-secondary)] uppercase tracking-widest">
+          Dashboard
+        </h2>
         <button
           onClick={toggleSidebar}
           className="p-1 rounded-lg hover:bg-[var(--surface-variant-hover)] transition-all"
@@ -224,7 +226,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
         </button>
       </div>
 
-      <nav className="flex-1 overflow-y-auto p-4 space-y-1">
+      <nav className="flex-1 overflow-y-auto p-4 space-y-1 custom-scrollbar2">
         {menuItems.map((item) => {
           const Icon = item.icon;
           const isExpanded = expandedItems.includes(item.id);
@@ -238,8 +240,8 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
                 onClick={isMobile ? toggleSidebar : undefined}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition-all group ${
                   isActive(item.route)
-                    ? "bg-[var(--primary)] text-white shadow-md"
-                    : "text-[var(--text-secondary)] hover:bg-[var(--surface624-variant)] hover:text-[var(--text-primary)]"
+                    ? "bg-[var(--primary)] text-var[--primary] shadow-md"
+                    : "text-[var(--text-secondary)] hover:bg-[var(--surface-variant)] hover:text-[var(--text-primary)]"
                 }`}
               >
                 <Icon size={20} className="flex-shrink-0" />
@@ -281,7 +283,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
                           onClick={isMobile ? toggleSidebar : undefined}
                           className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all ${
                             isActive(sub.route)
-                              ? "bg-[var(--accent)]/20 text-[var(--text-primary)]"
+                              ? "text-[var(--text-primary)]"
                               : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-variant)]"
                           }`}
                         >
@@ -328,7 +330,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
                         onClick={isMobile ? toggleSidebar : undefined}
                         className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all ${
                           isActive(subItem.route)
-                            ? "bg-[var(--accent)]/20 text-[var(--text-primary)]"
+                            ? "text-[var(--text-primary)]"
                             : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-variant)]"
                         }`}
                       >

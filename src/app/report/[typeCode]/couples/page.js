@@ -21,6 +21,7 @@ import {
   Clock,
   RefreshCw,
 } from "lucide-react";
+import Image from "next/image";
 
 export default function Sales() {
   const { typeCode } = useParams();
@@ -150,9 +151,15 @@ export default function Sales() {
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Brain className="h-8 w-8 text-[var(--accent)]" />
+              <Image
+                src="/imagens/logo_transparent_svg.svg"
+                alt="CSM Dynamics Logo"
+                width={32}
+                height={32}
+                className="h-8 w-8"
+              />
               <div className="flex items-center space-x-1">
-                <h1 className="text-xl font-bold text-[var(--primary)]">CSM </h1>
+                <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
                 <h1 className="text-xl font-light text-[var(--text-primary)]">Dynamics</h1>
               </div>
             </div>

@@ -1,4 +1,5 @@
 // app/components/ConnectionsTitle.jsx
+
 export default function ConnectionsTitle() {
   const archetypes = [
     "Architect",
@@ -37,9 +38,13 @@ export default function ConnectionsTitle() {
 
   return (
     <div className="relative z-10 text-center">
-      <h3 className="text-2xl md:text-4xl font-light tracking-widest text-gray-400 mb-4">
-        CSM Dynamics<sup className="text-sm md:text-base align-super">&reg;</sup>
-      </h3>
+      <div className="flex items-center justify-center gap-3 mb-10">
+        <img src="/logo_transparent_svg.svg" alt="CSM Dynamics Logo" className="h-8 md:h-10 w-auto" />
+        <h3 className="text-2xl md:text-4xl font-light tracking-widest text-gray-400">
+          CSM Dynamics
+          <sup className="text-sm md:text-base align-super">&reg;</sup>
+        </h3>
+      </div>
       <h1 className="text-4xl md:text-8xl font-bold text-white drop-shadow-2xl">32 ARCHETYPES</h1>
       <h3 className="text-xl font-light tracking-wider text-gray-400 mt-6 mb-10">
         A personalized cognitive blueprint with unparalleled depth and precision.
