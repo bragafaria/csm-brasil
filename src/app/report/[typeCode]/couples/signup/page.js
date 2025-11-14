@@ -253,7 +253,7 @@ export default function Signup() {
           transition={{ duration: 0.5 }}
           className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]"
         >
-          Sign Up to Get Your Couple Insights Report
+          {"Sign Up to Get Your Couple's Insight Report"}
         </motion.h1>
 
         {confirmationSent ? (

@@ -1,6 +1,7 @@
 export const reportTemplates = {
   "C-L-O-S-H": {
     summaryEssence: {
+      name: "The Architect",
       title: "The Pragmatic Builder who creates organized systems for shared harmony.",
     },
     strengths: {
@@ -187,6 +188,7 @@ export const reportTemplates = {
   },
   "C-L-O-S-A": {
     summaryEssence: {
+      name: "The Engineer",
       title: "The independent builder who crafts practical, efficient solutions on your own.",
     },
     strengths: {
@@ -373,6 +375,7 @@ export const reportTemplates = {
   },
   "C-L-O-F-H": {
     summaryEssence: {
+      name: "The Navigator",
       title: "The Dynamic Guide Who Navigates Life's Changes with Quick, Practical Insights.",
     },
     strengths: {
@@ -589,6 +592,7 @@ export const reportTemplates = {
   },
   "C-L-O-F-A": {
     summaryEssence: {
+      name: "The Pioneer",
       title: "The Bold Trailblazer Who Seizes Opportunities with Fearless, Independent Action.",
     },
     strengths: {
@@ -775,6 +779,7 @@ export const reportTemplates = {
   },
   "C-L-I-S-H": {
     summaryEssence: {
+      name: "The Curator",
       title: "The Thoughtful Preserver who organizes information to build shared, logical frameworks.",
     },
     strengths: {
@@ -961,6 +966,7 @@ export const reportTemplates = {
   },
   "C-L-I-S-A": {
     summaryEssence: {
+      name: "The Analyst",
       title: "The Precise Thinker who dissects complex systems with solitary, focused logic.",
     },
     strengths: {
@@ -1177,6 +1183,7 @@ export const reportTemplates = {
   },
   "C-L-I-F-H": {
     summaryEssence: {
+      name: "The Mediator",
       title:
         "The Flexible Problem-Solver who draws on real-world details to create fair solutions that keep everyone in harmony.",
     },
@@ -1394,6 +1401,7 @@ export const reportTemplates = {
   },
   "C-L-I-F-A": {
     summaryEssence: {
+      name: "The Maverick",
       title:
         "The Unconventional Realist who draws on logic and real-world insights to shape a unique, self-directed life.",
     },
@@ -1581,6 +1589,7 @@ export const reportTemplates = {
   },
   "C-V-O-S-H": {
     summaryEssence: {
+      name: "The Steward",
       title: "The Caring Organizer who fosters stability and practical well-being for the community.",
     },
     strengths: {
@@ -1767,6 +1776,7 @@ export const reportTemplates = {
   },
   "C-V-O-S-A": {
     summaryEssence: {
+      name: "The Artisan",
       title: "The Hands-On Creator Who Shapes the World with Personal Passion and Craft",
     },
     strengths: {
@@ -1953,6 +1963,7 @@ export const reportTemplates = {
   },
   "C-V-O-F-H": {
     summaryEssence: {
+      name: "The Campaigner",
       title: "The Passionate Advocate Who Inspires Action Through Real-World Engagement",
     },
     strengths: {
@@ -2139,6 +2150,7 @@ export const reportTemplates = {
   },
   "C-V-O-F-A": {
     summaryEssence: {
+      name: "The Adventurer",
       title: "The Free-Spirited Adventurer Who Embraces Life's Moments with Passion and Independence",
     },
     strengths: {
@@ -2325,6 +2337,7 @@ export const reportTemplates = {
   },
   "C-V-I-S-H": {
     summaryEssence: {
+      name: "The Counselor",
       title: "The Nurturing Guide who provides steady, compassionate support based on shared values.",
     },
     strengths: {
@@ -2511,6 +2524,7 @@ export const reportTemplates = {
   },
   "C-V-I-S-A": {
     summaryEssence: {
+      name: "The Healer",
       title: "The Quiet Caretaker Who Restores Balance Through Deep Personal Ethics",
     },
     strengths: {
@@ -2697,6 +2711,7 @@ export const reportTemplates = {
   },
   "C-V-I-F-H": {
     summaryEssence: {
+      name: "The Peacemaker",
       title: "The Gentle Adapter Who Fosters Harmony Through Sensitive Awareness",
     },
     strengths: {
@@ -2883,6 +2898,7 @@ export const reportTemplates = {
   },
   "C-V-I-F-A": {
     summaryEssence: {
+      name: "The Empath",
       title: "The Sensitive Individualist who navigates life attuned to their inner emotional world.",
     },
     strengths: {
@@ -3069,6 +3085,7 @@ export const reportTemplates = {
   },
   "N-L-O-S-H": {
     summaryEssence: {
+      name: "The Strategist",
       title: "The Visionary Planner who brings people together to achieve complex, long-term goals.",
     },
     strengths: {
@@ -3255,6 +3272,7 @@ export const reportTemplates = {
   },
   "N-L-O-S-A": {
     summaryEssence: {
+      name: "The Inventor",
       title:
         "The Ingenious Creator who turns groundbreaking ideas into independent, workable projects with discipline and focus.",
     },
@@ -3442,6 +3460,7 @@ export const reportTemplates = {
   },
   "N-L-O-F-H": {
     summaryEssence: {
+      name: "The Disruptor",
       title: "The Bold Innovator who inspires others to embrace change and explore fresh ideas together.",
     },
     strengths: {
@@ -3628,6 +3647,7 @@ export const reportTemplates = {
   },
   "N-L-O-F-A": {
     summaryEssence: {
+      name: "The Revolutionary",
       title:
         "The Radical Thinker who challenges the status quo with bold, independent ideas and a drive for transformation.",
     },
@@ -3845,6 +3865,7 @@ export const reportTemplates = {
   },
   "N-L-I-S-H": {
     summaryEssence: {
+      name: "The Academic",
       title: "The Reflective Scholar who builds stable, collaborative theories through deep logical inquiry.",
     },
     strengths: {
@@ -4061,6 +4082,7 @@ export const reportTemplates = {
   },
   "N-L-I-S-A": {
     summaryEssence: {
+      name: "The Theorist",
       title: "The Deep Thinker who seeks universal truth through solitary abstract analysis.",
     },
     strengths: {
@@ -4277,6 +4299,7 @@ export const reportTemplates = {
   },
   "N-L-I-F-H": {
     summaryEssence: {
+      name: "The Innovator",
       title: "The Creative Synthesizer who blends ideas with logic to foster shared understanding and innovation.",
     },
     strengths: {
@@ -4493,6 +4516,7 @@ export const reportTemplates = {
   },
   "N-L-I-F-A": {
     summaryEssence: {
+      name: "The Visionary",
       title: "The Far-Sighted Dreamer Crafting Bold Futures Through Independent Logic",
     },
     strengths: {
@@ -4709,6 +4733,7 @@ export const reportTemplates = {
   },
   "N-V-O-S-H": {
     summaryEssence: {
+      name: "The Ambassador",
       title: "The Harmonious Connector who fosters unity through empathetic vision and structured empathy.",
     },
     strengths: {
@@ -4895,6 +4920,7 @@ export const reportTemplates = {
   },
   "N-V-O-S-A": {
     summaryEssence: {
+      name: "The Artist",
       title:
         "The Expressive Individualist who channels abstract ideas into meaningful creations guided by personal values.",
     },
@@ -5112,6 +5138,7 @@ export const reportTemplates = {
   },
   "N-V-O-F-H": {
     summaryEssence: {
+      name: "The Catalyst",
       title:
         "The Inspiring Changemaker who energizes others by envisioning new paths and fostering shared growth with adaptable understanding.",
     },
@@ -5299,6 +5326,7 @@ export const reportTemplates = {
   },
   "N-V-O-F-A": {
     summaryEssence: {
+      name: "The Wanderer",
       title:
         "The Curious Seeker who explores life's ideas and experiences to find deeper personal meaning and fulfillment.",
     },
@@ -5486,6 +5514,7 @@ export const reportTemplates = {
   },
   "N-V-I-S-H": {
     summaryEssence: {
+      name: "The Mentor",
       title: "The Compassionate Guide who nurtures growth through insightful understanding and supportive connections.",
     },
     strengths: {
@@ -5702,6 +5731,7 @@ export const reportTemplates = {
   },
   "N-V-I-S-A": {
     summaryEssence: {
+      name: "The Sage",
       title: "The Profound Seeker of Inner Wisdom and Personal Truth",
     },
     strengths: {
@@ -5918,6 +5948,7 @@ export const reportTemplates = {
   },
   "N-V-I-F-H": {
     summaryEssence: {
+      name: "The Unifier",
       title:
         "The Gentle Visionary who brings people together by sharing an adaptable and insightful view to encourage shared understanding and emotional balance.",
     },
@@ -6105,6 +6136,7 @@ export const reportTemplates = {
   },
   "N-V-I-F-A": {
     summaryEssence: {
+      name: "The Mystic",
       title:
         "The Enigmatic Soul Who Independently Explores Life’s Mysteries, Guided by Intuitive Compassion and Personal Authenticity.",
     },

@@ -200,7 +200,7 @@ export default async function BlogHome() {
       <section className="mt-24 py-16 bg-gradient-to-r from-[var(--primary)] to-purple-800 rounded-3xl max-w-7xl mx-auto px-6 text-center">
         <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Transform Your Relationships?</h3>
         <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-          Get your personalized CSM archetype report in under 5 minutes.
+          Get your personalized CSM archetype report in under 10 minutes.
         </p>
         <Link
           href="/assessment"

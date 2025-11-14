@@ -19,6 +19,7 @@ import {
 import { reportTemplates } from "@/app/lib/personal/personal-report-data";
 import { motion, AnimatePresence } from "framer-motion";
 import LZString from "lz-string";
+import Spinner from "@/app/components/ui/Spinner";
 
 export default function PersonalReport() {
   const { typeCode: urlCode } = useParams();
@@ -30,6 +31,7 @@ export default function PersonalReport() {
   const [isSharedView, setIsSharedView] = useState(false);
   const [isShortening, setIsShortening] = useState(false);
 
+  // app/report/[typeCode]/page.jsx
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const encodedData = urlParams.get("data");
@@ -39,7 +41,7 @@ export default function PersonalReport() {
       try {
         const decompressed = LZString.decompressFromEncodedURIComponent(encodedData);
         const parsed = JSON.parse(decompressed);
-        setData(parsed);
+        setData(parsed); // ← Already includes userName
         setIsSharedView(true);
       } catch (err) {
         console.error("Invalid shared data", err);
@@ -49,7 +51,7 @@ export default function PersonalReport() {
       const stored = localStorage.getItem("csmAssessmentData");
       if (stored) {
         const parsed = JSON.parse(stored);
-        setData(parsed.results);
+        setData(parsed); // ← Use full object: { userName, results: { ... } }
         setIsSharedView(false);
       }
     }
@@ -63,7 +65,16 @@ export default function PersonalReport() {
     );
   }
 
-  const { percents, dominants, archetype, typeCode: storedCode } = data;
+  if (!data) return <Spinner />;
+
+  // Extract top-level + nested
+  const { userName, results = {} } = data;
+  const { percents = [], dominants = [], archetype, typeCode: storedCode } = results;
+
+  // Fallbacks prevent crashes
+  if (!percents.length || !dominants.length) {
+    return <div>Error: Invalid assessment data.</div>;
+  }
 
   const archetypeName =
     typeof archetype === "object" && archetype?.name ? archetype.name : String(archetype || "Unknown Archetype");
@@ -117,10 +128,6 @@ DEGREES OF INFLUENCE:
     return { dom: "Mild", inf: "High" };
   };
 
-  const handleCouplesReportClick = () => {
-    router.push(`/report/${typeCodeWithDashes}/couples`);
-  };
-
   const poleMap = {
     C: "N",
     N: "C",
@@ -146,19 +153,22 @@ DEGREES OF INFLUENCE:
 
   // === SHARE LOGIC ===
   const generateShareableLink = async () => {
-    const jsonStr = JSON.stringify(data);
+    const payload = {
+      ...data,
+      userName: data.userName || "Anonymous", // ← ENSURE userName IS INCLUDED
+    };
+    const jsonStr = JSON.stringify(payload);
     const compressed = LZString.compressToEncodedURIComponent(jsonStr);
     const longUrl = `${window.location.origin}/report/${typeCodeWithDashes}?data=${compressed}`;
     return await shortenUrl(longUrl);
   };
-
   const shareVia = async (platform) => {
     // Show loading
     setIsShortening(true);
 
     // Generate short URL once
     const shareUrl = await generateShareableLink();
-    const shareText = `I just took the CSM assessment and got The ${archetypeName}. "${tmpl.summaryEssence.title}"`;
+    const shareText = `Hey, it's ${userName}! I just took the CSM personality assessment and got “The ${archetypeName}” type. It was way more accurate than I expected. Take a look:`;
 
     const shareData = {
       title: `I'm The ${archetypeName} (${typeCodeWithDashes})`,
@@ -196,15 +206,13 @@ DEGREES OF INFLUENCE:
 
   const fallbackCopy = ({ text, url }) => {
     const fullText = `${text} ${url}`;
-    navigator.clipboard.writeText(fullText).then(() => {
-      alert("Shareable link copied!");
-    });
+    navigator.clipboard.writeText(fullText);
   };
 
   return (
-    <div className="container mx-auto p-6 max-w-4xl">
+    <div className="container mx-auto p-2 md:p-6 max-w-4xl">
       {/* ==================== HERO ==================== */}
-      <header className="hero-gradient rounded-lg p-6 md:p-8 mb-8 shadow-custom-lg">
+      <header className="hero-gradient rounded-lg p-6 md:p-8 shadow-custom-lg">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
           <div>
             <h1 className="text-2xl md:text-4xl font-bold text-white">Your CSM Personality Report</h1>
@@ -216,27 +224,38 @@ DEGREES OF INFLUENCE:
         </div>
       </header>
       {/* SHARE BUTTON: Only for original user */}
+
       {!isSharedView && (
-        <button
-          onClick={() => setShowShareModal(true)}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-white/20 backdrop-blur-sm rounded-lg hover:bg-white/30 transition-all"
-        >
-          <Share2 className="w-4 h-4" />
-          Share Your Archetype
-        </button>
+        <div className="container flex justify-center md:justify-end mx-auto p-6 max-w-4xl">
+          <button
+            onClick={() => setShowShareModal(true)}
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all"
+          >
+            <Share2 className="w-5 h-5" />
+            Share Your Results
+          </button>
+        </div>
       )}
 
       {/* ==================== 1. OVERVIEW ==================== */}
       <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-8">
-        <div className="card-gradient p-6 rounded-lg shadow-custom">
+        <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
           <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">Overview</h2>
 
           <div className="space-y-8">
             {/* Archetype + Type Code */}
             <div className="space-y-6">
+              {/* USER FIELD */}
+              <div>
+                <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">User:</p>
+                <p className="text-xl font-bold text-[var(--text-primary)]">{userName || "Anonymous"}</p>
+              </div>
               <div>
                 <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Archetype:</p>
-                <p className="text-xl font-bold text-[var(--text-primary)]">The {archetypeName}</p>
+                <p className="text-xl font-bold text-[var(--text-primary)]">
+                  The {archetypeName}
+                  <span></span>
+                </p>
               </div>
               <div>
                 <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Archetype Code:</p>
@@ -247,132 +266,134 @@ DEGREES OF INFLUENCE:
             {/* === POLES PREFERENCES === */}
             <div className="space-y-6">
               <h3 className="text-sm font-medium text-[var(--text-secondary)]">Poles Preferences:</h3>
-              {/* Primary Poles */}
-              <div className="space-y-3 border border-[var(--border)] w-fit rounded-lg p-4">
-                <div className="max-w-sm">
-                  <p className="text-lg font-bold text-[var(--text-primary)] mb-2">Primary Poles</p>
-                  <div className="flex flex-wrap gap-2">
-                    {dominants.map((pole, i) => {
-                      const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
-                      const level = getLevel(pct).dom;
-                      const color = {
-                        Mild: "bg-green-500/50",
-                        Moderate: "bg-yellow-500/50",
-                        Strong: "bg-red-500/50",
-                      }[level];
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Primary Poles */}
+                <div className="space-y-3 border border-[var(--border)] rounded-lg p-4">
+                  <div className="max-w-sm">
+                    <p className="text-lg font-bold text-[var(--text-primary)] mb-2">Primary Poles</p>
+                    <div className="flex flex-wrap gap-2">
+                      {dominants.map((pole, i) => {
+                        const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
+                        const level = getLevel(pct).dom;
+                        const color = {
+                          Mild: "bg-green-500/50",
+                          Moderate: "bg-yellow-500/50",
+                          Strong: "bg-red-500/50",
+                        }[level];
 
-                      const fullName = {
-                        C: "Concrete Focus",
-                        N: "Abstract Insight",
-                        L: "Analytical Logic",
-                        V: "Empathic Values",
-                        O: "Outward Engagement",
-                        I: "Inward Reflection",
-                        S: "Stable Structure",
-                        F: "Adaptive Flexibility",
-                        H: "Collaborative Harmony",
-                        A: "Independent Autonomy",
-                      }[pole];
+                        const fullName = {
+                          C: "Concrete Focus",
+                          N: "Abstract Insight",
+                          L: "Analytical Logic",
+                          V: "Empathic Values",
+                          O: "Outward Engagement",
+                          I: "Inward Reflection",
+                          S: "Stable Structure",
+                          F: "Adaptive Flexibility",
+                          H: "Collaborative Harmony",
+                          A: "Independent Autonomy",
+                        }[pole];
 
-                      return (
-                        <span
-                          key={i}
-                          className={`inline-block px-3 py-1 rounded-md text-xs font-medium text-white ${color} shadow-sm`}
-                        >
-                          {fullName}
-                        </span>
-                      );
-                    })}
+                        return (
+                          <span
+                            key={i}
+                            className={`inline-block px-3 py-1 rounded-md text-xs font-medium text-white ${color} shadow-sm`}
+                          >
+                            {fullName}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Legend BELOW */}
+                  <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] mt-4">
+                    <div className="flex items-center gap-1">
+                      <span className="font-medium">Primary Degrees of Dominance:</span>
+                      <HelpCircle
+                        onClick={() => openModal("Primary Degrees of Dominance", PRIMARY_EXPLANATION)}
+                        className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
+                      />
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                        <span>Mild</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                        <span>Moderate</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                        <span>Strong</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Legend BELOW */}
-                <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)]">
-                  <div className="flex items-center gap-1">
-                    <span className="font-medium">Primary Degrees of Dominance:</span>
-                    <HelpCircle
-                      onClick={() => openModal("Primary Degrees of Dominance", PRIMARY_EXPLANATION)}
-                      className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
-                    />
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                      <span>Mild</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                      <span>Moderate</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                      <span>Strong</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                {/* Secondary Poles */}
+                <div className="space-y-3 border border-[var(--border)] rounded-lg p-4">
+                  <div className="max-w-sm">
+                    <p className="text-lg font-bold text-[var(--text-primary)] mb-2">Secondary Poles</p>
+                    <div className="flex flex-wrap gap-2">
+                      {dominants.map((pole, i) => {
+                        const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
+                        const level = getLevel(pct).inf;
+                        const color = {
+                          High: "bg-red-500/50",
+                          Moderate: "bg-yellow-500/50",
+                          Low: "bg-green-500/50",
+                        }[level];
 
-              {/* Secondary Poles */}
-              <div className="space-y-3 border border-[var(--border)] w-fit rounded-lg p-4">
-                <div className="max-w-sm">
-                  <p className="text-lg font-bold text-[var(--text-primary)] mb-2">Secondary Poles</p>
-                  <div className="flex flex-wrap gap-2">
-                    {dominants.map((pole, i) => {
-                      const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
-                      const level = getLevel(pct).inf;
-                      const color = {
-                        High: "bg-red-500/50",
-                        Moderate: "bg-yellow-500/50",
-                        Low: "bg-green-500/50",
-                      }[level];
+                        const secondaryPole = poleMap[pole];
+                        const fullName = {
+                          C: "Concrete Focus",
+                          N: "Abstract Insight",
+                          L: "Analytical Logic",
+                          V: "Empathic Values",
+                          O: "Outward Engagement",
+                          I: "Inward Reflection",
+                          S: "Stable Structure",
+                          F: "Adaptive Flexibility",
+                          H: "Collaborative Harmony",
+                          A: "Independent Autonomy",
+                        }[secondaryPole];
 
-                      const secondaryPole = poleMap[pole];
-                      const fullName = {
-                        C: "Concrete Focus",
-                        N: "Abstract Insight",
-                        L: "Analytical Logic",
-                        V: "Empathic Values",
-                        O: "Outward Engagement",
-                        I: "Inward Reflection",
-                        S: "Stable Structure",
-                        F: "Adaptive Flexibility",
-                        H: "Collaborative Harmony",
-                        A: "Independent Autonomy",
-                      }[secondaryPole];
-
-                      return (
-                        <span
-                          key={i}
-                          className={`inline-block px-3 py-1 rounded-md text-xs font-medium text-white ${color} shadow-sm`}
-                        >
-                          {fullName}
-                        </span>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Legend BELOW */}
-                <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)]">
-                  <div className="flex items-center gap-1">
-                    <span className="font-medium">Secondary Degrees of Influence:</span>
-                    <HelpCircle
-                      onClick={() => openModal("Secondary Degrees of Influence", SECONDARY_EXPLANATION)}
-                      className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
-                    />
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                      <span>Low</span>
+                        return (
+                          <span
+                            key={i}
+                            className={`inline-block px-3 py-1 rounded-md text-xs font-medium text-white ${color} shadow-sm`}
+                          >
+                            {fullName}
+                          </span>
+                        );
+                      })}
                     </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                      <span>Moderate</span>
+                  </div>
+
+                  {/* Legend BELOW */}
+                  <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] mt-4">
+                    <div className="flex items-center gap-1">
+                      <span className="font-medium">Secondary Degrees of Influence:</span>
+                      <HelpCircle
+                        onClick={() => openModal("Secondary Degrees of Influence", SECONDARY_EXPLANATION)}
+                        className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
+                      />
                     </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                      <span>High</span>
+                    <div className="flex flex-wrap gap-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                        <span>Low</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                        <span>Moderate</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                        <span>High</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -382,15 +403,15 @@ DEGREES OF INFLUENCE:
             {/* Essence */}
             <div>
               <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Essence:</p>
-              <p className="text-base max-w-sm italic text-[var(--text-primary)]">{tmpl.summaryEssence.title}</p>
+              <p className="text-base italic text-[var(--text-primary)]">{tmpl.summaryEssence.title}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ==================== 3. YOUR DIMENSIONAL PROFILE ==================== */}
-      <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll mb-8">
-        <div className="card-gradient p-6 rounded-lg shadow-custom">
+      <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll">
+        <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
           <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
             Your Dimensional Profile
           </h2>
@@ -503,7 +524,7 @@ DEGREES OF INFLUENCE:
                       transition: { duration: 0.6, ease: "easeOut" },
                     },
                   }}
-                  className="group bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] p-6 rounded-2xl 
+                  className="group bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] p-2 md:p-6 rounded-2xl 
                        shadow-lg border border-[rgba(var(--primary-rgb),0.2)] 
                        hover:border-[rgba(var(--primary-rgb),0.4)] 
                        hover:shadow-2xl transition-all duration-300 
@@ -629,9 +650,20 @@ DEGREES OF INFLUENCE:
           )}
         </AnimatePresence>
       </section>
+      {!isSharedView && (
+        <div className="container flex justify-center md:justify-end  mx-auto p-6 max-w-4xl">
+          <button
+            onClick={() => setShowShareModal(true)}
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all"
+          >
+            <Share2 className="w-5 h-5" />
+            Share Your Results
+          </button>
+        </div>
+      )}
 
       {/* ==================== 2. YOUR ARCHETYPE IN ACTION ==================== */}
-      <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll mb-8">
+      <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll">
         <div className="card-gradient p-6 rounded-lg shadow-custom">
           <div className="text-left space-y-3">
             <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
@@ -681,6 +713,17 @@ DEGREES OF INFLUENCE:
           </div>
         </div>
       </section>
+      {!isSharedView && (
+        <div className="container flex justify-center md:justify-end mx-auto p-6 max-w-4xl">
+          <button
+            onClick={() => setShowShareModal(true)}
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all"
+          >
+            <Share2 className="w-5 h-5" />
+            Share Your Results
+          </button>
+        </div>
+      )}
 
       {/* ==================== 4. HOW YOU CONNECT (PREVIEW) ==================== */}
       <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-12">
@@ -728,9 +771,9 @@ DEGREES OF INFLUENCE:
                     <div className="text-center">
                       <Lock className="w-8 h-8 text-[var(--text-primary)] font-bold mx-auto mb-1 drop-shadow-sm" />
                       <p
-                        className="text-lg font-extrabold text-[var(--senary)]"
+                        className="text-lg font-extrabold text-[var(--text-secondary)]"
                         style={{
-                          textShadow: `0 1px 2px rgba(0, 0, 0, 0.3),
+                          textShadow: `0 1px 2px rgba(0, 0, 0, 0.2),
 0 0 8px rgba(0, 0, 0, 0.2)`,
                         }}
                       >
@@ -739,7 +782,7 @@ DEGREES OF INFLUENCE:
                       <p
                         className="text-sm text-[var(--text-secondary)] mt-1 mb-8"
                         style={{
-                          textShadow: "0 1px 2px rgba(0, 0, 0, 0.25)",
+                          textShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
                         }}
                       >
                         Click to Discover How You Connect
@@ -780,13 +823,22 @@ DEGREES OF INFLUENCE:
               router.push(`/report/${typeCodeWithDashes}/couples`);
             }
           }}
-          className="inline-flex items-center btn-primary px-8 py-6 rounded-lg font-semibold cursor-pointer gap-2 transition-all hover:shadow-lg mb-10"
+          className={
+            isSharedView
+              ? ""
+              : "inline-flex items-center btn-primary px-8 py-6 rounded-lg font-semibold cursor-pointer gap-2 transition-all hover:shadow-lg mb-10"
+          }
         >
           {isSharedView ? (
-            <>
-              Take Your Free Test Now!
-              <ArrowRight className="h-5 w-5" />
-            </>
+            <div className="py-16 bg-gradient-to-r from-[var(--primary)] to-purple-800 rounded-3xl max-w-7xl mx-auto px-6 text-center">
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Take the Free Personality Test</h3>
+              <p className="text-white/90 mb-8 max-w-2xl mx-auto">
+                Get your personalized CSM archetype report in under 10 minutes.
+              </p>
+              <span className="inline-block bg-white text-[var(--primary)] font-bold px-10 py-4 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+                Start Free Assessment
+              </span>
+            </div>
           ) : (
             <>
               Discover How You Connect
@@ -814,7 +866,7 @@ DEGREES OF INFLUENCE:
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-bold text-[var(--text-primary)]">Share Your Archetype</h3>
+                <h3 className="text-lg font-bold text-[var(--text-primary)]">Share Your Results</h3>
                 <button
                   onClick={() => setShowShareModal(false)}
                   className="text-[var(--text-secondary)] hover:text-[var(--accent)]"
@@ -864,9 +916,16 @@ DEGREES OF INFLUENCE:
                 </button>
               </div>
 
-              <p className="text-xs text-[var(--text-secondary)] text-center mt-4">
-                {isShortening ? "Generating short link..." : "Your full report is included in the link."}
-              </p>
+              <div className="text-xs text-[var(--text-secondary)] text-center mt-4">
+                {isShortening ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <Spinner />
+                    Generating short link...
+                  </div>
+                ) : (
+                  "Your full report is included in the link."
+                )}
+              </div>
             </motion.div>
           </motion.div>
         )}
