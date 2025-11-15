@@ -210,12 +210,12 @@ DEGREES OF INFLUENCE:
   };
 
   return (
-    <div className="container mx-auto p-2 md:p-6 max-w-4xl">
+    <div className="container mx-auto p-6 max-w-4xl">
       {/* ==================== HERO ==================== */}
       <header className="hero-gradient rounded-lg p-6 md:p-8 shadow-custom-lg">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
           <div>
-            <h1 className="text-2xl md:text-4xl font-bold text-white">Your CSM Personality Report</h1>
+            <h1 className="text-4xl font-bold text-white">Your CSM Personality Report</h1>
             <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">
               {`Uncover your cognitive blueprint, revealing how you think, connect, and evolve. Understanding yourself is
               the first step to exploring how you relate to others through the Couple's Insight Report.`}
@@ -223,52 +223,38 @@ DEGREES OF INFLUENCE:
           </div>
         </div>
       </header>
-      {/* SHARE BUTTON: Only for original user */}
 
-      {!isSharedView && (
-        <div className="container flex justify-center md:justify-end mx-auto p-6 max-w-4xl">
-          <button
-            onClick={() => setShowShareModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all"
-          >
-            <Share2 className="w-5 h-5" />
-            Share Your Results
-          </button>
-        </div>
-      )}
-
-      {/* ==================== 1. OVERVIEW ==================== */}
+      {/* ==================== 1. Summary ==================== */}
       <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-8">
         <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">Overview</h2>
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">Summary</h2>
 
-          <div className="space-y-8">
-            {/* Archetype + Type Code */}
-            <div className="space-y-6">
-              {/* USER FIELD */}
-              <div>
-                <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">User:</p>
-                <p className="text-xl font-bold text-[var(--text-primary)]">{userName || "Anonymous"}</p>
-              </div>
-              <div>
-                <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Archetype:</p>
-                <p className="text-xl font-bold text-[var(--text-primary)]">
-                  The {archetypeName}
-                  <span></span>
-                </p>
-              </div>
-              <div>
-                <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Archetype Code:</p>
-                <p className="text-xl font-bold text-[var(--text-primary)]">{typeCodeWithDashes}</p>
+          <div className="space-y-5">
+            <div className="space-y-6 justify-between">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 ">
+                <div className="border border-white/20  bg-white/5  p-4 rounded-lg">
+                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">User:</p>
+                  <p className="text-xl font-bold text-[var(--text-primary)]">{userName || "Anonymous"}</p>
+                </div>
+                <div className="border border-white/20  bg-white/5 p-4 rounded-lg">
+                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Archetype:</p>
+                  <p className="text-xl font-bold text-[var(--text-primary)]">
+                    The {archetypeName}
+                    <span></span>
+                  </p>
+                </div>
+                <div className="border border-white/20  bg-white/5 p-4 rounded-lg">
+                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Archetype Code:</p>
+                  <p className="text-xl font-bold text-[var(--text-primary)]">{typeCodeWithDashes}</p>
+                </div>
               </div>
             </div>
-
             {/* === POLES PREFERENCES === */}
-            <div className="space-y-6">
+            <div className="space-y-6 border border-white/20  bg-white/5 rounded-lg px-4 py-6">
               <h3 className="text-sm font-medium text-[var(--text-secondary)]">Poles Preferences:</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Primary Poles */}
-                <div className="space-y-3 border border-[var(--border)] rounded-lg p-4">
+                <div className="space-y-3  border border-white/10  bg-white/5 rounded-lg p-4">
                   <div className="max-w-sm">
                     <p className="text-lg font-bold text-[var(--text-primary)] mb-2">Primary Poles</p>
                     <div className="flex flex-wrap gap-2">
@@ -333,7 +319,7 @@ DEGREES OF INFLUENCE:
                 </div>
 
                 {/* Secondary Poles */}
-                <div className="space-y-3 border border-[var(--border)] rounded-lg p-4">
+                <div className="space-y-3 border border-white/10  bg-white/5  rounded-lg p-4">
                   <div className="max-w-sm">
                     <p className="text-lg font-bold text-[var(--text-primary)] mb-2">Secondary Poles</p>
                     <div className="flex flex-wrap gap-2">
@@ -399,20 +385,32 @@ DEGREES OF INFLUENCE:
                 </div>
               </div>
             </div>
-
             {/* Essence */}
-            <div>
+            <div className=" border border-white/20  bg-white/5  p-4 rounded-lg">
               <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Essence:</p>
               <p className="text-base italic text-[var(--text-primary)]">{tmpl.summaryEssence.title}</p>
             </div>
           </div>
+
+          {/* SHARE BUTTON: Only for original user */}
+
+          {!isSharedView && (
+            <div className="container flex justify-center md:justify-end mx-auto mt-6 max-w-4xl">
+              <button
+                onClick={() => setShowShareModal(true)}
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all"
+              >
+                <Share2 className="w-5 h-5" />
+                Share Your Results
+              </button>
+            </div>
+          )}
         </div>
       </section>
-
       {/* ==================== 3. YOUR DIMENSIONAL PROFILE ==================== */}
       <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll">
         <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
             Your Dimensional Profile
           </h2>
 
@@ -666,7 +664,7 @@ DEGREES OF INFLUENCE:
       <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll">
         <div className="card-gradient p-6 rounded-lg shadow-custom">
           <div className="text-left space-y-3">
-            <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
+            <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
               Your Archetype in Action
             </h2>
             <p className="text-base md:text-lg text-[var(--text-secondary)] italic leading-relaxed max-w-3xl">
@@ -728,9 +726,7 @@ DEGREES OF INFLUENCE:
       {/* ==================== 4. HOW YOU CONNECT (PREVIEW) ==================== */}
       <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-12">
         <div className="card-gradient p-6 rounded-lg shadow-custom">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
-            How You Connect
-          </h2>
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">How You Connect</h2>
 
           {/* Intro Paragraph */}
           <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">{tmpl.relationships?.intro}</p>

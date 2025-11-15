@@ -331,144 +331,164 @@ export default function PersonalReportPage() {
   return (
     <div className="container mx-auto p-2 md:p-6 max-w-4xl">
       {/* HERO */}
-      <header className="hero-gradient rounded-lg p-6 md:p-8 shadow-custom-lg mb-8">
-        <h1 className="text-2xl md:text-4xl font-bold text-white">Personal Report: {name}</h1>
+      <header className="hero-gradient rounded-lg p-6 shadow-custom-lg ">
+        <h1 className="text-4xl font-bold text-white">Personal Report: {name}</h1>
         <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">
           Your detailed CSM cognitive profile from the Couple’s Dashboard.
         </p>
       </header>
-      {/* ==================== SHARE BUTTON ==================== */}
-      <div className="container flex justify-center md:justify-end mx-auto p-2 md:p-6 max-w-4xl">
-        <button
-          onClick={() => setShowShareModal(true)}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all"
-        >
-          <Share2 className="w-5 h-5" />
-          Share Your Results
-        </button>
-      </div>
+      {/* Summary */}
+      <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-8">
+        <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">Summary</h2>
 
-      {/* OVERVIEW */}
-      <section className="card-gradient p-4 md:p-6 rounded-lg shadow-custom mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6">Overview</h2>
-        <div className="space-y-6">
-          <div>
-            <p className="text-sm font-medium text-[var(--text-secondary)]">User:</p>
-            <p className="text-xl font-bold text-[var(--text-primary)]">{name}</p>
-          </div>
-          <div>
-            <p className="text-sm font-medium text-[var(--text-secondary)]">Archetype:</p>
-            <p className="text-xl font-bold text-[var(--text-primary)]">{archetypeName}</p>
-          </div>
-          <div>
-            <p className="text-sm font-medium text-[var(--text-secondary)]">Code:</p>
-            <p className="text-xl font-bold text-[var(--text-primary)]">{typeCode}</p>
-          </div>
-
-          {/* POLES PREFERENCES */}
-          <div className="space-y-6">
-            <h3 className="text-sm font-medium text-[var(--text-secondary)]">Poles Preferences:</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Primary */}
-              <div className="border border-[var(--border)] rounded-lg p-4">
-                <p className="text-lg font-bold text-[var(--text-primary)] mb-2">Primary Poles</p>
-                <div className="flex flex-wrap gap-2">
-                  {dominants.map((pole, i) => {
-                    const level = categories[i]?.domLevel || "Mild";
-                    const color = {
-                      Mild: "bg-green-500/50",
-                      Moderate: "bg-yellow-500/50",
-                      Strong: "bg-red-500/50",
-                    }[level];
-                    return (
-                      <span key={i} className={`px-3 py-1 rounded-md text-xs font-medium text-white ${color}`}>
-                        {poleFullName[pole]}
-                      </span>
-                    );
-                  })}
+          <div className="space-y-5">
+            <div className="space-y-6 justify-between">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="border border-white/20 bg-white/5 p-4 rounded-lg">
+                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">User:</p>
+                  <p className="text-xl font-bold text-[var(--text-primary)]">{name}</p>
                 </div>
-                <div className="mt-4 text-xs text-[var(--text-secondary)]">
-                  <div className="flex items-center gap-1">
-                    <span>Primary Degrees of Dominance:</span>
-                    <HelpCircle
-                      onClick={() => openModal("Primary Dominance", PRIMARY_EXPLANATION)}
-                      className="h-4 w-4 cursor-pointer hover:text-[var(--accent)]"
-                    />
-                  </div>
-                  <div className="flex gap-2 mt-1">
-                    <div className="flex items-center gap-1">
-                      <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                      Mild
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                      Moderate
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                      Strong
-                    </div>
-                  </div>
+                <div className="border border-white/20 bg-white/5 p-4 rounded-lg">
+                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Archetype:</p>
+                  <p className="text-xl font-bold text-[var(--text-primary)]">{archetypeName}</p>
+                </div>
+                <div className="border border-white/20 bg-white/5 p-4 rounded-lg">
+                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Code:</p>
+                  <p className="text-xl font-bold text-[var(--text-primary)]">{typeCode}</p>
                 </div>
               </div>
+            </div>
 
-              {/* Secondary */}
-              <div className="border border-[var(--border)] rounded-lg p-4">
-                <p className="text-lg font-bold text-[var(--text-primary)] mb-2">Secondary Poles</p>
-                <div className="flex flex-wrap gap-2">
-                  {dominants.map((pole, i) => {
-                    const level = categories[i]?.infLevel || "High";
-                    const color = {
-                      High: "bg-red-500/50",
-                      Moderate: "bg-yellow-500/50",
-                      Low: "bg-green-500/50",
-                    }[level];
-                    const secPole = poleMap[pole];
-                    return (
-                      <span key={i} className={`px-3 py-1 rounded-md text-xs font-medium text-white ${color}`}>
-                        {poleFullName[secPole]}
-                      </span>
-                    );
-                  })}
-                </div>
-                <div className="mt-4 text-xs text-[var(--text-secondary)]">
-                  <div className="flex items-center gap-1">
-                    <span>Secondary Influence:</span>
-                    <HelpCircle
-                      onClick={() => openModal("Secondary Influence", SECONDARY_EXPLANATION)}
-                      className="h-4 w-4 cursor-pointer hover:text-[var(--accent)]"
-                    />
+            {/* === POLES PREFERENCES === */}
+            <div className="space-y-6 border border-white/20 bg-white/5 rounded-lg px-4 py-6">
+              <h3 className="text-sm font-medium text-[var(--text-secondary)]">Poles Preferences:</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Primary Poles */}
+                <div className="space-y-3 border border-white/10 bg-white/5 rounded-lg p-4">
+                  <div className="max-w-sm">
+                    <p className="text-lg font-bold text-[var(--text-primary)] mb-2">Primary Poles</p>
+                    <div className="flex flex-wrap gap-2">
+                      {dominants.map((pole, i) => {
+                        const level = categories[i]?.domLevel || "Mild";
+                        const color = {
+                          Mild: "bg-green-500/50",
+                          Moderate: "bg-yellow-500/50",
+                          Strong: "bg-red-500/50",
+                        }[level];
+                        return (
+                          <span
+                            key={i}
+                            className={`inline-block px-3 py-1 rounded-md text-xs font-medium text-white ${color} shadow-sm`}
+                          >
+                            {poleFullName[pole]}
+                          </span>
+                        );
+                      })}
+                    </div>
                   </div>
-                  <div className="flex gap-2 mt-1">
+
+                  {/* Legend BELOW */}
+                  <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] mt-4">
                     <div className="flex items-center gap-1">
-                      <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                      Low
+                      <span className="font-medium">Primary Degrees of Dominance:</span>
+                      <HelpCircle
+                        onClick={() => openModal("Primary Dominance", PRIMARY_EXPLANATION)}
+                        className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
+                      />
                     </div>
-                    <div className="flex items-center gap-1">
-                      <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                      Moderate
+                    <div className="flex flex-wrap gap-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                        <span>Mild</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                        <span>Moderate</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                        <span>Strong</span>
+                      </div>
                     </div>
+                  </div>
+                </div>
+
+                {/* Secondary Poles */}
+                <div className="space-y-3 border border-white/10 bg-white/5 rounded-lg p-4">
+                  <div className="max-w-sm">
+                    <p className="text-lg font-bold text-[var(--text-primary)] mb-2">Secondary Poles</p>
+                    <div className="flex flex-wrap gap-2">
+                      {dominants.map((pole, i) => {
+                        const level = categories[i]?.infLevel || "High";
+                        const color = {
+                          High: "bg-red-500/50",
+                          Moderate: "bg-yellow-500/50",
+                          Low: "bg-green-500/50",
+                        }[level];
+                        const secPole = poleMap[pole];
+                        return (
+                          <span
+                            key={i}
+                            className={`inline-block px-3 py-1 rounded-md text-xs font-medium text-white ${color} shadow-sm`}
+                          >
+                            {poleFullName[secPole]}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Legend BELOW */}
+                  <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] mt-4">
                     <div className="flex items-center gap-1">
-                      <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                      High
+                      <span className="font-medium">Secondary Influence:</span>
+                      <HelpCircle
+                        onClick={() => openModal("Secondary Influence", SECONDARY_EXPLANATION)}
+                        className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
+                      />
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                        <span>Low</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                        <span>Moderate</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                        <span>High</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div>
-            <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Essence:</p>
-            <p className="text-base italic text-[var(--text-primary)]">{tmpl.summaryEssence.title}</p>
+            {/* Essence */}
+            <div className="border border-white/20 bg-white/5 p-4 rounded-lg">
+              <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Essence:</p>
+              <p className="text-base italic text-[var(--text-primary)]">{tmpl.summaryEssence.title}</p>
+            </div>
+          </div>
+          {/* ==================== SHARE BUTTON ==================== */}
+          <div className="container mt-6 flex justify-center md:justify-end mx-auto  max-w-4xl">
+            <button
+              onClick={() => setShowShareModal(true)}
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all"
+            >
+              <Share2 className="w-5 h-5" />
+              Share Your Results
+            </button>
           </div>
         </div>
       </section>
-
       {/* DIMENSIONAL PROFILE */}
       <section className="space-y-12 mb-12">
         <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6">Your Dimensional Profile</h2>
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6">Your Dimensional Profile</h2>
           <p className="text-lg text-[var(--text-secondary)] mb-8">{tmpl.dimensionalProfile.introduction}</p>
           {tmpl.detailedEssence?.map(
             (item, i) =>
@@ -588,10 +608,9 @@ export default function PersonalReportPage() {
           </div>
         </div>
       </section>
-
       {/* STRENGTHS & CHALLENGES */}
       <section className="card-gradient p-6 rounded-lg shadow-custom mb-12">
-        <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6">Your Archetype in Action</h2>
+        <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6">Your Archetype in Action</h2>
         <p className="italic text-[var(--text-secondary)] mb-8">
           Explore the real-world strengths that empower you and the challenges that invite growth.
         </p>
@@ -626,13 +645,10 @@ export default function PersonalReportPage() {
           </div>
         </div>
       </section>
-
       {/* ==================== 4. HOW YOU CONNECT (UNLOCKED FOR PAID) ==================== */}
       <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-12">
         <div className="card-gradient p-6 rounded-lg shadow-custom">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
-            How You Connect
-          </h2>
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">How You Connect</h2>
 
           <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">{tmpl.relationships?.intro}</p>
 
@@ -675,7 +691,6 @@ export default function PersonalReportPage() {
           </div>
         </div>
       </section>
-
       {/* ==================== SHARE MODAL ==================== */}
       <AnimatePresence>
         {showShareModal && (
@@ -757,7 +772,6 @@ export default function PersonalReportPage() {
           </motion.div>
         )}
       </AnimatePresence>
-
       {/* ==================== CTA ==================== */}
       <section className="max-w-4xl mx-auto text-center mt-12">
         <button
@@ -768,7 +782,6 @@ export default function PersonalReportPage() {
           Share Your Results
         </button>
       </section>
-
       {/* ==================== HELP MODAL ==================== */}
       <AnimatePresence>
         {showModal && (
