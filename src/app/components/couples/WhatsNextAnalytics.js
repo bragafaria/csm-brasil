@@ -25,7 +25,7 @@ export default function WhatsNextAnalytics() {
 
           <p className="text-lg leading-relaxed">
             Each session is private and personally reviewed by a{" "}
-            <span className="font-semibold text-[var(--text-primary)]">CSM Certified Expert</span>, ensuring your
+            <span className="font-semibold text-[var(--text-primary)]">CSM-Certified Expert</span>, ensuring your
             reflections are understood with depth, care, and precision. You’ll receive insights that connect your unique
             cognitive style to real-life situations, turning self-awareness into meaningful action and helping you move
             forward with greater clarity and confidence.

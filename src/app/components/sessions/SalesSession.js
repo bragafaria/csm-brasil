@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { supabase } from "@/app/utils/supabaseClient";
 import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 
 export default function SalesSession({
   hasFreeAvailable,
@@ -82,26 +83,61 @@ export default function SalesSession({
         transition={{ duration: 0.4 }}
         className="card-gradient p-6 md:p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
       >
-        <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4">Unlock Blueprint Dialogue</h2>
+        {/* Headline */}
+        <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4">
+          Transform Clarity into Confident Action
+        </h2>
 
-        <p className="text-[var(--text-secondary)] text-sm md:text-base mb-6">
-          Guided self-reflection sessions tailored to your CSM archetype. Benefits:
+        {/* Subtitle */}
+        <p className="text-[var(--text-secondary)] text-sm md:text-base mb-6 max-w-3xl">
+          Guided self-reflection sessions aligned with your <strong>CSM archetype</strong>.
         </p>
 
-        <ul className="space-y-2 mb-6 text-[var(--text-primary)] list-disc pl-6">
-          <li>Personalized insights based on your cognitive blueprint</li>
-          <li>Actionable steps for growth in relationships and life</li>
-          <li>Hybrid AI-human support for depth and efficiency</li>
-          <li>Private, positive, and collaborative dialogues</li>
-          <li>24-hour turnaround (Mon–Fri)</li>
-        </ul>
+        {/* What You Get */}
+        <div className="max-w-3xl space-y-4">
+          <p className="text-[var(--text-secondary)] text-sm md:text-base font-medium">What you get:</p>
+
+          <ul className="space-y-3 text-[var(--text-primary)] list-none">
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 text-[var(--accent)] flex-shrink-0 mt-0.5" />
+              <span className="text-sm md:text-base">
+                In-depth <strong>personalized insights report</strong> based on your cognitive profile and session
+                entry.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 text-[var(--accent)] flex-shrink-0 mt-0.5" />
+              <span className="text-sm md:text-base">
+                <strong>Actionable steps</strong> for growth in relationships and life.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 text-[var(--accent)] flex-shrink-0 mt-0.5" />
+              <span className="text-sm md:text-base">
+                Support from a <strong>CSM-Certified Expert</strong> for depth and efficiency.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 text-[var(--accent)] flex-shrink-0 mt-0.5" />
+              <span className="text-sm md:text-base">
+                <strong>Private, positive, and collaborative</strong> sessions.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <Check className="h-5 w-5 text-[var(--accent)] flex-shrink-0 mt-0.5" />
+              <span className="text-sm md:text-base">
+                Fast turnaround within <strong>1–2 business days</strong>.
+              </span>
+            </li>
+          </ul>
+        </div>
 
         {/* Active Session Warning */}
         {hasActiveSession && !isActiveSubscriber && (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg mb-6"
+            className="mt-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg"
           >
             <p className="text-red-500 text-sm md:text-base font-medium">
               Your session is being processed. View it in <strong>View Sessions</strong>.
@@ -110,7 +146,7 @@ export default function SalesSession({
         )}
 
         {/* CTA Buttons */}
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="mt-8 flex flex-col md:flex-row gap-4">
           {hasFreeAvailable ? (
             <motion.button
               whileHover={{ scale: 1.03 }}
@@ -126,7 +162,7 @@ export default function SalesSession({
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={handleBuySession}
-                className="flex-1 px-6 py-4 rounded-lg font-bold text-lg bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white shadow-md hover:shadow-lg transition-all"
+                className="flex-1 px-6 py-4 rounded-lg font-bold text-base md:text-lg bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white shadow-md hover:shadow-lg transition-all text-center"
               >
                 Buy Session Credit ($19)
               </motion.button>
@@ -135,9 +171,9 @@ export default function SalesSession({
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={handleSubscribe}
-                className="flex-1 px-6 py-4 rounded-lg font-bold text-lg btn-primary shadow-md hover:shadow-lg transition-all"
+                className="flex-1 px-6 py-4 rounded-lg font-bold text-base md:text-lg btn-primary shadow-md hover:shadow-lg transition-all text-center"
               >
-                Subscribe ($49/month — Unlimited)
+                Subscribe for $49/month - (Unlimited Sessions)
               </motion.button>
             </>
           )}

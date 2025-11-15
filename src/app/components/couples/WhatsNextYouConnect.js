@@ -27,7 +27,7 @@ export default function WhatsNextYouConnect() {
             These private self-reflection dialogues help you and your partner bring your CSM blueprint into everyday
             life. Whether you want to navigate recurring patterns, improve communication, or reconnect with empathy,
             each session offers personalized reports crafted by a{" "}
-            <span className="font-semibold text-[var(--text-primary)]">CSM Certified Expert</span> to help you translate
+            <span className="font-semibold text-[var(--text-primary)]">CSM-Certified Expert</span> to help you translate
             potential into practice.
           </p>
 
