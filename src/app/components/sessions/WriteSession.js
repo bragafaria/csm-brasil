@@ -282,11 +282,9 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
         {/* ==================== STEP 2: EDITOR (Only when showEditor = true) ==================== */}
         {showEditor && (
           <>
-            <div className="flex flex-col items-center">
-              <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] md:mb-10 text-center">
-                Submit Your Session Entry
-              </h1>
-            </div>
+            <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] md:mb-10 text-center">
+              Submit Your Session Entry
+            </h1>
 
             <div className="flex justify-end h-1 gap-2">
               {savedMessage && (

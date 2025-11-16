@@ -64,7 +64,7 @@ export default function SessionPreview({ session, onClose, onOpenQuestionModal, 
       {/* Header - Fully Responsive */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
         <div className="flex-1 order-2 sm:order-1">
-          <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mb-3">Session Preview</h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mb-3">View Session</h3>
 
           {/* Status Badge - Responsive */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-end gap-2 mt-10">

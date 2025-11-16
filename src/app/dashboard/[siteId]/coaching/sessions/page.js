@@ -128,7 +128,7 @@ export default function SessionsPage() {
             <div>
               <h1 className="text-2xl md:text-4xl font-bold text-white">CSM Sessions</h1>
               <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">
-                Engage in guided self-reflection tailored to your CSM archetype.
+                Engage in guided self-reflection based on your CSM archetype.
               </p>
             </div>
           </div>

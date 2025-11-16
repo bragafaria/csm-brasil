@@ -173,7 +173,7 @@ export default function SalesSession({
                 onClick={handleSubscribe}
                 className="flex-1 px-6 py-4 rounded-lg font-bold text-base md:text-lg btn-primary shadow-md hover:shadow-lg transition-all text-center"
               >
-                Subscribe for $49/month - (Unlimited Sessions)
+                Unlimited Sessions for $49/month
               </motion.button>
             </>
           )}
