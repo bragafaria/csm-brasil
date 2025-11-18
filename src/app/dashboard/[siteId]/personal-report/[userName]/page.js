@@ -20,6 +20,7 @@ import {
 import { reportTemplates } from "@/app/lib/personal/personal-report-data";
 import Spinner from "@/app/components/ui/Spinner";
 import LZString from "lz-string";
+import { PieChart } from "@mui/x-charts/PieChart";
 
 // === SAFE JSON PARSER ===
 const safeParse = (value, fallback = []) => {
@@ -81,6 +82,16 @@ const poleFullName = {
   H: "Collaborative Harmony",
   A: "Independent Autonomy",
 };
+
+const dimensionLabels = [
+  "Information Processing",
+  "Decision-Making",
+  "Energy Orientation",
+  "Change Approach",
+  "Interpersonal Style",
+];
+
+const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A28EFF"];
 
 export default function PersonalReportPage() {
   const { siteId, userName } = useParams();
@@ -216,10 +227,12 @@ export default function PersonalReportPage() {
   const generateShareableLink = async () => {
     const jsonStr = JSON.stringify({
       userName: data.name,
-      percents: data.percents,
-      dominants: data.dominants,
-      archetype: { name: data.archetypeName },
-      typeCode: data.typeCode,
+      results: {
+        percents: data.percents,
+        dominants: data.dominants,
+        archetype: { name: data.archetypeName },
+        typeCode: data.typeCode,
+      },
     });
     const compressed = LZString.compressToEncodedURIComponent(jsonStr);
     const longUrl = `${window.location.origin}/report/${data.typeCode}?data=${compressed}`;
@@ -239,7 +252,7 @@ export default function PersonalReportPage() {
   const shareVia = async (platform) => {
     setIsShortening(true);
     const shareUrl = await generateShareableLink();
-    const shareText = `Hey, it's ${data.name}! I just took the CSM personality assessment and got “${data.archetypeName}” type. It was way more accurate than I expected. Take a look:`;
+    const shareText = `Hey, it's ${data.name}! I just took the CSM personality assessment and got "The ${data.archetypeName}" type. It was way more accurate than I expected. Take a look:`;
 
     const shareData = {
       title: `I'm The ${data.archetypeName} (${data.typeCode})`,
@@ -281,6 +294,12 @@ export default function PersonalReportPage() {
     });
   };
 
+  const getLevel = (primaryPct) => {
+    if (primaryPct >= 86) return { dom: "Strong", inf: "Low" };
+    if (primaryPct >= 66) return { dom: "Moderate", inf: "Moderate" };
+    return { dom: "Mild", inf: "High" };
+  };
+
   const getColor = (level) =>
     ({
       Mild: { border: "border-green-400/20", text: "text-green-400", bg: "bg-green-400", from: "from-green-500/10" },
@@ -312,7 +331,16 @@ export default function PersonalReportPage() {
 
   if (!data) return null;
 
-  const { name, percents, dominants, categories, typeCode, archetypeName, tmpl } = data;
+  const { name, percents, dominants, typeCode, archetypeName, tmpl } = data;
+
+  // Calculate DPS values
+  const dps = percents.map((p) => Math.abs(p.p1 - p.p2));
+  const pieData = dps.map((value, index) => ({
+    id: index,
+    value,
+    label: dimensionLabels[index],
+    color: colors[index],
+  }));
 
   // === FALLBACK DESCRIPTIONS ===
   const fallbackDesc = {
@@ -331,15 +359,103 @@ export default function PersonalReportPage() {
   return (
     <div className="container mx-auto p-2 md:p-6 max-w-4xl">
       {/* HERO */}
-      <header className="hero-gradient rounded-lg p-6 shadow-custom-lg ">
-        <h1 className="text-4xl font-bold text-white">Personal Report: {name}</h1>
-        <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">
-          Your detailed CSM cognitive profile from the Couple’s Dashboard.
-        </p>
+      <header className="hero-gradient rounded-lg p-6 md:p-8 shadow-custom-lg">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
+          <div>
+            <h1 className="text-4xl font-bold text-white">Your CSM Personality Report</h1>
+            <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">
+              {`Uncover your cognitive blueprint, revealing how you think, connect, and evolve. Understanding yourself is
+              the first step to exploring how you relate to others through the Couple's Insight Report.`}
+            </p>
+          </div>
+        </div>
       </header>
-      {/* Summary */}
+
+      {/* ==================== SUMMARY ==================== */}
       <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-8">
         <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
+          {/* ==================== CSM DIMENSIONS EXPLANATION ==================== */}
+          <div className="mt-8 p-6 bg-[var(--surface-variant)] rounded-xl border border-[var(--border)]">
+            <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6 text-left">Quick Explanation</h2>
+
+            <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed mb-6 text-left max-w-3xl">
+              The Cognitive Spectrum Model (CSM) breaks down how your mind works into five independent dimensions, each
+              like a slider between two opposite poles that shape the way you think, decide, and interact.
+            </p>
+
+            <div className="space-y-6 text-left">
+              {/* Dimension 1 */}
+              <div>
+                <h4 className="font-bold text-[var(--text-primary)] mb-1">Information Processing</h4>
+                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
+                  <li>
+                    <strong>Concrete (C):</strong> Facts, details, real.
+                  </li>
+                  <li>
+                    <strong>Abstract (N):</strong> Patterns, ideas, possibilities.
+                  </li>
+                </ul>
+              </div>
+
+              {/* Dimension 2 */}
+              <div>
+                <h4 className="font-bold text-[var(--text-primary)] mb-1">Decision-Making</h4>
+                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
+                  <li>
+                    <strong>Analytical Logic (L):</strong> Rules, data, logic.
+                  </li>
+                  <li>
+                    <strong>Empathic Values (V):</strong> Feelings, harmony, people.
+                  </li>
+                </ul>
+              </div>
+
+              {/* Dimension 3 */}
+              <div>
+                <h4 className="font-bold text-[var(--text-primary)] mb-1">Energy Orientation</h4>
+                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
+                  <li>
+                    <strong>Outward (O):</strong> Action, social, external.
+                  </li>
+                  <li>
+                    <strong>Inward (I):</strong> Reflection, solitude, inner.
+                  </li>
+                </ul>
+              </div>
+
+              {/* Dimension 4 */}
+              <div>
+                <h4 className="font-bold text-[var(--text-primary)] mb-1">Change Approach</h4>
+                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
+                  <li>
+                    <strong>Stable Structure (S):</strong> Plans, order, predictable.
+                  </li>
+                  <li>
+                    <strong>Adaptive Flexibility (F):</strong> Spontaneity, flow, flexible.
+                  </li>
+                </ul>
+              </div>
+
+              {/* Dimension 5 */}
+              <div>
+                <h4 className="font-bold text-[var(--text-primary)] mb-1">Interpersonal Style</h4>
+                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
+                  <li>
+                    <strong>Collaborative Harmony (H):</strong> Team, consensus, group.
+                  </li>
+                  <li>
+                    <strong>Independent Autonomy (A):</strong> Solo, freedom, self.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <p className="text-sm md:text-base italic text-[var(--text-secondary)] mt-6 text-left max-w-3xl">
+              Your unique mix across these poles in each dimension creates your cognitive profile. No pole is better,
+              just different strengths and growth areas.
+            </p>
+          </div>
+
           <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">Summary</h2>
 
           <div className="space-y-5">
@@ -354,7 +470,7 @@ export default function PersonalReportPage() {
                   <p className="text-xl font-bold text-[var(--text-primary)]">{archetypeName}</p>
                 </div>
                 <div className="border border-white/20 bg-white/5 p-4 rounded-lg">
-                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Code:</p>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Archetype Code:</p>
                   <p className="text-xl font-bold text-[var(--text-primary)]">{typeCode}</p>
                 </div>
               </div>
@@ -362,104 +478,280 @@ export default function PersonalReportPage() {
 
             {/* === POLES PREFERENCES === */}
             <div className="space-y-6 border border-white/20 bg-white/5 rounded-lg px-4 py-6">
-              <h3 className="text-sm font-medium text-[var(--text-secondary)]">Poles Preferences:</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {/* Primary Poles */}
-                <div className="space-y-3 border border-white/10 bg-white/5 rounded-lg p-4">
-                  <div className="max-w-sm">
-                    <p className="text-lg font-bold text-[var(--text-primary)] mb-2">Primary Poles</p>
-                    <div className="flex flex-wrap gap-2">
-                      {dominants.map((pole, i) => {
-                        const level = categories[i]?.domLevel || "Mild";
-                        const color = {
-                          Mild: "bg-green-500/50",
-                          Moderate: "bg-yellow-500/50",
-                          Strong: "bg-red-500/50",
-                        }[level];
-                        return (
-                          <span
-                            key={i}
-                            className={`inline-block px-3 py-1 rounded-md text-xs font-medium text-white ${color} shadow-sm`}
-                          >
-                            {poleFullName[pole]}
-                          </span>
-                        );
-                      })}
-                    </div>
-                  </div>
+              {/* ==================== DPS DISTRIBUTION ==================== */}
+              <div className="flex flex-col items-center p-4 bg-[var(--surface-variant)] rounded-lg">
+                <h3 className="text-lg font-bold text-[var(--text-primary)] mb-4 text-center">
+                  Dimensional Preference Strength (DPS)
+                </h3>
 
-                  {/* Legend BELOW */}
-                  <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] mt-4">
-                    <div className="flex items-center gap-1">
-                      <span className="font-medium">Primary Degrees of Dominance:</span>
-                      <HelpCircle
-                        onClick={() => openModal("Primary Dominance", PRIMARY_EXPLANATION)}
-                        className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
-                      />
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                        <span>Mild</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                        <span>Moderate</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                        <span>Strong</span>
-                      </div>
-                    </div>
-                  </div>
+                <p className="text-sm text-[var(--text-secondary)] text-center max-w-md mb-6 leading-relaxed">
+                  {` DPS measures how strongly you lean toward one pole over its opposite on each of the five dimensions.
+                  Higher DPS means you rely heavily on one style of thinking (it's your natural default). Lower DPS
+                  means you move easily between both poles (you are naturally flexible).`}
+                </p>
+
+                <div className="pie-chart-container w-full max-w-md">
+                  <PieChart
+                    series={[
+                      {
+                        data: pieData,
+                        innerRadius: 50,
+                        outerRadius: 100,
+                        paddingAngle: 3,
+                        cornerRadius: 5,
+                        arcLabel: (item) => `${item.value}`,
+                        arcLabelMinAngle: 20,
+                      },
+                    ]}
+                    width={400}
+                    height={300}
+                    slotProps={{
+                      legend: {
+                        direction: "column",
+                        position: { vertical: "bottom", horizontal: "middle" },
+                        padding: { top: 8 },
+                      },
+                    }}
+                    sx={{
+                      "& .MuiChartsLegend-root": {
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flexDirection: { xs: "column", md: "row" },
+                        flexWrap: "wrap",
+                        gap: { xs: "8px", md: "12px" },
+                        textAlign: "center",
+                      },
+                      "& .MuiChartsLegend-label": {
+                        fontSize: { xs: "12px", md: "16px" },
+                        fontWeight: 500,
+                      },
+                      "& text": { fill: "#f8fafc" },
+                      "& .MuiPieArc-root": { stroke: "none !important", strokeWidth: "0 !important" },
+                      "& svg, & .MuiChartsSurface-root": { border: "none !important", outline: "none !important" },
+                    }}
+                  />
                 </div>
 
-                {/* Secondary Poles */}
-                <div className="space-y-3 border border-white/10 bg-white/5 rounded-lg p-4">
-                  <div className="max-w-sm">
-                    <p className="text-lg font-bold text-[var(--text-primary)] mb-2">Secondary Poles</p>
-                    <div className="flex flex-wrap gap-2">
-                      {dominants.map((pole, i) => {
-                        const level = categories[i]?.infLevel || "High";
-                        const color = {
-                          High: "bg-red-500/50",
-                          Moderate: "bg-yellow-500/50",
-                          Low: "bg-green-500/50",
-                        }[level];
-                        const secPole = poleMap[pole];
-                        return (
-                          <span
-                            key={i}
-                            className={`inline-block px-3 py-1 rounded-md text-xs font-medium text-white ${color} shadow-sm`}
-                          >
-                            {poleFullName[secPole]}
-                          </span>
-                        );
-                      })}
+                {/* DPS Strongest Dimension */}
+                <div className="mt-8 p-6 bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl border border-[var(--border)] shadow-lg">
+                  {(() => {
+                    const maxDpsValue = Math.max(...dps);
+                    const strongestIndices = dps
+                      .map((value, index) => (value === maxDpsValue ? index : -1))
+                      .filter((index) => index !== -1);
+
+                    return (
+                      <>
+                        <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-6 text-center">
+                          {strongestIndices.length > 1 ? "Your Strongest Dimensions" : "Your Strongest Dimension"}
+                        </h3>
+
+                        <div className="space-y-8">
+                          {strongestIndices.map((maxDpsIndex, idx) => {
+                            const strongestDimension = dimensionLabels[maxDpsIndex];
+                            const strongestDpsValue = dps[maxDpsIndex];
+                            const dominantPole = dominants[maxDpsIndex];
+                            const oppositePole = poleMap[dominantPole];
+                            const dominantPoleName = poleFullName[dominantPole];
+                            const oppositePoleName = poleFullName[oppositePole];
+
+                            return (
+                              <div key={maxDpsIndex} className="flex flex-col items-center gap-6">
+                                <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[var(--primary)] to-purple-600 rounded-full shadow-lg">
+                                  <span className="text-base md:text-xl font-bold text-white">
+                                    {strongestDimension}
+                                  </span>
+                                  <span className="px-3 py-1 bg-white/20 rounded-full text-sm font-semibold text-white">
+                                    DPS: {strongestDpsValue}
+                                  </span>
+                                </div>
+
+                                <div className="grid md:grid-cols-2 gap-4 md:gap-6 w-full">
+                                  <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.2 + idx * 0.1 }}
+                                    className="relative overflow-hidden p-6 bg-gradient-to-br from-green-500/10 to-emerald-600/5 rounded-xl border-2 border-green-500/30 shadow-md"
+                                  >
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full blur-3xl" />
+                                    <div className="relative z-10">
+                                      <div className="flex items-center gap-2 mb-3">
+                                        <CheckCircle className="w-6 h-6 text-green-400" />
+                                        <span className="text-sm font-semibold text-green-400 uppercase tracking-wide">
+                                          Natural Default
+                                        </span>
+                                      </div>
+                                      <h4 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-2">
+                                        {dominantPoleName}
+                                      </h4>
+                                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                                        This is your strongest cognitive preference, your go-to way of processing
+                                        information in this dimension. You rely on this naturally and effortlessly.
+                                      </p>
+                                    </div>
+                                  </motion.div>
+
+                                  <motion.div
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.3 + idx * 0.1 }}
+                                    className="relative overflow-hidden p-6 bg-gradient-to-br from-purple-500/10 to-violet-600/5 rounded-xl border-2 border-purple-500/30 shadow-md"
+                                  >
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl" />
+                                    <div className="relative z-10">
+                                      <div className="flex items-center gap-2 mb-3">
+                                        <CircleAlert className="w-6 h-6 text-purple-400" />
+                                        <span className="text-sm font-semibold text-purple-400 uppercase tracking-wide">
+                                          Growth Opportunity
+                                        </span>
+                                      </div>
+                                      <h4 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-2">
+                                        {oppositePoleName}
+                                      </h4>
+                                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                                        This is your opposite pole, the area where conscious development can create the
+                                        biggest personal expansion and cognitive flexibility.
+                                      </p>
+                                    </div>
+                                  </motion.div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        <div className="w-full p-4 mt-6 bg-[var(--surface)]/50 rounded-lg border border-[var(--border)]/50">
+                          <p className="text-sm text-center text-[var(--text-secondary)] italic">
+                            <strong className="text-[var(--text-primary)]">Insight:</strong> Your high DPS in{" "}
+                            {strongestIndices.length > 1
+                              ? strongestIndices.map((i, idx) => (
+                                  <span key={i}>
+                                    {dimensionLabels[i]}
+                                    {idx < strongestIndices.length - 2 ? ", " : ""}
+                                    {idx === strongestIndices.length - 2 ? " and " : ""}
+                                  </span>
+                                ))
+                              : dimensionLabels[strongestIndices[0]]}{" "}
+                            {strongestIndices.length > 1 ? "mean" : "means"} you have pronounced default mode
+                            {strongestIndices.length > 1 ? "s" : ""}. Developing your opposite pole
+                            {strongestIndices.length > 1 ? "s" : ""} will bring the greatest balance and adaptability to
+                            your cognitive toolkit.
+                          </p>
+                        </div>
+                      </>
+                    );
+                  })()}
+                </div>
+              </div>
+
+              {/* === POLES PREFERENCES === */}
+              <div className="mt-8 p-6 bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl border border-[var(--border)] shadow-lg">
+                <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4 text-center">Poles Preferences</h3>
+                <p className="text-sm text-[var(--text-secondary)] text-center max-w-2xl mx-auto mb-6 leading-relaxed">
+                  Your natural defaults (Primary) and their opposite growth areas (Secondary) at a glance.
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Primary Poles */}
+                  <div className="space-y-4 border border-white/10 bg-white/5 rounded-lg p-5">
+                    <div>
+                      <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Primary Poles</p>
+                      <div className="flex flex-wrap gap-2">
+                        {dominants.map((pole, i) => {
+                          const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
+                          const level = getLevel(pct).dom;
+                          const color = {
+                            Mild: "bg-green-500/50",
+                            Moderate: "bg-yellow-500/50",
+                            Strong: "bg-red-500/50",
+                          }[level];
+
+                          return (
+                            <span
+                              key={i}
+                              className={`inline-block px-3 py-1.5 rounded-md text-sm md:text-base font-medium text-white ${color} shadow-sm`}
+                            >
+                              {poleFullName[pole]}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] pt-3 border-t border-white/10">
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-medium">Primary Degrees of Dominance:</span>
+                        <HelpCircle
+                          onClick={() => openModal("Primary Degrees of Dominance", PRIMARY_EXPLANATION)}
+                          className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
+                        />
+                      </div>
+                      <div className="flex flex-wrap gap-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                          <span>Mild</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                          <span>Moderate</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                          <span>Strong</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Legend BELOW */}
-                  <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] mt-4">
-                    <div className="flex items-center gap-1">
-                      <span className="font-medium">Secondary Influence:</span>
-                      <HelpCircle
-                        onClick={() => openModal("Secondary Influence", SECONDARY_EXPLANATION)}
-                        className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
-                      />
+                  {/* Secondary Poles */}
+                  <div className="space-y-4 border border-white/10 bg-white/5 rounded-lg p-5">
+                    <div>
+                      <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Secondary Poles</p>
+                      <div className="flex flex-wrap gap-2">
+                        {dominants.map((pole, i) => {
+                          const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
+                          const level = getLevel(pct).inf;
+                          const color = {
+                            High: "bg-red-500/50",
+                            Moderate: "bg-yellow-500/50",
+                            Low: "bg-green-500/50",
+                          }[level];
+                          const secPole = poleMap[pole];
+
+                          return (
+                            <span
+                              key={i}
+                              className={`inline-block px-3 py-1.5 rounded-md text-sm md:text-base font-medium text-white ${color} shadow-sm`}
+                            >
+                              {poleFullName[secPole]}
+                            </span>
+                          );
+                        })}
+                      </div>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                        <span>Low</span>
+
+                    <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] pt-3 border-t border-white/10">
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-medium">Secondary Degrees of Influence:</span>
+                        <HelpCircle
+                          onClick={() => openModal("Secondary Degrees of Influence", SECONDARY_EXPLANATION)}
+                          className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
+                        />
                       </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                        <span>Moderate</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                        <span>High</span>
+                      <div className="flex flex-wrap gap-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                          <span>Low</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                          <span>Moderate</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                          <span>High</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -469,12 +761,13 @@ export default function PersonalReportPage() {
 
             {/* Essence */}
             <div className="border border-white/20 bg-white/5 p-4 rounded-lg">
-              <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Essence:</p>
+              <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Your Essence:</p>
               <p className="text-base italic text-[var(--text-primary)]">{tmpl.summaryEssence.title}</p>
             </div>
           </div>
-          {/* ==================== SHARE BUTTON ==================== */}
-          <div className="container mt-6 flex justify-center md:justify-end mx-auto  max-w-4xl">
+
+          {/* SHARE BUTTON */}
+          <div className="container flex justify-center md:justify-end mx-auto mt-6 max-w-4xl">
             <button
               onClick={() => setShowShareModal(true)}
               className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all"
@@ -485,32 +778,36 @@ export default function PersonalReportPage() {
           </div>
         </div>
       </section>
-      {/* DIMENSIONAL PROFILE */}
-      <section className="space-y-12 mb-12">
+
+      {/* ==================== DIMENSIONAL PROFILE ==================== */}
+      <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll">
         <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
-          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6">Your Dimensional Profile</h2>
-          <p className="text-lg text-[var(--text-secondary)] mb-8">{tmpl.dimensionalProfile.introduction}</p>
-          {tmpl.detailedEssence?.map(
-            (item, i) =>
-              item.note && (
-                <p key={i} className="italic text-[var(--text-secondary)] mb-8">
-                  {item.note}
-                </p>
-              )
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
+            Your Dimensional Profile
+          </h2>
+
+          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">
+            {tmpl.dimensionalProfile.introduction}
+          </p>
+
+          {tmpl.detailedEssence.map((item, i) =>
+            item.note ? (
+              <p key={i} className="italic text-medium text-[var(--text-secondary)] mb-8">
+                {item.note}
+              </p>
+            ) : null
           )}
 
           <div className="space-y-10">
-            {tmpl.dimensionalProfile.dimensions.map((dim, i) => {
-              const pct = percents[i];
+            {tmpl.dimensionalProfile.dimensions.map((dim, dimIdx) => {
+              const pct = percents[dimIdx];
+              const primaryPole = dominants[dimIdx];
               const primaryPct = Math.round(pct.p1 > pct.p2 ? pct.p1 : pct.p2);
               const secondaryPct = 100 - primaryPct;
-              const primaryPole = dominants[i];
-              const dom = categories[i]?.domLevel || "Mild";
-              const inf = categories[i]?.infLevel || "High";
+              const { dom, inf } = getLevel(primaryPct);
+
               const primaryFull = poleFullName[primaryPole];
               const secondaryFull = poleFullName[poleMap[primaryPole]];
-              const primaryColor = getColor(dom);
-              const secondaryColor = getColor(inf);
 
               const primaryDesc =
                 dim.descriptions?.[primaryPole] || fallbackDesc[primaryPole] || "Description unavailable.";
@@ -519,86 +816,103 @@ export default function PersonalReportPage() {
                 fallbackDesc[poleMap[primaryPole]] ||
                 "Description unavailable.";
 
+              const primaryColor = getColor(dom);
+              const secondaryColor = getColor(inf);
+
               return (
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false }}
-                  transition={{ duration: 0.6 }}
-                  className="bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] p-6 rounded-2xl shadow-lg border border-[rgba(var(--primary-rgb),0.2)] hover:border-[rgba(var(--primary-rgb),0.4)] transition-all"
+                  key={dimIdx}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.2 }}
+                  variants={{
+                    hidden: { opacity: 0, y: 30 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.6, ease: "easeOut" },
+                    },
+                  }}
+                  className="group bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] p-2 md:p-6 rounded-2xl 
+                       shadow-lg border border-[rgba(var(--primary-rgb),0.2)] 
+                       hover:border-[rgba(var(--primary-rgb),0.4)] 
+                       hover:shadow-2xl transition-all duration-300 
+                       hover:-translate-y-1 min-h-[400px] flex flex-col space-y-6"
                 >
-                  <div className="text-center mb-6">
+                  <div className="text-center space-y-2">
                     <h3 className="text-2xl font-bold text-[var(--text-primary)]">{dim.title}</h3>
-                    <p className="text-sm italic text-[var(--text-secondary)]">{dim.subTitle}</p>
+                    <p className="text-sm text-[var(--text-secondary)] italic">{dim.subTitle}</p>
                   </div>
 
-                  {/* Primary Pole */}
+                  {/* PRIMARY POLE CARD */}
                   <div
-                    className={`bg-gradient-to-r ${primaryColor.from} to-black/10 p-5 rounded-xl border ${primaryColor.border} mb-4`}
+                    className={`bg-gradient-to-r ${primaryColor.from} to-black/10 p-5 rounded-xl border ${primaryColor.border} space-y-3`}
                   >
-                    <div className="text-center text-lg font-medium text-[var(--text-primary)]">
+                    <div className="text-lg font-medium text-[var(--text-primary)] text-center">
                       {primaryFull} ({primaryPole})
                     </div>
-                    <p className="text-sm italic text-center text-[var(--text-secondary)] px-4">{primaryDesc}</p>
-                    <div className="mt-3 text-center">
-                      <div className={`font-bold ${primaryColor.text}`}>{dom} Dominance</div>
-                      <div className="flex justify-between items-center mt-2 px-4">
-                        <div className="flex items-center gap-1">
-                          <span className="text-sm">Primary</span>
+                    <p className="text-sm text-[var(--text-secondary)] text-center italic px-4">{primaryDesc}</p>
+                    <div className="space-y-3">
+                      <div className={`text-base font-bold ${primaryColor.text} text-center`}>{dom} Dominance</div>
+                      <div className="flex items-center justify-between px-4">
+                        <div className="flex items-center space-x-2 flex-1">
+                          <span className="text-sm font-medium text-[var(--text-primary)]">Primary Preference</span>
                           <HelpCircle
-                            onClick={() => openModal("Primary", PRIMARY_EXPLANATION)}
-                            className={`h-4 w-4 ${primaryColor.text} cursor-pointer`}
+                            onClick={() => openModal("Primary Preference", PRIMARY_EXPLANATION)}
+                            className={`h-4 w-4 ${primaryColor.text} cursor-pointer hover:scale-110 transition-transform`}
                           />
                         </div>
                         <span className={`text-xl font-bold ${primaryColor.text}`}>{primaryPct}%</span>
                       </div>
-                      <div className="w-full bg-[var(--surface-variant)] rounded-full h-3 mt-2">
+                      <div className="w-full bg-[var(--surface-variant)] rounded-full h-3">
                         <motion.div
                           initial={{ width: 0 }}
                           whileInView={{ width: `${primaryPct}%` }}
-                          transition={{ duration: 1.2 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.2, ease: "easeOut" }}
                           className={`${primaryColor.bg} h-3 rounded-full`}
                         />
                       </div>
                     </div>
                   </div>
 
-                  {/* Secondary Pole */}
+                  {/* SECONDARY POLE CARD */}
                   <div
-                    className={`bg-gradient-to-r ${secondaryColor.from} to-black/10 p-5 rounded-xl border ${secondaryColor.border}`}
+                    className={`bg-gradient-to-r ${secondaryColor.from} to-black/10 p-5 rounded-xl border ${secondaryColor.border} space-y-3`}
                   >
-                    <div className="text-center text-lg font-medium text-[var(--text-primary)]">
+                    <div className="text-lg font-medium text-[var(--text-primary)] text-center">
                       {secondaryFull} ({poleMap[primaryPole]})
                     </div>
-                    <p className="text-sm italic text-center text-[var(--text-secondary)] px-4">{secondaryDesc}</p>
-                    <div className="mt-3 text-center">
-                      <div className={`font-bold ${secondaryColor.text}`}>{inf} Influence</div>
-                      <div className="flex justify-between items-center mt-2 px-4">
-                        <div className="flex items-center gap-1">
-                          <span className="text-sm">Secondary</span>
+                    <p className="text-sm text-[var(--text-secondary)] text-center italic px-4">{secondaryDesc}</p>
+                    <div className="space-y-3">
+                      <div className={`text-base font-bold ${secondaryColor.text} text-center`}>{inf} Influence</div>
+                      <div className="flex items-center justify-between px-4">
+                        <div className="flex items-center space-x-2 flex-1">
+                          <span className="text-sm font-medium text-[var(--text-primary)]">Secondary Influence</span>
                           <HelpCircle
-                            onClick={() => openModal("Secondary", SECONDARY_EXPLANATION)}
-                            className={`h-4 w-4 ${secondaryColor.text} cursor-pointer`}
+                            onClick={() => openModal("Secondary Influence", SECONDARY_EXPLANATION)}
+                            className={`h-4 w-4 ${secondaryColor.text} cursor-pointer hover:scale-110 transition-transform`}
                           />
                         </div>
                         <span className={`text-xl font-bold ${secondaryColor.text}`}>{secondaryPct}%</span>
                       </div>
-                      <div className="w-full bg-[var(--surface-variant)] rounded-full h-3 mt-2">
+                      <div className="w-full bg-[var(--surface-variant)] rounded-full h-3">
                         <motion.div
                           initial={{ width: 0 }}
                           whileInView={{ width: `${secondaryPct}%` }}
-                          transition={{ duration: 1.2 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.2, ease: "easeOut" }}
                           className={`${secondaryColor.bg} h-3 rounded-full`}
                         />
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-6 border-t border-[var(--border)] space-y-4">
-                    {dim[dom.toLowerCase()]?.map((p, idx) => (
-                      <p key={idx} className="text-[var(--text-secondary)] leading-relaxed">
-                        {p}
+                  {/* PERSONALIZED PARAGRAPHS */}
+                  <div className="mt-6 space-y-4 border-t border-[var(--border)] pt-6">
+                    {dim[dom.toLowerCase()]?.map((para, i) => (
+                      <p key={i} className="text-base leading-relaxed text-[var(--text-secondary)]">
+                        {para}
                       </p>
                     ))}
                   </div>
@@ -608,44 +922,80 @@ export default function PersonalReportPage() {
           </div>
         </div>
       </section>
-      {/* STRENGTHS & CHALLENGES */}
-      <section className="card-gradient p-6 rounded-lg shadow-custom mb-12">
-        <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6">Your Archetype in Action</h2>
-        <p className="italic text-[var(--text-secondary)] mb-8">
-          Explore the real-world strengths that empower you and the challenges that invite growth.
-        </p>
 
-        <div className="space-y-12">
-          <div>
-            <h3 className="text-2xl font-bold text-[var(--accent)] mb-4">Strengths</h3>
-            <ul className="space-y-4">
-              {tmpl.strengths?.results?.map((s, i) => (
-                <li key={i} className="flex gap-3">
-                  <CheckCircle className="w-6 h-6 text-[var(--accent)] flex-shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-[var(--text-primary)]">{s.result}:</strong> {s.description}
-                  </div>
-                </li>
-              )) || <p className="text-[var(--text-secondary)]">No strengths data available.</p>}
-            </ul>
+      <div className="container flex justify-center md:justify-end mx-auto p-6 max-w-4xl">
+        <button
+          onClick={() => setShowShareModal(true)}
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all"
+        >
+          <Share2 className="w-5 h-5" />
+          Share Your Results
+        </button>
+      </div>
+
+      {/* ==================== ARCHETYPE IN ACTION ==================== */}
+      <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll">
+        <div className="card-gradient p-6 rounded-lg shadow-custom">
+          <div className="text-left space-y-3">
+            <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
+              Your Archetype in Action
+            </h2>
+            <p className="text-base md:text-lg text-[var(--text-secondary)] italic leading-relaxed max-w-3xl">
+              Explore the real-world strengths that empower you and the challenges that invite growth.
+            </p>
           </div>
 
-          <div>
-            <h3 className="text-2xl font-bold text-[var(--accent)] mb-4">Challenges</h3>
-            <ul className="space-y-4">
-              {tmpl.weaknesses?.results?.map((w, i) => (
-                <li key={i} className="flex gap-3">
-                  <CircleAlert className="w-6 h-6 text-[var(--accent)] flex-shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-[var(--text-primary)]">{w.result}:</strong> {w.description}
-                  </div>
-                </li>
-              )) || <p className="text-[var(--text-secondary)]">No challenges data available.</p>}
-            </ul>
+          <div className="mt-8 space-y-8">
+            {/* Strengths */}
+            <div>
+              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Strengths</h3>
+              <ul className="space-y-4">
+                {tmpl.strengths.results.map((s, i) => (
+                  <li key={i} className="flex flex-col gap-3">
+                    <div className="flex gap-2 items-start">
+                      <CheckCircle className="w-6 h-6 text-[var(--accent)] flex-shrink-0 mt-0.5" />
+                      <span className="font-semibold text-[var(--text-primary)]">{s.result}:</span>
+                    </div>
+                    <div className="pl-8">
+                      <span>{s.description}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Challenges */}
+            <div>
+              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Challenges</h3>
+              <ul className="space-y-4">
+                {tmpl.weaknesses.results.map((w, i) => (
+                  <li key={i} className="flex flex-col gap-3">
+                    <div className="flex gap-2 items-start">
+                      <CircleAlert className="w-6 h-6 text-[var(--accent)] flex-shrink-0 mt-0.5" />
+                      <span className="font-semibold text-[var(--text-primary)]">{w.result}:</span>
+                    </div>
+                    <div className="pl-8">
+                      <span>{w.description}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
-      {/* ==================== 4. HOW YOU CONNECT (UNLOCKED FOR PAID) ==================== */}
+
+      <div className="container flex justify-center md:justify-end mx-auto p-6 max-w-4xl">
+        <button
+          onClick={() => setShowShareModal(true)}
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all"
+        >
+          <Share2 className="w-5 h-5" />
+          Share Your Results
+        </button>
+      </div>
+
+      {/* ==================== HOW YOU CONNECT ==================== */}
       <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-12">
         <div className="card-gradient p-6 rounded-lg shadow-custom">
           <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">How You Connect</h2>
@@ -660,7 +1010,7 @@ export default function PersonalReportPage() {
             {tmpl.relationships?.compatibility?.matches?.map((match, i) => (
               <div
                 key={i}
-                className="p-5 rounded-lg bg-[var(--surface)] border border-[var(--border)] shadow-sm transition-all hover:shadow-md cursor-pointer group"
+                className="p-5 rounded-lg bg-[var(--surface)] border border-[var(--border)] shadow-sm transition-all hover:shadow-md"
               >
                 <div className="flex items-center justify-center mb-2">
                   <span className="text-lg font-medium text-[var(--accent)]">{match.type}</span>
@@ -680,17 +1030,18 @@ export default function PersonalReportPage() {
               Next Steps: Understanding Your Relationship Blueprint
             </h3>
             <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
-              Now that you’ve explored your own cognitive patterns, the natural next step is seeing how they interact
-              with your partner’s.
+              {`Now that you've explored your own cognitive patterns, the natural next step is seeing how they interact
+              with your partner's.`}
             </p>
             <p className="text-lg leading-relaxed text-[var(--text-secondary)] mt-4">
-              The CSM Couple’s Insight Report shows how your two minds interact, offering guidance to strengthen
+              {`The CSM Couple's Insight Report shows how your two minds interact, offering guidance to strengthen
               alignment, work through friction, and grow together with intention. Curious how your blueprints align?
-              Find out in your Couple’s Report.
+              Find out in your Couple's Report.`}
             </p>
           </div>
         </div>
       </section>
+
       {/* ==================== SHARE MODAL ==================== */}
       <AnimatePresence>
         {showShareModal && (
@@ -772,16 +1123,7 @@ export default function PersonalReportPage() {
           </motion.div>
         )}
       </AnimatePresence>
-      {/* ==================== CTA ==================== */}
-      <section className="max-w-4xl mx-auto text-center mt-12">
-        <button
-          onClick={() => setShowShareModal(true)}
-          className="inline-flex items-center btn-primary px-8 py-6 rounded-lg font-semibold cursor-pointer gap-2 transition-all hover:shadow-lg mb-10"
-        >
-          <Share2 className="w-5 h-5" />
-          Share Your Results
-        </button>
-      </section>
+
       {/* ==================== HELP MODAL ==================== */}
       <AnimatePresence>
         {showModal && (
@@ -793,24 +1135,24 @@ export default function PersonalReportPage() {
             onClick={() => setShowModal(false)}
           >
             <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.9 }}
-              className="bg-[var(--surface)] rounded-2xl p-6 md:p-8 max-w-lg w-full shadow-custom-lg border border-[var(--border)]"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-[var(--surface)] rounded-2xl p-6 md:p-8 max-w-lg w-full max-h-[85vh] overflow-y-auto shadow-custom-lg border border-[var(--border)]"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-bold text-[var(--text-primary)]">{modalContent.title}</h3>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="text-2xl text-[var(--text-secondary)] hover:text-[var(--accent)]"
+                  className="text-[var(--text-secondary)] hover:text-[var(--accent)] text-2xl"
                 >
                   ×
                 </button>
               </div>
-              <div className="text-sm text-[var(--text-secondary)] space-y-3">
+              <div className="prose dark:prose-invert max-w-none text-[var(--text-secondary)] text-sm leading-relaxed">
                 {modalContent.body.split("\n").map((line, i) => (
-                  <p key={i} className="mb-2 last:mb-0">
+                  <p key={i} className="mb-3 last:mb-0">
                     {line}
                   </p>
                 ))}

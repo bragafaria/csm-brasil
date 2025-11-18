@@ -361,9 +361,9 @@ DEGREES OF INFLUENCE:
 
                 {/* Simple explanation */}
                 <p className="text-sm text-[var(--text-secondary)] text-center max-w-md mb-6 leading-relaxed">
-                  DPS shows how strongly you prefer one thinking style over its opposite on each of the 5 dimensions.
-                  <strong className="text-[var(--text-primary)]">Higher % = bigger personal stretch needed</strong> –
-                  the opposite pole is a growth opportunity.
+                  {`DPS measures how strongly you lean toward one pole over its opposite on each of the five
+                  dimensions.Higher DPS means you rely heavily on one style of thinking (it's your natural
+                  default).Lower DPS means you move easily between both poles (you're naturally flexible.)`}
                 </p>
 
                 {/* Pie chart – now uses the **DPS values** (0-100) */}
@@ -420,156 +420,283 @@ DEGREES OF INFLUENCE:
                     }}
                   />
                 </div>
+                {/* DPS Strongest Dimension */}
+                {/* DPS Strongest Dimension(s) */}
+                <div className="mt-8 p-6 bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl border border-[var(--border)] shadow-lg">
+                  {(() => {
+                    // Find the maximum DPS value
+                    const maxDpsValue = Math.max(...dps);
 
-                {/* DPS Tiers (CAS-symmetric) */}
-                <div className="w-full max-w-md mb-6 mt-8 text-xs text-[var(--text-secondary)]">
-                  <div className="grid grid-cols-1 gap-2 text-center">
-                    <div className="flex justify-start gap-4 px-2 py-1 bg-red-500/10 rounded">
-                      <span className="font-medium">80–100</span>
-                      <span className="font-medium text-red-400">Strong</span>
-                      <span className="hidden sm:inline">Core identity; opposite feels foreign; max growth</span>
-                    </div>
-                    <div className="flex justify-start gap-4 px-2 py-1 bg-yellow-500/10 rounded">
-                      <span className="font-medium">60–79</span>
-                      <span className="font-medium text-yellow-400">Moderate</span>
-                      <span className="hidden sm:inline">Clear default; opposite accessible with effort</span>
-                    </div>
-                    <div className="flex justify-start gap-4 px-2 py-1 bg-green-500/10 rounded">
-                      <span className="font-medium">0–59</span>
-                      <span className="font-medium text-green-400">Mild</span>
-                      <span className="hidden sm:inline">Flexible; low resistance; true adaptability</span>
-                    </div>
-                  </div>
+                    // Find ALL dimensions with that max value (handles ties)
+                    const strongestIndices = dps
+                      .map((value, index) => (value === maxDpsValue ? index : -1))
+                      .filter((index) => index !== -1);
+
+                    const poleToFull = {
+                      C: "Concrete Focus",
+                      N: "Abstract Insight",
+                      L: "Analytical Logic",
+                      V: "Empathic Values",
+                      O: "Outward Engagement",
+                      I: "Inward Reflection",
+                      S: "Stable Structure",
+                      F: "Adaptive Flexibility",
+                      H: "Collaborative Harmony",
+                      A: "Independent Autonomy",
+                    };
+
+                    return (
+                      <>
+                        <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-6 text-center">
+                          {strongestIndices.length > 1 ? "Your Strongest Dimensions" : "Your Strongest Dimension"}
+                        </h3>
+
+                        <div className="space-y-8">
+                          {strongestIndices.map((maxDpsIndex, idx) => {
+                            const strongestDimension = dimensionLabels[maxDpsIndex];
+                            const strongestDpsValue = dps[maxDpsIndex];
+
+                            // Get the dominant pole for this dimension
+                            const dominantPole = dominants[maxDpsIndex];
+                            const oppositePole = poleMap[dominantPole];
+
+                            const dominantPoleName = poleToFull[dominantPole];
+                            const oppositePoleName = poleToFull[oppositePole];
+
+                            return (
+                              <div key={maxDpsIndex} className="flex flex-col items-center gap-6">
+                                {/* Dimension Badge */}
+                                <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[var(--primary)] to-purple-600 rounded-full shadow-lg">
+                                  <span className="text-base md:text-xl font-bold text-white">
+                                    {strongestDimension}
+                                  </span>
+                                  <span className="px-3 py-1 bg-white/20 rounded-full text-sm font-semibold text-white">
+                                    DPS: {strongestDpsValue}
+                                  </span>
+                                </div>
+
+                                {/* Two Cards: Natural Default & Growth Opportunity */}
+                                <div className="grid md:grid-cols-2 gap-4 md:gap-6 w-full">
+                                  {/* Natural Default Card */}
+                                  <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.2 + idx * 0.1 }}
+                                    className="relative overflow-hidden p-6 bg-gradient-to-br from-green-500/10 to-emerald-600/5 rounded-xl border-2 border-green-500/30 shadow-md"
+                                  >
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full blur-3xl" />
+
+                                    <div className="relative z-10">
+                                      <div className="flex items-center gap-2 mb-3">
+                                        <CheckCircle className="w-6 h-6 text-green-400" />
+                                        <span className="text-sm font-semibold text-green-400 uppercase tracking-wide">
+                                          Natural Default
+                                        </span>
+                                      </div>
+
+                                      <h4 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-2">
+                                        {dominantPoleName}
+                                      </h4>
+
+                                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                                        This is your strongest cognitive preference, your go-to way of processing
+                                        information in this dimension. You rely on this naturally and effortlessly.
+                                      </p>
+                                    </div>
+                                  </motion.div>
+
+                                  {/* Growth Opportunity Card */}
+                                  <motion.div
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.3 + idx * 0.1 }}
+                                    className="relative overflow-hidden p-6 bg-gradient-to-br from-purple-500/10 to-violet-600/5 rounded-xl border-2 border-purple-500/30 shadow-md"
+                                  >
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl" />
+
+                                    <div className="relative z-10">
+                                      <div className="flex items-center gap-2 mb-3">
+                                        <CircleAlert className="w-6 h-6 text-purple-400" />
+                                        <span className="text-sm font-semibold text-purple-400 uppercase tracking-wide">
+                                          Growth Opportunity
+                                        </span>
+                                      </div>
+
+                                      <h4 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-2">
+                                        {oppositePoleName}
+                                      </h4>
+
+                                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                                        This is your opposite pole, the area where conscious development can create the
+                                        biggest personal expansion and cognitive flexibility.
+                                      </p>
+                                    </div>
+                                  </motion.div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        {/* Bottom Insight - Only shown once */}
+                        <div className="w-full p-4 mt-6 bg-[var(--surface)]/50 rounded-lg border border-[var(--border)]/50">
+                          <p className="text-sm text-center text-[var(--text-secondary)] italic">
+                            <strong className="text-[var(--text-primary)]">Insight:</strong> Your high DPS in{" "}
+                            {strongestIndices.length > 1
+                              ? strongestIndices.map((i, idx) => (
+                                  <span key={i}>
+                                    {dimensionLabels[i]}
+                                    {idx < strongestIndices.length - 2 ? ", " : ""}
+                                    {idx === strongestIndices.length - 2 ? " and " : ""}
+                                  </span>
+                                ))
+                              : dimensionLabels[strongestIndices[0]]}{" "}
+                            {strongestIndices.length > 1 ? "mean" : "means"} you have pronounced default mode
+                            {strongestIndices.length > 1 ? "s" : ""}. Developing your opposite pole
+                            {strongestIndices.length > 1 ? "s" : ""} will bring the greatest balance and adaptability to
+                            your cognitive toolkit.
+                          </p>
+                        </div>
+                      </>
+                    );
+                  })()}
                 </div>
               </div>
-              <h3 className="text-sm font-medium text-[var(--text-secondary)]">Poles Preferences:</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {/* Primary Poles */}
-                <div className="space-y-3  border border-white/10  bg-white/5 rounded-lg p-4">
-                  <div className="max-w-sm">
-                    <p className="text-lg font-bold text-[var(--text-primary)] mb-2">Primary Poles</p>
-                    <div className="flex flex-wrap gap-2">
-                      {dominants.map((pole, i) => {
-                        const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
-                        const level = getLevel(pct).dom;
-                        const color = {
-                          Mild: "bg-green-500/50",
-                          Moderate: "bg-yellow-500/50",
-                          Strong: "bg-red-500/50",
-                        }[level];
+              {/* === POLES PREFERENCES === */}
+              <div className="mt-8 p-6 bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl border border-[var(--border)] shadow-lg">
+                <h3 className="text-xl  font-bold text-[var(--text-primary)] mb-4 text-center">Poles Preferences</h3>
+                <p className="text-sm text-[var(--text-secondary)] text-center max-w-2xl mx-auto mb-6 leading-relaxed">
+                  Your natural defaults (Primary) and their opposite growth areas (Secondary) at a glance.
+                </p>
 
-                        const fullName = {
-                          C: "Concrete Focus",
-                          N: "Abstract Insight",
-                          L: "Analytical Logic",
-                          V: "Empathic Values",
-                          O: "Outward Engagement",
-                          I: "Inward Reflection",
-                          S: "Stable Structure",
-                          F: "Adaptive Flexibility",
-                          H: "Collaborative Harmony",
-                          A: "Independent Autonomy",
-                        }[pole];
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Primary Poles */}
+                  <div className="space-y-4 border border-white/10 bg-white/5 rounded-lg p-5">
+                    <div>
+                      <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Primary Poles</p>
+                      <div className="flex flex-wrap gap-2">
+                        {dominants.map((pole, i) => {
+                          const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
+                          const level = getLevel(pct).dom;
+                          const color = {
+                            Mild: "bg-green-500/50",
+                            Moderate: "bg-yellow-500/50",
+                            Strong: "bg-red-500/50",
+                          }[level];
 
-                        return (
-                          <span
-                            key={i}
-                            className={`inline-block px-3 py-1 rounded-md text-sm md:text-base font-medium text-white ${color} shadow-sm`}
-                          >
-                            {fullName}
-                          </span>
-                        );
-                      })}
+                          const fullName = {
+                            C: "Concrete Focus",
+                            N: "Abstract Insight",
+                            L: "Analytical Logic",
+                            V: "Empathic Values",
+                            O: "Outward Engagement",
+                            I: "Inward Reflection",
+                            S: "Stable Structure",
+                            F: "Adaptive Flexibility",
+                            H: "Collaborative Harmony",
+                            A: "Independent Autonomy",
+                          }[pole];
+
+                          return (
+                            <span
+                              key={i}
+                              className={`inline-block px-3 py-1.5 rounded-md text-sm md:text-base font-medium text-white ${color} shadow-sm`}
+                            >
+                              {fullName}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Legend BELOW */}
+                    <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] pt-3 border-t border-white/10">
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-medium">Primary Degrees of Dominance:</span>
+                        <HelpCircle
+                          onClick={() => openModal("Primary Degrees of Dominance", PRIMARY_EXPLANATION)}
+                          className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
+                        />
+                      </div>
+                      <div className="flex flex-wrap gap-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                          <span>Mild</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                          <span>Moderate</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                          <span>Strong</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Legend BELOW */}
-                  <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] mt-4">
-                    <div className="flex items-center gap-1">
-                      <span className="font-medium">Primary Degrees of Dominance:</span>
-                      <HelpCircle
-                        onClick={() => openModal("Primary Degrees of Dominance", PRIMARY_EXPLANATION)}
-                        className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
-                      />
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                        <span>Mild</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                        <span>Moderate</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                        <span>Strong</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  {/* Secondary Poles */}
+                  <div className="space-y-4 border border-white/10 bg-white/5 rounded-lg p-5">
+                    <div>
+                      <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Secondary Poles</p>
+                      <div className="flex flex-wrap gap-2">
+                        {dominants.map((pole, i) => {
+                          const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
+                          const level = getLevel(pct).inf;
+                          const color = {
+                            High: "bg-red-500/50",
+                            Moderate: "bg-yellow-500/50",
+                            Low: "bg-green-500/50",
+                          }[level];
 
-                {/* Secondary Poles */}
-                <div className="space-y-3 border border-white/10  bg-white/5  rounded-lg p-4">
-                  <div className="max-w-sm">
-                    <p className="text-lg font-bold text-[var(--text-primary)] mb-2">Secondary Poles</p>
-                    <div className="flex flex-wrap gap-2">
-                      {dominants.map((pole, i) => {
-                        const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
-                        const level = getLevel(pct).inf;
-                        const color = {
-                          High: "bg-red-500/50",
-                          Moderate: "bg-yellow-500/50",
-                          Low: "bg-green-500/50",
-                        }[level];
+                          const secondaryPole = poleMap[pole];
+                          const fullName = {
+                            C: "Concrete Focus",
+                            N: "Abstract Insight",
+                            L: "Analytical Logic",
+                            V: "Empathic Values",
+                            O: "Outward Engagement",
+                            I: "Inward Reflection",
+                            S: "Stable Structure",
+                            F: "Adaptive Flexibility",
+                            H: "Collaborative Harmony",
+                            A: "Independent Autonomy",
+                          }[secondaryPole];
 
-                        const secondaryPole = poleMap[pole];
-                        const fullName = {
-                          C: "Concrete Focus",
-                          N: "Abstract Insight",
-                          L: "Analytical Logic",
-                          V: "Empathic Values",
-                          O: "Outward Engagement",
-                          I: "Inward Reflection",
-                          S: "Stable Structure",
-                          F: "Adaptive Flexibility",
-                          H: "Collaborative Harmony",
-                          A: "Independent Autonomy",
-                        }[secondaryPole];
-
-                        return (
-                          <span
-                            key={i}
-                            className={`inline-block px-3 py-1 rounded-md text-sm md:text-base font-medium text-white ${color} shadow-sm`}
-                          >
-                            {fullName}
-                          </span>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* Legend BELOW */}
-                  <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] mt-4">
-                    <div className="flex items-center gap-1">
-                      <span className="font-medium">Secondary Degrees of Influence:</span>
-                      <HelpCircle
-                        onClick={() => openModal("Secondary Degrees of Influence", SECONDARY_EXPLANATION)}
-                        className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
-                      />
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                        <span>Low</span>
+                          return (
+                            <span
+                              key={i}
+                              className={`inline-block px-3 py-1.5 rounded-md text-sm md:text-base font-medium text-white ${color} shadow-sm`}
+                            >
+                              {fullName}
+                            </span>
+                          );
+                        })}
                       </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                        <span>Moderate</span>
+                    </div>
+
+                    {/* Legend BELOW */}
+                    <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] pt-3 border-t border-white/10">
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-medium">Secondary Degrees of Influence:</span>
+                        <HelpCircle
+                          onClick={() => openModal("Secondary Degrees of Influence", SECONDARY_EXPLANATION)}
+                          className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
+                        />
                       </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                        <span>High</span>
+                      <div className="flex flex-wrap gap-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                          <span>Low</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                          <span>Moderate</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                          <span>High</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -578,7 +705,7 @@ DEGREES OF INFLUENCE:
             </div>
             {/* Essence */}
             <div className=" border border-white/20  bg-white/5  p-4 rounded-lg">
-              <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Essence:</p>
+              <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Your Essence:</p>
               <p className="text-base italic text-[var(--text-primary)]">{tmpl.summaryEssence.title}</p>
             </div>
           </div>

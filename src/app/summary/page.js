@@ -211,7 +211,7 @@ export default function Summary() {
                 {isSubmitting ? (
                   <>
                     <Spinner className="text-white" size="sm" />
-                    Saving...
+                    Loading Report...
                   </>
                 ) : valid ? (
                   <>
