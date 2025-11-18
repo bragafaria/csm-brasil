@@ -238,8 +238,8 @@ export default function WriteSession({ onTabChange }) {
               <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mt-4">
                 Once submitted, your entry will be carefully reviewed and matched with a{" "}
                 <strong>CSM-Certified Expert</strong>. Within 1–2 business days, you will receive a personalized written
-                response grounded in your unique <strong>Cognitive Spectrum profile</strong>, offering clarity,
-                guidance, and actionable next steps tailored to you.
+                report grounded in your unique <strong>Cognitive Spectrum profile</strong>, offering clarity, guidance,
+                and actionable next steps tailored to you.
               </p>
             </div>
 

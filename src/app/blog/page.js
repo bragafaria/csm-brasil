@@ -204,7 +204,7 @@ export default async function BlogHome() {
           relationships and personal growth.
         </p>
         <Link
-          href="/assessment"
+          href="/"
           className="inline-block bg-white text-[var(--primary)] font-bold px-10 py-4 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
         >
           Learn More
