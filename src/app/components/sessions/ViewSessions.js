@@ -36,47 +36,48 @@ export default function ViewSessions() {
           throw new Error("Please log in to view sessions.");
         }
 
-        const { count, error: countError } = await supabase
+        const userId = session.user.id;
+
+        // Count total sessions
+        const { count } = await supabase
           .from("blueprint_sessions")
           .select("id", { count: "exact", head: true })
-          .eq("user_id", session.user.id);
+          .eq("user_id", userId);
 
-        if (countError) throw new Error(countError.message);
-
-        const total = count || 0;
-        setTotalPages(Math.ceil(total / recordsPerPage));
+        setTotalPages(Math.ceil((count || 0) / recordsPerPage));
 
         const start = (currentPage - 1) * recordsPerPage;
         const end = start + recordsPerPage - 1;
 
+        // MAIN QUERY — NO FILTER ON STATUS (this was correct before)
         const { data, error } = await supabase
           .from("blueprint_sessions")
-          .select("id, created_at, question, answer, status")
-          .eq("user_id", session.user.id)
+          .select("id, created_at, question, answer, status, coach_id")
+          .eq("user_id", userId)
           .order("updated_at", { ascending: false })
           .range(start, end);
 
-        if (error) throw new Error(error.message);
+        if (error) throw error;
         setSessions(data || []);
 
+        // COACH LOOKUP — FIXED: include "answered"
         let coachData = null;
         if (data && data.length > 0) {
-          const { data: sessionCoach, error: coachError } = await supabase
-            .from("blueprint_sessions")
-            .select("coaches(id, profile_picture_path, users(name))")
-            .eq("user_id", session.user.id)
-            .in("status", ["answered", "assigned"])
-            .order("updated_at", { ascending: false })
-            .limit(1)
-            .single();
+          const answeredSession = data.find((s) => s.status === "answered") || data[0];
+          if (answeredSession?.coach_id) {
+            const { data: coachRes } = await supabase
+              .from("coaches")
+              .select("id, profile_picture_path, users(name)")
+              .eq("id", answeredSession.coach_id)
+              .single();
 
-          if (!coachError && sessionCoach?.coaches) {
-            coachData = sessionCoach.coaches;
+            if (coachRes) coachData = coachRes;
           }
         }
 
+        // Fallback: default available coach
         if (!coachData) {
-          const { data: defaultCoach, error: defaultCoachError } = await supabase
+          const { data: defaultCoach } = await supabase
             .from("coaches")
             .select("id, profile_picture_path, users(name)")
             .eq("availability", true)
@@ -84,18 +85,16 @@ export default function ViewSessions() {
             .limit(1)
             .single();
 
-          if (!defaultCoachError && defaultCoach) {
-            coachData = defaultCoach;
-          }
+          if (defaultCoach) coachData = defaultCoach;
         }
 
         setCoach({
-          name: coachData?.users?.name || "Unknown Coach",
+          name: coachData?.users?.name || "CSM Expert",
           profile_picture_path: coachData?.profile_picture_path || null,
         });
       } catch (err) {
-        console.error("Fetch data error:", err);
-        setError(err.message);
+        console.error("Fetch error:", err);
+        setError(err.message || "Failed to load sessions");
       } finally {
         setLoading(false);
       }

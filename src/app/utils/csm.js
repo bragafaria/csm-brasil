@@ -490,7 +490,7 @@ export const questions = [
     id: 43,
     dimension: 3,
     type: "likert",
-    text: "I hate last-minute changes.",
+    text: "Last-minute changes bother me.",
     favoring: "S",
     reverse: false,
   },
@@ -576,7 +576,7 @@ export const questions = [
     text: "Project deadline shifts earlier:",
     options: forcedOptions("S", "F", {
       strongP1: "Panic and restructure entire plan immediately.",
-      strongP2: "Stay calm — you’ll adapt when the time comes.",
+      strongP2: "Stay calm. You’ll adapt when the time comes.",
       leanP1: "Adjust timeline but keep core structure.",
       leanP2: "Improvise with high energy.",
       balanced: "Reprioritize tasks flexibly.",

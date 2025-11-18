@@ -20,6 +20,7 @@ import { reportTemplates } from "@/app/lib/personal/personal-report-data";
 import { motion, AnimatePresence } from "framer-motion";
 import LZString from "lz-string";
 import Spinner from "@/app/components/ui/Spinner";
+import { PieChart } from "@mui/x-charts/PieChart";
 
 export default function PersonalReport() {
   const { typeCode: urlCode } = useParams();
@@ -141,6 +142,25 @@ DEGREES OF INFLUENCE:
     A: "H",
   };
 
+  const dimensionLabels = [
+    "Information Processing",
+    "Decision-Making",
+    "Energy Orientation",
+    "Change Approach",
+    "Interpersonal Style",
+  ];
+
+  const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A28EFF"];
+
+  const dps = percents.map((p) => Math.abs(p.p1 - p.p2));
+  const totalDps = dps.reduce((sum, val) => sum + val, 0);
+  const pieData = dps.map((value, index) => ({
+    id: index,
+    value,
+    label: dimensionLabels[index],
+    color: colors[index],
+  }));
+
   const shortenUrl = async (longUrl) => {
     try {
       const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`);
@@ -227,6 +247,87 @@ DEGREES OF INFLUENCE:
       {/* ==================== 1. Summary ==================== */}
       <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-8">
         <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
+          {/* ==================== CSM DIMENSIONS EXPLANATION ==================== */}
+          <div className="mt-8 p-6 bg-[var(--surface-variant)] rounded-xl border border-[var(--border)]">
+            <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6 text-left">Quick Explanation</h2>
+
+            <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed mb-6 text-left max-w-3xl">
+              The Cognitive Spectrum Model (CSM) breaks down how your mind works into five independent dimensions, each
+              like a slider between two opposite poles that shape the way you think, decide, and interact.
+            </p>
+
+            <div className="space-y-6 text-left">
+              {/* Dimension 1 */}
+              <div>
+                <h4 className="font-bold text-[var(--text-primary)] mb-1">Information Processing</h4>
+                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
+                  <li>
+                    <strong>Concrete (C):</strong> Facts, details, real.
+                  </li>
+                  <li>
+                    <strong>Abstract (N):</strong> Patterns, ideas, possibilities.
+                  </li>
+                </ul>
+              </div>
+
+              {/* Dimension 2 */}
+              <div>
+                <h4 className="font-bold text-[var(--text-primary)] mb-1">Decision-Making</h4>
+                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
+                  <li>
+                    <strong>Analytical Logic (L):</strong> Rules, data, logic.
+                  </li>
+                  <li>
+                    <strong>Empathic Values (V):</strong> Feelings, harmony, people.
+                  </li>
+                </ul>
+              </div>
+
+              {/* Dimension 3 */}
+              <div>
+                <h4 className="font-bold text-[var(--text-primary)] mb-1">Energy Orientation</h4>
+                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
+                  <li>
+                    <strong>Outward (O):</strong> Action, social, external.
+                  </li>
+                  <li>
+                    <strong>Inward (I):</strong> Reflection, solitude, inner.
+                  </li>
+                </ul>
+              </div>
+
+              {/* Dimension 4 */}
+              <div>
+                <h4 className="font-bold text-[var(--text-primary)] mb-1">Change Approach</h4>
+                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
+                  <li>
+                    <strong>Stable Structure (S):</strong> Plans, order, predictable.
+                  </li>
+                  <li>
+                    <strong>Adaptive Flexibility (F):</strong> Spontaneity, flow, flexible.
+                  </li>
+                </ul>
+              </div>
+
+              {/* Dimension 5 */}
+              <div>
+                <h4 className="font-bold text-[var(--text-primary)] mb-1">Interpersonal Style</h4>
+                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
+                  <li>
+                    <strong>Collaborative Harmony (H):</strong> Team, consensus, group.
+                  </li>
+                  <li>
+                    <strong>Independent Autonomy (A):</strong> Solo, freedom, self.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <p className="text-sm md:text-base italic text-[var(--text-secondary)] mt-6 text-left max-w-3xl">
+              Your unique mix across these poles in each dimension creates your cognitive profile. No pole is better,
+              just different strengths and growth areas.
+            </p>
+          </div>
           <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">Summary</h2>
 
           <div className="space-y-5">
@@ -251,6 +352,96 @@ DEGREES OF INFLUENCE:
             </div>
             {/* === POLES PREFERENCES === */}
             <div className="space-y-6 border border-white/20  bg-white/5 rounded-lg px-4 py-6">
+              {/* ==================== DPS DISTRIBUTION ==================== */}
+              <div className="flex flex-col items-center p-4 bg-[var(--surface-variant)] rounded-lg">
+                {/* Title – centred on every screen */}
+                <h3 className="text-lg font-bold text-[var(--text-primary)] mb-4 text-center">
+                  Dimensional Preference Strength (DPS)
+                </h3>
+
+                {/* Simple explanation */}
+                <p className="text-sm text-[var(--text-secondary)] text-center max-w-md mb-6 leading-relaxed">
+                  DPS shows how strongly you prefer one thinking style over its opposite on each of the 5 dimensions.
+                  <strong className="text-[var(--text-primary)]">Higher % = bigger personal stretch needed</strong> –
+                  the opposite pole is a growth opportunity.
+                </p>
+
+                {/* Pie chart – now uses the **DPS values** (0-100) */}
+                <div className="pie-chart-container w-full max-w-md">
+                  <PieChart
+                    series={[
+                      {
+                        data: dps.map((value, i) => ({
+                          id: i,
+                          value, // <-- raw DPS (0-100)
+                          label: dimensionLabels[i],
+                          color: colors[i],
+                        })),
+                        innerRadius: 50,
+                        outerRadius: 100,
+                        paddingAngle: 3,
+                        cornerRadius: 5,
+                        // Show the **DPS value** directly on the arc
+                        arcLabel: (item) => `${item.value}`,
+                        arcLabelMinAngle: 20,
+                      },
+                    ]}
+                    width={400}
+                    height={300}
+                    slotProps={{
+                      legend: {
+                        direction: "column",
+                        position: { vertical: "bottom", horizontal: "middle" },
+                        padding: { top: 8 },
+                      },
+                    }}
+                    sx={{
+                      /* ----- Legend responsive ----- */
+                      "& .MuiChartsLegend-root": {
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flexDirection: { xs: "column", md: "row" },
+                        flexWrap: "wrap",
+                        gap: { xs: "8px", md: "12px" },
+                        textAlign: "center",
+                      },
+                      "& .MuiChartsLegend-label": {
+                        fontSize: { xs: "12px", md: "16px" },
+                        fontWeight: 500,
+                      },
+
+                      /* ----- Text colour ----- */
+                      "& text": { fill: "#f8fafc" },
+
+                      /* ----- Remove any border / stroke ----- */
+                      "& .MuiPieArc-root": { stroke: "none !important", strokeWidth: "0 !important" },
+                      "& svg, & .MuiChartsSurface-root": { border: "none !important", outline: "none !important" },
+                    }}
+                  />
+                </div>
+
+                {/* DPS Tiers (CAS-symmetric) */}
+                <div className="w-full max-w-md mb-6 mt-8 text-xs text-[var(--text-secondary)]">
+                  <div className="grid grid-cols-1 gap-2 text-center">
+                    <div className="flex justify-start gap-4 px-2 py-1 bg-red-500/10 rounded">
+                      <span className="font-medium">80–100</span>
+                      <span className="font-medium text-red-400">Strong</span>
+                      <span className="hidden sm:inline">Core identity; opposite feels foreign; max growth</span>
+                    </div>
+                    <div className="flex justify-start gap-4 px-2 py-1 bg-yellow-500/10 rounded">
+                      <span className="font-medium">60–79</span>
+                      <span className="font-medium text-yellow-400">Moderate</span>
+                      <span className="hidden sm:inline">Clear default; opposite accessible with effort</span>
+                    </div>
+                    <div className="flex justify-start gap-4 px-2 py-1 bg-green-500/10 rounded">
+                      <span className="font-medium">0–59</span>
+                      <span className="font-medium text-green-400">Mild</span>
+                      <span className="hidden sm:inline">Flexible; low resistance; true adaptability</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <h3 className="text-sm font-medium text-[var(--text-secondary)]">Poles Preferences:</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Primary Poles */}
@@ -283,7 +474,7 @@ DEGREES OF INFLUENCE:
                         return (
                           <span
                             key={i}
-                            className={`inline-block px-3 py-1 rounded-md text-xs font-medium text-white ${color} shadow-sm`}
+                            className={`inline-block px-3 py-1 rounded-md text-sm md:text-base font-medium text-white ${color} shadow-sm`}
                           >
                             {fullName}
                           </span>
@@ -349,7 +540,7 @@ DEGREES OF INFLUENCE:
                         return (
                           <span
                             key={i}
-                            className={`inline-block px-3 py-1 rounded-md text-xs font-medium text-white ${color} shadow-sm`}
+                            className={`inline-block px-3 py-1 rounded-md text-sm md:text-base font-medium text-white ${color} shadow-sm`}
                           >
                             {fullName}
                           </span>
@@ -693,7 +884,7 @@ DEGREES OF INFLUENCE:
 
             {/* Challenges */}
             <div>
-              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-20">Challenges</h3>
+              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Challenges</h3>
               <ul className="space-y-4">
                 {tmpl.weaknesses.results.map((w, i) => (
                   <li key={i} className="flex flex-col gap-3">

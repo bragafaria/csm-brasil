@@ -17,7 +17,7 @@ export default async function BlogLayout({ children }) {
           >
             <Image src="/logo_transparent_svg.svg" alt="CSM Blog Logo" width={28} height={28} className="h-8 w-8" />
             <span>CSM</span>
-            <span className="text-white font-light text-xl">Blog</span>
+            <span className="text-white font-light text-xl">Insights</span>
           </Link>
           <nav className="hidden md:flex items-center gap-8">
             {categories.map((cat) => (

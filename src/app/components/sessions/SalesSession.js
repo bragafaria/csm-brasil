@@ -1,7 +1,7 @@
 // app/components/sessions/SalesSession.js
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "@/app/utils/supabaseClient";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
@@ -28,24 +28,12 @@ export default function SalesSession({
       const {
         data: { session },
       } = await supabase.auth.getSession();
-      if (!session) throw new Error("Not logged in");
-
-      const response = await fetch("/api/mock-subscription", {
+      const res = await fetch("/api/create-subscription-checkout", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${session.access_token}`,
-          "Refresh-Token": session.refresh_token,
-        },
+        headers: { Authorization: `Bearer ${session.access_token}` },
       });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to mock subscription");
-      }
-
-      alert("Mock subscription created! Loading editor...");
-      onStatusUpdate();
+      const data = await res.json();
+      window.location.href = data.url;
     });
   }
 
@@ -54,24 +42,12 @@ export default function SalesSession({
       const {
         data: { session },
       } = await supabase.auth.getSession();
-      if (!session) throw new Error("Not logged in");
-
-      const response = await fetch("/api/mock-payment", {
+      const res = await fetch("/api/create-session-checkout", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${session.access_token}`,
-          "Refresh-Token": session.refresh_token,
-        },
+        headers: { Authorization: `Bearer ${session.access_token}` },
       });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to mock payment");
-      }
-
-      alert("Mock payment created! Loading editor...");
-      onStatusUpdate();
+      const data = await res.json();
+      window.location.href = data.url;
     });
   }
 

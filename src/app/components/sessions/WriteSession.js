@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import Spinner from "@/app/components/ui/Spinner";
 import { Save } from "lucide-react";
 
-export default function WriteSession({ isPartnerA, onTabChange }) {
+export default function WriteSession({ onTabChange }) {
   const [content, setContent] = useState("");
   const [savedMessage, setSavedMessage] = useState("");
   const [wordCount, setWordCount] = useState(0);
@@ -21,21 +21,43 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
   const [showSalesPage, setShowSalesPage] = useState(true);
   const [useFreeSession, setUseFreeSession] = useState(false);
   const [justPaid, setJustPaid] = useState(false);
-
-  // NEW: Step control
   const [showEditor, setShowEditor] = useState(false);
-
-  // ... [ALL YOUR ORIGINAL useEffect, fetchUserStatus, debouncedSave, handleEditorChange, handleSubmit, etc. — UNCHANGED] ...
+  const [draftKey, setDraftKey] = useState(null);
 
   useEffect(() => {
-    async function fetchUserStatus() {
+    async function init() {
       try {
         const {
           data: { session },
           error: sessionError,
         } = await supabase.auth.getSession();
-        if (sessionError || !session) throw new Error("Please log in again");
 
+        if (sessionError || !session) {
+          setError("Please log in again");
+          setLoadingStatus(false);
+          return;
+        }
+
+        // Create user-specific draft key
+        const key = `csm-session-draft-${session.user.id}`;
+        setDraftKey(key);
+
+        // Restore draft
+        const draft = localStorage.getItem(key);
+        if (draft && draft.trim()) {
+          setContent(draft);
+          const text = draft
+            .replace(/<[^>]*>/g, " ")
+            .replace(/\s+/g, " ")
+            .trim();
+          const words = text ? text.split(/\s+/).length : 0;
+          setWordCount(words);
+          setSavedMessage("(auto-saved)");
+          setTimeout(() => setSavedMessage(""), 2500);
+          setShowEditor(false);
+        }
+
+        // Your original status fetch — unchanged
         const response = await fetch("/api/get-blueprint-status", {
           method: "POST",
           headers: {
@@ -67,29 +89,16 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
       }
     }
 
-    // ---- RESTORE DRAFT FROM LOCALSTORAGE ----
-    const draft = localStorage.getItem("csm-session-draft");
-    if (draft && draft.trim()) {
-      setContent(draft);
-      const text = draft
-        .replace(/<[^>]*>/g, " ")
-        .replace(/\s+/g, " ")
-        .trim();
-      const words = text ? text.split(/\s+/).length : 0;
-      setWordCount(words);
-      setSavedMessage("(auto-saved)");
-      setTimeout(() => setSavedMessage(""), 2500);
-      setShowEditor(false); // ← Auto-open editor if draft exists
-    }
-
-    fetchUserStatus();
+    init();
   }, [justPaid]);
 
-  // ---- DEBOUNCED AUTO-SAVE (1000ms) ----
+  // FIXED: Simple, clean, safe debounced save
   const debouncedSave = useDebouncedCallback((html) => {
-    localStorage.setItem("csm-session-draft", html);
-    setSavedMessage("(auto-saved)");
-    setTimeout(() => setSavedMessage(""), 2000);
+    if (draftKey) {
+      localStorage.setItem(draftKey, html);
+      setSavedMessage("(auto-saved)");
+      setTimeout(() => setSavedMessage(""), 2000);
+    }
   }, 1000);
 
   const handleEditorChange = (html) => {
@@ -113,41 +122,10 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
   const handlePaymentSuccess = async () => {
     setJustPaid(true);
     setShowSalesPage(false);
-    await fetchUserStatus();
-  };
-
-  const fetchUserStatus = async () => {
-    try {
-      const {
-        data: { session },
-        error: sessionError,
-      } = await supabase.auth.getSession();
-      if (sessionError || !session) throw new Error("Please log in again");
-
-      const response = await fetch("/api/get-blueprint-status", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${session.access_token}`,
-          "Refresh-Token": session.refresh_token,
-        },
-        credentials: "include",
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ error: "No response body" }));
-        throw new Error(errorData.error || `Failed to fetch status (Status: ${response.status})`);
-      }
-
-      const status = await response.json();
-      setUserStatus(status);
-    } catch (err) {
-      console.error("Error refreshing status:", err.message);
-    }
   };
 
   async function handleSubmit() {
-    if (!content.trim() || userStatus.hasActiveSession || wordCount > 2500) return;
+    if (!content.trim() || userStatus?.hasActiveSession || wordCount > 2500) return;
 
     setIsSubmitting(true);
     try {
@@ -187,12 +165,12 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
       }));
 
       setContent("");
-      localStorage.removeItem("csm-session-draft");
+      if (draftKey) localStorage.removeItem(draftKey); // FIXED: user-specific clear
       setUseFreeSession(false);
       setShowSalesPage(true);
       setWordCount(0);
       setSavedMessage("");
-      setShowEditor(false); // ← Return to intro after submit
+      setShowEditor(false);
       alert("Session submitted! Report in 24 hours.");
       onTabChange("view");
     } catch (err) {
@@ -240,10 +218,10 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="card-gradient p-2 md:p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
+      className="card-gradient p-2 md:p-8 rounded-lg shadow-custom-lg border border-[var(--primary)]"
     >
       <div className="max-w-4xl mx-auto space-y-6 mt-10">
-        {/* ==================== STEP 1: INTRO ==================== */}
+        {/* INTRO */}
         {!showEditor && (
           <>
             <div className="flex flex-col items-center mb-6 md:px-20">
@@ -265,7 +243,6 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
               </p>
             </div>
 
-            {/* START SESSION BUTTON */}
             <div className="flex justify-center mt-8">
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -279,12 +256,21 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
           </>
         )}
 
-        {/* ==================== STEP 2: EDITOR (Only when showEditor = true) ==================== */}
+        {/* EDITOR */}
         {showEditor && (
           <>
             <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] md:mb-10 text-center">
               Submit Your Session Entry
             </h1>
+
+            {userStatus?.hasActiveSession && (
+              <div className="mb-8 mt-8 p-6 bg-red-600/10 border border-[var(--border)] rounded-lg">
+                <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center">
+                  You already have an <strong>active session</strong> awaiting a response from your CSM-Certified
+                  Expert. Please wait until it is answered before starting a new one.
+                </p>
+              </div>
+            )}
 
             <div className="flex justify-end h-1 gap-2">
               {savedMessage && (
@@ -320,16 +306,16 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={handleSubmit}
-                    disabled={isSubmitting || !content.trim() || userStatus.hasActiveSession || wordCount > 2500}
+                    disabled={isSubmitting || !content.trim() || userStatus?.hasActiveSession || wordCount > 2500}
                     className={`px-8 py-3 rounded-lg font-semibold transition-all shadow-md ${
-                      isSubmitting || !content.trim() || userStatus.hasActiveSession || wordCount > 2500
+                      isSubmitting || !content.trim() || userStatus?.hasActiveSession || wordCount > 2500
                         ? "bg-[var(--surface-variant)] text-[var(--text-secondary)] cursor-not-allowed opacity-70"
                         : "btn-primary hover:shadow-lg"
                     }`}
                   >
                     {isSubmitting
                       ? "Submitting..."
-                      : userStatus.hasActiveSession
+                      : userStatus?.hasActiveSession
                       ? "Awaiting Response..."
                       : wordCount > 2500
                       ? "Trim to ≤ 2,500 words"
@@ -339,7 +325,6 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
               </div>
             </div>
 
-            {/* Live Preview */}
             {content && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}

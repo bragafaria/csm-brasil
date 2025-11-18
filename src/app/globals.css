@@ -333,3 +333,12 @@ body {
   color: var(--text-secondary);
   text-align: center;
 }
+
+/* Mux Pie Chart */
+.pie-chart-container text,
+.pie-chart-container .MuiChartsAxis-label,
+.pie-chart-container .MuiChartsLegend-label,
+.pie-chart-container .MuiChartsTooltip-root {
+  fill: #f8fafc !important;
+  color: #f8fafc !important;
+}

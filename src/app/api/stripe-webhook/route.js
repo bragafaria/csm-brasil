@@ -7,102 +7,127 @@ const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+export const config = { api: { bodyParser: false } };
 
-async function buffer(request) {
-  const arrayBuffer = await request.arrayBuffer();
-  return Buffer.from(arrayBuffer);
+console.log("WEBHOOK LOADED → FINAL BULLETPROOF VERSION →", new Date().toISOString());
+
+async function buffer(req) {
+  return Buffer.from(await req.arrayBuffer());
+}
+
+// Helper: safely convert Stripe timestamp → ISO string or null
+function safeIsoDate(seconds) {
+  if (!seconds || seconds <= 0) return null;
+  try {
+    return new Date(seconds * 1000).toISOString();
+  } catch {
+    return null;
+  }
 }
 
 export async function POST(request) {
-  console.log("Webhook received at:", new Date().toISOString());
-
-  // Validate env vars
-  if (!process.env.STRIPE_SECRET_KEY || !webhookSecret || !supabaseUrl || !supabaseServiceKey) {
-    console.error("Missing environment variables");
-    return new Response(JSON.stringify({ error: "Server misconfigured" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
-  }
-
   const body = await buffer(request);
   const sig = request.headers.get("stripe-signature");
 
   let event;
   try {
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
-    console.log("Webhook event verified:", { type: event.type, id: event.id });
+    console.log("WEBHOOK EVENT →", event.type, "ID:", event.id);
   } catch (err) {
-    console.error("Webhook signature verification failed:", err.message);
-    return new Response(`Webhook Error: ${err.message}`, { status: 400 });
+    console.error("SIGNATURE FAILED →", err.message);
+    return new Response("Invalid signature", { status: 400 });
   }
+
+  const supabase = createClient(supabaseUrl, supabaseServiceKey, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
 
   try {
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
-      const userId = session.metadata?.user_id;
 
-      console.log("Processing checkout.session.completed:", {
-        sessionId: session.id,
-        userId,
-        customerId: session.customer,
-      });
+      console.log("CHECKOUT SESSION →", session.id, "Mode:", session.mode, "Status:", session.payment_status);
+      console.log("Metadata:", session.metadata);
 
-      if (!userId) {
-        console.error("No user_id in metadata");
-        return new Response(JSON.stringify({ error: "Missing user_id" }), { status: 400 });
-      }
+      // $19 SESSION CREDIT
+      if (session.metadata?.type === "session_credit") {
+        if (session.payment_status === "paid") {
+          const { error } = await supabase.from("blueprint_payments").insert({
+            user_id: session.metadata.user_id,
+            stripe_charge_id:
+              typeof session.payment_intent === "string" ? session.payment_intent : session.payment_intent?.id || null,
+            amount: 19,
+            status: "succeeded",
+          });
 
-      const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
-        auth: { autoRefreshToken: false, persistSession: false },
-      });
-
-      // Fetch user
-      const { data: userData, error: userError } = await supabaseAdmin
-        .from("users")
-        .select("id, has_paid")
-        .eq("id", userId)
-        .single();
-
-      if (userError || !userData) {
-        console.error("User not found:", userError?.message);
-        return new Response(JSON.stringify({ error: "User not found" }), { status: 400 });
-      }
-
-      // Only update if not already paid
-      if (!userData.has_paid) {
-        console.log("Marking user as paid:", userId);
-        const { error: updateError } = await supabaseAdmin
-          .from("users")
-          .update({ has_paid: true, site_id: userId })
-          .eq("id", userId);
-
-        if (updateError) {
-          console.error("Failed to update has_paid:", updateError.message);
-          return new Response(JSON.stringify({ error: "DB update failed" }), { status: 500 });
+          if (error) console.error("CREDIT INSERT FAILED →", error.message);
+          else console.log("SUCCESS: $19 CREDIT SAVED FOR USER", session.metadata.user_id);
         }
-      } else {
-        console.log("User already paid, skipping update");
+        return new Response("OK", { status: 200 });
       }
 
-      // NO INVITE LOGIC HERE
-      // → Handled in /api/verify-payment (synchronous, reliable)
-    } else {
-      console.log(`Unhandled event: ${event.type}`);
+      // COUPLE'S REPORT (legacy)
+      if (!session.metadata?.type || session.metadata.type === "report") {
+        if (session.metadata?.user_id) {
+          await supabase
+            .from("users")
+            .update({ has_paid: true, site_id: session.metadata.user_id })
+            .eq("id", session.metadata.user_id);
+        }
+      }
+
+      // SUBSCRIPTION — BULLETPROOF
+      if (session.metadata?.type === "subscription" && session.subscription) {
+        console.log("SUBSCRIPTION FLOW → STARTED");
+
+        const subId = typeof session.subscription === "string" ? session.subscription : session.subscription.id;
+        const sub = await stripe.subscriptions.retrieve(subId);
+
+        const insertData = {
+          user_id: session.metadata.user_id,
+          stripe_subscription_id: sub.id,
+          status: sub.status || "incomplete",
+          start_date: safeIsoDate(sub.current_period_start) || new Date().toISOString(),
+          end_date: safeIsoDate(sub.current_period_end),
+          sessions_used_this_month: 0,
+          last_reset_date: new Date().toISOString(),
+        };
+
+        console.log("UPSERTING SUBSCRIPTION →", insertData);
+
+        const { error } = await supabase
+          .from("blueprint_subscriptions")
+          .upsert(insertData, { onConflict: "stripe_subscription_id" });
+
+        if (error) {
+          console.error("SUBSCRIPTION UPSERT FAILED →", error.message);
+          console.error("Full error:", JSON.stringify(error, null, 2));
+        } else {
+          console.log("SUCCESS: SUBSCRIPTION SAVED →", sub.id, "User:", session.metadata.user_id);
+        }
+      }
+    }
+
+    // Handle subscription updates/cancellations
+    else if (event.type === "customer.subscription.updated" || event.type === "customer.subscription.deleted") {
+      const sub = event.data.object;
+
+      const { error } = await supabase
+        .from("blueprint_subscriptions")
+        .update({
+          status: sub.status,
+          end_date: safeIsoDate(sub.current_period_end),
+        })
+        .eq("stripe_subscription_id", sub.id);
+
+      if (error) console.error("SUBSCRIPTION UPDATE FAILED →", error.message);
+      else console.log("Subscription updated →", sub.id, "Status:", sub.status);
     }
   } catch (err) {
-    console.error("Webhook handler error:", err.message, err.stack);
-    return new Response(JSON.stringify({ error: "Processing failed" }), { status: 500 });
+    console.error("WEBHOOK CRASHED →", err.message);
+    console.error("Stack:", err.stack);
+    return new Response("Server error", { status: 500 });
   }
 
-  // ALWAYS return 200
-  return new Response(JSON.stringify({ received: true }), {
-    status: 200,
-    headers: { "Content-Type": "application/json" },
-  });
+  return new Response("OK", { status: 200 });
 }
