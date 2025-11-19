@@ -107,7 +107,7 @@ export default function DashboardLayout({ children }) {
           transition={{ duration: 0.3 }}
           className={`flex-1 transition-all duration-300 ${!isMobile && sidebarOpen ? "ml-64" : "ml-0"}`}
         >
-          <div className="p-4 md:p-6 lg:p-8">{(isMobile && !sidebarOpen) || !isMobile ? children : null}</div>
+          <div className="md:p-6 lg:p-8">{(isMobile && !sidebarOpen) || !isMobile ? children : null}</div>
         </motion.main>
       </div>
 

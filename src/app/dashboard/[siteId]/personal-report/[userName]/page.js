@@ -373,7 +373,7 @@ export default function PersonalReportPage() {
 
       {/* ==================== SUMMARY ==================== */}
       <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-8">
-        <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
+        <div className="card-gradient md:p-6 rounded-lg shadow-custom">
           {/* ==================== CSM DIMENSIONS EXPLANATION ==================== */}
           <div className="mt-8 p-6 bg-[var(--surface-variant)] rounded-xl border border-[var(--border)]">
             <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6 text-left">Quick Explanation</h2>
@@ -477,7 +477,7 @@ export default function PersonalReportPage() {
             </div>
 
             {/* === POLES PREFERENCES === */}
-            <div className="space-y-6 border border-white/20 bg-white/5 rounded-lg px-4 py-6">
+            <div className="space-y-6 border border-white/20 bg-white/5 rounded-lg md:px-4 py-6">
               {/* ==================== DPS DISTRIBUTION ==================== */}
               <div className="flex flex-col items-center p-4 bg-[var(--surface-variant)] rounded-lg">
                 <h3 className="text-lg font-bold text-[var(--text-primary)] mb-4 text-center">
@@ -503,7 +503,7 @@ export default function PersonalReportPage() {
                         arcLabelMinAngle: 20,
                       },
                     ]}
-                    width={400}
+                    width={200}
                     height={300}
                     slotProps={{
                       legend: {

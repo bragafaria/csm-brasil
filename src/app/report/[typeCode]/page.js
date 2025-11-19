@@ -351,7 +351,7 @@ DEGREES OF INFLUENCE:
               </div>
             </div>
             {/* === POLES PREFERENCES === */}
-            <div className="space-y-6 border border-white/20  bg-white/5 rounded-lg px-4 py-6">
+            <div className="space-y-6 border border-white/20  bg-white/5 rounded-lg md:px-4 py-6">
               {/* ==================== DPS DISTRIBUTION ==================== */}
               <div className="flex flex-col items-center p-4 bg-[var(--surface-variant)] rounded-lg">
                 {/* Title – centred on every screen */}
@@ -386,7 +386,7 @@ DEGREES OF INFLUENCE:
                         arcLabelMinAngle: 20,
                       },
                     ]}
-                    width={400}
+                    width={200}
                     height={300}
                     slotProps={{
                       legend: {
@@ -727,7 +727,7 @@ DEGREES OF INFLUENCE:
       </section>
       {/* ==================== 3. YOUR DIMENSIONAL PROFILE ==================== */}
       <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll">
-        <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
+        <div className="card-gradient md:p-6 rounded-lg shadow-custom">
           <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
             Your Dimensional Profile
           </h2>

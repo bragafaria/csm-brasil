@@ -1,6 +1,6 @@
 // app/login/page.js
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
 import { sendResetEmail } from "@/app/actions/auth";
@@ -16,8 +16,16 @@ export default function Login() {
   const [resetEmail, setResetEmail] = useState("");
   const [resetStatus, setResetStatus] = useState(null); // { success: boolean, message: string }
   const [resetLoading, setResetLoading] = useState(false);
+  const [urlMessage, setUrlMessage] = useState("");
   const router = useRouter();
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const msg = params.get("message");
+    if (msg === "email_changed") {
+      setUrlMessage("Email changed successfully! Please log in with your new email.");
+    }
+  }, []);
   const handleSendReset = async (e) => {
     e.preventDefault();
     setResetLoading(true);
@@ -139,6 +147,11 @@ export default function Login() {
             </button>
           </div>
           {error && <p className="text-red-400 text-sm text-center">{error}</p>}
+          {urlMessage && (
+            <div className="mb-6 p-4 bg-green-900/50 border border-green-500/50 rounded-lg text-green-300 text-center text-sm">
+              {urlMessage}
+            </div>
+          )}
           <button
             type="submit"
             disabled={loading}
