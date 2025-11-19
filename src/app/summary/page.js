@@ -6,7 +6,10 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { createClient } from "@supabase/supabase-js";
 import Spinner from "@/app/components/ui/Spinner";
-import { Shield, User, Mail } from "lucide-react";
+import { User, Mail } from "lucide-react";
+import PersonalityReportEmail from "@/app/components/emails/PersonalityReport";
+import { createPermanentReportUrl } from "@/app/lib/sharable-url";
+import { render } from "@react-email/render";
 
 // Initialize Supabase client
 const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
@@ -50,14 +53,51 @@ export default function Summary() {
     setError("");
 
     try {
-      const { error: dbError } = await supabase.from("visitors").insert({ name: name.trim(), email: email.trim() });
+      const { error: dbError } = await supabase.from("visitors").insert({
+        name: name.trim(),
+        email: email.trim(),
+      });
       if (dbError) throw dbError;
 
+      // Fix 2: Declare fullData outside
+      let fullData = {};
       const stored = localStorage.getItem("csmAssessmentData");
       if (stored) {
-        const fullData = JSON.parse(stored);
+        fullData = JSON.parse(stored);
         fullData.userName = name.trim();
         localStorage.setItem("csmAssessmentData", JSON.stringify(fullData));
+      }
+
+      // Fix 3: Safety check
+      if (!fullData?.results?.typeCode) {
+        console.warn("No assessment data found – skipping email");
+      } else {
+        // =============== SEND EMAIL ===============
+        const permanentUrl = createPermanentReportUrl(fullData);
+
+        const archetypeName =
+          typeof fullData.results.archetype === "object"
+            ? fullData.results.archetype?.name || "Unknown Archetype"
+            : fullData.results.archetype || "Unknown Archetype";
+
+        const emailHtml = await render(
+          <PersonalityReportEmail
+            name={name.trim()}
+            archetypeName={archetypeName}
+            typeCode={fullData.results.typeCode}
+            shareableUrl={permanentUrl}
+          />
+        );
+
+        fetch("/api/email/send", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            to: "bragafaria@gmail.com",
+            subject: `Your CSM Personality Report – The ${archetypeName}`,
+            html: emailHtml,
+          }),
+        }).catch((err) => console.warn("Email failed (non-blocking):", err));
       }
 
       router.push(`/report/${data.typeCode}`);
