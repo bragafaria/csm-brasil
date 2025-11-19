@@ -107,21 +107,29 @@ export async function POST(request) {
         }
       }
     }
-
     // Handle subscription updates/cancellations
     else if (event.type === "customer.subscription.updated" || event.type === "customer.subscription.deleted") {
       const sub = event.data.object;
 
+      // Raw Stripe status — paywall trusts this
+      const stripeStatus = sub.status;
+
+      // UX status — can show "canceled" early
+      let displayStatus = sub.status;
+      if (sub.cancel_at_period_end) {
+        displayStatus = "canceled";
+      }
+
       const { error } = await supabase
         .from("blueprint_subscriptions")
         .update({
-          status: sub.status,
+          status: stripeStatus, // ← Paywall column — stays "active" until real end
+          display_status: displayStatus, // ← Settings page column — shows "canceled" immediately
           end_date: safeIsoDate(sub.current_period_end),
         })
         .eq("stripe_subscription_id", sub.id);
 
-      if (error) console.error("SUBSCRIPTION UPDATE FAILED →", error.message);
-      else console.log("Subscription updated →", sub.id, "Status:", sub.status);
+      if (error) console.error("UPDATE FAILED", error);
     }
   } catch (err) {
     console.error("WEBHOOK CRASHED →", err.message);

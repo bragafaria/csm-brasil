@@ -12,6 +12,10 @@ export default function SettingsPage() {
   const [currentEmail, setCurrentEmail] = useState("");
   const [loading, setLoading] = useState(true);
 
+  // Subscription state
+  const [subscriptionStatus, setSubscriptionStatus] = useState(""); // "active" | "canceled" | null
+  const [portalLoading, setPortalLoading] = useState(false);
+
   // Change Email
   const [newEmail, setNewEmail] = useState("");
   const [emailLoading, setEmailLoading] = useState(false);
@@ -25,7 +29,7 @@ export default function SettingsPage() {
   const [passwordStatus, setPasswordStatus] = useState(null);
 
   useEffect(() => {
-    async function loadUser() {
+    async function loadUserAndSubscription() {
       const {
         data: { session },
       } = await supabase.auth.getSession();
@@ -37,10 +41,73 @@ export default function SettingsPage() {
 
       setUser(session.user);
       setCurrentEmail(session.user.email || "");
+
+      // Fetch subscription status
+      // Fetch subscription status
+      const { data: subData, error } = await supabase
+        .from("blueprint_subscriptions")
+        .select("display_status, status")
+        .eq("user_id", session.user.id)
+        .maybeSingle(); // ← This prevents the crash when no subscription exists
+
+      if (subData) {
+        setSubscriptionStatus(subData.display_status || subData.status || "");
+      }
+
       setLoading(false);
     }
-    loadUser();
+    loadUserAndSubscription();
   }, [router]);
+
+  // ==================== STRIPE CUSTOMER PORTAL ====================
+  const openCustomerPortal = async () => {
+    setPortalLoading(true);
+
+    try {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (!session) {
+        alert("You must be logged in");
+        return;
+      }
+
+      const response = await fetch("/api/create-portal-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.access_token}`,
+        },
+        body: JSON.stringify({
+          return_url: window.location.href + "?portal_return=1", // add flag
+        }),
+      });
+
+      const { url } = await response.json();
+
+      if (url) {
+        // Open in new tab — user can close it anytime
+        const newWindow = window.open(url, "_blank");
+        if (!newWindow) {
+          alert("Please allow popups for this site");
+        }
+
+        // Optional: Auto-refresh when they come back (detect flag)
+        const checkReturn = setInterval(() => {
+          if (document.hidden === false && window.location.search.includes("portal_return=1")) {
+            clearInterval(checkReturn);
+            window.history.replaceState({}, "", window.location.pathname); // clean URL
+            window.location.reload(); // refresh subscription status
+          }
+        }, 1000);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error opening billing portal");
+    } finally {
+      setPortalLoading(false);
+    }
+  };
 
   // ==================== CHANGE EMAIL ====================
   const handleEmailChange = async (e) => {
@@ -63,7 +130,7 @@ export default function SettingsPage() {
     } else {
       setEmailStatus({
         success: true,
-        message: "Email change requested! Please check your NEW email and click the confirmation link.",
+        message: "Email change requested! Check your NEW email for the confirmation link.",
       });
       setNewEmail("");
     }
@@ -88,7 +155,7 @@ export default function SettingsPage() {
     setPasswordLoading(true);
     setPasswordStatus(null);
 
-    // Re-authenticate with current password (Supabase requires this for password changes)
+    // Re-authenticate with current password (required by Supabase)
     const { error: authError } = await supabase.auth.signInWithPassword({
       email: currentEmail,
       password: currentPassword,
@@ -100,7 +167,7 @@ export default function SettingsPage() {
       return;
     }
 
-    // Now update the password
+    // Update password
     const { error } = await supabase.auth.updateUser({
       password: newPassword,
     });
@@ -238,15 +305,68 @@ export default function SettingsPage() {
           </form>
         </section>
 
-        {/* Sign Out */}
-        <div className="text-center pt-8">
-          <button
-            onClick={() => supabase.auth.signOut()}
-            className="text-[var(--text-secondary)] hover:text-red-400 underline transition-colors"
-          >
-            Sign out from all devices
-          </button>
-        </div>
+        {/* Subscription Management */}
+        <section className="card-gradient p-6 rounded-xl shadow-custom-lg">
+          <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-4">Subscription</h3>
+
+          {subscriptionStatus ? (
+            <div className="space-y-4">
+              <div>
+                <p className="text-[var(--text-secondary)]">Status</p>
+
+                <p
+                  className={`font-bold text-lg ${
+                    subscriptionStatus === "active" || subscriptionStatus === "trialing"
+                      ? "text-green-400" // Good states = green
+                      : subscriptionStatus === "canceled" ||
+                        subscriptionStatus === "past_due" ||
+                        subscriptionStatus === "unpaid" ||
+                        subscriptionStatus === "incomplete" ||
+                        subscriptionStatus === "incomplete_expired"
+                      ? "text-orange-400" // Warning / problem states = orange
+                      : "text-[var(--text-secondary)]" // Unknown = neutral
+                  }`}
+                >
+                  {subscriptionStatus === "active" && "Active"}
+                  {subscriptionStatus === "trialing" && "Active: Trial period"}
+                  {subscriptionStatus === "canceled" && "Canceled: access until end of billing period"}
+                  {subscriptionStatus === "past_due" && "Payment failed: please update card"}
+                  {subscriptionStatus === "unpaid" && "Unpaid: please update payment"}
+                  {subscriptionStatus === "incomplete" && "Incomplete: setup failed"}
+                  {subscriptionStatus === "incomplete_expired" && "Incomplete: expired"}
+
+                  {/* Fallback */}
+                  {![
+                    "active",
+                    "trialing",
+                    "canceled",
+                    "past_due",
+                    "unpaid",
+                    "incomplete",
+                    "incomplete_expired",
+                  ].includes(subscriptionStatus) &&
+                    (subscriptionStatus
+                      ? subscriptionStatus.charAt(0).toUpperCase() + subscriptionStatus.slice(1).replace(/_/g, " ")
+                      : "Unknown")}
+                </p>
+              </div>
+
+              <button
+                onClick={openCustomerPortal}
+                disabled={portalLoading}
+                className="btn-primary w-full py-3 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {portalLoading ? "Opening Portal..." : "Manage Subscription → Update Card / Cancel"}
+              </button>
+
+              <p className="text-xs text [var(--text-secondary)] text-center">
+                Update payment method, renew or cancel anytime in the secure Stripe portal.
+              </p>
+            </div>
+          ) : (
+            <p className="text-[var(--text-secondary)] text-center py-8">No active subscription</p>
+          )}
+        </section>
       </div>
     </div>
   );

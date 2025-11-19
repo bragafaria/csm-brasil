@@ -52,6 +52,7 @@ export default function AdminBlog() {
       alert("Error saving post");
     } finally {
       setLoading(false);
+      window.location.reload();
     }
   };
 
