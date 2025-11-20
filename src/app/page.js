@@ -594,7 +594,7 @@ export default function Home() {
               {
                 question: "How is CSM different from MBTI, Enneagram, or Big Five?",
                 answer:
-                  "While MBTI categorizes people into 16 types, Enneagram focuses on motivations, and the Big Five measures broad traits, CSM provides 32 archetypes with spectrum-based percentages, offering far more precision. The model also introduces the unique Harmony/Autonomy dimension, which highlights how you naturally collaborate or seek independence in relationships. By integrating cognitive patterns and interpersonal applications, CSM provides actionable strategies for personal growth and relationship success that other personality frameworks don’t.",
+                  "While MBTI categorizes people into 16 types, Enneagram focuses on motivations, and the Big Five measures broad traits, CSM provides 32 archetypes with spectrum-based percentages, offering far more precision. By integrating cognitive patterns and interpersonal applications, CSM provides actionable strategies for personal growth and relationship success that other personality frameworks don’t.",
               },
               {
                 question: "Why should I trust CSM over free online quizzes?",
@@ -604,22 +604,22 @@ export default function Home() {
               {
                 question: "Can CSM really “read” my relationship like a mind reader?",
                 answer:
-                  "CSM doesn’t guess emotions or predict outcomes intuitively. Instead, it analyzes cognitive alignments, such as how a partner who prefers Harmony might interact with someone who favors Autonomy. It identifies areas of synergy and potential friction, showing, for example, how Empathic values can complement Analytical logic in decision-making. About 94% of users report that CSM provides clearer insights into relationship dynamics, helping them communicate and connect more effectively.",
+                  "CSM doesn’t guess emotions or predict outcomes intuitively. Instead, it analyzes cognitive alignments, such as how a partner who prefers Harmony might interact with someone who favors Autonomy. It identifies areas of synergy and potential friction. About 94% of users report that CSM provides clearer insights into relationship dynamics, helping them communicate and connect more effectively.",
               },
               {
                 question: "Is CSM scientifically legit, or just another buzzword quiz?",
                 answer:
-                  "CSM is grounded in psychological theory, combining Jungian cognitive functions with Big Five traits. Its psychometric validation demonstrates internal consistency above 0.8 and 75% user alignment in pilot studies. Ongoing research supports its reliability in predicting relational patterns, outperforming other popular personality frameworks in actionable insight. CSM is evidence-based and designed for practical application, not entertainment.",
+                  "CSM is grounded in psychological theory, combining Jungian cognitive functions with Big Five traits. Ongoing research supports its reliability in predicting relational patterns, outperforming other popular personality frameworks in actionable insight. CSM is evidence-based and designed for practical application, not entertainment.",
               },
               {
                 question: "How does the free assessment work?",
                 answer:
-                  "The free CSM assessment is designed to be concise, typically taking 10 to 15 minutes. It blends Likert-scale ratings with situational questions that reveal your cognitive preferences. Upon completion, you receive a report detailing your archetype, percentage-based spectrum scores, strengths, and preliminary relational insights. The assessment is secure, mobile-friendly, and accessible on any device.",
+                  "The free CSM assessment is designed to be concise, typically taking 10 to 15 minutes. It blends Likert-scale ratings with situational questions that reveal your cognitive preferences. Upon completion, you receive a report detailing your archetype, percentage-based spectrum scores, strengths, weaknesses, and preliminary relational insights. The assessment is secure, mobile-friendly, and accessible on any device.",
               },
               {
                 question: "Do I need my partner to start?",
                 answer:
-                  "No. You can complete the free assessment on your own and explore your personal profile. If you wish to generate a full Couple Insights Report, your partner will also need to take the assessment. Many users prefer to start individually and invite their partner later for a joint analysis.",
+                  "No. You can complete the free assessment on your own and explore your personal profile. If you wish to generate a full Couple's Insights Report, your partner will also need to take the assessment. Many users prefer to start individually and invite their partner later for a joint analysis.",
               },
               {
                 question: "Can CSM predict if we’re soulmates or just spot potential issues?",
@@ -631,7 +631,7 @@ export default function Home() {
                 answer: "Your individual free assessment results are generated immediately.",
               },
               {
-                question: "Is CSM therapy or coaching?",
+                question: "Is CSM therapy?",
                 answer:
                   "No. CSM is not a therapeutic tool and does not diagnose or treat mental health conditions. It is a self-awareness and personal growth framework designed to provide structured insights and strategies for relationships and life challenges. Many users combine it with counseling or coaching, but it is fully effective as a standalone growth tool.",
               },

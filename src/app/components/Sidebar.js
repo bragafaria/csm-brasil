@@ -52,16 +52,16 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
       icon: BookOpen,
       subItems: [{ label: "Private Sessions", route: `/dashboard/${siteId}/coaching/sessions` }],
     },
-    {
-      id: "learn",
-      label: "Learn",
-      icon: Lightbulb,
-      subItems: [
-        { label: "Tips", route: `/dashboard/${siteId}/learn/tips` },
-        { label: "Glossary", route: `/dashboard/${siteId}/learn/glossary` },
-        { label: "About CSM", route: `/dashboard/${siteId}/learn/about-csm` },
-      ],
-    },
+    // {
+    //   id: "learn",
+    //   label: "Learn",
+    //   icon: Lightbulb,
+    //   subItems: [
+    //     { label: "Tips", route: `/dashboard/${siteId}/learn/tips` },
+    //     { label: "Glossary", route: `/dashboard/${siteId}/learn/glossary` },
+    //     { label: "About CSM", route: `/dashboard/${siteId}/learn/about-csm` },
+    //   ],
+    // },
     {
       id: "account",
       label: "Account",

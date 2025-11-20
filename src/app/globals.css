@@ -342,3 +342,29 @@ body {
   fill: #f8fafc !important;
   color: #f8fafc !important;
 }
+
+/* ──────────────────────────────────────────────────────────────
+   SELECT FIX – Dark theme friendly
+   ────────────────────────────────────────────────────────────── */
+select {
+  background-color: #1f1f1f !important; /* Dark background */
+  color: #f8fafc !important; /* White text */
+  -webkit-appearance: none; /* Removes default arrow in some browsers */
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 2.5rem !important; /* Space for custom arrow */
+}
+
+/* Optional: nicer custom arrow */
+select::-ms-expand {
+  display: none;
+}
+
+select + svg {
+  pointer-events: none;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #cbd5e1;
+}

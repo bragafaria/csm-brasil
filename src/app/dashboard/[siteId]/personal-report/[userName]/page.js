@@ -252,7 +252,7 @@ export default function PersonalReportPage() {
   const shareVia = async (platform) => {
     setIsShortening(true);
     const shareUrl = await generateShareableLink();
-    const shareText = `Hey, it's ${data.name}! I just took the CSM personality assessment and got "The ${data.archetypeName}" type. It was way more accurate than I expected. Take a look:`;
+    const shareText = `Hey, it's ${data.name}! I just took the CSM personality assessment and got "${data.archetypeName}" type. It was way more accurate than I expected. Take a look:`;
 
     const shareData = {
       title: `I'm The ${data.archetypeName} (${data.typeCode})`,
@@ -312,7 +312,7 @@ export default function PersonalReportPage() {
       Strong: { border: "border-red-400/20", text: "text-red-400", bg: "bg-red-400", from: "from-red-500/10" },
       High: { border: "border-red-400/20", text: "text-red-400", bg: "bg-red-400", from: "from-red-500/10" },
       Low: { border: "border-green-400/20", text: "text-green-400", bg: "bg-green-400", from: "from-green-500/10" },
-    }[level] || { border: "border-gray-400/20", text: "text-gray-400", bg: "bg-gray-400", from: "from-gray-500/10" });
+    })[level] || { border: "border-gray-400/20", text: "text-gray-400", bg: "bg-gray-400", from: "from-gray-500/10" };
 
   // === RENDER STATES ===
   if (loading)

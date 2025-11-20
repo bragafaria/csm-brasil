@@ -197,13 +197,6 @@ export default function SettingsPage() {
       <div className="max-w-2xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center mb-10">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <Image src="/logo_transparent_svg.svg" alt="Logo" width={32} height={32} className="h-8 w-8" />
-            <div className="flex items-center space-x-1">
-              <h1 className="text-2xl font-bold text-[var(--primary)]">CSM</h1>
-              <h1 className="text-2xl font-light text-[var(--text-primary)]">Dynamics</h1>
-            </div>
-          </div>
           <h2 className="text-3xl font-bold text-[var(--text-primary)]">Account Settings</h2>
         </div>
 
@@ -319,12 +312,12 @@ export default function SettingsPage() {
                     subscriptionStatus === "active" || subscriptionStatus === "trialing"
                       ? "text-green-400" // Good states = green
                       : subscriptionStatus === "canceled" ||
-                        subscriptionStatus === "past_due" ||
-                        subscriptionStatus === "unpaid" ||
-                        subscriptionStatus === "incomplete" ||
-                        subscriptionStatus === "incomplete_expired"
-                      ? "text-orange-400" // Warning / problem states = orange
-                      : "text-[var(--text-secondary)]" // Unknown = neutral
+                          subscriptionStatus === "past_due" ||
+                          subscriptionStatus === "unpaid" ||
+                          subscriptionStatus === "incomplete" ||
+                          subscriptionStatus === "incomplete_expired"
+                        ? "text-orange-400" // Warning / problem states = orange
+                        : "text-[var(--text-secondary)]" // Unknown = neutral
                   }`}
                 >
                   {subscriptionStatus === "active" && "Active"}

@@ -45,9 +45,9 @@ export default function IntroContext({ partnerA, partnerB }) {
         This section explores the natural chemistry between <strong>{nameA}</strong> and <strong>{nameB}</strong>, how
         your two cognitive styles can complement each other when both partners are centered, self-aware, and
         communicating with openness.{" "}
-        <strong>It offers a portrait of your potential harmony rather than a mirror of your current reality.</strong>{" "}
-        Every relationship experiences moments of tension, misunderstanding, and growth; these are part of the shared
-        human journey.
+        <strong>
+          It offers a portrait of your potential harmony rather than a mirror of your current reality.
+        </strong>{" "}
       </p>
       <p className="text-lg text-[var(--text-secondary)]">
         <strong>Use this section as a guide to recognize your innate connection patterns</strong>, where emotional
