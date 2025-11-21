@@ -8,7 +8,7 @@ export default function WhatsNextAnalytics() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed my-8">
-      <div className="card-gradient p-6 rounded-2xl shadow-custom">
+      <div className="card-gradient p-4 md:p-6 rounded-2xl shadow-custom">
         <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 mt-4 text-left">What’s Next?</h2>
 
         <div className="space-y-6 text-[var(--text-secondary)]">
