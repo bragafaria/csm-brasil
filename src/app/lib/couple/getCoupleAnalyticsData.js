@@ -24,7 +24,7 @@ export async function getCoupleAnalyticsData(siteId) {
 
   if (partnerAError || !partnerAData) {
     if (typeof window !== "undefined") window.location.href = "/error?message=Invalid report";
-    throw new Error("Partner A not found");
+    throw new Error("Partner data not found. Contact support.");
   }
 
   const isPartnerA = userId === siteId;
@@ -37,7 +37,7 @@ export async function getCoupleAnalyticsData(siteId) {
 
   // === PARTNER B MUST EXIST ===
   if (!partnerAData.partner_id) {
-    throw new Error("Partner B has not signed up yet.");
+    throw new Error("Your partner has not completed the assessment yet.");
   }
 
   // === FETCH PARTNER B ===
@@ -48,7 +48,7 @@ export async function getCoupleAnalyticsData(siteId) {
     .single();
 
   if (partnerBError || !partnerBData) {
-    throw new Error("Partner B not found");
+    throw new Error("Partner data not found");
   }
 
   // === BOTH MUST HAVE ASSESSMENT ===

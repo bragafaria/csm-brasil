@@ -12,8 +12,10 @@ import {
   Brain,
   ChevronUp,
   ChevronDown,
+  X,
+  Menu,
 } from "lucide-react";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import { supabase } from "@/app/utils/supabaseClient";
 import { RotatingWord } from "@/app/components/ui/RotatingWord";
@@ -25,6 +27,7 @@ export default function Home() {
   const [expandedFAQ, setExpandedFAQ] = useState(null);
   const [activeNav, setActiveNav] = useState("home");
   const [loggingOut, setLoggingOut] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -33,6 +36,39 @@ export default function Home() {
   useEffect(() => {
     setRouteKey((prev) => prev + 1);
   }, [pathname]);
+
+  // CONSOLIDATED: Mobile menu effects (scroll lock + click outside)
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    // Lock body scroll
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    // Handle click outside
+    const handleClickOutside = (event) => {
+      if (!event.target.closest("nav")) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    // Handle escape key
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    // Cleanup
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [mobileMenuOpen]);
 
   const toggleFAQ = (index) => {
     setExpandedFAQ(expandedFAQ === index ? null : index);
@@ -56,92 +92,138 @@ export default function Home() {
     router.push("/csm-assessment");
   };
 
-  const headlineVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, delay: i * 0.3, ease: "easeOut" },
+  const headlineVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: 20 },
+      visible: (i) => ({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.8, delay: i * 0.3, ease: "easeOut" },
+      }),
     }),
-  };
+    []
+  );
 
-  const buttonVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.6, ease: "easeOut", delay: 0.9 },
-    },
-    hover: {
-      scale: 1.05,
-      boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)",
-      transition: { duration: 0.3, ease: "easeOut", yoyo: Infinity },
-    },
-  };
-
-  const stepVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, delay: i * 0.2, ease: "easeOut" },
+  const buttonVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, scale: 0.8 },
+      visible: {
+        opacity: 1,
+        scale: 1,
+        transition: { duration: 0.6, ease: "easeOut", delay: 0.9 },
+      },
+      hover: {
+        scale: 1.05,
+        boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)",
+        transition: { duration: 0.3, ease: "easeOut", yoyo: Infinity },
+      },
     }),
-  };
+    []
+  );
 
-  const circleVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
+  // Do the same for: stepVariants, circleVariants, cardVariants, headerVariants
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
+  const stepVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: 30 },
+      visible: (i) => ({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, delay: i * 0.2, ease: "easeOut" },
+      }),
+    }),
+    []
+  );
 
-  const headerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
+  const circleVariants = useMemo(
+    () => ({
+      hidden: { scale: 0.8, opacity: 0 },
+      visible: {
+        scale: 1,
+        opacity: 1,
+        transition: { duration: 0.5, ease: "easeOut" },
+      },
+    }),
+    []
+  );
+
+  const cardVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: 50 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, ease: "easeOut" },
+      },
+    }),
+    []
+  );
+
+  const headerVariants = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: 20 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.5, ease: "easeOut" },
+      },
+    }),
+    []
+  );
 
   const faqHeaderRef = useRef(null);
   const isFaqHeaderInView = useInView(faqHeaderRef, { once: false, amount: 0.2 });
 
-  const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setActiveNav(id);
-  };
+  const scrollToSection = useCallback(
+    (id) => {
+      if (id === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else if (id === "blog") {
+        router.push("/blog");
+      } else {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }
+      setActiveNav(id);
+      setMobileMenuOpen(false);
+    },
+    [router]
+  );
 
   return (
     <div className="min-h-screen bg-[var(--surface)] text-[var(--text-primary)]">
       {/* Sticky Header */}
       <header className="fixed top-0 w-full left-0 right-0 z-50 bg-[var(--dashboard)]/90 backdrop-blur-lg border-b border-[var(--border)]">
-        <nav className="container mx-auto px-4 py-4">
+        <nav className="container mx-auto px-4 py-3 md:py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+            {/* Mobile: Hamburger Menu (Left) */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 hover:bg-[var(--surface)]/20 rounded-lg transition-colors"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6 text-[var(--text-primary)]" />
+              ) : (
+                <Menu className="h-6 w-6 text-[var(--text-primary)]" />
+              )}
+            </button>
+
+            {/* Mobile: Logo (Center) & Desktop: Logo (Left) */}
+            <div className="flex items-center space-x-2 md:flex-none absolute left-1/2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0">
               <Image
                 src="/logo_transparent_svg.svg"
                 alt="CSM Dynamics Logo"
-                width={32} // same visual size as h-8 w-8
-                height={32}
-                className="h-8 w-8"
+                width={28}
+                height={28}
+                className="h-6 w-6 md:h-8 md:w-8"
               />
               <div className="flex items-center space-x-1">
-                <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
-                <h1 className="text-xl font-light text-white">Dynamics</h1>
+                <h1 className="text-base md:text-xl font-bold text-[var(--primary)]">CSM</h1>
+                <h1 className="text-base md:text-xl font-light text-white">Dynamics</h1>
               </div>
             </div>
+
+            {/* Desktop: Navigation Links (Center) */}
             <div className="hidden md:flex space-x-8">
               {[
                 { id: "home", label: "Home" },
@@ -163,24 +245,62 @@ export default function Home() {
                 </button>
               ))}
             </div>
+
+            {/* Mobile & Desktop: Login Button (Right) */}
             <button
               onClick={() => router.push("/login")}
-              className="btn-primary px-6 py-2 rounded-lg font-semibold cursor-pointer"
+              className="btn-primary px-3 py-1.5 md:px-6 md:py-2 rounded-lg text-sm md:text-base font-semibold cursor-pointer"
             >
               Login
             </button>
           </div>
         </nav>
+
+        {/* Mobile Menu Dropdown */}
+        <div
+          className={`md:hidden transition-all duration-300 ease-in-out ${
+            mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+          }`}
+        >
+          <div className="px-4 py-4 bg-[var(--dashboard)] border-t border-[var(--border)]">
+            <div className="flex flex-col space-y-1">
+              {[
+                { id: "home", label: "Home" },
+                { id: "how-it-works", label: "How It Works" },
+                { id: "whats-inside", label: "What's Inside" },
+                { id: "faq", label: "FAQ" },
+                { id: "blog", label: "Blog" },
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`text-left px-4 py-3 rounded-lg transition-colors ${
+                    activeNav === item.id
+                      ? "bg-[var(--primary)]/10 text-[var(--accent)]"
+                      : "text-[var(--text-secondary)] hover:bg-[var(--surface)]/20 hover:text-[var(--text-primary)]"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
       </header>
+
+      {/* Overlay when mobile menu is open */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 bg-black/50 z-40 md:hidden" onClick={() => setMobileMenuOpen(false)} />
+      )}
       {/* Hero Section */}
       <section className="relative section-full flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-[rgba(var(--primary-rgb),0.2)] via-transparent to-[rgba(var(--accent-rgb),0.2)]"></div>
         <div className="absolute top-20 left-10 w-72 h-72 bg-[rgba(var(--primary-rgb),0.1)] rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-[rgba(var(--accent-rgb),0.1)] rounded-full blur-3xl"></div>
 
-        <div className="relative max-w-7xl mx-auto mt-20 px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative max-w-7xl mx-auto mt-12 sm:mt-20 px-3 sm:px-4 lg:px-8 text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4 sm:mb-6">
               <motion.span
                 custom={0}
                 initial="hidden"
@@ -201,12 +321,12 @@ export default function Home() {
               </motion.span>
             </h1>
 
-            <p className="text-lg md:text-xl text-[var(--text-secondary)] mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[var(--text-secondary)] mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2">
               The Cognitive Spectrum Model (CSM) is a framework that maps how you think and connect, providing clear
               steps for personal growth and stronger relationships.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-2">
               <motion.button
                 initial="hidden"
                 animate="visible"
@@ -214,32 +334,32 @@ export default function Home() {
                 onClick={handleStartTest}
                 disabled={loggingOut}
                 variants={buttonVariants}
-                className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-4 py-2 rounded-full text-lg font-semibold transition-all duration-300 shadow-2xl flex items-center space-x-2 text-[var(--text-primary)]"
+                className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 shadow-2xl flex items-center space-x-2 text-[var(--text-primary)] w-full sm:w-auto justify-center"
               >
                 <span>{loggingOut ? "Preparing…" : "Take Free Test"}</span>
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
-              <p className="text-[var(--text-secondary)] text-sm">Takes only 10 minutes • Completely free</p>
+              <p className="text-[var(--text-secondary)] text-xs sm:text-sm">Takes only 10 minutes • Completely free</p>
             </div>
 
-            <div className="my-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="p-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--primary-rgb),0.1)] to-transparent border border-[rgba(var(--primary-rgb),0.2)] backdrop-blur-sm">
-                <div className="text-3xl font-bold text-white mb-2">
+            <div className="my-12 md:my-16 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8 px-2">
+              <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--primary-rgb),0.1)] to-transparent border border-[rgba(var(--primary-rgb),0.2)] backdrop-blur-sm">
+                <div className="text-2xl sm:text-3xl font-bold text-white mb-2">
                   <Counter target={25} suffix="k+" duration={3000} />
                 </div>
-                <div className="text-[var(--text-secondary)]">Couples helped</div>
+                <div className="text-[var(--text-secondary)] text-sm sm:text-base">Couples helped</div>
               </div>
-              <div className="p-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--accent-rgb),0.1)] to-transparent border border-[rgba(var(--accent-rgb),0.2)] backdrop-blur-sm">
-                <div className="text-3xl font-bold text-white mb-2">
+              <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--accent-rgb),0.1)] to-transparent border border-[rgba(var(--accent-rgb),0.2)] backdrop-blur-sm">
+                <div className="text-2xl sm:text-3xl font-bold text-white mb-2">
                   <Counter target={94} suffix="%" duration={3000} />
                 </div>
-                <div className="text-[var(--text-secondary)]">Report improvement</div>
+                <div className="text-[var(--text-secondary)] text-sm sm:text-base">Report improvement</div>
               </div>
-              <div className="p-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--primary-rgb),0.1)] to-transparent border border-[rgba(var(--primary-rgb),0.2)] backdrop-blur-sm">
-                <div className="text-3xl font-bold text-white mb-2">
+              <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--primary-rgb),0.1)] to-transparent border border-[rgba(var(--primary-rgb),0.2)] backdrop-blur-sm">
+                <div className="text-2xl sm:text-3xl font-bold text-white mb-2">
                   <Counter target={4.9} suffix=" ★" duration={3000} decimals={1} />
                 </div>
-                <div className="text-[var(--text-secondary)]">Average rating</div>
+                <div className="text-[var(--text-secondary)] text-sm sm:text-base">Average rating</div>
               </div>
             </div>
           </div>
@@ -589,12 +709,12 @@ export default function Home() {
               {
                 question: "What is the Cognitive Spectrum Model (CSM), and why should I care?",
                 answer:
-                  "The Cognitive Spectrum Model, or CSM, is a modern personality framework that evaluates how individuals think and interact across five key spectrums: Information Processing (Concrete versus Abstract), Decision-Making (Analytical versus Empathic), Energy Orientation (Inward versus Outward), Change Approach (Stable versus Adaptive), and Interpersonal Style (Harmony versus Autonomy). By assessing these dimensions, CSM generates one of 32 archetypes, giving you percentage-based results for nuanced insight. CSM is particularly valuable for improving self-awareness, enhancing communication, and understanding compatibility in relationships or other interpersonal contexts.",
+                  "The Cognitive Spectrum Model, or CSM, is a modern personality framework that evaluates how individuals think and interact across five key spectrums: Information Processing (Concrete versus Abstract), Decision-Making (Analytical versus Empathic), Energy Orientation (Inward versus Outward), Change Approach (Stable versus Adaptive), and Interpersonal Style (Harmony versus Autonomy). By assessing these dimensions, CSM generates one of 32 archetypes, providing a detailed analytics profile that highlights your unique cognitive patterns, individually and within relationships. CSM is particularly valuable for improving self-awareness, enhancing communication, and understanding compatibility in relationships or other interpersonal contexts.",
               },
               {
                 question: "How is CSM different from MBTI, Enneagram, or Big Five?",
                 answer:
-                  "While MBTI categorizes people into 16 types, Enneagram focuses on motivations, and the Big Five measures broad traits, CSM provides 32 archetypes with spectrum-based percentages, offering far more precision. By integrating cognitive patterns and interpersonal applications, CSM provides actionable strategies for personal growth and relationship success that other personality frameworks don’t.",
+                  "While MBTI categorizes people into 16 types, Enneagram focuses on motivations, and the Big Five measures broad traits, CSM provides 32 archetypes supported by spectrum-based analyses for greater precision. By integrating cognitive patterns with real-world interpersonal insights, CSM provides actionable strategies for personal growth and relationship success that other personality frameworks don’t.",
               },
               {
                 question: "Why should I trust CSM over free online quizzes?",
@@ -614,12 +734,12 @@ export default function Home() {
               {
                 question: "How does the free assessment work?",
                 answer:
-                  "The free CSM assessment is designed to be concise, typically taking 10 to 15 minutes. It blends Likert-scale ratings with situational questions that reveal your cognitive preferences. Upon completion, you receive a report detailing your archetype, percentage-based spectrum scores, strengths, weaknesses, and preliminary relational insights. The assessment is secure, mobile-friendly, and accessible on any device.",
+                  "The free CSM assessment is designed to be concise, typically taking 10 to 15 minutes. It blends Likert-scale ratings with situational questions that reveal your cognitive preferences. Upon completion, you receive a free report detailing your archetype, percentage-based spectrum scores, strengths, weaknesses, and preliminary relational insights. The assessment is secure, mobile-friendly, and accessible on any device.",
               },
               {
                 question: "Do I need my partner to start?",
                 answer:
-                  "No. You can complete the free assessment on your own and explore your personal profile. If you wish to generate a full Couple's Insights Report, your partner will also need to take the assessment. Many users prefer to start individually and invite their partner later for a joint analysis.",
+                  "No. You can complete the free assessment on your own and explore your personal profile first. If you want a full Couple’s Insights Report, your partner will also need to take the assessment. Many users start individually and later invite their partner for a joint analysis.",
               },
               {
                 question: "Can CSM predict if we’re soulmates or just spot potential issues?",

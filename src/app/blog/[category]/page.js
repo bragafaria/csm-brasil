@@ -40,17 +40,17 @@ export default async function CategoryPage({ params }) {
             <Link href="/" className="hover:text-[var(--accent)] transition">
               Home
             </Link>
-            <span>/</span>
+            <span>›</span>
             <Link href="/blog" className="hover:text-[var(--accent)] transition">
               Blog
             </Link>
-            <span>/</span>
+            <span>›</span>
             <span className="text-[var(--text-primary)] font-medium">{cat.name}</span>
           </nav>
 
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 mt-4 text-[var(--primary)] hover:text-[var(--primary-dark)] font-medium transition"
+            className="inline-flex items-center gap-2 mt-4 text-violet-400 hover:text-violet-500 font-medium transition"
           >
             <ChevronLeft className="w-5 h-5" />
             Back to Blog

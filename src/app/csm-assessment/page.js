@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { questions, calculateCSMResults } from "../utils/csm";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Spinner from "@/app/components/ui/Spinner";
 
 export default function Test() {
   const router = useRouter();
@@ -55,17 +56,20 @@ export default function Test() {
       return;
     }
 
+    setIsSubmitting(true);
+    setError(null);
+
     if (current < questions.length - 1) {
-      setCurrent(current + 1);
-      setError(null);
+      setTimeout(() => {
+        setCurrent(current + 1);
+        setIsSubmitting(false);
+      }, 500);
     } else {
       if (answers.some((a) => a === null)) {
         setError("Please complete all questions.");
+        setIsSubmitting(false);
         return;
       }
-
-      setIsSubmitting(true);
-      setError(null);
 
       const startTime = Date.now();
       const results = calculateCSMResults(answers);
@@ -203,10 +207,7 @@ export default function Test() {
             aria-label={current < questions.length - 1 ? "Next question" : "Finish test"}
           >
             {isSubmitting ? (
-              <>
-                <div className="animate-spin rounded-full h-5 w-5 border-4 border-white border-t-transparent" />
-                <span>Finishing...</span>
-              </>
+              <Spinner>{current < questions.length - 1 ? "Next..." : "Finishing..."}</Spinner>
             ) : (
               <span>{current < questions.length - 1 ? "Next" : "Finish"}</span>
             )}

@@ -372,7 +372,7 @@ export default function PersonalReportPage() {
       </header>
 
       {/* ==================== SUMMARY ==================== */}
-      <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-8">
+      <section className="max-w-4xl mx-auto mt-8 space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-8">
         <div className="card-gradient md:p-6 rounded-lg shadow-custom">
           {/* ==================== CSM DIMENSIONS EXPLANATION ==================== */}
           <div className="mt-8 p-6 bg-[var(--surface-variant)] rounded-xl border border-[var(--border)]">

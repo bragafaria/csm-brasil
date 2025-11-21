@@ -347,7 +347,7 @@ body {
    SELECT FIX – Dark theme friendly
    ────────────────────────────────────────────────────────────── */
 select {
-  background-color: #1f1f1f !important; /* Dark background */
+  background-color: #272430 !important; /* Dark background */
   color: #f8fafc !important; /* White text */
   -webkit-appearance: none; /* Removes default arrow in some browsers */
   -moz-appearance: none;

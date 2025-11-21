@@ -19,6 +19,7 @@ export default function DashboardTest() {
   const [loading, setLoading] = useState(true);
   const [showAssessment, setShowAssessment] = useState(false);
   const [assessmentData, setAssessmentData] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const q = questions[current];
 
   // Load answers from localStorage only once on component mount
@@ -138,8 +139,14 @@ export default function DashboardTest() {
   };
 
   const next = async () => {
+    setIsSubmitting(true);
+    setError(null);
+
     if (current < questions.length - 1) {
-      setCurrent(current + 1);
+      setTimeout(() => {
+        setCurrent(current + 1);
+        setIsSubmitting(false);
+      }, 500);
       return;
     }
 
@@ -153,6 +160,7 @@ export default function DashboardTest() {
       ) {
         console.error("Invalid assessment results:", results);
         setError("Failed to calculate assessment results. Please try again.");
+        setIsSubmitting(false);
         return;
       }
 
@@ -169,6 +177,7 @@ export default function DashboardTest() {
         console.error("Session expired: No userId found");
         setError("Session expired. Please log in again.");
         router.push("/login");
+        setIsSubmitting(false);
         return;
       }
 
@@ -189,12 +198,14 @@ export default function DashboardTest() {
       if (supabaseError) {
         console.error("Supabase update error details:", supabaseError.message, supabaseError);
         setError(`Failed to save results: ${supabaseError.message}. Please try again.`);
+        setIsSubmitting(false);
         return;
       }
 
       if (!updateResponse || updateResponse.length === 0) {
         console.error("No rows updated - check RLS or userId:", userId);
         setError("Failed to update profile (no rows affected). Please try again.");
+        setIsSubmitting(false);
         return;
       }
 
@@ -207,6 +218,7 @@ export default function DashboardTest() {
     } catch (err) {
       console.error("Unexpected error in next:", err.message, err);
       setError("An unexpected error occurred while saving results. Please try again.");
+      setIsSubmitting(false);
     }
   };
 
@@ -266,7 +278,7 @@ export default function DashboardTest() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="flex min-h-screen flex-col items-center justify-center p-6 bg-[var(--surface)]"
+      className="flex max-h-full flex-col items-center justify-center mt:2 md:mt-6 p-6 bg-[var(--surface)]"
     >
       <div className="w-full max-w-lg card-gradient p-8 rounded-lg shadow-custom-lg border border-[var(--border)]">
         {/* Header */}
@@ -381,10 +393,14 @@ export default function DashboardTest() {
           </button>
           <button
             onClick={next}
-            disabled={!isRankValid()}
-            className="py-3 px-6 rounded-lg btn-primary font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            disabled={!isRankValid() || isSubmitting}
+            className="py-3 px-6 rounded-lg btn-primary font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-3"
           >
-            {current < questions.length - 1 ? "Next" : "Finish"}
+            {isSubmitting ? (
+              <Spinner>{current < questions.length - 1 ? "Next..." : "Finishing..."}</Spinner>
+            ) : (
+              <span>{current < questions.length - 1 ? "Next" : "Finish"}</span>
+            )}
           </button>
         </div>
       </div>

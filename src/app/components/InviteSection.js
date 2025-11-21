@@ -4,13 +4,15 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Check } from "lucide-react";
 import Spinner from "@/app/components/ui/Spinner.js";
 
 export default function InviteSection({ siteId }) {
   const [inviteLink, setInviteLink] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [copied, setCopied] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -88,8 +90,12 @@ export default function InviteSection({ siteId }) {
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(inviteLink);
-      // Visual feedback (you can add toast notification here)
-      console.log("Invite link copied!");
+      setCopied(true);
+
+      // Reset copied state after 2 seconds
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
     } catch (err) {
       console.error("Failed to copy:", err);
       // Fallback for older browsers
@@ -99,6 +105,11 @@ export default function InviteSection({ siteId }) {
       textArea.select();
       document.execCommand("copy");
       document.body.removeChild(textArea);
+      setCopied(true);
+
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
     }
   };
 
@@ -136,50 +147,56 @@ export default function InviteSection({ siteId }) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="card-gradient p-6 rounded-lg shadow-custom hover:shadow-custom-lg transition-all"
+      className="hero-gradient p-6 rounded-lg shadow-custom hover:shadow-custom-lg transition-all"
     >
-      <div className="mb-4">
-        <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-2">Invite Your Partner</h2>
-        <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
+      <div className="flex flex-col items-center my-4">
+        <h2 className="text-2xl md:text-3xl font-semibold text-[var(--text-primary)] mb-3">Invite Your Partner</h2>
+        <p className="text-[var(--text-secondary)] text-center text-lg leading-relaxed">
           Share this private link with your partner to join the dashboard and take their assessment.
         </p>
       </div>
 
-      <div className="flex items-center justify-center gap-3">
-        {/* <div className="flex-1 relative group">
-          <input
-            type="text"
-            value={inviteLink}
-            readOnly
-            className="w-full px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] text-sm focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)] pr-12"
-            placeholder="Invite link will appear here..."
-          />
-          <div className="absolute inset-0 flex items-center justify-end px-3 pointer-events-none">
-            <span className="text-xs text-[var(--text-secondary)] opacity-70 group-hover:opacity-100 transition-opacity">
-              Click {"Copy"} to share
-            </span>
-          </div>
-        </div> */}
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={copyToClipboard}
-          className="btn-primary py-3 px-6 rounded-lg font-semibold flex items-center gap-2 whitespace-nowrap shadow-md hover:shadow-lg transition-all"
-        >
-          Copy Link
-        </motion.button>
-      </div>
+      <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center my-8">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={copyToClipboard}
+            className="btn-primary border border-white py-3 px-6 rounded-lg font-semibold flex items-center gap-2 whitespace-nowrap shadow-md hover:shadow-lg transition-all"
+          >
+            Copy Link
+          </motion.button>
 
-      {/* Success feedback */}
-      {inviteLink && (
-        <motion.p
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="mt-3 text-xs text-[var(--accent)] font-medium flex items-center gap-1"
-        >
-          ✅ Ready to share with your partner!
-        </motion.p>
-      )}
+          {/* Copied confirmation message */}
+          <AnimatePresence>
+            {copied && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="mt-3 flex items-center gap-2 text-green-400 font-medium"
+              >
+                <Check className="h-5 w-5" />
+                <span>Copied!</span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Success feedback */}
+          {inviteLink && (
+            <motion.p
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className={`text-base text-center text-white font-medium flex items-center gap-1 ${
+                copied ? "mt-2" : "mt-3"
+              }`}
+            >
+              ✅ Ready to share with your partner!
+            </motion.p>
+          )}
+        </div>
+      </div>
     </motion.div>
   );
 }

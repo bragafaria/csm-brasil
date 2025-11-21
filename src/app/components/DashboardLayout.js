@@ -65,30 +65,39 @@ export default function DashboardLayout({ children }) {
     <div className="min-h-screen bg-[var(--surface)]">
       {/* Top Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[var(--dashboard)]/90 backdrop-blur-lg border-b border-[var(--border)]">
-        <div className="flex items-center justify-between px-4 py-3 md:px-6">
-          {/* Mobile Menu Toggle */}
+        <div className="flex items-center justify-between px-2 sm:px-4 py-2.5 sm:py-3 md:px-6">
+          {/* Mobile Menu Toggle (Left) */}
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={toggleSidebar}
-            className="flex items-center gap-2 text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors"
+            className="flex items-center gap-1 sm:gap-2 text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors p-1.5 sm:p-0"
             aria-label="Toggle menu"
           >
-            <Menu size={24} />
+            <Menu size={20} className="sm:w-6 sm:h-6" />
             {!isMobile && <span className="text-sm font-medium">Menu</span>}
           </motion.button>
 
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <Image src="/logo_transparent_svg.svg" alt="CSM Dynamics Logo" width={28} height={28} className="h-7 w-7" />
-            <div className="flex items-center gap-1">
-              <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
-              <h1 className="text-xl font-light text-white">Dynamics</h1>
+          {/* Logo (Center on mobile, natural position on desktop) */}
+          <div className="flex items-center gap-1.5 sm:gap-2 absolute left-1/2 -translate-x-1/2 sm:relative sm:left-0 sm:translate-x-0">
+            <Image
+              src="/logo_transparent_svg.svg"
+              alt="CSM Dynamics Logo"
+              width={24}
+              height={24}
+              className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7"
+            />
+            <div className="flex items-center gap-0.5 sm:gap-1">
+              <h1 className="text-base sm:text-lg md:text-xl font-bold text-[var(--primary)]">CSM</h1>
+              <h1 className="text-base sm:text-lg md:text-xl font-light text-white">Dynamics</h1>
             </div>
           </div>
 
-          {/* User Actions */}
-          <div className="flex items-center gap-3 mr-4 border border-white rounded-lg px-4 py-2 hover:border-[var(--primary)] hover:bg-[var(--primary)] cursor-pointer">
-            <button onClick={handleLogout} className="text-sm font-medium text-[var(--text-secondary)] ">
+          {/* Logout Button (Right) */}
+          <div className="flex items-center">
+            <button
+              onClick={handleLogout}
+              className="text-xs sm:text-sm font-medium text-[var(--text-secondary)] border border-white rounded-lg px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 hover:border-[var(--primary)] hover:bg-[var(--primary)] transition-colors whitespace-nowrap"
+            >
               Logout
             </button>
           </div>
@@ -96,7 +105,7 @@ export default function DashboardLayout({ children }) {
       </nav>
 
       {/* Main Layout */}
-      <div className="flex pt-16 min-h-screen">
+      <div className="flex pt-14 sm:pt-16 min-h-screen">
         {/* Sidebar */}
         <Sidebar sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} isMobile={isMobile} siteId={siteId} />
 
@@ -107,7 +116,7 @@ export default function DashboardLayout({ children }) {
           transition={{ duration: 0.3 }}
           className={`flex-1 transition-all duration-300 ${!isMobile && sidebarOpen ? "ml-64" : "ml-0"}`}
         >
-          <div className="md:p-6 lg:p-8">{(isMobile && !sidebarOpen) || !isMobile ? children : null}</div>
+          <div className="p-3 sm:p-4 md:p-6 lg:p-8">{(isMobile && !sidebarOpen) || !isMobile ? children : null}</div>
         </motion.main>
       </div>
 

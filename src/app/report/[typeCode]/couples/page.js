@@ -140,7 +140,7 @@ export default function Sales() {
     {
       question: "What's the refund policy?",
       answer:
-        "We offer a 14-day satisfaction guarantee, no questions asked. If you're not completely satisfied with your couple's insights report, we'll provide a full refund. We're confident in the value CSM provides to couples.",
+        "We offer a 14-day satisfaction guarantee, no questions asked. If you're not completely satisfied with your couple's insight report, we'll provide a full refund. We're confident in the value CSM provides to couples.",
     },
   ];
 
@@ -309,7 +309,7 @@ export default function Sales() {
       </section>
 
       {/* Email Signup Form */}
-      <section className="py-16 px-4">
+      {/* <section className="py-16 px-4">
         <div className="container mx-auto max-w-2xl text-center">
           <div className="card-gradient p-8 rounded-lg">
             <h3 className="text-2xl font-bold mb-4">Get Free Relationship Tips</h3>
@@ -338,7 +338,7 @@ export default function Sales() {
             )}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* How It Works Section */}
       <section id="how-it-works" className="py-16 px-4 bg-[var(--surface-variant)]">
@@ -374,9 +374,6 @@ export default function Sales() {
                 <div className="relative mb-6">
                   <div className="w-20 h-20 bg-[var(--primary)] rounded-full flex items-center justify-center mx-auto mb-4">
                     <item.icon className="h-10 w-10 text-white" />
-                  </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-[var(--accent)] rounded-full flex items-center justify-center text-sm font-bold">
-                    {item.step}
                   </div>
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
@@ -529,24 +526,6 @@ export default function Sales() {
               </div>
             ))}
           </div>
-
-          <div className="text-center card-gradient p-6 rounded-lg">
-            <p className="text-lg mb-4">Got more questions?</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => router.push("/contact")}
-                className="px-6 py-3 border border-[var(--border)] rounded-lg hover:bg-[var(--surface)] transition-colors"
-              >
-                Contact Us
-              </button>
-              <button
-                onClick={() => router.push("/csm-assessment")}
-                className="btn-primary px-6 py-3 rounded-lg font-semibold"
-              >
-                Start Your Free Assessment
-              </button>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -603,12 +582,6 @@ export default function Sales() {
                   >
                     Buy Now for $49
                     <ArrowRight className="ml-2 h-5 w-5" />
-                  </button>
-                  <button
-                    onClick={() => router.push("/csm-assessment")}
-                    className="px-8 py-4 border border-[var(--border)] rounded-lg hover:bg-[var(--surface)] transition-colors flex items-center justify-center"
-                  >
-                    Start Free Assessment First
                   </button>
                 </div>
 

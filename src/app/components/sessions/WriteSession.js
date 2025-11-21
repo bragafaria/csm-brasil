@@ -138,8 +138,8 @@ export default function WriteSession({ onTabChange }) {
       const paymentType = userStatus.isActiveSubscriber
         ? "subscription"
         : useFreeSession || userStatus.hasFreeSessionAvailable
-        ? "free"
-        : "per_session";
+          ? "free"
+          : "per_session";
 
       const response = await fetch("/api/create-session", {
         method: "POST",
@@ -218,7 +218,7 @@ export default function WriteSession({ onTabChange }) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="card-gradient p-2 md:p-8 rounded-lg shadow-custom-lg border border-[var(--primary)]"
+      className="card-gradient p-4 md:p-8 mt-6 rounded-lg shadow-custom-lg border border-[var(--primary)]"
     >
       <div className="max-w-4xl mx-auto space-y-6 mt-10">
         {/* INTRO */}
@@ -241,14 +241,11 @@ export default function WriteSession({ onTabChange }) {
                 report grounded in your unique <strong>Cognitive Spectrum profile</strong>, offering clarity, guidance,
                 and actionable next steps tailored to you.
               </p>
-            </div>
-
-            <div className="flex justify-center mt-8">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setShowEditor(true)}
-                className="px-10 py-4 rounded-lg font-semibold text-lg btn-primary hover:shadow-lg"
+                className="px-10 py-4 mt-8 md:mt-10 rounded-lg font-semibold text-lg btn-primary hover:shadow-lg"
               >
                 Start Session
               </motion.button>
@@ -316,10 +313,10 @@ export default function WriteSession({ onTabChange }) {
                     {isSubmitting
                       ? "Submitting..."
                       : userStatus?.hasActiveSession
-                      ? "Awaiting Response..."
-                      : wordCount > 2500
-                      ? "Trim to ≤ 2,500 words"
-                      : `Submit Session (${wordCount} words)`}
+                        ? "Awaiting Response..."
+                        : wordCount > 2500
+                          ? "Trim to ≤ 2,500 words"
+                          : `Submit Session (${wordCount} words)`}
                   </motion.button>
                 </div>
               </div>

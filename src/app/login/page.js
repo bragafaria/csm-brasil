@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
 import { sendResetEmail } from "@/app/actions/auth";
 import Image from "next/image";
+import { X } from "lucide-react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -110,7 +111,13 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--surface)] p-4">
-      <div className="card-gradient p-8 rounded-lg shadow-custom-lg max-w-md w-full">
+      <div className="relative card-gradient p-8 rounded-lg shadow-custom-lg max-w-md w-full">
+        <button
+          onClick={() => router.push("/")}
+          className="absolute top-4 right-4 text-gray-500 hover:text-[var(--accent)] transition-colors"
+        >
+          <X className="h-6 w-6" />
+        </button>
         <div className="flex items-center justify-center space-x-2 mb-6">
           <Image src="/logo_transparent_svg.svg" alt="CSM Dynamics Logo" width={28} height={28} className="h-7 w-7" />
           <div className="flex items-center space-x-1">

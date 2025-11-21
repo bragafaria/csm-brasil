@@ -5,7 +5,9 @@ import { useRouter, useSearchParams, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { supabase } from "@/app/utils/supabaseClient";
 import InviteSection from "../../components/InviteSection";
+import QuickStats from "@/app/components/QuickStatus";
 import Spinner from "@/app/components/ui/Spinner";
+import { motion } from "framer-motion";
 
 export default function DashboardPage() {
   const { siteId } = useParams();
@@ -18,6 +20,9 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isPartnerA, setIsPartnerA] = useState(false);
+  const [isPartnerB, setIsPartnerB] = useState(false);
 
   useEffect(() => {
     async function initializeDashboard() {
@@ -39,7 +44,7 @@ export default function DashboardPage() {
 
         const { data: userData, error: userError } = await supabase
           .from("users")
-          .select("id, name, partner_id, has_paid, has_assessment")
+          .select("id, name, partner_id, has_paid, has_assessment, typeCode, report_status")
           .eq("id", userId)
           .single();
 
@@ -51,17 +56,21 @@ export default function DashboardPage() {
           return;
         }
 
-        const isPartnerA = userId === siteId;
-        const isPartnerB = userData.partner_id === siteId;
+        const isPartnerAVal = userId === siteId;
+        const isPartnerBVal = userData.partner_id === siteId;
         setUserInfo(userData.name);
 
-        if (!isPartnerA && !isPartnerB) {
+        if (!isPartnerAVal && !isPartnerBVal) {
           setError("You do not have access to this dashboard.");
           setLoading(false);
           return;
         }
 
-        if (isPartnerA) {
+        setCurrentUser(userData);
+        setIsPartnerA(isPartnerAVal);
+        setIsPartnerB(isPartnerBVal);
+
+        if (isPartnerAVal) {
           const { data: partnerAData, error: partnerAError } = await supabase
             .from("users")
             .select("partner_id, has_paid")
@@ -83,7 +92,7 @@ export default function DashboardPage() {
           setShowInviteSection(!partnerAData.partner_id && partnerAData.has_paid && !!inviteData);
         }
 
-        if (isPartnerB && !userData.has_assessment) {
+        if (isPartnerBVal && !userData.has_assessment) {
           setShowAssessmentPrompt(true);
         }
 
@@ -138,7 +147,7 @@ export default function DashboardPage() {
 
   if (inviteId || sessionId || loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen p-6">
+      <div className="flex items-center justify-center w-full min-h-screen p-6">
         <Spinner>Processing...</Spinner>
       </div>
     );
@@ -153,48 +162,51 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="container mx-auto p-6 mt-20 max-w-7xl">
-      <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-8 text-center md:text-left">
+    <div className="container mx-auto p-6 mt-10 max-w-7xl">
+      <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-16 text-left">
         Welcome to Your Dashboard, {userInfo}.
       </h1>
 
       {showAssessmentPrompt && (
-        <div className="card-gradient p-6 rounded-lg shadow-custom mb-8">
-          <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Complete Your Assessment</h2>
-          <p className="text-[var(--text-secondary)] mb-5 text-sm md:text-base">
-            {"Please complete your assessment to view your report and your couple’s report."}
-          </p>
-          <button
-            onClick={() => router.push(`/dashboard/${siteId}/csm-assessment`)}
-            className="btn-primary py-3 px-6 rounded-lg font-semibold transition-all inline-flex items-center group"
-          >
-            Take Assessment
-            <svg
-              className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="hero-gradient p-6 rounded-lg shadow-custom hover:shadow-custom-lg transition-all mb-8"
+        >
+          <div className="flex flex-col items-center my-4">
+            <h2 className="text-2xl md:text-3xl font-semibold text-[var(--text-primary)] mb-3">
+              Complete Your Assessment
+            </h2>
+            <p className="text-[var(--text-secondary)] text-center text-lg leading-relaxed">
+              {"Please complete your assessment to view your report and your couple’s report."}
+            </p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <button
+              onClick={() => router.push(`/dashboard/${siteId}/csm-assessment`)}
+              className="btn-primary border border-white py-3 px-6 rounded-lg font-semibold flex items-center gap-2 whitespace-nowrap shadow-md hover:shadow-lg transition-all"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
+              Take Assessment
+              <svg
+                className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </motion.div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 items-start">
+        {showInviteSection && <InviteSection siteId={siteId} />}
         <div className="card-gradient p-6 rounded-lg shadow-custom">
           <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Quick Stats</h2>
-          <p className="text-[var(--text-secondary)] text-sm">View your latest insights here.</p>
+          <QuickStats userData={currentUser} siteId={siteId} isPartnerA={isPartnerA} isPartnerB={isPartnerB} />
         </div>
-        <div className="card-gradient p-6 rounded-lg shadow-custom">
-          <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Recent Activity</h2>
-          <p className="text-[var(--text-secondary)] text-sm">Check your recent sessions.</p>
-        </div>
-        <div className="card-gradient p-6 rounded-lg shadow-custom">
-          <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Notifications</h2>
-          <p className="text-[var(--text-secondary)] text-sm">Stay updated with alerts.</p>
-        </div>
-        {showInviteSection && <InviteSection siteId={siteId} />}
       </div>
     </div>
   );

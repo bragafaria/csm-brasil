@@ -20,11 +20,11 @@ async function query(text, params) {
 
 // --- EXPORTED FUNCTIONS ---
 
-// CATEGORIES
-export async function getCategories() {
-  const result = await query("SELECT id, name, slug FROM categories ORDER BY name");
-  return result.rows;
-}
+// // CATEGORIES
+// export async function getCategories() {
+//   const result = await query("SELECT id, name, slug FROM categories ORDER BY name");
+//   return result.rows;
+// }
 
 export async function getCategoryById(id) {
   const result = await query("SELECT * FROM categories WHERE id = $1", [id]);

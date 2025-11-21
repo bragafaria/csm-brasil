@@ -198,10 +198,8 @@ export default function ViewSessions() {
 
           {/* Coach Info */}
           <div className="mb-6 p-4 sm:p-6 bg-[var(--surface-variant)] rounded-lg border border-[var(--border)] shadow-sm">
-            <h3 className="text-base sm:text-lg font-semibold text-[var(--text-primary)] mb-3">
-              CSM-Certified Expert:
-            </h3>
-            <div className="flex items-center gap-3 sm:gap-4">
+            <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)] mb-3">CSM-Certified Expert:</h3>
+            <div className="flex items-center gap-4">
               {coach.profile_picture_path ? (
                 <img
                   src={`${coach.profile_picture_path}?width=96&height=96&quality=80&resize=contain`}
@@ -215,7 +213,7 @@ export default function ViewSessions() {
               )}
               <div className="flex-1 min-w-0">
                 <p className="font-medium text-[var(--text-primary)] truncate">{coach.name}</p>
-                <span className="inline-block px-2 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-green-500 border-green-500/30 bg-green-500/10">
+                <span className="inline-block px-2 py-1.5 mt-2 rounded-full text-xs font-semibold uppercase tracking-wider text-green-500 border-green-500/30 bg-green-500/10">
                   Active
                 </span>
               </div>
