@@ -15,7 +15,7 @@ import {
   Copy,
   MessageCircle,
   Send,
-  Share,
+  ArrowRight,
 } from "lucide-react";
 import { reportTemplates } from "@/app/lib/personal/personal-report-data";
 import Spinner from "@/app/components/ui/Spinner";
@@ -377,88 +377,155 @@ export default function PersonalReportPage() {
       <section className="max-w-4xl mx-auto mt-8 space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-8">
         <div className="card-gradient md:p-6 rounded-lg shadow-custom">
           {/* ==================== CSM DIMENSIONS EXPLANATION ==================== */}
-          <div className="mt-8 p-6 bg-[var(--surface-variant)] rounded-xl border border-[var(--border)]">
-            <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6 text-left">Quick Overview</h2>
+          <div className="mt-8 p-6 md:p-8 bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl border border-[var(--border)] shadow-lg">
+            <div className="mb-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4 text-center">
+                Quick Overview
+              </h3>
 
-            <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed mb-6 text-left max-w-3xl">
-              The Cognitive Spectrum Model (CSM) breaks down how your mind works into five independent dimensions, each
-              like a slider between two opposite poles that shape the way you think, decide, and interact.
-            </p>
+              <p className="text-base md:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed text-center">
+                The Cognitive Spectrum Model (CSM) breaks down how your mind works into five independent dimensions,
+                each like a slider between two opposite poles that shape the way you think, decide, and interact.
+              </p>
+            </div>
 
-            <div className="space-y-6 text-left">
-              {/* Dimension 1 */}
-              <div>
-                <h4 className="font-bold text-[var(--text-primary)] mb-1">Information Processing</h4>
-                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
-                  <li>
-                    <strong>Concrete (C):</strong> Facts, details, real.
-                  </li>
-                  <li>
-                    <strong>Abstract (N):</strong> Patterns, ideas, possibilities.
-                  </li>
-                </ul>
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              {/* Dimension 1 - Information Processing */}
+              <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all">
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Information Processing</h4>
+                <div className="space-y-3 text-sm text-[var(--text-secondary)]">
+                  {/* Concrete */}
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                      C
+                    </div>
+                    <div>
+                      <strong className="text-[var(--text-primary)]">Concrete (C):</strong> Facts, details, real.
+                    </div>
+                  </div>
+
+                  {/* Abstract */}
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                      N
+                    </div>
+                    <div>
+                      <strong className="text-[var(--text-primary)]">Abstract (N):</strong> Patterns, ideas,
+                      possibilities.
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Dimension 2 */}
-              <div>
-                <h4 className="font-bold text-[var(--text-primary)] mb-1">Decision-Making</h4>
-                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
-                  <li>
-                    <strong>Analytical Logic (L):</strong> Rules, data, logic.
-                  </li>
-                  <li>
-                    <strong>Empathic Values (V):</strong> Feelings, harmony, people.
-                  </li>
-                </ul>
+              {/* Dimension 2 - Decision-Making */}
+              <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all">
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Decision-Making</h4>
+                <div className="space-y-3 text-sm text-[var(--text-secondary)]">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                      L
+                    </div>
+                    <div>
+                      <strong className="text-[var(--text-primary)]">Analytical Logic (L):</strong> Rules, data, logic.
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                      V
+                    </div>
+                    <div>
+                      <strong className="text-[var(--text-primary)]">Empathic Values (V):</strong> Feelings, harmony,
+                      people.
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Dimension 3 */}
-              <div>
-                <h4 className="font-bold text-[var(--text-primary)] mb-1">Energy Orientation</h4>
-                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
-                  <li>
-                    <strong>Outward (O):</strong> Action, social, external.
-                  </li>
-                  <li>
-                    <strong>Inward (I):</strong> Reflection, solitude, inner.
-                  </li>
-                </ul>
+              {/* Dimension 3 - Energy Orientation */}
+              <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all">
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Energy Orientation</h4>
+                <div className="space-y-3 text-sm text-[var(--text-secondary)]">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                      O
+                    </div>
+                    <div>
+                      <strong className="text-[var(--text-primary)]">Outward (O):</strong> Action, social, external.
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                      I
+                    </div>
+                    <div>
+                      <strong className="text-[var(--text-primary)]">Inward (I):</strong> Reflection, solitude, inner.
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Dimension 4 */}
-              <div>
-                <h4 className="font-bold text-[var(--text-primary)] mb-1">Change Approach</h4>
-                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
-                  <li>
-                    <strong>Stable Structure (S):</strong> Plans, order, predictable.
-                  </li>
-                  <li>
-                    <strong>Adaptive Flexibility (F):</strong> Spontaneity, flow, flexible.
-                  </li>
-                </ul>
+              {/* Dimension 4 - Change Approach */}
+              <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all">
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Change Approach</h4>
+                <div className="space-y-3 text-sm text-[var(--text-secondary)]">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                      S
+                    </div>
+                    <div>
+                      <strong className="text-[var(--text-primary)]">Stable Structure (S):</strong> Plans, order,
+                      predictable.
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                      F
+                    </div>
+                    <div>
+                      <strong className="text-[var(--text-primary)]">Adaptive Flexibility (F):</strong> Spontaneity,
+                      flow, flexible.
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Dimension 5 */}
-              <div>
-                <h4 className="font-bold text-[var(--text-primary)] mb-1">Interpersonal Style</h4>
-                <ul className="space-y-1 ml-6 text-sm md:text-base text-[var(--text-secondary)]">
-                  <li>
-                    <strong>Collaborative Harmony (H):</strong> Team, consensus, group.
-                  </li>
-                  <li>
-                    <strong>Independent Autonomy (A):</strong> Solo, freedom, self.
-                  </li>
-                </ul>
+              {/* Dimension 5 - Interpersonal Style (centered) */}
+              <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all md:col-span-2 md:max-w-md md:mx-auto">
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Interpersonal Style</h4>
+                <div className="space-y-3 text-sm text-[var(--text-secondary)]">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                      H
+                    </div>
+                    <div>
+                      <strong className="text-[var(--text-primary)]">Collaborative Harmony (H):</strong> Team,
+                      consensus, group.
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                      A
+                    </div>
+                    <div>
+                      <strong className="text-[var(--text-primary)]">Independent Autonomy (A):</strong> Solo, freedom,
+                      self.
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <p className="text-sm md:text-base italic text-[var(--text-secondary)] mt-6 text-left max-w-3xl">
-              Your unique mix across these poles in each dimension creates your cognitive profile. No pole is better,
-              just different strengths and growth areas.
-            </p>
+            <div className="border-t border-[var(--border)] pt-6">
+              <p className="text-base md:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed text-center italic">
+                Your unique mix across these poles in each dimension creates your cognitive profile. No pole is better,
+                just different strengths and growth areas.
+              </p>
+            </div>
           </div>
 
-          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">Summary</h2>
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] pl-4 md:pl-1 mb-6 mt-10 md:mt-20 text-left">
+            Summary
+          </h2>
 
           <div className="space-y-5">
             <div className="space-y-6 justify-between">
@@ -514,7 +581,7 @@ export default function PersonalReportPage() {
                   Dimensional Preference Strength (DPS)
                 </h3>
 
-                <p className="text-base text-[var(--text-secondary)] text-center max-w-md mb-6 leading-relaxed">
+                <p className="text-base text-[var(--text-secondary)] max-w-md mx-auto mb-6 leading-relaxed text-center">
                   {` DPS measures how strongly you lean toward one pole over its opposite on each of the five dimensions.
                   Higher DPS means you rely heavily on one style of thinking (it's your natural default). Lower DPS
                   means you move easily between both poles (you are naturally flexible).`}
@@ -609,22 +676,27 @@ export default function PersonalReportPage() {
                           {strongestIndices.map((maxDpsIndex, idx) => {
                             const strongestDimension = dimensionLabels[maxDpsIndex];
                             const strongestDpsValue = dps[maxDpsIndex];
-
-                            // Get the dominant pole for this dimension
                             const dominantPole = dominants[maxDpsIndex];
                             const oppositePole = poleMap[dominantPole];
-
                             const dominantPoleName = poleToFull[dominantPole];
                             const oppositePoleName = poleToFull[oppositePole];
+                            const dimensionColor = colors[maxDpsIndex];
 
                             return (
                               <div key={maxDpsIndex} className="flex flex-col items-center gap-6">
                                 {/* Dimension Badge */}
-                                <div className="inline-flex items-center gap-2 px-6 py-3 shadow-lg mb-4">
-                                  <span className="text-base md:text-xl font-bold text-white">
+                                <div className="inline-flex items-center gap-2 md:px-6 py-3 shadow-lg mb-4">
+                                  <span className="text-base md:text-xl font-semibold text-white">
                                     {strongestDimension}
+                                    {":"}
                                   </span>
-                                  <span className="px-3 py-1 bg-white/20 rounded-full text-sm md:text-sm font-semibold text-white">
+                                  <span
+                                    className="px-4 py-2 rounded-full text-sm md:text-base font-bold text-white shadow-md"
+                                    style={{
+                                      backgroundColor: dimensionColor,
+                                      boxShadow: `0 4px 14px ${dimensionColor}60`,
+                                    }}
+                                  >
                                     DPS: {strongestDpsValue}
                                   </span>
                                 </div>
@@ -883,21 +955,21 @@ export default function PersonalReportPage() {
             Your Dimensional Profile
           </h2>
 
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">
+          <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">
             The five dimensions of the Cognitive Spectrum Model represent the key spectrums that shape how you
             experience and interact with the world. They are not fixed categories but fluid scales that highlight your
             natural tendencies. Understanding them helps you recognize your strengths, notice blind spots, and create
             more balance in how you think and relate to others.
           </p>
 
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">
+          <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">
             Each dimension offers insight into your cognitive design, from how you process information to how you make
             decisions, manage energy, approach change, and connect with people. By seeing where you fall on these
             spectrums, you can better appreciate what makes your style unique while also learning how to flex into the
             opposite side when needed.
           </p>
 
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">
+          <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">
             This profile is personalized to your results, showing percentages that reveal your specific leanings. Use it
             to reflect on how these preferences show up in your daily choices, relationships, and growth.
           </p>
@@ -1112,9 +1184,9 @@ export default function PersonalReportPage() {
         <div className="card-gradient p-6 rounded-lg shadow-custom">
           <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">How You Connect</h2>
 
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">{tmpl.relationships?.intro}</p>
+          <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">{tmpl.relationships?.intro}</p>
 
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">
+          <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">
             Every relationship creates a different dynamic based on how two personalities think, feel, and interact.
             Below, you will see how your archetype relates to others in four types of compatibility. Each one highlights
             what the connection may feel like, whether it flows easily, brings balance, encourages growth, or may
@@ -1144,17 +1216,31 @@ export default function PersonalReportPage() {
             <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-4">
               Next Steps: Understanding Your Relationship Blueprint
             </h3>
-            <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
+            <p className="text-base leading-relaxed text-[var(--text-secondary)]">
               {`Now that you've explored your own cognitive patterns, the natural next step is seeing how they interact
               with your partner's.`}
             </p>
-            <p className="text-lg leading-relaxed text-[var(--text-secondary)] mt-4">
+            <p className="text-base leading-relaxed text-[var(--text-secondary)] mt-4">
               {`The CSM Couple's Insight Report shows how your two minds interact, offering guidance to strengthen
               alignment, work through friction, and grow together with intention. Curious how your blueprints align?
               Find out in your Couple's Report.`}
             </p>
           </div>
         </div>
+      </section>
+      <section className="max-w-4xl mx-auto text-center mt-12">
+        <button
+          id="couples-report-cta"
+          onClick={() => {
+            router.push(`/dashboard/${siteId}/couples-report/analytics`);
+          }}
+          className={
+            "inline-flex items-center btn-primary px-8 py-6 rounded-lg font-semibold cursor-pointer gap-2 transition-all hover:shadow-lg mb-10"
+          }
+        >
+          Discover How You Connect
+          <ArrowRight className="h-5 w-5" />
+        </button>
       </section>
 
       {/* ==================== SHARE MODAL ==================== */}
