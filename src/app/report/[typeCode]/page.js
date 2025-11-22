@@ -31,6 +31,7 @@ export default function PersonalReport() {
   const [showShareModal, setShowShareModal] = useState(false);
   const [isSharedView, setIsSharedView] = useState(false);
   const [isShortening, setIsShortening] = useState(false);
+  const [copySuccess, setCopySuccess] = useState(false);
 
   // app/report/[typeCode]/page.jsx
   useEffect(() => {
@@ -226,13 +227,16 @@ DEGREES OF INFLUENCE:
 
   const fallbackCopy = ({ text, url }) => {
     const fullText = `${text} ${url}`;
-    navigator.clipboard.writeText(fullText);
+    navigator.clipboard.writeText(fullText).then(() => {
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 3000); // Hide after 3 seconds
+    });
   };
 
   return (
     <div className="container mx-auto p-6 max-w-4xl">
       {/* ==================== HERO ==================== */}
-      <header className="hero-gradient rounded-lg p-6 md:p-8 shadow-custom-lg">
+      <header className="hero-gradient rounded-lg p-6 md:p-8 my-8 shadow-custom-lg">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
           <div>
             <h1 className="text-4xl font-bold text-white">Your CSM Personality Report</h1>
@@ -249,7 +253,7 @@ DEGREES OF INFLUENCE:
         <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
           {/* ==================== CSM DIMENSIONS EXPLANATION ==================== */}
           <div className="mt-8 p-6 bg-[var(--surface-variant)] rounded-xl border border-[var(--border)]">
-            <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6 text-left">Quick Explanation</h2>
+            <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6 text-left">Quick Overview</h2>
 
             <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed mb-6 text-left max-w-3xl">
               The Cognitive Spectrum Model (CSM) breaks down how your mind works into five independent dimensions, each
@@ -350,20 +354,47 @@ DEGREES OF INFLUENCE:
                 </div>
               </div>
             </div>
+            {/* Essence */}
+            <div className="mt-8 md:p-4 bg-white/5 rounded-xl  shadow-lg">
+              <div className="flex flex-col max-w-3xl mx-auto border border-white/10 bg-[var(--surface-variant)] rounded-lg p-8 space-y-4 text-left">
+                <div className="mb-2">
+                  <h3 className="text-xl md:text-2xl font-bold  text-[var(--text-primary)] mt-8 mb-4 text-center">
+                    Your Archetype&apos;s Essence
+                  </h3>
+
+                  <p className="text-base text-[var(--text-secondary)] max-w-md mx-auto mb-6 leading-relaxed text-center">
+                    Discover the core patterns that define your cognitive style and how you naturally engage with the
+                    world.
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  {tmpl.detailedEssence.find((item) => item.deepAnalysis)?.deepAnalysis?.length ? (
+                    tmpl.detailedEssence
+                      .find((item) => item.deepAnalysis)
+                      .deepAnalysis.map((paragraph, index) => (
+                        <p key={index} className="text-[var(--text-primary)] leading-relaxed">
+                          {paragraph}
+                        </p>
+                      ))
+                  ) : (
+                    <p className="text-[var(--text-primary)] leading-relaxed">No detailed analysis available.</p>
+                  )}
+                </div>
+              </div>
+            </div>
+
             {/* === POLES PREFERENCES === */}
-            <div className="space-y-6 border border-white/20  bg-white/5 rounded-lg md:px-4 py-6">
+            <div className="space-y-6 border border-[var(--border)] shadow-lg  bg-white/5 rounded-lg md:p-4">
               {/* ==================== DPS DISTRIBUTION ==================== */}
               <div className="flex flex-col items-center p-4 bg-[var(--surface-variant)] rounded-lg">
-                {/* Title – centred on every screen */}
-                <h3 className="text-lg font-bold text-[var(--text-primary)] mb-4 text-center">
+                <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mt-10 mb-4 text-center">
                   Dimensional Preference Strength (DPS)
                 </h3>
 
-                {/* Simple explanation */}
-                <p className="text-sm text-[var(--text-secondary)] text-center max-w-md mb-6 leading-relaxed">
-                  {`DPS measures how strongly you lean toward one pole over its opposite on each of the five
-                  dimensions.Higher DPS means you rely heavily on one style of thinking (it's your natural
-                  default).Lower DPS means you move easily between both poles (you're naturally flexible.)`}
+                <p className="text-base text-[var(--text-secondary)] text-center max-w-md mb-6 leading-relaxed">
+                  {` DPS measures how strongly you lean toward one pole over its opposite on each of the five dimensions.
+                             Higher DPS means you rely heavily on one style of thinking (it's your natural default). Lower DPS
+                             means you move easily between both poles (you are naturally flexible).`}
                 </p>
 
                 {/* Pie chart – now uses the **DPS values** (0-100) */}
@@ -422,7 +453,7 @@ DEGREES OF INFLUENCE:
                 </div>
                 {/* DPS Strongest Dimension */}
                 {/* DPS Strongest Dimension(s) */}
-                <div className="mt-8 p-6 bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl border border-[var(--border)] shadow-lg">
+                <div className="mt-20 p-6 bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl border border-[var(--border)] shadow-lg">
                   {(() => {
                     // Find the maximum DPS value
                     const maxDpsValue = Math.max(...dps);
@@ -447,7 +478,7 @@ DEGREES OF INFLUENCE:
 
                     return (
                       <>
-                        <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-6 text-center">
+                        <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-6 text-center mt-6 md:mt-10">
                           {strongestIndices.length > 1 ? "Your Strongest Dimensions" : "Your Strongest Dimension"}
                         </h3>
 
@@ -466,11 +497,11 @@ DEGREES OF INFLUENCE:
                             return (
                               <div key={maxDpsIndex} className="flex flex-col items-center gap-6">
                                 {/* Dimension Badge */}
-                                <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[var(--primary)] to-purple-600 rounded-full shadow-lg">
+                                <div className="inline-flex items-center gap-2 px-6 py-3  shadow-lg mb-4">
                                   <span className="text-base md:text-xl font-bold text-white">
                                     {strongestDimension}
                                   </span>
-                                  <span className="px-3 py-1 bg-white/20 rounded-full text-sm font-semibold text-white">
+                                  <span className="px-3 py-1 bg-white/20 rounded-full text-sm md:text-sm font-semibold text-white">
                                     DPS: {strongestDpsValue}
                                   </span>
                                 </div>
@@ -539,8 +570,8 @@ DEGREES OF INFLUENCE:
                         </div>
 
                         {/* Bottom Insight - Only shown once */}
-                        <div className="w-full p-4 mt-6 bg-[var(--surface)]/50 rounded-lg border border-[var(--border)]/50">
-                          <p className="text-sm text-center text-[var(--text-secondary)] italic">
+                        <div className="w-full p-4 mt-6 bg-[var(--surface)]/50 rounded-lg ">
+                          <p className="text-sm text-center text-[var(--text-secondary)] italic font-light">
                             <strong className="text-[var(--text-primary)]">Insight:</strong> Your high DPS in{" "}
                             {strongestIndices.length > 1
                               ? strongestIndices.map((i, idx) => (
@@ -561,152 +592,151 @@ DEGREES OF INFLUENCE:
                     );
                   })()}
                 </div>
-              </div>
-              {/* === POLES PREFERENCES === */}
-              <div className="mt-8 p-6 bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl border border-[var(--border)] shadow-lg">
-                <h3 className="text-xl  font-bold text-[var(--text-primary)] mb-4 text-center">Poles Preferences</h3>
-                <p className="text-sm text-[var(--text-secondary)] text-center max-w-2xl mx-auto mb-6 leading-relaxed">
-                  Your natural defaults (Primary) and their opposite growth areas (Secondary) at a glance.
-                </p>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Primary Poles */}
-                  <div className="space-y-4 border border-white/10 bg-white/5 rounded-lg p-5">
-                    <div>
-                      <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Primary Poles</p>
-                      <div className="flex flex-wrap gap-2">
-                        {dominants.map((pole, i) => {
-                          const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
-                          const level = getLevel(pct).dom;
-                          const color = {
-                            Mild: "bg-green-500/50",
-                            Moderate: "bg-yellow-500/50",
-                            Strong: "bg-red-500/50",
-                          }[level];
-
-                          const fullName = {
-                            C: "Concrete Focus",
-                            N: "Abstract Insight",
-                            L: "Analytical Logic",
-                            V: "Empathic Values",
-                            O: "Outward Engagement",
-                            I: "Inward Reflection",
-                            S: "Stable Structure",
-                            F: "Adaptive Flexibility",
-                            H: "Collaborative Harmony",
-                            A: "Independent Autonomy",
-                          }[pole];
-
-                          return (
-                            <span
-                              key={i}
-                              className={`inline-block px-3 py-1.5 rounded-md text-sm md:text-base font-medium text-white ${color} shadow-sm`}
-                            >
-                              {fullName}
-                            </span>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* Legend BELOW */}
-                    <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] pt-3 border-t border-white/10">
-                      <div className="flex items-center gap-1.5">
-                        <span className="font-medium">Primary Degrees of Dominance:</span>
-                        <HelpCircle
-                          onClick={() => openModal("Primary Degrees of Dominance", PRIMARY_EXPLANATION)}
-                          className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
-                        />
-                      </div>
-                      <div className="flex flex-wrap gap-3">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                          <span>Mild</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                          <span>Moderate</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                          <span>Strong</span>
-                        </div>
-                      </div>
-                    </div>
+                {/* === POLES PREFERENCES === */}
+                <div className="mt-8 p-6  bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl border border-[var(--border)] shadow-lg">
+                  <div className="flex flex-col mt-8 mb-4">
+                    <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-4 text-center">
+                      Poles Preferences
+                    </h3>
+                    <p className="text-base text-[var(--text-secondary)] text-center max-w-md mx-auto mb-6 leading-relaxed">
+                      Your natural defaults (Primary) and their opposite growth areas (Secondary) at a glance.
+                    </p>
                   </div>
 
-                  {/* Secondary Poles */}
-                  <div className="space-y-4 border border-white/10 bg-white/5 rounded-lg p-5">
-                    <div>
-                      <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Secondary Poles</p>
-                      <div className="flex flex-wrap gap-2">
-                        {dominants.map((pole, i) => {
-                          const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
-                          const level = getLevel(pct).inf;
-                          const color = {
-                            High: "bg-red-500/50",
-                            Moderate: "bg-yellow-500/50",
-                            Low: "bg-green-500/50",
-                          }[level];
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* Primary Poles */}
+                    <div className="space-y-4 border border-white/10 bg--[var(--surface-variant)] rounded-lg p-5">
+                      <div>
+                        <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Primary Poles</p>
+                        <div className="flex flex-wrap gap-2">
+                          {dominants.map((pole, i) => {
+                            const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
+                            const level = getLevel(pct).dom;
+                            const color = {
+                              Mild: "bg-green-500/50",
+                              Moderate: "bg-yellow-500/50",
+                              Strong: "bg-red-500/50",
+                            }[level];
 
-                          const secondaryPole = poleMap[pole];
-                          const fullName = {
-                            C: "Concrete Focus",
-                            N: "Abstract Insight",
-                            L: "Analytical Logic",
-                            V: "Empathic Values",
-                            O: "Outward Engagement",
-                            I: "Inward Reflection",
-                            S: "Stable Structure",
-                            F: "Adaptive Flexibility",
-                            H: "Collaborative Harmony",
-                            A: "Independent Autonomy",
-                          }[secondaryPole];
+                            const fullName = {
+                              C: "Concrete Focus",
+                              N: "Abstract Insight",
+                              L: "Analytical Logic",
+                              V: "Empathic Values",
+                              O: "Outward Engagement",
+                              I: "Inward Reflection",
+                              S: "Stable Structure",
+                              F: "Adaptive Flexibility",
+                              H: "Collaborative Harmony",
+                              A: "Independent Autonomy",
+                            }[pole];
 
-                          return (
-                            <span
-                              key={i}
-                              className={`inline-block px-3 py-1.5 rounded-md text-sm md:text-base font-medium text-white ${color} shadow-sm`}
-                            >
-                              {fullName}
-                            </span>
-                          );
-                        })}
+                            return (
+                              <span
+                                key={i}
+                                className={`inline-block px-3 py-1.5 rounded-md text-sm md:text-base font-medium text-white ${color} shadow-sm`}
+                              >
+                                {fullName}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      {/* Legend BELOW */}
+                      <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] pt-3 border-t border-white/10">
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-medium">Primary Degrees of Dominance:</span>
+                          <HelpCircle
+                            onClick={() => openModal("Primary Degrees of Dominance", PRIMARY_EXPLANATION)}
+                            className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
+                          />
+                        </div>
+                        <div className="flex flex-wrap gap-3">
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                            <span>Mild</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                            <span>Moderate</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                            <span>Strong</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
-                    {/* Legend BELOW */}
-                    <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] pt-3 border-t border-white/10">
-                      <div className="flex items-center gap-1.5">
-                        <span className="font-medium">Secondary Degrees of Influence:</span>
-                        <HelpCircle
-                          onClick={() => openModal("Secondary Degrees of Influence", SECONDARY_EXPLANATION)}
-                          className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
-                        />
+                    {/* Secondary Poles */}
+                    <div className="space-y-4 border border-white/10 bg--[var(--surface-variant)] rounded-lg p-5">
+                      <div>
+                        <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Secondary Poles</p>
+                        <div className="flex flex-wrap gap-2">
+                          {dominants.map((pole, i) => {
+                            const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
+                            const level = getLevel(pct).inf;
+                            const color = {
+                              High: "bg-red-500/50",
+                              Moderate: "bg-yellow-500/50",
+                              Low: "bg-green-500/50",
+                            }[level];
+
+                            const secondaryPole = poleMap[pole];
+                            const fullName = {
+                              C: "Concrete Focus",
+                              N: "Abstract Insight",
+                              L: "Analytical Logic",
+                              V: "Empathic Values",
+                              O: "Outward Engagement",
+                              I: "Inward Reflection",
+                              S: "Stable Structure",
+                              F: "Adaptive Flexibility",
+                              H: "Collaborative Harmony",
+                              A: "Independent Autonomy",
+                            }[secondaryPole];
+
+                            return (
+                              <span
+                                key={i}
+                                className={`inline-block px-3 py-1.5 rounded-md text-sm md:text-base font-medium text-white ${color} shadow-sm`}
+                              >
+                                {fullName}
+                              </span>
+                            );
+                          })}
+                        </div>
                       </div>
-                      <div className="flex flex-wrap gap-3">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                          <span>Low</span>
+
+                      {/* Legend BELOW */}
+                      <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] pt-3 border-t border-white/10">
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-medium">Secondary Degrees of Influence:</span>
+                          <HelpCircle
+                            onClick={() => openModal("Secondary Degrees of Influence", SECONDARY_EXPLANATION)}
+                            className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
+                          />
                         </div>
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                          <span>Moderate</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                          <span>High</span>
+                        <div className="flex flex-wrap gap-3">
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                            <span>Low</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                            <span>Moderate</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                            <span>High</span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            {/* Essence */}
-            <div className=" border border-white/20  bg-white/5  p-4 rounded-lg">
-              <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Your Essence:</p>
-              <p className="text-base italic text-[var(--text-primary)]">{tmpl.summaryEssence.title}</p>
             </div>
           </div>
 
@@ -727,27 +757,41 @@ DEGREES OF INFLUENCE:
       </section>
       {/* ==================== 3. YOUR DIMENSIONAL PROFILE ==================== */}
       <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll">
-        <div className="card-gradient md:p-6 rounded-lg shadow-custom">
+        <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
           <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
             Your Dimensional Profile
           </h2>
 
-          {/* Introduction */}
           <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">
-            {tmpl.dimensionalProfile.introduction}
+            The five dimensions of the Cognitive Spectrum Model represent the key spectrums that shape how you
+            experience and interact with the world. They are not fixed categories but fluid scales that highlight your
+            natural tendencies. Understanding them helps you recognize your strengths, notice blind spots, and create
+            more balance in how you think and relate to others.
+          </p>
+
+          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">
+            Each dimension offers insight into your cognitive design, from how you process information to how you make
+            decisions, manage energy, approach change, and connect with people. By seeing where you fall on these
+            spectrums, you can better appreciate what makes your style unique while also learning how to flex into the
+            opposite side when needed.
+          </p>
+
+          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">
+            This profile is personalized to your results, showing percentages that reveal your specific leanings. Use it
+            to reflect on how these preferences show up in your daily choices, relationships, and growth.
           </p>
 
           {/* Note */}
-          {tmpl.detailedEssence.map((item, i) =>
+          {/* {tmpl.detailedEssence.map((item, i) =>
             item.note ? (
               <p key={i} className="italic text-medium text-[var(--text-secondary)] mb-8">
                 {item.note}
               </p>
             ) : null
-          )}
+          )} */}
 
           {/* Dimension Cards */}
-          <div className="space-y-10">
+          <div className="space-y-10 mt-20">
             {tmpl.dimensionalProfile.dimensions.map((dim, dimIdx) => {
               const pct = percents[dimIdx];
               const primaryPole = dominants[dimIdx];
@@ -821,7 +865,7 @@ DEGREES OF INFLUENCE:
                     bg: "bg-green-400",
                     from: "from-green-500/10",
                   },
-                }[level] || getColor("Mild"));
+                })[level] || getColor("Mild");
 
               const primaryColor = getColor(dom);
               const secondaryColor = getColor(inf);
@@ -840,14 +884,14 @@ DEGREES OF INFLUENCE:
                       transition: { duration: 0.6, ease: "easeOut" },
                     },
                   }}
-                  className="group bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] p-2 md:p-6 rounded-2xl 
+                  className="group bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] px-2 py-6 md:p-6 rounded-2xl 
                        shadow-lg border border-[rgba(var(--primary-rgb),0.2)] 
                        hover:border-[rgba(var(--primary-rgb),0.4)] 
                        hover:shadow-2xl transition-all duration-300 
                        hover:-translate-y-1 min-h-[400px] flex flex-col space-y-6"
                 >
                   {/* Title + Subtitle */}
-                  <div className="text-center space-y-2">
+                  <div className="text-center space-y-4">
                     <h3 className="text-2xl font-bold text-[var(--text-primary)]">{dim.title}</h3>
                     <p className="text-sm text-[var(--text-secondary)] italic">{dim.subTitle}</p>
                   </div>
@@ -917,7 +961,7 @@ DEGREES OF INFLUENCE:
                   </div>
 
                   {/* PERSONALIZED PARAGRAPHS */}
-                  <div className="mt-6 space-y-4 border-t border-[var(--border)] pt-6">
+                  <div className="mt-6 space-y-4 border-t border-[var(--border)] pt-6 px-2">
                     {dim[dom.toLowerCase()]?.map((para, i) => (
                       <p key={i} className="text-base leading-relaxed text-[var(--text-secondary)]">
                         {para}
@@ -928,6 +972,17 @@ DEGREES OF INFLUENCE:
               );
             })}
           </div>
+          {!isSharedView && (
+            <div className="container flex justify-center md:justify-end align-center mx-auto mt-6 max-w-4xl">
+              <button
+                onClick={() => setShowShareModal(true)}
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all mb-6 md:mb-1"
+              >
+                <Share2 className="w-5 h-5" />
+                Share Your Results
+              </button>
+            </div>
+          )}
         </div>
         <AnimatePresence>
           {showModal && (
@@ -966,20 +1021,9 @@ DEGREES OF INFLUENCE:
           )}
         </AnimatePresence>
       </section>
-      {!isSharedView && (
-        <div className="container flex justify-center md:justify-end  mx-auto p-6 max-w-4xl">
-          <button
-            onClick={() => setShowShareModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all"
-          >
-            <Share2 className="w-5 h-5" />
-            Share Your Results
-          </button>
-        </div>
-      )}
 
       {/* ==================== 2. YOUR ARCHETYPE IN ACTION ==================== */}
-      <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll">
+      <section className="max-w-4xl mx-auto space-y-12 mt-8 text-[var(--text-secondary)] leading-relaxed scroll">
         <div className="card-gradient p-6 rounded-lg shadow-custom">
           <div className="text-left space-y-3">
             <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
@@ -1027,22 +1071,22 @@ DEGREES OF INFLUENCE:
               </ul>
             </div>
           </div>
+          {!isSharedView && (
+            <div className="container flex justify-center md:justify-end align-center mx-auto mt-6 max-w-4xl">
+              <button
+                onClick={() => setShowShareModal(true)}
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all mb-6 md:mb-1"
+              >
+                <Share2 className="w-5 h-5" />
+                Share Your Results
+              </button>
+            </div>
+          )}
         </div>
       </section>
-      {!isSharedView && (
-        <div className="container flex justify-center md:justify-end mx-auto p-6 max-w-4xl">
-          <button
-            onClick={() => setShowShareModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all"
-          >
-            <Share2 className="w-5 h-5" />
-            Share Your Results
-          </button>
-        </div>
-      )}
 
       {/* ==================== 4. HOW YOU CONNECT (PREVIEW) ==================== */}
-      <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-12">
+      <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mt-8 mb-12">
         <div className="card-gradient p-6 rounded-lg shadow-custom">
           <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">How You Connect</h2>
 
@@ -1050,8 +1094,11 @@ DEGREES OF INFLUENCE:
           <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">{tmpl.relationships?.intro}</p>
 
           {/* Compatibility Introduction */}
-          <p className="text-base italic text-[var(--text-secondary)] mb-6">
-            {tmpl.relationships?.compatibility?.introduction}
+          <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">
+            Every relationship creates a different dynamic based on how two personalities think, feel, and interact.
+            Below, you will see how your archetype relates to others in four types of compatibility. Each one highlights
+            what the connection may feel like, whether it flows easily, brings balance, encourages growth, or may
+            require more effort.{" "}
           </p>
 
           {/* Compatibility Matches */}
@@ -1176,11 +1223,14 @@ DEGREES OF INFLUENCE:
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="bg-[var(--surface)] rounded-2xl shadow-2xl max-w-sm w-full p-6"
+              className="bg-[var(--surface2)] border border-[var(--border)] backdrop-blur-surface2 rounded-2xl shadow-2xl max-w-sm w-full p-6"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-bold text-[var(--text-primary)]">Share Your Results</h3>
+              <div className="flex justify-between items-center mb-8">
+                <div className="flex items-center gap-2">
+                  <Share2 className="w-6 h-6 text-[var(--text-primary)]" />
+                  <h3 className="text-lg font-bold text-[var(--text-primary)]">Share Your Results</h3>
+                </div>
                 <button
                   onClick={() => setShowShareModal(false)}
                   className="text-[var(--text-secondary)] hover:text-[var(--accent)]"
@@ -1220,7 +1270,6 @@ DEGREES OF INFLUENCE:
                   <Twitter className="w-5 h-5" />
                   Share on Twitter
                 </button>
-
                 <button
                   onClick={() => shareVia("copy")}
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[var(--surface-variant)] text-[var(--text-primary)] rounded-lg hover:bg-[var(--surface)] transition font-medium border border-[var(--border)]"
@@ -1235,6 +1284,11 @@ DEGREES OF INFLUENCE:
                   <div className="flex items-center justify-center gap-2">
                     <Spinner />
                     Generating short link...
+                  </div>
+                ) : copySuccess ? (
+                  <div className="flex items-center justify-center gap-2 text-green-400">
+                    <CheckCircle className="w-4 h-4" />
+                    Link copied successfully!
                   </div>
                 ) : (
                   "Your full report is included in the link."

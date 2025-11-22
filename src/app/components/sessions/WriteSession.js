@@ -8,7 +8,7 @@ import Editor from "@/app/components/tiptap/Editor";
 import SalesSession from "@/app/components/sessions/SalesSession";
 import { motion } from "framer-motion";
 import Spinner from "@/app/components/ui/Spinner";
-import { Save } from "lucide-react";
+import { Save, Check } from "lucide-react";
 
 export default function WriteSession({ onTabChange }) {
   const [content, setContent] = useState("");
@@ -218,7 +218,7 @@ export default function WriteSession({ onTabChange }) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="card-gradient p-4 md:p-8 mt-6 rounded-lg shadow-custom-lg border border-[var(--primary)]"
+      className="bg-gradient-to-br from-[var(--surface)] via-[var(--surface-variant)] to-[var(--surface)] p-4 md:p-8 mt-6 rounded-lg shadow-custom-lg border border-[var(--primary)]"
     >
       <div className="max-w-4xl mx-auto space-y-6 mt-10">
         {/* INTRO */}
@@ -229,17 +229,33 @@ export default function WriteSession({ onTabChange }) {
                 Start Your Private Session
               </h1>
               <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mb-2 md:mb-4">
-                Share the challenge, question, or uncertainty you’d like support with. You’re welcome to include as much
-                detail as you feel comfortable with, from practical situations and relationship concerns to deeper
-                emotional or identity-driven questions. You may also describe any thoughts, feelings, or recurring
-                patterns you’ve noticed that seem to influence your experience. The more context you provide, the more
-                precisely we can understand your cognitive dynamics.
+                Tell us about the challenge, question, or uncertainty you’d like support with. You’re welcome to include
+                as much detail as you feel comfortable with, whether it relates to:
+              </p>
+              <ul className="list-none space-y-2 text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mb-2 md:mb-4">
+                <li className="flex items-center justify-center">
+                  <Check className="h-4 w-4 mr-2 text-[var(--accent)] flex-shrink-0" />A personal or relational
+                  situation
+                </li>
+                <li className="flex items-center justify-center">
+                  <Check className="h-4 w-4 mr-2 text-[var(--accent)] flex-shrink-0" />
+                  Patterns you’ve noticed in your thoughts, emotions, or behavior
+                </li>
+                <li className="flex items-center justify-center">
+                  <Check className="h-4 w-4 mr-2 text-[var(--accent)] flex-shrink-0" />
+                  Questions about identity, purpose, or interpersonal dynamics
+                </li>
+              </ul>
+              <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mb-2 md:mb-4">
+                You can focus on practical circumstances, deeper internal experiences, or both. The more context you
+                provide, the more accurately we can understand your unique cognitive dynamics and offer meaningful
+                insights.
               </p>
               <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mt-4">
-                Once submitted, your entry will be carefully reviewed and matched with a{" "}
-                <strong>CSM-Certified Expert</strong>. Within 1–2 business days, you will receive a personalized written
-                report grounded in your unique <strong>Cognitive Spectrum profile</strong>, offering clarity, guidance,
-                and actionable next steps tailored to you.
+                Once submitted, your entry will be reviewed by a <strong>CSM-Certified Expert</strong>. Within 1–2
+                business days, you’ll receive a personalized written guidance report, grounded in your{" "}
+                <strong>Cognitive Spectrum profile</strong>, offering clear perspectives, supportive strategies, and
+                actionable next steps tailored to you.
               </p>
               <motion.button
                 whileHover={{ scale: 1.02 }}

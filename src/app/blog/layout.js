@@ -52,7 +52,7 @@ export default function BlogLayout({ children }) {
   }, [mobileMenuOpen]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[var(--surface)] to-[var(--surface-variant)]">
+    <div className="min-h-screen bg-[var(--surface-variant)]">
       {/* Header */}
       <header className="sticky top-0 z-50 header-gradient shadow-lg backdrop-blur-sm border-b border-[var(--border)]">
         <nav className="max-w-7xl mx-auto px-4 py-3 md:py-4">
@@ -138,7 +138,7 @@ export default function BlogLayout({ children }) {
 
       <main>{children}</main>
 
-      <footer className="bg-[var(--surface-variant)] border-t border-[var(--border)] py-12 mt-24">
+      <footer className="bg-[var(--surface2)] border-t border-[var(--border)] py-12 mt-24">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-[var(--text-secondary)]">
             © 2025 CSM Dynamics. Expert relationship and wellness guidance grounded in science.

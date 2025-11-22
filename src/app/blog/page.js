@@ -87,7 +87,7 @@ export default async function BlogHome() {
             Stories and expert perspectives on love, wellness & personal transformation.
           </p>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--surface)] to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--surface-variant)] to-transparent"></div>
       </section>
 
       {/* FEATURED POST */}
