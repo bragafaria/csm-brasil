@@ -51,7 +51,7 @@ export default async function BlogPost({ params }) {
         <div className="flex items-center gap-4 text-sm text-[var(--text-secondary)]">
           <time>{format(new Date(post.published_at), "MMMM d, yyyy")}</time>
           <span>•</span>
-          <span className="text-[var(--accent)]">{post.category_name}</span>
+          <span className="text-violet-400">{post.category_name}</span>
         </div>
       </header>
 
@@ -77,7 +77,7 @@ export default async function BlogPost({ params }) {
       <div className="mt-16 p-8 bg-gradient-to-r from-[var(--accent)] to-blue-600 rounded-2xl text-white text-center">
         <h3 className="text-2xl font-bold mb-4">Ready to Apply CSM to Your Life?</h3>
         <Link
-          href="/assessment"
+          href="/csm-assessment"
           className="inline-block bg-white text-[var(--accent)] font-bold px-8 py-3 rounded-full hover:shadow-lg transition"
         >
           Take Free CSM Assessment

@@ -20,15 +20,15 @@ const FRICTION_GUIDES = {
 
 export default function CompatibilityRiskRanking({ rankedDimensions }) {
   return (
-    <section className="card-gradient p-6 rounded-lg shadow-custom max-w-4xl mx-auto mt-12">
+    <section className="card-gradient p-2 md:p-6 rounded-lg shadow-custom max-w-4xl mx-auto mt-12">
       <div className="flex items-start gap-3 mb-6">
         <div>
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4 mt-8 text-left">
+          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4 mt-8 text-center md:text-left">
             Compatibility Risk Ranking
           </h2>
-          <p className="text-lg text-[var(--text-secondary)] mt-">
+          <p className="text-lg text-center md:text-left text-[var(--text-secondary)] mt-2">
             Dimensions ranked from <strong>most challenging</strong> to <strong>most aligned</strong> based on the
-            Compatibility Alignment Score (CAS). Lower scores indicate higher friction.
+            Compatibility Alignment Score (CAS). Lower scores indicate a greater likelihood of friction.
           </p>
         </div>
       </div>
@@ -43,12 +43,12 @@ export default function CompatibilityRiskRanking({ rankedDimensions }) {
           return (
             <div
               key={dim.name}
-              className={`p-5 rounded-lg border ${
+              className={`px-2 py-4 md:p-5 rounded-lg border ${
                 item.cas < 60
                   ? "bg-red-900/10 border-red-500/40"
                   : item.cas < 80
-                  ? "bg-yellow-900/10 border-yellow-500/40"
-                  : "bg-green-900/10 border-green-500/40"
+                    ? "bg-yellow-900/10 border-yellow-500/40"
+                    : "bg-green-900/10 border-green-500/40"
               }`}
             >
               <div className="flex items-start justify-between mb-3">
@@ -81,7 +81,7 @@ export default function CompatibilityRiskRanking({ rankedDimensions }) {
               </div>
 
               <div className="mt-4">
-                <p className="font-medium text-lg text-[var(--text-primary)] mb-1">Friction:</p>
+                <p className="font-medium text-lg text-[var(--text-primary)] mb-1">Potential Friction:</p>
                 <p className="text-lg text-[var(--text-secondary)] leading-relaxed">{FRICTION_GUIDES[dim.name].desc}</p>
               </div>
             </div>

@@ -1,3 +1,5 @@
+//@/app/components/ui/Spinner.js
+
 export default function Spinner({ children }) {
   return (
     <div className="flex items-center gap-3">

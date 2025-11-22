@@ -36,47 +36,48 @@ export default function ViewSessions() {
           throw new Error("Please log in to view sessions.");
         }
 
-        const { count, error: countError } = await supabase
+        const userId = session.user.id;
+
+        // Count total sessions
+        const { count } = await supabase
           .from("blueprint_sessions")
           .select("id", { count: "exact", head: true })
-          .eq("user_id", session.user.id);
+          .eq("user_id", userId);
 
-        if (countError) throw new Error(countError.message);
-
-        const total = count || 0;
-        setTotalPages(Math.ceil(total / recordsPerPage));
+        setTotalPages(Math.ceil((count || 0) / recordsPerPage));
 
         const start = (currentPage - 1) * recordsPerPage;
         const end = start + recordsPerPage - 1;
 
+        // MAIN QUERY — NO FILTER ON STATUS (this was correct before)
         const { data, error } = await supabase
           .from("blueprint_sessions")
-          .select("id, created_at, question, answer, status")
-          .eq("user_id", session.user.id)
+          .select("id, created_at, question, answer, status, coach_id")
+          .eq("user_id", userId)
           .order("updated_at", { ascending: false })
           .range(start, end);
 
-        if (error) throw new Error(error.message);
+        if (error) throw error;
         setSessions(data || []);
 
+        // COACH LOOKUP — FIXED: include "answered"
         let coachData = null;
         if (data && data.length > 0) {
-          const { data: sessionCoach, error: coachError } = await supabase
-            .from("blueprint_sessions")
-            .select("coaches(id, profile_picture_path, users(name))")
-            .eq("user_id", session.user.id)
-            .in("status", ["answered", "assigned"])
-            .order("updated_at", { ascending: false })
-            .limit(1)
-            .single();
+          const answeredSession = data.find((s) => s.status === "answered") || data[0];
+          if (answeredSession?.coach_id) {
+            const { data: coachRes } = await supabase
+              .from("coaches")
+              .select("id, profile_picture_path, users(name)")
+              .eq("id", answeredSession.coach_id)
+              .single();
 
-          if (!coachError && sessionCoach?.coaches) {
-            coachData = sessionCoach.coaches;
+            if (coachRes) coachData = coachRes;
           }
         }
 
+        // Fallback: default available coach
         if (!coachData) {
-          const { data: defaultCoach, error: defaultCoachError } = await supabase
+          const { data: defaultCoach } = await supabase
             .from("coaches")
             .select("id, profile_picture_path, users(name)")
             .eq("availability", true)
@@ -84,18 +85,16 @@ export default function ViewSessions() {
             .limit(1)
             .single();
 
-          if (!defaultCoachError && defaultCoach) {
-            coachData = defaultCoach;
-          }
+          if (defaultCoach) coachData = defaultCoach;
         }
 
         setCoach({
-          name: coachData?.users?.name || "Unknown Coach",
+          name: coachData?.users?.name || "CSM Expert",
           profile_picture_path: coachData?.profile_picture_path || null,
         });
       } catch (err) {
-        console.error("Fetch data error:", err);
-        setError(err.message);
+        console.error("Fetch error:", err);
+        setError(err.message || "Failed to load sessions");
       } finally {
         setLoading(false);
       }
@@ -153,7 +152,6 @@ export default function ViewSessions() {
     }
   };
 
-  // Add Escape key to close modals
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") {
@@ -190,59 +188,63 @@ export default function ViewSessions() {
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="p-6 md:p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
+      className="p-4 sm:p-6 md:p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
     >
       {!selectedSession ? (
         <>
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6">Your CSM Sessions</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6">
+            Your CSM Sessions
+          </h2>
 
           {/* Coach Info */}
-          <div className="mb-6 p-6 bg-[var(--surface-variant)] rounded-lg border border-[var(--border)] shadow-sm">
-            <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-3">CSM Certified Expert:</h3>
+          <div className="mb-6 p-4 sm:p-6 bg-[var(--surface-variant)] rounded-lg border border-[var(--border)] shadow-sm">
+            <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)] mb-3">CSM-Certified Expert:</h3>
             <div className="flex items-center gap-4">
               {coach.profile_picture_path ? (
                 <img
-                  src={`${coach.profile_picture_path}?width=128&height=128&quality=80&resize=contain`}
+                  src={`${coach.profile_picture_path}?width=96&height=96&quality=80&resize=contain`}
                   alt={`${coach.name}'s profile`}
-                  className="w-14 h-14 rounded-full object-cover ring-2 ring-[var(--accent)]/20"
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover ring-2 ring-[var(--accent)]/20"
                 />
               ) : (
-                <div className="w-14 h-14 rounded-full bg-[var(--surface-variant)] flex items-center justify-center text-lg font-bold text-[var(--text-secondary)]">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[var(--surface-variant)] flex items-center justify-center text-base sm:text-lg font-bold text-[var(--text-secondary)]">
                   {coach.name?.charAt(0) || "C"}
                 </div>
               )}
-              <div>
-                <p className="font-medium text-[var(--text-primary)] mb-1">{coach.name}</p>
-                <span
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-green-500 border-green-500/30 bg-green-500/10`}
-                >
-                  {"Active"}
+              <div className="flex-1 min-w-0">
+                <p className="font-medium text-[var(--text-primary)] truncate">{coach.name}</p>
+                <span className="inline-block px-2 py-1.5 mt-2 rounded-full text-xs font-semibold uppercase tracking-wider text-green-500 border-green-500/30 bg-green-500/10">
+                  Active
                 </span>
               </div>
             </div>
           </div>
-          <div className="mt-14">
-            <h2 className="text-xl md:text-xl font-bold text-[var(--text-primary)] mb-2">Select Your Session:</h2>
-            <p className="text-[var(--text-secondary)] text-sm md:text-base mb-6">
+
+          <div className="mt-10 sm:mt-14">
+            <h2 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-2">Select Your Session:</h2>
+            <p className="text-sm sm:text-base text-[var(--text-secondary)] mb-6">
               View your past and current CSM sessions. Click a session to see a preview.
             </p>
           </div>
+
           {/* Session List */}
           {sessions.length === 0 ? (
             <div className="text-center py-12 bg-[var(--surface)] rounded-lg border border-[var(--border)]">
-              <p className="text-[var(--text-secondary)] text-sm">No sessions found. Start a new session to begin!</p>
+              <p className="text-sm sm:text-base text-[var(--text-secondary)]">
+                No sessions found. Start a new session to begin!
+              </p>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {sessions.map((session) => (
                 <motion.div
                   key={session.id}
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                   onClick={() => handleSessionClick(session)}
-                  className="flex justify-between items-center p-5 bg-[var(--surface3)] hover:bg-[var(--accent)] rounded-lg border border-[var(--border)]  hover:shadow-md transition-all cursor-pointer group"
+                  className="flex flex-col sm:flex-row sm:justify-between sm:items-center p-4 sm:p-5 bg-[var(--surface3)] hover:bg-[var(--accent)] rounded-lg border border-[var(--border)] hover:shadow-md transition-all cursor-pointer group"
                 >
-                  <div className="flex-1 pr-4">
+                  <div className="flex-1 pr-0 sm:pr-4 mb-3 sm:mb-0">
                     <p className="text-sm font-medium text-[var(--text-primary)] mb-1">
                       {new Date(session.created_at).toLocaleDateString("en-US", {
                         month: "short",
@@ -250,13 +252,13 @@ export default function ViewSessions() {
                         year: "numeric",
                       })}
                     </p>
-                    <div className="text-sm text-[var(--text-secondary)] line-clamp-2 group-hover:text-[var(--text-primary)] transition-colors mt-4">
-                      <p className="mb-1 font-semibold">Preview:</p>
+                    <div className="text-xs sm:text-sm text-[var(--text-secondary)] line-clamp-2 group-hover:text-[var(--text-primary)] transition-colors mt-2">
+                      <p className="font-semibold mb-1">Preview:</p>
                       {parse(stripHtmlAndTruncate(renderHtml(session.question)))}
                     </div>
                   </div>
                   <span
-                    className={`px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider ${getStatusStyles(
+                    className={`mt-2 sm:mt-0 px-2 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider ${getStatusStyles(
                       session.status
                     )} shadow-sm`}
                   >
@@ -269,11 +271,11 @@ export default function ViewSessions() {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex justify-between items-center mt-8">
+            <div className="flex flex-col sm:flex-row justify-between items-center mt-8 gap-4">
               <button
                 onClick={handlePreviousPage}
                 disabled={currentPage === 1}
-                className={`px-5 py-2.5 rounded-lg font-medium transition-all ${
+                className={`w-full sm:w-auto px-4 py-2.5 rounded-lg font-medium transition-all text-sm ${
                   currentPage === 1
                     ? "bg-[var(--surface-variant)] text-[var(--text-secondary)] opacity-60 cursor-not-allowed"
                     : "btn-secondary hover:shadow-md"
@@ -287,7 +289,7 @@ export default function ViewSessions() {
               <button
                 onClick={handleNextPage}
                 disabled={currentPage === totalPages}
-                className={`px-5 py-2.5 rounded-lg font-medium transition-all ${
+                className={`w-full sm:w-auto px-4 py-2.5 rounded-lg font-medium transition-all text-sm ${
                   currentPage === totalPages
                     ? "bg-[var(--surface-variant)] text-[var(--text-secondary)] opacity-60 cursor-not-allowed"
                     : "btn-secondary hover:shadow-md"
@@ -311,68 +313,25 @@ export default function ViewSessions() {
       {showQuestionModal &&
         selectedSession &&
         createPortal(
-          <FullScreenModal onClose={() => setShowQuestionModal(false)}>
-            <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">Full Session Question</h3>
-
-            {/* COACH INFO IN MODAL */}
-            <div className="flex items-center gap-4 p-5 bg-[var(--surface-variant)] rounded-lg border border-[var(--border)] mb-6">
-              {coach.profile_picture_path ? (
-                <img
-                  src={`${coach.profile_picture_path}?width=96&height=96&quality=80&resize=contain`}
-                  alt={`${coach.name}'s profile`}
-                  className="w-12 h-12 rounded-full object-cover ring-2 ring-[var(--accent)]/30"
-                />
-              ) : (
-                <div className="w-12 h-12 rounded-full bg-[var(--surface2)] flex items-center justify-center text-lg font-bold text-[var(--text-secondary)]">
-                  {coach.name?.charAt(0) || "C"}
-                </div>
-              )}
-              <div className="flex-1">
-                <p className="font-semibold text-[var(--text-primary)]">{coach.name}</p>
-                <p className="text-xs text-[var(--text-secondary)]">Certified CSM Expert</p>
-              </div>
-              <span
-                className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${getStatusStyles(
-                  selectedSession.status
-                )}`}
-              >
-                {selectedSession.status}
-              </span>
-            </div>
-
-            {/* HTML CONTENT */}
-            <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] max-h-[65vh] overflow-y-auto custom-scrollbar3">
-              {parse(renderHtml(selectedSession.question))}
-            </div>
-          </FullScreenModal>,
-          document.body
-        )}
-
-      {/* FULLSCREEN MODAL - ANSWER */}
-      {/* FULLSCREEN MODAL - QUESTION */}
-      {showQuestionModal &&
-        selectedSession &&
-        createPortal(
           <FullScreenModal onClose={() => setShowQuestionModal(false)} title="Your Session Entry">
-            {/* COACH INFO */}
-            <div className="flex items-center gap-4 p-5 bg-[var(--surface3)] rounded-lg border border-[var(--border)] mb-6">
+            <div className="flex flex-col sm:flex-row items-center gap-4 p-4 sm:p-5 bg-[var(--surface3)] rounded-lg border border-[var(--border)] mb-6">
               {coach.profile_picture_path ? (
                 <img
                   src={`${coach.profile_picture_path}?width=96&height=96&quality=80&resize=contain`}
                   alt={`${coach.name}'s profile`}
-                  className="w-12 h-12 rounded-full object-cover ring-2 ring-[var(--accent)]/30"
+                  className="w-12 h-12 rounded-full object-cover ring-2 ring-[var(--accent)]/30 flex-shrink-0"
                 />
               ) : (
-                <div className="w-12 h-12 rounded-full bg-[var(--surface2)] flex items-center justify-center text-lg font-bold text-[var(--text-secondary)]">
+                <div className="w-12 h-12 rounded-full bg-[var(--surface2)] flex items-center justify-center text-lg font-bold text-[var(--text-secondary)] flex-shrink-0">
                   {coach.name?.charAt(0) || "C"}
                 </div>
               )}
-              <div className="flex-1">
-                <p className="font-semibold text-[var(--text-primary)]">{coach.name}</p>
-                <p className="text-xs text-[var(--text-secondary)]">CSM Certified Expert</p>
+              <div className="flex-1 min-w-0 text-center sm:text-left">
+                <p className="font-semibold text-[var(--text-primary)] truncate">{coach.name}</p>
+                <p className="text-xs text-[var(--text-secondary)]">CSM-Certified Expert</p>
               </div>
               <span
-                className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${getStatusStyles(
+                className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${getStatusStyles(
                   selectedSession.status
                 )}`}
               >
@@ -380,7 +339,7 @@ export default function ViewSessions() {
               </span>
             </div>
 
-            <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] max-h-[65vh] overflow-y-auto custom-scrollbar3 pr-6">
+            <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] max-h-[60vh] sm:max-h-[65vh] overflow-y-auto custom-scrollbar3 px-1">
               {parse(renderHtml(selectedSession.question))}
             </div>
           </FullScreenModal>,
@@ -392,25 +351,24 @@ export default function ViewSessions() {
         selectedSession?.answer &&
         createPortal(
           <FullScreenModal onClose={() => setShowAnswerModal(false)} title="Re: Full Session Report">
-            {/* COACH INFO */}
-            <div className="flex items-center gap-4 p-5 bg-[var(--surface3)] rounded-lg border border-[var(--border)] mb-10">
+            <div className="flex flex-col sm:flex-row items-center gap-4 p-4 sm:p-5 bg-[var(--surface3)] rounded-lg border border-[var(--border)] mb-6">
               {coach.profile_picture_path ? (
                 <img
                   src={`${coach.profile_picture_path}?width=96&height=96&quality=80&resize=contain`}
                   alt={`${coach.name}'s profile`}
-                  className="w-12 h-12 rounded-full object-cover ring-2 ring-[var(--accent)]/30"
+                  className="w-12 h-12 rounded-full object-cover ring-2 ring-[var(--accent)]/30 flex-shrink-0"
                 />
               ) : (
-                <div className="w-12 h-12 rounded-full bg-[var(--surface2)] flex items-center justify-center text-lg font-bold text-[var(--text-secondary)]">
+                <div className="w-12 h-12 rounded-full bg-[var(--surface2)] flex items-center justify-center text-lg font-bold text-[var(--text-secondary)] flex-shrink-0">
                   {coach.name?.charAt(0) || "C"}
                 </div>
               )}
-              <div className="flex-1">
-                <p className="font-semibold text-[var(--text-primary)]">{coach.name}</p>
-                <p className="text-xs text-[var(--text-secondary)]">CSM Certified Expert</p>
+              <div className="flex-1 min-w-0 text-center sm:text-left">
+                <p className="font-semibold text-[var(--text-primary)] truncate">{coach.name}</p>
+                <p className="text-xs text-[var(--text-secondary)]">CSM-Certified Expert</p>
               </div>
               <span
-                className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${getStatusStyles(
+                className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${getStatusStyles(
                   selectedSession.status
                 )}`}
               >
@@ -418,7 +376,7 @@ export default function ViewSessions() {
               </span>
             </div>
 
-            <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] max-h-[65vh] overflow-y-auto custom-scrollbar3 pr-6">
+            <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] max-h-[60vh] sm:max-h-[65vh] overflow-y-auto custom-scrollbar3 px-1">
               {parse(renderHtml(selectedSession.answer))}
             </div>
           </FullScreenModal>,
@@ -428,7 +386,6 @@ export default function ViewSessions() {
   );
 }
 
-// FULLSCREEN MODAL COMPONENT
 // FULLSCREEN MODAL COMPONENT
 function FullScreenModal({ children, onClose, title }) {
   return (
@@ -444,19 +401,19 @@ function FullScreenModal({ children, onClose, title }) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
-        className="bg-[var(--surface)] p-6 md:p-8 rounded-xl max-w-4xl w-full max-h-[95vh] overflow-hidden shadow-2xl card-gradient border border-[var(--border)]"
+        className="bg-[var(--surface)] p-4 sm:p-6 md:p-8 rounded-xl w-full max-w-4xl max-h-[95vh] overflow-hidden shadow-2xl card-gradient border border-[var(--border)]"
       >
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-bold text-[var(--text-primary)]">{title}</h3>
+          <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] truncate pr-4">{title}</h3>
           <button
             onClick={onClose}
-            className="text-[var(--text-secondary)] hover:text-[var(--accent)] text-2xl font-bold transition-colors"
+            className="text-[var(--text-secondary)] hover:text-[var(--accent)] text-2xl font-bold transition-colors flex-shrink-0"
             aria-label="Close modal"
           >
-            X
+            ×
           </button>
         </div>
-        <div className="overflow-hidden">{children}</div>
+        <div className="overflow-y-auto max-h-[calc(95vh-6rem)]">{children}</div>
       </motion.div>
     </motion.div>
   );

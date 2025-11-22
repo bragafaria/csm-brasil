@@ -114,12 +114,12 @@ export default function SessionsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--surface)] py-8 px-4 md:px-8 lg:px-12">
+    <div className="min-h-screen bg-[var(--surface)] py-4 px-4 md:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="container mx-auto max-w-7xl"
+        className="container mx-auto max-w-4xl"
       >
         {/* Hero Header */}
         <div className="hero-gradient rounded-lg p-6 md:p-8 mb-8 shadow-custom-lg">
@@ -128,7 +128,7 @@ export default function SessionsPage() {
             <div>
               <h1 className="text-2xl md:text-4xl font-bold text-white">CSM Sessions</h1>
               <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">
-                Engage in guided self-reflection tailored to your CSM archetype.
+                Engage in guided self-reflection based on your CSM archetype.
               </p>
             </div>
           </div>
@@ -136,7 +136,7 @@ export default function SessionsPage() {
 
         {/* Tabbed Content */}
         <div className="card-gradient rounded-lg shadow-custom overflow-hidden">
-          <div className="flex flex-col pl-2 md:pl-10 sm:flex-row flex-wrap justify-start items-center gap-6 mt-10  sm:text-left">
+          <div className="flex flex-col pl-2 md:pl-10 sm:flex-row flex-wrap justify-start items-center gap-6 mt-10 sm:text-left">
             <p className="text-sm md:text-base font-semibold">Choose:</p>
 
             {/* Tab Navigation */}

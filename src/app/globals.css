@@ -34,6 +34,7 @@
   /* Text */
   --text-primary: #f8fafc;
   --text-secondary: #cbd5e1;
+  --text-surface: #6b5885;
 
   /* Borders & shadows */
   --border: #2a2e38;
@@ -331,4 +332,39 @@ body {
   font-size: 0.875rem;
   color: var(--text-secondary);
   text-align: center;
+}
+
+/* Mux Pie Chart */
+.pie-chart-container text,
+.pie-chart-container .MuiChartsAxis-label,
+.pie-chart-container .MuiChartsLegend-label,
+.pie-chart-container .MuiChartsTooltip-root {
+  fill: #f8fafc !important;
+  color: #f8fafc !important;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   SELECT FIX – Dark theme friendly
+   ────────────────────────────────────────────────────────────── */
+select {
+  background-color: #272430 !important; /* Dark background */
+  color: #f8fafc !important; /* White text */
+  -webkit-appearance: none; /* Removes default arrow in some browsers */
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 2.5rem !important; /* Space for custom arrow */
+}
+
+/* Optional: nicer custom arrow */
+select::-ms-expand {
+  display: none;
+}
+
+select + svg {
+  pointer-events: none;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #cbd5e1;
 }

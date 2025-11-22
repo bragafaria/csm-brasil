@@ -2,14 +2,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useDebouncedCallback } from "use-debounce";
 import { supabase } from "@/app/utils/supabaseClient";
 import Editor from "@/app/components/tiptap/Editor";
 import SalesSession from "@/app/components/sessions/SalesSession";
 import { motion } from "framer-motion";
 import Spinner from "@/app/components/ui/Spinner";
+import { Save, Check } from "lucide-react";
 
-export default function WriteSession({ isPartnerA, onTabChange }) {
+export default function WriteSession({ onTabChange }) {
   const [content, setContent] = useState("");
+  const [savedMessage, setSavedMessage] = useState("");
+  const [wordCount, setWordCount] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [userStatus, setUserStatus] = useState(null);
   const [loadingStatus, setLoadingStatus] = useState(true);
@@ -17,16 +21,43 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
   const [showSalesPage, setShowSalesPage] = useState(true);
   const [useFreeSession, setUseFreeSession] = useState(false);
   const [justPaid, setJustPaid] = useState(false);
+  const [showEditor, setShowEditor] = useState(false);
+  const [draftKey, setDraftKey] = useState(null);
 
   useEffect(() => {
-    async function fetchUserStatus() {
+    async function init() {
       try {
         const {
           data: { session },
           error: sessionError,
         } = await supabase.auth.getSession();
-        if (sessionError || !session) throw new Error("Please log in again");
 
+        if (sessionError || !session) {
+          setError("Please log in again");
+          setLoadingStatus(false);
+          return;
+        }
+
+        // Create user-specific draft key
+        const key = `csm-session-draft-${session.user.id}`;
+        setDraftKey(key);
+
+        // Restore draft
+        const draft = localStorage.getItem(key);
+        if (draft && draft.trim()) {
+          setContent(draft);
+          const text = draft
+            .replace(/<[^>]*>/g, " ")
+            .replace(/\s+/g, " ")
+            .trim();
+          const words = text ? text.split(/\s+/).length : 0;
+          setWordCount(words);
+          setSavedMessage("(auto-saved)");
+          setTimeout(() => setSavedMessage(""), 2500);
+          setShowEditor(false);
+        }
+
+        // Your original status fetch — unchanged
         const response = await fetch("/api/get-blueprint-status", {
           method: "POST",
           headers: {
@@ -58,8 +89,30 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
       }
     }
 
-    fetchUserStatus();
-  }, [justPaid]); // Re-fetch when justPaid changes
+    init();
+  }, [justPaid]);
+
+  // FIXED: Simple, clean, safe debounced save
+  const debouncedSave = useDebouncedCallback((html) => {
+    if (draftKey) {
+      localStorage.setItem(draftKey, html);
+      setSavedMessage("(auto-saved)");
+      setTimeout(() => setSavedMessage(""), 2000);
+    }
+  }, 1000);
+
+  const handleEditorChange = (html) => {
+    setContent(html);
+    const text = html
+      .replace(/<[^>]*>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    const words = text ? text.split(/\s+/).length : 0;
+    setWordCount(words);
+    if (words <= 2500) {
+      debouncedSave(html);
+    }
+  };
 
   const handleStartFree = () => {
     setUseFreeSession(true);
@@ -69,42 +122,10 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
   const handlePaymentSuccess = async () => {
     setJustPaid(true);
     setShowSalesPage(false);
-    // Re-fetch status after payment
-    await fetchUserStatus();
-  };
-
-  const fetchUserStatus = async () => {
-    try {
-      const {
-        data: { session },
-        error: sessionError,
-      } = await supabase.auth.getSession();
-      if (sessionError || !session) throw new Error("Please log in again");
-
-      const response = await fetch("/api/get-blueprint-status", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${session.access_token}`,
-          "Refresh-Token": session.refresh_token,
-        },
-        credentials: "include",
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ error: "No response body" }));
-        throw new Error(errorData.error || `Failed to fetch status (Status: ${response.status})`);
-      }
-
-      const status = await response.json();
-      setUserStatus(status);
-    } catch (err) {
-      console.error("Error refreshing status:", err.message);
-    }
   };
 
   async function handleSubmit() {
-    if (!content.trim() || userStatus.hasActiveSession) return;
+    if (!content.trim() || userStatus?.hasActiveSession || wordCount > 2500) return;
 
     setIsSubmitting(true);
     try {
@@ -117,8 +138,8 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
       const paymentType = userStatus.isActiveSubscriber
         ? "subscription"
         : useFreeSession || userStatus.hasFreeSessionAvailable
-        ? "free"
-        : "per_session";
+          ? "free"
+          : "per_session";
 
       const response = await fetch("/api/create-session", {
         method: "POST",
@@ -144,8 +165,12 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
       }));
 
       setContent("");
+      if (draftKey) localStorage.removeItem(draftKey); // FIXED: user-specific clear
       setUseFreeSession(false);
       setShowSalesPage(true);
+      setWordCount(0);
+      setSavedMessage("");
+      setShowEditor(false);
       alert("Session submitted! Report in 24 hours.");
       onTabChange("view");
     } catch (err) {
@@ -158,7 +183,7 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
   if (loadingStatus) {
     return (
       <div className="flex items-center justify-center p-8">
-        <div className="flex items-center gap-3">
+        <div className="flex justify-center gap-3">
           <Spinner>Loading session status...</Spinner>
         </div>
       </div>
@@ -193,67 +218,142 @@ export default function WriteSession({ isPartnerA, onTabChange }) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="card-gradient p-6 md:p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
+      className="bg-gradient-to-br from-[var(--surface)] via-[var(--surface-variant)] to-[var(--surface)] p-4 md:p-8 mt-6 rounded-lg shadow-custom-lg border border-[var(--primary)]"
     >
       <div className="max-w-4xl mx-auto space-y-6 mt-10">
-        {/* Header */}
-        <div className="flex flex-col items-center mb-20 md:px-20">
-          <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-10 text-center">
-            Submit Your Session Entry
-          </h1>
-          <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mb-2 md:mb-4 ">
-            Describe your challenge, question, or general doubt in as much detail as possible: from practical concerns
-            to broader life uncertainties. You may also include any thoughts, feelings, or patterns that seem to shape
-            your experience.
-          </p>
-          <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center">
-            <strong>Note:</strong> This chat is completely private. Only you have access to your questions and
-            responses. Your partner cannot view or edit anything you share here, though you’re welcome to share your
-            reflections later if you wish.
-          </p>
-        </div>
-
-        {/* Editor */}
-        <div className="bg-[var(--surface)] rounded-lg border border-[var(--border)] shadow-sm overflow-hidden">
-          <Editor content={content} onChange={setContent} />
-        </div>
-
-        {/* Live Preview */}
-        {content && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            className="border-t border-[var(--border)] pt-6"
-          >
-            <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-3">Live Preview:</h2>
-            <div className="p-5 bg-[var(--surface)] rounded-lg border border-[var(--border)] shadow-inner">
-              <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)]">
-                <div dangerouslySetInnerHTML={{ __html: content }} />
-              </div>
+        {/* INTRO */}
+        {!showEditor && (
+          <>
+            <div className="flex flex-col items-center mb-6 md:px-20">
+              <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-10 text-center">
+                Start Your Private Session
+              </h1>
+              <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mb-2 md:mb-4">
+                Tell us about the challenge, question, or uncertainty you’d like support with. You’re welcome to include
+                as much detail as you feel comfortable with, whether it relates to:
+              </p>
+              <ul className="list-none space-y-2 text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mb-2 md:mb-4">
+                <li className="flex items-center justify-center">
+                  <Check className="h-4 w-4 mr-2 text-[var(--accent)] flex-shrink-0" />A personal or relational
+                  situation
+                </li>
+                <li className="flex items-center justify-center">
+                  <Check className="h-4 w-4 mr-2 text-[var(--accent)] flex-shrink-0" />
+                  Patterns you’ve noticed in your thoughts, emotions, or behavior
+                </li>
+                <li className="flex items-center justify-center">
+                  <Check className="h-4 w-4 mr-2 text-[var(--accent)] flex-shrink-0" />
+                  Questions about identity, purpose, or interpersonal dynamics
+                </li>
+              </ul>
+              <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mb-2 md:mb-4">
+                You can focus on practical circumstances, deeper internal experiences, or both. The more context you
+                provide, the more accurately we can understand your unique cognitive dynamics and offer meaningful
+                insights.
+              </p>
+              <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mt-4">
+                Once submitted, your entry will be reviewed by a <strong>CSM-Certified Expert</strong>. Within 1–2
+                business days, you’ll receive a personalized written guidance report, grounded in your{" "}
+                <strong>Cognitive Spectrum profile</strong>, offering clear perspectives, supportive strategies, and
+                actionable next steps tailored to you.
+              </p>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setShowEditor(true)}
+                className="px-10 py-4 mt-8 md:mt-10 rounded-lg font-semibold text-lg btn-primary hover:shadow-lg"
+              >
+                Start Session
+              </motion.button>
             </div>
-          </motion.div>
+          </>
         )}
 
-        {/* Submit Button */}
-        <div className="flex justify-end">
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={handleSubmit}
-            disabled={isSubmitting || !content.trim() || userStatus.hasActiveSession}
-            className={`px-8 py-3 rounded-lg font-semibold transition-all shadow-md ${
-              isSubmitting || !content.trim() || userStatus.hasActiveSession
-                ? "bg-[var(--surface-variant)] text-[var(--text-secondary)] cursor-not-allowed opacity-70"
-                : "btn-primary hover:shadow-lg"
-            }`}
-          >
-            {isSubmitting
-              ? "Submitting..."
-              : userStatus.hasActiveSession
-              ? "Awaiting Response..."
-              : `Submit Session (${content.length} chars)`}
-          </motion.button>
-        </div>
+        {/* EDITOR */}
+        {showEditor && (
+          <>
+            <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] md:mb-10 text-center">
+              Submit Your Session Entry
+            </h1>
+
+            {userStatus?.hasActiveSession && (
+              <div className="mb-8 mt-8 p-6 bg-red-600/10 border border-[var(--border)] rounded-lg">
+                <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center">
+                  You already have an <strong>active session</strong> awaiting a response from your CSM-Certified
+                  Expert. Please wait until it is answered before starting a new one.
+                </p>
+              </div>
+            )}
+
+            <div className="flex justify-end h-1 gap-2">
+              {savedMessage && (
+                <>
+                  <Save className="h-4 w-4" />
+                  <span className="inline-block text-gray-400 text-xs rounded-md font-medium animate-pulse">
+                    {savedMessage}
+                  </span>
+                </>
+              )}
+            </div>
+
+            <div className="bg-[var(--surface)] rounded-lg border border-[var(--border)] shadow-sm overflow-hidden">
+              <Editor content={content} onChange={handleEditorChange} />
+            </div>
+
+            <div>
+              <p className="text-[var(--text-secondary)] text-sm font-light italic leading-relaxed text-center px-4">
+                <strong>Note:</strong> This chat is completely private. Only you have access to your questions and
+                responses. Your partner cannot view or edit anything you share here, though you’re welcome to share your
+                reflections later if you wish.
+              </p>
+
+              <div className="flex flex-col gap-4 mt-4">
+                <div className="flex justify-end items-center text-xs mt-3">
+                  <div className={wordCount > 2500 ? "text-red-500 font-medium" : "text-[var(--text-secondary)]"}>
+                    {wordCount} / 2,500 words
+                  </div>
+                </div>
+
+                <div className="flex justify-end">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={handleSubmit}
+                    disabled={isSubmitting || !content.trim() || userStatus?.hasActiveSession || wordCount > 2500}
+                    className={`px-8 py-3 rounded-lg font-semibold transition-all shadow-md ${
+                      isSubmitting || !content.trim() || userStatus?.hasActiveSession || wordCount > 2500
+                        ? "bg-[var(--surface-variant)] text-[var(--text-secondary)] cursor-not-allowed opacity-70"
+                        : "btn-primary hover:shadow-lg"
+                    }`}
+                  >
+                    {isSubmitting
+                      ? "Submitting..."
+                      : userStatus?.hasActiveSession
+                        ? "Awaiting Response..."
+                        : wordCount > 2500
+                          ? "Trim to ≤ 2,500 words"
+                          : `Submit Session (${wordCount} words)`}
+                  </motion.button>
+                </div>
+              </div>
+            </div>
+
+            {content && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                className="border-t border-[var(--border)] pt-6"
+              >
+                <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-3">Live Preview:</h2>
+                <div className="p-5 bg-[var(--surface)] rounded-lg border border-[var(--border)] shadow-inner">
+                  <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)]">
+                    <div dangerouslySetInnerHTML={{ __html: content }} />
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </>
+        )}
       </div>
     </motion.div>
   );

@@ -68,12 +68,12 @@ export default async function BlogHome() {
 
   /* ---- icons (still used for the section header) ------------------- */
   const categoryIcons = {
-    "love-relationship": <Heart className="w-10 h-10 text-[var(--primary)]" />,
-    "self-wellness": <Sparkles className="w-10 h-10 text-[var(--primary)]" />,
-    "heartbreak-divorce": <HeartOff className="w-10 h-10 text-[var(--primary)]" />,
-    "sex-seduction": <Flame className="w-10 h-10 text-[var(--primary)]" />,
-    "entertainment-news": <Newspaper className="w-10 h-10 text-[var(--primary)]" />,
-    "expert-advice": <HatGlasses className="w-10 h-10 text-[var(--primary)]" />,
+    "love-relationship": <Heart className="w-10 h-10 text-violet-400" />,
+    "self-wellness": <Sparkles className="w-10 h-10 text-violet-400" />,
+    "heartbreak-divorce": <HeartOff className="w-10 h-10 text-violet-400" />,
+    "sex-seduction": <Flame className="w-10 h-10 text-violet-400" />,
+    "entertainment-news": <Newspaper className="w-10 h-10 text-violet-400" />,
+    "expert-advice": <HatGlasses className="w-10 h-10 text-violet-400" />,
   };
 
   return (
@@ -84,20 +84,20 @@ export default async function BlogHome() {
         <div className="relative max-w-5xl mx-auto my-20">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">The Blog of the Modern Self</h1>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Stories and expert perspectives on love, wellness, and personal transformation.
+            Stories and expert perspectives on love, wellness & personal transformation.
           </p>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--surface)] to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--surface-variant)] to-transparent"></div>
       </section>
 
       {/* FEATURED POST */}
       {featured[0] && (
-        <section id="featured" className="relative -mt-16 max-w-7xl mx-auto px-6">
+        <section id="featured" className="relative mt-16 max-w-7xl mx-auto px-6">
           <div className="card-gradient rounded-3xl p-1 shadow-2xl">
             <div className="bg-[var(--surface2)] rounded-3xl overflow-hidden">
               <div className="md:flex">
                 <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                  <div className="inline-flex items-center gap-2 bg-[var(--primary)]/20 text-[var(--primary)] py-1 rounded-full text-xl font-bold w-fit mb-4">
+                  <div className="inline-flex items-center gap-2 bg-[var(--primary)]/20 text-violet-400 py-1 rounded-full text-xl font-bold w-fit mb-4">
                     <span>FEATURED</span>
                   </div>
                   <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4 leading-tight">
@@ -112,11 +112,11 @@ export default async function BlogHome() {
                   <div className="flex items-center gap-4 text-sm text-[var(--text-secondary)] mb-6">
                     <span>{format(new Date(featured[0].published_at), "MMMM d, yyyy")}</span>
                     <span>•</span>
-                    <span className="text-[var(--accent)] font-medium">{featured[0].category_name}</span>
+                    <span className="text-violet-400 font-medium">{featured[0].category_name}</span>
                   </div>
                   <Link
                     href={`/blog/${featured[0].category_slug}/${featured[0].slug}`}
-                    className="inline-flex items-center gap-2 text-[var(--accent)] font-bold hover:underline"
+                    className="inline-flex items-center gap-2 text-violet-400 font-bold hover:underline"
                   >
                     Read Full Article
                   </Link>
@@ -184,7 +184,7 @@ export default async function BlogHome() {
                         </p>
                         <div className="flex justify-between text-xs text-[var(--text-secondary)] mt-auto">
                           <span>{format(new Date(post.published_at), "MMM d")}</span>
-                          <span className="text-[var(--accent)]">{post.category_name}</span>
+                          <span className="text-violet-400">{post.category_name}</span>
                         </div>
                       </div>
                     </article>
@@ -200,13 +200,14 @@ export default async function BlogHome() {
       <section className="mt-24 py-16 bg-gradient-to-r from-[var(--primary)] to-purple-800 rounded-3xl max-w-7xl mx-auto px-6 text-center">
         <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Transform Your Relationships?</h3>
         <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-          Get your personalized CSM archetype report in under 10 minutes.
+          In just 10 minutes, uncover your free, science-backed CSM profile and see how your unique patterns shape your
+          relationships and personal growth.
         </p>
         <Link
-          href="/assessment"
+          href="/"
           className="inline-block bg-white text-[var(--primary)] font-bold px-10 py-4 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
         >
-          Start Free Assessment
+          Learn More
         </Link>
       </section>
     </div>

@@ -8,7 +8,7 @@ export default function WhatsNextAnalytics() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed my-8">
-      <div className="card-gradient p-6 rounded-2xl shadow-custom">
+      <div className="card-gradient p-4 md:p-6 rounded-2xl shadow-custom">
         <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 mt-4 text-left">What’s Next?</h2>
 
         <div className="space-y-6 text-[var(--text-secondary)]">
@@ -25,7 +25,7 @@ export default function WhatsNextAnalytics() {
 
           <p className="text-lg leading-relaxed">
             Each session is private and personally reviewed by a{" "}
-            <span className="font-semibold text-[var(--text-primary)]">CSM Certified Expert</span>, ensuring your
+            <span className="font-semibold text-[var(--text-primary)]">CSM-Certified Expert</span>, ensuring your
             reflections are understood with depth, care, and precision. You’ll receive insights that connect your unique
             cognitive style to real-life situations, turning self-awareness into meaningful action and helping you move
             forward with greater clarity and confidence.

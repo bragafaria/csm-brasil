@@ -52,16 +52,16 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
       icon: BookOpen,
       subItems: [{ label: "Private Sessions", route: `/dashboard/${siteId}/coaching/sessions` }],
     },
-    {
-      id: "learn",
-      label: "Learn",
-      icon: Lightbulb,
-      subItems: [
-        { label: "Tips", route: `/dashboard/${siteId}/learn/tips` },
-        { label: "Glossary", route: `/dashboard/${siteId}/learn/glossary` },
-        { label: "About CSM", route: `/dashboard/${siteId}/learn/about-csm` },
-      ],
-    },
+    // {
+    //   id: "learn",
+    //   label: "Learn",
+    //   icon: Lightbulb,
+    //   subItems: [
+    //     { label: "Tips", route: `/dashboard/${siteId}/learn/tips` },
+    //     { label: "Glossary", route: `/dashboard/${siteId}/learn/glossary` },
+    //     { label: "About CSM", route: `/dashboard/${siteId}/learn/about-csm` },
+    //   ],
+    // },
     {
       id: "account",
       label: "Account",
@@ -283,7 +283,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
                           onClick={isMobile ? toggleSidebar : undefined}
                           className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all ${
                             isActive(sub.route)
-                              ? "text-[var(--text-primary)]"
+                              ? "text-violet-400"
                               : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-variant)]"
                           }`}
                         >
@@ -330,7 +330,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
                         onClick={isMobile ? toggleSidebar : undefined}
                         className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all ${
                           isActive(subItem.route)
-                            ? "text-[var(--text-primary)]"
+                            ? "text-violet-400"
                             : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-variant)]"
                         }`}
                       >

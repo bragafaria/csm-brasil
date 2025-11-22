@@ -7,7 +7,6 @@ import { RadarChart } from "@mui/x-charts/RadarChart";
 const getCommonSettings = (setHighlightedSeries) => ({
   height: 320,
   margin: { top: 40, right: 20, bottom: 20, left: 20 },
-  radar: { max: 100 },
   legend: {
     onClick: (event, d) => setHighlightedSeries((prev) => (prev === d.label ? null : d.label)),
   },
@@ -69,7 +68,11 @@ export default function CsmRadarChart({ partnerA, partnerB, metrics, title }) {
           <RadarChart
             {...commonSettings}
             series={series}
-            radar={{ metrics }}
+            radar={{
+              metrics,
+              max: 100,
+              min: 0, // Optional but recommended for clarity
+            }}
             sx={{
               "& .MuiChartsAxis-root text": { fill: "#fff" },
               "& .MuiChartsAxis-line": { stroke: "#fff" },

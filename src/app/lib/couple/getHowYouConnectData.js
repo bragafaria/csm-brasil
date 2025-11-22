@@ -23,7 +23,7 @@ export async function getHowYouConnectData(siteId) {
 
   if (partnerAError || !partnerAData) {
     if (typeof window !== "undefined") window.location.href = "/error?message=Invalid report";
-    throw new Error("Partner A not found");
+    throw new Error("Partner data not found. Contact support.");
   }
 
   const isPartnerA = userId === siteId;
@@ -35,7 +35,7 @@ export async function getHowYouConnectData(siteId) {
   }
 
   if (!partnerAData.partner_id) {
-    throw new Error("Partner B has not signed up yet.");
+    throw new Error("Your partner has not completed the assessment yet.");
   }
 
   const { data: partnerBData, error: partnerBError } = await supabase
@@ -45,7 +45,7 @@ export async function getHowYouConnectData(siteId) {
     .single();
 
   if (partnerBError || !partnerBData) {
-    throw new Error("Partner B not found");
+    throw new Error("Partner data not found");
   }
 
   if (!partnerAData.has_assessment || !partnerBData.has_assessment) {

@@ -5,12 +5,15 @@ import { useRouter } from "next/navigation";
 import { questions, calculateCSMResults } from "../utils/csm";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Spinner from "@/app/components/ui/Spinner";
 
 export default function Test() {
   const router = useRouter();
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false); // ← NEW
   const q = questions[current];
 
   useEffect(() => {
@@ -20,10 +23,13 @@ export default function Test() {
         const parsed = JSON.parse(saved);
         if (parsed.length === questions.length) {
           setAnswers(parsed);
-          const lastAnswered = parsed.findIndex((a) => a === null);
-          if (lastAnswered !== -1 && lastAnswered <= current) {
-            setCurrent(Math.max(0, lastAnswered));
+
+          // ← Proper resume logic
+          const firstUnanswered = parsed.findIndex((a) => a === null);
+          if (firstUnanswered !== -1) {
+            setCurrent(firstUnanswered);
           }
+          // If somehow all are answered but csmAnswers still exists → stay at 0 (edge case)
         } else {
           setError("Previous progress is outdated. Starting a new test.");
           localStorage.removeItem("csmAnswers");
@@ -33,6 +39,7 @@ export default function Test() {
         localStorage.removeItem("csmAnswers");
       }
     }
+    setLoading(false);
   }, []);
 
   const handleAnswer = (value) => {
@@ -48,18 +55,35 @@ export default function Test() {
       setError("Please answer this question.");
       return;
     }
+
+    setIsSubmitting(true);
+    setError(null);
+
     if (current < questions.length - 1) {
-      setCurrent(current + 1);
-      setError(null);
+      setTimeout(() => {
+        setCurrent(current + 1);
+        setIsSubmitting(false);
+      }, 500);
     } else {
       if (answers.some((a) => a === null)) {
         setError("Please complete all questions.");
+        setIsSubmitting(false);
         return;
       }
+
+      const startTime = Date.now();
       const results = calculateCSMResults(answers);
+
       localStorage.setItem("csmAssessmentData", JSON.stringify({ answers, results }));
       localStorage.removeItem("csmAnswers");
-      router.push("/summary");
+
+      const elapsed = Date.now() - startTime;
+      const minDelay = 1000; // minimum 1 second of "loading" for good UX
+      const delay = Math.max(minDelay - elapsed, 0);
+
+      setTimeout(() => {
+        router.push("/summary");
+      }, delay);
     }
   };
 
@@ -167,18 +191,26 @@ export default function Test() {
         <div className="flex justify-between mt-8">
           <button
             onClick={prev}
-            disabled={current === 0}
+            disabled={current === 0 || isSubmitting}
             className="py-3 px-6 rounded-lg bg-[var(--surface-variant)] text-[var(--text-secondary)] font-medium hover:bg-[var(--surface-variant-hover)] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
             aria-label="Previous question"
           >
             Prev
           </button>
+
           <button
             onClick={next}
-            className="py-3 px-6 rounded-lg btn-primary font-semibold transition-all"
+            disabled={isSubmitting}
+            className={`py-3 px-10 rounded-lg btn-primary font-semibold transition-all flex items-center justify-center gap-3 ${
+              isSubmitting ? "opacity-90 cursor-not-allowed" : ""
+            }`}
             aria-label={current < questions.length - 1 ? "Next question" : "Finish test"}
           >
-            {current < questions.length - 1 ? "Next" : "Finish"}
+            {isSubmitting ? (
+              <Spinner>{current < questions.length - 1 ? "Next..." : "Finishing..."}</Spinner>
+            ) : (
+              <span>{current < questions.length - 1 ? "Next" : "Finish"}</span>
+            )}
           </button>
         </div>
       </motion.div>

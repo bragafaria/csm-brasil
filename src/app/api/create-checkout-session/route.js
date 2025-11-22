@@ -6,8 +6,8 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const priceId = process.env.STRIPE_COUPLE_REPORT_PRICE_ID;
-const successUrl = process.env.NEXT_PUBLIC_STRIPE_SUCCESS_URL;
-const cancelUrl = process.env.NEXT_PUBLIC_STRIPE_CANCEL_URL;
+const successUrl = process.env.NEXT_PUBLIC_STRIPE_REPORT_SUCCESS_URL;
+const cancelUrl = process.env.NEXT_PUBLIC_STRIPE_REPORT_CANCEL_URL;
 
 export async function POST(request) {
   try {

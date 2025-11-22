@@ -67,7 +67,7 @@ export default function LoadMoreClient({ slug, initialPosts }) {
                 <p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-3 flex-grow">{post.excerpt}</p>
                 <div className="flex justify-between text-xs text-[var(--text-secondary)] mt-auto">
                   <time>{format(new Date(post.published_at), "MMM d, yyyy")}</time>
-                  <span className="text-[var(--accent)]">{post.category_name}</span>
+                  <span className="text-violet-400">{post.category_name}</span>
                 </div>
               </div>
             </article>

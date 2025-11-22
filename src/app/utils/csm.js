@@ -490,7 +490,7 @@ export const questions = [
     id: 43,
     dimension: 3,
     type: "likert",
-    text: "I hate last-minute changes.",
+    text: "Last-minute changes bother me.",
     favoring: "S",
     reverse: false,
   },
@@ -514,7 +514,7 @@ export const questions = [
     id: 46,
     dimension: 3,
     type: "likert",
-    text: "I don’t enjoy winging it.",
+    text: "I don’t enjoy improvising.",
     favoring: "S",
     reverse: true, // Adjusted to balance
   },
@@ -576,9 +576,9 @@ export const questions = [
     text: "Project deadline shifts earlier:",
     options: forcedOptions("S", "F", {
       strongP1: "Panic and restructure entire plan immediately.",
-      strongP2: "Stay calm — you’ll adapt when the time comes.",
+      strongP2: "Stay calm. You’ll adapt when the time comes.",
       leanP1: "Adjust timeline but keep core structure.",
-      leanP2: "Wing it with high-energy crunch.",
+      leanP2: "Improvise with high energy.",
       balanced: "Reprioritize tasks flexibly.",
     }),
   },
@@ -588,8 +588,8 @@ export const questions = [
     type: "forced-select",
     text: "Daily routine:",
     options: forcedOptions("S", "F", {
-      strongP1: "Wake, coffee, gym, work — same every day.",
-      strongP2: "Every day is different — flow with energy.",
+      strongP1: "Wake, coffee, gym, work. Same every day.",
+      strongP2: "Every day is different. Flow with energy.",
       leanP1: "Core habits, but timing varies.",
       leanP2: "No fixed routine, just intentions.",
       balanced: "Flexible schedule with anchors.",
@@ -615,7 +615,7 @@ export const questions = [
     text: "Facing unexpected delay:",
     options: forcedOptions("S", "F", {
       strongP1: "Recalculate entire schedule immediately.",
-      strongP2: "Shrug — something better will come up.",
+      strongP2: "Shrug. Something better will come up.",
       leanP1: "Adjust next step, keep moving.",
       leanP2: "Use the time for spontaneous fun.",
       balanced: "Adapt plan without stress.",
@@ -723,7 +723,7 @@ export const questions = [
     text: "Disagreement in meeting:",
     options: forcedOptions("H", "A", {
       strongP1: "Change your stance to restore harmony.",
-      strongP2: "Stand firm — your idea is best.",
+      strongP2: "Stand firm. Your idea is best.",
       leanP1: "Compromise to move forward.",
       leanP2: "Push your view but hear others.",
       balanced: "Seek win-win solution.",

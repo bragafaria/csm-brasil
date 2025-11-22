@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
-import Editor from "@/app/components/tiptap/Editor";
+import Editor from "@/app/components/BlogEditor/BlogEditor";
 import { motion } from "framer-motion";
 import parse from "html-react-parser";
 import { useDebounce } from "use-debounce";

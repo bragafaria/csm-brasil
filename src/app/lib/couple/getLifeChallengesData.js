@@ -38,7 +38,7 @@ export async function getLifeChallengesData(siteId) {
   }
 
   if (!partnerAData.partner_id) {
-    throw new Error("Partner B has not signed up yet.");
+    throw new Error("Your partner has not completed the assessment yet.");
   }
 
   // 4. Fetch Partner B (linked partner)
@@ -49,7 +49,7 @@ export async function getLifeChallengesData(siteId) {
     .single();
 
   if (partnerBError || !partnerBData) {
-    throw new Error("Partner B not found");
+    throw new Error("Partner data not found. Contact support.");
   }
 
   // 5. Both must have completed assessment

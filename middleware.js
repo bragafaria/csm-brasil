@@ -1,22 +1,21 @@
+// middleware.js
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
 import { createSupabaseServerClient } from "./app/utils/supabase/server"; // Adjust path
 
-export async function middleware(request: NextRequest) {
-  const supabase = createSupabaseServerClient();
+export async function middleware(request) {
+  const supabase = createSupabaseServerClient(); // Ensure middleware-compatible setup
   const {
     data: { session },
   } = await supabase.auth.getSession();
 
-  const { pathname } = request.nextUrl;
+  const { pathname, searchParams } = request.nextUrl;
   const pathSegments = pathname.split("/").filter(Boolean);
   const isDashboard = pathSegments[0] === "dashboard";
-  const userIdFromPath = pathSegments[1]; // e.g., UUID from /dashboard/[id]
-  const { session_id } = Object.fromEntries(request.nextUrl.searchParams.entries());
+  const userIdFromPath = pathSegments[1]; // e.g., UUID from `/dashboard/[id]`
+  const session_id = searchParams.get("session_id");
 
   if (isDashboard) {
     if (!session) {
-      // Unauthenticated: Check if this is a partner invitation
       if (userIdFromPath) {
         const { data: partner, error } = await supabase
           .from("partners")
@@ -28,24 +27,22 @@ export async function middleware(request: NextRequest) {
           return NextResponse.redirect(new URL("/login", request.url));
         }
 
-        // If partner details missing, redirect to partner signup
         if (!partner.partner_user_id || !partner.partner_name || !partner.partner_email) {
           const signupUrl = new URL("/signup/partner", request.url);
-          signupUrl.searchParams.set("inviteId", userIdFromPath); // Pass invite ID
-          signupUrl.searchParams.set("session_id", session_id || "");
+          signupUrl.searchParams.set("inviteId", userIdFromPath);
+          if (session_id) signupUrl.searchParams.set("session_id", session_id);
           return NextResponse.redirect(signupUrl);
         }
 
-        // If partner is set but not authenticated, still redirect to login
         return NextResponse.redirect(new URL("/login", request.url));
       }
+
       return NextResponse.redirect(new URL("/login", request.url));
     }
 
-    // Authenticated: Verify access to this dashboard
     const userId = session.user.id;
+
     if (userIdFromPath && userIdFromPath !== userId) {
-      // Check if this user is the partner for this primary_user_id
       const { data: partner, error } = await supabase
         .from("partners")
         .select("primary_user_id, partner_user_id")
@@ -53,11 +50,9 @@ export async function middleware(request: NextRequest) {
         .single();
 
       if (error || !partner || (partner.primary_user_id !== userId && partner.partner_user_id !== userId)) {
-        // Redirect to their own dashboard
         return NextResponse.redirect(new URL(`/dashboard/${userId}`, request.url));
       }
     } else if (!userIdFromPath) {
-      // No userId in path, redirect to their own
       return NextResponse.redirect(new URL(`/dashboard/${userId}`, request.url));
     }
   }
@@ -66,5 +61,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|auth/reset).*)"],
 };

@@ -51,7 +51,7 @@ export default function HowYouConnectPage({ dynamics }) {
               <div key={i} className="border-b border-[var(--border)] pb-4 last:border-0 last:pb-0">
                 <div className="flex flex-col justify-center">
                   <div className="flex gap-2">
-                    <CheckCircle className="text-[var(--text-primary)]" />
+                    <CheckCircle className="text-[var(--accent)]" />
                     <h3 className="font-bold text-lg text-[var(--text-primary)] mb-1">{s.title}</h3>
                   </div>
                   <div>
@@ -78,7 +78,7 @@ export default function HowYouConnectPage({ dynamics }) {
               <div key={i} className="border-b border-[var(--border)] pb-4 last:border-0 last:pb-0">
                 <div className="flex flex-col justify-center">
                   <div className="flex gap-2">
-                    <CircleAlert className="text-[var(--text-primary)]" />
+                    <CircleAlert className="text-[var(--accent)]" />
                     <h3 className="font-bold text-lg text-[var(--text-primary)] mb-1">{w.title}</h3>
                   </div>
                   <div>
