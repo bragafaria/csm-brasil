@@ -192,9 +192,16 @@ export default function ViewSessions() {
     >
       {!selectedSession ? (
         <>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6">
+          <h2 className="text-xl text-center sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-2">
             Your CSM Sessions
           </h2>
+          <p className="text-[var(--text-secondary)] text-sm  leading-relaxed text-center mb-8 italic font-extralight">
+            <strong>
+              CSM is a self-awareness and personal growth framework. It is not a therapeutic tool and does not diagnose
+              or treat mental health conditions. Many users choose to pair it with counseling or coaching, but it
+              remains fully effective on its own.
+            </strong>
+          </p>
 
           {/* Coach Info */}
           <div className="mb-6 p-4 sm:p-6 bg-[var(--surface-variant)] rounded-lg border border-[var(--border)] shadow-sm">

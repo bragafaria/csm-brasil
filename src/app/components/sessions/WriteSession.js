@@ -251,12 +251,6 @@ export default function WriteSession({ onTabChange }) {
                 provide, the more accurately we can understand your unique cognitive dynamics and offer meaningful
                 insights.
               </p>
-              <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mt-4">
-                Once submitted, your entry will be reviewed by a <strong>CSM-Certified Expert</strong>. Within 1–2
-                business days, you’ll receive a personalized written guidance report, grounded in your{" "}
-                <strong>Cognitive Spectrum profile</strong>, offering clear perspectives, supportive strategies, and
-                actionable next steps tailored to you.
-              </p>
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
