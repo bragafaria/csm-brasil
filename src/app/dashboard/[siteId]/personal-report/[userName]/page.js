@@ -691,7 +691,7 @@ export default function PersonalReportPage() {
                                     {":"}
                                   </span>
                                   <span
-                                    className="px-4 py-2 rounded-full text-sm md:text-base font-bold text-white shadow-md"
+                                    className="px-2 md:px-4 py-2 rounded-full text-sm md:text-base font-bold text-white shadow-md"
                                     style={{
                                       backgroundColor: dimensionColor,
                                       boxShadow: `0 4px 14px ${dimensionColor}60`,
