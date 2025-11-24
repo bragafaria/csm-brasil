@@ -1,56 +1,56 @@
-// 1. C-L-O-S-H/C-L-O-S-H → Architect / Architect
+// 1. C-L-O-S-H/C-L-O-S-H → Architect / Architect ok
 // 2. C-L-O-S-H/C-L-O-S-A → Architect / Engineer ok
-// 3. C-L-O-S-H/C-L-O-F-H → Architect / Navigator
-// 4. C-L-O-S-H/C-L-O-F-A → Architect / Pioneer
-// 5. C-L-O-S-H/C-L-I-S-H → Architect / Curator
-// 6. C-L-O-S-H/C-L-I-S-A → Architect / Analyst
-// 7. C-L-O-S-H/C-L-I-F-H → Architect / Mediator
-// 8. C-L-O-S-H/C-L-I-F-A → Architect / Maverick
-// 9. C-L-O-S-H/C-V-O-S-H → Architect / Steward
-// 10. C-L-O-S-H/C-V-O-S-A → Architect / Artisan
-// 11. C-L-O-S-H/C-V-O-F-H → Architect / Campaigner
-// 12. C-L-O-S-H/C-V-O-F-A → Architect / Adventurer
-// 13. C-L-O-S-H/C-V-I-S-H → Architect / Counselor
-// 14. C-L-O-S-H/C-V-I-S-A → Architect / Healer
-// 15. C-L-O-S-H/C-V-I-F-H → Architect / Peacemaker
-// 16. C-L-O-S-H/C-V-I-F-A → Architect / Empath
-// 17. C-L-O-S-H/N-L-O-S-H → Architect / Strategist
-// 18. C-L-O-S-H/N-L-O-S-A → Architect / Inventor
-// 19. C-L-O-S-H/N-L-O-F-H → Architect / Disruptor
-// 20. C-L-O-S-H/N-L-O-F-A → Architect / Revolutionary
-// 21. C-L-O-S-H/N-L-I-S-H → Architect / Academic
-// 22. C-L-O-S-H/N-L-I-S-A → Architect / Theorist
-// 23. C-L-O-S-H/N-L-I-F-H → Architect / Innovator
-// 24. C-L-O-S-H/N-L-I-F-A → Architect / Visionary
-// 25. C-L-O-S-H/N-V-O-S-H → Architect / Ambassador
-// 26. C-L-O-S-H/N-V-O-S-A → Architect / Artist
-// 27. C-L-O-S-H/N-V-O-F-H → Architect / Catalyst
-// 28. C-L-O-S-H/N-V-O-F-A → Architect / Wanderer
-// 29. C-L-O-S-H/N-V-I-S-H → Architect / Mentor
-// 30. C-L-O-S-H/N-V-I-S-A → Architect / Sage
-// 31. C-L-O-S-H/N-V-I-F-H → Architect / Unifier
-// 32. C-L-O-S-H/N-V-I-F-A → Architect / Mystic
-// 33. C-L-O-S-A/C-L-O-S-A → Engineer / Engineer
-// 34. C-L-O-S-A/C-L-O-F-H → Engineer / Navigator
-// 35. C-L-O-S-A/C-L-O-F-A → Engineer / Pioneer
-// 36. C-L-O-S-A/C-L-I-S-H → Engineer / Curator
-// 37. C-L-O-S-A/C-L-I-S-A → Engineer / Analyst
-// 38. C-L-O-S-A/C-L-I-F-H → Engineer / Mediator
-// 39. C-L-O-S-A/C-L-I-F-A → Engineer / Maverick
-// 40. C-L-O-S-A/C-V-O-S-H → Engineer / Steward
-// 41. C-L-O-S-A/C-V-O-S-A → Engineer / Artisan
-// 42. C-L-O-S-A/C-V-O-F-H → Engineer / Campaigner
-// 43. C-L-O-S-A/C-V-O-F-A → Engineer / Adventurer
-// 44. C-L-O-S-A/C-V-I-S-H → Engineer / Counselor
-// 45. C-L-O-S-A/C-V-I-S-A → Engineer / Healer
-// 46. C-L-O-S-A/C-V-I-F-H → Engineer / Peacemaker
-// 47. C-L-O-S-A/C-V-I-F-A → Engineer / Empath
-// 48. C-L-O-S-A/N-L-O-S-H → Engineer / Strategist
-// 49. C-L-O-S-A/N-L-O-S-A → Engineer / Inventor
-// 50. C-L-O-S-A/N-L-O-F-H → Engineer / Disruptor
-// 51. C-L-O-S-A/N-L-O-F-A → Engineer / Revolutionary
-// 52. C-L-O-S-A/N-L-I-S-H → Engineer / Academic
-// 53. C-L-O-S-A/N-L-I-S-A → Engineer / Theorist
+// 3. C-L-O-S-H/C-L-O-F-H → Architect / Navigator ok
+// 4. C-L-O-S-H/C-L-O-F-A → Architect / Pioneer ok
+// 5. C-L-O-S-H/C-L-I-S-H → Architect / Curator ok
+// 6. C-L-O-S-H/C-L-I-S-A → Architect / Analyst ok
+// 7. C-L-O-S-H/C-L-I-F-H → Architect / Mediator ok
+// 8. C-L-O-S-H/C-L-I-F-A → Architect / Maverick ok
+// 9. C-L-O-S-H/C-V-O-S-H → Architect / Steward ok
+// 10. C-L-O-S-H/C-V-O-S-A → Architect / Artisan ok
+// 11. C-L-O-S-H/C-V-O-F-H → Architect / Campaigner ok
+// 12. C-L-O-S-H/C-V-O-F-A → Architect / Adventurer ok
+// 13. C-L-O-S-H/C-V-I-S-H → Architect / Counselor ok
+// 14. C-L-O-S-H/C-V-I-S-A → Architect / Healer ok
+// 15. C-L-O-S-H/C-V-I-F-H → Architect / Peacemaker ok
+// 16. C-L-O-S-H/C-V-I-F-A → Architect / Empath ok
+// 17. C-L-O-S-H/N-L-O-S-H → Architect / Strategist ok
+// 18. C-L-O-S-H/N-L-O-S-A → Architect / Inventor ok
+// 19. C-L-O-S-H/N-L-O-F-H → Architect / Disruptor ok
+// 20. C-L-O-S-H/N-L-O-F-A → Architect / Revolutionary ok
+// 21. C-L-O-S-H/N-L-I-S-H → Architect / Academic ok
+// 22. C-L-O-S-H/N-L-I-S-A → Architect / Theorist ok
+// 23. C-L-O-S-H/N-L-I-F-H → Architect / Innovator ok
+// 24. C-L-O-S-H/N-L-I-F-A → Architect / Visionary ok
+// 25. C-L-O-S-H/N-V-O-S-H → Architect / Ambassador ok
+// 26. C-L-O-S-H/N-V-O-S-A → Architect / Artist ok
+// 27. C-L-O-S-H/N-V-O-F-H → Architect / Catalyst ok
+// 28. C-L-O-S-H/N-V-O-F-A → Architect / Wanderer ok
+// 29. C-L-O-S-H/N-V-I-S-H → Architect / Mentor ok
+// 30. C-L-O-S-H/N-V-I-S-A → Architect / Sage ok
+// 31. C-L-O-S-H/N-V-I-F-H → Architect / Unifier ok
+// 32. C-L-O-S-H/N-V-I-F-A → Architect / Mystic ok
+// 33. C-L-O-S-A/C-L-O-S-A → Engineer / Engineer ok
+// 34. C-L-O-S-A/C-L-O-F-H → Engineer / Navigator ok
+// 35. C-L-O-S-A/C-L-O-F-A → Engineer / Pioneer ok
+// 36. C-L-O-S-A/C-L-I-S-H → Engineer / Curator ok
+// 37. C-L-O-S-A/C-L-I-S-A → Engineer / Analyst ok
+// 38. C-L-O-S-A/C-L-I-F-H → Engineer / Mediator ok
+// 39. C-L-O-S-A/C-L-I-F-A → Engineer / Maverick ok
+// 40. C-L-O-S-A/C-V-O-S-H → Engineer / Steward ok
+// 41. C-L-O-S-A/C-V-O-S-A → Engineer / Artisan ok
+// 42. C-L-O-S-A/C-V-O-F-H → Engineer / Campaigner ok
+// 43. C-L-O-S-A/C-V-O-F-A → Engineer / Adventurer ok
+// 44. C-L-O-S-A/C-V-I-S-H → Engineer / Counselor ok
+// 45. C-L-O-S-A/C-V-I-S-A → Engineer / Healer ok
+// 46. C-L-O-S-A/C-V-I-F-H → Engineer / Peacemaker ok
+// 47. C-L-O-S-A/C-V-I-F-A → Engineer / Empath up ok
+// 48. C-L-O-S-A/N-L-O-S-H → Engineer / Strategist ok
+// 49. C-L-O-S-A/N-L-O-S-A → Engineer / Inventor ok
+// 50. C-L-O-S-A/N-L-O-F-H → Engineer / Disruptor ok
+// 51. C-L-O-S-A/N-L-O-F-A → Engineer / Revolutionary ok
+// 52. C-L-O-S-A/N-L-I-S-H → Engineer / Academic ok
+// 53. C-L-O-S-A/N-L-I-S-A → Engineer / Theorist ok
 // 54. C-L-O-S-A/N-L-I-F-H → Engineer / Innovator
 // 55. C-L-O-S-A/N-L-I-F-A → Engineer / Visionary
 // 56. C-L-O-S-A/N-V-O-S-H → Engineer / Ambassador
