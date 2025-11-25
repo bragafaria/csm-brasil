@@ -1,12 +1,13 @@
 // @/app/access/login/page.js
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { supabase } from "@/app/utils/supabaseClient";
 
-export default function Login() {
+// Extract the login logic into a separate component
+function LoginContent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -253,5 +254,20 @@ export default function Login() {
         </div>
       </motion.div>
     </div>
+  );
+}
+
+// Main export with Suspense wrapper
+export default function Login() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center">
+          <div className="text-[var(--text-primary)]">Loading...</div>
+        </div>
+      }
+    >
+      <LoginContent />
+    </Suspense>
   );
 }
