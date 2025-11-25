@@ -1,13 +1,13 @@
 // src/app/invite/signup/page.js
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
-export default function InviteSignupPage() {
+function InviteSignupContent() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
@@ -215,5 +215,19 @@ export default function InviteSignupPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function InviteSignupPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-[var(--surface)]">
+          <div className="text-[var(--text-primary)]">Loading...</div>
+        </div>
+      }
+    >
+      <InviteSignupContent />
+    </Suspense>
   );
 }

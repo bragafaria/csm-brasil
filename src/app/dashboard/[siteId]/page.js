@@ -2,14 +2,14 @@
 "use client";
 
 import { useRouter, useSearchParams, useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { supabase } from "@/app/utils/supabaseClient";
 import InviteSection from "../../components/InviteSection";
 import QuickStats from "@/app/components/QuickStatus";
 import Spinner from "@/app/components/ui/Spinner";
 import { motion } from "framer-motion";
 
-export default function DashboardPage() {
+function DashboardContent() {
   const { siteId } = useParams();
   const searchParams = useSearchParams();
   const inviteId = searchParams.get("invite");
@@ -179,7 +179,7 @@ export default function DashboardPage() {
               Complete Your Assessment
             </h2>
             <p className="text-[var(--text-secondary)] text-center text-lg leading-relaxed">
-              {"Please complete your assessment to view your report and your couple’s report."}
+              {"Please complete your assessment to view your report and your couple's report."}
             </p>
           </div>
           <div className="flex flex-col items-center justify-center">
@@ -209,5 +209,19 @@ export default function DashboardPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center w-full min-h-screen p-6">
+          <Spinner>Loading dashboard...</Spinner>
+        </div>
+      }
+    >
+      <DashboardContent />
+    </Suspense>
   );
 }

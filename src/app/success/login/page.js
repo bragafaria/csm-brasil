@@ -1,12 +1,12 @@
 // src/app/success/login/page.js
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
 import { motion } from "framer-motion";
 
-export default function Login() {
+function LoginContent() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -198,5 +198,19 @@ export default function Login() {
         </form>
       </div>
     </motion.div>
+  );
+}
+
+export default function Login() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-[var(--surface)]">
+          <div className="text-[var(--text-primary)] text-xl">Loading...</div>
+        </div>
+      }
+    >
+      <LoginContent />
+    </Suspense>
   );
 }
