@@ -366,10 +366,10 @@ export default function Home() {
         </div>
       </section>
       {/* Spectrum Preview */}
-      <section className="py-20 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]">
+      <section className="pt-16 md:py-16 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">Your mind mapped. Not labeled.</h2>
+            <h2 className="text-4xl md:text-5xl font-bold my-6 text-white">Your mind mapped. Not labeled.</h2>
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
               Personality isn’t a box. It’s a spectrum of how your mind actually works. CSM shows you where you shine,
               where you stretch, and how you connect.
@@ -460,9 +460,9 @@ export default function Home() {
       {/* How It Works — FULL TEXT, NO ELLIPSES */}
       <section
         id="how-it-works"
-        className="py-10 md:py-20 section-full bg-gradient-to-b from-[var(--surface)] to-[var(--surface-variant)]"
+        className="pt-16 md:py-16 section-full bg-gradient-to-b from-[var(--surface)] to-[var(--surface-variant)]"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--text-primary)]">How It Works</h2>
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
@@ -517,7 +517,7 @@ export default function Home() {
         </div>
       </section>
       {/* Features Section */}
-      <section id="whats-inside" className="py-20 relative section-full">
+      <section id="whats-inside" className="pt-20 md:py-16 relative section-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 flex flex-wrap items-center justify-center gap-1 md:gap-2">
@@ -624,9 +624,16 @@ export default function Home() {
             </AnimatedCard>
           </div>
         </div>
+        <div className="text-center py-10 md:py-20">
+          <button className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-12 py-4 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl flex items-center space-x-3 mx-auto text-[var(--text-primary)]">
+            <span>Take Free Test</span>
+            <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
       </section>
+
       {/* Testimonials */}
-      <section className="py-20">
+      <section className="pt-20 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] gradient-text">
@@ -695,7 +702,7 @@ export default function Home() {
         </div>
       </section>
       {/* FAQ — ALL 10 FULL QUESTIONS & ANSWERS */}
-      <section id="faq" className="py-16 px-4 bg-[var(--surface)]">
+      <section id="faq" className="pt-20 md:py-16 px-4 bg-[var(--surface)]">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             ref={faqHeaderRef}
@@ -784,8 +791,8 @@ export default function Home() {
         </div>
       </section>
       {/* CTA */}
-      <section className="py-20 gradient-bg-with-vars from-[rgba(var(--primary-rgb),0.2)] to-[rgba(var(--accent-rgb),0.2)]">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <section className="pt-6 md:py-16 gradient-bg-with-vars from-[rgba(var(--primary-rgb),0.2)] to-[rgba(var(--accent-rgb),0.2)]">
+        <div className="max-w-4xl mx-auto text-center px-4 py-6 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent">
             Ready to Deepen Your Connection?
           </h2>
@@ -818,7 +825,7 @@ export default function Home() {
         </div>
       </section>
       {/* Footer */}
-      <footer className="py-12 px-4 bg-[var(--surface-variant)] border-t border-[var(--border)]">
+      <footer className="pt-12 md:py-16 px-4 bg-[var(--surface-variant)] border-t border-[var(--border)]">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">

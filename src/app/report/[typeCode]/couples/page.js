@@ -496,7 +496,7 @@ export default function Sales() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-16 px-4 bg-[var(--surface-variant)]">
+      <section id="faq" className="py-10 md:py-16 px-4 bg-[var(--surface-variant)]">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12 section-header">
             <h2 className="text-4xl font-bold mb-6">
