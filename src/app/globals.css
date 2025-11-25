@@ -65,6 +65,7 @@
   --border-rgb: 42, 46, 56;
   --surface-rgb: 11, 14, 17;
   --surface-variant-rgb: 23, 26, 33;
+  --dashboard-rgb: 11, 14, 17;
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -390,8 +391,19 @@ select + svg {
 
 /* Force hardware acceleration on header for iOS */
 header {
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
+  background-color: transparent !important; /* Remove the original semi-transparent bg */
+  position: relative; /* Ensures pseudo positions correctly (works with fixed) */
+  transform: translate3d(0, 0, 0); /* Enables hardware acceleration for better iOS performance */
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: rgba(var(--dashboard-rgb), 0.9); /* Your original semi-transparent tint */
+  -webkit-backdrop-filter: blur(1.5rem);
+  backdrop-filter: blur(1.5rem);
 }
 
 .gradient-bg-with-vars {

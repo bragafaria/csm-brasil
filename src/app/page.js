@@ -440,7 +440,7 @@ export default function Home() {
 
             <div className="flex flex-col justify-center space-y-6 lg:pl-8">
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-[var(--primary)]">Five Spectrum Cross-Analysis</h3>
+                <h3 className="text-2xl font-bold text-center text-[var(--primary)]">Five Spectrum Cross-Analysis</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed">
                   Explore how your mind operates across the five core dimensions of cognition - Information Processing,
                   Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style.
@@ -460,7 +460,7 @@ export default function Home() {
       {/* How It Works — FULL TEXT, NO ELLIPSES */}
       <section
         id="how-it-works"
-        className="py-20 section-full bg-gradient-to-b from-[var(--surface)] to-[var(--surface-variant)]"
+        className="py-10 md:py-20 section-full bg-gradient-to-b from-[var(--surface)] to-[var(--surface-variant)]"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
