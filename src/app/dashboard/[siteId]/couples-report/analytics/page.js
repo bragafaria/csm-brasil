@@ -81,14 +81,14 @@ export default function CoupleAnalyticsPage() {
       <meta name="description" content={subHeading} />
 
       <div className="container mx-auto max-w-4xl">
-        <header className="hero-gradient rounded-lg p-6 md:p-8 mb-8 shadow-custom-lg">
+        <div className="hero-gradient rounded-lg p-6 md:p-8 mb-8 shadow-custom-lg">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
             <div>
               <h1 className="text-2xl md:text-4xl font-bold text-white">{pageTitle}</h1>
               <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">{subHeading}</p>
             </div>
           </div>
-        </header>
+        </div>
         {/* Introduction */}
         <div className="space-y-8">
           <IntroAnalytics />

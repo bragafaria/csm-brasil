@@ -107,7 +107,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
     <div className="space-y-6">
       {/* Assessment Statuses */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="card-gradient p-4 rounded-lg shadow-custom transition-all hover:transform hover:-translate-y-1">
+        <div className="card-gradient p-4 rounded-lg shadow-custom">
           <div className="flex flex-wrap items-center justify-start gap-3">
             <div className="flex items-center space-x-3">
               <UserCheck className="w-6 h-6 text-[var(--text-secondary)]" />
@@ -120,7 +120,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
           </div>
         </div>
 
-        <div className="card-gradient p-4 rounded-lg shadow-custom transition-all hover:transform hover:-translate-y-1">
+        <div className="card-gradient p-4 rounded-lg shadow-custom">
           <div className="flex flex-wrap items-center justify-start gap-3">
             <div className="flex items-center space-x-3">
               <Users className="w-6 h-6 text-[var(--text-secondary)]" />
@@ -135,7 +135,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
       </div>
 
       {/* Report Status */}
-      <div className="card-gradient p-4 rounded-lg shadow-custom transition-all hover:transform hover:-translate-y-1">
+      <div className="card-gradient p-4 rounded-lg shadow-custom">
         <div className="flex flex-wrap items-center justify-start gap-3">
           <div className="flex  items-center space-x-3">
             <FileText className="w-6 h-6 text-[var(--text-secondary)]" />
@@ -153,7 +153,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
 
       {/* Archetypes */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="card-gradient p-4 rounded-lg shadow-custom transition-all hover:transform hover:-translate-y-1">
+        <div className="card-gradient p-4 rounded-lg shadow-custom">
           <div className="flex items-center space-x-3 mb-2">
             <User className="w-5 h-5 text-[var(--text-secondary)]" />
             <span className="text-[var(--text-secondary)] text-sm uppercase tracking-wide">Your Archetype</span>
@@ -161,7 +161,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
           <span className="text-[var(--text-primary)] font-semibold block">{yourType}</span>
         </div>
 
-        <div className="card-gradient p-4 rounded-lg shadow-custom transition-all hover:transform hover:-translate-y-1">
+        <div className="card-gradient p-4 rounded-lg shadow-custom">
           <div className="flex items-center space-x-3 mb-2">
             <User className="w-5 h-5 text-[var(--text-secondary)]" />
             <span className="text-[var(--text-secondary)] text-sm uppercase tracking-wide">
