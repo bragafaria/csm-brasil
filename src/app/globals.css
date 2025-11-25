@@ -387,8 +387,8 @@ select + svg {
 
 @supports (backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0)) {
   .backdrop-blur-lg {
-    -webkit-backdrop-filter: blur(1.5rem); /* Matches Tailwind's lg value (16px ≈ 1.5rem) */
-    backdrop-filter: blur(1.5rem);
+    -webkit-backdrop-filter: blur(0.5rem); /* Matches Tailwind's lg value (16px ≈ 1.5rem) */
+    backdrop-filter: blur(0.5rem);
   }
 }
 

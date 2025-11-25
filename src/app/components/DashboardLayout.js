@@ -64,8 +64,8 @@ export default function DashboardLayout({ children }) {
   return (
     <div className="min-h-screen bg-[var(--surface)]">
       {/* Top Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[var(--dashboard)]/90 backdrop-blur-lg border-b border-[var(--border)]">
-        <div className="flex items-center justify-between px-2 sm:px-4 py-2.5 sm:py-3 md:px-6">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--dashboard)]/90 backdrop-blur-lg border-b border-[var(--border)]">
+        <nav className="flex items-center justify-between px-2 sm:px-4 py-2.5 sm:py-3 md:px-6">
           {/* Mobile Menu Toggle (Left) */}
           <motion.button
             whileTap={{ scale: 0.95 }}
@@ -101,8 +101,8 @@ export default function DashboardLayout({ children }) {
               Logout
             </button>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </header>
 
       {/* Main Layout */}
       <div className="flex pt-14 sm:pt-16 min-h-screen">

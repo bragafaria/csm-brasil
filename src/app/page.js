@@ -655,9 +655,13 @@ export default function Home() {
                 stronger!
               </p>
               <div className="flex items-center gap-3 mt-auto">
-                <div className="w-10 h-10 rounded-full bg-[var(--primary)] flex items-center justify-center text-white font-bold text-sm">
-                  S
-                </div>
+                <img
+                  src="https://prehqtlubbqfxsdbtypb.supabase.co/storage/v1/object/public/customer-profiles/1.png"
+                  alt="Sarah & Mike"
+                  className="w-10 h-10 rounded-full object-cover"
+                  width="40"
+                  height="40"
+                />
                 <div className="text-[var(--primary)] font-semibold">Sarah & Mike</div>
               </div>
             </div>
@@ -674,9 +678,13 @@ export default function Home() {
                 accurate.
               </p>
               <div className="flex items-center gap-3 mt-auto">
-                <div className="w-10 h-10 rounded-full bg-[var(--accent)] flex items-center justify-center text-white font-bold text-sm">
-                  A
-                </div>
+                <img
+                  src="https://prehqtlubbqfxsdbtypb.supabase.co/storage/v1/object/public/customer-profiles/2.png"
+                  alt="Alex & Jordan"
+                  className="w-10 h-10 rounded-full object-cover"
+                  width="40"
+                  height="40"
+                />
                 <div className="text-[var(--primary)] font-semibold">Alex & Jordan</div>
               </div>
             </div>
@@ -692,9 +700,13 @@ export default function Home() {
                 The personalized recommendations helped us navigate our differences with so much more understanding.
               </p>
               <div className="flex items-center gap-3 mt-auto">
-                <div className="w-10 h-10 rounded-full bg-[var(--primary)] flex items-center justify-center text-white font-bold text-sm">
-                  E
-                </div>
+                <img
+                  src="https://prehqtlubbqfxsdbtypb.supabase.co/storage/v1/object/public/customer-profiles/3.png"
+                  alt="Emma & David"
+                  className="w-10 h-10 rounded-full object-cover"
+                  width="40"
+                  height="40"
+                />
                 <div className="text-[var(--primary)] font-semibold">Emma & David</div>
               </div>
             </div>
