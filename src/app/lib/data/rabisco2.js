@@ -51,56 +51,56 @@
 // 51. C-L-O-S-A/N-L-O-F-A → Engineer / Revolutionary ok
 // 52. C-L-O-S-A/N-L-I-S-H → Engineer / Academic ok
 // 53. C-L-O-S-A/N-L-I-S-A → Engineer / Theorist ok
-// 54. C-L-O-S-A/N-L-I-F-H → Engineer / Innovator
-// 55. C-L-O-S-A/N-L-I-F-A → Engineer / Visionary
-// 56. C-L-O-S-A/N-V-O-S-H → Engineer / Ambassador
-// 57. C-L-O-S-A/N-V-O-S-A → Engineer / Artist
-// 58. C-L-O-S-A/N-V-O-F-H → Engineer / Catalyst
-// 59. C-L-O-S-A/N-V-O-F-A → Engineer / Wanderer
-// 60. C-L-O-S-A/N-V-I-S-H → Engineer / Mentor
-// 61. C-L-O-S-A/N-V-I-S-A → Engineer / Sage
-// 62. C-L-O-S-A/N-V-I-F-H → Engineer / Unifier
-// 63. C-L-O-S-A/N-V-I-F-A → Engineer / Mystic
-// 64. C-L-O-F-H/C-L-O-F-H → Navigator / Navigator
-// 65. C-L-O-F-H/C-L-O-F-A → Navigator / Pioneer
-// 66. C-L-O-F-H/C-L-I-S-H → Navigator / Curator
-// 67. C-L-O-F-H/C-L-I-S-A → Navigator / Analyst
-// 68. C-L-O-F-H/C-L-I-F-H → Navigator / Mediator
-// 69. C-L-O-F-H/C-L-I-F-A → Navigator / Maverick
-// 70. C-L-O-F-H/C-V-O-S-H → Navigator / Steward
-// 71. C-L-O-F-H/C-V-O-S-A → Navigator / Artisan
-// 72. C-L-O-F-H/C-V-O-F-H → Navigator / Campaigner
-// 73. C-L-O-F-H/C-V-O-F-A → Navigator / Adventurer
-// 74. C-L-O-F-H/C-V-I-S-H → Navigator / Counselor
-// 75. C-L-O-F-H/C-V-I-S-A → Navigator / Healer
-// 76. C-L-O-F-H/C-V-I-F-H → Navigator / Peacemaker
-// 77. C-L-O-F-H/C-V-I-F-A → Navigator / Empath
-// 78. C-L-O-F-H/N-L-O-S-H → Navigator / Strategist
-// 79. C-L-O-F-H/N-L-O-S-A → Navigator / Inventor
-// 80. C-L-O-F-H/N-L-O-F-H → Navigator / Disruptor
-// 81. C-L-O-F-H/N-L-O-F-A → Navigator / Revolutionary
-// 82. C-L-O-F-H/N-L-I-S-H → Navigator / Academic
-// 83. C-L-O-F-H/N-L-I-S-A → Navigator / Theorist
-// 84. C-L-O-F-H/N-L-I-F-H → Navigator / Innovator
-// 85. C-L-O-F-H/N-L-I-F-A → Navigator / Visionary
-// 86. C-L-O-F-H/N-V-O-S-H → Navigator / Ambassador
-// 87. C-L-O-F-H/N-V-O-S-A → Navigator / Artist
-// 88. C-L-O-F-H/N-V-O-F-H → Navigator / Catalyst
-// 89. C-L-O-F-H/N-V-O-F-A → Navigator / Wanderer
-// 90. C-L-O-F-H/N-V-I-S-H → Navigator / Mentor
-// 91. C-L-O-F-H/N-V-I-S-A → Navigator / Sage
-// 92. C-L-O-F-H/N-V-I-F-H → Navigator / Unifier
-// 93. C-L-O-F-H/N-V-I-F-A → Navigator / Mystic
-// 94. C-L-O-F-A/C-L-O-F-A → Pioneer / Pioneer
-// 95. C-L-O-F-A/C-L-I-S-H → Pioneer / Curator
-// 96. C-L-O-F-A/C-L-I-S-A → Pioneer / Analyst
-// 97. C-L-O-F-A/C-L-I-F-H → Pioneer / Mediator
-// 98. C-L-O-F-A/C-L-I-F-A → Pioneer / Maverick
-// 99. C-L-O-F-A/C-V-O-S-H → Pioneer / Steward
-// 100. C-L-O-F-A/C-V-O-S-A → Pioneer / Artisan
-// 101. C-L-O-F-A/C-V-O-F-H → Pioneer / Campaigner
-// 102. C-L-O-F-A/C-V-O-F-A → Pioneer / Adventurer
-// 103. C-L-O-F-A/C-V-I-S-H → Pioneer / Counselor
+// 54. C-L-O-S-A/N-L-I-F-H → Engineer / Innovator ok
+// 55. C-L-O-S-A/N-L-I-F-A → Engineer / Visionary ok
+// 56. C-L-O-S-A/N-V-O-S-H → Engineer / Ambassador ok
+// 57. C-L-O-S-A/N-V-O-S-A → Engineer / Artist ok
+// 58. C-L-O-S-A/N-V-O-F-H → Engineer / Catalyst ok
+// 59. C-L-O-S-A/N-V-O-F-A → Engineer / Wanderer ok
+// 60. C-L-O-S-A/N-V-I-S-H → Engineer / Mentor ok
+// 61. C-L-O-S-A/N-V-I-S-A → Engineer / Sage ok
+// 62. C-L-O-S-A/N-V-I-F-H → Engineer / Unifier ok
+// 63. C-L-O-S-A/N-V-I-F-A → Engineer / Mystic ok
+// 64. C-L-O-F-H/C-L-O-F-H → Navigator / Navigator ok
+// 65. C-L-O-F-H/C-L-O-F-A → Navigator / Pioneer ok
+// 66. C-L-O-F-H/C-L-I-S-H → Navigator / Curator ok
+// 67. C-L-O-F-H/C-L-I-S-A → Navigator / Analyst ok
+// 68. C-L-O-F-H/C-L-I-F-H → Navigator / Mediator ok
+// 69. C-L-O-F-H/C-L-I-F-A → Navigator / Maverick ok
+// 70. C-L-O-F-H/C-V-O-S-H → Navigator / Steward ok
+// 71. C-L-O-F-H/C-V-O-S-A → Navigator / Artisan ok
+// 72. C-L-O-F-H/C-V-O-F-H → Navigator / Campaigner ok
+// 73. C-L-O-F-H/C-V-O-F-A → Navigator / Adventurer ok
+// 74. C-L-O-F-H/C-V-I-S-H → Navigator / Counselor ok
+// 75. C-L-O-F-H/C-V-I-S-A → Navigator / Healer ok
+// 76. C-L-O-F-H/C-V-I-F-H → Navigator / Peacemaker ok
+// 77. C-L-O-F-H/C-V-I-F-A → Navigator / Empath ok
+// 78. C-L-O-F-H/N-L-O-S-H → Navigator / Strategist ok
+// 79. C-L-O-F-H/N-L-O-S-A → Navigator / Inventor ok
+// 80. C-L-O-F-H/N-L-O-F-H → Navigator / Disruptor ok
+// 81. C-L-O-F-H/N-L-O-F-A → Navigator / Revolutionary ok
+// 82. C-L-O-F-H/N-L-I-S-H → Navigator / Academic ok
+// 83. C-L-O-F-H/N-L-I-S-A → Navigator / Theorist ok
+// 84. C-L-O-F-H/N-L-I-F-H → Navigator / Innovator ok
+// 85. C-L-O-F-H/N-L-I-F-A → Navigator / Visionary ok
+// 86. C-L-O-F-H/N-V-O-S-H → Navigator / Ambassador ok
+// 87. C-L-O-F-H/N-V-O-S-A → Navigator / Artist ok
+// 88. C-L-O-F-H/N-V-O-F-H → Navigator / Catalyst ok
+// 89. C-L-O-F-H/N-V-O-F-A → Navigator / Wanderer ok
+// 90. C-L-O-F-H/N-V-I-S-H → Navigator / Mentor ok
+// 91. C-L-O-F-H/N-V-I-S-A → Navigator / Sage ok
+// 92. C-L-O-F-H/N-V-I-F-H → Navigator / Unifier ok
+// 93. C-L-O-F-H/N-V-I-F-A → Navigator / Mystic ok
+// 94. C-L-O-F-A/C-L-O-F-A → Pioneer / Pioneer ok
+// 95. C-L-O-F-A/C-L-I-S-H → Pioneer / Curator ok
+// 96. C-L-O-F-A/C-L-I-S-A → Pioneer / Analyst ok
+// 97. C-L-O-F-A/C-L-I-F-H → Pioneer / Mediator ok
+// 98. C-L-O-F-A/C-L-I-F-A → Pioneer / Maverick ok
+// 99. C-L-O-F-A/C-V-O-S-H → Pioneer / Steward ok
+// 100. C-L-O-F-A/C-V-O-S-A → Pioneer / Artisan ok
+// 101. C-L-O-F-A/C-V-O-F-H → Pioneer / Campaigner ok
+// 102. C-L-O-F-A/C-V-O-F-A → Pioneer / Adventurer ok
+// 103. C-L-O-F-A/C-V-I-S-H → Pioneer / Counselor ok
 // 104. C-L-O-F-A/C-V-I-S-A → Pioneer / Healer
 // 105. C-L-O-F-A/C-V-I-F-H → Pioneer / Peacemaker
 // 106. C-L-O-F-A/C-V-I-F-A → Pioneer / Empath

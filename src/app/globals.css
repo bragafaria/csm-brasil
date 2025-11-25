@@ -75,7 +75,13 @@ body {
   color: var(--text-primary);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
   -moz-osx-font-smoothing: grayscale;
+}
+
+footer {
+  border-top: 1px solid rgba(var(--border-rgb), 1); /* Use RGB var for opacity support */
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -284,6 +290,12 @@ body {
   background-clip: text;
 }
 
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* ──────────────────────────────────────────────────────────────
    ICONS (Lucide placeholders – replace with real icons later)
    ────────────────────────────────────────────────────────────── */
@@ -367,4 +379,22 @@ select + svg {
   top: 50%;
   transform: translateY(-50%);
   color: #cbd5e1;
+}
+
+@supports (backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0)) {
+  .backdrop-blur-lg {
+    -webkit-backdrop-filter: blur(1.5rem); /* Matches Tailwind's lg value (16px ≈ 1.5rem) */
+    backdrop-filter: blur(1.5rem);
+  }
+}
+
+/* Force hardware acceleration on header for iOS */
+header {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+.gradient-bg-with-vars {
+  background: -webkit-linear-gradient(to right, rgba(var(--primary-rgb), 0.2), rgba(var(--accent-rgb), 0.2));
+  background: linear-gradient(to right, rgba(var(--primary-rgb), 0.2), rgba(var(--accent-rgb), 0.2));
 }

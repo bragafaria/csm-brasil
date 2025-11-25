@@ -306,16 +306,16 @@ export default function Home() {
                 initial="hidden"
                 animate="visible"
                 variants={headlineVariants}
-                className="block bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent"
+                className="block bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] gradient-text" // Add gradient-text
               >
-                Stronger Relationships Start with
+                Stronger Relationships Start with&#8203; {/* Zero-width space for multiline reflow */}
               </motion.span>
               <motion.span
                 custom={1}
                 initial="hidden"
                 animate="visible"
                 variants={headlineVariants}
-                className="block bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--primary)] bg-clip-text text-transparent"
+                className="block bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--primary)] gradient-text" // Add gradient-text
               >
                 Understanding
               </motion.span>
@@ -521,7 +521,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 flex flex-wrap items-center justify-center gap-1 md:gap-2">
-              <span className="bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent whitespace-nowrap">
+              <span className="bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-primary)] gradient-text whitespace-nowrap">
+                {" "}
+                {/* Add gradient-text */}
                 Why Couples
               </span>
               <span className="relative inline-block">
@@ -529,10 +531,12 @@ export default function Home() {
                 <RotatingWord
                   words={["Choose", "Love", "Trust", "Value"]}
                   interval={2000}
-                  className="relative z-10 text-white font-bold flex items-center justify-center h-full px-3 py-1 md:px-4"
+                  className="relative z-10 text-white font-bold flex items-center justify-center h-full px-3 py-1 md:px-4 md:py-2" // Ensure RotatingWord has text-white or similar
                 />
               </span>
-              <span className="bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent whitespace-nowrap">
+              <span className="bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-primary)] gradient-text whitespace-nowrap">
+                {" "}
+                {/* Add gradient-text */}
                 Our Assessment
               </span>
             </h2>
@@ -625,7 +629,8 @@ export default function Home() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] gradient-text">
+              {" "}
               What Couples Say
             </h2>
           </div>
@@ -779,7 +784,7 @@ export default function Home() {
         </div>
       </section>
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-[rgba(var(--primary-rgb),0.2)] to-[rgba(var(--accent-rgb),0.2)]">
+      <section className="py-20 gradient-bg-with-vars from-[rgba(var(--primary-rgb),0.2)] to-[rgba(var(--accent-rgb),0.2)]">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent">
             Ready to Deepen Your Connection?
@@ -890,20 +895,29 @@ export default function Home() {
 // Counter Component
 function Counter({ target, suffix = "", duration = 2000, decimals = 0 }) {
   const [count, setCount] = useState(0);
+  const ref = useRef(null);
+
   useEffect(() => {
     let start = 0;
     const end = target;
-    const increment = end / (duration / 10);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        start = end;
-        clearInterval(timer);
+    const startTime = performance.now();
+
+    const animate = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = progress * end;
+      setCount(value);
+
+      if (progress < 1) {
+        ref.current = requestAnimationFrame(animate);
       }
-      setCount(start);
-    }, 10);
-    return () => clearInterval(timer);
+    };
+
+    ref.current = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(ref.current);
   }, [target, duration]);
+
   return (
     <>
       {count.toFixed(decimals)}
