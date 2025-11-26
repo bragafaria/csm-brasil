@@ -1,3 +1,5 @@
+// Polish this text. Output the same structure (Keep the exact structure, keys, arrays, and formatting.). The idea is NOT to reduce the amount of words but make it more user friendly. Do not use long dashes. If there are Long Dashes, remove it:
+
 // 1. C-L-O-S-H/C-L-O-S-H → Architect / Architect ok
 // 2. C-L-O-S-H/C-L-O-S-A → Architect / Engineer ok
 // 3. C-L-O-S-H/C-L-O-F-H → Architect / Navigator ok
@@ -101,53 +103,53 @@
 // 101. C-L-O-F-A/C-V-O-F-H → Pioneer / Campaigner ok
 // 102. C-L-O-F-A/C-V-O-F-A → Pioneer / Adventurer ok
 // 103. C-L-O-F-A/C-V-I-S-H → Pioneer / Counselor ok
-// 104. C-L-O-F-A/C-V-I-S-A → Pioneer / Healer
-// 105. C-L-O-F-A/C-V-I-F-H → Pioneer / Peacemaker
-// 106. C-L-O-F-A/C-V-I-F-A → Pioneer / Empath
-// 107. C-L-O-F-A/N-L-O-S-H → Pioneer / Strategist
-// 108. C-L-O-F-A/N-L-O-S-A → Pioneer / Inventor
-// 109. C-L-O-F-A/N-L-O-F-H → Pioneer / Disruptor
-// 110. C-L-O-F-A/N-L-O-F-A → Pioneer / Revolutionary
-// 111. C-L-O-F-A/N-L-I-S-H → Pioneer / Academic
-// 112. C-L-O-F-A/N-L-I-S-A → Pioneer / Theorist
-// 113. C-L-O-F-A/N-L-I-F-H → Pioneer / Innovator
-// 114. C-L-O-F-A/N-L-I-F-A → Pioneer / Visionary
-// 115. C-L-O-F-A/N-V-O-S-H → Pioneer / Ambassador
-// 116. C-L-O-F-A/N-V-O-S-A → Pioneer / Artist
-// 117. C-L-O-F-A/N-V-O-F-H → Pioneer / Catalyst
-// 118. C-L-O-F-A/N-V-O-F-A → Pioneer / Wanderer
-// 119. C-L-O-F-A/N-V-I-S-H → Pioneer / Mentor
-// 120. C-L-O-F-A/N-V-I-S-A → Pioneer / Sage
-// 121. C-L-O-F-A/N-V-I-F-H → Pioneer / Unifier
-// 122. C-L-O-F-A/N-V-I-F-A → Pioneer / Mystic
-// 123. C-L-I-S-H/C-L-I-S-H → Curator / Curator
-// 124. C-L-I-S-H/C-L-I-S-A → Curator / Analyst
-// 125. C-L-I-S-H/C-L-I-F-H → Curator / Mediator
-// 126. C-L-I-S-H/C-L-I-F-A → Curator / Maverick
-// 127. C-L-I-S-H/C-V-O-S-H → Curator / Steward
-// 128. C-L-I-S-H/C-V-O-S-A → Curator / Artisan
-// 129. C-L-I-S-H/C-V-O-F-H → Curator / Campaigner
-// 130. C-L-I-S-H/C-V-O-F-A → Curator / Adventurer
-// 131. C-L-I-S-H/C-V-I-S-H → Curator / Counselor
-// 132. C-L-I-S-H/C-V-I-S-A → Curator / Healer
-// 133. C-L-I-S-H/C-V-I-F-H → Curator / Peacemaker
-// 134. C-L-I-S-H/C-V-I-F-A → Curator / Empath
-// 135. C-L-I-S-H/N-L-O-S-H → Curator / Strategist
-// 136. C-L-I-S-H/N-L-O-S-A → Curator / Inventor
-// 137. C-L-I-S-H/N-L-O-F-H → Curator / Disruptor
-// 138. C-L-I-S-H/N-L-O-F-A → Curator / Revolutionary
-// 139. C-L-I-S-H/N-L-I-S-H → Curator / Academic
-// 140. C-L-I-S-H/N-L-I-S-A → Curator / Theorist
-// 141. C-L-I-S-H/N-L-I-F-H → Curator / Innovator
-// 142. C-L-I-S-H/N-L-I-F-A → Curator / Visionary
-// 143. C-L-I-S-H/N-V-O-S-H → Curator / Ambassador
-// 144. C-L-I-S-H/N-V-O-S-A → Curator / Artist
-// 145. C-L-I-S-H/N-V-O-F-H → Curator / Catalyst
-// 146. C-L-I-S-H/N-V-O-F-A → Curator / Wanderer
-// 147. C-L-I-S-H/N-V-I-S-H → Curator / Mentor
-// 148. C-L-I-S-H/N-V-I-S-A → Curator / Sage
-// 149. C-L-I-S-H/N-V-I-F-H → Curator / Unifier
-// 150. C-L-I-S-H/N-V-I-F-A → Curator / Mystic
+// 104. C-L-O-F-A/C-V-I-S-A → Pioneer / Healer ok
+// 105. C-L-O-F-A/C-V-I-F-H → Pioneer / Peacemaker ok
+// 106. C-L-O-F-A/C-V-I-F-A → Pioneer / Empath ok
+// 107. C-L-O-F-A/N-L-O-S-H → Pioneer / Strategist ok
+// 108. C-L-O-F-A/N-L-O-S-A → Pioneer / Inventor ok
+// 109. C-L-O-F-A/N-L-O-F-H → Pioneer / Disruptor ok
+// 110. C-L-O-F-A/N-L-O-F-A → Pioneer / Revolutionary ok
+// 111. C-L-O-F-A/N-L-I-S-H → Pioneer / Academic ok
+// 112. C-L-O-F-A/N-L-I-S-A → Pioneer / Theorist ok
+// 113. C-L-O-F-A/N-L-I-F-H → Pioneer / Innovator ok
+// 114. C-L-O-F-A/N-L-I-F-A → Pioneer / Visionary ok
+// 115. C-L-O-F-A/N-V-O-S-H → Pioneer / Ambassador ok
+// 116. C-L-O-F-A/N-V-O-S-A → Pioneer / Artist ok
+// 117. C-L-O-F-A/N-V-O-F-H → Pioneer / Catalyst ok
+// 118. C-L-O-F-A/N-V-O-F-A → Pioneer / Wanderer ok
+// 119. C-L-O-F-A/N-V-I-S-H → Pioneer / Mentor ok
+// 120. C-L-O-F-A/N-V-I-S-A → Pioneer / Sage ok
+// 121. C-L-O-F-A/N-V-I-F-H → Pioneer / Unifier ok
+// 122. C-L-O-F-A/N-V-I-F-A → Pioneer / Mystic ok
+// 123. C-L-I-S-H/C-L-I-S-H → Curator / Curator ok
+// 124. C-L-I-S-H/C-L-I-S-A → Curator / Analyst ok
+// 125. C-L-I-S-H/C-L-I-F-H → Curator / Mediator ok
+// 126. C-L-I-S-H/C-L-I-F-A → Curator / Maverick ok
+// 127. C-L-I-S-H/C-V-O-S-H → Curator / Steward ok
+// 128. C-L-I-S-H/C-V-O-S-A → Curator / Artisan ok
+// 129. C-L-I-S-H/C-V-O-F-H → Curator / Campaigner ok
+// 130. C-L-I-S-H/C-V-O-F-A → Curator / Adventurer ok
+// 131. C-L-I-S-H/C-V-I-S-H → Curator / Counselor ok
+// 132. C-L-I-S-H/C-V-I-S-A → Curator / Healer ok
+// 133. C-L-I-S-H/C-V-I-F-H → Curator / Peacemaker ok
+// 134. C-L-I-S-H/C-V-I-F-A → Curator / Empath ok
+// 135. C-L-I-S-H/N-L-O-S-H → Curator / Strategist ok
+// 136. C-L-I-S-H/N-L-O-S-A → Curator / Inventor ok
+// 137. C-L-I-S-H/N-L-O-F-H → Curator / Disruptor ok
+// 138. C-L-I-S-H/N-L-O-F-A → Curator / Revolutionary ok
+// 139. C-L-I-S-H/N-L-I-S-H → Curator / Academic ok
+// 140. C-L-I-S-H/N-L-I-S-A → Curator / Theorist ok
+// 141. C-L-I-S-H/N-L-I-F-H → Curator / Innovator ok
+// 142. C-L-I-S-H/N-L-I-F-A → Curator / Visionary ok
+// 143. C-L-I-S-H/N-V-O-S-H → Curator / Ambassador ok
+// 144. C-L-I-S-H/N-V-O-S-A → Curator / Artist ok
+// 145. C-L-I-S-H/N-V-O-F-H → Curator / Catalyst ok
+// 146. C-L-I-S-H/N-V-O-F-A → Curator / Wanderer ok
+// 147. C-L-I-S-H/N-V-I-S-H → Curator / Mentor ok
+// 148. C-L-I-S-H/N-V-I-S-A → Curator / Sage ok
+// 149. C-L-I-S-H/N-V-I-F-H → Curator / Unifier ok
+// 150. C-L-I-S-H/N-V-I-F-A → Curator / Mystic ok
 // 151. C-L-I-S-A/C-L-I-S-A → Analyst / Analyst
 // 152. C-L-I-S-A/C-L-I-F-H → Analyst / Mediator
 // 153. C-L-I-S-A/C-L-I-F-A → Analyst / Maverick
