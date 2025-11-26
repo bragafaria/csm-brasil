@@ -643,7 +643,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Sarah & Mike */}
+            {/* Keisha & Darius */}
             <div className="p-8 rounded-3xl bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)] border border-[rgba(var(--primary-rgb),0.2)] flex flex-col h-full">
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -662,7 +662,7 @@ export default function Home() {
                   width="40"
                   height="40"
                 />
-                <div className="text-[var(--primary)] font-semibold">Sarah & Mike</div>
+                <div className="text-[var(--primary)] font-semibold">Keisha & Darius</div>
               </div>
             </div>
 

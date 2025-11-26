@@ -96,7 +96,7 @@ export default function DashboardLayout({ children }) {
           <div className="flex items-center">
             <button
               onClick={handleLogout}
-              className="text-xs sm:text-sm font-medium text-[var(--text-secondary)] border border-white rounded-lg px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 hover:border-[var(--primary)] hover:bg-[var(--primary)] transition-colors whitespace-nowrap"
+              className="btn-primary px-3 py-1.5 md:px-6 md:py-2 rounded-lg text-sm md:text-base font-semibold cursor-pointer"
             >
               Logout
             </button>
