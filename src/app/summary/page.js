@@ -1,11 +1,18 @@
+// app/assessment/summary/page.js
 "use client";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { questions, calculateCSMResults } from "../utils/csm";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { createClient } from "@supabase/supabase-js";
 import Spinner from "@/app/components/ui/Spinner";
+import { User, Mail } from "lucide-react";
+import PersonalityReportEmail from "@/app/components/emails/PersonalityReport";
+import { createPermanentReportUrl } from "@/app/lib/sharable-url";
+import { render } from "@react-email/render";
+
+// Initialize Supabase client
+const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
 // Helper function to safely use localStorage with fallback
 const safeLocalStorage = {
@@ -43,251 +50,323 @@ const safeLocalStorage = {
   },
 };
 
-export default function Test() {
+export default function Summary() {
   const router = useRouter();
-  const [current, setCurrent] = useState(0);
-  const [answers, setAnswers] = useState(Array(questions.length).fill(null));
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [valid, setValid] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [localStorageAvailable, setLocalStorageAvailable] = useState(true);
-  const q = questions[current];
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if localStorage is available
-    const testKey = "__storage_test__";
-    const isAvailable = safeLocalStorage.setItem(testKey, "test");
-    if (isAvailable) {
-      safeLocalStorage.removeItem(testKey);
-    } else {
-      setLocalStorageAvailable(false);
-      console.warn("localStorage not available - progress will not be saved");
-    }
+    // Add a small delay to ensure localStorage write has completed
+    const loadData = () => {
+      const stored = safeLocalStorage.getItem("csmAssessmentData");
 
-    const saved = safeLocalStorage.getItem("csmAnswers");
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if (parsed.length === questions.length) {
-          setAnswers(parsed);
-          const firstUnanswered = parsed.findIndex((a) => a === null);
-          if (firstUnanswered !== -1) {
-            setCurrent(firstUnanswered);
-          }
-        } else {
-          setError("Previous progress is outdated. Starting a new test.");
-          safeLocalStorage.removeItem("csmAnswers");
-        }
-      } catch (e) {
-        setError("Error loading progress. Starting a new test.");
-        safeLocalStorage.removeItem("csmAnswers");
+      if (!stored) {
+        console.warn("No assessment data found");
+        // Redirect back to test if no data
+        router.push("/csm-assessment");
+        return;
       }
-    }
-    setLoading(false);
-  }, []);
 
-  const handleAnswer = (value) => {
-    const newAnswers = [...answers];
-    newAnswers[current] = value;
-    setAnswers(newAnswers);
+      try {
+        const parsed = JSON.parse(stored);
 
-    // Save progress (will fail silently on iOS private mode)
-    if (localStorageAvailable) {
-      safeLocalStorage.setItem("csmAnswers", JSON.stringify(newAnswers));
-    }
+        if (!parsed?.results?.typeCode) {
+          console.error("Invalid assessment data structure:", parsed);
+          setError("Assessment data is incomplete. Please retake the test.");
+          setIsLoading(false);
+          return;
+        }
 
-    setError(null);
-  };
+        setData(parsed.results);
 
-  const next = () => {
-    if (answers[current] === null) {
-      setError("Please answer this question.");
+        // Show spinner for smooth UX
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 300);
+      } catch (parseError) {
+        console.error("Failed to parse assessment data:", parseError);
+        setError("Failed to load your results. Please retake the test.");
+        setIsLoading(false);
+      }
+    };
+
+    // Small delay to ensure navigation + localStorage write is complete
+    const timer = setTimeout(loadData, 100);
+    return () => clearTimeout(timer);
+  }, [router]);
+
+  useEffect(() => {
+    const isValid = name.trim() !== "" && /\S+@\S+\.\S+/.test(email);
+    setValid(isValid);
+  }, [name, email]);
+
+  const handleSubmit = async () => {
+    if (!valid || !data?.typeCode) {
+      setError("Please complete all fields");
       return;
     }
 
     setIsSubmitting(true);
-    setError(null);
+    setError("");
 
-    if (current < questions.length - 1) {
-      setTimeout(() => {
-        setCurrent(current + 1);
-        setIsSubmitting(false);
-      }, 500);
-    } else {
-      if (answers.some((a) => a === null)) {
-        setError("Please complete all questions.");
-        setIsSubmitting(false);
-        return;
+    try {
+      // Save to database
+      const { error: dbError } = await supabase.from("visitors").insert({
+        name: name.trim(),
+        email: email.trim(),
+      });
+
+      if (dbError) {
+        console.error("Database error:", dbError);
+        throw new Error("Failed to save visitor data");
       }
 
-      const startTime = Date.now();
-      const results = calculateCSMResults(answers);
-      const assessmentData = { answers, results };
+      // Update stored data with user info
+      let fullData = {};
+      const stored = safeLocalStorage.getItem("csmAssessmentData");
 
-      // Save to localStorage
-      const saved = safeLocalStorage.setItem("csmAssessmentData", JSON.stringify(assessmentData));
-
-      if (!saved && !localStorageAvailable) {
-        setError("Storage not available. Your results may not be saved.");
-        // Still allow continuing - data will be passed via router state as fallback
+      if (stored) {
+        try {
+          fullData = JSON.parse(stored);
+          fullData.userName = name.trim();
+          fullData.userEmail = email.trim();
+          safeLocalStorage.setItem("csmAssessmentData", JSON.stringify(fullData));
+        } catch (e) {
+          console.warn("Failed to update stored data:", e);
+          // Non-blocking - continue anyway
+        }
       }
 
-      safeLocalStorage.removeItem("csmAnswers");
+      // Send email (non-blocking)
+      if (fullData?.results?.typeCode) {
+        const permanentUrl = createPermanentReportUrl(fullData);
+        const archetypeName =
+          typeof fullData.results.archetype === "object"
+            ? fullData.results.archetype?.name || "Unknown Archetype"
+            : fullData.results.archetype || "Unknown Archetype";
 
-      const elapsed = Date.now() - startTime;
-      const minDelay = 1000;
-      const delay = Math.max(minDelay - elapsed, 0);
+        try {
+          const emailHtml = await render(
+            <PersonalityReportEmail
+              name={name.trim()}
+              archetypeName={archetypeName}
+              typeCode={fullData.results.typeCode}
+              shareableUrl={permanentUrl}
+            />
+          );
 
-      setTimeout(() => {
-        // Pass data via router state as fallback for iOS private mode
-        router.push("/summary", { state: { assessmentData } });
-      }, delay);
+          fetch("/api/email/send", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              to: email.trim(),
+              subject: `Your CSM Personality Report – The ${archetypeName}`,
+              html: emailHtml,
+            }),
+          }).catch((err) => console.warn("Email failed (non-blocking):", err));
+        } catch (emailError) {
+          console.warn("Email render failed (non-blocking):", emailError);
+        }
+      }
+
+      // Navigate to report
+      router.push(`/report/${data.typeCode}`);
+    } catch (err) {
+      console.error("Failed to save visitor:", err);
+      setError("Failed to save your info. Please try again.");
+      setIsSubmitting(false);
     }
   };
 
-  const prev = () => {
-    if (current > 0) {
-      setCurrent(current - 1);
-      setError(null);
-    }
-  };
-
-  const percentage = (((current + 1) / questions.length) * 100).toFixed(0);
-  const minutesLeft = Math.max(0, Math.round((questions.length - current - 1) * 0.15));
-
-  if (loading) {
+  // Loading state
+  if (isLoading) {
     return (
-      <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center">
-        <Spinner size="lg" />
+      <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center p-6">
+        <div className="flex items-center gap-3">
+          <Spinner size="lg" />
+          <span className="text-white text-lg">Loading your results...</span>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state - no data found
+  if (!data) {
+    return (
+      <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center p-6">
+        <div className="card-gradient p-8 rounded-lg shadow-custom-lg border border-[var(--border)] max-w-md text-center">
+          <h2 className="text-2xl font-bold text-white mb-4">Assessment Not Found</h2>
+          <p className="text-white/70 mb-6">
+            {`We couldn't find your assessment results. This might happen if you're using private browsing mode.`}
+          </p>
+          <button
+            onClick={() => router.push("/assessment/test")}
+            className="btn-primary py-3 px-6 rounded-lg font-medium"
+          >
+            Retake Assessment
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-[var(--surface)]">
-      {!localStorageAvailable && (
-        <div className="mb-4 p-3 bg-yellow-900/20 border border-yellow-500/50 rounded-lg max-w-lg">
-          <p className="text-yellow-200 text-sm text-center">
-            ⚠️ Private browsing detected. Progress cannot be saved, but you can still complete the assessment.
-          </p>
-        </div>
-      )}
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="w-full max-w-lg card-gradient p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
-      >
-        {/* Header */}
-        <div className="flex items-center justify-center mb-6 gap-2">
-          <Image src="/logo_transparent_svg.svg" alt="CSM Dynamics Logo" width={28} height={28} className="h-7 w-7" />
-          <div className="flex items-center gap-1">
-            <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
-            <h1 className="text-xl font-light text-white">Assessment</h1>
+    <main className="min-h-screen bg-gradient-to-br from-[var(--surface)] via-[var(--surface-variant)] to-[var(--surface)] p-2 md:p-8">
+      <div className="max-w-2xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="card-gradient rounded-3xl py-10 px-4 md:p-14 shadow-2xl border border-[var(--border)] backdrop-blur-xl"
+        >
+          {/* Header */}
+          <div className="text-center mb-10">
+            <motion.h1
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-3xl md:text-5xl font-bold text-white mb-4"
+            >
+              Congratulations!
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-lg md:text-xl text-white/90 max-w-xl mx-auto"
+            >
+              {`You've completed the CSM assessment. Enter your details below to access your personalized report.`}
+            </motion.p>
           </div>
-        </div>
 
-        <p className="text-center text-sm text-[var(--text-secondary)] mb-6 italic">
-          Be honest. Think briefly. Answer what you <em>truly</em> do.
-        </p>
+          {/* Progress Bar – 100% */}
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="mb-10">
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-sm font-medium text-[var(--accent)]">Assessment Complete</span>
+              <span className="text-sm font-medium text-[var(--accent)]">100%</span>
+            </div>
+            <div className="w-full h-2 bg-white/20 rounded-full overflow-hidden">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 1, ease: "easeOut", delay: 0.7 }}
+                className="h-full bg-violet-900"
+              />
+            </div>
+          </motion.div>
 
-        {/* Progress */}
-        <div className="flex justify-between items-center mb-4">
-          <span className="text-sm font-medium text-[var(--accent)]">{percentage}% Complete</span>
-          <span className="text-sm font-medium text-[var(--accent)]">~{minutesLeft} min left</span>
-        </div>
-
-        <div className="w-full h-3 mb-6 bg-[var(--surface-variant)] rounded-full overflow-hidden">
+          {/* Form Card */}
           <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: `${percentage}%` }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="h-full bg-[var(--primary)]"
-          />
-        </div>
-
-        {/* Question */}
-        <h2 className="text-2xl font-semibold mb-6 text-[var(--text-primary)] text-center leading-relaxed">{q.text}</h2>
-
-        {/* Error Message */}
-        {error && (
-          <motion.p
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-red-400 text-sm mb-4 text-center font-medium"
+            transition={{ delay: 0.5 }}
+            className="bg-indigo-950/10 backdrop-blur-3xl rounded-2xl px-4 py-8 md:p-10 border border-white/20 shadow-xl"
           >
-            {error}
-          </motion.p>
-        )}
+            <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-8">Your Full Report Is Ready</h3>
 
-        {/* Likert Scale */}
-        {q.type === "likert" && (
-          <div className="flex justify-between gap-2 mb-6">
-            {[1, 2, 3, 4, 5].map((v) => (
-              <button
-                key={v}
-                onClick={() => handleAnswer(v)}
-                className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all ${
-                  answers[current] === v
-                    ? "btn-primary shadow-md"
-                    : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[var(--surface-variant-hover)]"
+            <div className="space-y-6 max-w-md mx-auto">
+              {/* Name */}
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <User className="w-5 h-5 text-white/70" />
+                  <p className="text-white/90 text-sm font-medium">
+                    Name <span className="font-normal text-white/70">(will personalize your report)</span>
+                  </p>
+                </div>
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    aria-label="Your first name"
+                    className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/30 text-white placeholder-white/70 
+                               focus:outline-none focus:border-white focus:ring-2 focus:ring-white/30 
+                               transition-all duration-300 text-lg font-medium"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Email */}
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <Mail className="w-5 h-5 text-white/70" />
+                  <p className="text-white/90 text-sm font-medium">
+                    Email{" "}
+                    <span className="font-normal text-white/70">
+                      (report will also be sent directly to your inbox, instantly)
+                    </span>
+                  </p>
+                </div>
+                <div className="relative">
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    aria-label="Your email address"
+                    className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/30 text-white placeholder-white/70 
+                               focus:outline-none focus:border-white focus:ring-2 focus:ring-white/30 
+                               transition-all duration-300 text-lg font-medium"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Error */}
+              {error && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-300 text-sm text-center"
+                >
+                  {error}
+                </motion.p>
+              )}
+
+              {/* Submit */}
+              <motion.button
+                whileHover={valid ? { scale: 1.03, boxShadow: "0 20px 40px rgba(0,0,0,0.2)" } : {}}
+                whileTap={valid ? { scale: 0.98 } : {}}
+                onClick={handleSubmit}
+                disabled={!valid || isSubmitting}
+                className={`w-full py-5 rounded-xl font-bold text-xl transition-all duration-300 shadow-lg flex items-center justify-center gap-3 ${
+                  valid && !isSubmitting
+                    ? "btn-primary text-[var(--primary)] hover:shadow-2xl"
+                    : "btn-primary text-white/70 cursor-not-allowed"
                 }`}
-                aria-label={`Rate ${v} out of 5`}
               >
-                {v}
-              </button>
-            ))}
-          </div>
-        )}
+                {isSubmitting ? (
+                  <>
+                    <Spinner className="text-white" size="sm" />
+                    Loading Report...
+                  </>
+                ) : valid ? (
+                  <>
+                    View Full Report
+                    <motion.div animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
+                      →
+                    </motion.div>
+                  </>
+                ) : (
+                  "Enter Name & Email"
+                )}
+              </motion.button>
+            </div>
 
-        {/* Forced Select */}
-        {q.type === "forced-select" && (
-          <div className="space-y-3 mb-6">
-            {q.options.map((opt) => (
-              <button
-                key={opt.key}
-                onClick={() => handleAnswer(opt.key)}
-                className={`w-full py-3 px-4 rounded-lg text-left font-medium transition-all ${
-                  answers[current] === opt.key
-                    ? "btn-primary shadow-md"
-                    : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[var(--surface-variant-hover)]"
-                }`}
-                aria-label={`Select option: ${opt.label}`}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
-        )}
-
-        {/* Navigation */}
-        <div className="flex justify-between mt-8">
-          <button
-            onClick={prev}
-            disabled={current === 0 || isSubmitting}
-            className="py-3 px-6 rounded-lg bg-[var(--surface-variant)] text-[var(--text-secondary)] font-medium hover:bg-[var(--surface-variant-hover)] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-            aria-label="Previous question"
-          >
-            Prev
-          </button>
-
-          <button
-            onClick={next}
-            disabled={isSubmitting}
-            className={`py-3 px-10 rounded-lg btn-primary font-semibold transition-all flex items-center justify-center gap-3 ${
-              isSubmitting ? "opacity-90 cursor-not-allowed" : ""
-            }`}
-            aria-label={current < questions.length - 1 ? "Next question" : "Finish test"}
-          >
-            {isSubmitting ? (
-              <Spinner>{current < questions.length - 1 ? "Next..." : "Finishing..."}</Spinner>
-            ) : (
-              <span>{current < questions.length - 1 ? "Next" : "Finish"}</span>
-            )}
-          </button>
-        </div>
-      </motion.div>
+            {/* Privacy Note */}
+            <p className="text-white/60 text-center text-xs leading-relaxed mt-6">
+              Your data is secure and only used to personalize your report. We respect your privacy.
+            </p>
+          </motion.div>
+        </motion.div>
+      </div>
     </main>
   );
 }
