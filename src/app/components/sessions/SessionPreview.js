@@ -9,7 +9,7 @@ import parse from "html-react-parser";
 import { motion } from "framer-motion";
 
 export default function SessionPreview({ session, onClose, onOpenQuestionModal, onOpenAnswerModal }) {
-  const stripHtmlAndTruncate = (html, maxLength = 70) => {
+  const stripHtmlAndTruncate = (html, maxLength = 30) => {
     if (!html) return "";
     const doc = new DOMParser().parseFromString(html, "text/html");
     const text = doc.body.textContent || "";
@@ -60,20 +60,15 @@ export default function SessionPreview({ session, onClose, onOpenQuestionModal, 
   };
 
   return (
-    <>
-      {/* Header - Fully Responsive */}
-      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
-        <div className="flex-1 order-2 sm:order-1">
-          <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] mb-3">View Session</h3>
-
-          {/* Status Badge - Responsive */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-end gap-2 mt-10">
-            <p className="text-xs sm:text-sm font-semibold text-[var(--text-secondary)] text-left sm:text-right">
-              Status:
-            </p>
-
+    <div className="px-2 pb-6 sm:mx-0 sm:px-0">
+      {/* Header */}
+      <div className="flex items-start justify-between gap-4 mb-6">
+        <div className="flex-1">
+          <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">View Session</h3>
+          <div className="flex flex-wrap items-center gap-2 mt-3">
+            <span className="text-sm sm:text-sm font-semibold text-[var(--text-secondary)]">Status:</span>
             <span
-              className={`px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-sm ${getStatusStyles(
+              className={`px-3 py-1 rounded-full text-[10px] sm:text-sm font-bold uppercase tracking-wider ${getStatusStyles(
                 session.status
               )}`}
             >
@@ -82,61 +77,59 @@ export default function SessionPreview({ session, onClose, onOpenQuestionModal, 
           </div>
         </div>
 
-        {/* Close Button - Fixed & Responsive */}
-        <div className="order-1 sm:order-2 self-end sm:self-start">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={onClose}
-            className="w-full sm:w-auto px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg font-medium text-sm sm:text-base btn-secondary shadow-md hover:shadow-lg transition-all"
-            aria-label="Close preview"
-          >
-            {"<< Back"}
-          </motion.button>
-        </div>
+        {/* Close Button - Always visible, perfect touch target */}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={onClose}
+          className="flex-shrink-0 px-4 py-2 rounded-lg font-medium text-sm bg-[var(--surface-variant)] hover:bg-[var(--accent)] text-[var(--text-primary)] shadow-md hover:shadow-lg transition-all"
+          aria-label="Close preview"
+        >
+          ← Back
+        </motion.button>
       </div>
 
-      <div className="space-y-8 sm:space-y-10">
+      <div className="space-y-8">
         {/* Question Card */}
-        <div className="flex flex-col">
-          <p className="text-xs sm:text-sm md:text-base font-bold text-[var(--text-secondary)] uppercase tracking-wider mb-2">
-            Your Session Entry:
-          </p>
-          <p className="text-sm sm:text-base mb-4 text-[var(--text-secondary)]">
-            This is the entry you submitted for your session. It guides the expert’s analysis and the focus of your
-            personalized report. Click to view.
+        <div>
+          <h4 className="text-sm font-bold uppercase tracking-wider text-[var(--text-secondary)] mb-2">
+            Your Session Entry
+          </h4>
+          <p className="text-sm sm:text-sm text-[var(--text-secondary)] mb-4 leading-relaxed">
+            This is what you submitted. Tap to read in full.
           </p>
 
           <motion.div
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={onOpenQuestionModal}
-            className="p-4 sm:p-5 bg-[var(--surface3)] hover:bg-[var(--accent)] rounded-lg border border-[var(--border)] hover:shadow-md transition-all cursor-pointer group"
+            className="p-4 sm:p-5 bg-[var(--surface3)] hover:bg-[var(--accent)] rounded-xl border border-[var(--border)] shadow-sm hover:shadow-md transition-all cursor-pointer group"
           >
-            <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] text-xs sm:text-sm md:text-base line-clamp-3 group-hover:text-[var(--text-primary)] transition-colors">
-              {parse(stripHtmlAndTruncate(renderHtml(session.question)))}
+            <div className="text-sm sm:text-base leading-relaxed text-[var(--text-primary)] line-clamp-4 group-hover:opacity-90 transition-opacity break-words overflow-hidden hyphens-auto">
+              {parse(stripHtmlAndTruncate(renderHtml(session.question), 30))}
             </div>
-            <p className="mt-3 text-xs text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-              Click to view full session entry
+            <p className="mt-3 text-sm font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity">
+              Tap to view full entry →
             </p>
           </motion.div>
         </div>
 
         {/* Answer Card */}
-        <div className="flex flex-col">
-          <p className="text-xs sm:text-sm md:text-base font-bold text-[var(--text-secondary)] uppercase tracking-wider mb-2">
-            CSM Session Report:
-          </p>
-          <p className="text-sm sm:text-base mb-4 text-[var(--text-secondary)]">
-            This section contains your expert’s detailed analysis and personalized insights based on your session entry.
-            Review the responses, reflections, and key recommendations. Click to view.
+        <div>
+          <h4 className="text-sm font-bold uppercase tracking-wider text-[var(--text-secondary)] mb-2">
+            CSM Session Report
+          </h4>
+          <p className="text-sm sm:text-sm text-[var(--text-secondary)] mb-4 leading-relaxed">
+            {session.answer
+              ? "Your personalized expert analysis and insights."
+              : "Your report is being prepared by a CSM-Certified Expert."}
           </p>
 
           <motion.div
             whileHover={session.answer ? { scale: 1.02 } : {}}
             whileTap={session.answer ? { scale: 0.98 } : {}}
             onClick={session.answer ? onOpenAnswerModal : undefined}
-            className={`p-4 sm:p-5 rounded-lg border shadow-sm transition-all ${
+            className={`p-4 sm:p-5 rounded-xl border shadow-sm transition-all ${
               session.answer
                 ? "bg-[var(--surface3)] hover:bg-[var(--accent)] border-[var(--border)] hover:shadow-md cursor-pointer group"
                 : "bg-[var(--surface-variant)] border-[var(--border)] cursor-default"
@@ -144,21 +137,23 @@ export default function SessionPreview({ session, onClose, onOpenQuestionModal, 
           >
             {session.answer ? (
               <>
-                <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)] text-xs sm:text-sm md:text-base line-clamp-3 group-hover:text-[var(--text-primary)] transition-colors">
-                  {parse(stripHtmlAndTruncate(renderHtml(session.answer)))}
+                <div className="text-sm sm:text-base leading-relaxed text-[var(--text-primary)] line-clamp-4 group-hover:opacity-90 transition-opacity break-words overflow-hidden hyphens-auto">
+                  {parse(stripHtmlAndTruncate(renderHtml(session.answer), 30))}
                 </div>
-                <p className="mt-3 text-xs text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                  Click to view full report
+                <p className="mt-3 text-sm font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                  Tap to read full report →
                 </p>
               </>
             ) : (
-              <p className={`text-xs sm:text-sm font-medium ${getStatusStyles(session.status)}`}>
+              <p
+                className={`text-sm sm:text-sm font-medium leading-relaxed text-center py-4 ${getStatusStyles(session.status)}`}
+              >
                 {getAnswerStatusMessage(session.status)}
               </p>
             )}
           </motion.div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

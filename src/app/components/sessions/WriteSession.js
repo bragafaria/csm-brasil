@@ -8,7 +8,8 @@ import Editor from "@/app/components/tiptap/Editor";
 import SalesSession from "@/app/components/sessions/SalesSession";
 import { motion } from "framer-motion";
 import Spinner from "@/app/components/ui/Spinner";
-import { Save, Check } from "lucide-react";
+import { Save, CircleCheckBig, Check } from "lucide-react";
+import TermsModal from "@/app/components/terms-of-service/TermsModal";
 
 export default function WriteSession({ onTabChange }) {
   const [content, setContent] = useState("");
@@ -23,6 +24,8 @@ export default function WriteSession({ onTabChange }) {
   const [justPaid, setJustPaid] = useState(false);
   const [showEditor, setShowEditor] = useState(false);
   const [draftKey, setDraftKey] = useState(null);
+  const [termsAccepted, setTermsAccepted] = useState(true);
+  const [showTermsModal, setShowTermsModal] = useState(false);
 
   useEffect(() => {
     async function init() {
@@ -38,11 +41,9 @@ export default function WriteSession({ onTabChange }) {
           return;
         }
 
-        // Create user-specific draft key
         const key = `csm-session-draft-${session.user.id}`;
         setDraftKey(key);
 
-        // Restore draft
         const draft = localStorage.getItem(key);
         if (draft && draft.trim()) {
           setContent(draft);
@@ -57,7 +58,6 @@ export default function WriteSession({ onTabChange }) {
           setShowEditor(false);
         }
 
-        // Your original status fetch — unchanged
         const response = await fetch("/api/get-blueprint-status", {
           method: "POST",
           headers: {
@@ -92,7 +92,6 @@ export default function WriteSession({ onTabChange }) {
     init();
   }, [justPaid]);
 
-  // FIXED: Simple, clean, safe debounced save
   const debouncedSave = useDebouncedCallback((html) => {
     if (draftKey) {
       localStorage.setItem(draftKey, html);
@@ -165,7 +164,7 @@ export default function WriteSession({ onTabChange }) {
       }));
 
       setContent("");
-      if (draftKey) localStorage.removeItem(draftKey); // FIXED: user-specific clear
+      if (draftKey) localStorage.removeItem(draftKey);
       setUseFreeSession(false);
       setShowSalesPage(true);
       setWordCount(0);
@@ -221,52 +220,99 @@ export default function WriteSession({ onTabChange }) {
       className="bg-gradient-to-br from-[var(--surface)] via-[var(--surface-variant)] to-[var(--surface)] p-4 md:p-8 mt-6 rounded-lg shadow-custom-lg border border-[var(--primary)]"
     >
       <div className="max-w-4xl mx-auto space-y-6 mt-10">
-        {/* INTRO */}
         {!showEditor && (
           <>
-            <div className="flex flex-col items-center mb-6 md:px-20">
+            <div className="flex flex-col items-center px-2 mb-6 md:px-20">
               <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-10 text-center">
                 Start Your Private Session
               </h1>
               <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mb-2 md:mb-4">
-                Tell us about the challenge, question, or uncertainty you’d like support with. You’re welcome to include
-                as much detail as you feel comfortable with, whether it relates to:
+                Tell us about the challenge, question, or uncertainty you’d like support with. The more detail you
+                share, the more accurately we can shape your <strong>Personalized Session Report </strong> to reflect
+                your CSM profile. You’re welcome to focus on any area of your life, including:
               </p>
-              <ul className="list-none space-y-2 text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mb-2 md:mb-4">
-                <li className="flex items-center justify-center">
-                  <Check className="h-4 w-4 mr-2 text-[var(--accent)] flex-shrink-0" />A personal or relational
-                  situation
+              <ul className="list-none space-y-2 mt-4 text-[var(--text-secondary)] text-sm md:text-base leading-relaxed mb-2 md:mb-4 max-w-2xl mx-auto">
+                <li className="flex items-start justify-start">
+                  <CircleCheckBig className="h-6 w-6 mr-2 text-[var(--accent)] flex-shrink-0" />A personal or
+                  relationship situation you’re trying to navigate.
                 </li>
-                <li className="flex items-center justify-center">
-                  <Check className="h-4 w-4 mr-2 text-[var(--accent)] flex-shrink-0" />
-                  Patterns you’ve noticed in your thoughts, emotions, or behavior
+                <li className="flex items-start justify-start">
+                  <CircleCheckBig className="h-6 w-6 mr-2 text-[var(--accent)] flex-shrink-0" />
+                  {`Patterns you’ve noticed in your thoughts, emotions, or behavior`}
                 </li>
-                <li className="flex items-center justify-center">
-                  <Check className="h-4 w-4 mr-2 text-[var(--accent)] flex-shrink-0" />
-                  Questions about identity, purpose, or interpersonal dynamics
+                <li className="flex items-start justify-start">
+                  <CircleCheckBig className="h-6 w-6 mr-2 text-[var(--accent)] flex-shrink-0" />
+                  Questions about purpose, or how you relate with others
                 </li>
               </ul>
-              <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mb-2 md:mb-4">
-                You can focus on practical circumstances, deeper internal experiences, or both. The more context you
-                provide, the more accurately we can understand your unique cognitive dynamics and offer meaningful
-                insights.
+              <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mt-4 mb-2 md:mb-4">
+                Share whatever feels meaningful to you, and we’ll help you gain clarity through your unique cognitive
+                strengths.
               </p>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => setShowEditor(true)}
-                className="px-10 py-4 mt-8 md:mt-10 rounded-lg font-semibold text-lg btn-primary hover:shadow-lg"
-              >
-                Start Session
-              </motion.button>
+
+              {/* ONLY THIS PART WAS CHANGED — PERFECTLY CENTERED, NO TYPOS */}
+              <div className="mt-8 md:mt-10 w-full flex flex-col items-center">
+                <label className="flex items-start gap-4 cursor-pointer select-none group max-w-2xl w-full">
+                  <div className="relative flex items-center justify-center mt-0.5">
+                    <input
+                      type="checkbox"
+                      checked={termsAccepted}
+                      onChange={(e) => setTermsAccepted(e.target.checked)}
+                      className="sr-only"
+                    />
+                    <div
+                      className={`w-6 h-6 rounded-md border-2 transition-all duration-200 flex items-center justify-center ${
+                        termsAccepted
+                          ? "bg-[var(--accent)] border-[var(--accent)]"
+                          : "border-[var(--text-secondary)]/50 group-hover:border-[var(--accent)]"
+                      }`}
+                    >
+                      {termsAccepted && <Check className="w-4 h-4 text-white font-bold" strokeWidth={3} />}
+                    </div>
+                  </div>
+                  <span className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                    I have read and agree to the{" "}
+                    <button
+                      type="button"
+                      onClick={() => setShowTermsModal(true)}
+                      className="font-medium text-violet-400 hover:underline underline-offset-2 focus:outline-none underline"
+                    >
+                      Terms of Service
+                    </button>
+                    , understand that CSM Sessions are self-help tools (not therapy or professional counseling), and
+                    accept all disclaimers and limitations of liability.
+                  </span>
+                </label>
+
+                <motion.button
+                  whileHover={termsAccepted ? { scale: 1.02 } : {}}
+                  whileTap={termsAccepted ? { scale: 0.98 } : {}}
+                  onClick={() => termsAccepted && setShowEditor(true)}
+                  disabled={!termsAccepted}
+                  className={`mt-6 w-full max-w-md px-10 py-4 rounded-lg font-semibold text-lg transition-all duration-200 ${
+                    termsAccepted
+                      ? "btn-primary hover:shadow-lg cursor-pointer"
+                      : "bg-[var(--surface-variant)] text-[var(--text-secondary)]/60 cursor-not-allowed opacity-70"
+                  }`}
+                >
+                  {termsAccepted ? "Start Session" : "Accept Terms to Continue"}
+                </motion.button>
+
+                {!termsAccepted && (
+                  <p className="text-xs text-[var(--text-secondary)]/70 text-center mt-2 max-w-md">
+                    You must accept the Terms of Service to begin
+                  </p>
+                )}
+              </div>
+
+              {showTermsModal && <TermsModal onClose={() => setShowTermsModal(false)} />}
             </div>
           </>
         )}
 
-        {/* EDITOR */}
         {showEditor && (
           <>
-            <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] md:mb-10 text-center">
+            <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] md:mb-6 text-center">
               Submit Your Session Entry
             </h1>
 

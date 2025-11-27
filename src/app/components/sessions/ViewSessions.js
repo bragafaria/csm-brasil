@@ -121,7 +121,7 @@ export default function ViewSessions() {
     return styles[status] || "text-[var(--text-secondary)] border-[var(--border)] bg-[var(--surface-variant)]";
   };
 
-  const stripHtmlAndTruncate = (html, maxLength = 70) => {
+  const stripHtmlAndTruncate = (html, maxLength = 30) => {
     if (!html) return "";
     const doc = new DOMParser().parseFromString(html, "text/html");
     const text = doc.body.textContent || "";
@@ -188,20 +188,13 @@ export default function ViewSessions() {
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="p-4 sm:p-6 md:p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
+      className="p-4 md:p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
     >
       {!selectedSession ? (
         <>
-          <h2 className="text-xl text-center sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-2">
+          <h2 className="text-xl text-center sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mt-4 mb-6">
             Your CSM Sessions
           </h2>
-          <p className="text-[var(--text-secondary)] text-sm  leading-relaxed text-center mb-8 italic font-extralight">
-            <strong>
-              CSM is a self-awareness and personal growth framework. It is not a therapeutic tool and does not diagnose
-              or treat mental health conditions. Many users choose to pair it with counseling or coaching, but it
-              remains fully effective on its own.
-            </strong>
-          </p>
 
           {/* Coach Info */}
           <div className="mb-6 p-4 sm:p-6 bg-[var(--surface-variant)] rounded-lg border border-[var(--border)] shadow-sm">
@@ -261,7 +254,9 @@ export default function ViewSessions() {
                     </p>
                     <div className="text-xs sm:text-sm text-[var(--text-secondary)] line-clamp-2 group-hover:text-[var(--text-primary)] transition-colors mt-2">
                       <p className="font-semibold mb-1">Preview:</p>
-                      {parse(stripHtmlAndTruncate(renderHtml(session.question)))}
+                      <div className="text-sm sm:text-base leading-relaxed text-[var(--text-primary)] line-clamp-4 group-hover:opacity-90 transition-opacity break-words overflow-hidden hyphens-auto">
+                        {parse(stripHtmlAndTruncate(renderHtml(session.question), 30))}
+                      </div>
                     </div>
                   </div>
                   <span

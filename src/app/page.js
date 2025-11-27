@@ -22,12 +22,19 @@ import { RotatingWord } from "@/app/components/ui/RotatingWord";
 import ConnectionsParticles from "@/app/components/ConnectionsParticles";
 import ConnectionsTitle from "@/app/components/ConnectionsTitle";
 import Image from "next/image";
+import TermsModal from "@/app/components/terms-of-service/TermsModal";
+import PrivacyModal from "@/app/components/terms-of-service/PrivacyModal";
+import RefundModal from "@/app/components/terms-of-service/RefundModal";
 
 export default function Home() {
   const [expandedFAQ, setExpandedFAQ] = useState(null);
   const [activeNav, setActiveNav] = useState("home");
   const [loggingOut, setLoggingOut] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showTermsModal, setShowTermsModal] = useState(false);
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+  const [showRefundModal, setShowRefundModal] = useState(false);
+
   const router = useRouter();
   const pathname = usePathname();
 
@@ -777,7 +784,7 @@ export default function Home() {
               {
                 question: "Is CSM therapy?",
                 answer:
-                  "No. CSM is not a therapeutic tool and does not diagnose or treat mental health conditions. It is a self-awareness and personal growth framework designed to provide structured insights and strategies for relationships and life challenges. Many users combine it with counseling or coaching, but it is fully effective as a standalone growth tool.",
+                  "No. CSM is not a therapeutic tool and does not diagnose or treat mental health conditions. It is a self-awareness and personal growth framework designed to provide structured insights and strategies for relationships and life challenges. Many users combine it with counseling or coaching, but it is fully effective as a standalone growth tool. Our services are designed for personal growth, self-reflection, and relationship insight only.",
               },
             ].map((faq, index) => (
               <div key={index} className="card-gradient rounded-lg overflow-hidden">
@@ -873,15 +880,25 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Legal</h4>
               <div className="space-y-2">
-                <a href="/privacy" className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
-                  Privacy Policy
-                </a>
-                <a href="/terms" className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
+                <button
+                  onClick={() => setShowTermsModal(true)}
+                  className="block text-left text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus:outline-none cursor-pointer transition-colors"
+                >
                   Terms of Service
-                </a>
-                <a href="/refunds" className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
+                </button>
+                <button
+                  onClick={() => setShowPrivacyModal(true)}
+                  className="block text-left text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus:outline-none cursor-pointer transition-colors"
+                >
+                  Privacy Policy
+                </button>
+
+                <button
+                  onClick={() => setShowRefundModal(true)}
+                  className="block text-left text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus:outline-none cursor-pointer transition-colors"
+                >
                   Refund Policy
-                </a>
+                </button>
               </div>
             </div>
             <div>
@@ -907,6 +924,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      {showTermsModal && <TermsModal onClose={() => setShowTermsModal(false)} />}
+      {showPrivacyModal && <PrivacyModal onClose={() => setShowPrivacyModal(false)} />}
+      {showRefundModal && <RefundModal onClose={() => setShowRefundModal(false)} />}
     </div>
   );
 }

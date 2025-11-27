@@ -5,9 +5,10 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
 import { z } from "zod";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import TermsModal from "@/app/components/terms-of-service/TermsModal";
 
 const signupSchema = z
   .object({
@@ -37,6 +38,10 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   const [confirmationSent, setConfirmationSent] = useState(false);
   const [assessmentData, setAssessmentData] = useState(null);
+
+  // Terms acceptance — default true as requested
+  const [termsAccepted, setTermsAccepted] = useState(true);
+  const [showTermsModal, setShowTermsModal] = useState(false);
 
   useEffect(() => {
     async function init() {
@@ -238,7 +243,7 @@ export default function Signup() {
       transition={{ duration: 0.5 }}
       className="min-h-screen flex items-center justify-center bg-[var(--surface)] p-4"
     >
-      <div className="card-gradient p-8 rounded-lg shadow-custom-lg max-w-md w-full">
+      <div className="card-gradient py-8 px-2 md:p-8 rounded-lg shadow-custom-lg max-w-md w-full">
         <div className="flex items-center justify-center space-x-2 mb-6">
           <Image src="/logo_transparent_svg.svg" alt="CSM Dynamics Logo" width={28} height={28} className="h-7 w-7" />
           <div className="flex items-center space-x-1">
@@ -253,7 +258,7 @@ export default function Signup() {
           transition={{ duration: 0.5 }}
           className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]"
         >
-          {"Sign Up to Get Your Couple's Insight Report"}
+          {`Sign Up to Get Your Couple's Insight Report`}
         </motion.h1>
 
         {confirmationSent ? (
@@ -350,19 +355,65 @@ export default function Signup() {
                 </motion.p>
               )}
 
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                type="submit"
-                disabled={loading || !assessmentData}
-                className="btn-primary w-full py-3 rounded-lg font-semibold inline-flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed"
-                whileHover={{ scale: !loading && assessmentData ? 1.05 : 1 }}
-                whileTap={{ scale: !loading && assessmentData ? 0.95 : 1 }}
-              >
-                {loading ? "Processing..." : "Sign Up and Proceed to Payment"}
-                {!loading && <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />}
-              </motion.button>
+              {/* Terms of Service Checkbox — exactly like WriteSession */}
+              <div className="mt-6 w-full flex flex-col items-center">
+                <label className="flex items-start gap-4 cursor-pointer select-none group max-w-md w-full">
+                  <div className="relative flex items-center justify-center mt-0.5">
+                    <input
+                      type="checkbox"
+                      checked={termsAccepted}
+                      onChange={(e) => setTermsAccepted(e.target.checked)}
+                      className="sr-only"
+                    />
+                    <div
+                      className={`w-6 h-6 rounded-md border-2 transition-all duration-200 flex items-center justify-center ${
+                        termsAccepted
+                          ? "bg-[var(--accent)] border-[var(--accent)]"
+                          : "border-[var(--text-secondary)]/50 group-hover:border-[var(--accent)]"
+                      }`}
+                    >
+                      {termsAccepted && <Check className="w-4 h-4 text-white font-bold" strokeWidth={3} />}
+                    </div>
+                  </div>
+                  <span className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                    I have read and agree to the{" "}
+                    <button
+                      type="button"
+                      onClick={() => setShowTermsModal(true)}
+                      className="font-medium text-violet-400 hover:underline underline-offset-2 focus:outline-none focus:underline"
+                    >
+                      Terms of Service
+                    </button>
+                    , understand that CSM Sessions are self-help tools (not therapy or professional counseling), and
+                    accept all disclaimers and limitations of liability.
+                  </span>
+                </label>
+
+                {/* Submit Button — fixed flex layout so text + arrow stay on one line */}
+                <motion.button
+                  type="submit"
+                  disabled={loading || !assessmentData || !termsAccepted}
+                  className={`mt-6 w-full max-w-md px-10 py-4 rounded-lg font-semibold text-base transition-all duration-200 flex items-center justify-center gap-3
+    ${
+      loading || !assessmentData || !termsAccepted
+        ? "bg-[var(--surface-variant)] text-[var(--text-secondary)]/60 cursor-not-allowed opacity-70"
+        : "btn-primary hover:shadow-lg cursor-pointer"
+    }`}
+                  whileHover={loading || !assessmentData || !termsAccepted ? {} : { scale: 1.02 }}
+                  whileTap={loading || !assessmentData || !termsAccepted ? {} : { scale: 0.98 }}
+                >
+                  <span className="flex-shrink-0">{loading ? "Processing..." : "Sign Up and Proceed to Payment"}</span>
+                  {!loading && (
+                    <ArrowRight className="h-5 w-5 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
+                  )}
+                </motion.button>
+
+                {!termsAccepted && (
+                  <p className="text-xs text-[var(--text-secondary)]/70 text-center mt-2 max-w-md">
+                    You must accept the Terms of Service to continue
+                  </p>
+                )}
+              </div>
             </form>
 
             {!assessmentData && (
@@ -380,6 +431,9 @@ export default function Signup() {
             )}
           </>
         )}
+
+        {/* Terms Modal */}
+        {showTermsModal && <TermsModal onClose={() => setShowTermsModal(false)} />}
       </div>
     </motion.div>
   );

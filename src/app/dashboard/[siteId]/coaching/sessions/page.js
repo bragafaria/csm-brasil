@@ -114,7 +114,7 @@ export default function SessionsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--surface)] py-4 px-4 md:px-8">
+    <div className="min-h-screen bg-[var(--surface)] py-4 px-2 md:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -136,33 +136,33 @@ export default function SessionsPage() {
 
         {/* Tabbed Content */}
         <div className="card-gradient rounded-lg shadow-custom overflow-hidden">
-          <div className="flex flex-col pl-2 md:pl-10 sm:flex-row flex-wrap justify-start items-center gap-6 mt-10 sm:text-left">
-            <p className="text-sm md:text-base font-semibold">Choose:</p>
+          <div className="flex flex-col pl-2 md:pl-10 gap-6 mt-10">
+            <p className="text-base font-semibold text-center md:text-left">Choose:</p>
 
-            {/* Tab Navigation */}
-            <div className="flex flex-wrap justify-center sm:justify-start gap-4">
+            {/* Mobile: forced horizontal, smart shrinking via smaller text + tighter padding */}
+            <div className="flex justify-center sm:justify-start gap-2 md:gap-4">
               <button
                 onClick={() => setShowContent("write")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 rounded-lg font-medium transition-all flex-shrink-0 ${
                   showContent === "write"
                     ? "bg-[var(--primary)] text-white shadow-md"
                     : "text-[var(--text-primary)] hover:bg-[var(--primary)] border border-[var(--border)]"
                 }`}
               >
-                <SquarePen className="text-[var(--accent)]" size={20} />
-                <span className="text-base md:text-lg">Start Session</span>
+                <SquarePen className="text-[var(--accent)] flex-shrink-0" size={18} />
+                <span className="text-sm md:text-base lg:text-lg whitespace-nowrap">Start Session</span>
               </button>
 
               <button
                 onClick={() => setShowContent("view")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 rounded-lg font-medium transition-all flex-shrink-0 ${
                   showContent === "view"
                     ? "bg-[var(--primary)] text-white shadow-md"
                     : "text-[var(--text-primary)] hover:bg-[var(--primary)] border border-[var(--border)]"
                 }`}
               >
-                <List className="text-[var(--accent)]" size={20} />
-                <span className="text-base md:text-lg">View Sessions</span>
+                <List className="text-[var(--accent)] flex-shrink-0" size={18} />
+                <span className="text-sm md:text-base lg:text-lg whitespace-nowrap">View Sessions</span>
               </button>
             </div>
           </div>
@@ -173,7 +173,7 @@ export default function SessionsPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="p-6 md:p-8"
+            className="px-2 py-6 md:p-8"
           >
             {showContent === "write" && <WriteSession isPartnerA={isPartnerA} onTabChange={handleTabChange} />}
             {showContent === "view" && <ViewSessions />}
