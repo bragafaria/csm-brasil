@@ -138,11 +138,10 @@ export default function Summary() {
           safeLocalStorage.setItem("csmAssessmentData", JSON.stringify(fullData));
         } catch (e) {
           console.warn("Failed to update stored data:", e);
-          // Non-blocking - continue anyway
         }
       }
 
-      // Send email (non-blocking)
+      // Send email - AWAIT this to ensure it completes before navigation
       if (fullData?.results?.typeCode) {
         const permanentUrl = createPermanentReportUrl(fullData);
         const archetypeName =
@@ -160,22 +159,27 @@ export default function Summary() {
             />
           );
 
-          fetch("/api/email/send", {
+          // WAIT for the email to be sent
+          const emailResponse = await fetch("/api/email/send", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               to: "bragafaria@gmail.com",
-              //to: email.trim(),
               subject: `Your CSM Personality Report – The ${archetypeName}`,
               html: emailHtml,
             }),
-          }).catch((err) => console.warn("Email failed (non-blocking):", err));
+          });
+
+          if (!emailResponse.ok) {
+            console.warn("Email sending failed:", await emailResponse.text());
+          }
         } catch (emailError) {
-          console.warn("Email render failed (non-blocking):", emailError);
+          console.warn("Email error (non-blocking):", emailError);
+          // Don't throw - continue to navigate even if email fails
         }
       }
 
-      // Navigate to report
+      // Navigate to report AFTER email is sent
       router.push(`/report/${data.typeCode}`);
     } catch (err) {
       console.error("Failed to save visitor:", err);
