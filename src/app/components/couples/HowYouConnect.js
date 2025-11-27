@@ -38,7 +38,7 @@ export default function HowYouConnectPage({ dynamics }) {
       <div className="space-y-8 max-w-4xl mx-auto">
         {/* STRENGTHS */}
         <section className="card-gradient p-6 rounded-lg shadow-custom">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 text-left">Strengths</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-[var(--accent)] mb-6 text-left">Strengths</h2>
 
           {/* MINI-INTRO — SAME FONT SIZE & STYLE AS ALL PARAGRAPHS */}
           <p className="text-lg text-[var(--text-secondary)] mb-6">
@@ -65,7 +65,7 @@ export default function HowYouConnectPage({ dynamics }) {
 
         {/* GROWTH AREAS */}
         <section className="card-gradient p-6 rounded-lg shadow-custom">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 text-left">Growth Areas</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-[var(--accent)] mb-6 text-left">Growth Areas</h2>
 
           {/* MINI-INTRO — SAME FONT SIZE & STYLE AS ALL PARAGRAPHS */}
           <p className="text-lg text-[var(--text-secondary)] mb-6">

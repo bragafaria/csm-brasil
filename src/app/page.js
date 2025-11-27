@@ -447,7 +447,7 @@ export default function Home() {
 
             <div className="flex flex-col justify-center space-y-6 lg:pl-8">
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-center text-[var(--primary)]">Five Spectrum Cross-Analysis</h3>
+                <h3 className="text-2xl font-bold text-center text-[var(--accent)]">Five Spectrum Cross-Analysis</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed">
                   Explore how your mind operates across the five core dimensions of cognition - Information Processing,
                   Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style.
@@ -643,10 +643,7 @@ export default function Home() {
       <section className="pt-20 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] gradient-text">
-              {" "}
-              What Couples Say
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white"> What Couples Say</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

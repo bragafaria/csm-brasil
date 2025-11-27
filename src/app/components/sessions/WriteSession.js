@@ -24,7 +24,7 @@ export default function WriteSession({ onTabChange }) {
   const [justPaid, setJustPaid] = useState(false);
   const [showEditor, setShowEditor] = useState(false);
   const [draftKey, setDraftKey] = useState(null);
-  const [termsAccepted, setTermsAccepted] = useState(true);
+  const [termsAccepted, setTermsAccepted] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
 
   useEffect(() => {
@@ -238,11 +238,11 @@ export default function WriteSession({ onTabChange }) {
                 </li>
                 <li className="flex items-start justify-start">
                   <CircleCheckBig className="h-6 w-6 mr-2 text-[var(--accent)] flex-shrink-0" />
-                  {`Patterns you’ve noticed in your thoughts, emotions, or behavior`}
+                  {`Patterns you’ve noticed in your thoughts, emotions, or behavior.`}
                 </li>
                 <li className="flex items-start justify-start">
                   <CircleCheckBig className="h-6 w-6 mr-2 text-[var(--accent)] flex-shrink-0" />
-                  Questions about purpose, or how you relate with others
+                  Questions about purpose, direction, or how you relate to others.
                 </li>
               </ul>
               <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mt-4 mb-2 md:mb-4">
@@ -271,7 +271,7 @@ export default function WriteSession({ onTabChange }) {
                     </div>
                   </div>
                   <span className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    I have read and agree to the{" "}
+                    I confirm that I am at least 18 years old, have read and agree to the{" "}
                     <button
                       type="button"
                       onClick={() => setShowTermsModal(true)}
@@ -312,9 +312,15 @@ export default function WriteSession({ onTabChange }) {
 
         {showEditor && (
           <>
-            <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] md:mb-6 text-center">
-              Submit Your Session Entry
-            </h1>
+            <div className="flex flex-col items-center text-center">
+              <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] md:mb-6">
+                Submit Your Session Entry
+              </h1>
+
+              <p className="text-base max-w-md font-light italic text-[var(--text-primary)] md:mb-6 mt-4">
+                A CSM-certified expert will personally review your entry and reach out to you within 1–2 business days.
+              </p>
+            </div>
 
             {userStatus?.hasActiveSession && (
               <div className="mb-8 mt-8 p-6 bg-red-600/10 border border-[var(--border)] rounded-lg">

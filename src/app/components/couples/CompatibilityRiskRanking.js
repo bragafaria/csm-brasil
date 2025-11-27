@@ -2,19 +2,19 @@
 
 const FRICTION_GUIDES = {
   "Information Processing": {
-    desc: "One partner may focus on practical, real-world details while the other sees patterns and possibilities. This can lead to frustration when one feels the other is missing the point or overcomplicating simple things. Daily decisions, planning, or even casual conversations might feel misaligned, with one wanting facts and the other wanting vision.",
+    desc: "One partner may focus on concrete, practical details while the other gravitates toward patterns, ideas, and possibilities. This can create friction when one feels the other is overanalyzing, or when the other feels their partner is oversimplifying. Daily planning, problem-solving, and even casual conversations can feel slightly out of sync because each partner notices and prioritizes different kinds of information.",
   },
   "Decision-Making": {
-    desc: "One partner prioritizes logic and fairness, while the other makes choices based on feelings and values. This can create tension when decisions feel cold or overly emotional to the other. Conflicts may arise over money, parenting, or moral issues, where one sees the other as too detached or too sentimental.",
+    desc: "One partner leans on logic and consistency, while the other relies on values and emotional impact. Misunderstandings arise when decisions appear too detached to one partner or too subjective to the other. This often shows up in discussions about finances, parenting choices, or moral dilemmas, where each partner interprets the 'right' decision through a different internal lens.",
   },
   "Energy Orientation": {
-    desc: "One partner recharges alone and thinks deeply, while the other thrives in action and social settings. This can lead to misunderstandings about energy levels — one may feel overwhelmed by too much interaction, while the other feels neglected or bored. Plans for weekends, socializing, or downtime often clash.",
+    desc: "One partner recharges through solitude and reflection, while the other feels energized by activity, engagement, and social connection. This can lead to mismatches in pacing and availability, one may feel overstimulated while the other feels under-connected. Conflicts often show up in how each partner prefers to spend free time, recover from stress, or balance social plans.",
   },
   "Change Approach": {
-    desc: "One partner prefers structure, plans, and closure, while the other embraces flexibility and spontaneity. This can cause stress around schedules, deadlines, or adapting to surprises. The structured partner may feel anxious without a plan, while the flexible one feels trapped by too much routine.",
+    desc: "One partner feels secure with structure, predictability, and closure, while the other is comfortable adapting, improvising, and keeping things open. Tension can arise around scheduling, planning, or handling surprises. The structured partner may feel uneasy without clarity, while the flexible partner may feel restricted by too many rules or expectations.",
   },
   "Interpersonal Style": {
-    desc: "One partner values group harmony and collaboration, while the other prioritizes independence and personal goals. This can lead to tension in teamwork, decision-making, or emotional support. One may feel the other is too clingy or not supportive enough, while the other feels smothered or misunderstood.",
+    desc: "One partner prioritizes harmony, collaboration, and shared understanding, while the other focuses on independence, autonomy, and personal direction. This can create friction in teamwork, emotional expression, or conflict resolution. One may feel their partner is too distant or self-focused, while the other may feel overwhelmed by emotional expectations or group pressures.",
   },
 };
 

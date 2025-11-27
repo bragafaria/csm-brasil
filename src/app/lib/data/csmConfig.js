@@ -82,34 +82,34 @@ export const PREFERENCE_TIERS = {
     "51-65": {
       label: "Mild Preference",
       desc: (pct, pole, oppositePole, oppositePct) =>
-        `${pole} is your default (used ${pct}% of the time), but the opposite pole (${oppositePole} with ${oppositePct}%) is still easy to access in different situations.`,
+        `${pole} is your natural lean (used ${pct}% of the time), but the opposite pole (${oppositePole} at ${oppositePct}%) is still accessible and shows up with little effort when situations call for it.`,
     },
     "66-85": {
       label: "Moderate Preference",
       desc: (pct, pole, oppositePole, oppositePct) =>
-        `${pole} is your clear default (used ${pct}% of the time). The opposite pole (${oppositePole} with ${oppositePct}%) appears when needed, but not automatically.`,
+        `${pole} is your clear default (used ${pct}% of the time). The opposite pole (${oppositePole} at ${oppositePct}%) appears when needed, although it is not your automatic response.`,
     },
     "86-100": {
       label: "Strong Preference",
       desc: (pct, pole, oppositePole, oppositePct) =>
-        `${pole} is your dominant mode (used ${pct}% of the time). The opposite pole (${oppositePole} with ${oppositePct}%) rarely appears without effort.`,
+        `${pole} is your dominant mode (used ${pct}% of the time). The opposite pole (${oppositePole} at ${oppositePct}%) shows up rarely and usually requires conscious effort.`,
     },
   },
   secondary: {
     "35-49": {
       label: "High Influence",
       desc: (pct, pole, primaryPole, primaryPct) =>
-        `${pole} is not your default, but it shows up often (in ${pct}% of cases) and feels natural in the right context. Your primary pole is ${primaryPole} with ${primaryPct}%.`,
+        `${pole} is not your default, but it plays a noticeable role (appearing in ${pct}% of situations) and feels natural when the context fits. Your primary pole is ${primaryPole} at ${primaryPct}%.`,
     },
     "15-34": {
       label: "Moderate Influence",
       desc: (pct, pole, primaryPole, primaryPct) =>
-        `${pole} is not your default and appears only sometimes (in ${pct}% of cases), usually under specific conditions. Your primary pole is ${primaryPole} with ${primaryPct}%.`,
+        `${pole} is not your default and shows up occasionally (in ${pct}% of situations), usually triggered by specific contexts or needs. Your primary pole is ${primaryPole} at ${primaryPct}%.`,
     },
     "0-14": {
       label: "Low Influence",
       desc: (pct, pole, primaryPole, primaryPct) =>
-        `${pole} is not your default and is rare (only ${pct}% of the time). It feels unfamiliar and requires effort. Your primary pole is ${primaryPole} with ${primaryPct}%.`,
+        `${pole} is not your default and appears rarely (only ${pct}% of the time). It feels less familiar and usually requires intentional effort. Your primary pole is ${primaryPole} at ${primaryPct}%.`,
     },
   },
 };
@@ -117,18 +117,18 @@ export const PREFERENCE_TIERS = {
 // ← ADD THIS LINE
 export const CAS_TIERS = {
   "80-100": {
-    label: "Strong Alignment",
+    label: "Easy Alignment",
     desc: (pole) =>
-      `Both partners exhibit a high degree of preference for ${pole}. This indicates consistent cognitive processing and high mutual comprehension within this dimension with minimal adjustment.`,
+      `Both partners rely on similar patterns within ${pole}, making the dimension feel natural and easy to navigate together. Communication flows with minimal friction, and understanding each other's perspective often happens automatically.`,
   },
   "60-79": {
-    label: "Moderate Alignment",
+    label: "Manageable Alignment",
     desc: (pole) =>
-      `Partners show moderate alignment in preference for ${pole}. Differences in intensity exist but remain within a functional range, supporting cooperation with some adjustment.`,
+      `Partners share the same general orientation toward ${pole}, but differ enough in intensity that their default reactions do not always match. Most interactions feel smooth, but certain situations may reveal gaps that require intention, clarification, or small adjustments to stay aligned.`,
   },
   "0-59": {
-    label: "Low Alignment",
+    label: "Challenging Alignment",
     desc: (pole) =>
-      `Partners diverge significantly in preference for ${pole}. This reflects contrasting cognitive approaches, requiring conscious effort to achieve alignment and reduce potential miscommunication.`,
+      `Partners approach ${pole} from different cognitive starting points. Their natural ways of processing or responding often diverge, making alignment a more active process. Clear communication, curiosity, and conscious bridging are essential to avoid misunderstandings and maintain harmony.`,
   },
 };
