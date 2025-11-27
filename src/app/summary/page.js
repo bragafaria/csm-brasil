@@ -4,15 +4,9 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { createClient } from "@supabase/supabase-js";
 import Spinner from "@/app/components/ui/Spinner";
 import { User, Mail } from "lucide-react";
-import PersonalityReportEmail from "@/app/components/emails/PersonalityReport";
 import { createPermanentReportUrl } from "@/app/lib/sharable-url";
-import { render } from "@react-email/render";
-
-// Initialize Supabase client
-const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
 // Helper function to safely use localStorage with fallback
 const safeLocalStorage = {
@@ -115,18 +109,7 @@ export default function Summary() {
     setError("");
 
     try {
-      // Save to database
-      const { error: dbError } = await supabase.from("visitors").insert({
-        name: name.trim(),
-        email: email.trim(),
-      });
-
-      if (dbError) {
-        console.error("Database error:", dbError);
-        throw new Error("Failed to save visitor data");
-      }
-
-      // Update stored data with user info
+      // Get full data
       let fullData = {};
       const stored = safeLocalStorage.getItem("csmAssessmentData");
 
@@ -135,51 +118,29 @@ export default function Summary() {
           fullData = JSON.parse(stored);
           fullData.userName = name.trim();
           fullData.userEmail = email.trim();
+          fullData.permanentUrl = createPermanentReportUrl(fullData);
           safeLocalStorage.setItem("csmAssessmentData", JSON.stringify(fullData));
         } catch (e) {
           console.warn("Failed to update stored data:", e);
         }
       }
 
-      // Send email - AWAIT this to ensure it completes before navigation
-      if (fullData?.results?.typeCode) {
-        const permanentUrl = createPermanentReportUrl(fullData);
-        const archetypeName =
-          typeof fullData.results.archetype === "object"
-            ? fullData.results.archetype?.name || "Unknown Archetype"
-            : fullData.results.archetype || "Unknown Archetype";
+      // Single API call that handles both DB save and email
+      const response = await fetch("/api/email/visitors/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          fullData: fullData,
+        }),
+      });
 
-        try {
-          const emailHtml = await render(
-            <PersonalityReportEmail
-              name={name.trim()}
-              archetypeName={archetypeName}
-              typeCode={fullData.results.typeCode}
-              shareableUrl={permanentUrl}
-            />
-          );
-
-          // WAIT for the email to be sent
-          const emailResponse = await fetch("/api/email/send", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              to: "bragafaria@gmail.com",
-              subject: `Your CSM Personality Report – The ${archetypeName}`,
-              html: emailHtml,
-            }),
-          });
-
-          if (!emailResponse.ok) {
-            console.warn("Email sending failed:", await emailResponse.text());
-          }
-        } catch (emailError) {
-          console.warn("Email error (non-blocking):", emailError);
-          // Don't throw - continue to navigate even if email fails
-        }
+      if (!response.ok) {
+        throw new Error("Failed to save visitor");
       }
 
-      // Navigate to report AFTER email is sent
+      // Navigate to report
       router.push(`/report/${data.typeCode}`);
     } catch (err) {
       console.error("Failed to save visitor:", err);
