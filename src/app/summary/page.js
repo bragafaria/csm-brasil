@@ -164,7 +164,8 @@ export default function Summary() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              to: email.trim(),
+              to: "bragafaria@gmail.com",
+              //to: email.trim(),
               subject: `Your CSM Personality Report – The ${archetypeName}`,
               html: emailHtml,
             }),

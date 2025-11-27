@@ -150,56 +150,56 @@
 // 148. C-L-I-S-H/N-V-I-S-A → Curator / Sage ok
 // 149. C-L-I-S-H/N-V-I-F-H → Curator / Unifier ok
 // 150. C-L-I-S-H/N-V-I-F-A → Curator / Mystic ok
-// 151. C-L-I-S-A/C-L-I-S-A → Analyst / Analyst
-// 152. C-L-I-S-A/C-L-I-F-H → Analyst / Mediator
-// 153. C-L-I-S-A/C-L-I-F-A → Analyst / Maverick
-// 154. C-L-I-S-A/C-V-O-S-H → Analyst / Steward
-// 155. C-L-I-S-A/C-V-O-S-A → Analyst / Artisan
-// 156. C-L-I-S-A/C-V-O-F-H → Analyst / Campaigner
-// 157. C-L-I-S-A/C-V-O-F-A → Analyst / Adventurer
-// 158. C-L-I-S-A/C-V-I-S-H → Analyst / Counselor
-// 159. C-L-I-S-A/C-V-I-S-A → Analyst / Healer
-// 160. C-L-I-S-A/C-V-I-F-H → Analyst / Peacemaker
-// 161. C-L-I-S-A/C-V-I-F-A → Analyst / Empath
-// 162. C-L-I-S-A/N-L-O-S-H → Analyst / Strategist
-// 163. C-L-I-S-A/N-L-O-S-A → Analyst / Inventor
-// 164. C-L-I-S-A/N-L-O-F-H → Analyst / Disruptor
-// 165. C-L-I-S-A/N-L-O-F-A → Analyst / Revolutionary
-// 166. C-L-I-S-A/N-L-I-S-H → Analyst / Academic
-// 167. C-L-I-S-A/N-L-I-S-A → Analyst / Theorist
-// 168. C-L-I-S-A/N-L-I-F-H → Analyst / Innovator
-// 169. C-L-I-S-A/N-L-I-F-A → Analyst / Visionary
-// 170. C-L-I-S-A/N-V-O-S-H → Analyst / Ambassador
-// 171. C-L-I-S-A/N-V-O-S-A → Analyst / Artist
-// 172. C-L-I-S-A/N-V-O-F-H → Analyst / Catalyst
-// 173. C-L-I-S-A/N-V-O-F-A → Analyst / Wanderer
-// 174. C-L-I-S-A/N-V-I-S-H → Analyst / Mentor
-// 175. C-L-I-S-A/N-V-I-S-A → Analyst / Sage
-// 176. C-L-I-S-A/N-V-I-F-H → Analyst / Unifier
-// 177. C-L-I-S-A/N-V-I-F-A → Analyst / Mystic
-// 178. C-L-I-F-H/C-L-I-F-H → Mediator / Mediator
-// 179. C-L-I-F-H/C-L-I-F-A → Mediator / Maverick
-// 180. C-L-I-F-H/C-V-O-S-H → Mediator / Steward
-// 181. C-L-I-F-H/C-V-O-S-A → Mediator / Artisan
-// 182. C-L-I-F-H/C-V-O-F-H → Mediator / Campaigner
-// 183. C-L-I-F-H/C-V-O-F-A → Mediator / Adventurer
-// 184. C-L-I-F-H/C-V-I-S-H → Mediator / Counselor
-// 185. C-L-I-F-H/C-V-I-S-A → Mediator / Healer
-// 186. C-L-I-F-H/C-V-I-F-H → Mediator / Peacemaker
-// 187. C-L-I-F-H/C-V-I-F-A → Mediator / Empath
-// 188. C-L-I-F-H/N-L-O-S-H → Mediator / Strategist
-// 189. C-L-I-F-H/N-L-O-S-A → Mediator / Inventor
-// 190. C-L-I-F-H/N-L-O-F-H → Mediator / Disruptor
-// 191. C-L-I-F-H/N-L-O-F-A → Mediator / Revolutionary
-// 192. C-L-I-F-H/N-L-I-S-H → Mediator / Academic
-// 193. C-L-I-F-H/N-L-I-S-A → Mediator / Theorist
-// 194. C-L-I-F-H/N-L-I-F-H → Mediator / Innovator
-// 195. C-L-I-F-H/N-L-I-F-A → Mediator / Visionary
-// 196. C-L-I-F-H/N-V-O-S-H → Mediator / Ambassador
-// 197. C-L-I-F-H/N-V-O-S-A → Mediator / Artist
-// 198. C-L-I-F-H/N-V-O-F-H → Mediator / Catalyst
-// 199. C-L-I-F-H/N-V-O-F-A → Mediator / Wanderer
-// 200. C-L-I-F-H/N-V-I-S-H → Mediator / Mentor
+// 151. C-L-I-S-A/C-L-I-S-A → Analyst / Analyst ok
+// 152. C-L-I-S-A/C-L-I-F-H → Analyst / Mediator ok
+// 153. C-L-I-S-A/C-L-I-F-A → Analyst / Maverick ok
+// 154. C-L-I-S-A/C-V-O-S-H → Analyst / Steward ok
+// 155. C-L-I-S-A/C-V-O-S-A → Analyst / Artisan ok
+// 156. C-L-I-S-A/C-V-O-F-H → Analyst / Campaigner ok
+// 157. C-L-I-S-A/C-V-O-F-A → Analyst / Adventurer ok
+// 158. C-L-I-S-A/C-V-I-S-H → Analyst / Counselor ok
+// 159. C-L-I-S-A/C-V-I-S-A → Analyst / Healer ok
+// 160. C-L-I-S-A/C-V-I-F-H → Analyst / Peacemaker ok
+// 161. C-L-I-S-A/C-V-I-F-A → Analyst / Empath ok
+// 162. C-L-I-S-A/N-L-O-S-H → Analyst / Strategist ok
+// 163. C-L-I-S-A/N-L-O-S-A → Analyst / Inventor ok
+// 164. C-L-I-S-A/N-L-O-F-H → Analyst / Disruptor ok
+// 165. C-L-I-S-A/N-L-O-F-A → Analyst / Revolutionary ok
+// 166. C-L-I-S-A/N-L-I-S-H → Analyst / Academic ok
+// 167. C-L-I-S-A/N-L-I-S-A → Analyst / Theorist ok
+// 168. C-L-I-S-A/N-L-I-F-H → Analyst / Innovator ok
+// 169. C-L-I-S-A/N-L-I-F-A → Analyst / Visionary ok
+// 170. C-L-I-S-A/N-V-O-S-H → Analyst / Ambassador ok
+// 171. C-L-I-S-A/N-V-O-S-A → Analyst / Artist ok
+// 172. C-L-I-S-A/N-V-O-F-H → Analyst / Catalyst ok
+// 173. C-L-I-S-A/N-V-O-F-A → Analyst / Wanderer ok
+// 174. C-L-I-S-A/N-V-I-S-H → Analyst / Mentor ok
+// 175. C-L-I-S-A/N-V-I-S-A → Analyst / Sage ok
+// 176. C-L-I-S-A/N-V-I-F-H → Analyst / Unifier ok
+// 177. C-L-I-S-A/N-V-I-F-A → Analyst / Mystic ok
+// 178. C-L-I-F-H/C-L-I-F-H → Mediator / Mediator ok
+// 179. C-L-I-F-H/C-L-I-F-A → Mediator / Maverick ok
+// 180. C-L-I-F-H/C-V-O-S-H → Mediator / Steward ok
+// 181. C-L-I-F-H/C-V-O-S-A → Mediator / Artisan ok
+// 182. C-L-I-F-H/C-V-O-F-H → Mediator / Campaigner ok
+// 183. C-L-I-F-H/C-V-O-F-A → Mediator / Adventurer ok
+// 184. C-L-I-F-H/C-V-I-S-H → Mediator / Counselor ok
+// 185. C-L-I-F-H/C-V-I-S-A → Mediator / Healer ok
+// 186. C-L-I-F-H/C-V-I-F-H → Mediator / Peacemaker ok
+// 187. C-L-I-F-H/C-V-I-F-A → Mediator / Empath ok
+// 188. C-L-I-F-H/N-L-O-S-H → Mediator / Strategist ok
+// 189. C-L-I-F-H/N-L-O-S-A → Mediator / Inventor ok
+// 190. C-L-I-F-H/N-L-O-F-H → Mediator / Disruptor ok
+// 191. C-L-I-F-H/N-L-O-F-A → Mediator / Revolutionary ok
+// 192. C-L-I-F-H/N-L-I-S-H → Mediator / Academic ok
+// 193. C-L-I-F-H/N-L-I-S-A → Mediator / Theorist ok
+// 194. C-L-I-F-H/N-L-I-F-H → Mediator / Innovator ok
+// 195. C-L-I-F-H/N-L-I-F-A → Mediator / Visionary ok
+// 196. C-L-I-F-H/N-V-O-S-H → Mediator / Ambassador ok
+// 197. C-L-I-F-H/N-V-O-S-A → Mediator / Artist ok
+// 198. C-L-I-F-H/N-V-O-F-H → Mediator / Catalyst ok
+// 199. C-L-I-F-H/N-V-O-F-A → Mediator / Wanderer ok
+// 200. C-L-I-F-H/N-V-I-S-H → Mediator / Mentor ok
 // 201. C-L-I-F-H/N-V-I-S-A → Mediator / Sage
 // 202. C-L-I-F-H/N-V-I-F-H → Mediator / Unifier
 // 203. C-L-I-F-H/N-V-I-F-A → Mediator / Mystic
