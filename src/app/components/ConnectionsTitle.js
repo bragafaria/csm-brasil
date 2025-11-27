@@ -1,40 +1,40 @@
 // app/components/ConnectionsTitle.jsx
 
 export default function ConnectionsTitle() {
-  const archetypes = [
-    "Architect",
-    "Engineer",
-    "Navigator",
-    "Pioneer",
-    "Curator",
-    "Analyst",
-    "Mediator",
-    "Maverick",
-    "Steward",
-    "Artisan",
-    "Campaigner",
-    "Adventurer",
-    "Counselor",
-    "Healer",
-    "Peacemaker",
-    "Empath",
-    "Strategist",
-    "Inventor",
-    "Disruptor",
-    "Revolutionary",
-    "Academic",
-    "Theorist",
-    "Innovator",
-    "Visionary",
-    "Ambassador",
-    "Artist",
-    "Catalyst",
-    "Wanderer",
-    "Mentor",
-    "Sage",
-    "Unifier",
-    "Mystic",
-  ];
+  // const archetypes = [
+  //   "Architect",
+  //   "Engineer",
+  //   "Navigator",
+  //   "Pioneer",
+  //   "Curator",
+  //   "Analyst",
+  //   "Mediator",
+  //   "Maverick",
+  //   "Steward",
+  //   "Artisan",
+  //   "Campaigner",
+  //   "Adventurer",
+  //   "Counselor",
+  //   "Healer",
+  //   "Peacemaker",
+  //   "Empath",
+  //   "Strategist",
+  //   "Inventor",
+  //   "Disruptor",
+  //   "Revolutionary",
+  //   "Academic",
+  //   "Theorist",
+  //   "Innovator",
+  //   "Visionary",
+  //   "Ambassador",
+  //   "Artist",
+  //   "Catalyst",
+  //   "Wanderer",
+  //   "Mentor",
+  //   "Sage",
+  //   "Unifier",
+  //   "Mystic",
+  // ];
 
   return (
     <div className="relative z-10 text-center">
@@ -52,7 +52,7 @@ export default function ConnectionsTitle() {
 
       {/* 32 Archetypes — Hidden on mobile, visible on md+ */}
       <div className="hidden md:block max-w-5xl mx-auto">
-        <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 px-4">
+        {/* <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 px-4">
           {archetypes.map((name, i) => (
             <span
               key={i}
@@ -61,7 +61,7 @@ export default function ConnectionsTitle() {
               {name}
             </span>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

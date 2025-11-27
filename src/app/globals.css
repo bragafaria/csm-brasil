@@ -55,8 +55,8 @@
   /* Helper aliases */
   --color-background: var(--surface);
   --color-foreground: var(--text-primary);
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  --font-sans: "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
 
   /* ── RGB VALUES FOR v3 OPACITY SUPPORT ── */
   --primary-rgb: 80, 51, 192;
@@ -66,6 +66,16 @@
   --surface-rgb: 11, 14, 17;
   --surface-variant-rgb: 23, 26, 33;
   --dashboard-rgb: 11, 14, 17;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  body {
+    font-family:
+      "Segoe UI Variable",
+      "Segoe UI",
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
 }
 
 /* ──────────────────────────────────────────────────────────────

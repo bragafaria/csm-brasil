@@ -4,8 +4,9 @@
 import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Image from "next/image";
+import TermsModal from "@/app/components/terms-of-service/TermsModal";
 
 function InviteSignupContent() {
   const [name, setName] = useState("");
@@ -16,16 +17,13 @@ function InviteSignupContent() {
   const [serverError, setServerError] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  // Terms of Service state
+  const [termsAccepted, setTermsAccepted] = useState(true);
+  const [showTermsModal, setShowTermsModal] = useState(false);
+
   const router = useRouter();
   const searchParams = useSearchParams();
-
-  // const createSlug = (name) => {
-  //   if (!name) return "";
-  //   return name
-  //     .toLowerCase()
-  //     .replace(/[^a-z0-9]+/g, "-")
-  //     .replace(/(^-|-$)/g, "");
-  // };
 
   useEffect(() => {
     const invite = searchParams.get("invite");
@@ -45,6 +43,7 @@ function InviteSignupContent() {
     else if (email !== confirmEmail) newErrors.confirmEmail = ["Emails do not match"];
     if (!password) newErrors.password = ["Password is required"];
     else if (password.length < 6) newErrors.password = ["Password must be at least 6 characters"];
+    if (!termsAccepted) newErrors.terms = ["You must accept the Terms of Service"];
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -192,14 +191,60 @@ function InviteSignupContent() {
             {errors.password && <p className="text-red-400 text-sm mt-1">{errors.password[0]}</p>}
           </div>
 
+          {/* Terms of Service Checkbox */}
+          <div className="mt-6 w-full flex flex-col items-center">
+            <label className="flex items-start gap-4 cursor-pointer select-none group w-full">
+              <div className="relative flex items-center justify-center mt-0.5">
+                <input
+                  type="checkbox"
+                  checked={termsAccepted}
+                  onChange={(e) => setTermsAccepted(e.target.checked)}
+                  className="sr-only"
+                />
+                <div
+                  className={`w-6 h-6 rounded-md border-2 transition-all duration-200 flex items-center justify-center ${
+                    termsAccepted
+                      ? "bg-[var(--accent)] border-[var(--accent)]"
+                      : "border-[var(--text-secondary)]/50 group-hover:border-[var(--accent)]"
+                  }`}
+                >
+                  {termsAccepted && <Check className="w-4 h-4 text-white font-bold" strokeWidth={3} />}
+                </div>
+              </div>
+              <span className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                I have read and agree to the{" "}
+                <button
+                  type="button"
+                  onClick={() => setShowTermsModal(true)}
+                  className="font-medium text-violet-400 hover:underline underline-offset-2 focus:outline-none focus:underline"
+                >
+                  Terms of Service
+                </button>
+                , understand that CSM Sessions are self-help tools (not therapy or professional counseling), and accept
+                all disclaimers and limitations of liability.
+              </span>
+            </label>
+            {errors.terms && <p className="text-red-400 text-sm mt-2 text-center w-full">{errors.terms[0]}</p>}
+          </div>
+
           <button
             type="submit"
-            disabled={loading}
-            className="btn-primary w-full py-3 rounded-lg font-semibold inline-flex items-center justify-center group transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={loading || !termsAccepted}
+            className={`w-full py-3 rounded-lg font-semibold inline-flex items-center justify-center gap-2 group transition-all ${
+              loading || !termsAccepted
+                ? "bg-[var(--surface-variant)] text-[var(--text-secondary)]/60 cursor-not-allowed opacity-70"
+                : "btn-primary cursor-pointer"
+            }`}
           >
             {loading ? "Processing..." : "Sign Up"}
-            {!loading && <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />}
+            {!loading && <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />}
           </button>
+
+          {!termsAccepted && (
+            <p className="text-xs text-[var(--text-secondary)]/70 text-center mt-2">
+              You must accept the Terms of Service to continue
+            </p>
+          )}
         </form>
 
         {showModal && (
@@ -213,6 +258,9 @@ function InviteSignupContent() {
             </div>
           </div>
         )}
+
+        {/* Terms Modal */}
+        {showTermsModal && <TermsModal onClose={() => setShowTermsModal(false)} />}
       </div>
     </div>
   );

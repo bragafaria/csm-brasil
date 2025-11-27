@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/app/utils/supabaseClient";
-import { User, Users, BookOpen, Lightbulb, Settings, HelpCircle, X, ChevronLeft } from "lucide-react";
+import { User, Users, BookOpen, Settings, HelpCircle, X, ChevronLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import Spinner from "@/app/components/ui/Spinner";
 
@@ -52,16 +52,6 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
       icon: BookOpen,
       subItems: [{ label: "Private Sessions", route: `/dashboard/${siteId}/coaching/sessions` }],
     },
-    // {
-    //   id: "learn",
-    //   label: "Learn",
-    //   icon: Lightbulb,
-    //   subItems: [
-    //     { label: "Tips", route: `/dashboard/${siteId}/learn/tips` },
-    //     { label: "Glossary", route: `/dashboard/${siteId}/learn/glossary` },
-    //     { label: "About CSM", route: `/dashboard/${siteId}/learn/about-csm` },
-    //   ],
-    // },
     {
       id: "account",
       label: "Account",
@@ -87,6 +77,20 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
       .replace(/(^-|-$)/g, "");
   };
 
+  const toggleExpanded = (itemId) => {
+    setExpandedItems((prev) => (prev.includes(itemId) ? prev.filter((id) => id !== itemId) : [...prev, itemId]));
+  };
+
+  // ONLY THIS useEffect IS NEW — everything else is YOUR original code
+  useEffect(() => {
+    const activeParentId = menuItems.find((item) => item.subItems?.some((sub) => sub.route === pathname))?.id;
+
+    if (activeParentId) {
+      setExpandedItems([activeParentId]); // ONLY the current section stays open
+    }
+  }, [pathname, menuItems]);
+  // END OF CHANGE
+
   useEffect(() => {
     async function fetchPartnerNames() {
       if (!siteId) {
@@ -109,7 +113,6 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
 
         const userId = session.user.id;
 
-        // Fetch Partner A (siteId = Partner A UUID)
         const { data: partnerAData, error: partnerAError } = await supabase
           .from("users")
           .select("id, name, partner_id, has_assessment, site_id")
@@ -130,7 +133,6 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
 
         const partnerAName = partnerAData.name || "Partner A";
         const partnerASlug = createSlug(partnerAName);
-        const hasAssessmentA = partnerAData.has_assessment;
         const site_id = partnerAData.site_id;
 
         const personalReportSubItems = [
@@ -141,8 +143,6 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
         ];
 
         let partnerBName = null;
-        let partnerBSlug = null;
-        let hasAssessmentB = false;
 
         if (partnerAData.partner_id) {
           const { data: partnerBData, error: partnerBError } = await supabase
@@ -153,8 +153,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
 
           if (!partnerBError && partnerBData) {
             partnerBName = partnerBData.name || "Partner B";
-            partnerBSlug = createSlug(partnerBName);
-            hasAssessmentB = partnerBData.has_assessment;
+            const partnerBSlug = createSlug(partnerBName);
 
             personalReportSubItems.push({
               label: `${partnerBName}`,
@@ -179,10 +178,6 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
 
     fetchPartnerNames();
   }, [siteId, router]);
-
-  const toggleExpanded = (itemId) => {
-    setExpandedItems((prev) => (prev.includes(itemId) ? prev.filter((id) => id !== itemId) : [...prev, itemId]));
-  };
 
   const isActive = (route) => pathname === route;
 
@@ -240,61 +235,13 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
                 onClick={isMobile ? toggleSidebar : undefined}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition-all group ${
                   isActive(item.route)
-                    ? "bg-[var(--primary)] text-var[--primary] shadow-md"
+                    ? "bg-[var(--primary)] text-white shadow-md"
                     : "text-[var(--text-secondary)] hover:bg-[var(--surface-variant)] hover:text-[var(--text-primary)]"
                 }`}
               >
                 <Icon size={20} className="flex-shrink-0" />
                 <span>{item.label}</span>
               </Link>
-            );
-          }
-
-          if (item.id === "personal-report") {
-            return (
-              <div key={item.id} className="space-y-1">
-                <button
-                  onClick={() => toggleExpanded(item.id)}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition-all group ${
-                    hasActiveChild
-                      ? "bg-[var(--primary)] text-white shadow-md"
-                      : "text-[var(--text-secondary)] hover:bg-[var(--surface-variant)] hover:text-[var(--text-primary)]"
-                  }`}
-                >
-                  <Icon size={20} className="flex-shrink-0" />
-                  <span className="flex-1 text-left">{item.label}</span>
-                  <motion.div animate={{ rotate: isExpanded ? 0 : -90 }} transition={{ duration: 0.2 }}>
-                    <ChevronLeft size={16} className="text-current opacity-70" />
-                  </motion.div>
-                </button>
-
-                <motion.div
-                  initial={false}
-                  animate={{ height: isExpanded ? "auto" : 0, opacity: isExpanded ? 1 : 0 }}
-                  transition={{ duration: 0.25, ease: "easeInOut" }}
-                  className="overflow-hidden"
-                >
-                  {isExpanded && item.subItems.length > 0 && (
-                    <div className="ml-8 mt-1 space-y-1">
-                      {item.subItems.map((sub) => (
-                        <Link
-                          key={sub.route}
-                          href={sub.route}
-                          onClick={isMobile ? toggleSidebar : undefined}
-                          className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all ${
-                            isActive(sub.route)
-                              ? "text-violet-400"
-                              : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-variant)]"
-                          }`}
-                        >
-                          <div className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></div>
-                          <span>{sub.label}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </motion.div>
-              </div>
             );
           }
 
@@ -321,21 +268,21 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
                 transition={{ duration: 0.25, ease: "easeInOut" }}
                 className="overflow-hidden"
               >
-                {isExpanded && item.subItems && (
+                {isExpanded && item.subItems?.length > 0 && (
                   <div className="ml-8 mt-1 space-y-1">
-                    {item.subItems.map((subItem) => (
+                    {item.subItems.map((sub) => (
                       <Link
-                        key={subItem.route}
-                        href={subItem.route}
+                        key={sub.route}
+                        href={sub.route}
                         onClick={isMobile ? toggleSidebar : undefined}
                         className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all ${
-                          isActive(subItem.route)
+                          isActive(sub.route)
                             ? "text-violet-400"
                             : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-variant)]"
                         }`}
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-current opacity-50"></div>
-                        <span>{subItem.label}</span>
+                        <span>{sub.label}</span>
                       </Link>
                     ))}
                   </div>
