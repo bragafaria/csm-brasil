@@ -68,7 +68,7 @@ export default function Summary() {
       if (!stored) {
         console.warn("No assessment data found");
         // Redirect back to test if no data
-        router.push("/assessment/test");
+        router.push("/csm-assessment");
         return;
       }
 
