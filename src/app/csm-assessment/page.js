@@ -6,6 +6,7 @@ import { questions, calculateCSMResults } from "../utils/csm";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Spinner from "@/app/components/ui/Spinner";
+import { persistentStorage } from "@/app/utils/storage"; // ← We use this now
 
 export default function Test() {
   const router = useRouter();
@@ -13,30 +14,29 @@ export default function Test() {
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false); // ← NEW
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const q = questions[current];
 
   useEffect(() => {
-    const saved = localStorage.getItem("csmAnswers");
+    // ← Changed: use persistentStorage
+    const saved = persistentStorage.getItem("csmAnswers");
     if (saved) {
       try {
-        const parsed = JSON.parse(saved);
+        const parsed = Array.isArray(saved) ? saved : JSON.parse(saved);
         if (parsed.length === questions.length) {
           setAnswers(parsed);
 
-          // ← Proper resume logic
           const firstUnanswered = parsed.findIndex((a) => a === null);
           if (firstUnanswered !== -1) {
             setCurrent(firstUnanswered);
           }
-          // If somehow all are answered but csmAnswers still exists → stay at 0 (edge case)
         } else {
           setError("Previous progress is outdated. Starting a new test.");
-          localStorage.removeItem("csmAnswers");
+          persistentStorage.removeItem("csmAnswers");
         }
       } catch (e) {
         setError("Error loading progress. Starting a new test.");
-        localStorage.removeItem("csmAnswers");
+        persistentStorage.removeItem("csmAnswers");
       }
     }
     setLoading(false);
@@ -46,7 +46,8 @@ export default function Test() {
     const newAnswers = [...answers];
     newAnswers[current] = value;
     setAnswers(newAnswers);
-    localStorage.setItem("csmAnswers", JSON.stringify(newAnswers));
+    // ← Changed: use persistentStorage
+    persistentStorage.setItem("csmAnswers", newAnswers);
     setError(null);
   };
 
@@ -74,11 +75,12 @@ export default function Test() {
       const startTime = Date.now();
       const results = calculateCSMResults(answers);
 
-      localStorage.setItem("csmAssessmentData", JSON.stringify({ answers, results }));
-      localStorage.removeItem("csmAnswers");
+      // ← CRITICAL: These two lines now use persistentStorage
+      persistentStorage.setItem("csmAssessmentData", { answers, results });
+      persistentStorage.removeItem("csmAnswers");
 
       const elapsed = Date.now() - startTime;
-      const minDelay = 1000; // minimum 1 second of "loading" for good UX
+      const minDelay = 1000;
       const delay = Math.max(minDelay - elapsed, 0);
 
       setTimeout(() => {
@@ -97,6 +99,7 @@ export default function Test() {
   const percentage = (((current + 1) / questions.length) * 100).toFixed(0);
   const minutesLeft = Math.max(0, Math.round((questions.length - current - 1) * 0.15));
 
+  // Rest of your JSX (100% unchanged)
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-[var(--surface)]">
       <motion.div
@@ -193,7 +196,6 @@ export default function Test() {
             onClick={prev}
             disabled={current === 0 || isSubmitting}
             className="py-3 px-6 rounded-lg bg-[var(--surface-variant)] text-[var(--text-secondary)] font-medium hover:bg-[var(--surface-variant-hover)] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-            aria-label="Previous question"
           >
             Prev
           </button>
@@ -204,7 +206,6 @@ export default function Test() {
             className={`py-3 px-10 rounded-lg btn-primary font-semibold transition-all flex items-center justify-center gap-3 ${
               isSubmitting ? "opacity-90 cursor-not-allowed" : ""
             }`}
-            aria-label={current < questions.length - 1 ? "Next question" : "Finish test"}
           >
             {isSubmitting ? (
               <Spinner>{current < questions.length - 1 ? "Next..." : "Finishing..."}</Spinner>
