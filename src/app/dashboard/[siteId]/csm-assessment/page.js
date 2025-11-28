@@ -8,6 +8,7 @@ import { supabase } from "@/app/utils/supabaseClient";
 import { motion } from "framer-motion";
 import Spinner from "@/app/components/ui/Spinner";
 import Image from "next/image";
+import { X } from "lucide-react";
 
 export default function DashboardTest() {
   const router = useRouter();
@@ -278,9 +279,17 @@ export default function DashboardTest() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="flex max-h-full flex-col items-center justify-center mt:2 md:mt-6 p-6 bg-[var(--surface)]"
+      className="flex max-h-full flex-col items-center justify-start md:justify-center mt:2 md:mt-6 p-2 md:p-6 bg-[var(--surface)]"
     >
-      <div className="w-full max-w-lg card-gradient p-8 rounded-lg shadow-custom-lg border border-[var(--border)]">
+      <div className="w-full max-w-lg card-gradient p-8 rounded-lg shadow-custom-lg border border-[var(--border)] relative">
+        {/* Close Button */}
+        <button
+          onClick={() => router.push(`/dashboard/${siteId}`)}
+          className="absolute top-4 right-4 text-gray-500 hover:text-[var(--accent)] transition-colors"
+        >
+          <X className="h-6 w-6" />
+        </button>
+
         {/* Header */}
         <div className="flex items-center justify-center mb-6 gap-2">
           <Image src="/logo_transparent_svg.svg" alt="CSM Dynamics Logo" width={28} height={28} className="h-7 w-7" />

@@ -6,6 +6,7 @@ import { questions, calculateCSMResults } from "../utils/csm";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Spinner from "@/app/components/ui/Spinner";
+import { X } from "lucide-react";
 
 // Helper function to safely use localStorage with fallback
 const safeLocalStorage = {
@@ -164,7 +165,7 @@ export default function Test() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-[var(--surface)]">
+    <main className="flex min-h-screen flex-col items-center justify-start md:justify-center px-2 py-4 md:p-6 bg-[var(--surface)]">
       {!localStorageAvailable && (
         <div className="mb-4 p-3 bg-yellow-900/20 border border-yellow-500/50 rounded-lg max-w-lg">
           <p className="text-yellow-200 text-sm text-center">
@@ -177,8 +178,16 @@ export default function Test() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="w-full max-w-lg card-gradient p-8 rounded-lg shadow-custom-lg border border-[var(--border)]"
+        className="w-full max-w-lg card-gradient p-8 rounded-lg shadow-custom-lg border border-[var(--border)] relative"
       >
+        {/* Close Button */}
+        <button
+          onClick={() => router.push("/")}
+          className="absolute top-4 right-4 text-gray-500 hover:text-[var(--accent)] transition-colors"
+        >
+          <X className="h-6 w-6" />
+        </button>
+
         {/* Header */}
         <div className="flex items-center justify-center mb-6 gap-2">
           <Image src="/logo_transparent_svg.svg" alt="CSM Dynamics Logo" width={28} height={28} className="h-7 w-7" />
