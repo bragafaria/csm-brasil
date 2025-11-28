@@ -28,14 +28,13 @@ export default function TermsModal({ onClose }) {
 
         {/* Scrollable Content */}
         <div className="overflow-y-auto h-[calc(100%-80px)] px-6 py-6 text-[var(--text-secondary)] space-y-6 custom-scrollbar">
-          <div className="space-y-2">
+          <div className="flex flex-col space-y-2">
             <p className="text-sm italic">Effective Date: November 26, 2025</p>
-            <p className="text-sm italic">Last Updated: November 26, 2025</p>
+            <p className="text-sm italic">Last Updated: December 10, 2025</p>
           </div>
 
           <p className="text-base leading-relaxed">
-            Welcome to the <strong>Cognitive Spectrum Model (CSM)</strong> platform (&quot;Service,&quot;
-            &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;). These Terms of Service (&quot;Terms&quot;) govern your
+            Welcome to the <strong>Cognitive Spectrum Model (CSM)</strong> platform. These Terms of Service govern your
             access to and use of our website, mobile application, assessment tools, reports, and CSM Sessions services.
             By accessing or using our Service, you agree to be bound by these Terms. If you do not agree, please do not
             use our Service.
@@ -76,8 +75,8 @@ export default function TermsModal({ onClose }) {
                 <p className="text-base leading-relaxed mb-3">We offer guided self-reflection sessions through:</p>
                 <ul className="list-disc pl-8 space-y-2 text-base leading-relaxed">
                   <li>
-                    <strong>Subscription Model:</strong> $49/month for unlimited sessions (limited to one session every
-                    2 days), with additional sessions available at $19 per session after limits are reached
+                    <strong>Subscription Model:</strong> $49/month for unlimited sessions (a new session can only be
+                    opened once the previous one has been reviewed and answered)
                   </li>
                   <li>
                     <strong>Pay-Per-Session Model:</strong> $19 per individual session without subscription commitment
@@ -228,8 +227,8 @@ export default function TermsModal({ onClose }) {
                     <strong>Couple Insights Report:</strong> $49 USD (one-time payment)
                   </li>
                   <li>
-                    <strong>CSM Sessions Subscription:</strong> $49/month (auto-renewing) with unlimited sessions (one
-                    per 2 days); additional sessions at $19 each
+                    <strong>CSM Sessions Subscription:</strong> $49/month (auto-renewing) with unlimited sessions (a new
+                    session can only be opened once the previous one has been reviewed and answered)
                   </li>
                   <li>
                     <strong>Pay-Per-Session:</strong> $19 USD per session
@@ -386,8 +385,8 @@ export default function TermsModal({ onClose }) {
             <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-3">13. Dispute Resolution</h2>
             <p className="text-base leading-relaxed mb-3">
               These Terms are governed by the laws of <strong>Delaware, USA</strong>, without regard to conflict of law
-              principles. Before filing any legal action, you agree to contact us at support@cognitivespectrum.com to
-              attempt informal resolution.
+              principles. Before filing any legal action, you agree to contact us at csm@csmdynamics.com to attempt
+              informal resolution.
             </p>
             <p className="text-base leading-relaxed font-bold mb-3">
               ANY DISPUTES SHALL BE RESOLVED THROUGH BINDING ARBITRATION RATHER THAN IN COURT, EXCEPT FOR SMALL CLAIMS
@@ -415,11 +414,11 @@ export default function TermsModal({ onClose }) {
           <section>
             <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-3">15. Contact Information</h2>
             <p className="text-base leading-relaxed">
-              <strong>Cognitive Spectrum Model LLC</strong>
+              <strong>CSM Global</strong>
               <br />
-              Email: support@cognitivespectrum.com
+              Email: csm@csmdynamics.com
               <br />
-              Address: 123 Reflection Way, Wilmington, DE 19801, USA
+              Address: CLN 113 C 116, Brasilia, DF 70.763-530 Brazil
             </p>
           </section>
 

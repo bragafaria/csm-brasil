@@ -58,7 +58,7 @@ export default function RefundModal({ onClose }) {
 
           <section>
             <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-3">
-              2. Couple Insights Report ($49 One-Time Payment)
+              2. {`Couple's Insight Report`} ($49 One-Time Payment)
             </h2>
 
             <div className="space-y-4">
@@ -88,8 +88,8 @@ export default function RefundModal({ onClose }) {
                 <p className="text-base leading-relaxed mb-2">To request a refund for your Couple Insights Report:</p>
                 <ol className="list-decimal pl-6 space-y-2 text-base">
                   <li>
-                    Email us at <strong>support@cognitivespectrum.com</strong> with &quot;Couple Report Refund
-                    Request&quot; in the subject line
+                    Email us at <strong>csm@csmdynamics.com</strong> with &quot;Couple Report Refund Request&quot; in
+                    the subject line
                   </li>
                   <li>Include your order number (found in your purchase confirmation email)</li>
                   <li>Briefly mention your reason (optional—we respect your privacy)</li>
@@ -111,8 +111,8 @@ export default function RefundModal({ onClose }) {
                     (depending on your bank)
                   </li>
                   <li>
-                    <strong>Access Removal:</strong> Upon refund approval, access to the Couple Insights Report will be
-                    revoked
+                    <strong>Access Removal:</strong> Upon refund approval, access to the {`Couple's Insight Report`}{" "}
+                    will be revoked
                   </li>
                 </ul>
               </div>
@@ -137,7 +137,7 @@ export default function RefundModal({ onClose }) {
               <div>
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">3.1 Free First Session</h3>
                 <p className="text-base leading-relaxed">
-                  As an upsell from the Couple Insights Report, you receive{" "}
+                  As an upsell from the {`Couple's Insight Report`}, you receive{" "}
                   <strong>one complimentary CSM Session</strong> to experience the value before committing to a
                   subscription. Since this first session is free, no refund is applicable.
                 </p>
@@ -227,7 +227,7 @@ export default function RefundModal({ onClose }) {
                   <li>You&apos;ll receive a confirmation email</li>
                 </ol>
                 <p className="text-base leading-relaxed mt-3">
-                  Alternatively, email <strong>support@cognitivespectrum.com</strong> with &quot;Cancel CSM Sessions
+                  Alternatively, email <strong>csm@csmdynamics.com</strong> with &quot;Cancel CSM Sessions
                   Subscription&quot; in the subject line.
                 </p>
               </div>
@@ -264,7 +264,7 @@ export default function RefundModal({ onClose }) {
                   <li>The session has not entered processing (no coach has been assigned)</li>
                 </ul>
                 <p className="text-base leading-relaxed mt-3">
-                  Contact <strong>support@cognitivespectrum.com</strong> immediately with your order number to request
+                  Contact <strong>csm@csmdynamics.com</strong> immediately with your order number to request
                   pre-delivery cancellation.
                 </p>
               </div>
@@ -326,8 +326,8 @@ export default function RefundModal({ onClose }) {
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">5.3 Legitimate Disputes</h3>
                 <p className="text-base leading-relaxed">
                   We fully support legitimate disputes for billing errors or unauthorized charges. Simply email us at
-                  <strong> support@cognitivespectrum.com</strong> with &quot;Billing Dispute&quot; in the subject line,
-                  and we&apos;ll investigate and resolve the issue promptly, usually within 24-48 hours.
+                  <strong> csm@csmdynamics.com</strong> with &quot;Billing Dispute&quot; in the subject line, and
+                  we&apos;ll investigate and resolve the issue promptly, usually within 24-48 hours.
                 </p>
               </div>
             </div>
@@ -426,7 +426,7 @@ export default function RefundModal({ onClose }) {
             </p>
             <div className="bg-[var(--surface)]/30 border border-[var(--border)] rounded-xl p-5 space-y-2">
               <p className="text-base">
-                <strong>Email:</strong> support@cognitivespectrum.com
+                <strong>Email:</strong> csm@csmdynamics.com
               </p>
               <p className="text-base">
                 <strong>Subject Line Examples:</strong>
@@ -516,11 +516,6 @@ export default function RefundModal({ onClose }) {
                     <td className="border border-[var(--border)] px-4 py-2">CSM Sessions Subscription</td>
                     <td className="border border-[var(--border)] px-4 py-2">$49/month</td>
                     <td className="border border-[var(--border)] px-4 py-2">No refunds (cancel anytime)</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-[var(--border)] px-4 py-2">Extra Sessions (Subscription)</td>
-                    <td className="border border-[var(--border)] px-4 py-2">$19 each</td>
-                    <td className="border border-[var(--border)] px-4 py-2">No refunds after delivery</td>
                   </tr>
                   <tr>
                     <td className="border border-[var(--border)] px-4 py-2">Pay-Per-Session</td>

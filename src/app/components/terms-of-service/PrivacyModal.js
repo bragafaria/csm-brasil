@@ -35,10 +35,9 @@ export default function PrivacyModal({ onClose }) {
           </div>
 
           <p className="text-base leading-relaxed">
-            Welcome to the <strong>Cognitive Spectrum Model</strong> (&quot;CSM,&quot; &quot;we,&quot; &quot;us,&quot;
-            or &quot;our&quot;). We are committed to protecting your privacy and handling your personal information with
-            care and transparency. This Privacy Policy explains what information we collect, how we use it, how we
-            protect it, and your rights regarding your data.
+            Welcome to the <strong>Cognitive Spectrum Model</strong>. We are committed to protecting your privacy and
+            handling your personal information with care and transparency. This Privacy Policy explains what information
+            we collect, how we use it, how we protect it, and your rights regarding your data.
           </p>
 
           <p className="text-base leading-relaxed">
@@ -63,7 +62,7 @@ export default function PrivacyModal({ onClose }) {
                       <li>Name</li>
                       <li>Email address</li>
                       <li>Password (encrypted)</li>
-                      <li>Date of birth (to verify age requirement)</li>
+                      <li>Optional: Date of birth</li>
                       <li>Optional: Phone number, location</li>
                     </ul>
                   </div>
@@ -275,10 +274,10 @@ export default function PrivacyModal({ onClose }) {
                     <strong>Email Service Providers:</strong> Deliver service emails and optional marketing
                     communications
                   </li>
-                  <li>
+                  {/* <li>
                     <strong>AI and Technology Partners:</strong> Assist in generating session reports under strict
                     confidentiality
-                  </li>
+                  </li> */}
                 </ul>
                 <p className="text-base leading-relaxed mt-2">
                   All service providers are contractually required to protect your data and use it only for providing
@@ -439,7 +438,7 @@ export default function PrivacyModal({ onClose }) {
                   6.4 How to Exercise Your Rights
                 </h3>
                 <p className="text-base leading-relaxed mb-2">
-                  Contact us at: <strong>privacy@cognitivespectrum.com</strong>
+                  Contact us at: <strong>csm@csmdynamics.com</strong>
                 </p>
                 <p className="text-base leading-relaxed">
                   We will respond to requests within 30 days (or as required by applicable law). We may need to verify
@@ -492,7 +491,7 @@ export default function PrivacyModal({ onClose }) {
             <p className="text-base leading-relaxed">
               If we discover that we have inadvertently collected data from someone under 18, we will delete the
               information immediately and terminate the account. Parents or guardians who believe we may have collected
-              information from a minor should contact us at privacy@cognitivespectrum.com.
+              information from a minor should contact us at csm@csmdynamics.com.
             </p>
           </section>
 
@@ -584,17 +583,12 @@ export default function PrivacyModal({ onClose }) {
               For questions, concerns, or requests regarding this Privacy Policy or your personal data:
             </p>
             <div className="text-base leading-relaxed space-y-1">
-              <p>
-                <strong>Cognitive Spectrum Model LLC</strong>
-              </p>
-              <p>
-                <strong>Email:</strong> privacy@cognitivespectrum.com
-              </p>
-              <p>
-                <strong>Support Email:</strong> support@cognitivespectrum.com
-              </p>
-              <p>
-                <strong>Address:</strong> 123 Reflection Way, Wilmington, DE 19801, USA
+              <p className="text-base leading-relaxed">
+                <strong>CSM Global</strong>
+                <br />
+                Email: csm@csmdynamics.com
+                <br />
+                Address: CLN 113 C 116, Brasilia, DF 70.763-530 Brazil
               </p>
             </div>
             <p className="text-base leading-relaxed mt-3">

@@ -636,6 +636,9 @@ export default function Home() {
             <span>Take Free Test</span>
             <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
           </button>
+          <p className="text-[var(--text-secondary)] mt-4 text-xs sm:text-sm">
+            Takes only 10 minutes • Completely free
+          </p>
         </div>
       </section>
 
