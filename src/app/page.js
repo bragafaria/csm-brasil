@@ -200,38 +200,42 @@ export default function Home() {
     <div className="min-h-screen bg-[var(--surface)] text-[var(--text-primary)]">
       {/* Sticky Header */}
       <header className="fixed top-0 w-full left-0 right-0 z-50 bg-[var(--dashboard)]/90 backdrop-blur-lg border-b border-[var(--border)]">
-        <nav className="container mx-auto px-4 py-3 md:py-4">
+        <nav className="container mx-auto px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4">
           <div className="flex items-center justify-between">
             {/* Mobile: Hamburger Menu (Left) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 hover:bg-[var(--surface)]/20 rounded-lg transition-colors"
+              className="md:hidden p-1.5 sm:p-2 hover:bg-[var(--surface)]/20 rounded-lg transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
-                <X className="h-6 w-6 text-[var(--text-primary)]" />
+                <X className="h-5 w-5 sm:h-6 sm:w-6 text-[var(--text-primary)]" />
               ) : (
-                <Menu className="h-6 w-6 text-[var(--text-primary)]" />
+                <Menu className="h-5 w-5 sm:h-6 sm:w-6 text-[var(--text-primary)]" />
               )}
             </button>
 
             {/* Mobile: Logo (Center) & Desktop: Logo (Left) */}
-            <div className="flex items-center space-x-2 md:flex-none absolute left-1/2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0">
+            <div className="flex items-center space-x-1.5 sm:space-x-2 md:flex-none absolute left-1/2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0">
               <Image
                 src="/logo_transparent_svg.svg"
                 alt="CSM Dynamics Logo"
-                width={28}
-                height={28}
-                className="h-6 w-6 md:h-8 md:w-8"
+                width={32}
+                height={32}
+                className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8"
               />
-              <div className="flex items-center space-x-1">
-                <h1 className="text-base md:text-xl font-bold text-[var(--primary)]">CSM</h1>
-                <h1 className="text-base md:text-xl font-light text-white">Dynamics</h1>
+              <div className="flex items-center space-x-0.5 sm:space-x-1">
+                <h1 className="text-sm sm:text-base md:text-xl font-bold text-[var(--primary)] drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">
+                  CSM
+                </h1>
+                <h1 className="text-sm sm:text-base md:text-xl font-light text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">
+                  Dynamics
+                </h1>
               </div>
             </div>
 
             {/* Desktop: Navigation Links (Center) */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-4 lg:space-x-8">
               {[
                 { id: "home", label: "Home" },
                 { id: "how-it-works", label: "How It Works" },
@@ -242,7 +246,7 @@ export default function Home() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`transition-colors ${
+                  className={`text-sm lg:text-base transition-colors ${
                     activeNav === item.id
                       ? "text-[var(--accent)]"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
@@ -256,7 +260,7 @@ export default function Home() {
             {/* Mobile & Desktop: Login Button (Right) */}
             <button
               onClick={() => router.push("/login")}
-              className="btn-primary px-3 py-1.5 md:px-6 md:py-2 rounded-lg text-sm md:text-base font-semibold cursor-pointer"
+              className="btn-primary px-2.5 py-1 sm:px-3 sm:py-1.5 md:px-6 md:py-2 rounded-lg text-xs sm:text-sm md:text-base font-semibold cursor-pointer whitespace-nowrap"
             >
               Login
             </button>
@@ -269,7 +273,7 @@ export default function Home() {
             mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
           }`}
         >
-          <div className="px-4 py-4 bg-[var(--dashboard)] border-t border-[var(--border)]">
+          <div className="px-3 sm:px-4 py-3 sm:py-4 bg-[var(--dashboard)] border-t border-[var(--border)]">
             <div className="flex flex-col space-y-1">
               {[
                 { id: "home", label: "Home" },
@@ -281,7 +285,7 @@ export default function Home() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`text-left px-4 py-3 rounded-lg transition-colors ${
+                  className={`text-left px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg transition-colors text-sm sm:text-base ${
                     activeNav === item.id
                       ? "bg-[var(--primary)]/10 text-[var(--accent)]"
                       : "text-[var(--text-secondary)] hover:bg-[var(--surface)]/20 hover:text-[var(--text-primary)]"
@@ -305,24 +309,37 @@ export default function Home() {
         <div className="absolute top-20 left-10 w-72 h-72 bg-[rgba(var(--primary-rgb),0.1)] rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-[rgba(var(--accent-rgb),0.1)] rounded-full blur-3xl"></div>
 
-        <div className="relative max-w-7xl mx-auto mt-12 sm:mt-20 px-3 sm:px-4 lg:px-8 text-center">
+        <div className="relative max-w-7xl mx-auto md:mt-12 mt-8 px-3 sm:px-4 lg:px-8 text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4 sm:mb-6">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
               <motion.span
                 custom={0}
                 initial="hidden"
                 animate="visible"
                 variants={headlineVariants}
-                className="block bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] gradient-text" // Add gradient-text
+                className="block bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] gradient-text md:pb-4"
               >
-                Stronger Relationships Start with&#8203; {/* Zero-width space for multiline reflow */}
+                Stronger Relationships
               </motion.span>
+            </h1>
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
               <motion.span
                 custom={1}
                 initial="hidden"
                 animate="visible"
                 variants={headlineVariants}
-                className="block bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--primary)] gradient-text" // Add gradient-text
+                className="block bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] gradient-text md:pb-4"
+              >
+                Start With
+              </motion.span>
+            </h1>
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl  font-bold leading-tight mb-4 sm:mb-6">
+              <motion.span
+                custom={2}
+                initial="hidden"
+                animate="visible"
+                variants={headlineVariants}
+                className="block bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--primary)] gradient-text pb-4"
               >
                 Understanding
               </motion.span>
@@ -467,33 +484,37 @@ export default function Home() {
       {/* How It Works — FULL TEXT, NO ELLIPSES */}
       <section
         id="how-it-works"
-        className="pt-16 md:py-16 section-full bg-gradient-to-b from-[var(--surface)] to-[var(--surface-variant)]"
+        className="pt-16 md:py-16 py-4 section-full bg-gradient-to-b from-[var(--surface)] to-[var(--surface-variant)]"
       >
         <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[var(--text-primary)]">How It Works</h2>
-            <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
+          {/* Header - Added responsive text sizes and margins */}
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-[var(--text-primary)] px-2">
+              How It Works
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-[var(--text-secondary)] max-w-3xl mx-auto px-4">
               Four simple steps to transform how you understand yourself and each other.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" key={routeKey}>
+          {/* Grid - Added responsive gaps */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10" key={routeKey}>
             {[
               {
                 title: "Take the Free Assessment",
-                text: "Answer a quick, 10-minute questionnaire that uncovers your unique Cognitive Spectrum profile: how you think, decide, feel, and connect. No partner needed.",
+                text: "You can start on your own. Answer a quick, 10-minute questionnaire that reveals your unique Cognitive Spectrum profile.",
               },
               {
                 title: "Get Your Results",
-                text: "Instantly receive your CSM Archetype, percentage-based spectrums, and deep insights into your cognitive strengths, growth areas, and blind spots.",
+                text: "Receive your CSM Archetype instantly, along with percentage-based spectrums and deep insights into your strengths, growth areas, and blind spots",
               },
               {
                 title: "Access Your Dashboard",
-                text: "Step into your lifetime dashboard to explore results, track growth, save insights, and use relationship tools - anytime, on any device.",
+                text: "Enter your lifetime dashboard to explore your results, track growth, save insights, and use relationship tools anytime, on any device.",
               },
               {
                 title: "Invite Your Partner",
-                text: "Send a private invite. When they finish, unlock your joint Couple Insights Report: compatibility patterns, communication strategies, and growth opportunities.",
+                text: "Send a private invite. When they finish, you unlock your joint Couple's Insight Report, showing compatibility patterns, communication strategies, and opportunities for growth.",
               },
             ].map((step, i) => (
               <motion.div
@@ -503,21 +524,28 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.2 }}
                 variants={stepVariants}
-                className="text-center"
+                className="text-center py-2 sm:px-3"
               >
+                {/* Circle - Added responsive sizes */}
                 <motion.div
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
                   variants={circleVariants}
-                  className="w-20 h-20 rounded-full bg-[var(--accent)] flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-[var(--text-primary)]"
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[var(--accent)] flex items-center justify-center mx-auto mb-4 sm:mb-6 text-xl sm:text-2xl font-bold text-[var(--text-primary)]"
                 >
                   {i + 1}
                 </motion.div>
-                <h3 className="mx-auto max-w-[200px] text-[clamp(1.125rem,4vw,1.5rem)] font-bold mb-4 text-[var(--text-primary)] leading-tight tracking-tight">
+
+                {/* Title - Increased max-width for better mobile display */}
+                <h3 className="mx-auto max-w-[240px] sm:max-w-[200px] text-[clamp(1.125rem,4vw,1.5rem)] font-bold mb-3 sm:mb-4 text-[var(--text-primary)] leading-tight tracking-tight">
                   {step.title}
                 </h3>
-                <p className="text-[var(--text-secondary)] leading-relaxed text-sm sm:text-base">{step.text}</p>
+
+                {/* Text - Added max-width for better readability */}
+                <p className="text-[var(--text-secondary)] leading-relaxed text-sm sm:text-base max-w-[300px] sm:max-w-none mx-auto">
+                  {step.text}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -567,8 +595,8 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Self-Awareness</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
-                  Gain a precise profile of your cognitive and emotional patterns. This establishes the essential
-                  foundation for authentic connection and mutual understanding in your relationship.
+                  Gain a precise profile of your cognitive and emotional patterns. This gives you the essential
+                  foundation for genuine connection and deeper mutual understanding in your relationship.
                 </p>
               </div>
             </AnimatedCard>
@@ -586,8 +614,8 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Couple-Focused</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
-                  Unlike individual personality tests, our framework is specifically designed to understand relationship
-                  dynamics between partners. It reveals how you interact and where growth is possible.
+                  Unlike individual personality tests, our framework is crafted to reveal how partners interact. It
+                  highlights your relationship dynamics, where you naturally align, and where growth is possible.
                 </p>
               </div>
             </AnimatedCard>
@@ -605,8 +633,8 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Actionable Insights</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
-                  Get specific recommendations and strategies tailored to your unique relationship patterns and
-                  communication styles. Turn insights into real-world improvements.
+                  Receive clear, practical recommendations for your unique patterns and communication styles. Turn
+                  understanding into meaningful daily improvements.
                 </p>
               </div>
             </AnimatedCard>
@@ -624,8 +652,8 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Research-Based</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
-                  Built on decades of relationship psychology research and validated by thousands of successful couples.
-                  Science you can trust.
+                  Grounded in decades of relationship psychology research and validated by thousands of thriving
+                  couples. It’s science you can trust.
                 </p>
               </div>
             </AnimatedCard>

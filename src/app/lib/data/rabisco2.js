@@ -200,56 +200,56 @@
 // 198. C-L-I-F-H/N-V-O-F-H → Mediator / Catalyst ok
 // 199. C-L-I-F-H/N-V-O-F-A → Mediator / Wanderer ok
 // 200. C-L-I-F-H/N-V-I-S-H → Mediator / Mentor ok
-// 201. C-L-I-F-H/N-V-I-S-A → Mediator / Sage
-// 202. C-L-I-F-H/N-V-I-F-H → Mediator / Unifier
-// 203. C-L-I-F-H/N-V-I-F-A → Mediator / Mystic
-// 204. C-L-I-F-A/C-L-I-F-A → Maverick / Maverick
-// 205. C-L-I-F-A/C-V-O-S-H → Maverick / Steward
-// 206. C-L-I-F-A/C-V-O-S-A → Maverick / Artisan
-// 207. C-L-I-F-A/C-V-O-F-H → Maverick / Campaigner
-// 208. C-L-I-F-A/C-V-O-F-A → Maverick / Adventurer
-// 209. C-L-I-F-A/C-V-I-S-H → Maverick / Counselor
-// 210. C-L-I-F-A/C-V-I-S-A → Maverick / Healer
-// 211. C-L-I-F-A/C-V-I-F-H → Maverick / Peacemaker
-// 212. C-L-I-F-A/C-V-I-F-A → Maverick / Empath
-// 213. C-L-I-F-A/N-L-O-S-H → Maverick / Strategist
-// 214. C-L-I-F-A/N-L-O-S-A → Maverick / Inventor
-// 215. C-L-I-F-A/N-L-O-F-H → Maverick / Disruptor
-// 216. C-L-I-F-A/N-L-O-F-A → Maverick / Revolutionary
-// 217. C-L-I-F-A/N-L-I-S-H → Maverick / Academic
-// 218. C-L-I-F-A/N-L-I-S-A → Maverick / Theorist
-// 219. C-L-I-F-A/N-L-I-F-H → Maverick / Innovator
-// 220. C-L-I-F-A/N-L-I-F-A → Maverick / Visionary
-// 221. C-L-I-F-A/N-V-O-S-H → Maverick / Ambassador
-// 222. C-L-I-F-A/N-V-O-S-A → Maverick / Artist
-// 223. C-L-I-F-A/N-V-O-F-H → Maverick / Catalyst
-// 224. C-L-I-F-A/N-V-O-F-A → Maverick / Wanderer
-// 225. C-L-I-F-A/N-V-I-S-H → Maverick / Mentor
-// 226. C-L-I-F-A/N-V-I-S-A → Maverick / Sage
-// 227. C-L-I-F-A/N-V-I-F-H → Maverick / Unifier
-// 228. C-L-I-F-A/N-V-I-F-A → Maverick / Mystic
-// 229. C-V-O-S-H/C-V-O-S-H → Steward / Steward
-// 230. C-V-O-S-H/C-V-O-S-A → Steward / Artisan
-// 231. C-V-O-S-H/C-V-O-F-H → Steward / Campaigner
-// 232. C-V-O-S-H/C-V-O-F-A → Steward / Adventurer
-// 233. C-V-O-S-H/C-V-I-S-H → Steward / Counselor
-// 234. C-V-O-S-H/C-V-I-S-A → Steward / Healer
-// 235. C-V-O-S-H/C-V-I-F-H → Steward / Peacemaker
-// 236. C-V-O-S-H/C-V-I-F-A → Steward / Empath
-// 237. C-V-O-S-H/N-L-O-S-H → Steward / Strategist
-// 238. C-V-O-S-H/N-L-O-S-A → Steward / Inventor
-// 239. C-V-O-S-H/N-L-O-F-H → Steward / Disruptor
-// 240. C-V-O-S-H/N-L-O-F-A → Steward / Revolutionary
-// 241. C-V-O-S-H/N-L-I-S-H → Steward / Academic
-// 242. C-V-O-S-H/N-L-I-S-A → Steward / Theorist
-// 243. C-V-O-S-H/N-L-I-F-H → Steward / Innovator
-// 244. C-V-O-S-H/N-L-I-F-A → Steward / Visionary
-// 245. C-V-O-S-H/N-V-O-S-H → Steward / Ambassador
-// 246. C-V-O-S-H/N-V-O-S-A → Steward / Artist
-// 247. C-V-O-S-H/N-V-O-F-H → Steward / Catalyst
-// 248. C-V-O-S-H/N-V-O-F-A → Steward / Wanderer
-// 249. C-V-O-S-H/N-V-I-S-H → Steward / Mentor
-// 250. C-V-O-S-H/N-V-I-S-A → Steward / Sage
+// 201. C-L-I-F-H/N-V-I-S-A → Mediator / Sage ok
+// 202. C-L-I-F-H/N-V-I-F-H → Mediator / Unifier ok
+// 203. C-L-I-F-H/N-V-I-F-A → Mediator / Mystic ok
+// 204. C-L-I-F-A/C-L-I-F-A → Maverick / Maverick ok
+// 205. C-L-I-F-A/C-V-O-S-H → Maverick / Steward ok
+// 206. C-L-I-F-A/C-V-O-S-A → Maverick / Artisan ok
+// 207. C-L-I-F-A/C-V-O-F-H → Maverick / Campaigner ok
+// 208. C-L-I-F-A/C-V-O-F-A → Maverick / Adventurer ok
+// 209. C-L-I-F-A/C-V-I-S-H → Maverick / Counselor ok
+// 210. C-L-I-F-A/C-V-I-S-A → Maverick / Healer ok
+// 211. C-L-I-F-A/C-V-I-F-H → Maverick / Peacemaker ok
+// 212. C-L-I-F-A/C-V-I-F-A → Maverick / Empath ok
+// 213. C-L-I-F-A/N-L-O-S-H → Maverick / Strategist ok
+// 214. C-L-I-F-A/N-L-O-S-A → Maverick / Inventor ok
+// 215. C-L-I-F-A/N-L-O-F-H → Maverick / Disruptor ok
+// 216. C-L-I-F-A/N-L-O-F-A → Maverick / Revolutionary ok
+// 217. C-L-I-F-A/N-L-I-S-H → Maverick / Academic ok
+// 218. C-L-I-F-A/N-L-I-S-A → Maverick / Theorist ok
+// 219. C-L-I-F-A/N-L-I-F-H → Maverick / Innovator ok
+// 220. C-L-I-F-A/N-L-I-F-A → Maverick / Visionary ok
+// 221. C-L-I-F-A/N-V-O-S-H → Maverick / Ambassador ok
+// 222. C-L-I-F-A/N-V-O-S-A → Maverick / Artist ok
+// 223. C-L-I-F-A/N-V-O-F-H → Maverick / Catalyst ok
+// 224. C-L-I-F-A/N-V-O-F-A → Maverick / Wanderer ok
+// 225. C-L-I-F-A/N-V-I-S-H → Maverick / Mentor ok
+// 226. C-L-I-F-A/N-V-I-S-A → Maverick / Sage ok
+// 227. C-L-I-F-A/N-V-I-F-H → Maverick / Unifier ok
+// 228. C-L-I-F-A/N-V-I-F-A → Maverick / Mystic ok
+// 229. C-V-O-S-H/C-V-O-S-H → Steward / Steward ok
+// 230. C-V-O-S-H/C-V-O-S-A → Steward / Artisan ok
+// 231. C-V-O-S-H/C-V-O-F-H → Steward / Campaigner ok
+// 232. C-V-O-S-H/C-V-O-F-A → Steward / Adventurer ok
+// 233. C-V-O-S-H/C-V-I-S-H → Steward / Counselor ok
+// 234. C-V-O-S-H/C-V-I-S-A → Steward / Healer ok
+// 235. C-V-O-S-H/C-V-I-F-H → Steward / Peacemaker ok
+// 236. C-V-O-S-H/C-V-I-F-A → Steward / Empath ok
+// 237. C-V-O-S-H/N-L-O-S-H → Steward / Strategist ok
+// 238. C-V-O-S-H/N-L-O-S-A → Steward / Inventor ok
+// 239. C-V-O-S-H/N-L-O-F-H → Steward / Disruptor ok
+// 240. C-V-O-S-H/N-L-O-F-A → Steward / Revolutionary ok
+// 241. C-V-O-S-H/N-L-I-S-H → Steward / Academic ok
+// 242. C-V-O-S-H/N-L-I-S-A → Steward / Theorist ok
+// 243. C-V-O-S-H/N-L-I-F-H → Steward / Innovator ok
+// 244. C-V-O-S-H/N-L-I-F-A → Steward / Visionary ok
+// 245. C-V-O-S-H/N-V-O-S-H → Steward / Ambassador ok
+// 246. C-V-O-S-H/N-V-O-S-A → Steward / Artist ok
+// 247. C-V-O-S-H/N-V-O-F-H → Steward / Catalyst ok
+// 248. C-V-O-S-H/N-V-O-F-A → Steward / Wanderer ok
+// 249. C-V-O-S-H/N-V-I-S-H → Steward / Mentor ok
+// 250. C-V-O-S-H/N-V-I-S-A → Steward / Sage up
 // 251. C-V-O-S-H/N-V-I-F-H → Steward / Unifier
 // 252. C-V-O-S-H/N-V-I-F-A → Steward / Mystic
 // 253. C-V-O-S-A/C-V-O-S-A → Artisan / Artisan

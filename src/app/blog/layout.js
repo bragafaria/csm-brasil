@@ -141,7 +141,8 @@ export default function BlogLayout({ children }) {
       <footer className="bg-[var(--surface2)] border-t border-[var(--border)] py-12 mt-24">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-[var(--text-secondary)]">
-            © 2025 CSM Dynamics. Expert relationship and wellness guidance grounded in science.
+            © 2025 CSM Dynamics. Empowering couples with science-backed relationship insights through the Cognitive
+            Spectrum Model.
           </p>
         </div>
       </footer>
