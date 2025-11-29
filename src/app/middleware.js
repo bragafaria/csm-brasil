@@ -121,7 +121,7 @@ export async function middleware(req) {
     } = await supabase.auth.getSession();
 
     if (error) {
-      console.error("Middleware session error:", error.message);
+      console.error("Middleware session error :", error.message);
     }
 
     if (!session) {
