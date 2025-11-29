@@ -1,9 +1,8 @@
-// app/login/page.js
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
-import { sendResetEmail } from "@/app/actions/auth";
+import { checkLoginRateLimit, sendResetEmail } from "@/app/actions/auth-rate-limit";
 import Image from "next/image";
 import { X } from "lucide-react";
 
@@ -15,9 +14,10 @@ export default function Login() {
   const [showModal, setShowModal] = useState(false);
   const [isResetModalOpen, setIsResetModalOpen] = useState(false);
   const [resetEmail, setResetEmail] = useState("");
-  const [resetStatus, setResetStatus] = useState(null); // { success: boolean, message: string }
+  const [resetStatus, setResetStatus] = useState(null);
   const [resetLoading, setResetLoading] = useState(false);
   const [urlMessage, setUrlMessage] = useState("");
+  const [rateLimitInfo, setRateLimitInfo] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -27,6 +27,7 @@ export default function Login() {
       setUrlMessage("Email changed successfully! Please log in with your new email.");
     }
   }, []);
+
   const handleSendReset = async (e) => {
     e.preventDefault();
     setResetLoading(true);
@@ -35,9 +36,9 @@ export default function Login() {
     const result = await sendResetEmail(resetEmail);
 
     if (result.success) {
-      setResetStatus({ success: true, message: "Check your email for the reset link!" });
+      setResetStatus({ success: true, message: result.message });
     } else {
-      setResetStatus({ success: false, message: result.error || "Failed to send reset email" });
+      setResetStatus({ success: false, message: result.error });
     }
     setResetLoading(false);
   };
@@ -46,8 +47,23 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setRateLimitInfo(null);
 
     try {
+      // Step 1: Check rate limit on server (can't be bypassed)
+      const rateLimitCheck = await checkLoginRateLimit(email);
+
+      if (rateLimitCheck.rateLimit) {
+        setRateLimitInfo(rateLimitCheck.rateLimit);
+      }
+
+      if (!rateLimitCheck.allowed) {
+        setError(rateLimitCheck.error);
+        setLoading(false);
+        return;
+      }
+
+      // Step 2: Perform login on client (secure with HTTPS + RLS)
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -67,7 +83,7 @@ export default function Login() {
 
       console.log("Login successful, fetching user data:", { userId: data.session.user.id });
 
-      // Fetch siteId from users table
+      // Step 3: Fetch user data (protected by RLS policies)
       const { data: userData, error: userError } = await supabase
         .from("users")
         .select("site_id")
@@ -153,15 +169,29 @@ export default function Login() {
               Forgot password?
             </button>
           </div>
-          {error && <p className="text-red-400 text-sm text-center">{error}</p>}
+
+          {/* Rate limit info display */}
+          {rateLimitInfo && !rateLimitInfo.limited && (
+            <p className="text-xs text-[var(--text-secondary)] text-center">
+              Login attempts remaining: {rateLimitInfo.remaining}
+            </p>
+          )}
+
+          {error && (
+            <div className="p-3 bg-red-900/50 border border-red-500/50 rounded-lg">
+              <p className="text-red-300 text-sm text-center">{error}</p>
+            </div>
+          )}
+
           {urlMessage && (
-            <div className="mb-6 p-4 bg-green-900/50 border border-green-500/50 rounded-lg text-green-300 text-center text-sm">
+            <div className="p-4 bg-green-900/50 border border-green-500/50 rounded-lg text-green-300 text-center text-sm">
               {urlMessage}
             </div>
           )}
+
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || rateLimitInfo?.limited}
             className="btn-primary w-full py-3 rounded-lg font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Logging in..." : "Login"}
@@ -182,7 +212,7 @@ export default function Login() {
           <div className="card-gradient p-6 rounded-lg shadow-custom-lg max-w-sm w-full">
             <h2 className="text-xl font-semibold mb-4 text-[var(--text-primary)]">Action Required</h2>
             <p className="text-[var(--text-secondary)] mb-6 text-sm leading-relaxed">
-              Please complete the personal assessment test and purchase the couple’s report to access your dashboard.
+              {`Please complete the personal assessment test and purchase the couple's report to access your dashboard.`}
             </p>
             <button
               onClick={handleModalClose}
@@ -193,6 +223,7 @@ export default function Login() {
           </div>
         </div>
       )}
+
       {/* Forgot Password Modal */}
       {isResetModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-sm z-50 p-4 transition-opacity duration-300 ease-in-out border border-[var(--border)]">

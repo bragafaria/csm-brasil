@@ -1,10 +1,9 @@
-// app/actions/auth.js
+// app/actions/auth.js (excerpt)
 "use server";
 
 import { createClient } from "@supabase/supabase-js";
 import { redirect } from "next/navigation";
 
-// app/actions/auth.js (excerpt)
 export async function sendResetEmail(email) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;

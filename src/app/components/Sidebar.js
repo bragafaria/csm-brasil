@@ -41,7 +41,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
           route: `/dashboard/${siteId}/couples-report/how-you-connect`,
         },
         {
-          label: "Your 10 Life Challenges",
+          label: "Life Challenges",
           route: `/dashboard/${siteId}/couples-report/your-10-life-challenges`,
         },
       ],

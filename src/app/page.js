@@ -347,7 +347,7 @@ export default function Home() {
               </motion.span>
             </h1>
 
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[var(--text-secondary)] mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2">
+            <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto mb-10">
               The Cognitive Spectrum Model (CSM) is a framework that maps how you think and connect, providing clear
               steps for personal growth and stronger relationships.
             </p>
