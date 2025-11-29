@@ -108,6 +108,7 @@ export default function Test() {
 
     setIsSubmitting(true);
     setError(null);
+    window.scrollTo({ top: 0 });
 
     if (current < questions.length - 1) {
       setTimeout(() => {
@@ -169,7 +170,7 @@ export default function Test() {
       {!localStorageAvailable && (
         <div className="mb-4 p-3 bg-yellow-900/20 border border-yellow-500/50 rounded-lg max-w-lg">
           <p className="text-yellow-200 text-sm text-center">
-            ⚠️ Private browsing detected. Progress cannot be saved, but you can still complete the assessment.
+            ⚠️ Private browsing detected. To save your progress, please use a regular browser window.
           </p>
         </div>
       )}

@@ -10,6 +10,42 @@ import Spinner from "@/app/components/ui/Spinner";
 import Image from "next/image";
 import { X } from "lucide-react";
 
+// Safe localStorage wrapper to prevent iOS Safari Private Mode crashes
+const safeLocalStorage = {
+  getItem: (key) => {
+    try {
+      if (typeof window !== "undefined" && window.localStorage) {
+        return localStorage.getItem(key);
+      }
+    } catch (e) {
+      console.warn("localStorage.getItem failed:", e);
+    }
+    return null;
+  },
+  setItem: (key, value) => {
+    try {
+      if (typeof window !== "undefined" && window.localStorage) {
+        localStorage.setItem(key, value);
+        return true;
+      }
+    } catch (e) {
+      console.warn("localStorage.setItem failed:", e);
+    }
+    return false;
+  },
+  removeItem: (key) => {
+    try {
+      if (typeof window !== "undefined" && window.localStorage) {
+        localStorage.removeItem(key);
+        return true;
+      }
+    } catch (e) {
+      console.warn("localStorage.removeItem failed:", e);
+    }
+    return false;
+  },
+};
+
 export default function DashboardTest() {
   const router = useRouter();
   const { siteId } = useParams();
@@ -25,14 +61,14 @@ export default function DashboardTest() {
 
   // Load answers from localStorage only once on component mount
   useEffect(() => {
-    const saved = localStorage.getItem("csmAnswers");
+    const saved = safeLocalStorage.getItem("csmAnswers");
     if (saved) {
       try {
         const parsedAnswers = JSON.parse(saved);
         setAnswers(parsedAnswers);
       } catch (e) {
         console.error("Invalid localStorage data:", e.message, e);
-        localStorage.removeItem("csmAnswers");
+        safeLocalStorage.removeItem("csmAnswers");
       }
     }
   }, []);
@@ -128,7 +164,7 @@ export default function DashboardTest() {
     const newAnswers = [...answers];
     newAnswers[current] = value;
     setAnswers(newAnswers);
-    localStorage.setItem("csmAnswers", JSON.stringify(newAnswers));
+    safeLocalStorage.setItem("csmAnswers", JSON.stringify(newAnswers));
   };
 
   const handleRankChange = (optionKey, points) => {
@@ -146,6 +182,7 @@ export default function DashboardTest() {
     if (current < questions.length - 1) {
       setTimeout(() => {
         setCurrent(current + 1);
+        window.scrollTo({ top: 0 });
         setIsSubmitting(false);
       }, 500);
       return;
@@ -165,7 +202,7 @@ export default function DashboardTest() {
         return;
       }
 
-      localStorage.setItem("csmAssessmentData", JSON.stringify({ answers, results }));
+      safeLocalStorage.setItem("csmAssessmentData", JSON.stringify({ answers, results }));
       setAssessmentData(results);
       console.log("Assessment results calculated:", results);
 
@@ -210,8 +247,8 @@ export default function DashboardTest() {
         return;
       }
 
-      localStorage.removeItem("csmAnswers");
-      localStorage.removeItem("csmAssessmentData");
+      safeLocalStorage.removeItem("csmAnswers");
+      safeLocalStorage.removeItem("csmAssessmentData");
       console.log("Cleared localStorage: csmAnswers, csmAssessmentData");
 
       router.push(`/dashboard/${siteId}`);

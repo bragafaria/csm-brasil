@@ -358,7 +358,7 @@ export default function Home() {
                 onClick={handleStartTest}
                 disabled={loggingOut}
                 variants={buttonVariants}
-                className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 shadow-2xl flex items-center space-x-2 text-[var(--text-primary)] w-full sm:w-auto justify-center"
+                className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 shadow-2xl flex items-center space-x-2 text-[var(--text-primary)] max-w-sm md:max-w-md sm:w-auto justify-center"
               >
                 <span>{loggingOut ? "Preparing…" : "Take Free Test"}</span>
                 <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
