@@ -105,6 +105,8 @@ export default function PersonalReportPage() {
   const [isShortening, setIsShortening] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
 
+  const params = useParams();
+
   const createSlug = (name) =>
     name
       ?.toLowerCase()
@@ -326,8 +328,13 @@ export default function PersonalReportPage() {
 
   if (error)
     return (
-      <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center p-6">
-        <p className="text-lg text-red-400">{error}</p>
+      <div className="container mx-auto p-6 mt-20 max-w-7xl">
+        <div className="card-gradient p-8 rounded-lg shadow-custom max-w-2xl mx-auto text-center">
+          <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-4">{error}</h1>
+          <button onClick={() => router.push(`/dashboard/${siteId}`)} className="btn-primary mt-6 px-6 py-3 rounded-lg">
+            Back to Dashboard
+          </button>
+        </div>
       </div>
     );
 

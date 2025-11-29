@@ -108,11 +108,11 @@ export default function Test() {
 
     setIsSubmitting(true);
     setError(null);
-    window.scrollTo({ top: 0 });
 
     if (current < questions.length - 1) {
       setTimeout(() => {
         setCurrent(current + 1);
+        window.scrollTo({ top: 0 });
         setIsSubmitting(false);
       }, 500);
     } else {

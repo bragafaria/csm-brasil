@@ -16,7 +16,7 @@ export default function PrivacyModal({ onClose }) {
         className="relative w-full max-w-4xl h-[90vh] mx-4 bg-[var(--dashboard)] rounded-3xl overflow-hidden p-4 md:p-6 shadow-2xl border border-[var(--border)]"
       >
         {/* Header */}
-        <div className="sticky top-0 z-10 bg-violet-900/90 backdrop-blur-md px-6 py-4 border-b border-[var(--border)] flex justify-between items-center rounded-t-2xl mb-10">
+        <div className="sticky top-0 z-10 bg-violet-900 px-6 py-4 border-b border-[var(--border)] flex justify-between items-center rounded-t-2xl mb-10">
           <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)]">Privacy Policy</h1>
           <button
             onClick={onClose}
