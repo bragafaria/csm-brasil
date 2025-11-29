@@ -17,6 +17,7 @@ function InviteSignupContent() {
   const [serverError, setServerError] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [signupRemaining, setSignupRemaining] = useState(null);
 
   // Terms of Service state
   const [termsAccepted, setTermsAccepted] = useState(true);
@@ -24,6 +25,16 @@ function InviteSignupContent() {
 
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const meta = document.querySelector('meta[name="x-middleware-signup-remaining"]');
+    if (meta?.content) {
+      const num = parseInt(meta.content, 10);
+      if (!isNaN(num) && num >= 0) {
+        setSignupRemaining(num);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const invite = searchParams.get("invite");
@@ -226,6 +237,13 @@ function InviteSignupContent() {
             </label>
             {errors.terms && <p className="text-red-400 text-sm mt-2 text-center w-full">{errors.terms[0]}</p>}
           </div>
+
+          {signupRemaining !== null && (
+            <p className="text-xs text-[var(--text-secondary)] text-center my-4">
+              Signup attempts remaining this hour:{" "}
+              <span className="font-medium text-orange-400">{signupRemaining}</span>
+            </p>
+          )}
 
           <button
             type="submit"

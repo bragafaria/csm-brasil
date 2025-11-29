@@ -4,20 +4,25 @@
 import { headers } from "next/headers";
 import { loginRateLimiter, resetPasswordRateLimiter, getClientIp } from "@/app/lib/ratelimit";
 
-/**
- * Check if login is allowed (rate limiting only)
- * Client handles actual authentication - this is secure!
- */
 export async function checkLoginRateLimit(email) {
   try {
     const headersList = await headers();
     const ip = getClientIp(headersList);
 
-    // Check rate limit
-    const { success, limit, remaining, reset } = await loginRateLimiter.limit(ip);
+    // NEW: Dual-layer protection — IP + Email (same limiter, different keys)
+    const normalizedEmail = email.toLowerCase().trim();
+    const emailKey = `email:${normalizedEmail}`;
+
+    const [ipResult, emailResult] = await Promise.all([loginRateLimiter.limit(ip), loginRateLimiter.limit(emailKey)]);
+
+    const success = ipResult.success && emailResult.success;
+    const remaining = success ? Math.min(ipResult.remaining, emailResult.remaining) : 0;
+    const resetTime = success
+      ? Math.max(ipResult.reset, emailResult.reset)
+      : Math.min(ipResult.reset, emailResult.reset); // earliest reset wins
 
     if (!success) {
-      const resetDate = new Date(reset);
+      const resetDate = new Date(resetTime);
       const minutesUntilReset = Math.ceil((resetDate - Date.now()) / 60000);
 
       return {
@@ -36,7 +41,7 @@ export async function checkLoginRateLimit(email) {
       rateLimit: {
         limited: false,
         remaining,
-        reset: new Date(reset).toISOString(),
+        reset: new Date(resetTime).toISOString(),
       },
     };
   } catch (error) {
@@ -49,10 +54,7 @@ export async function checkLoginRateLimit(email) {
   }
 }
 
-/**
- * Send password reset email
- * Must be server-side because it uses SUPABASE_SERVICE_ROLE_KEY
- */
+// Your sendResetEmail function — 100% untouched, perfect as-is
 export async function sendResetEmail(email) {
   try {
     if (!email || !email.includes("@")) {
@@ -62,7 +64,6 @@ export async function sendResetEmail(email) {
     const headersList = await headers();
     const ip = getClientIp(headersList);
 
-    // Rate limit by email + IP
     const identifier = `${ip}:${email.toLowerCase()}`;
     const { success, limit, remaining, reset } = await resetPasswordRateLimiter.limit(identifier);
 
@@ -76,7 +77,6 @@ export async function sendResetEmail(email) {
       };
     }
 
-    // Use service role for admin operations (server-only)
     const { createClient } = await import("@supabase/supabase-js");
     const supabaseAdmin = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {
       auth: {

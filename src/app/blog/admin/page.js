@@ -1,24 +1,20 @@
-// @/app/access/login/page.js
+// @/app/blog/admin/login/page.js
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { supabase } from "@/app/utils/supabaseClient";
 
 // Extract the login logic into a separate component
-function LoginContent() {
+function BloggerLoginContent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
-  const searchParams = useSearchParams();
   const [loginRemaining, setLoginRemaining] = useState(null);
-  const sessionId = searchParams.get("session_id");
+  const router = useRouter();
 
   useEffect(() => {
-    const meta = document.querySelector('meta[name="x-middleware-coach-login-remaining"]');
+    const meta = document.querySelector('meta[name="x-middleware-admin-login-remaining"]');
     if (meta?.content) {
       const num = parseInt(meta.content, 10);
       if (!isNaN(num) && num >= 0) {
@@ -56,48 +52,23 @@ function LoginContent() {
             setError("User profile not found. Please log in again.");
             await supabase.auth.signOut();
             localStorage.removeItem("supabase.auth.token");
-            router.push("/access/login");
             return;
           }
 
-          // CRITICAL: Check if user_type is "coach" (PRIMARY check)
-          if (userData.user_type !== "coach") {
-            console.log("Non-coach user_type detected, signing out:", {
+          // Check if user is a blogger
+          if (userData.user_type !== "blogger") {
+            console.log("Non-blogger session detected, signing out:", {
               userId,
               userType: userData.user_type,
             });
             await supabase.auth.signOut();
             localStorage.removeItem("supabase.auth.token");
-            router.push("/access/login");
+            setError("Access denied. This area is for bloggers only.");
             return;
           }
 
-          // SECONDARY: Verify user exists in coaches table
-          const { data: coachData, error: coachError } = await supabase
-            .from("coaches")
-            .select("id")
-            .eq("user_id", userId)
-            .maybeSingle();
-
-          if (coachError) {
-            console.error("Coach fetch error:", coachError.message);
-            setError("Failed to verify coach status. Please try again.");
-            return;
-          }
-
-          if (!coachData) {
-            console.log("Coach not found in coaches table, signing out:", {
-              userId,
-              userType: userData.user_type,
-            });
-            await supabase.auth.signOut();
-            localStorage.removeItem("supabase.auth.token");
-            router.push("/access/login");
-            return;
-          }
-
-          console.log("Authenticated coach, redirecting to /access/coaching");
-          router.push("/access/coaching");
+          console.log("Authenticated blogger, redirecting to /blog/admin/blog");
+          router.push("/blog/admin/blog");
         }
       } catch (err) {
         console.error("Unexpected error in checkSession:", err.message);
@@ -142,54 +113,30 @@ function LoginContent() {
 
       if (userError || !userData) {
         console.error("User fetch error:", userError?.message || "No user found", userId);
-        setError("User profile not found. Please sign up or try again.");
+        setError("User profile not found. Please contact support.");
         await supabase.auth.signOut();
         return;
       }
 
-      // CRITICAL: Check if user_type is "coach" (PRIMARY check)
-      if (userData.user_type !== "coach") {
-        console.log("Login attempt with non-coach user_type:", {
+      // Verify blogger status
+      if (userData.user_type !== "blogger") {
+        console.log("Non-blogger login attempt:", {
           userId,
           userType: userData.user_type,
           email: userData.email,
         });
-        setError("Access denied. This login is for coaches only.");
+        setError("Access denied. This area is for bloggers only.");
         await supabase.auth.signOut();
         return;
       }
 
-      // SECONDARY: Verify user exists in coaches table
-      const { data: coachData, error: coachError } = await supabase
-        .from("coaches")
-        .select("id")
-        .eq("user_id", userId)
-        .maybeSingle();
-
-      if (coachError) {
-        console.error("Coach fetch error:", coachError.message);
-        setError("Failed to verify coach status. Please try again.");
-        return;
-      }
-
-      if (!coachData) {
-        console.log("User has coach user_type but not in coaches table:", {
-          userId,
-          userType: userData.user_type,
-          email: userData.email,
-        });
-        setError("Coach profile not found. Please contact support.");
-        await supabase.auth.signOut();
-        return;
-      }
-
-      console.log("Coach login successful:", {
+      console.log("Blogger login successful:", {
         userId,
-        coachId: coachData.id,
         name: userData.name,
+        email: userData.email,
       });
 
-      router.push("/access/coaching");
+      router.push("/blog/admin/blog");
     } catch (err) {
       console.error("Unexpected error in handleLogin:", err.message);
       setError("An unexpected error occurred during login. Please try again.");
@@ -208,12 +155,19 @@ function LoginContent() {
       >
         <div className="card-gradient p-8 rounded-lg shadow-custom-lg border border-[var(--border)]">
           {/* Logo */}
-          <div className="flex items-center justify-center gap-1 mb-6">
-            <h1 className="text-2xl font-bold text-[var(--primary)]">CSM</h1>
-            <h1 className="text-2xl font-light text-white">Dynamics</h1>
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <svg className="w-8 h-8 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+              />
+            </svg>
+            <h1 className="text-2xl font-bold text-white">Blog Admin</h1>
           </div>
 
-          <h2 className="text-xl font-bold text-[var(--text-primary)] text-center mb-6">Coach Login</h2>
+          <h2 className="text-xl font-bold text-[var(--text-primary)] text-center mb-6">Blogger Login</h2>
 
           {/* Error Message */}
           {error && (
@@ -240,7 +194,7 @@ function LoginContent() {
               <input
                 id="email"
                 type="email"
-                placeholder="coach@example.com"
+                placeholder="blogger@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
@@ -289,7 +243,7 @@ function LoginContent() {
                   : "btn-primary"
               }`}
             >
-              {loading ? "Logging in..." : "Login"}
+              {loading ? "Logging in..." : "Login to Blog Admin"}
             </motion.button>
           </form>
 
@@ -304,7 +258,7 @@ function LoginContent() {
                   d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
                 />
               </svg>
-              <span>CSM-Expert access only</span>
+              <span>Blogger access only</span>
             </p>
           </div>
         </div>
@@ -314,7 +268,7 @@ function LoginContent() {
 }
 
 // Main export with Suspense wrapper
-export default function Login() {
+export default function BloggerLogin() {
   return (
     <Suspense
       fallback={
@@ -323,7 +277,7 @@ export default function Login() {
         </div>
       }
     >
-      <LoginContent />
+      <BloggerLoginContent />
     </Suspense>
   );
 }

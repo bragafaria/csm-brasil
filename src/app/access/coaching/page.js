@@ -26,6 +26,9 @@ export default function Coaching() {
   const [statusFilter, setStatusFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearchQuery] = useDebounce(searchQuery, 300);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+  const [currentUser, setCurrentUser] = useState(null);
   const sessionsPerPage = 10;
   const router = useRouter();
 
@@ -43,6 +46,7 @@ export default function Coaching() {
       setError(null);
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
+      localStorage.removeItem("supabase.auth.token");
       router.push("/access/login");
     } catch (err) {
       console.error("Sign out error:", err.message);
@@ -52,56 +56,104 @@ export default function Coaching() {
     }
   };
 
+  // IMPROVED: Authentication check on mount
   useEffect(() => {
-    async function checkCoachAccess() {
+    async function verifyCoachAccess() {
       try {
+        setIsCheckingAuth(true);
+
+        // Check for active session
         const {
           data: { session },
           error: sessionError,
         } = await supabase.auth.getSession();
-        if (sessionError || !session) {
-          setError("You must be logged in as a coach.");
+
+        if (sessionError) {
+          console.error("Session check error:", sessionError.message);
+          router.push("/access/login");
+          return;
+        }
+
+        if (!session) {
+          console.log("No active session found");
           router.push("/access/login");
           return;
         }
 
         const userId = session.user.id;
-        const { data: coachData, error: coachError } = await supabase
-          .from("coaches")
-          .select("id, user_id")
-          .eq("user_id", userId)
+
+        // Fetch user profile from users table
+        const { data: userData, error: userError } = await supabase
+          .from("users")
+          .select("id, user_type, name, email")
+          .eq("id", userId)
           .maybeSingle();
 
-        if (coachError || !coachData) {
-          setError("Access denied: You are not a registered coach.");
+        if (userError || !userData) {
+          console.error("User fetch error:", userError?.message || "No user found");
+          await supabase.auth.signOut();
+          localStorage.removeItem("supabase.auth.token");
           router.push("/access/login");
           return;
         }
 
-        setCurrentCoachId(coachData.id);
+        // Verify user exists in coaches table
+        const { data: coachData, error: coachError } = await supabase
+          .from("coaches")
+          .select("id, user_id, users(name)")
+          .eq("user_id", userId)
+          .maybeSingle();
 
+        if (coachError || !coachData) {
+          console.log("Access denied - user is not a registered coach:", {
+            userId,
+            userType: userData.user_type,
+          });
+          await supabase.auth.signOut();
+          localStorage.removeItem("supabase.auth.token");
+          router.push("/access/login");
+          return;
+        }
+
+        // User is authenticated and is a coach
+        console.log("Coach authenticated:", {
+          coachId: coachData.id,
+          name: userData.name,
+          email: userData.email,
+        });
+
+        setCurrentCoachId(coachData.id);
+        setCurrentUser(userData);
+        setIsAuthenticated(true);
+
+        // Load all available coaches
         const { data: coachesData, error: coachesError } = await supabase
           .from("coaches")
           .select("id, user_id, users(name)")
           .eq("availability", true)
           .order("users(name)", { ascending: true });
 
-        if (coachesError) throw coachesError;
-
-        setCoaches(coachesData || []);
+        if (coachesError) {
+          console.error("Coaches fetch error:", coachesError.message);
+          setError("Failed to load coaches list.");
+        } else {
+          setCoaches(coachesData || []);
+        }
       } catch (err) {
-        console.error("Coach access error:", err.message);
-        setError("Failed to verify coach access.");
+        console.error("Unexpected error in verifyCoachAccess:", err.message);
+        router.push("/access/login");
       } finally {
+        setIsCheckingAuth(false);
         setLoading(false);
       }
     }
-    checkCoachAccess();
+
+    verifyCoachAccess();
   }, [router]);
 
   useEffect(() => {
     async function fetchSessions() {
-      if (selectedCoach === "coaches") {
+      if (!isAuthenticated || selectedCoach === "coaches") {
         setSessions([]);
         setTotalPages(1);
         return;
@@ -156,7 +208,7 @@ export default function Coaching() {
       }
     }
     fetchSessions();
-  }, [selectedCoach, currentPage, statusFilter, debouncedSearchQuery]);
+  }, [isAuthenticated, selectedCoach, currentPage, statusFilter, debouncedSearchQuery]);
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
@@ -233,7 +285,24 @@ export default function Coaching() {
     }
   };
 
-  if (loading) {
+  // IMPROVED: Show loading state while checking authentication
+  if (isCheckingAuth) {
+    return (
+      <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center p-6">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--primary)] mx-auto mb-4"></div>
+          <p className="text-[var(--text-primary)]">Verifying coach access...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // IMPROVED: Only render if authenticated
+  if (!isAuthenticated) {
+    return null;
+  }
+
+  if (loading && !isCheckingAuth) {
     return (
       <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center p-6">
         <div className="flex items-center gap-3">
@@ -248,11 +317,8 @@ export default function Coaching() {
       <div className="min-h-screen bg-[var(--surface)] p-6">
         <div className="max-w-md mx-auto p-6 bg-red-500/10 border border-red-500/30 rounded-lg">
           <p className="text-red-400 font-medium text-center">{error}</p>
-          <button
-            onClick={() => router.push("/access/login")}
-            className="mt-4 w-full btn-secondary py-2.5 rounded-lg font-medium"
-          >
-            Return to Login
+          <button onClick={() => setError(null)} className="mt-4 w-full btn-secondary py-2.5 rounded-lg font-medium">
+            Dismiss
           </button>
         </div>
       </div>
@@ -267,9 +333,14 @@ export default function Coaching() {
       className="min-h-screen bg-[var(--surface)] p-6 md:p-8"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
+        {/* Header with user info */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)]">Coach Dashboard</h1>
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)]">Coach Dashboard</h1>
+            <p className="text-sm text-[var(--text-secondary)] mt-1">
+              Welcome, <span className="font-medium text-[var(--text-primary)]">{currentUser?.name}</span>
+            </p>
+          </div>
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}

@@ -11,7 +11,7 @@ const redis = new Redis({
 // Login rate limiter: 5 attempts per 10 minutes per IP
 export const loginRateLimiter = new Ratelimit({
   redis,
-  limiter: Ratelimit.slidingWindow(5, "10 m"),
+  limiter: Ratelimit.fixedWindow(5, "10 m"),
   analytics: true,
   prefix: "ratelimit:login",
 });
@@ -19,7 +19,7 @@ export const loginRateLimiter = new Ratelimit({
 // Password reset rate limiter: 3 attempts per hour per email
 export const resetPasswordRateLimiter = new Ratelimit({
   redis,
-  limiter: Ratelimit.slidingWindow(3, "1 h"),
+  limiter: Ratelimit.fixedWindow(3, "1 h"),
   analytics: true,
   prefix: "ratelimit:reset",
 });
