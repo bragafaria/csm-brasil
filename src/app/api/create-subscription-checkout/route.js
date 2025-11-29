@@ -51,6 +51,7 @@ export async function POST(request) {
       payment_method_types: ["card"],
       mode: "subscription",
       customer: customerId,
+      allow_promotion_codes: true,
       line_items: [{ price: process.env.STRIPE_SESSION_SUBSCRIPTION_PRICE_ID, quantity: 1 }],
       success_url: `${baseUrl}/dashboard/${siteId}/coaching/sessions?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/dashboard/${siteId}/coaching/sessions`,

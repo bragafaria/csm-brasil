@@ -25,6 +25,7 @@ import Image from "next/image";
 import TermsModal from "@/app/components/terms-of-service/TermsModal";
 import PrivacyModal from "@/app/components/terms-of-service/PrivacyModal";
 import RefundModal from "@/app/components/terms-of-service/RefundModal";
+//import BrazilGeoModal from "@/app/components/geolocation/BrazilGeoModal";
 
 export default function Home() {
   const [expandedFAQ, setExpandedFAQ] = useState(null);
@@ -198,6 +199,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[var(--surface)] text-[var(--text-primary)]">
+      {/* <BrazilGeoModal /> */}
       {/* Sticky Header */}
       <header className="fixed top-0 w-full left-0 right-0 z-50 bg-[var(--dashboard)]/90 backdrop-blur-lg border-b border-[var(--border)]">
         <nav className="container mx-auto px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 md:py-4">
@@ -488,11 +490,11 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
           {/* Header - Added responsive text sizes and margins */}
-          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-[var(--text-primary)] px-2">
               How It Works
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-[var(--text-secondary)] max-w-3xl mx-auto px-4">
+            <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
               Four simple steps to transform how you understand yourself and each other.
             </p>
           </div>
@@ -538,14 +540,10 @@ export default function Home() {
                 </motion.div>
 
                 {/* Title - Increased max-width for better mobile display */}
-                <h3 className="mx-auto max-w-[240px] sm:max-w-[200px] text-[clamp(1.125rem,4vw,1.5rem)] font-bold mb-3 sm:mb-4 text-[var(--text-primary)] leading-tight tracking-tight">
-                  {step.title}
-                </h3>
+                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">{step.title}</h3>
 
                 {/* Text - Added max-width for better readability */}
-                <p className="text-[var(--text-secondary)] leading-relaxed text-sm sm:text-base max-w-[300px] sm:max-w-none mx-auto">
-                  {step.text}
-                </p>
+                <p className="text-[var(--text-secondary)] px-4 leading-relaxed flex-grow">{step.text}</p>
               </motion.div>
             ))}
           </div>
@@ -768,12 +766,12 @@ export default function Home() {
               {
                 question: "What is the Cognitive Spectrum Model (CSM), and why should I care?",
                 answer:
-                  "The Cognitive Spectrum Model, or CSM, is a modern personality framework that evaluates how individuals think and interact across five key spectrums: Information Processing (Concrete versus Abstract), Decision-Making (Analytical versus Empathic), Energy Orientation (Inward versus Outward), Change Approach (Stable versus Adaptive), and Interpersonal Style (Harmony versus Autonomy). By assessing these dimensions, CSM generates one of 32 archetypes, providing a detailed analytics profile that highlights your unique cognitive patterns, individually and within relationships. CSM is particularly valuable for improving self-awareness, enhancing communication, and understanding compatibility in relationships or other interpersonal contexts.",
+                  "The Cognitive Spectrum Model, or CSM, is a modern personality framework that evaluates how individuals think and interact across five key spectrums: Information Processing (Concrete versus Abstract), Decision-Making (Analytical versus Empathic), Energy Orientation (Inward versus Outward), Change Approach (Stable versus Adaptive), and Interpersonal Style (Harmony versus Autonomy). By assessing these dimensions, CSM generates one of 32 archetypes, providing a detailed analytics profile that highlights your unique cognitive patterns, individually and within relationships.",
               },
               {
                 question: "How is CSM different from MBTI, Enneagram, or Big Five?",
                 answer:
-                  "While MBTI categorizes people into 16 types, Enneagram focuses on motivations, and the Big Five measures broad traits, CSM provides 32 archetypes supported by spectrum-based analyses for greater precision. By integrating cognitive patterns with real-world interpersonal insights, CSM provides actionable strategies for personal growth and relationship success that other personality frameworks don’t.",
+                  "While MBTI categorizes people into 16 types, Enneagram focuses on motivations, and the Big Five measures broad traits, CSM provides 32 archetypes supported by spectrum-based analyses for greater precision. By integrating cognitive patterns with real-world interpersonal insights, CSM provides actionable strategies for personal growth and relationship success that other personality frameworks don’t. CSM is particularly valuable for improving self-awareness, enhancing communication, and understanding compatibility in relationships or other interpersonal contexts.",
               },
               {
                 question: "Why should I trust CSM over free online quizzes?",

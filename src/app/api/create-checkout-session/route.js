@@ -122,7 +122,7 @@ export async function POST(request) {
       billing_address_collection: "auto",
       line_items: [{ price: priceId, quantity: 1 }],
       mode: "payment",
-      payment_method_types: ["card"], // Explicitly use card only
+      allow_promotion_codes: true,
       success_url: `${successUrl}/login?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: cancelUrl,
       metadata: { user_id: userId },

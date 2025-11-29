@@ -48,6 +48,7 @@ export async function POST(request) {
         },
       ],
       mode: "payment",
+      allow_promotion_codes: true,
       customer: customerId, // This alone pre-fills the email perfectly
       // customer_email: user.email,  ← DELETE THIS LINE ONLY
 
