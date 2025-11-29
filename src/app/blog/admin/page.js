@@ -11,6 +11,8 @@ function BloggerLoginContent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginRemaining, setLoginRemaining] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
