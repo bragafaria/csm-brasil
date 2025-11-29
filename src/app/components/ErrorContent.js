@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { AlertTriangle } from "lucide-react";
+export const revalidate = 0;
 
 export default function ErrorContent() {
   const router = useRouter();
