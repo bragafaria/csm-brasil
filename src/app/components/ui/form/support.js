@@ -39,12 +39,10 @@ export default function SupportForm({ userName, userEmail, siteId }) {
     const emailSubject = `[Ticket #${ticket}] - ${form.area} [${userName}]`;
 
     try {
-      // 1. Send incoming support request to you
       await fetch("/api/email/support/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          to: "bragafaria@gmail.com",
           subject: emailSubject,
           name: userName,
           email: userEmail,
@@ -52,19 +50,7 @@ export default function SupportForm({ userName, userEmail, siteId }) {
           userSubject: form.subject,
           message: form.message,
           ticket,
-        }),
-      });
-
-      // 2. Send confirmation to the user
-      await fetch("/api/email/support/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          to: userEmail,
-          type: "confirmation",
-          subject: `We received your support request – Ticket #${ticket}`,
-          name: userName,
-          ticket,
+          confirmationSubject: `We received your support request – Ticket #${ticket}`, // optional, or let server default
         }),
       });
 

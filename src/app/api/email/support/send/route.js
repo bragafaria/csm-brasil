@@ -11,38 +11,36 @@ export async function POST(req) {
   const body = await req.json();
 
   try {
-    // Incoming support request → to you
-    if (!body.type || body.type !== "confirmation") {
-      const html = await render(
-        <SupportIncomingEmail
-          ticket={body.ticket}
-          name={body.name}
-          email={body.email}
-          area={body.area}
-          subject={body.userSubject}
-          message={body.message}
-        />
-      );
+    // ── Always send incoming email to you ──
+    const incomingHtml = await render(
+      <SupportIncomingEmail
+        ticket={body.ticket}
+        name={body.name}
+        email={body.email}
+        area={body.area}
+        subject={body.userSubject}
+        message={body.message}
+      />
+    );
 
-      await resend.emails.send({
-        from: "CSM Support <onboarding@resend.dev>",
-        to: "bragafaria@gmail.com",
-        subject: body.subject,
-        html,
-      });
-    }
+    await resend.emails.send({
+      from: "CSM Support <support@updates.csmdynamics.com>",
+      to: process.env.SUPPORT_EMAIL, // safe – server only
+      reply_to: process.env.SUPPORT_EMAIL,
+      subject: body.subject || `New support ticket #${body.ticket}`,
+      html: incomingHtml,
+    });
 
-    // Confirmation → to user
-    if (body.type === "confirmation" || !body.type) {
-      const html = await render(<SupportConfirmationEmail name={body.name} ticket={body.ticket} />);
+    // ── Always send confirmation to user ──
+    const confirmationHtml = await render(<SupportConfirmationEmail name={body.name} ticket={body.ticket} />);
 
-      await resend.emails.send({
-        from: "CSM Support <onboarding@resend.dev>",
-        to: body.to || body.email,
-        subject: body.subject || `Ticket #${body.ticket} Received`,
-        html,
-      });
-    }
+    await resend.emails.send({
+      from: "CSM Support <support@updates.csmdynamics.com>",
+      reply_to: process.env.SUPPORT_EMAIL,
+      to: body.email, // use body.email directly
+      subject: body.confirmationSubject || `Ticket #${body.ticket} Received`,
+      html: confirmationHtml,
+    });
 
     return NextResponse.json({ success: true });
   } catch (error) {

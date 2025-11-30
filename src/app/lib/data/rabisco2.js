@@ -271,20 +271,20 @@
 // 269. C-V-O-S-A/N-V-O-S-A → Artisan / Artist ok
 // 270. C-V-O-S-A/N-V-O-F-H → Artisan / Catalyst ok
 // 271. C-V-O-S-A/N-V-O-F-A → Artisan / Wanderer ok
-// 272. C-V-O-S-A/N-V-I-S-H → Artisan / Mentor up
-// 273. C-V-O-S-A/N-V-I-S-A → Artisan / Sage up
-// 274. C-V-O-S-A/N-V-I-F-H → Artisan / Unifier up
-// 275. C-V-O-S-A/N-V-I-F-A → Artisan /  up
-// 276. C-V-O-F-H/C-V-O-F-H → Campaigner / Campaigner up
-// 277. C-V-O-F-H/C-V-O-F-A → Campaigner / Adventurer up
-// 278. C-V-O-F-H/C-V-I-S-H → Campaigner / Counselor up
-// 279. C-V-O-F-H/C-V-I-S-A → Campaigner / Healer
-// 280. C-V-O-F-H/C-V-I-F-H → Campaigner / Peacemaker
-// 281. C-V-O-F-H/C-V-I-F-A → Campaigner / Empath
-// 282. C-V-O-F-H/N-L-O-S-H → Campaigner / Strategist
-// 283. C-V-O-F-H/N-L-O-S-A → Campaigner / Inventor
-// 284. C-V-O-F-H/N-L-O-F-H → Campaigner / Disruptor
-// 285. C-V-O-F-H/N-L-O-F-A → Campaigner / Revolutionary
+// 272. C-V-O-S-A/N-V-I-S-H → Artisan / Mentor ok
+// 273. C-V-O-S-A/N-V-I-S-A → Artisan / Sage ok
+// 274. C-V-O-S-A/N-V-I-F-H → Artisan / Unifier ok
+// 275. C-V-O-S-A/N-V-I-F-A → Artisan /  ok
+// 276. C-V-O-F-H/C-V-O-F-H → Campaigner / Campaigner ok
+// 277. C-V-O-F-H/C-V-O-F-A → Campaigner / Adventurer ok
+// 278. C-V-O-F-H/C-V-I-S-H → Campaigner / Counselor ok
+// 279. C-V-O-F-H/C-V-I-S-A → Campaigner / Healer ok
+// 280. C-V-O-F-H/C-V-I-F-H → Campaigner / Peacemaker ok
+// 281. C-V-O-F-H/C-V-I-F-A → Campaigner / Empath ok
+// 282. C-V-O-F-H/N-L-O-S-H → Campaigner / Strategist ok
+// 283. C-V-O-F-H/N-L-O-S-A → Campaigner / Inventor ok
+// 284. C-V-O-F-H/N-L-O-F-H → Campaigner / Disruptor ok
+// 285. C-V-O-F-H/N-L-O-F-A → Campaigner / Revolutionary ok
 // 286. C-V-O-F-H/N-L-I-S-H → Campaigner / Academic
 // 287. C-V-O-F-H/N-L-I-S-A → Campaigner / Theorist
 // 288. C-V-O-F-H/N-L-I-F-H → Campaigner / Innovator
