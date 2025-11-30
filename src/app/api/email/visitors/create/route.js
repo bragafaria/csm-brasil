@@ -41,7 +41,7 @@ export async function POST(request) {
           />
         );
 
-        const emailResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/email/report/send`, {
+        const emailResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/email/send`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

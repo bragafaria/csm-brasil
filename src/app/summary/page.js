@@ -126,23 +126,21 @@ export default function Summary() {
       }
 
       // Single API call that handles both DB save and email
-      const response = await fetch("/api/visitors/create", {
+      const response = await fetch("/api/email/visitors/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: name.trim(),
           email: email.trim(),
-          fullData,
+          fullData: fullData,
         }),
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error("API error:", errorText);
-        throw new Error("Failed to save your info. Please try again.");
+        throw new Error("Failed to save visitor");
       }
 
-      // Navigate immediately — success!
+      // Navigate to report
       router.push(`/report/${data.typeCode}`);
     } catch (err) {
       console.error("Failed to save visitor:", err);
