@@ -137,14 +137,12 @@ export default function Summary() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to save visitor");
+        const errorText = await response.text();
+        console.error("API error:", errorText);
+        throw new Error("Failed to save your info. Please try again.");
       }
 
-      if (!response.ok) {
-        throw new Error("Failed to save visitor");
-      }
-
-      // Navigate to report
+      // Navigate immediately — success!
       router.push(`/report/${data.typeCode}`);
     } catch (err) {
       console.error("Failed to save visitor:", err);
