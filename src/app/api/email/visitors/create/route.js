@@ -1,68 +1,70 @@
-// app/api/visitors/create/route.js
+// app/api/email/visitors/create/route.js
 import { createClient } from "@supabase/supabase-js";
+import { Resend } from "resend";
+import PersonalityReportEmail from "@/app/components/emails/PersonalityReportEmail";
 import { render } from "@react-email/render";
-import PersonalityReportEmail from "@/app/components/emails/PersonalityReport";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY // Use service role key on server
-);
+const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request) {
   try {
-    const body = await request.json();
-    const { name, email, fullData } = body;
+    const { name, email, fullData } = await request.json();
 
-    // 1. Save to database
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim().toLowerCase();
+
+    // 1. Save to Supabase first (critical)
     const { error: dbError } = await supabase.from("visitors").insert({
-      name: name.trim(),
-      email: email.trim(),
+      name: trimmedName,
+      email: trimmedEmail,
+      archetype: fullData.results.typeCode,
+      created_at: new Date().toISOString(),
     });
 
     if (dbError) {
-      console.error("Database error:", dbError);
-      return Response.json({ error: "Failed to save visitor data" }, { status: 500 });
+      console.error("Supabase insert error:", dbError);
+      return Response.json({ error: "Failed to save" }, { status: 500 });
     }
 
-    // 2. Send email (server-side, more reliable)
-    if (fullData?.results?.typeCode) {
+    // 2. Send email directly via Resend (fire-and-forget)
+    if (fullData?.results?.typeCode && trimmedEmail) {
       const archetypeName =
         typeof fullData.results.archetype === "object"
-          ? fullData.results.archetype?.name || "Unknown Archetype"
-          : fullData.results.archetype || "Unknown Archetype";
+          ? fullData.results.archetype?.name || fullData.results.typeCode
+          : fullData.results.archetype || fullData.results.typeCode;
 
       try {
         const emailHtml = await render(
           <PersonalityReportEmail
-            name={name.trim()}
+            name={trimmedName}
             archetypeName={archetypeName}
             typeCode={fullData.results.typeCode}
             shareableUrl={fullData.permanentUrl}
           />
         );
 
-        const emailResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/email/send`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            to: email.trim(),
-            subject: `Your CSM Personality Report – The ${archetypeName}`,
-            html: emailHtml,
-          }),
+        // Send directly — no extra fetch needed
+        await resend.emails.send({
+          from: "CSM Dynamics <reports@updates.csmdynamics.com>",
+          to: trimmedEmail,
+          subject: `Your CSM Personality Report – The ${archetypeName}`,
+          html: emailHtml,
+          tags: [
+            { name: "category", value: "personality_report" },
+            { name: "archetype", value: fullData.results.typeCode },
+          ],
         });
-
-        if (!emailResponse.ok) {
-          console.error("Email failed:", await emailResponse.text());
-        }
       } catch (emailError) {
-        console.error("Email error:", emailError);
-        // Don't fail the whole request if email fails
+        console.error("Report email failed (non-critical):", emailError);
+        // Silent fail — user already has the permanent link
       }
     }
 
-    return Response.json({ success: true }, { status: 200 });
+    return Response.json({ success: true });
   } catch (error) {
     console.error("Visitor creation error:", error);
-    return Response.json({ error: "Internal server error" }, { status: 500 });
+    return Response.json({ error: "Server error" }, { status: 500 });
   }
 }
