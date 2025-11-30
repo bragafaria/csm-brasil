@@ -1,6 +1,7 @@
 // src/app/api/create-checkout-session/route.js
 import { createClient } from "@supabase/supabase-js";
 import Stripe from "stripe";
+import { checkStripeCheckoutRateLimit } from "@/app/actions/auth-rate-limit";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -56,6 +57,16 @@ export async function POST(request) {
     const userId = user.id;
     const userEmail = user.email;
     const userName = user.user_metadata?.name || null;
+
+    // Rate limit check
+    const rateLimitCheck = await checkStripeCheckoutRateLimit(userId);
+    if (!rateLimitCheck.allowed) {
+      console.warn("Rate limit exceeded for checkout:", { userId });
+      return new Response(JSON.stringify({ error: rateLimitCheck.error }), {
+        status: 429,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
 
     const { data: existingUser, error: fetchError } = await supabase
       .from("users")

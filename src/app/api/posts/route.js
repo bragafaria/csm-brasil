@@ -1,10 +1,36 @@
 // @/app/api/posts/route.js
 import { NextResponse } from "next/server";
+import { headers } from "next/headers";
 import { createPost } from "@/app/lib/neon";
+import { blogContentRateLimiter, getClientIp } from "@/app/lib/ratelimit";
 import slugify from "slugify";
 
 export async function POST(request) {
   try {
+    // ✅ STEP 1: Check rate limit BEFORE processing
+    const headersList = await headers();
+    const ip = getClientIp(headersList);
+
+    const { success, reset, remaining } = await blogContentRateLimiter.limit(ip);
+
+    if (!success) {
+      const resetDate = new Date(reset);
+      const minutesUntilReset = Math.ceil((resetDate - Date.now()) / 60000);
+
+      return NextResponse.json(
+        {
+          error: `Too many posts created. Please try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
+          rateLimit: {
+            limited: true,
+            remaining: 0,
+            reset: resetDate.toISOString(),
+          },
+        },
+        { status: 429 }
+      );
+    }
+
+    // ✅ STEP 2: Parse request body
     const {
       title,
       slug: customSlug,
@@ -15,7 +41,7 @@ export async function POST(request) {
       image_url = null,
     } = await request.json();
 
-    // === Validation ===
+    // ✅ STEP 3: Validation
     if (!title?.trim()) {
       return NextResponse.json({ error: "Title is required" }, { status: 400 });
     }
@@ -28,7 +54,7 @@ export async function POST(request) {
 
     const finalSlug = (customSlug || slugify(title, { lower: true })).trim();
 
-    // === Create Post via neon.js ===
+    // ✅ STEP 4: Create Post (now protected by rate limit)
     const post = await createPost({
       title: title.trim(),
       slug: finalSlug,
@@ -39,7 +65,16 @@ export async function POST(request) {
       image_url,
     });
 
-    return NextResponse.json(post, { status: 201 });
+    return NextResponse.json(
+      {
+        ...post,
+        rateLimit: {
+          remaining,
+          reset: new Date(reset).toISOString(),
+        },
+      },
+      { status: 201 }
+    );
   } catch (error) {
     console.error("POST /api/posts error:", error);
     return NextResponse.json({ error: "Failed to create post" }, { status: 500 });

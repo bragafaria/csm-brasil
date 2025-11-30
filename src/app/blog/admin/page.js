@@ -5,25 +5,15 @@ import { useState, useEffect, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { supabase } from "@/app/utils/supabaseClient";
+import { checkBloggerLoginRateLimit } from "@/app/actions/auth-rate-limit"; // ✅ NEW IMPORT
 
-// Extract the login logic into a separate component
 function BloggerLoginContent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginRemaining, setLoginRemaining] = useState(null);
+  const [rateLimitInfo, setRateLimitInfo] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-
-  useEffect(() => {
-    const meta = document.querySelector('meta[name="x-middleware-admin-login-remaining"]');
-    if (meta?.content) {
-      const num = parseInt(meta.content, 10);
-      if (!isNaN(num) && num >= 0) {
-        setLoginRemaining(num);
-      }
-    }
-  }, []);
 
   useEffect(() => {
     async function checkSession() {
@@ -42,7 +32,6 @@ function BloggerLoginContent() {
         if (session) {
           const userId = session.user.id;
 
-          // Fetch user profile
           const { data: userData, error: userError } = await supabase
             .from("users")
             .select("id, user_type")
@@ -57,7 +46,6 @@ function BloggerLoginContent() {
             return;
           }
 
-          // Check if user is a blogger
           if (userData.user_type !== "blogger") {
             console.log("Non-blogger session detected, signing out:", {
               userId,
@@ -85,8 +73,23 @@ function BloggerLoginContent() {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setRateLimitInfo(null);
 
     try {
+      // ✅ STEP 1: Check rate limit on server (can't be bypassed)
+      const rateLimitCheck = await checkBloggerLoginRateLimit(email);
+
+      if (rateLimitCheck.rateLimit) {
+        setRateLimitInfo(rateLimitCheck.rateLimit);
+      }
+
+      if (!rateLimitCheck.allowed) {
+        setError(rateLimitCheck.error);
+        setLoading(false);
+        return;
+      }
+
+      // ✅ STEP 2: Perform login (now protected by rate limit)
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -95,18 +98,19 @@ function BloggerLoginContent() {
       if (error) {
         console.error("Login error:", error.message);
         setError(error.message);
+        setLoading(false);
         return;
       }
 
       if (!data.session || !data.user) {
         console.error("No session or user data returned:", data);
         setError("Login failed. Please try again.");
+        setLoading(false);
         return;
       }
 
       const userId = data.user.id;
 
-      // Fetch user profile
       const { data: userData, error: userError } = await supabase
         .from("users")
         .select("id, user_type, name, email")
@@ -117,10 +121,10 @@ function BloggerLoginContent() {
         console.error("User fetch error:", userError?.message || "No user found", userId);
         setError("User profile not found. Please contact support.");
         await supabase.auth.signOut();
+        setLoading(false);
         return;
       }
 
-      // Verify blogger status
       if (userData.user_type !== "blogger") {
         console.log("Non-blogger login attempt:", {
           userId,
@@ -129,6 +133,7 @@ function BloggerLoginContent() {
         });
         setError("Access denied. This area is for bloggers only.");
         await supabase.auth.signOut();
+        setLoading(false);
         return;
       }
 
@@ -142,7 +147,6 @@ function BloggerLoginContent() {
     } catch (err) {
       console.error("Unexpected error in handleLogin:", err.message);
       setError("An unexpected error occurred during login. Please try again.");
-    } finally {
       setLoading(false);
     }
   };
@@ -156,7 +160,6 @@ function BloggerLoginContent() {
         className="w-full max-w-md"
       >
         <div className="card-gradient p-8 rounded-lg shadow-custom-lg border border-[var(--border)]">
-          {/* Logo */}
           <div className="flex items-center justify-center gap-2 mb-6">
             <svg className="w-8 h-8 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
@@ -171,7 +174,6 @@ function BloggerLoginContent() {
 
           <h2 className="text-xl font-bold text-[var(--text-primary)] text-center mb-6">Blogger Login</h2>
 
-          {/* Error Message */}
           {error && (
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -182,9 +184,7 @@ function BloggerLoginContent() {
             </motion.div>
           )}
 
-          {/* Form */}
           <form onSubmit={handleLogin} className="space-y-5">
-            {/* Email */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -204,7 +204,6 @@ function BloggerLoginContent() {
               />
             </motion.div>
 
-            {/* Password */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -224,13 +223,13 @@ function BloggerLoginContent() {
               />
             </motion.div>
 
-            {loginRemaining !== null && (
-              <p className="text-xs text-orange-400 text-center my-4">
-                Login attempts remaining: <span className="font-bold">{loginRemaining}</span>
+            {/* ✅ NEW: Show rate limit info */}
+            {rateLimitInfo && !rateLimitInfo.limited && (
+              <p className="text-xs text-[var(--text-secondary)] text-center">
+                Login attempts remaining: {rateLimitInfo.remaining}
               </p>
             )}
 
-            {/* Submit */}
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -238,9 +237,9 @@ function BloggerLoginContent() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              disabled={loading}
+              disabled={loading || rateLimitInfo?.limited}
               className={`w-full py-3.5 rounded-lg font-bold text-white transition-all shadow-md hover:shadow-lg ${
-                loading
+                loading || rateLimitInfo?.limited
                   ? "bg-[var(--surface-variant)] text-[var(--text-secondary)] opacity-70 cursor-not-allowed"
                   : "btn-primary"
               }`}
@@ -249,7 +248,6 @@ function BloggerLoginContent() {
             </motion.button>
           </form>
 
-          {/* Info */}
           <div className="mt-6 text-center text-sm text-[var(--text-secondary)]">
             <p className="flex items-center justify-center gap-1">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -269,7 +267,6 @@ function BloggerLoginContent() {
   );
 }
 
-// Main export with Suspense wrapper
 export default function BloggerLogin() {
   return (
     <Suspense

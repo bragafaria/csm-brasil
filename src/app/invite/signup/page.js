@@ -4,6 +4,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
+import { checkSignupRateLimit } from "@/app/actions/auth-rate-limit"; // ✅ ADD THIS
 import { ArrowRight, Check } from "lucide-react";
 import Image from "next/image";
 import TermsModal from "@/app/components/terms-of-service/TermsModal";
@@ -17,24 +18,12 @@ function InviteSignupContent() {
   const [serverError, setServerError] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [signupRemaining, setSignupRemaining] = useState(null);
-
-  // Terms of Service state
+  const [rateLimitInfo, setRateLimitInfo] = useState(null);
   const [termsAccepted, setTermsAccepted] = useState(true);
   const [showTermsModal, setShowTermsModal] = useState(false);
 
   const router = useRouter();
   const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const meta = document.querySelector('meta[name="x-middleware-signup-remaining"]');
-    if (meta?.content) {
-      const num = parseInt(meta.content, 10);
-      if (!isNaN(num) && num >= 0) {
-        setSignupRemaining(num);
-      }
-    }
-  }, []);
 
   useEffect(() => {
     const invite = searchParams.get("invite");
@@ -64,6 +53,7 @@ function InviteSignupContent() {
     setServerError("");
     setShowModal(false);
     setLoading(true);
+    setRateLimitInfo(null);
 
     if (!validateForm()) {
       setLoading(false);
@@ -81,6 +71,20 @@ function InviteSignupContent() {
     }
 
     try {
+      // ✅ Check rate limit before signup
+      const rateLimitCheck = await checkSignupRateLimit(email);
+
+      if (rateLimitCheck.rateLimit) {
+        setRateLimitInfo(rateLimitCheck.rateLimit);
+      }
+
+      if (!rateLimitCheck.allowed) {
+        setServerError(rateLimitCheck.error);
+        setShowModal(true);
+        setLoading(false);
+        return;
+      }
+
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
         password,
@@ -122,7 +126,6 @@ function InviteSignupContent() {
         }
       }
 
-      // GET site_id FROM PARTNER A
       const { data: partnerA } = await supabase.from("users").select("site_id").eq("id", siteId).single();
 
       const dashboardId = partnerA?.site_id || siteId;
@@ -202,7 +205,6 @@ function InviteSignupContent() {
             {errors.password && <p className="text-red-400 text-sm mt-1">{errors.password[0]}</p>}
           </div>
 
-          {/* Terms of Service Checkbox */}
           <div className="mt-6 w-full flex flex-col items-center">
             <label className="flex items-start gap-4 cursor-pointer select-none group w-full">
               <div className="relative flex items-center justify-center mt-0.5">
@@ -238,18 +240,18 @@ function InviteSignupContent() {
             {errors.terms && <p className="text-red-400 text-sm mt-2 text-center w-full">{errors.terms[0]}</p>}
           </div>
 
-          {signupRemaining !== null && (
+          {/* {rateLimitInfo && !rateLimitInfo.limited && (
             <p className="text-xs text-[var(--text-secondary)] text-center my-4">
               Signup attempts remaining this hour:{" "}
-              <span className="font-medium text-orange-400">{signupRemaining}</span>
+              <span className="font-medium text-orange-400">{rateLimitInfo.remaining}</span>
             </p>
-          )}
+          )} */}
 
           <button
             type="submit"
-            disabled={loading || !termsAccepted}
+            disabled={loading || !termsAccepted || rateLimitInfo?.limited}
             className={`w-full py-3 rounded-lg font-semibold inline-flex items-center justify-center gap-2 group transition-all ${
-              loading || !termsAccepted
+              loading || !termsAccepted || rateLimitInfo?.limited
                 ? "bg-[var(--surface-variant)] text-[var(--text-secondary)]/60 cursor-not-allowed opacity-70"
                 : "btn-primary cursor-pointer"
             }`}
@@ -277,7 +279,6 @@ function InviteSignupContent() {
           </div>
         )}
 
-        {/* Terms Modal */}
         {showTermsModal && <TermsModal onClose={() => setShowTermsModal(false)} />}
       </div>
     </div>

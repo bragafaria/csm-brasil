@@ -9,6 +9,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import TermsModal from "@/app/components/terms-of-service/TermsModal";
+import { checkSignupRateLimit } from "@/app/actions/auth-rate-limit";
 
 const signupSchema = z
   .object({
@@ -42,7 +43,6 @@ export default function Signup() {
   // Terms acceptance — default true as requested
   const [termsAccepted, setTermsAccepted] = useState(true);
   const [showTermsModal, setShowTermsModal] = useState(false);
-  const [signupRemaining, setSignupRemaining] = useState(null);
 
   useEffect(() => {
     async function init() {
@@ -79,16 +79,6 @@ export default function Signup() {
     }
     init();
   }, [router]);
-
-  useEffect(() => {
-    const meta = document.querySelector('meta[name="x-middleware-signup-remaining"]');
-    if (meta?.content) {
-      const num = parseInt(meta.content, 10);
-      if (!isNaN(num) && num >= 0) {
-        setSignupRemaining(num);
-      }
-    }
-  }, []);
 
   const handleSignOut = async () => {
     try {
@@ -128,6 +118,14 @@ export default function Signup() {
     }
 
     try {
+      // Rate limit check
+      const rateLimitCheck = await checkSignupRateLimit(email);
+      if (!rateLimitCheck.allowed) {
+        setServerError(rateLimitCheck.error);
+        setLoading(false);
+        return;
+      }
+
       // Check if user already exists
       const { data: existingUser, error: userError } = await supabase
         .from("users")
@@ -399,13 +397,6 @@ export default function Signup() {
                     accept all disclaimers and limitations of liability.
                   </span>
                 </label>
-
-                {signupRemaining !== null && (
-                  <p className="text-xs text-[var(--text-secondary)] my-4 text-center">
-                    Signup attempts remaining this hour:{" "}
-                    <span className="font-medium text-orange-400">{signupRemaining}</span>
-                  </p>
-                )}
 
                 {/* Submit Button — fixed flex layout so text + arrow stay on one line */}
                 <motion.button

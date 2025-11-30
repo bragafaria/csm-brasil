@@ -1,15 +1,28 @@
-// app/actions/auth-rate-limit.js
 "use server";
 
 import { headers } from "next/headers";
-import { loginRateLimiter, resetPasswordRateLimiter, getClientIp } from "@/app/lib/ratelimit";
+import {
+  loginRateLimiter,
+  resetPasswordRateLimiter,
+  passwordUpdateRateLimiter,
+  bloggerLoginRateLimiter,
+  coachLoginRateLimiter,
+  stripeCheckoutRateLimiter,
+  signupRateLimiter, // ✅ Imported from lib/ratelimit.js
+  getClientIp,
+} from "@/app/lib/ratelimit";
+import { createClient } from "@supabase/supabase-js";
+import { redirect } from "next/navigation";
+
+// ============================================================================
+// LOGIN RATE LIMITING
+// ============================================================================
 
 export async function checkLoginRateLimit(email) {
   try {
     const headersList = await headers();
     const ip = getClientIp(headersList);
 
-    // NEW: Dual-layer protection — IP + Email (same limiter, different keys)
     const normalizedEmail = email.toLowerCase().trim();
     const emailKey = `email:${normalizedEmail}`;
 
@@ -19,7 +32,7 @@ export async function checkLoginRateLimit(email) {
     const remaining = success ? Math.min(ipResult.remaining, emailResult.remaining) : 0;
     const resetTime = success
       ? Math.max(ipResult.reset, emailResult.reset)
-      : Math.min(ipResult.reset, emailResult.reset); // earliest reset wins
+      : Math.min(ipResult.reset, emailResult.reset);
 
     if (!success) {
       const resetDate = new Date(resetTime);
@@ -46,6 +59,161 @@ export async function checkLoginRateLimit(email) {
     };
   } catch (error) {
     console.error("Rate limit error:", error);
+    return {
+      allowed: true,
+      error: null,
+    };
+  }
+}
+
+export async function checkBloggerLoginRateLimit(email) {
+  try {
+    const headersList = await headers();
+    const ip = getClientIp(headersList);
+
+    const normalizedEmail = email.toLowerCase().trim();
+    const emailKey = `email:${normalizedEmail}`;
+
+    const [ipResult, emailResult] = await Promise.all([
+      bloggerLoginRateLimiter.limit(ip),
+      bloggerLoginRateLimiter.limit(emailKey),
+    ]);
+
+    const success = ipResult.success && emailResult.success;
+    const remaining = success ? Math.min(ipResult.remaining, emailResult.remaining) : 0;
+    const resetTime = success
+      ? Math.max(ipResult.reset, emailResult.reset)
+      : Math.min(ipResult.reset, emailResult.reset);
+
+    if (!success) {
+      const resetDate = new Date(resetTime);
+      const minutesUntilReset = Math.ceil((resetDate - Date.now()) / 60000);
+
+      return {
+        allowed: false,
+        error: `Too many login attempts. Please try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
+        rateLimit: {
+          limited: true,
+          remaining: 0,
+          reset: resetDate.toISOString(),
+        },
+      };
+    }
+
+    return {
+      allowed: true,
+      rateLimit: {
+        limited: false,
+        remaining,
+        reset: new Date(resetTime).toISOString(),
+      },
+    };
+  } catch (error) {
+    console.error("Blogger login rate limit error:", error);
+    return {
+      allowed: true,
+      error: null,
+    };
+  }
+}
+
+export async function checkCoachLoginRateLimit(email) {
+  try {
+    const headersList = await headers();
+    const ip = getClientIp(headersList);
+
+    const normalizedEmail = email.toLowerCase().trim();
+    const emailKey = `email:${normalizedEmail}`;
+
+    const [ipResult, emailResult] = await Promise.all([
+      coachLoginRateLimiter.limit(ip),
+      coachLoginRateLimiter.limit(emailKey),
+    ]);
+
+    const success = ipResult.success && emailResult.success;
+    const remaining = success ? Math.min(ipResult.remaining, emailResult.remaining) : 0;
+    const resetTime = success
+      ? Math.max(ipResult.reset, emailResult.reset)
+      : Math.min(ipResult.reset, emailResult.reset);
+
+    if (!success) {
+      const resetDate = new Date(resetTime);
+      const minutesUntilReset = Math.ceil((resetDate - Date.now()) / 60000);
+
+      return {
+        allowed: false,
+        error: `Too many login attempts. Please try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
+        rateLimit: {
+          limited: true,
+          remaining: 0,
+          reset: resetDate.toISOString(),
+        },
+      };
+    }
+
+    return {
+      allowed: true,
+      rateLimit: {
+        limited: false,
+        remaining,
+        reset: new Date(resetTime).toISOString(),
+      },
+    };
+  } catch (error) {
+    console.error("Coach login rate limit error:", error);
+    return {
+      allowed: true,
+      error: null,
+    };
+  }
+}
+
+// ============================================================================
+// SIGNUP RATE LIMITING
+// ============================================================================
+
+export async function checkSignupRateLimit(email) {
+  try {
+    const headersList = await headers();
+    const ip = getClientIp(headersList);
+
+    const normalizedEmail = email.toLowerCase().trim();
+    const emailKey = `email:${normalizedEmail}`;
+
+    // Check both IP and email
+    const [ipResult, emailResult] = await Promise.all([signupRateLimiter.limit(ip), signupRateLimiter.limit(emailKey)]);
+
+    const success = ipResult.success && emailResult.success;
+    const remaining = success ? Math.min(ipResult.remaining, emailResult.remaining) : 0;
+    const resetTime = success
+      ? Math.max(ipResult.reset, emailResult.reset)
+      : Math.min(ipResult.reset, emailResult.reset);
+
+    if (!success) {
+      const resetDate = new Date(resetTime);
+      const minutesUntilReset = Math.ceil((resetDate - Date.now()) / 60000);
+
+      return {
+        allowed: false,
+        error: `Too many signup attempts. Please try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
+        rateLimit: {
+          limited: true,
+          remaining: 0,
+          reset: resetDate.toISOString(),
+        },
+      };
+    }
+
+    return {
+      allowed: true,
+      rateLimit: {
+        limited: false,
+        remaining,
+        reset: new Date(resetTime).toISOString(),
+      },
+    };
+  } catch (error) {
+    console.error("Signup rate limit error:", error);
     // Fail open - don't block on rate limit errors
     return {
       allowed: true,
@@ -54,7 +222,45 @@ export async function checkLoginRateLimit(email) {
   }
 }
 
-// Your sendResetEmail function — 100% untouched, perfect as-is
+// ============================================================================
+// STRIPE CHECKOUT SESSIONS RATE LIMITING
+// ============================================================================
+
+export async function checkStripeCheckoutRateLimit(userId) {
+  try {
+    const headersList = await headers();
+    const ip = getClientIp(headersList);
+
+    // Prefer user ID over IP (more accurate for authenticated users)
+    const identifier = userId || ip;
+
+    const { success, reset, remaining } = await stripeCheckoutRateLimiter.limit(identifier);
+
+    if (!success) {
+      const resetDate = new Date(reset);
+      const minutesUntilReset = Math.ceil((resetDate - Date.now()) / 60000);
+
+      return {
+        allowed: false,
+        error: `Too many checkout attempts. Please try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
+      };
+    }
+
+    return {
+      allowed: true,
+      remaining,
+    };
+  } catch (error) {
+    console.error("Stripe checkout rate limit error:", error);
+    // Fail open - don't block legitimate purchases
+    return { allowed: true };
+  }
+}
+
+// ============================================================================
+// PASSWORD MANAGEMENT
+// ============================================================================
+
 export async function sendResetEmail(email) {
   try {
     if (!email || !email.includes("@")) {
@@ -65,7 +271,7 @@ export async function sendResetEmail(email) {
     const ip = getClientIp(headersList);
 
     const identifier = `${ip}:${email.toLowerCase()}`;
-    const { success, limit, remaining, reset } = await resetPasswordRateLimiter.limit(identifier);
+    const { success, reset } = await resetPasswordRateLimiter.limit(identifier);
 
     if (!success) {
       const resetDate = new Date(reset);
@@ -77,7 +283,6 @@ export async function sendResetEmail(email) {
       };
     }
 
-    const { createClient } = await import("@supabase/supabase-js");
     const supabaseAdmin = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {
       auth: {
         autoRefreshToken: false,
@@ -109,5 +314,65 @@ export async function sendResetEmail(email) {
       success: false,
       error: "Failed to send reset email. Please try again.",
     };
+  }
+}
+
+export async function updatePasswordWithRateLimit(newPassword, searchParams) {
+  try {
+    // Validation
+    if (!newPassword || newPassword.length < 6) {
+      return { success: false, error: "Password must be at least 6 characters" };
+    }
+
+    // Rate limit check
+    const headersList = await headers();
+    const ip = getClientIp(headersList);
+
+    const { success, reset } = await passwordUpdateRateLimiter.limit(ip);
+
+    if (!success) {
+      const resetDate = new Date(reset);
+      const minutesUntilReset = Math.ceil((resetDate - Date.now()) / 60000);
+      return {
+        success: false,
+        error: `Too many password update attempts. Try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
+      };
+    }
+
+    // Create Supabase client
+    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {
+      auth: { autoRefreshToken: false, persistSession: false },
+    });
+
+    // Extract code from searchParams
+    let code = null;
+    if (searchParams) {
+      if (typeof searchParams.get === "function") {
+        code = searchParams.get("code");
+      } else if (typeof searchParams === "string") {
+        code = new URLSearchParams(searchParams).get("code");
+      }
+    }
+
+    // Exchange code for session
+    if (code) {
+      const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
+      if (exchangeError) {
+        return { success: false, error: "Invalid or expired reset link" };
+      }
+    }
+
+    // Update password
+    const { error } = await supabase.auth.updateUser({ password: newPassword });
+    if (error) {
+      return { success: false, error: error.message };
+    }
+
+    // Sign out and redirect
+    await supabase.auth.signOut();
+    redirect("/login");
+  } catch (error) {
+    console.error("Password update rate limit error:", error);
+    return { success: false, error: "An error occurred. Please try again." };
   }
 }

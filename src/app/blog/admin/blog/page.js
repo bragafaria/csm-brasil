@@ -20,6 +20,7 @@ export default function AdminBlog() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
+  const [rateLimitInfo, setRateLimitInfo] = useState(null);
   const router = useRouter();
 
   // Authentication check on mount
@@ -115,6 +116,7 @@ export default function AdminBlog() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setRateLimitInfo(null);
 
     const body = {
       title,
@@ -133,7 +135,20 @@ export default function AdminBlog() {
         body: JSON.stringify(body),
       });
 
+      const data = await res.json();
+
+      // ✅ Handle rate limit error
+      if (res.status === 429) {
+        setRateLimitInfo(data.rateLimit);
+        alert(data.error);
+        setLoading(false);
+        return;
+      }
+
       if (!res.ok) throw new Error("Failed to create post");
+      if (data.rateLimit) {
+        setRateLimitInfo(data.rateLimit);
+      }
 
       alert("Post created successfully!");
 
@@ -205,7 +220,22 @@ export default function AdminBlog() {
       {/* Main content */}
       <div className="max-w-5xl mx-auto p-6">
         <h2 className="text-3xl font-bold text-white mb-8">Create New Blog Post</h2>
+        {/* ✅ NEW: Show rate limit info */}
+        {rateLimitInfo && !rateLimitInfo.limited && (
+          <div className="mb-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+            <p className="text-blue-400 text-sm">
+              Posts remaining this hour: <span className="font-bold">{rateLimitInfo.remaining}</span>
+            </p>
+          </div>
+        )}
 
+        {rateLimitInfo?.limited && (
+          <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
+            <p className="text-red-400 text-sm font-medium">
+              Rate limit reached. Please wait before creating more posts.
+            </p>
+          </div>
+        )}
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* TITLE */}
           <div>
@@ -296,7 +326,7 @@ export default function AdminBlog() {
 
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || rateLimitInfo?.limited}
             className="btn-primary px-8 py-3 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Creating Post..." : "Create Post"}
