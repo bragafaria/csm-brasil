@@ -1,7 +1,7 @@
 // app/api/visitors/create/route.js
 import { createClient } from "@supabase/supabase-js";
 import { Resend } from "resend";
-import PersonalityReportEmail from "@/app/components/emails/PersonalityReportEmail";
+import PersonalityReportEmail from "@/app/components/emails/PersonalityReport";
 import { render } from "@react-email/render";
 
 const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
