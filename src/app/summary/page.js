@@ -132,15 +132,17 @@ export default function Summary() {
         body: JSON.stringify({
           name: name.trim(),
           email: email.trim(),
-          fullData: fullData,
+          fullData,
         }),
       });
 
       if (!response.ok) {
-        throw new Error("Failed to save visitor");
+        const errorText = await response.text();
+        console.error("API error:", errorText);
+        throw new Error("Failed to save your info. Please try again.");
       }
 
-      // Navigate to report
+      // Navigate immediately — success!
       router.push(`/report/${data.typeCode}`);
     } catch (err) {
       console.error("Failed to save visitor:", err);
