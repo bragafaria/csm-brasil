@@ -126,15 +126,19 @@ export default function Summary() {
       }
 
       // Single API call that handles both DB save and email
-      const response = await fetch("/api/email/visitors/create", {
+      const response = await fetch("/api/visitors/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: name.trim(),
           email: email.trim(),
-          fullData: fullData,
+          fullData,
         }),
       });
+
+      if (!response.ok) {
+        throw new Error("Failed to save visitor");
+      }
 
       if (!response.ok) {
         throw new Error("Failed to save visitor");
