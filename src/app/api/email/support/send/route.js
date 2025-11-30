@@ -10,8 +10,11 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(req) {
   const body = await req.json();
 
+  let adminSent = false;
+  let confirmationSent = false;
+
   try {
-    // ── Always send incoming email to you ──
+    // ── 1. Always try to notify YOU first (most important) ──
     const incomingHtml = await render(
       <SupportIncomingEmail
         ticket={body.ticket}
@@ -25,26 +28,42 @@ export async function POST(req) {
 
     await resend.emails.send({
       from: "CSM Support <support@updates.csmdynamics.com>",
-      to: process.env.SUPPORT_EMAIL, // safe – server only
+      to: process.env.SUPPORT_EMAIL,
       reply_to: process.env.SUPPORT_EMAIL,
       subject: body.subject || `New support ticket #${body.ticket}`,
       html: incomingHtml,
     });
 
-    // ── Always send confirmation to user ──
-    const confirmationHtml = await render(<SupportConfirmationEmail name={body.name} ticket={body.ticket} />);
-
-    await resend.emails.send({
-      from: "CSM Support <support@updates.csmdynamics.com>",
-      reply_to: process.env.SUPPORT_EMAIL,
-      to: body.email, // use body.email directly
-      subject: body.confirmationSubject || `Ticket #${body.ticket} Received`,
-      html: confirmationHtml,
-    });
-
-    return NextResponse.json({ success: true });
+    adminSent = true;
   } catch (error) {
-    console.error("Support email error:", error);
-    return NextResponse.json({ error: "Failed to send" }, { status: 500 });
+    console.error("CRITICAL: Failed to send email to admin", error);
+    // You can even send yourself a notification here if you want
+  }
+
+  // ── 2. Try to send confirmation to user (nice to have, but not critical) ──
+  if (adminSent && body.email) {
+    try {
+      const confirmationHtml = await render(<SupportConfirmationEmail name={body.name} ticket={body.ticket} />);
+
+      await resend.emails.send({
+        from: "CSM Support <support@updates.csmdynamics.com>",
+        reply_to: process.env.SUPPORT_EMAIL,
+        to: body.email,
+        subject: body.confirmationSubject || `Ticket #${body.ticket} Received`,
+        html: confirmationHtml,
+      });
+
+      confirmationSent = true;
+    } catch (error) {
+      console.error("Failed to send confirmation email to user", error);
+      // Still continue – admin already notified
+    }
+  }
+
+  // Success as long as admin was notified
+  if (adminSent) {
+    return NextResponse.json({ success: true });
+  } else {
+    return NextResponse.json({ error: "Failed to notify support" }, { status: 500 });
   }
 }
