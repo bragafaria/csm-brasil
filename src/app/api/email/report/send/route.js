@@ -1,7 +1,7 @@
 // app/api/email/report/send/route.js
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
-import PersonalityReportEmail from "@/app/components/emails/PersonalityReportEmail";
+import PersonalityReportEmail from "@/app/components/emails/PersonalityReport";
 import { render } from "@react-email/render";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
