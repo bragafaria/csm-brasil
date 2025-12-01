@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
 import { z } from "zod";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, AlertCircle, Eye, EyeOff } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import TermsModal from "@/app/components/terms-of-service/TermsModal";
@@ -34,6 +34,7 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [serverError, setServerError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -55,7 +56,7 @@ export default function Signup() {
           console.log("Stored assessment data:", parsed.results);
         } else {
           console.warn("No assessment data found in localStorage");
-          setServerError("Please complete the assessment before signing up.");
+          // Don't set serverError here anymore - we'll show the dedicated UI
         }
 
         // Check session
@@ -245,6 +246,71 @@ export default function Signup() {
     }
   };
 
+  // Show assessment prompt if no assessment data
+  if (!assessmentData) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen flex items-center justify-center bg-[var(--surface)] p-4"
+      >
+        <div className="card-gradient py-12 px-6 md:p-12 rounded-lg shadow-custom-lg max-w-lg w-full">
+          <div className="flex items-center justify-center space-x-2 mb-8">
+            <Image src="/logo_transparent_svg.svg" alt="CSM Dynamics Logo" width={32} height={32} className="h-8 w-8" />
+            <div className="flex items-center space-x-1">
+              <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
+              <h1 className="text-xl font-light text-[var(--text-primary)]">Dynamics</h1>
+            </div>
+          </div>
+
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+            className="flex justify-center mb-6"
+          >
+            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400/20 to-orange-500/20 flex items-center justify-center">
+              <AlertCircle className="w-10 h-10 text-amber-400" strokeWidth={2} />
+            </div>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="text-2xl font-bold mb-4 text-center text-[var(--text-primary)]"
+          >
+            Assessment Required
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="text-[var(--text-secondary)] text-center mb-8 leading-relaxed"
+          >
+            {`Before you can sign up and access your personalized Couple's Insight Report, you'll need to complete the CSM
+            assessment. This only takes a few minutes!`}
+          </motion.p>
+
+          <motion.a
+            href="/csm-assessment"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="btn-primary w-full py-4 rounded-lg font-semibold text-base inline-flex items-center justify-center gap-3 group shadow-lg"
+          >
+            <span>Take the Assessment</span>
+            <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          </motion.a>
+        </div>
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -340,17 +406,27 @@ export default function Signup() {
               </div>
 
               <div>
-                <motion.input
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
-                  required
-                />
+                <div className="relative">
+                  <motion.input
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full px-4 py-3 pr-12 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors focus:outline-none"
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {showPassword ? <Eye className="w-5 h-5" /> : <EyeOff className="w-5 h-5" />}
+                  </button>
+                </div>
                 {errors.password && <p className="text-red-400 text-sm mt-1">{errors.password[0]}</p>}
               </div>
 
@@ -401,15 +477,15 @@ export default function Signup() {
                 {/* Submit Button — fixed flex layout so text + arrow stay on one line */}
                 <motion.button
                   type="submit"
-                  disabled={loading || !assessmentData || !termsAccepted}
+                  disabled={loading || !termsAccepted}
                   className={`mt-6 w-full max-w-md px-10 py-4 rounded-lg font-semibold text-base transition-all duration-200 flex items-center justify-center gap-3
     ${
-      loading || !assessmentData || !termsAccepted
+      loading || !termsAccepted
         ? "bg-[var(--surface-variant)] text-[var(--text-secondary)]/60 cursor-not-allowed opacity-70"
         : "btn-primary hover:shadow-lg cursor-pointer"
     }`}
-                  whileHover={loading || !assessmentData || !termsAccepted ? {} : { scale: 1.02 }}
-                  whileTap={loading || !assessmentData || !termsAccepted ? {} : { scale: 0.98 }}
+                  whileHover={loading || !termsAccepted ? {} : { scale: 1.02 }}
+                  whileTap={loading || !termsAccepted ? {} : { scale: 0.98 }}
                 >
                   <span className="flex-shrink-0">{loading ? "Processing..." : "Sign Up and Proceed to Payment"}</span>
                   {!loading && (
@@ -424,20 +500,6 @@ export default function Signup() {
                 )}
               </div>
             </form>
-
-            {!assessmentData && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="text-red-400 text-sm mt-4 text-center"
-              >
-                Complete your assessment:
-                <a href={`/report/${typeCode}/couples`} className="text-[var(--accent)] hover:underline ml-1">
-                  <span className="text-[var(--primary)] font-medium">Click here!</span>
-                </a>
-              </motion.p>
-            )}
           </>
         )}
 
