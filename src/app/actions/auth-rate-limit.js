@@ -16,7 +16,7 @@ import { redirect } from "next/navigation";
 
 // ============================================================================
 // LOGIN RATE LIMITING
-// ============================================================================
+// =============================================================================
 
 export async function checkLoginRateLimit(email) {
   try {
@@ -290,7 +290,7 @@ export async function sendResetEmail(email) {
       },
     });
 
-    const redirectTo = `${process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_BASE_URL}/auth/reset`;
+    const redirectTo = `${process.env.NEXT_PUBLIC_BASE_URL}/auth/reset`;
 
     const { error } = await supabaseAdmin.auth.resetPasswordForEmail(email, {
       redirectTo,

@@ -182,11 +182,11 @@ export default function Login() {
           </div>
 
           {/* Rate limit info display */}
-          {rateLimitInfo && !rateLimitInfo.limited && (
+          {/* {rateLimitInfo && !rateLimitInfo.limited && (
             <p className="text-xs text-[var(--text-secondary)] text-center">
               Login attempts remaining: {rateLimitInfo.remaining}
             </p>
-          )}
+          )} */}
 
           {error && (
             <div className="p-3 bg-red-900/50 border border-red-500/50 rounded-lg">

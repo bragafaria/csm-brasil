@@ -306,13 +306,13 @@
 // 304. C-V-O-F-A/N-L-O-S-A → Adventurer / Inventor ok
 // 305. C-V-O-F-A/N-L-O-F-H → Adventurer / Disruptor ok
 // 306. C-V-O-F-A/N-L-O-F-A → Adventurer / Revolutionary ok
-// 307. C-V-O-F-A/N-L-I-S-H → Adventurer / Academic up
-// 308. C-V-O-F-A/N-L-I-S-A → Adventurer / Theorist
-// 309. C-V-O-F-A/N-L-I-F-H → Adventurer / Innovator
-// 310. C-V-O-F-A/N-L-I-F-A → Adventurer / Visionary
-// 311. C-V-O-F-A/N-V-O-S-H → Adventurer / Ambassador
-// 312. C-V-O-F-A/N-V-O-S-A → Adventurer / Artist
-// 313. C-V-O-F-A/N-V-O-F-H → Adventurer / Catalyst
+// 307. C-V-O-F-A/N-L-I-S-H → Adventurer / Academic ok
+// 308. C-V-O-F-A/N-L-I-S-A → Adventurer / Theorist ok
+// 309. C-V-O-F-A/N-L-I-F-H → Adventurer / Innovator ok
+// 310. C-V-O-F-A/N-L-I-F-A → Adventurer / Visionary ok
+// 311. C-V-O-F-A/N-V-O-S-H → Adventurer / Ambassador ok
+// 312. C-V-O-F-A/N-V-O-S-A → Adventurer / Artist ok
+// 313. C-V-O-F-A/N-V-O-F-H → Adventurer / Catalyst ok
 // 314. C-V-O-F-A/N-V-O-F-A → Adventurer / Wanderer
 // 315. C-V-O-F-A/N-V-I-S-H → Adventurer / Mentor
 // 316. C-V-O-F-A/N-V-I-S-A → Adventurer / Sage
