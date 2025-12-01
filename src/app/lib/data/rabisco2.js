@@ -285,21 +285,21 @@
 // 283. C-V-O-F-H/N-L-O-S-A → Campaigner / Inventor ok
 // 284. C-V-O-F-H/N-L-O-F-H → Campaigner / Disruptor ok
 // 285. C-V-O-F-H/N-L-O-F-A → Campaigner / Revolutionary ok
-// 286. C-V-O-F-H/N-L-I-S-H → Campaigner / Academic
-// 287. C-V-O-F-H/N-L-I-S-A → Campaigner / Theorist
-// 288. C-V-O-F-H/N-L-I-F-H → Campaigner / Innovator
-// 289. C-V-O-F-H/N-L-I-F-A → Campaigner / Visionary
-// 290. C-V-O-F-H/N-V-O-S-H → Campaigner / Ambassador
-// 291. C-V-O-F-H/N-V-O-S-A → Campaigner / Artist
-// 292. C-V-O-F-H/N-V-O-F-H → Campaigner / Catalyst
-// 293. C-V-O-F-H/N-V-O-F-A → Campaigner / Wanderer
-// 294. C-V-O-F-H/N-V-I-S-H → Campaigner / Mentor
-// 295. C-V-O-F-H/N-V-I-S-A → Campaigner / Sage
-// 296. C-V-O-F-H/N-V-I-F-H → Campaigner / Unifier
-// 297. C-V-O-F-H/N-V-I-F-A → Campaigner / Mystic
-// 298. C-V-O-F-A/C-V-O-F-A → Adventurer / Adventurer
-// 299. C-V-O-F-A/C-V-I-S-H → Adventurer / Counselor
-// 300. C-V-O-F-A/C-V-I-S-A → Adventurer / Healer
+// 286. C-V-O-F-H/N-L-I-S-H → Campaigner / Academic ok
+// 287. C-V-O-F-H/N-L-I-S-A → Campaigner / Theorist ok
+// 288. C-V-O-F-H/N-L-I-F-H → Campaigner / Innovator ok
+// 289. C-V-O-F-H/N-L-I-F-A → Campaigner / Visionary ok
+// 290. C-V-O-F-H/N-V-O-S-H → Campaigner / Ambassador ok
+// 291. C-V-O-F-H/N-V-O-S-A → Campaigner / Artist ok
+// 292. C-V-O-F-H/N-V-O-F-H → Campaigner / Catalyst ok
+// 293. C-V-O-F-H/N-V-O-F-A → Campaigner / Wanderer ok
+// 294. C-V-O-F-H/N-V-I-S-H → Campaigner / Mentor ok
+// 295. C-V-O-F-H/N-V-I-S-A → Campaigner / Sage ok
+// 296. C-V-O-F-H/N-V-I-F-H → Campaigner / Unifier ok
+// 297. C-V-O-F-H/N-V-I-F-A → Campaigner / Mystic ok
+// 298. C-V-O-F-A/C-V-O-F-A → Adventurer / Adventurer ok
+// 299. C-V-O-F-A/C-V-I-S-H → Adventurer / Counselor ok
+// 300. C-V-O-F-A/C-V-I-S-A → Adventurer / Healer ok
 // 301. C-V-O-F-A/C-V-I-F-H → Adventurer / Peacemaker
 // 302. C-V-O-F-A/C-V-I-F-A → Adventurer / Empath
 // 303. C-V-O-F-A/N-L-O-S-H → Adventurer / Strategist
