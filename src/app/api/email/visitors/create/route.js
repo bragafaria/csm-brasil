@@ -1,7 +1,7 @@
 // app/api/visitors/create/route.js
 import { createClient } from "@supabase/supabase-js";
 import { render } from "@react-email/render";
-import PersonalityReportEmail, { getPlainTextVersion } from "@/app/components/emails/PersonalityReportEmail";
+import PersonalityReportEmail, { getPlainTextVersion } from "@/app/components/emails/PersonalityReport";
 
 const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
 
