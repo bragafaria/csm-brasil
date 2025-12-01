@@ -9,6 +9,7 @@ export default function PersonalityReportEmail({
   unsubscribeUrl = "https://csmdynamics.com/unsubscribe",
 }) {
   const greeting = name !== "there" ? `, ${name}` : "";
+  const couplesReportUrl = `https://csmdynamics.com/report/${typeCode}/couples`;
 
   return (
     <div
@@ -67,7 +68,6 @@ export default function PersonalityReportEmail({
         >
           You just discovered your Cognitive Spectrum Model (CSM) archetype:
         </p>
-
         {/* Result card */}
         <div
           style={{
@@ -99,7 +99,6 @@ export default function PersonalityReportEmail({
             {typeCode}
           </div>
         </div>
-
         <p
           style={{
             fontSize: "16px",
@@ -110,26 +109,79 @@ export default function PersonalityReportEmail({
         >
           Your personalized personality report is ready. Click below to view it anytime from any device.
         </p>
+        {/* CTA Buttons Section */}
+        <div style={{ margin: "32px 0" }}>
+          {/* Couple's Insight Report Button - Primary/Featured */}
+          <div style={{ textAlign: "center", marginBottom: "16px", position: "relative" }}>
+            <div style={{ display: "inline-block", position: "relative" }}>
+              {/* NEW Badge */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: "-8px",
+                  right: "-8px",
+                  backgroundColor: "#dc2626",
+                  color: "#ffffff",
+                  fontSize: "11px",
+                  fontWeight: "bold",
+                  padding: "4px 8px",
+                  borderRadius: "4px",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.5px",
+                }}
+              >
+                NEW
+              </div>
 
-        {/* CTA Button */}
-        <div style={{ textAlign: "center", margin: "32px 0" }}>
-          <a
-            href={shareableUrl}
-            style={{
-              backgroundColor: "#8b5cf6",
-              color: "#ffffff",
-              padding: "16px 32px",
-              borderRadius: "6px",
-              fontWeight: "bold",
-              textDecoration: "none",
-              display: "inline-block",
-              fontSize: "16px",
-            }}
-          >
-            View My Full Report
-          </a>
+              <a
+                href={couplesReportUrl}
+                style={{
+                  backgroundColor: "#8b5cf6",
+                  color: "#ffffff",
+                  padding: "18px 40px",
+                  borderRadius: "6px",
+                  fontWeight: "bold",
+                  textDecoration: "none",
+                  display: "inline-block",
+                  fontSize: "17px",
+                  boxShadow: "0 4px 6px rgba(139, 92, 246, 0.3)",
+                }}
+              >
+                🎯 {`Access Your Couple's Insight Report`}
+              </a>
+            </div>
+            <p
+              style={{
+                fontSize: "13px",
+                color: "#6b7280",
+                margin: "8px 0 0 0",
+                fontStyle: "italic",
+              }}
+            >
+              Dashboard area to unlock deep compatibility insights for your relationship
+            </p>
+          </div>
+
+          {/* Free Report Button - Secondary */}
+          <div style={{ textAlign: "center" }}>
+            <a
+              href={shareableUrl}
+              style={{
+                backgroundColor: "#ffffff",
+                color: "#8b5cf6",
+                padding: "14px 32px",
+                borderRadius: "6px",
+                fontWeight: "600",
+                textDecoration: "none",
+                display: "inline-block",
+                fontSize: "15px",
+                border: "2px solid #8b5cf6",
+              }}
+            >
+              View My Free Personality Report
+            </a>
+          </div>
         </div>
-
         <hr
           style={{
             border: "none",
@@ -137,7 +189,6 @@ export default function PersonalityReportEmail({
             margin: "32px 0",
           }}
         />
-
         <p
           style={{
             fontSize: "14px",
@@ -147,7 +198,8 @@ export default function PersonalityReportEmail({
             textAlign: "center",
           }}
         >
-          This link is permanent and contains your complete results. Bookmark it or share it with others.
+          Your free personality report link is permanent and contains your complete results. Bookmark it or share it
+          with others.
         </p>
       </div>
 
@@ -194,6 +246,7 @@ export default function PersonalityReportEmail({
 // Export plain text version for Resend (CRITICAL for Gmail deliverability)
 export function getPlainTextVersion({ name = "there", archetypeName, typeCode, shareableUrl, unsubscribeUrl }) {
   const greeting = name !== "there" ? `, ${name}` : "";
+  const couplesReportUrl = `https://csmdynamics.com/report/${typeCode}/couples`;
 
   return `
 Congratulations${greeting}!
@@ -205,10 +258,19 @@ ${typeCode}
 
 Your personalized personality report is ready.
 
-View your report here:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 **NEW** COUPLE'S INSIGHT REPORT
+Unlock deep compatibility insights for your relationship
+
+${couplesReportUrl}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+View your FREE personality report:
 ${shareableUrl}
 
-This link is permanent and contains your complete results. Bookmark it or share it with others.
+Your free report link is permanent and contains your complete results. Bookmark it or share it with others.
 
 ---
 

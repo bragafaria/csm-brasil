@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
 import { z } from "zod";
-import { ArrowRight, Check, AlertCircle, Eye, EyeOff } from "lucide-react";
+import { ArrowRight, Check, AlertCircle, Eye, EyeOff, X } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import TermsModal from "@/app/components/terms-of-service/TermsModal";
@@ -81,26 +81,8 @@ export default function Signup() {
     init();
   }, [router]);
 
-  const handleSignOut = async () => {
-    try {
-      console.log("Signing out...");
-      const { error } = await supabase.auth.signOut();
-      if (error) {
-        console.error("Error signing out:", error.message, error);
-        setServerError("Failed to sign out. Please try again.");
-        return;
-      }
-      // Preserve csmAssessmentData
-      const savedAssessment = localStorage.getItem("csmAssessmentData");
-      if (savedAssessment) {
-        localStorage.setItem("csmAssessmentData", savedAssessment);
-      }
-      console.log("Signed out successfully, preserved csmAssessmentData");
-      router.push(`/report/${typeCode}/couples`);
-    } catch (err) {
-      console.error("Unexpected error in handleSignOut:", err.message, err);
-      setServerError("An unexpected error occurred during sign out.");
-    }
+  const handleClose = () => {
+    router.push(`/report/${typeCode}/couples`);
   };
 
   const handleSignup = async (e) => {
@@ -255,7 +237,16 @@ export default function Signup() {
         transition={{ duration: 0.5 }}
         className="min-h-screen flex items-center justify-center bg-[var(--surface)] p-4"
       >
-        <div className="card-gradient py-12 px-6 md:p-12 rounded-lg shadow-custom-lg max-w-lg w-full">
+        <div className="card-gradient py-12 px-6 md:p-12 rounded-lg shadow-custom-lg max-w-lg w-full relative">
+          {/* Close Button */}
+          <button
+            onClick={handleClose}
+            className="absolute top-4 right-4 p-2 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-variant)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+            aria-label="Close"
+          >
+            <X className="w-5 h-5" />
+          </button>
+
           <div className="flex items-center justify-center space-x-2 mb-8">
             <Image src="/logo_transparent_svg.svg" alt="CSM Dynamics Logo" width={32} height={32} className="h-8 w-8" />
             <div className="flex items-center space-x-1">
@@ -318,7 +309,16 @@ export default function Signup() {
       transition={{ duration: 0.5 }}
       className="min-h-screen flex items-center justify-center bg-[var(--surface)] p-4"
     >
-      <div className="card-gradient py-8 px-2 md:p-8 rounded-lg shadow-custom-lg max-w-md w-full">
+      <div className="card-gradient py-8 px-2 md:p-8 rounded-lg shadow-custom-lg max-w-md w-full relative">
+        {/* Close Button */}
+        <button
+          onClick={handleClose}
+          className="absolute top-4 right-4 p-2 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-variant)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+          aria-label="Close"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
         <div className="flex items-center justify-center space-x-2 mb-6">
           <Image src="/logo_transparent_svg.svg" alt="CSM Dynamics Logo" width={28} height={28} className="h-7 w-7" />
           <div className="flex items-center space-x-1">

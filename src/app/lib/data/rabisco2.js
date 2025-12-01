@@ -300,13 +300,13 @@
 // 298. C-V-O-F-A/C-V-O-F-A → Adventurer / Adventurer ok
 // 299. C-V-O-F-A/C-V-I-S-H → Adventurer / Counselor ok
 // 300. C-V-O-F-A/C-V-I-S-A → Adventurer / Healer ok
-// 301. C-V-O-F-A/C-V-I-F-H → Adventurer / Peacemaker
-// 302. C-V-O-F-A/C-V-I-F-A → Adventurer / Empath
-// 303. C-V-O-F-A/N-L-O-S-H → Adventurer / Strategist
-// 304. C-V-O-F-A/N-L-O-S-A → Adventurer / Inventor
-// 305. C-V-O-F-A/N-L-O-F-H → Adventurer / Disruptor
-// 306. C-V-O-F-A/N-L-O-F-A → Adventurer / Revolutionary
-// 307. C-V-O-F-A/N-L-I-S-H → Adventurer / Academic
+// 301. C-V-O-F-A/C-V-I-F-H → Adventurer / Peacemaker ok
+// 302. C-V-O-F-A/C-V-I-F-A → Adventurer / Empath ok
+// 303. C-V-O-F-A/N-L-O-S-H → Adventurer / Strategist ok
+// 304. C-V-O-F-A/N-L-O-S-A → Adventurer / Inventor ok
+// 305. C-V-O-F-A/N-L-O-F-H → Adventurer / Disruptor ok
+// 306. C-V-O-F-A/N-L-O-F-A → Adventurer / Revolutionary ok
+// 307. C-V-O-F-A/N-L-I-S-H → Adventurer / Academic up
 // 308. C-V-O-F-A/N-L-I-S-A → Adventurer / Theorist
 // 309. C-V-O-F-A/N-L-I-F-H → Adventurer / Innovator
 // 310. C-V-O-F-A/N-L-I-F-A → Adventurer / Visionary
