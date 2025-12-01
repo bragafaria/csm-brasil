@@ -46,7 +46,7 @@ export async function POST(req) {
       const confirmationHtml = await render(<SupportConfirmationEmail name={body.name} ticket={body.ticket} />);
 
       await resend.emails.send({
-        from: "CSM Support <support@updates.csmdynamics.com>",
+        from: "CSM Support <support@csmdynamics.com>",
         reply_to: process.env.SUPPORT_EMAIL,
         to: body.email,
         subject: body.confirmationSubject || `Ticket #${body.ticket} Received`,

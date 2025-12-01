@@ -313,13 +313,13 @@
 // 311. C-V-O-F-A/N-V-O-S-H → Adventurer / Ambassador ok
 // 312. C-V-O-F-A/N-V-O-S-A → Adventurer / Artist ok
 // 313. C-V-O-F-A/N-V-O-F-H → Adventurer / Catalyst ok
-// 314. C-V-O-F-A/N-V-O-F-A → Adventurer / Wanderer
-// 315. C-V-O-F-A/N-V-I-S-H → Adventurer / Mentor
-// 316. C-V-O-F-A/N-V-I-S-A → Adventurer / Sage
-// 317. C-V-O-F-A/N-V-I-F-H → Adventurer / Unifier
-// 318. C-V-O-F-A/N-V-I-F-A → Adventurer / Mystic
-// 319. C-V-I-S-H/C-V-I-S-H → Counselor / Counselor
-// 320. C-V-I-S-H/C-V-I-S-A → Counselor / Healer
+// 314. C-V-O-F-A/N-V-O-F-A → Adventurer / Wanderer ok
+// 315. C-V-O-F-A/N-V-I-S-H → Adventurer / Mentor ok
+// 316. C-V-O-F-A/N-V-I-S-A → Adventurer / Sage ok
+// 317. C-V-O-F-A/N-V-I-F-H → Adventurer / Unifier ok
+// 318. C-V-O-F-A/N-V-I-F-A → Adventurer / Mystic ok
+// 319. C-V-I-S-H/C-V-I-S-H → Counselor / Counselor ok
+// 320. C-V-I-S-H/C-V-I-S-A → Counselor / Healer ok
 // 321. C-V-I-S-H/C-V-I-F-H → Counselor / Peacemaker
 // 322. C-V-I-S-H/C-V-I-F-A → Counselor / Empath
 // 323. C-V-I-S-H/N-L-O-S-H → Counselor / Strategist
