@@ -27,7 +27,7 @@ export async function POST(req) {
     );
 
     await resend.emails.send({
-      from: "CSM Support <support@updates.csmdynamics.com>",
+      from: "CSM Support <support@csmdynamics.com>",
       to: process.env.SUPPORT_EMAIL,
       reply_to: process.env.SUPPORT_EMAIL,
       subject: body.subject || `New support ticket #${body.ticket}`,

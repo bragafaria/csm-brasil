@@ -10,7 +10,7 @@ export async function POST(req) {
     const { to, subject, html } = await req.json();
 
     const data = await resend.emails.send({
-      from: "CSM Dynamics <reports@updates.csmdynamics.com>",
+      from: "CSM Dynamics <csm@csmdynamics.com>",
       to,
       subject,
       html,
