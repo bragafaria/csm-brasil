@@ -64,61 +64,61 @@ function LoginContent() {
     verifyAndRedirect();
   }, [router, sessionId]);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   setError(null);
 
-    try {
-      if (!supabase) {
-        throw new Error("Supabase client is not initialized");
-      }
+  //   try {
+  //     if (!supabase) {
+  //       throw new Error("Supabase client is not initialized");
+  //     }
 
-      console.log("Attempting login with:", { email });
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+  //     console.log("Attempting login with:", { email });
+  //     const { data, error } = await supabase.auth.signInWithPassword({
+  //       email,
+  //       password,
+  //     });
 
-      if (error) {
-        console.error("Login error:", error.message, error);
-        setError(error.message);
-        setLoading(false);
-        return;
-      }
+  //     if (error) {
+  //       console.error("Login error:", error.message, error);
+  //       setError(error.message);
+  //       setLoading(false);
+  //       return;
+  //     }
 
-      if (!data.session || !data.user) {
-        console.error("No session or user data returned:", { data });
-        setError("No session or user data returned. Please try again.");
-        setLoading(false);
-        return;
-      }
+  //     if (!data.session || !data.user) {
+  //       console.error("No session or user data returned:", { data });
+  //       setError("No session or user data returned. Please try again.");
+  //       setLoading(false);
+  //       return;
+  //     }
 
-      const { data: userData, error: userError } = await supabase
-        .from("users")
-        .select("id")
-        .eq("id", data.user.id)
-        .single();
+  //     const { data: userData, error: userError } = await supabase
+  //       .from("users")
+  //       .select("id")
+  //       .eq("id", data.user.id)
+  //       .single();
 
-      if (userError || !userData) {
-        console.error("User fetch error:", userError?.message || "No user found for userId", data.user.id, userError);
-        setError("User profile not found. Please sign up or try again.");
-        await supabase.auth.signOut();
-        setLoading(false);
-        return;
-      }
+  //     if (userError || !userData) {
+  //       console.error("User fetch error:", userError?.message || "No user found for userId", data.user.id, userError);
+  //       setError("User profile not found. Please sign up or try again.");
+  //       await supabase.auth.signOut();
+  //       setLoading(false);
+  //       return;
+  //     }
 
-      console.log("Login successful, redirecting:", {
-        userId: data.user.id,
-        redirectPath: `/dashboard/${data.user.id}`,
-      });
-      router.push(`/dashboard/${data.user.id}`);
-    } catch (err) {
-      console.error("Unexpected error in handleLogin:", err.message, err.stack);
-      setError("An unexpected error occurred during login. Please try again.");
-      setLoading(false);
-    }
-  };
+  //     console.log("Login successful, redirecting:", {
+  //       userId: data.user.id,
+  //       redirectPath: `/dashboard/${data.user.id}`,
+  //     });
+  //     router.push(`/dashboard/${data.user.id}`);
+  //   } catch (err) {
+  //     console.error("Unexpected error in handleLogin:", err.message, err.stack);
+  //     setError("An unexpected error occurred during login. Please try again.");
+  //     setLoading(false);
+  //   }
+  // };
 
   if (loading) {
     return (
