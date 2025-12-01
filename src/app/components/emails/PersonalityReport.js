@@ -119,7 +119,7 @@ export default function PersonalityReportEmail({
                 style={{
                   position: "absolute",
                   top: "-8px",
-                  right: "-8px",
+                  right: "4px",
                   backgroundColor: "#dc2626",
                   color: "#ffffff",
                   fontSize: "11px",
