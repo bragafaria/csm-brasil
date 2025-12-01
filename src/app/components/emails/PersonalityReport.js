@@ -15,113 +15,206 @@ export default function PersonalityReportEmail({
       style={{
         maxWidth: "600px",
         margin: "0 auto",
-        padding: "32px 20px",
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-        backgroundColor: "#0f172a",
-        color: "#e2e8f0",
+        padding: "0",
+        fontFamily: "Arial, sans-serif",
+        backgroundColor: "#ffffff",
+        color: "#1f2937",
       }}
     >
-      <div style={{ display: "none", maxHeight: "0px", overflow: "hidden" }}>
-        Congratulations{greeting}! You discovered your CSM archetype: The {archetypeName} ({typeCode}). View your
-        personalized report at {shareableUrl}
-      </div>
-
-      <h1
-        style={{
-          fontSize: "24px",
-          fontWeight: "600",
-          color: "#ffffff",
-          textAlign: "center",
-          marginBottom: "24px",
-          marginTop: "0",
-        }}
-      >
-        Congratulations{greeting}! 🎉
-      </h1>
-
-      <p style={{ fontSize: "16px", lineHeight: "1.6", margin: "16px 0", color: "#e2e8f0" }}>
-        You just discovered your Cognitive Spectrum Model (CSM) archetype:
-      </p>
-
-      <div style={{ textAlign: "center", margin: "32px 0" }}>
-        <div
-          style={{
-            fontSize: "28px",
-            fontWeight: "600",
-            color: "#a78bfa",
-            letterSpacing: "0.5px",
-          }}
-        >
-          The {archetypeName}
-        </div>
-        <div
-          style={{
-            fontSize: "18px",
-            color: "#e879f9",
-            marginTop: "8px",
-          }}
-        >
-          {typeCode}
-        </div>
-      </div>
-
-      <p style={{ fontSize: "16px", lineHeight: "1.6", margin: "16px 0", color: "#e2e8f0" }}>
-        Your personalized personality report is ready. Click below to view it anytime from any device.
-      </p>
-
-      <div style={{ textAlign: "center", margin: "40px 0" }}>
-        <a
-          href={shareableUrl}
-          style={{
-            backgroundColor: "#a78bfa",
-            color: "#ffffff",
-            padding: "14px 28px",
-            borderRadius: "8px",
-            fontWeight: "600",
-            textDecoration: "none",
-            display: "inline-block",
-            fontSize: "16px",
-          }}
-        >
-          View My Full Report
-        </a>
-      </div>
-
-      <hr style={{ border: "none", borderTop: "1px solid #334155", margin: "32px 0" }} />
-
-      <p style={{ fontSize: "14px", color: "#94a3b8", lineHeight: "1.5", margin: "16px 0" }}>
-        This link is permanent and contains your complete results. Bookmark it or share it with others.
-      </p>
-
-      {/* Unsubscribe section - critical for deliverability */}
+      {/* Email preview text - shows in inbox preview */}
       <div
         style={{
-          marginTop: "32px",
-          paddingTop: "24px",
-          borderTop: "1px solid #334155",
+          display: "none",
+          maxHeight: "0px",
+          overflow: "hidden",
+          fontSize: "1px",
+          lineHeight: "1px",
+        }}
+      >
+        Congratulations{greeting}! You discovered your CSM archetype: The {archetypeName} ({typeCode}). View your
+        personalized report now.
+      </div>
+
+      {/* Header with accent color */}
+      <div
+        style={{
+          backgroundColor: "#8b5cf6",
+          padding: "32px 24px",
           textAlign: "center",
         }}
       >
-        <p style={{ fontSize: "13px", color: "#64748b", margin: "8px 0" }}>
-          {" Don't want to receive these emails? "}
-          <a href={unsubscribeUrl} style={{ color: "#a78bfa", textDecoration: "underline" }}>
-            Unsubscribe here
+        <h1
+          style={{
+            fontSize: "28px",
+            fontWeight: "bold",
+            color: "#ffffff",
+            margin: "0",
+          }}
+        >
+          Congratulations{greeting}!
+        </h1>
+      </div>
+
+      {/* Main content area */}
+      <div style={{ padding: "32px 24px", backgroundColor: "#ffffff" }}>
+        <p
+          style={{
+            fontSize: "16px",
+            lineHeight: "1.6",
+            margin: "0 0 24px 0",
+            color: "#374151",
+          }}
+        >
+          You just discovered your Cognitive Spectrum Model (CSM) archetype:
+        </p>
+
+        {/* Result card */}
+        <div
+          style={{
+            textAlign: "center",
+            margin: "32px 0",
+            padding: "24px",
+            backgroundColor: "#f9fafb",
+            borderRadius: "8px",
+            border: "2px solid #e5e7eb",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "32px",
+              fontWeight: "bold",
+              color: "#8b5cf6",
+              marginBottom: "8px",
+            }}
+          >
+            The {archetypeName}
+          </div>
+          <div
+            style={{
+              fontSize: "20px",
+              color: "#6b7280",
+              fontWeight: "600",
+            }}
+          >
+            {typeCode}
+          </div>
+        </div>
+
+        <p
+          style={{
+            fontSize: "16px",
+            lineHeight: "1.6",
+            margin: "24px 0",
+            color: "#374151",
+          }}
+        >
+          Your personalized personality report is ready. Click below to view it anytime from any device.
+        </p>
+
+        {/* CTA Button */}
+        <div style={{ textAlign: "center", margin: "32px 0" }}>
+          <a
+            href={shareableUrl}
+            style={{
+              backgroundColor: "#8b5cf6",
+              color: "#ffffff",
+              padding: "16px 32px",
+              borderRadius: "6px",
+              fontWeight: "bold",
+              textDecoration: "none",
+              display: "inline-block",
+              fontSize: "16px",
+            }}
+          >
+            View My Full Report
           </a>
+        </div>
+
+        <hr
+          style={{
+            border: "none",
+            borderTop: "1px solid #e5e7eb",
+            margin: "32px 0",
+          }}
+        />
+
+        <p
+          style={{
+            fontSize: "14px",
+            color: "#6b7280",
+            lineHeight: "1.5",
+            margin: "16px 0",
+            textAlign: "center",
+          }}
+        >
+          This link is permanent and contains your complete results. Bookmark it or share it with others.
         </p>
       </div>
 
-      <p
+      {/* Footer */}
+      <div
         style={{
-          fontSize: "12px",
-          color: "#64748b",
-          marginTop: "24px",
-          textAlign: "center",
-          margin: "24px 0 0 0",
+          padding: "24px",
+          backgroundColor: "#f9fafb",
+          borderTop: "1px solid #e5e7eb",
         }}
       >
-        CSM Dynamics
-        <br />© 2025 Cognitive Spectrum Model. All rights reserved.
-      </p>
+        {/* Unsubscribe */}
+        <div style={{ textAlign: "center", marginBottom: "16px" }}>
+          <p
+            style={{
+              fontSize: "13px",
+              color: "#6b7280",
+              margin: "0",
+            }}
+          >
+            {" Don't want to receive these emails? "}
+            <a href={unsubscribeUrl} style={{ color: "#8b5cf6", textDecoration: "underline" }}>
+              Unsubscribe here
+            </a>
+          </p>
+        </div>
+
+        {/* Copyright */}
+        <p
+          style={{
+            fontSize: "12px",
+            color: "#9ca3af",
+            textAlign: "center",
+            margin: "0",
+          }}
+        >
+          CSM Dynamics | © 2025 Cognitive Spectrum Model
+        </p>
+      </div>
     </div>
   );
+}
+
+// Export plain text version for Resend (CRITICAL for Gmail deliverability)
+export function getPlainTextVersion({ name = "there", archetypeName, typeCode, shareableUrl, unsubscribeUrl }) {
+  const greeting = name !== "there" ? `, ${name}` : "";
+
+  return `
+Congratulations${greeting}!
+
+You just discovered your Cognitive Spectrum Model (CSM) archetype:
+
+THE ${archetypeName.toUpperCase()}
+${typeCode}
+
+Your personalized personality report is ready.
+
+View your report here:
+${shareableUrl}
+
+This link is permanent and contains your complete results. Bookmark it or share it with others.
+
+---
+
+Don't want to receive these emails?
+Unsubscribe here: ${unsubscribeUrl}
+
+CSM Dynamics | © 2025 Cognitive Spectrum Model
+`.trim();
 }
