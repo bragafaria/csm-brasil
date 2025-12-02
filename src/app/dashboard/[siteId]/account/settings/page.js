@@ -108,6 +108,8 @@ export default function SettingsPage() {
   };
 
   // ==================== CHANGE EMAIL ====================
+  // Update the handleEmailChange function in your settings page
+
   const handleEmailChange = async (e) => {
     e.preventDefault();
 
@@ -116,24 +118,42 @@ export default function SettingsPage() {
       return;
     }
 
+    if (newEmail.toLowerCase() === currentEmail.toLowerCase()) {
+      setEmailStatus({ success: false, message: "New email must be different from current email" });
+      return;
+    }
+
     setEmailLoading(true);
     setEmailStatus(null);
 
-    const { error } = await supabase.auth.updateUser({
-      email: newEmail,
-    });
+    try {
+      // Step 1: Request email change from Supabase Auth
+      const { data, error } = await supabase.auth.updateUser({
+        email: newEmail,
+      });
 
-    if (error) {
-      setEmailStatus({ success: false, message: error.message });
-    } else {
+      if (error) {
+        setEmailStatus({ success: false, message: error.message });
+        setEmailLoading(false);
+        return;
+      }
+
+      // Step 2: Success - Email change confirmation sent
       setEmailStatus({
         success: true,
-        message: "Email change requested! Check your NEW email for the confirmation link.",
+        message:
+          "Email change requested! Check your NEW email for the confirmation link. Once confirmed, your account will be updated automatically.",
       });
       setNewEmail("");
+    } catch (err) {
+      console.error("Email change error:", err);
+      setEmailStatus({
+        success: false,
+        message: "An unexpected error occurred. Please try again.",
+      });
+    } finally {
+      setEmailLoading(false);
     }
-
-    setEmailLoading(false);
   };
 
   // ==================== CHANGE PASSWORD ====================

@@ -326,21 +326,21 @@
 // 324. C-V-I-S-H/N-L-O-S-A → Counselor / Inventor ok
 // 325. C-V-I-S-H/N-L-O-F-H → Counselor / Disruptor ok
 // 326. C-V-I-S-H/N-L-O-F-A → Counselor / Revolutionary ok
-// 327. C-V-I-S-H/N-L-I-S-H → Counselor / Academic up
-// 328. C-V-I-S-H/N-L-I-S-A → Counselor / Theorist
-// 329. C-V-I-S-H/N-L-I-F-H → Counselor / Innovator
-// 330. C-V-I-S-H/N-L-I-F-A → Counselor / Visionary
-// 331. C-V-I-S-H/N-V-O-S-H → Counselor / Ambassador
-// 332. C-V-I-S-H/N-V-O-S-A → Counselor / Artist
-// 333. C-V-I-S-H/N-V-O-F-H → Counselor / Catalyst
-// 334. C-V-I-S-H/N-V-O-F-A → Counselor / Wanderer
-// 335. C-V-I-S-H/N-V-I-S-H → Counselor / Mentor
-// 336. C-V-I-S-H/N-V-I-S-A → Counselor / Sage
-// 337. C-V-I-S-H/N-V-I-F-H → Counselor / Unifier
-// 338. C-V-I-S-H/N-V-I-F-A → Counselor / Mystic
-// 339. C-V-I-S-A/C-V-I-S-A → Healer / Healer
-// 340. C-V-I-S-A/C-V-I-F-H → Healer / Peacemaker
-// 341. C-V-I-S-A/C-V-I-F-A → Healer / Empath
+// 327. C-V-I-S-H/N-L-I-S-H → Counselor / Academic ok
+// 328. C-V-I-S-H/N-L-I-S-A → Counselor / Theorist ok
+// 329. C-V-I-S-H/N-L-I-F-H → Counselor / Innovator ok
+// 330. C-V-I-S-H/N-L-I-F-A → Counselor / Visionary ok
+// 331. C-V-I-S-H/N-V-O-S-H → Counselor / Ambassador ok
+// 332. C-V-I-S-H/N-V-O-S-A → Counselor / Artist ok
+// 333. C-V-I-S-H/N-V-O-F-H → Counselor / Catalyst ok
+// 334. C-V-I-S-H/N-V-O-F-A → Counselor / Wanderer ok
+// 335. C-V-I-S-H/N-V-I-S-H → Counselor / Mentor ok
+// 336. C-V-I-S-H/N-V-I-S-A → Counselor / Sage ok
+// 337. C-V-I-S-H/N-V-I-F-H → Counselor / Unifier ok
+// 338. C-V-I-S-H/N-V-I-F-A → Counselor / Mystic ok
+// 339. C-V-I-S-A/C-V-I-S-A → Healer / Healer ok
+// 340. C-V-I-S-A/C-V-I-F-H → Healer / Peacemaker ok
+// 341. C-V-I-S-A/C-V-I-F-A → Healer / Empath ok
 // 342. C-V-I-S-A/N-L-O-S-H → Healer / Strategist
 // 343. C-V-I-S-A/N-L-O-S-A → Healer / Inventor
 // 344. C-V-I-S-A/N-L-O-F-H → Healer / Disruptor
