@@ -320,13 +320,13 @@
 // 318. C-V-O-F-A/N-V-I-F-A → Adventurer / Mystic ok
 // 319. C-V-I-S-H/C-V-I-S-H → Counselor / Counselor ok
 // 320. C-V-I-S-H/C-V-I-S-A → Counselor / Healer ok
-// 321. C-V-I-S-H/C-V-I-F-H → Counselor / Peacemaker
-// 322. C-V-I-S-H/C-V-I-F-A → Counselor / Empath
-// 323. C-V-I-S-H/N-L-O-S-H → Counselor / Strategist
-// 324. C-V-I-S-H/N-L-O-S-A → Counselor / Inventor
-// 325. C-V-I-S-H/N-L-O-F-H → Counselor / Disruptor
-// 326. C-V-I-S-H/N-L-O-F-A → Counselor / Revolutionary
-// 327. C-V-I-S-H/N-L-I-S-H → Counselor / Academic
+// 321. C-V-I-S-H/C-V-I-F-H → Counselor / Peacemaker ok
+// 322. C-V-I-S-H/C-V-I-F-A → Counselor / Empath ok
+// 323. C-V-I-S-H/N-L-O-S-H → Counselor / Strategist ok
+// 324. C-V-I-S-H/N-L-O-S-A → Counselor / Inventor ok
+// 325. C-V-I-S-H/N-L-O-F-H → Counselor / Disruptor ok
+// 326. C-V-I-S-H/N-L-O-F-A → Counselor / Revolutionary ok
+// 327. C-V-I-S-H/N-L-I-S-H → Counselor / Academic up
 // 328. C-V-I-S-H/N-L-I-S-A → Counselor / Theorist
 // 329. C-V-I-S-H/N-L-I-F-H → Counselor / Innovator
 // 330. C-V-I-S-H/N-L-I-F-A → Counselor / Visionary
