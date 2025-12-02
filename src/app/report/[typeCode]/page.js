@@ -176,14 +176,28 @@ DEGREES OF INFLUENCE:
       Low: { border: "border-green-400/20", text: "text-green-400", bg: "bg-green-400", from: "from-green-500/10" },
     })[level] || { border: "border-gray-400/20", text: "text-gray-400", bg: "bg-gray-400", from: "from-gray-500/10" };
 
+  // Replace your shortenUrl function with this:
+
   const shortenUrl = async (longUrl) => {
     try {
-      const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`);
-      if (response.ok) return await response.text();
+      const response = await fetch("/api/shorten", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          originalURL: longUrl,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        return data.secureShortURL; // Returns: https://go.csmynamics.com/xxxxx
+      }
     } catch (err) {
       console.error("URL shorten failed", err);
     }
-    return longUrl;
+    return longUrl; // Fallback to long URL if shortening fails
   };
 
   const generateShareableLink = async () => {
