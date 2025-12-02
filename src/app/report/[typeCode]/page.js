@@ -258,7 +258,7 @@ DEGREES OF INFLUENCE:
   return (
     <div className="container mx-auto p-2 md:p-6 max-w-4xl">
       {/* HERO */}
-      <header className="hero-gradient rounded-lg p-6 md:p-8 shadow-custom-lg">
+      <div className="hero-gradient rounded-lg p-6 md:p-8 shadow-custom-lg">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
           <div>
             <h1 className="text-4xl font-bold text-white">Your CSM Personality Report</h1>
@@ -268,7 +268,7 @@ DEGREES OF INFLUENCE:
             </p>
           </div>
         </div>
-      </header>
+      </div>
 
       {/* ==================== SUMMARY ==================== */}
       <section className="max-w-4xl mx-auto mt-8 space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mb-8">
@@ -1096,7 +1096,7 @@ DEGREES OF INFLUENCE:
             </div>
           ) : (
             <>
-              Discover How You Connect
+              {`Get Your Couple's Insight Report`}
               <ArrowRight className="h-5 w-5" />
             </>
           )}

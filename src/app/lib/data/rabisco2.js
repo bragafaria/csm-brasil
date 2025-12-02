@@ -350,23 +350,23 @@
 // 348. C-V-I-S-A/N-L-I-F-H → Healer / Innovator ok
 // 349. C-V-I-S-A/N-L-I-F-A → Healer / Visionary ok
 // 350. C-V-I-S-A/N-V-O-S-H → Healer / Ambassador ok
-// 351. C-V-I-S-A/N-V-O-S-A → Healer / Artist
-// 352. C-V-I-S-A/N-V-O-F-H → Healer / Catalyst
-// 353. C-V-I-S-A/N-V-O-F-A → Healer / Wanderer
-// 354. C-V-I-S-A/N-V-I-S-H → Healer / Mentor
-// 355. C-V-I-S-A/N-V-I-S-A → Healer / Sage
-// 356. C-V-I-S-A/N-V-I-F-H → Healer / Unifier
-// 357. C-V-I-S-A/N-V-I-F-A → Healer / Mystic
-// 358. C-V-I-F-H/C-V-I-F-H → Peacemaker / Peacemaker
-// 359. C-V-I-F-H/C-V-I-F-A → Peacemaker / Empath
-// 360. C-V-I-F-H/N-L-O-S-H → Peacemaker / Strategist
-// 361. C-V-I-F-H/N-L-O-S-A → Peacemaker / Inventor
-// 362. C-V-I-F-H/N-L-O-F-H → Peacemaker / Disruptor
-// 363. C-V-I-F-H/N-L-O-F-A → Peacemaker / Revolutionary
-// 364. C-V-I-F-H/N-L-I-S-H → Peacemaker / Academic
-// 365. C-V-I-F-H/N-L-I-S-A → Peacemaker / Theorist
-// 366. C-V-I-F-H/N-L-I-F-H → Peacemaker / Innovator
-// 367. C-V-I-F-H/N-L-I-F-A → Peacemaker / Visionary
+// 351. C-V-I-S-A/N-V-O-S-A → Healer / Artist ok
+// 352. C-V-I-S-A/N-V-O-F-H → Healer / Catalyst ok
+// 353. C-V-I-S-A/N-V-O-F-A → Healer / Wanderer ok
+// 354. C-V-I-S-A/N-V-I-S-H → Healer / Mentor ok
+// 355. C-V-I-S-A/N-V-I-S-A → Healer / Sage ok
+// 356. C-V-I-S-A/N-V-I-F-H → Healer / Unifier ok
+// 357. C-V-I-S-A/N-V-I-F-A → Healer / Mystic ok
+// 358. C-V-I-F-H/C-V-I-F-H → Peacemaker / Peacemaker ok
+// 359. C-V-I-F-H/C-V-I-F-A → Peacemaker / Empath ok
+// 360. C-V-I-F-H/N-L-O-S-H → Peacemaker / Strategist ok
+// 361. C-V-I-F-H/N-L-O-S-A → Peacemaker / Inventor ok
+// 362. C-V-I-F-H/N-L-O-F-H → Peacemaker / Disruptor ok
+// 363. C-V-I-F-H/N-L-O-F-A → Peacemaker / Revolutionary ok
+// 364. C-V-I-F-H/N-L-I-S-H → Peacemaker / Academic ok
+// 365. C-V-I-F-H/N-L-I-S-A → Peacemaker / Theorist ok
+// 366. C-V-I-F-H/N-L-I-F-H → Peacemaker / Innovator ok
+// 367. C-V-I-F-H/N-L-I-F-A → Peacemaker / Visionary ok
 // 368. C-V-I-F-H/N-V-O-S-H → Peacemaker / Ambassador
 // 369. C-V-I-F-H/N-V-O-S-A → Peacemaker / Artist
 // 370. C-V-I-F-H/N-V-O-F-H → Peacemaker / Catalyst
