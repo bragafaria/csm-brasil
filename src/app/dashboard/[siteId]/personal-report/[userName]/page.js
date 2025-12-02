@@ -244,12 +244,24 @@ export default function PersonalReportPage() {
 
   const shortenUrl = async (longUrl) => {
     try {
-      const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`);
-      if (response.ok) return await response.text();
+      const response = await fetch("/api/shorten", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          originalURL: longUrl,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        return data.secureShortURL; // Returns: https://go.csmynamics.com/xxxxx
+      }
     } catch (err) {
       console.error("URL shorten failed", err);
     }
-    return longUrl;
+    return longUrl; // Fallback to long URL if shortening fails
   };
 
   const shareVia = async (platform) => {
