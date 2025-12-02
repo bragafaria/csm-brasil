@@ -367,22 +367,22 @@
 // 365. C-V-I-F-H/N-L-I-S-A → Peacemaker / Theorist ok
 // 366. C-V-I-F-H/N-L-I-F-H → Peacemaker / Innovator ok
 // 367. C-V-I-F-H/N-L-I-F-A → Peacemaker / Visionary ok
-// 368. C-V-I-F-H/N-V-O-S-H → Peacemaker / Ambassador
-// 369. C-V-I-F-H/N-V-O-S-A → Peacemaker / Artist
-// 370. C-V-I-F-H/N-V-O-F-H → Peacemaker / Catalyst
-// 371. C-V-I-F-H/N-V-O-F-A → Peacemaker / Wanderer
-// 372. C-V-I-F-H/N-V-I-S-H → Peacemaker / Mentor
-// 373. C-V-I-F-H/N-V-I-S-A → Peacemaker / Sage
-// 374. C-V-I-F-H/N-V-I-F-H → Peacemaker / Unifier
-// 375. C-V-I-F-H/N-V-I-F-A → Peacemaker / Mystic
-// 376. C-V-I-F-A/C-V-I-F-A → Empath / Empath
-// 377. C-V-I-F-A/N-L-O-S-H → Empath / Strategist
-// 378. C-V-I-F-A/N-L-O-S-A → Empath / Inventor
-// 379. C-V-I-F-A/N-L-O-F-H → Empath / Disruptor
-// 380. C-V-I-F-A/N-L-O-F-A → Empath / Revolutionary
-// 381. C-V-I-F-A/N-L-I-S-H → Empath / Academic
-// 382. C-V-I-F-A/N-L-I-S-A → Empath / Theorist
-// 383. C-V-I-F-A/N-L-I-F-H → Empath / Innovator
+// 368. C-V-I-F-H/N-V-O-S-H → Peacemaker / Ambassador ok
+// 369. C-V-I-F-H/N-V-O-S-A → Peacemaker / Artist ok
+// 370. C-V-I-F-H/N-V-O-F-H → Peacemaker / Catalyst ok
+// 371. C-V-I-F-H/N-V-O-F-A → Peacemaker / Wanderer ok
+// 372. C-V-I-F-H/N-V-I-S-H → Peacemaker / Mentor ok
+// 373. C-V-I-F-H/N-V-I-S-A → Peacemaker / Sage ok
+// 374. C-V-I-F-H/N-V-I-F-H → Peacemaker / Unifier ok
+// 375. C-V-I-F-H/N-V-I-F-A → Peacemaker / Mystic ok
+// 376. C-V-I-F-A/C-V-I-F-A → Empath / Empath ok
+// 377. C-V-I-F-A/N-L-O-S-H → Empath / Strategist ok
+// 378. C-V-I-F-A/N-L-O-S-A → Empath / Inventor ok
+// 379. C-V-I-F-A/N-L-O-F-H → Empath / Disruptor ok
+// 380. C-V-I-F-A/N-L-O-F-A → Empath / Revolutionary ok
+// 381. C-V-I-F-A/N-L-I-S-H → Empath / Academic ok
+// 382. C-V-I-F-A/N-L-I-S-A → Empath / Theorist ok
+// 383. C-V-I-F-A/N-L-I-F-H → Empath / Innovator ok
 // 384. C-V-I-F-A/N-L-I-F-A → Empath / Visionary
 // 385. C-V-I-F-A/N-V-O-S-H → Empath / Ambassador
 // 386. C-V-I-F-A/N-V-O-S-A → Empath / Artist

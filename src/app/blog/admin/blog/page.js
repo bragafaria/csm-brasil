@@ -138,17 +138,17 @@ export default function AdminBlog() {
       const data = await res.json();
 
       // ✅ Handle rate limit error
-      if (res.status === 429) {
-        setRateLimitInfo(data.rateLimit);
-        alert(data.error);
-        setLoading(false);
-        return;
-      }
+      // if (res.status === 429) {
+      //   setRateLimitInfo(data.rateLimit);
+      //   alert(data.error);
+      //   setLoading(false);
+      //   return;
+      // }
 
-      if (!res.ok) throw new Error("Failed to create post");
-      if (data.rateLimit) {
-        setRateLimitInfo(data.rateLimit);
-      }
+      // if (!res.ok) throw new Error("Failed to create post");
+      // if (data.rateLimit) {
+      //   setRateLimitInfo(data.rateLimit);
+      // }
 
       alert("Post created successfully!");
 

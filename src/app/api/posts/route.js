@@ -8,27 +8,27 @@ import slugify from "slugify";
 export async function POST(request) {
   try {
     // ✅ STEP 1: Check rate limit BEFORE processing
-    const headersList = await headers();
-    const ip = getClientIp(headersList);
+    // const headersList = await headers();
+    // const ip = getClientIp(headersList);
 
-    const { success, reset, remaining } = await blogContentRateLimiter.limit(ip);
+    // const { success, reset, remaining } = await blogContentRateLimiter.limit(ip);
 
-    if (!success) {
-      const resetDate = new Date(reset);
-      const minutesUntilReset = Math.ceil((resetDate - Date.now()) / 60000);
+    // if (!success) {
+    //   const resetDate = new Date(reset);
+    //   const minutesUntilReset = Math.ceil((resetDate - Date.now()) / 60000);
 
-      return NextResponse.json(
-        {
-          error: `Too many posts created. Please try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
-          rateLimit: {
-            limited: true,
-            remaining: 0,
-            reset: resetDate.toISOString(),
-          },
-        },
-        { status: 429 }
-      );
-    }
+    //   return NextResponse.json(
+    //     {
+    //       error: `Too many posts created. Please try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
+    //       rateLimit: {
+    //         limited: true,
+    //         remaining: 0,
+    //         reset: resetDate.toISOString(),
+    //       },
+    //     },
+    //     { status: 429 }
+    //   );
+    // }
 
     // ✅ STEP 2: Parse request body
     const {
