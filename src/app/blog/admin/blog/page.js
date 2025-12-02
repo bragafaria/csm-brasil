@@ -244,8 +244,11 @@ export default function AdminBlog() {
               type="text"
               value={title}
               onChange={(e) => {
-                setTitle(e.target.value);
-                setSlug(slugify(e.target.value, { lower: true }));
+                const newTitle = e.target.value;
+                setTitle(newTitle);
+                // Remove quotes and other problematic characters before slugifying
+                const cleanTitle = newTitle.replace(/["']/g, "");
+                setSlug(slugify(cleanTitle, { lower: true, strict: true }));
               }}
               className="w-full p-3 border rounded-lg bg-[var(--surface-variant)] border-[var(--border)] text-white placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/30"
               required

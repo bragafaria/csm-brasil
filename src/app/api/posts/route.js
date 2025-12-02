@@ -52,7 +52,8 @@ export async function POST(request) {
       return NextResponse.json({ error: "Content is required" }, { status: 400 });
     }
 
-    const finalSlug = (customSlug || slugify(title, { lower: true })).trim();
+    const cleanTitle = title.replace(/["']/g, "");
+    const finalSlug = (customSlug || slugify(cleanTitle, { lower: true, strict: true })).trim();
 
     // ✅ STEP 4: Create Post (now protected by rate limit)
     const post = await createPost({
