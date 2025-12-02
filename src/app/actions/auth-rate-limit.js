@@ -293,6 +293,8 @@ export async function sendResetEmail(email) {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://csmdynamics.com";
     const redirectTo = `${baseUrl}/auth/reset`;
 
+    console.log("Reset email redirectTo:", redirectTo);
+
     const { error } = await supabaseAdmin.auth.resetPasswordForEmail(email, {
       redirectTo,
     });
