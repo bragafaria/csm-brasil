@@ -341,15 +341,15 @@
 // 339. C-V-I-S-A/C-V-I-S-A → Healer / Healer ok
 // 340. C-V-I-S-A/C-V-I-F-H → Healer / Peacemaker ok
 // 341. C-V-I-S-A/C-V-I-F-A → Healer / Empath ok
-// 342. C-V-I-S-A/N-L-O-S-H → Healer / Strategist
-// 343. C-V-I-S-A/N-L-O-S-A → Healer / Inventor
-// 344. C-V-I-S-A/N-L-O-F-H → Healer / Disruptor
-// 345. C-V-I-S-A/N-L-O-F-A → Healer / Revolutionary
-// 346. C-V-I-S-A/N-L-I-S-H → Healer / Academic
-// 347. C-V-I-S-A/N-L-I-S-A → Healer / Theorist
-// 348. C-V-I-S-A/N-L-I-F-H → Healer / Innovator
-// 349. C-V-I-S-A/N-L-I-F-A → Healer / Visionary
-// 350. C-V-I-S-A/N-V-O-S-H → Healer / Ambassador
+// 342. C-V-I-S-A/N-L-O-S-H → Healer / Strategist ok
+// 343. C-V-I-S-A/N-L-O-S-A → Healer / Inventor ok
+// 344. C-V-I-S-A/N-L-O-F-H → Healer / Disruptor ok
+// 345. C-V-I-S-A/N-L-O-F-A → Healer / Revolutionary ok
+// 346. C-V-I-S-A/N-L-I-S-H → Healer / Academic ok
+// 347. C-V-I-S-A/N-L-I-S-A → Healer / Theorist ok
+// 348. C-V-I-S-A/N-L-I-F-H → Healer / Innovator ok
+// 349. C-V-I-S-A/N-L-I-F-A → Healer / Visionary ok
+// 350. C-V-I-S-A/N-V-O-S-H → Healer / Ambassador ok
 // 351. C-V-I-S-A/N-V-O-S-A → Healer / Artist
 // 352. C-V-I-S-A/N-V-O-F-H → Healer / Catalyst
 // 353. C-V-I-S-A/N-V-O-F-A → Healer / Wanderer
