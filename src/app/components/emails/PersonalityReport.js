@@ -14,231 +14,288 @@ export default function PersonalityReportEmail({
   return (
     <div
       style={{
-        maxWidth: "600px",
-        margin: "0 auto",
-        padding: "0",
-        fontFamily: "Arial, sans-serif",
-        backgroundColor: "#ffffff",
-        color: "#1f2937",
+        margin: 0,
+        padding: 0,
+        fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+        backgroundColor: "#0f172a",
+        color: "#e2e8f0",
       }}
     >
-      {/* Email preview text - shows in inbox preview */}
-      <div
-        style={{
-          display: "none",
-          maxHeight: "0px",
-          overflow: "hidden",
-          fontSize: "1px",
-          lineHeight: "1px",
-        }}
-      >
+      {/* Email preview text */}
+      <div style={{ display: "none", maxHeight: "0px", overflow: "hidden", fontSize: "1px", lineHeight: "1px" }}>
         Congratulations{greeting}! You discovered your CSM archetype: The {archetypeName} ({typeCode}). View your
         personalized report now.
       </div>
 
-      {/* Header with accent color */}
-      <div
-        style={{
-          backgroundColor: "#8b5cf6",
-          padding: "32px 24px",
-          textAlign: "center",
-        }}
-      >
-        <h1
-          style={{
-            fontSize: "28px",
-            fontWeight: "bold",
-            color: "#ffffff",
-            margin: "0",
-          }}
-        >
-          Congratulations{greeting}!
-        </h1>
-      </div>
-
-      {/* Main content area */}
-      <div style={{ padding: "32px 24px", backgroundColor: "#ffffff" }}>
-        <p
-          style={{
-            fontSize: "16px",
-            lineHeight: "1.6",
-            margin: "0 0 24px 0",
-            color: "#374151",
-          }}
-        >
-          You just discovered your Cognitive Spectrum Model (CSM) archetype:
-        </p>
-        {/* Result card */}
-        <div
-          style={{
-            textAlign: "center",
-            margin: "32px 0",
-            padding: "24px",
-            backgroundColor: "#f9fafb",
-            borderRadius: "8px",
-            border: "2px solid #e5e7eb",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "32px",
-              fontWeight: "bold",
-              color: "#8b5cf6",
-              marginBottom: "8px",
-            }}
-          >
-            The {archetypeName}
-          </div>
-          <div
-            style={{
-              fontSize: "20px",
-              color: "#6b7280",
-              fontWeight: "600",
-            }}
-          >
-            {typeCode}
-          </div>
-        </div>
-        <p
-          style={{
-            fontSize: "16px",
-            lineHeight: "1.6",
-            margin: "24px 0",
-            color: "#374151",
-          }}
-        >
-          Your personalized personality report is ready. Click below to view it anytime from any device.
-        </p>
-        {/* CTA Buttons Section */}
-        <div style={{ margin: "32px 0" }}>
-          {/* Couple's Insight Report Button - Primary/Featured */}
-          <div style={{ textAlign: "center", marginBottom: "16px", position: "relative" }}>
-            <div style={{ display: "inline-block", position: "relative" }}>
-              {/* NEW Badge */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: "-8px",
-                  right: "0px",
-                  backgroundColor: "#dc2626",
-                  color: "#ffffff",
-                  fontSize: "11px",
-                  fontWeight: "bold",
-                  padding: "4px 8px",
-                  borderRadius: "4px",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.5px",
-                }}
-              >
-                NEW
-              </div>
-
-              <a
-                href={couplesReportUrl}
-                style={{
-                  backgroundColor: "#8b5cf6",
-                  color: "#ffffff",
-                  padding: "18px 40px",
-                  borderRadius: "6px",
-                  fontWeight: "bold",
-                  textDecoration: "none",
-                  display: "inline-block",
-                  fontSize: "17px",
-                  boxShadow: "0 4px 6px rgba(139, 92, 246, 0.3)",
-                }}
-              >
-                🎯 {`Access Your Couple's Insight Report`}
-              </a>
-            </div>
-            <p
+      <table role="presentation" style={{ width: "100%", borderCollapse: "collapse", backgroundColor: "#0f172a" }}>
+        <tr>
+          <td align="center" style={{ padding: "40px 20px" }}>
+            <table
+              role="presentation"
               style={{
-                fontSize: "13px",
-                color: "#6b7280",
-                margin: "8px 0 0 0",
-                fontStyle: "italic",
+                maxWidth: "600px",
+                width: "100%",
+                borderCollapse: "collapse",
+                background: "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)",
+                borderRadius: "16px",
+                boxShadow: "0 10px 40px rgba(0, 0, 0, 0.3)",
+                border: "1px solid #334155",
               }}
             >
-              Dashboard area to unlock deep compatibility insights for your relationship
-            </p>
-          </div>
+              {/* Header with Logo */}
+              <tr>
+                <td style={{ padding: "40px 40px 20px", textAlign: "center", borderBottom: "1px solid #334155" }}>
+                  <table role="presentation" style={{ width: "100%", borderCollapse: "collapse" }}>
+                    <tr>
+                      <td align="center">
+                        <div style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                          <span style={{ fontSize: "24px", fontWeight: "700", color: "#6366f1" }}>CSM</span>
+                          <span style={{ fontSize: "24px", fontWeight: "300", color: "#e2e8f0" }}>Dynamics</span>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
 
-          {/* Free Report Button - Secondary */}
-          <div style={{ textAlign: "center" }}>
-            <a
-              href={shareableUrl}
-              style={{
-                backgroundColor: "#ffffff",
-                color: "#8b5cf6",
-                padding: "14px 32px",
-                borderRadius: "6px",
-                fontWeight: "600",
-                textDecoration: "none",
-                display: "inline-block",
-                fontSize: "15px",
-                border: "2px solid #8b5cf6",
-              }}
+              {/* Main Content */}
+              <tr>
+                <td style={{ padding: "40px" }}>
+                  {/* Celebration Icon */}
+                  <table
+                    role="presentation"
+                    style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}
+                  >
+                    <tr>
+                      <td align="center">
+                        <div
+                          style={{
+                            width: "56px",
+                            height: "56px",
+                            background: "linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)",
+                            borderRadius: "50%",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            color: "#ffffff",
+                            fontSize: "28px",
+                            fontWeight: "bold",
+                            boxShadow: "0 4px 12px rgba(139, 92, 246, 0.4)",
+                          }}
+                        >
+                          🎉
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <h1
+                    style={{
+                      margin: "0 0 24px",
+                      fontSize: "28px",
+                      fontWeight: "700",
+                      color: "#e2e8f0",
+                      textAlign: "center",
+                    }}
+                  >
+                    Congratulations{greeting}!
+                  </h1>
+
+                  <p
+                    style={{
+                      margin: "0 0 24px",
+                      fontSize: "16px",
+                      lineHeight: "1.6",
+                      color: "#cbd5e1",
+                      textAlign: "center",
+                    }}
+                  >
+                    You just discovered your Cognitive Spectrum Model (CSM) archetype:
+                  </p>
+
+                  {/* Archetype Result Card */}
+                  <table role="presentation" style={{ width: "100%", borderCollapse: "collapse", margin: "24px 0" }}>
+                    <tr>
+                      <td
+                        style={{
+                          padding: "32px",
+                          textAlign: "center",
+                          background: "linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)",
+                          borderRadius: "12px",
+                          boxShadow: "0 8px 24px rgba(139, 92, 246, 0.3)",
+                        }}
+                      >
+                        <p style={{ margin: "0 0 8px", fontSize: "32px", fontWeight: "700", color: "#ffffff" }}>
+                          The {archetypeName}
+                        </p>
+                        <p style={{ margin: "0", fontSize: "20px", fontWeight: "600", color: "#e0e7ff" }}>{typeCode}</p>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <p
+                    style={{
+                      margin: "24px 0",
+                      fontSize: "16px",
+                      lineHeight: "1.6",
+                      color: "#cbd5e1",
+                      textAlign: "center",
+                    }}
+                  >
+                    Your personalized personality report is ready. Click below to view it anytime from any device.
+                  </p>
+
+                  {/* NEW Badge with Couple's Report Button */}
+                  <table
+                    role="presentation"
+                    style={{ width: "100%", borderCollapse: "collapse", margin: "32px 0 16px" }}
+                  >
+                    <tr>
+                      <td align="center" style={{ position: "relative" }}>
+                        {/* NEW Badge positioned absolutely */}
+                        <div style={{ position: "relative", display: "inline-block" }}>
+                          <span
+                            style={{
+                              position: "absolute",
+                              top: "-12px",
+                              right: "-12px",
+                              backgroundColor: "#dc2626",
+                              color: "#ffffff",
+                              fontSize: "11px",
+                              fontWeight: "700",
+                              padding: "4px 10px",
+                              borderRadius: "6px",
+                              textTransform: "uppercase",
+                              letterSpacing: "0.5px",
+                              boxShadow: "0 2px 8px rgba(220, 38, 38, 0.4)",
+                              zIndex: "10",
+                            }}
+                          >
+                            NEW
+                          </span>
+                          <a
+                            href={couplesReportUrl}
+                            style={{
+                              display: "inline-block",
+                              padding: "16px 40px",
+                              background: "linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)",
+                              color: "#ffffff",
+                              textDecoration: "none",
+                              borderRadius: "8px",
+                              fontWeight: "600",
+                              fontSize: "17px",
+                              boxShadow: "0 4px 12px rgba(139, 92, 246, 0.4)",
+                            }}
+                          >
+                            🎯 {`Access Your Couple's Insight Report`}
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <p
+                    style={{
+                      margin: "8px 0 24px",
+                      fontSize: "13px",
+                      lineHeight: "1.5",
+                      color: "#94a3b8",
+                      textAlign: "center",
+                      fontStyle: "italic",
+                    }}
+                  >
+                    Dashboard area to unlock deep compatibility insights for your relationship
+                  </p>
+
+                  {/* Free Report Button */}
+                  <table role="presentation" style={{ width: "100%", borderCollapse: "collapse", margin: "24px 0" }}>
+                    <tr>
+                      <td align="center">
+                        <a
+                          href={shareableUrl}
+                          style={{
+                            display: "inline-block",
+                            padding: "14px 32px",
+                            background: "transparent",
+                            color: "#8b5cf6",
+                            textDecoration: "none",
+                            borderRadius: "8px",
+                            fontWeight: "600",
+                            fontSize: "15px",
+                            border: "2px solid #8b5cf6",
+                            transition: "all 0.3s ease",
+                          }}
+                        >
+                          View My Free Personality Report
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+
+                  {/* Info Notice */}
+                  <table
+                    role="presentation"
+                    style={{
+                      width: "100%",
+                      borderCollapse: "collapse",
+                      margin: "32px 0 0",
+                      backgroundColor: "#1e293b",
+                      borderRadius: "8px",
+                      border: "1px solid #334155",
+                    }}
+                  >
+                    <tr>
+                      <td style={{ padding: "20px" }}>
+                        <p
+                          style={{
+                            margin: "0",
+                            fontSize: "13px",
+                            lineHeight: "1.6",
+                            color: "#94a3b8",
+                            textAlign: "center",
+                          }}
+                        >
+                          Your free personality report link is permanent and contains your complete results. Bookmark it
+                          or share it with others.
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              {/* Footer */}
+              <tr>
+                <td style={{ padding: "32px 40px", textAlign: "center", borderTop: "1px solid #334155" }}>
+                  <p style={{ margin: "0 0 12px", fontSize: "13px", color: "#94a3b8" }}>
+                    {`Don't want to receive these emails?`}
+                    <a href={unsubscribeUrl} style={{ color: "#6366f1", textDecoration: "underline" }}>
+                      Unsubscribe here
+                    </a>
+                  </p>
+                  <p style={{ margin: "0", fontSize: "12px", color: "#64748b" }}>
+                    © 2025 CSM Dynamics. All rights reserved.
+                  </p>
+                </td>
+              </tr>
+            </table>
+
+            {/* Additional Footer Text */}
+            <table
+              role="presentation"
+              style={{ maxWidth: "600px", width: "100%", borderCollapse: "collapse", marginTop: "20px" }}
             >
-              View My Free Personality Report
-            </a>
-          </div>
-        </div>
-        <hr
-          style={{
-            border: "none",
-            borderTop: "1px solid #e5e7eb",
-            margin: "32px 0",
-          }}
-        />
-        <p
-          style={{
-            fontSize: "14px",
-            color: "#6b7280",
-            lineHeight: "1.5",
-            margin: "16px 0",
-            textAlign: "center",
-          }}
-        >
-          Your free personality report link is permanent and contains your complete results. Bookmark it or share it
-          with others.
-        </p>
-      </div>
-
-      {/* Footer */}
-      <div
-        style={{
-          padding: "24px",
-          backgroundColor: "#f9fafb",
-          borderTop: "1px solid #e5e7eb",
-        }}
-      >
-        {/* Unsubscribe */}
-        <div style={{ textAlign: "center", marginBottom: "16px" }}>
-          <p
-            style={{
-              fontSize: "13px",
-              color: "#6b7280",
-              margin: "0",
-            }}
-          >
-            {" Don't want to receive these emails? "}
-            <a href={unsubscribeUrl} style={{ color: "#8b5cf6", textDecoration: "underline" }}>
-              Unsubscribe here
-            </a>
-          </p>
-        </div>
-
-        {/* Copyright */}
-        <p
-          style={{
-            fontSize: "12px",
-            color: "#9ca3af",
-            textAlign: "center",
-            margin: "0",
-          }}
-        >
-          CSM Dynamics | © 2025 Cognitive Spectrum Model
-        </p>
-      </div>
+              <tr>
+                <td style={{ padding: "0 20px", textAlign: "center" }}>
+                  <p style={{ margin: "0", fontSize: "12px", lineHeight: "1.6", color: "#64748b" }}>
+                    Cognitive Spectrum Model — Helping couples understand and thrive together
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
     </div>
   );
 }

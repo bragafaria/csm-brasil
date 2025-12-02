@@ -7,128 +7,232 @@ export default function SupportConfirmationEmail({
   return (
     <div
       style={{
-        maxWidth: "600px",
-        margin: "0 auto",
-        fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif",
-        padding: "40px 20px",
+        margin: 0,
+        padding: 0,
+        fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
         backgroundColor: "#0f172a",
         color: "#e2e8f0",
       }}
     >
-      {/* Plain text preview */}
-      <div style={{ display: "none", maxHeight: "0px", overflow: "hidden" }}>
-        Thank you {name}! Your support request (Ticket #{ticket}) has been received. {"We'll respond within 24 hours."}
+      {/* Email preview text */}
+      <div style={{ display: "none", maxHeight: "0px", overflow: "hidden", fontSize: "1px", lineHeight: "1px" }}>
+        Thank you {name}! Your support request (Ticket #{ticket}) has been received. {`We'll respond within 24 hours.`}
       </div>
 
-      <h1
-        style={{
-          color: "#a78bfa",
-          fontSize: "24px",
-          fontWeight: "600",
-          marginTop: "0",
-          marginBottom: "24px",
-        }}
-      >
-        Thank You, {name}! ✓
-      </h1>
+      <table role="presentation" style={{ width: "100%", borderCollapse: "collapse", backgroundColor: "#0f172a" }}>
+        <tr>
+          <td align="center" style={{ padding: "40px 20px" }}>
+            <table
+              role="presentation"
+              style={{
+                maxWidth: "600px",
+                width: "100%",
+                borderCollapse: "collapse",
+                background: "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)",
+                borderRadius: "16px",
+                boxShadow: "0 10px 40px rgba(0, 0, 0, 0.3)",
+                border: "1px solid #334155",
+              }}
+            >
+              {/* Header with Logo */}
+              <tr>
+                <td style={{ padding: "40px 40px 20px", textAlign: "center", borderBottom: "1px solid #334155" }}>
+                  <table role="presentation" style={{ width: "100%", borderCollapse: "collapse" }}>
+                    <tr>
+                      <td align="center">
+                        <div style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+                          <span style={{ fontSize: "24px", fontWeight: "700", color: "#6366f1" }}>CSM</span>
+                          <span style={{ fontSize: "24px", fontWeight: "300", color: "#e2e8f0" }}>Dynamics</span>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
 
-      <p
-        style={{
-          fontSize: "16px",
-          lineHeight: "1.6",
-          margin: "16px 0",
-          color: "#e2e8f0",
-        }}
-      >
-        We have received your support request.
-      </p>
+              {/* Main Content */}
+              <tr>
+                <td style={{ padding: "40px" }}>
+                  {/* Success Icon */}
+                  <table
+                    role="presentation"
+                    style={{ width: "100%", borderCollapse: "collapse", marginBottom: "24px" }}
+                  >
+                    <tr>
+                      <td align="center">
+                        <div
+                          style={{
+                            width: "56px",
+                            height: "56px",
+                            background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                            borderRadius: "50%",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            color: "#ffffff",
+                            fontSize: "28px",
+                            fontWeight: "bold",
+                            boxShadow: "0 4px 12px rgba(16, 185, 129, 0.4)",
+                          }}
+                        >
+                          ✓
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
 
-      <div
-        style={{
-          backgroundColor: "#1e293b",
-          padding: "16px",
-          borderRadius: "8px",
-          borderLeft: "4px solid #a78bfa",
-          margin: "24px 0",
-        }}
-      >
-        <p
-          style={{
-            margin: "0",
-            fontSize: "14px",
-            color: "#94a3b8",
-          }}
-        >
-          Your Ticket Number
-        </p>
-        <p
-          style={{
-            margin: "8px 0 0 0",
-            fontSize: "20px",
-            fontWeight: "600",
-            color: "#ffffff",
-          }}
-        >
-          #{ticket}
-        </p>
-      </div>
+                  <h1
+                    style={{
+                      margin: "0 0 24px",
+                      fontSize: "28px",
+                      fontWeight: "700",
+                      color: "#e2e8f0",
+                      textAlign: "center",
+                    }}
+                  >
+                    Thank You, {name}!
+                  </h1>
 
-      <p
-        style={{
-          fontSize: "16px",
-          lineHeight: "1.6",
-          margin: "16px 0",
-          color: "#e2e8f0",
-        }}
-      >
-        Our team will review your message and get back to you within 24 hours.
-      </p>
+                  <p
+                    style={{
+                      margin: "0 0 24px",
+                      fontSize: "16px",
+                      lineHeight: "1.6",
+                      color: "#cbd5e1",
+                      textAlign: "center",
+                    }}
+                  >
+                    We have received your support request and our team is on it.
+                  </p>
 
-      <p
-        style={{
-          fontSize: "16px",
-          lineHeight: "1.6",
-          margin: "16px 0",
-          color: "#e2e8f0",
-        }}
-      >
-        Thank you for using the Cognitive Spectrum Model.
-      </p>
+                  {/* Ticket Number Card */}
+                  <table role="presentation" style={{ width: "100%", borderCollapse: "collapse", margin: "24px 0" }}>
+                    <tr>
+                      <td
+                        style={{
+                          padding: "24px",
+                          background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
+                          borderRadius: "12px",
+                          boxShadow: "0 8px 24px rgba(99, 102, 241, 0.3)",
+                          textAlign: "center",
+                        }}
+                      >
+                        <p
+                          style={{
+                            margin: "0 0 8px",
+                            fontSize: "14px",
+                            color: "#e0e7ff",
+                            textTransform: "uppercase",
+                            letterSpacing: "1px",
+                            fontWeight: "600",
+                          }}
+                        >
+                          Your Ticket Number
+                        </p>
+                        <p style={{ margin: "0", fontSize: "32px", fontWeight: "700", color: "#ffffff" }}>#{ticket}</p>
+                      </td>
+                    </tr>
+                  </table>
 
-      <hr
-        style={{
-          border: "none",
-          borderTop: "1px solid #334155",
-          margin: "32px 0",
-        }}
-      />
+                  <p
+                    style={{
+                      margin: "24px 0",
+                      fontSize: "16px",
+                      lineHeight: "1.6",
+                      color: "#cbd5e1",
+                      textAlign: "center",
+                    }}
+                  >
+                    Our team will review your message and get back to you within 24 hours.
+                  </p>
 
-      {/* Unsubscribe section */}
-      <div style={{ textAlign: "center", marginTop: "24px" }}>
-        <p
-          style={{
-            fontSize: "12px",
-            color: "#64748b",
-            margin: "8px 0",
-          }}
-        >
-          {"Don't want to receive these emails?"}
-          <a href={unsubscribeUrl} style={{ color: "#a78bfa", textDecoration: "underline" }}>
-            Unsubscribe here
-          </a>
-        </p>
-      </div>
+                  {/* Info Notice */}
+                  <table
+                    role="presentation"
+                    style={{
+                      width: "100%",
+                      borderCollapse: "collapse",
+                      margin: "24px 0 0",
+                      backgroundColor: "#1e293b",
+                      borderRadius: "8px",
+                      border: "1px solid #334155",
+                    }}
+                  >
+                    <tr>
+                      <td style={{ padding: "20px" }}>
+                        <p
+                          style={{
+                            margin: "0 0 8px",
+                            fontSize: "14px",
+                            fontWeight: "600",
+                            color: "#e2e8f0",
+                            textAlign: "center",
+                          }}
+                        >
+                          💡 What happens next?
+                        </p>
+                        <p
+                          style={{
+                            margin: "0",
+                            fontSize: "13px",
+                            lineHeight: "1.6",
+                            color: "#94a3b8",
+                            textAlign: "center",
+                          }}
+                        >
+                          {` We'll send you an email response to the address you provided. Keep this ticket number for your
+                          reference.`}
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
 
-      <p
-        style={{
-          fontSize: "12px",
-          color: "#64748b",
-          textAlign: "center",
-          margin: "16px 0 0 0",
-        }}
-      >
-        © 2025 Cognitive Spectrum Model. All rights reserved.
-      </p>
+                  <p
+                    style={{
+                      margin: "24px 0 0",
+                      fontSize: "15px",
+                      lineHeight: "1.6",
+                      color: "#cbd5e1",
+                      textAlign: "center",
+                    }}
+                  >
+                    Thank you for using the Cognitive Spectrum Model.
+                  </p>
+                </td>
+              </tr>
+
+              {/* Footer */}
+              <tr>
+                <td style={{ padding: "32px 40px", textAlign: "center", borderTop: "1px solid #334155" }}>
+                  <p style={{ margin: "0 0 12px", fontSize: "13px", color: "#94a3b8" }}>
+                    {`Don't want to receive these emails?`}
+                    <a href={unsubscribeUrl} style={{ color: "#6366f1", textDecoration: "underline" }}>
+                      Unsubscribe here
+                    </a>
+                  </p>
+                  <p style={{ margin: "0", fontSize: "12px", color: "#64748b" }}>
+                    © 2025 CSM Dynamics. All rights reserved.
+                  </p>
+                </td>
+              </tr>
+            </table>
+
+            {/* Additional Footer Text */}
+            <table
+              role="presentation"
+              style={{ maxWidth: "600px", width: "100%", borderCollapse: "collapse", marginTop: "20px" }}
+            >
+              <tr>
+                <td style={{ padding: "0 20px", textAlign: "center" }}>
+                  <p style={{ margin: "0", fontSize: "12px", lineHeight: "1.6", color: "#64748b" }}>
+                    Cognitive Spectrum Model — Helping couples understand and thrive together
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
     </div>
   );
 }
