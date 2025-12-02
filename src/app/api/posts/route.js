@@ -36,7 +36,7 @@ export async function POST(request) {
       slug: customSlug,
       content,
       excerpt = "",
-      published = false,
+      published = true,
       category_id,
       image_url = null,
     } = await request.json();
