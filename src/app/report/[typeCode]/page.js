@@ -29,8 +29,9 @@ export default function PersonalReport() {
   const [modalContent, setModalContent] = useState({ title: "", body: "" });
   const [showShareModal, setShowShareModal] = useState(false);
   const [isSharedView, setIsSharedView] = useState(false);
-  const [isShortening, setIsShortening] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [isGeneratingLink, setIsGeneratingLink] = useState(false);
+  const [shareUrl, setShareUrl] = useState(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -212,21 +213,25 @@ DEGREES OF INFLUENCE:
   };
 
   const shareVia = async (platform) => {
-    setIsShortening(true);
-    const shareUrl = await generateShareableLink();
+    if (!shareUrl || isGeneratingLink) {
+      console.error("Share URL not ready");
+      return;
+    }
+
     const shareText = `Hey, it's ${userName}! I just took the CSM personality assessment and got "${archetypeName}" type. It was way more accurate than I expected. Take a look:`;
     const shareData = {
       title: `I'm The ${archetypeName} (${typeCodeWithDashes})`,
       text: shareText,
       url: shareUrl,
     };
-    setIsShortening(false);
 
     if (platform === "native" && navigator.share) {
       try {
         await navigator.share(shareData);
-      } catch {
-        fallbackCopy(shareData);
+      } catch (err) {
+        if (err.name !== "AbortError") {
+          fallbackCopy(shareData);
+        }
       }
     } else if (platform === "twitter") {
       const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
@@ -237,9 +242,7 @@ DEGREES OF INFLUENCE:
       const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
       window.open(whatsappUrl, "_blank");
     } else if (platform === "telegram") {
-      const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(
-        shareText
-      )}`;
+      const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
       window.open(telegramUrl, "_blank");
     } else if (platform === "facebook") {
       const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
@@ -249,10 +252,61 @@ DEGREES OF INFLUENCE:
 
   const fallbackCopy = ({ text, url }) => {
     const fullText = `${text} ${url}`;
-    navigator.clipboard.writeText(fullText).then(() => {
-      setCopySuccess(true);
-      setTimeout(() => setCopySuccess(false), 3000);
-    });
+
+    // Try modern clipboard API first
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard
+        .writeText(fullText)
+        .then(() => {
+          setCopySuccess(true);
+          setTimeout(() => setCopySuccess(false), 3000);
+        })
+        .catch((err) => {
+          console.error("Clipboard write failed:", err);
+          // Fallback to textarea method for iOS
+          fallbackToTextArea(fullText);
+        });
+    } else {
+      // Use textarea method for older browsers/iOS
+      fallbackToTextArea(fullText);
+    }
+  };
+
+  const fallbackToTextArea = (text) => {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-999999px";
+    textArea.style.top = "-999999px";
+    document.body.appendChild(textArea);
+
+    // For iOS
+    textArea.contentEditable = true;
+    textArea.readOnly = false;
+
+    // Select text
+    if (navigator.userAgent.match(/ipad|iphone/i)) {
+      const range = document.createRange();
+      range.selectNodeContents(textArea);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      textArea.setSelectionRange(0, 999999);
+    } else {
+      textArea.select();
+    }
+
+    try {
+      const successful = document.execCommand("copy");
+      if (successful) {
+        setCopySuccess(true);
+        setTimeout(() => setCopySuccess(false), 3000);
+      }
+    } catch (err) {
+      console.error("Fallback copy failed:", err);
+    }
+
+    document.body.removeChild(textArea);
   };
 
   return (
@@ -761,7 +815,23 @@ DEGREES OF INFLUENCE:
           {!isSharedView && (
             <div className="container flex justify-center md:justify-end align-center mx-auto mt-6 max-w-4xl">
               <button
-                onClick={() => setShowShareModal(true)}
+                onClick={async () => {
+                  setCopySuccess(false); // Reset copy success
+                  setShareUrl(null); // Clear old URL
+                  setShowShareModal(true);
+                  setIsGeneratingLink(true);
+
+                  try {
+                    const url = await generateShareableLink();
+                    console.log("Generated new share URL:", url); // Debug log
+                    setShareUrl(url);
+                  } catch (error) {
+                    console.error("Failed to generate share link:", error);
+                    setShareUrl(null); // Ensure it's null on error
+                  } finally {
+                    setIsGeneratingLink(false);
+                  }
+                }}
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all mb-6 md:mb-1"
               >
                 <Share2 className="w-5 h-5" />
@@ -823,7 +893,23 @@ DEGREES OF INFLUENCE:
             {!isSharedView && (
               <div className="container flex justify-center md:justify-end align-center mx-auto mt-6 max-w-4xl">
                 <button
-                  onClick={() => setShowShareModal(true)}
+                  onClick={async () => {
+                    setCopySuccess(false); // Reset copy success
+                    setShareUrl(null); // Clear old URL
+                    setShowShareModal(true);
+                    setIsGeneratingLink(true);
+
+                    try {
+                      const url = await generateShareableLink();
+                      console.log("Generated new share URL:", url); // Debug log
+                      setShareUrl(url);
+                    } catch (error) {
+                      console.error("Failed to generate share link:", error);
+                      setShareUrl(null); // Ensure it's null on error
+                    } finally {
+                      setIsGeneratingLink(false);
+                    }
+                  }}
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all mb-6 md:mb-1"
                 >
                   <Share2 className="w-5 h-5" />
@@ -979,7 +1065,23 @@ DEGREES OF INFLUENCE:
           {!isSharedView && (
             <div className="container flex justify-center md:justify-end align-center mx-auto mt-6 max-w-4xl">
               <button
-                onClick={() => setShowShareModal(true)}
+                onClick={async () => {
+                  setCopySuccess(false); // Reset copy success
+                  setShareUrl(null); // Clear old URL
+                  setShowShareModal(true);
+                  setIsGeneratingLink(true);
+
+                  try {
+                    const url = await generateShareableLink();
+                    console.log("Generated new share URL:", url); // Debug log
+                    setShareUrl(url);
+                  } catch (error) {
+                    console.error("Failed to generate share link:", error);
+                    setShareUrl(null); // Ensure it's null on error
+                  } finally {
+                    setIsGeneratingLink(false);
+                  }
+                }}
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all mb-6 md:mb-1"
               >
                 <Share2 className="w-5 h-5" />
@@ -1111,7 +1213,12 @@ DEGREES OF INFLUENCE:
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4"
-            onClick={() => setShowShareModal(false)}
+            onClick={() => {
+              setShowShareModal(false);
+              setShareUrl(null); // Clear when closing
+              setIsGeneratingLink(false);
+              setCopySuccess(false); // Reset copy success
+            }}
           >
             <motion.div
               initial={{ scale: 0.9, y: 20 }}
@@ -1126,30 +1233,50 @@ DEGREES OF INFLUENCE:
                   <h3 className="text-lg font-bold text-[var(--text-primary)]">Share Your Results</h3>
                 </div>
                 <button
-                  onClick={() => setShowShareModal(false)}
+                  onClick={() => {
+                    setShowShareModal(false);
+                    setShareUrl(null);
+                    setIsGeneratingLink(false);
+                  }}
                   className="text-[var(--text-secondary)] hover:text-[var(--accent)]"
+                  disabled={isGeneratingLink}
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
-              <div className="space-y-3">
+
+              {/* Loading State */}
+              {isGeneratingLink && (
+                <div className="space-y-4 mb-6">
+                  <div className="flex flex-col items-center justify-center py-8">
+                    <Spinner />
+                    <p className="text-[var(--text-secondary)] mt-4 text-sm">Generating your shareable link...</p>
+                  </div>
+                </div>
+              )}
+
+              {/* Share Buttons - Disabled during loading */}
+              <div className={`space-y-3 ${isGeneratingLink ? "opacity-50 pointer-events-none" : ""}`}>
                 <button
                   onClick={() => shareVia("whatsapp")}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#25D366] text-white rounded-lg hover:bg-[#1da851] transition font-medium"
+                  disabled={isGeneratingLink || !shareUrl}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#25D366] text-white rounded-lg hover:bg-[#1da851] transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <MessageCircle className="w-5 h-5" />
                   Share on WhatsApp
                 </button>
                 <button
                   onClick={() => shareVia("telegram")}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#0088cc] text-white rounded-lg hover:bg-[#0077b3] transition font-medium"
+                  disabled={isGeneratingLink || !shareUrl}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#0088cc] text-white rounded-lg hover:bg-[#0077b3] transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="w-5 h-5" />
                   Share on Telegram
                 </button>
                 <button
                   onClick={() => shareVia("facebook")}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#1877F2] text-white rounded-lg hover:bg-[#166fe5] transition font-medium"
+                  disabled={isGeneratingLink || !shareUrl}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#1877F2] text-white rounded-lg hover:bg-[#166fe5] transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -1158,23 +1285,27 @@ DEGREES OF INFLUENCE:
                 </button>
                 <button
                   onClick={() => shareVia("twitter")}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#1DA1F2] text-white rounded-lg hover:bg-[#1a91da] transition font-medium"
+                  disabled={isGeneratingLink || !shareUrl}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#1DA1F2] text-white rounded-lg hover:bg-[#1a91da] transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Twitter className="w-5 h-5" />
                   Share on Twitter
                 </button>
                 <button
                   onClick={() => shareVia("copy")}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[var(--surface-variant)] text-[var(--text-primary)] rounded-lg hover:bg-[var(--surface)] transition font-medium border border-[var(--border)]"
+                  disabled={isGeneratingLink || !shareUrl}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[var(--surface-variant)] text-[var(--text-primary)] rounded-lg hover:bg-[var(--surface)] transition font-medium border border-[var(--border)] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Copy className="w-5 h-5" />
                   Copy Link
                 </button>
               </div>
+
+              {/* Status Messages */}
               <div className="text-xs text-[var(--text-secondary)] text-center mt-4">
-                {isShortening ? (
+                {isGeneratingLink ? (
                   <div className="flex items-center justify-center gap-2">
-                    <Spinner />
+                    <div className="w-3 h-3 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin"></div>
                     Generating short link...
                   </div>
                 ) : copySuccess ? (
@@ -1182,8 +1313,10 @@ DEGREES OF INFLUENCE:
                     <CheckCircle className="w-4 h-4" />
                     Link copied successfully!
                   </div>
-                ) : (
+                ) : shareUrl ? (
                   "Your full report is included in the link."
+                ) : (
+                  <div className="text-red-400">Failed to generate link. Please try again.</div>
                 )}
               </div>
             </motion.div>

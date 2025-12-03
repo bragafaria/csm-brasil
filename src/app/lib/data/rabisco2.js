@@ -420,16 +420,16 @@
 // 418. N-L-O-S-A/N-V-O-F-H → Inventor / Catalyst ok
 // 419. N-L-O-S-A/N-V-O-F-A → Inventor / Wanderer ok
 // 420. N-L-O-S-A/N-V-I-S-H → Inventor / Mentor ok
-// 421. N-L-O-S-A/N-V-I-S-A → Inventor / Sage
-// 422. N-L-O-S-A/N-V-I-F-H → Inventor / Unifier
-// 423. N-L-O-S-A/N-V-I-F-A → Inventor / Mystic
-// 424. N-L-O-F-H/N-L-O-F-H → Disruptor / Disruptor
-// 425. N-L-O-F-H/N-L-O-F-A → Disruptor / Revolutionary
-// 426. N-L-O-F-H/N-L-I-S-H → Disruptor / Academic
-// 427. N-L-O-F-H/N-L-I-S-A → Disruptor / Theorist
-// 428. N-L-O-F-H/N-L-I-F-H → Disruptor / Innovator
-// 429. N-L-O-F-H/N-L-I-F-A → Disruptor / Visionary
-// 430. N-L-O-F-H/N-V-O-S-H → Disruptor / Ambassador
+// 421. N-L-O-S-A/N-V-I-S-A → Inventor / Sage ok
+// 422. N-L-O-S-A/N-V-I-F-H → Inventor / Unifier ok
+// 423. N-L-O-S-A/N-V-I-F-A → Inventor / Mystic ok
+// 424. N-L-O-F-H/N-L-O-F-H → Disruptor / Disruptor ok
+// 425. N-L-O-F-H/N-L-O-F-A → Disruptor / Revolutionary ok
+// 426. N-L-O-F-H/N-L-I-S-H → Disruptor / Academic ok
+// 427. N-L-O-F-H/N-L-I-S-A → Disruptor / Theorist ok
+// 428. N-L-O-F-H/N-L-I-F-H → Disruptor / Innovator ok
+// 429. N-L-O-F-H/N-L-I-F-A → Disruptor / Visionary ok
+// 430. N-L-O-F-H/N-V-O-S-H → Disruptor / Ambassador ok
 // 431. N-L-O-F-H/N-V-O-S-A → Disruptor / Artist
 // 432. N-L-O-F-H/N-V-O-F-H → Disruptor / Catalyst
 // 433. N-L-O-F-H/N-V-O-F-A → Disruptor / Wanderer
