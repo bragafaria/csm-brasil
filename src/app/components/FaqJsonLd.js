@@ -73,7 +73,7 @@ export default function FaqJsonLd() {
       },
       {
         "@type": "Question",
-        name: "How quickly will I get my results?",
+        name: "How quickly will I get my personality report results?",
         acceptedAnswer: {
           "@type": "Answer",
           text: "Results are generated immediately after you finish the assessment.",
