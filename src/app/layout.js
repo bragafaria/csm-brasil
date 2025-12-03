@@ -6,14 +6,14 @@ import SupabaseListener from "@/app/lib/supabase/SupabaseListerner";
 // FINAL VERSION – copy-paste this exactly into your root layout.tsx
 
 export const metadata = {
-  title: "CSM Personality Test for Couples | Free Cognitive Compatibility Quiz",
+  title: "Couples Personality Test | CSM Dynamics",
   description:
-    "Discover your relationship’s hidden strengths and weaknesses with the Cognitive Spectrum Model (CSM) — the first personality framework built for couples. Take the free test and get your Cognitive Alignment Score (CAS).",
+    "Discover your unique CSM cognitive profile — a modern personality system designed specifically for couples. Understand each other more clearly and strengthen your relationship today.",
 
   openGraph: {
-    title: "CSM Personality Test for Couples | Free Cognitive Compatibility Quiz",
+    title: "Couples Personality Test | CSM Dynamics",
     description:
-      "Understand how you and your partner truly think. The only personality test that shows your exact cognitive compatibility with a science-backed score.",
+      "Discover how you and your partner think, communicate, and connect. A modern cognitive assessment built to reveal your true compatibility.",
     url: "https://csmdynamics.com",
     siteName: "Cognitive Spectrum Model",
     images: [
