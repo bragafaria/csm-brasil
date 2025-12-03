@@ -2,7 +2,28 @@
 import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
 import { NextResponse } from "next/server";
 
+const allowList = [
+  "facebookexternalhit",
+  "Facebot",
+  "WhatsApp",
+  "WhatsApp/",
+  "Slackbot",
+  "Twitterbot",
+  "LinkedInBot",
+  "Discordbot",
+  "TelegramBot",
+  "Googlebot",
+];
+
 export async function middleware(req) {
+  const ua = req.headers.get("user-agent") || "";
+
+  // Allow social preview bots to bypass Vercel's bot protection
+  if (allowList.some((a) => ua.includes(a))) {
+    const res = NextResponse.next();
+    res.headers.set("x-vercel-force-skip-bot-mitigation", "1");
+    return res;
+  }
   const res = NextResponse.next();
 
   // ============================================================================
@@ -61,5 +82,5 @@ export async function middleware(req) {
 
 // Only match routes that need authentication/authorization checks
 export const config = {
-  matcher: ["/dashboard/:path*"],
+  matcher: ["/dashboard/:path*", "/blog/admin/blog/:path*", "/access/coaching/:path*"],
 };
