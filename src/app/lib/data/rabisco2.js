@@ -400,26 +400,26 @@
 // 398. N-L-O-S-H/N-L-I-S-A → Strategist / Theorist ok
 // 399. N-L-O-S-H/N-L-I-F-H → Strategist / Innovator ok
 // 400. N-L-O-S-H/N-L-I-F-A → Strategist / Visionary ok
-// 401. N-L-O-S-H/N-V-O-S-H → Strategist / Ambassador
-// 402. N-L-O-S-H/N-V-O-S-A → Strategist / Artist
-// 403. N-L-O-S-H/N-V-O-F-H → Strategist / Catalyst
-// 404. N-L-O-S-H/N-V-O-F-A → Strategist / Wanderer
-// 405. N-L-O-S-H/N-V-I-S-H → Strategist / Mentor
-// 406. N-L-O-S-H/N-V-I-S-A → Strategist / Sage
-// 407. N-L-O-S-H/N-V-I-F-H → Strategist / Unifier
-// 408. N-L-O-S-H/N-V-I-F-A → Strategist / Mystic
-// 409. N-L-O-S-A/N-L-O-S-A → Inventor / Inventor
-// 410. N-L-O-S-A/N-L-O-F-H → Inventor / Disruptor
-// 411. N-L-O-S-A/N-L-O-F-A → Inventor / Revolutionary
-// 412. N-L-O-S-A/N-L-I-S-H → Inventor / Academic
-// 413. N-L-O-S-A/N-L-I-S-A → Inventor / Theorist
-// 414. N-L-O-S-A/N-L-I-F-H → Inventor / Innovator
-// 415. N-L-O-S-A/N-L-I-F-A → Inventor / Visionary
-// 416. N-L-O-S-A/N-V-O-S-H → Inventor / Ambassador
-// 417. N-L-O-S-A/N-V-O-S-A → Inventor / Artist
-// 418. N-L-O-S-A/N-V-O-F-H → Inventor / Catalyst
-// 419. N-L-O-S-A/N-V-O-F-A → Inventor / Wanderer
-// 420. N-L-O-S-A/N-V-I-S-H → Inventor / Mentor
+// 401. N-L-O-S-H/N-V-O-S-H → Strategist / Ambassador ok
+// 402. N-L-O-S-H/N-V-O-S-A → Strategist / Artist ok
+// 403. N-L-O-S-H/N-V-O-F-H → Strategist / Catalyst ok
+// 404. N-L-O-S-H/N-V-O-F-A → Strategist / Wanderer ok
+// 405. N-L-O-S-H/N-V-I-S-H → Strategist / Mentor ok
+// 406. N-L-O-S-H/N-V-I-S-A → Strategist / Sage ok
+// 407. N-L-O-S-H/N-V-I-F-H → Strategist / Unifier ok
+// 408. N-L-O-S-H/N-V-I-F-A → Strategist / Mystic ok
+// 409. N-L-O-S-A/N-L-O-S-A → Inventor / Inventor ok
+// 410. N-L-O-S-A/N-L-O-F-H → Inventor / Disruptor ok
+// 411. N-L-O-S-A/N-L-O-F-A → Inventor / Revolutionary ok
+// 412. N-L-O-S-A/N-L-I-S-H → Inventor / Academic ok
+// 413. N-L-O-S-A/N-L-I-S-A → Inventor / Theorist ok
+// 414. N-L-O-S-A/N-L-I-F-H → Inventor / Innovator ok
+// 415. N-L-O-S-A/N-L-I-F-A → Inventor / Visionary ok
+// 416. N-L-O-S-A/N-V-O-S-H → Inventor / Ambassador ok
+// 417. N-L-O-S-A/N-V-O-S-A → Inventor / Artist ok
+// 418. N-L-O-S-A/N-V-O-F-H → Inventor / Catalyst ok
+// 419. N-L-O-S-A/N-V-O-F-A → Inventor / Wanderer ok
+// 420. N-L-O-S-A/N-V-I-S-H → Inventor / Mentor ok
 // 421. N-L-O-S-A/N-V-I-S-A → Inventor / Sage
 // 422. N-L-O-S-A/N-V-I-F-H → Inventor / Unifier
 // 423. N-L-O-S-A/N-V-I-F-A → Inventor / Mystic
