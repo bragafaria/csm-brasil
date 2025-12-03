@@ -660,7 +660,10 @@ export default function Home() {
           </div>
         </div>
         <div className="text-center py-10 md:py-20">
-          <button className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-12 py-4 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl flex items-center space-x-3 mx-auto text-[var(--text-primary)]">
+          <button
+            onClick={handleStartTest}
+            className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-12 py-4 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl flex items-center space-x-3 mx-auto text-[var(--text-primary)]"
+          >
             <span>Take Free Test</span>
             <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
           </button>
