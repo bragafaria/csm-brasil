@@ -772,6 +772,69 @@ DEGREES OF INFLUENCE:
         </div>
       </section>
 
+      {/* ==================== ARCHETYPE IN ACTION ==================== */}
+      <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll my-8">
+        <div className="card-gradient p-6 rounded-lg shadow-custom">
+          <div className="text-left space-y-3">
+            <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
+              Your Archetype in Action
+            </h2>
+            <p className="text-base md:text-lg text-[var(--text-secondary)] italic leading-relaxed max-w-3xl">
+              Explore the real-world strengths that empower you and the challenges that invite growth.
+            </p>
+          </div>
+          <div className="mt-8 space-y-8">
+            {/* Strengths */}
+            <div>
+              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Strengths</h3>
+              <ul className="space-y-4">
+                {tmpl.strengths.results.map((s, i) => (
+                  <li key={i} className="flex flex-col gap-3">
+                    <div className="flex gap-2 items-start">
+                      <CheckCircle className="w-6 h-6 text-[var(--accent)] flex-shrink-0 mt-0.5" />
+                      <span className="font-semibold text-[var(--text-primary)]">{s.result}:</span>
+                    </div>
+                    <div className="pl-8">
+                      <span>{s.description}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {/* Challenges */}
+            <div>
+              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Challenges</h3>
+              <ul className="space-y-4">
+                {tmpl.weaknesses.results.map((w, i) => (
+                  <li key={i} className="flex flex-col gap-3">
+                    <div className="flex gap-2 items-start">
+                      <CircleAlert className="w-6 h-6 text-[var(--accent)] flex-shrink-0 mt-0.5" />
+                      <span className="font-semibold text-[var(--text-primary)]">{w.result}:</span>
+                    </div>
+                    <div className="pl-8">
+                      <span>{w.description}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* SHARE BUTTON */}
+            {!isSharedView && (
+              <div className="container flex justify-center md:justify-end align-center mx-auto mt-6 max-w-4xl">
+                <button
+                  onClick={() => setShowShareModal(true)}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all mb-6 md:mb-1"
+                >
+                  <Share2 className="w-5 h-5" />
+                  Share Your Results
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
       {/* ==================== DIMENSIONAL PROFILE ==================== */}
       <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll">
         <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
@@ -924,69 +987,6 @@ DEGREES OF INFLUENCE:
               </button>
             </div>
           )}
-        </div>
-      </section>
-
-      {/* ==================== ARCHETYPE IN ACTION ==================== */}
-      <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll mt-8">
-        <div className="card-gradient p-6 rounded-lg shadow-custom">
-          <div className="text-left space-y-3">
-            <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
-              Your Archetype in Action
-            </h2>
-            <p className="text-base md:text-lg text-[var(--text-secondary)] italic leading-relaxed max-w-3xl">
-              Explore the real-world strengths that empower you and the challenges that invite growth.
-            </p>
-          </div>
-          <div className="mt-8 space-y-8">
-            {/* Strengths */}
-            <div>
-              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Strengths</h3>
-              <ul className="space-y-4">
-                {tmpl.strengths.results.map((s, i) => (
-                  <li key={i} className="flex flex-col gap-3">
-                    <div className="flex gap-2 items-start">
-                      <CheckCircle className="w-6 h-6 text-[var(--accent)] flex-shrink-0 mt-0.5" />
-                      <span className="font-semibold text-[var(--text-primary)]">{s.result}:</span>
-                    </div>
-                    <div className="pl-8">
-                      <span>{s.description}</span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {/* Challenges */}
-            <div>
-              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Challenges</h3>
-              <ul className="space-y-4">
-                {tmpl.weaknesses.results.map((w, i) => (
-                  <li key={i} className="flex flex-col gap-3">
-                    <div className="flex gap-2 items-start">
-                      <CircleAlert className="w-6 h-6 text-[var(--accent)] flex-shrink-0 mt-0.5" />
-                      <span className="font-semibold text-[var(--text-primary)]">{w.result}:</span>
-                    </div>
-                    <div className="pl-8">
-                      <span>{w.description}</span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* SHARE BUTTON */}
-            {!isSharedView && (
-              <div className="container flex justify-center md:justify-end align-center mx-auto mt-6 max-w-4xl">
-                <button
-                  onClick={() => setShowShareModal(true)}
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all mb-6 md:mb-1"
-                >
-                  <Share2 className="w-5 h-5" />
-                  Share Your Results
-                </button>
-              </div>
-            )}
-          </div>
         </div>
       </section>
 
