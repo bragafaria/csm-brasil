@@ -228,14 +228,16 @@ export default function Home() {
                 height={32}
                 className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8"
               />
-              <div className="flex items-center space-x-0.5 sm:space-x-1">
-                <h1 className="text-sm sm:text-base md:text-xl font-bold text-[var(--primary)] drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">
-                  CSM
-                </h1>
-                <h1 className="text-sm sm:text-base md:text-xl font-light text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">
-                  Dynamics
-                </h1>
-              </div>
+              <button onClick={() => router.push("/")}>
+                <div className="flex items-center space-x-0.5 sm:space-x-1">
+                  <h1 className="text-sm sm:text-base md:text-xl font-bold text-[var(--primary)] drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">
+                    CSM
+                  </h1>
+                  <h1 className="text-sm sm:text-base md:text-xl font-light text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">
+                    Dynamics
+                  </h1>
+                </div>
+              </button>
             </div>
 
             {/* Desktop: Navigation Links (Center) */}

@@ -86,10 +86,12 @@ export default function DashboardLayout({ children }) {
               height={24}
               className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7"
             />
-            <div className="flex items-center gap-0.5 sm:gap-1">
-              <h1 className="text-base sm:text-lg md:text-xl font-bold text-[var(--primary)]">CSM</h1>
-              <h1 className="text-base sm:text-lg md:text-xl font-light text-white">Dynamics</h1>
-            </div>
+            <button onClick={() => router.push(`/dashboard/${siteId}`)}>
+              <div className="flex items-center gap-0.5 sm:gap-1">
+                <h1 className="text-base sm:text-lg md:text-xl font-bold text-[var(--primary)]">CSM</h1>
+                <h1 className="text-base sm:text-lg md:text-xl font-light text-white">Dynamics</h1>
+              </div>
+            </button>
           </div>
 
           {/* Logout Button (Right) */}
