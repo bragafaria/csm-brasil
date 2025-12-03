@@ -7,7 +7,7 @@ import { ChevronLeft } from "lucide-react";
 
 const POSTS_PER_PAGE = 6;
 
-export const revalidate = 86400;
+// export const revalidate = 86400;
 
 export async function generateMetadata({ params }) {
   const { category } = await params; // AWAIT

@@ -383,23 +383,23 @@
 // 381. C-V-I-F-A/N-L-I-S-H → Empath / Academic ok
 // 382. C-V-I-F-A/N-L-I-S-A → Empath / Theorist ok
 // 383. C-V-I-F-A/N-L-I-F-H → Empath / Innovator ok
-// 384. C-V-I-F-A/N-L-I-F-A → Empath / Visionary
-// 385. C-V-I-F-A/N-V-O-S-H → Empath / Ambassador
-// 386. C-V-I-F-A/N-V-O-S-A → Empath / Artist
-// 387. C-V-I-F-A/N-V-O-F-H → Empath / Catalyst
-// 388. C-V-I-F-A/N-V-O-F-A → Empath / Wanderer
-// 389. C-V-I-F-A/N-V-I-S-H → Empath / Mentor
-// 390. C-V-I-F-A/N-V-I-S-A → Empath / Sage
-// 391. C-V-I-F-A/N-V-I-F-H → Empath / Unifier
-// 392. C-V-I-F-A/N-V-I-F-A → Empath / Mystic
-// 393. N-L-O-S-H/N-L-O-S-H → Strategist / Strategist
-// 394. N-L-O-S-H/N-L-O-S-A → Strategist / Inventor
-// 395. N-L-O-S-H/N-L-O-F-H → Strategist / Disruptor
-// 396. N-L-O-S-H/N-L-O-F-A → Strategist / Revolutionary
-// 397. N-L-O-S-H/N-L-I-S-H → Strategist / Academic
-// 398. N-L-O-S-H/N-L-I-S-A → Strategist / Theorist
-// 399. N-L-O-S-H/N-L-I-F-H → Strategist / Innovator
-// 400. N-L-O-S-H/N-L-I-F-A → Strategist / Visionary
+// 384. C-V-I-F-A/N-L-I-F-A → Empath / Visionary ok
+// 385. C-V-I-F-A/N-V-O-S-H → Empath / Ambassador ok
+// 386. C-V-I-F-A/N-V-O-S-A → Empath / Artist ok
+// 387. C-V-I-F-A/N-V-O-F-H → Empath / Catalyst ok
+// 388. C-V-I-F-A/N-V-O-F-A → Empath / Wanderer ok
+// 389. C-V-I-F-A/N-V-I-S-H → Empath / Mentor ok
+// 390. C-V-I-F-A/N-V-I-S-A → Empath / Sage ok
+// 391. C-V-I-F-A/N-V-I-F-H → Empath / Unifier ok
+// 392. C-V-I-F-A/N-V-I-F-A → Empath / Mystic ok
+// 393. N-L-O-S-H/N-L-O-S-H → Strategist / Strategist ok
+// 394. N-L-O-S-H/N-L-O-S-A → Strategist / Inventor ok
+// 395. N-L-O-S-H/N-L-O-F-H → Strategist / Disruptor ok
+// 396. N-L-O-S-H/N-L-O-F-A → Strategist / Revolutionary ok
+// 397. N-L-O-S-H/N-L-I-S-H → Strategist / Academic ok
+// 398. N-L-O-S-H/N-L-I-S-A → Strategist / Theorist ok
+// 399. N-L-O-S-H/N-L-I-F-H → Strategist / Innovator ok
+// 400. N-L-O-S-H/N-L-I-F-A → Strategist / Visionary ok
 // 401. N-L-O-S-H/N-V-O-S-H → Strategist / Ambassador
 // 402. N-L-O-S-H/N-V-O-S-A → Strategist / Artist
 // 403. N-L-O-S-H/N-V-O-F-H → Strategist / Catalyst
