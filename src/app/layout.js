@@ -18,7 +18,7 @@ export const metadata = {
     siteName: "Cognitive Spectrum Model",
     images: [
       {
-        url: "https://csmdynamics.com/csm.jpg",
+        url: "https://csmdynamics.com/csm.png",
         width: 1200,
         height: 630,
         alt: "CSM Personality Test for Couples – Cognitive Alignment Score",
@@ -32,13 +32,13 @@ export const metadata = {
     card: "summary_large_image",
     title: "Free CSM Personality Test for Couples",
     description: "Finally understand why you click (or clash). Get your Cognitive Alignment Score in minutes.",
-    images: ["https://csmdynamics.com/csm.jpg"],
+    images: ["https://csmdynamics.com/csm.png"],
     creator: "@csmdynamics", // ← change this if you have a real handle
   },
 
   icons: {
     icon: ["/favicon.svg"], // ← array = Next.js picks the best one automatically
-    apple: "/apple-touch-icon.jpg",
+    apple: "/apple-touch-icon.png",
   },
 
   alternates: {
