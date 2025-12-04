@@ -430,26 +430,26 @@
 // 428. N-L-O-F-H/N-L-I-F-H → Disruptor / Innovator ok
 // 429. N-L-O-F-H/N-L-I-F-A → Disruptor / Visionary ok
 // 430. N-L-O-F-H/N-V-O-S-H → Disruptor / Ambassador ok
-// 431. N-L-O-F-H/N-V-O-S-A → Disruptor / Artist
-// 432. N-L-O-F-H/N-V-O-F-H → Disruptor / Catalyst
-// 433. N-L-O-F-H/N-V-O-F-A → Disruptor / Wanderer
-// 434. N-L-O-F-H/N-V-I-S-H → Disruptor / Mentor
-// 435. N-L-O-F-H/N-V-I-S-A → Disruptor / Sage
-// 436. N-L-O-F-H/N-V-I-F-H → Disruptor / Unifier
-// 437. N-L-O-F-H/N-V-I-F-A → Disruptor / Mystic
-// 438. N-L-O-F-A/N-L-O-F-A → Revolutionary / Revolutionary
-// 439. N-L-O-F-A/N-L-I-S-H → Revolutionary / Academic
-// 440. N-L-O-F-A/N-L-I-S-A → Revolutionary / Theorist
-// 441. N-L-O-F-A/N-L-I-F-H → Revolutionary / Innovator
-// 442. N-L-O-F-A/N-L-I-F-A → Revolutionary / Visionary
-// 443. N-L-O-F-A/N-V-O-S-H → Revolutionary / Ambassador
-// 444. N-L-O-F-A/N-V-O-S-A → Revolutionary / Artist
-// 445. N-L-O-F-A/N-V-O-F-H → Revolutionary / Catalyst
-// 446. N-L-O-F-A/N-V-O-F-A → Revolutionary / Wanderer
-// 447. N-L-O-F-A/N-V-I-S-H → Revolutionary / Mentor
-// 448. N-L-O-F-A/N-V-I-S-A → Revolutionary / Sage
-// 449. N-L-O-F-A/N-V-I-F-H → Revolutionary / Unifier
-// 450. N-L-O-F-A/N-V-I-F-A → Revolutionary / Mystic
+// 431. N-L-O-F-H/N-V-O-S-A → Disruptor / Artist ok
+// 432. N-L-O-F-H/N-V-O-F-H → Disruptor / Catalyst ok
+// 433. N-L-O-F-H/N-V-O-F-A → Disruptor / Wanderer ok
+// 434. N-L-O-F-H/N-V-I-S-H → Disruptor / Mentor ok
+// 435. N-L-O-F-H/N-V-I-S-A → Disruptor / Sage ok
+// 436. N-L-O-F-H/N-V-I-F-H → Disruptor / Unifier ok
+// 437. N-L-O-F-H/N-V-I-F-A → Disruptor / Mystic ok
+// 438. N-L-O-F-A/N-L-O-F-A → Revolutionary / Revolutionary ok
+// 439. N-L-O-F-A/N-L-I-S-H → Revolutionary / Academic ok
+// 440. N-L-O-F-A/N-L-I-S-A → Revolutionary / Theorist ok
+// 441. N-L-O-F-A/N-L-I-F-H → Revolutionary / Innovator ok
+// 442. N-L-O-F-A/N-L-I-F-A → Revolutionary / Visionary ok
+// 443. N-L-O-F-A/N-V-O-S-H → Revolutionary / Ambassador ok
+// 444. N-L-O-F-A/N-V-O-S-A → Revolutionary / Artist ok
+// 445. N-L-O-F-A/N-V-O-F-H → Revolutionary / Catalyst ok
+// 446. N-L-O-F-A/N-V-O-F-A → Revolutionary / Wanderer ok
+// 447. N-L-O-F-A/N-V-I-S-H → Revolutionary / Mentor ok
+// 448. N-L-O-F-A/N-V-I-S-A → Revolutionary / Sage ok
+// 449. N-L-O-F-A/N-V-I-F-H → Revolutionary / Unifier ok
+// 450. N-L-O-F-A/N-V-I-F-A → Revolutionary / Mystic ok
 // 451. N-L-I-S-H/N-L-I-S-H → Academic / Academic
 // 452. N-L-I-S-H/N-L-I-S-A → Academic / Theorist
 // 453. N-L-I-S-H/N-L-I-F-H → Academic / Innovator
