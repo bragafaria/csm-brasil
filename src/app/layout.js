@@ -3,43 +3,46 @@ import "./globals.css";
 import SupabaseListener from "@/app/lib/supabase/SupabaseListerner";
 
 export const metadata = {
-  title: "Free Personality Test – Unlock Your Couple’s Compatibility Report | CSM",
-
+  title: "Free Personality Test for Couples | CSM Dynamics",
   description:
-    "Take the free CSM personality test and discover how you and your partner truly think, decide, and connect. Then unlock your full Cognitive Alignment Score and personalized couple report.",
+    "Free 10-minute personality test for couples. Unlock your Cognitive Alignment Score™, understand thinking differences, and build deeper connection & intimacy fast.",
 
   metadataBase: new URL("https://csmdynamics.com"),
 
+  // === Open Graph (Facebook, LinkedIn, WhatsApp, iMessage, etc.) ===
   openGraph: {
-    title: "Free Personality Test – Unlock Your Couple’s Compatibility Report | CSM",
+    title: "Free Personality Test for Couples | CSM Dynamics",
     description:
-      "Understand your cognitive differences and turn them into your greatest strength. Built for couples who want deeper connection.",
+      "Free 10-minute personality test for couples. Unlock your Cognitive Alignment Score™, understand thinking differences, and build deeper connection & intimacy fast.",
     url: "https://csmdynamics.com",
     siteName: "CSM Dynamics",
     images: [
       {
-        url: "/csm.png",
+        url: "https://csmdynamics.com/csm.png", // absolute URL (best practice)
         width: 1200,
         height: 630,
-        alt: "CSM – Free Personality Test → Full Couple Compatibility Report",
+        alt: "Cognitive Alignment Score™ – Free Personality Test for Couples",
       },
     ],
     locale: "en_US",
     type: "website",
   },
 
+  // === Twitter / X ===
   twitter: {
     card: "summary_large_image",
-    title: "Free Personality Test → Full Couple Compatibility Report | CSM",
-    description: "Stop guessing why you click or clash. Get your Cognitive Alignment Score in minutes.",
-    images: ["/csm.png"],
+    title: "Free Personality Test for Couples – Cognitive Alignment Score™",
+    description:
+      "Free 10-minute test. Discover your exact Cognitive Alignment Score™ and finally understand why you click (or clash).",
+    images: ["https://csmdynamics.com/csm.png"], // absolute URL
     creator: "@csmdynamics",
+    site: "@csmdynamics",
   },
 
+  // === Canonical & Robots ===
   alternates: {
     canonical: "https://csmdynamics.com",
   },
-
   robots: {
     index: true,
     follow: true,
@@ -47,17 +50,21 @@ export const metadata = {
       index: true,
       follow: true,
       "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
 
+  // === Icons ===
   icons: {
-    icon: ["/favicon.ico"],
-    shortcut: ["/favicon-32x32.png"],
-    apple: ["/apple-touch-icon.png"],
+    icon: "/favicon.ico",
+    shortcut: "/favicon-32x32.png",
+    apple: "/apple-touch-icon.png",
   },
 
+  // === Google verification (add your code later) ===
   verification: {
-    google: "your-google-site-verification-code-here", // add when you verify
+    google: "your-google-site-verification-code-here",
   },
 };
 
