@@ -421,7 +421,7 @@ export default function Home() {
                 >
                   <div className="space-y-4">
                     <h3 className="text-2xl font-bold text-center text-white">Five Spectrum Cross-Analysis</h3>
-                    <p className="text-[var(--text-secondary)] leading-relaxed">
+                    <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-left">
                       Explore how your mind operates across the five core dimensions of cognition - Information
                       Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style.
                     </p>
@@ -536,7 +536,7 @@ export default function Home() {
                     <h3 className="text-2xl font-bold text-center text-white">Depth and Precision</h3>
                   </div>
                   <div className="space-y-4">
-                    <p className="text-[var(--text-secondary)] leading-relaxed">
+                    <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-left">
                       The five CSM dimensions give you a precise and deep look into how you process information, make
                       decisions, and interact with others. This clarity helps you identify strengths, uncover blind
                       spots, and pursue growth with greater purpose.
