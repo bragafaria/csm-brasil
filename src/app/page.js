@@ -401,12 +401,24 @@ export default function Home() {
               {/* Desktop: Two-column layout, Mobile: Stacked in specific order */}
               <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8 lg:mb-18">
                 {/* Section 1: Image (order-1 on mobile, left column on desktop) */}
-                <div className="order-1 lg:order-none group min-h-[400px] flex flex-col space-y-4 lg:mb-0">
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="order-1 lg:order-none group min-h-[400px] flex flex-col space-y-4 lg:mb-0"
+                >
                   <img src="/phone.png" alt="Emma & David" className="mx-auto" />
-                </div>
+                </motion.div>
 
                 {/* Section 2: Five Spectrum title (order-2 on mobile, right column on desktop) */}
-                <div className="order-2 lg:order-none flex flex-col justify-center space-y-6 lg:pl-8 mb-8 lg:mb-0">
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                  className="order-2 lg:order-none flex flex-col justify-center space-y-6 lg:pl-8 mb-8 lg:mb-0"
+                >
                   <div className="space-y-4">
                     <h3 className="text-2xl font-bold text-center text-white">Five Spectrum Cross-Analysis</h3>
                     <p className="text-[var(--text-secondary)] leading-relaxed">
@@ -414,16 +426,22 @@ export default function Home() {
                       Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style.
                     </p>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Section 4: Information Processing card (order-3 on mobile, right column on desktop) */}
-                <div className="order-3 lg:order-none lg:col-start-2 lg:row-start-2 mt-4 lg:mb-0">
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+                  className="order-3 lg:order-none lg:col-start-2 lg:row-start-2 mt-4 lg:mb-0"
+                >
                   <div
                     className="group bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] p-6 rounded-2xl 
-                      shadow-lg border border-[rgba(var(--primary-rgb),0.2)] 
-                      hover:border-[rgba(var(--primary-rgb),0.4)] 
-                      hover:shadow-2xl transition-all duration-300 
-                      hover:-translate-y-1 min-h-[400px] flex flex-col space-y-4 lg:mt-10"
+            shadow-lg border border-[rgba(var(--primary-rgb),0.2)] 
+            hover:border-[rgba(var(--primary-rgb),0.4)] 
+            hover:shadow-2xl transition-all duration-300 
+            hover:-translate-y-1 min-h-[400px] flex flex-col space-y-4 lg:mt-10"
                   >
                     <div className="text-center space-y-2">
                       <h3 className="text-xl font-bold text-[var(--text-primary)]">Information Processing</h3>
@@ -433,7 +451,13 @@ export default function Home() {
                     </div>
 
                     <div className="space-y-4 flex-grow">
-                      <div className="bg-gradient-to-r from-green-500/10 to-black/10 p-4 rounded-xl border border-green-400/20 space-y-2">
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
+                        className="bg-gradient-to-r from-green-500/10 to-black/10 p-4 rounded-xl border border-green-400/20 space-y-2"
+                      >
                         <div className="text-lg font-medium text-[var(--text-primary)] text-center">
                           Concrete Focus (C)
                         </div>
@@ -450,12 +474,24 @@ export default function Home() {
                             <span className="text-xl font-bold text-green-400">57%</span>
                           </div>
                           <div className="w-full bg-gray-100 rounded-full h-2">
-                            <div className="bg-green-400 h-2 rounded-full" style={{ width: "57%" }}></div>
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: "57%" }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1, ease: "easeOut", delay: 0.8 }}
+                              className="bg-green-400 h-2 rounded-full"
+                            ></motion.div>
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
 
-                      <div className="bg-gradient-to-r from-red-500/10 to-black/10 p-4 rounded-xl border border-red-400/20 space-y-2">
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.5, ease: "easeOut", delay: 0.7 }}
+                        className="bg-gradient-to-r from-red-500/10 to-black/10 p-4 rounded-xl border border-red-400/20 space-y-2"
+                      >
                         <div className="text-lg font-medium text-[var(--text-primary)] text-center">
                           Abstract Insight (N)
                         </div>
@@ -474,16 +510,28 @@ export default function Home() {
                             <span className="text-xl font-bold text-red-400">43%</span>
                           </div>
                           <div className="w-full bg-gray-100 rounded-full h-2">
-                            <div className="bg-red-400 h-2 rounded-full" style={{ width: "43%" }}></div>
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: "43%" }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1, ease: "easeOut", delay: 0.9 }}
+                              className="bg-red-400 h-2 rounded-full"
+                            ></motion.div>
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Section 3: Depth description (order-4 on mobile, left column on desktop) */}
-                <div className="order-4 lg:order-none flex flex-col justify-center space-y-6 lg:pl-8 mt-8 mb-8 lg:mb-0 lg:col-start-1">
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
+                  className="order-4 lg:order-none flex flex-col justify-center space-y-6 lg:pl-8 mt-8 mb-8 lg:mb-0 lg:col-start-1"
+                >
                   <div className="space-y-4">
                     <h3 className="text-2xl font-bold text-center text-white">Depth and Precision</h3>
                   </div>
@@ -494,7 +542,7 @@ export default function Home() {
                       spots, and pursue growth with greater purpose.
                     </p>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
