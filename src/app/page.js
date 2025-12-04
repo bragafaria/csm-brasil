@@ -613,6 +613,18 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+          <div className="text-center pt-14 pb-10 md:py-20">
+            <button
+              onClick={handleStartTest}
+              className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-12 py-4 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl flex items-center space-x-3 mx-auto text-[var(--text-primary)]"
+            >
+              <span>Take Free Test</span>
+              <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <p className="text-[var(--text-secondary)] mt-4 text-xs sm:text-sm">
+              Takes only 10 minutes • Completely free
+            </p>
+          </div>
         </div>
       </section>
       {/* Features Section */}
@@ -722,18 +734,6 @@ export default function Home() {
               </div>
             </AnimatedCard>
           </div>
-        </div>
-        <div className="text-center py-10 md:py-20">
-          <button
-            onClick={handleStartTest}
-            className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-12 py-4 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl flex items-center space-x-3 mx-auto text-[var(--text-primary)]"
-          >
-            <span>Take Free Test</span>
-            <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
-          </button>
-          <p className="text-[var(--text-secondary)] mt-4 text-xs sm:text-sm">
-            Takes only 10 minutes • Completely free
-          </p>
         </div>
       </section>
 
@@ -964,15 +964,18 @@ export default function Home() {
                 Empowering couples with science-backed relationship insights through the Cognitive Spectrum Model.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
-                  Twitter
-                </a>
-                <a href="#" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
-                  Facebook
-                </a>
-                <a href="#" className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
-                  Instagram
-                </a>
+                <Link
+                  href="https://x.com/csmdynamics"
+                  className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                >
+                  X/Twitter
+                </Link>
+                <Link
+                  href="https://pinterest.com/csmdynamics/"
+                  className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                >
+                  Pinterest
+                </Link>
               </div>
             </div>
             <div>
@@ -1000,20 +1003,20 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Support</h4>
+              <h4 className="font-semibold mb-4">Resources</h4>
               <div className="space-y-2">
-                <a href="/contact" className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
-                  Contact Info
-                </a>
-                <a href="/help" className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
-                  Help Center
-                </a>
-                <a
-                  href="/csm-assessment"
+                <Link href="/affiliate" className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
+                  Affiliate Program
+                </Link>
+                <Link href="/blog" className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
+                  Blog
+                </Link>
+                <Link
+                  href="mailto:csm@csmdynamics.com?subject=Abuse"
                   className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 >
-                  Free Assessment
-                </a>
+                  Report Abuse
+                </Link>
               </div>
             </div>
           </div>
