@@ -3,24 +3,25 @@ import "./globals.css";
 import SupabaseListener from "@/app/lib/supabase/SupabaseListerner";
 
 export const metadata = {
-  title: "Couples Personality Test | CSM Dynamics",
-  description:
-    "Discover your unique CSM cognitive profile — a modern personality system designed specifically for couples. Understand each other more clearly and strengthen your relationship today.",
+  title: "Free Personality Test – Unlock Your Couple’s Compatibility Report | CSM",
 
-  metadataBase: new URL("https://csmdynamics.com"), // ← THIS IS CRUCIAL – fixes og:url auto-generation
+  description:
+    "Take the free CSM personality test and discover how you and your partner truly think, decide, and connect. Then unlock your full Cognitive Alignment Score and personalized couple report.",
+
+  metadataBase: new URL("https://csmdynamics.com"),
 
   openGraph: {
-    title: "Couples Personality Test | CSM Dynamics",
+    title: "Free Personality Test – Unlock Your Couple’s Compatibility Report | CSM",
     description:
-      "Discover how you and your partner think, communicate, and connect. A modern cognitive assessment built to reveal your true compatibility.",
-    url: "https://csmdynamics.com", // ← will be overridden per-page automatically
-    siteName: "Cognitive Spectrum Model", // ← this fixes the "og:site_name Not Provided"
+      "Understand your cognitive differences and turn them into your greatest strength. Built for couples who want deeper connection.",
+    url: "https://csmdynamics.com",
+    siteName: "CSM Dynamics",
     images: [
       {
-        url: "/csm.png", // ← simplified to relative (metadataBase makes it full: https://csmdynamics.com/csm.png)
+        url: "/csm.png",
         width: 1200,
         height: 630,
-        alt: "CSM Personality Test for Couples – Cognitive Alignment Score",
+        alt: "CSM – Free Personality Test → Full Couple Compatibility Report",
       },
     ],
     locale: "en_US",
@@ -29,9 +30,9 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Free CSM Personality Test for Couples",
-    description: "Finally understand why you click (or clash). Get your Cognitive Alignment Score in minutes.",
-    images: ["/csm.png"], // ← relative works now thanks to metadataBase
+    title: "Free Personality Test → Full Couple Compatibility Report | CSM",
+    description: "Stop guessing why you click or clash. Get your Cognitive Alignment Score in minutes.",
+    images: ["/csm.png"],
     creator: "@csmdynamics",
   },
 
@@ -39,9 +40,24 @@ export const metadata = {
     canonical: "https://csmdynamics.com",
   },
 
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
+
   icons: {
-    icon: ["/favicon.svg"],
-    apple: "/apple-touch-icon.png",
+    icon: ["/favicon.ico"],
+    shortcut: ["/favicon-32x32.png"],
+    apple: ["/apple-touch-icon.png"],
+  },
+
+  verification: {
+    google: "your-google-site-verification-code-here", // add when you verify
   },
 };
 
