@@ -31,9 +31,9 @@ export const metadata = {
   // === Twitter / X ===
   twitter: {
     card: "summary_large_image",
-    title: "Free Personality Test for Couples – Cognitive Alignment Score™",
+    title: "Personality Assessment for Couples – Cognitive Alignment Score™",
     description:
-      "Free 10-minute test. Discover your exact Cognitive Alignment Score™ and finally understand why you click (or clash).",
+      "Take a free 10-minute personality test to unlock your Cognitive Alignment Score, understand thinking differences, and build deeper connection & intimacy fast.",
     images: ["https://csmdynamics.com/csm.png"], // absolute URL
     creator: "@csmdynamics",
     site: "@csmdynamics",
