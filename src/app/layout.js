@@ -2,23 +2,22 @@
 import "./globals.css";
 import SupabaseListener from "@/app/lib/supabase/SupabaseListerner";
 
-// app/layout.tsx or wherever you export metadata
-// FINAL VERSION – copy-paste this exactly into your root layout.tsx
-
 export const metadata = {
   title: "Couples Personality Test | CSM Dynamics",
   description:
     "Discover your unique CSM cognitive profile — a modern personality system designed specifically for couples. Understand each other more clearly and strengthen your relationship today.",
 
+  metadataBase: new URL("https://csmdynamics.com"), // ← THIS IS CRUCIAL – fixes og:url auto-generation
+
   openGraph: {
     title: "Couples Personality Test | CSM Dynamics",
     description:
       "Discover how you and your partner think, communicate, and connect. A modern cognitive assessment built to reveal your true compatibility.",
-    url: "https://csmdynamics.com",
-    siteName: "Cognitive Spectrum Model",
+    url: "https://csmdynamics.com", // ← will be overridden per-page automatically
+    siteName: "Cognitive Spectrum Model", // ← this fixes the "og:site_name Not Provided"
     images: [
       {
-        url: "https://csmdynamics.com/csm.png",
+        url: "/csm.png", // ← simplified to relative (metadataBase makes it full: https://csmdynamics.com/csm.png)
         width: 1200,
         height: 630,
         alt: "CSM Personality Test for Couples – Cognitive Alignment Score",
@@ -32,25 +31,18 @@ export const metadata = {
     card: "summary_large_image",
     title: "Free CSM Personality Test for Couples",
     description: "Finally understand why you click (or clash). Get your Cognitive Alignment Score in minutes.",
-    images: ["https://csmdynamics.com/csm.png"],
-    creator: "@csmdynamics", // ← change this if you have a real handle
-  },
-
-  icons: {
-    icon: ["/favicon.svg"], // ← array = Next.js picks the best one automatically
-    apple: "/apple-touch-icon.png",
+    images: ["/csm.png"], // ← relative works now thanks to metadataBase
+    creator: "@csmdynamics",
   },
 
   alternates: {
     canonical: "https://csmdynamics.com",
   },
 
-  keywords:
-    "personality test for couples, mbti for couples, relationship compatibility test, cognitive compatibility, love language alternative, attachment style test, marriage quiz, couple personality framework, free relationship test",
-
-  authors: [{ name: "Rodrigo Faria" }],
-  creator: "Rodrigo Faria",
-  publisher: "Cognitive Spectrum Model",
+  icons: {
+    icon: ["/favicon.svg"],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
