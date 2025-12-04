@@ -5,7 +5,7 @@ import SupabaseListener from "@/app/lib/supabase/SupabaseListerner";
 export const metadata = {
   title: "Personality Assessment for Couples | CSM Dynamics",
   description:
-    "Take a free 10-minute personality test to unlock your Cognitive Alignment Score, understand thinking differences, and build deeper connection & intimacy fast.",
+    "Take a free 10-minute personality test to discover your unique CSM cognitive profile, understand thinking differences, and build deeper connection & intimacy fast.",
 
   metadataBase: new URL("https://csmdynamics.com"),
 
@@ -13,7 +13,7 @@ export const metadata = {
   openGraph: {
     title: "Personality Assessment for Couples | CSM Dynamics",
     description:
-      "Take a free 10-minute personality test to unlock your Cognitive Alignment Score, understand thinking differences, and build deeper connection & intimacy fast.",
+      "Take a free 10-minute personality test to discover your unique CSM cognitive profile, understand thinking differences, and build deeper connection & intimacy fast.",
     url: "https://csmdynamics.com",
     siteName: "CSM Dynamics",
     images: [
@@ -33,7 +33,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Personality Assessment for Couples – Cognitive Alignment Score™",
     description:
-      "Take a free 10-minute personality test to unlock your Cognitive Alignment Score, understand thinking differences, and build deeper connection & intimacy fast.",
+      "Take a free 10-minute personality test to discover your unique CSM cognitive profile, understand thinking differences, and build deeper connection & intimacy fast.",
     images: ["https://csmdynamics.com/csm.png"], // absolute URL
     creator: "@csmdynamics",
     site: "@csmdynamics",
