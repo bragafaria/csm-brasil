@@ -450,26 +450,26 @@
 // 448. N-L-O-F-A/N-V-I-S-A → Revolutionary / Sage ok
 // 449. N-L-O-F-A/N-V-I-F-H → Revolutionary / Unifier ok
 // 450. N-L-O-F-A/N-V-I-F-A → Revolutionary / Mystic ok
-// 451. N-L-I-S-H/N-L-I-S-H → Academic / Academic
-// 452. N-L-I-S-H/N-L-I-S-A → Academic / Theorist
-// 453. N-L-I-S-H/N-L-I-F-H → Academic / Innovator
-// 454. N-L-I-S-H/N-L-I-F-A → Academic / Visionary
-// 455. N-L-I-S-H/N-V-O-S-H → Academic / Ambassador
-// 456. N-L-I-S-H/N-V-O-S-A → Academic / Artist
-// 457. N-L-I-S-H/N-V-O-F-H → Academic / Catalyst
-// 458. N-L-I-S-H/N-V-O-F-A → Academic / Wanderer
-// 459. N-L-I-S-H/N-V-I-S-H → Academic / Mentor
-// 460. N-L-I-S-H/N-V-I-S-A → Academic / Sage
-// 461. N-L-I-S-H/N-V-I-F-H → Academic / Unifier
-// 462. N-L-I-S-H/N-V-I-F-A → Academic / Mystic
-// 463. N-L-I-S-A/N-L-I-S-A → Theorist / Theorist
-// 464. N-L-I-S-A/N-L-I-F-H → Theorist / Innovator
-// 465. N-L-I-S-A/N-L-I-F-A → Theorist / Visionary
-// 466. N-L-I-S-A/N-V-O-S-H → Theorist / Ambassador
-// 467. N-L-I-S-A/N-V-O-S-A → Theorist / Artist
-// 468. N-L-I-S-A/N-V-O-F-H → Theorist / Catalyst
-// 469. N-L-I-S-A/N-V-O-F-A → Theorist / Wanderer
-// 470. N-L-I-S-A/N-V-I-S-H → Theorist / Mentor
+// 451. N-L-I-S-H/N-L-I-S-H → Academic / Academic ok
+// 452. N-L-I-S-H/N-L-I-S-A → Academic / Theorist ok
+// 453. N-L-I-S-H/N-L-I-F-H → Academic / Innovator ok
+// 454. N-L-I-S-H/N-L-I-F-A → Academic / Visionary ok
+// 455. N-L-I-S-H/N-V-O-S-H → Academic / Ambassador ok
+// 456. N-L-I-S-H/N-V-O-S-A → Academic / Artist ok
+// 457. N-L-I-S-H/N-V-O-F-H → Academic / Catalyst ok
+// 458. N-L-I-S-H/N-V-O-F-A → Academic / Wanderer ok
+// 459. N-L-I-S-H/N-V-I-S-H → Academic / Mentor ok
+// 460. N-L-I-S-H/N-V-I-S-A → Academic / Sage ok
+// 461. N-L-I-S-H/N-V-I-F-H → Academic / Unifier ok
+// 462. N-L-I-S-H/N-V-I-F-A → Academic / Mystic ok
+// 463. N-L-I-S-A/N-L-I-S-A → Theorist / Theorist ok
+// 464. N-L-I-S-A/N-L-I-F-H → Theorist / Innovator ok
+// 465. N-L-I-S-A/N-L-I-F-A → Theorist / Visionary ok
+// 466. N-L-I-S-A/N-V-O-S-H → Theorist / Ambassador ok
+// 467. N-L-I-S-A/N-V-O-S-A → Theorist / Artist ok
+// 468. N-L-I-S-A/N-V-O-F-H → Theorist / Catalyst ok
+// 469. N-L-I-S-A/N-V-O-F-A → Theorist / Wanderer ok
+// 470. N-L-I-S-A/N-V-I-S-H → Theorist / Mentor up
 // 471. N-L-I-S-A/N-V-I-S-A → Theorist / Sage
 // 472. N-L-I-S-A/N-V-I-F-H → Theorist / Unifier
 // 473. N-L-I-S-A/N-V-I-F-A → Theorist / Mystic
