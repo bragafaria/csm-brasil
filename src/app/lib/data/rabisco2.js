@@ -469,17 +469,17 @@
 // 467. N-L-I-S-A/N-V-O-S-A → Theorist / Artist ok
 // 468. N-L-I-S-A/N-V-O-F-H → Theorist / Catalyst ok
 // 469. N-L-I-S-A/N-V-O-F-A → Theorist / Wanderer ok
-// 470. N-L-I-S-A/N-V-I-S-H → Theorist / Mentor up
-// 471. N-L-I-S-A/N-V-I-S-A → Theorist / Sage
-// 472. N-L-I-S-A/N-V-I-F-H → Theorist / Unifier
-// 473. N-L-I-S-A/N-V-I-F-A → Theorist / Mystic
-// 474. N-L-I-F-H/N-L-I-F-H → Innovator / Innovator
-// 475. N-L-I-F-H/N-L-I-F-A → Innovator / Visionary
-// 476. N-L-I-F-H/N-V-O-S-H → Innovator / Ambassador
-// 477. N-L-I-F-H/N-V-O-S-A → Innovator / Artist
-// 478. N-L-I-F-H/N-V-O-F-H → Innovator / Catalyst
-// 479. N-L-I-F-H/N-V-O-F-A → Innovator / Wanderer
-// 480. N-L-I-F-H/N-V-I-S-H → Innovator / Mentor
+// 470. N-L-I-S-A/N-V-I-S-H → Theorist / Mentor ok
+// 471. N-L-I-S-A/N-V-I-S-A → Theorist / Sage ok
+// 472. N-L-I-S-A/N-V-I-F-H → Theorist / Unifier ok
+// 473. N-L-I-S-A/N-V-I-F-A → Theorist / Mystic ok
+// 474. N-L-I-F-H/N-L-I-F-H → Innovator / Innovator ok
+// 475. N-L-I-F-H/N-L-I-F-A → Innovator / Visionary ok
+// 476. N-L-I-F-H/N-V-O-S-H → Innovator / Ambassador ok
+// 477. N-L-I-F-H/N-V-O-S-A → Innovator / Artist ok
+// 478. N-L-I-F-H/N-V-O-F-H → Innovator / Catalyst ok
+// 479. N-L-I-F-H/N-V-O-F-A → Innovator / Wanderer ok
+// 480. N-L-I-F-H/N-V-I-S-H → Innovator / Mentor up
 // 481. N-L-I-F-H/N-V-I-S-A → Innovator / Sage
 // 482. N-L-I-F-H/N-V-I-F-H → Innovator / Unifier
 // 483. N-L-I-F-H/N-V-I-F-A → Innovator / Mystic
