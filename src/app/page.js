@@ -408,7 +408,11 @@ export default function Home() {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   className="order-1 lg:order-none group min-h-[400px] flex flex-col space-y-4 lg:mb-0"
                 >
-                  <img src="/phone.png" alt="Emma & David" className="mx-auto" />
+                  <div className="relative mx-auto">
+                    <img src="/phone.png" alt="Emma & David" className="relative z-10" />
+                    {/* Gradient overlay at bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-t from-[var(--surface)] to-transparent z-20 pointer-events-none"></div>
+                  </div>
                 </motion.div>
 
                 {/* Section 2: Five Spectrum title (order-2 on mobile, right column on desktop) */}
@@ -438,10 +442,7 @@ export default function Home() {
                 >
                   <div
                     className="group bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] p-6 rounded-2xl 
-            shadow-lg border border-[rgba(var(--primary-rgb),0.2)] 
-            hover:border-[rgba(var(--primary-rgb),0.4)] 
-            hover:shadow-2xl transition-all duration-300 
-            hover:-translate-y-1 min-h-[400px] flex flex-col space-y-4 lg:mt-10"
+        border border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)] flex flex-col space-y-4 lg:mt-10"
                   >
                     <div className="text-center space-y-2">
                       <h3 className="text-xl font-bold text-[var(--text-primary)]">Information Processing</h3>
@@ -537,9 +538,9 @@ export default function Home() {
                   </div>
                   <div className="space-y-4">
                     <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-left">
-                      The five CSM dimensions give you a precise and deep look into how you process information, make
-                      decisions, and interact with others. This clarity helps you identify strengths, uncover blind
-                      spots, and pursue growth with greater purpose.
+                      The five CSM dimensions give you a precise and deep understanding of how you process information,
+                      make decisions, and interact with others. This clarity helps you identify strengths, uncover
+                      weaknesses, and pursue growth with greater purpose.
                     </p>
                   </div>
                 </motion.div>
