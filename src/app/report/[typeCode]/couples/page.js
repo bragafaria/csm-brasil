@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import {
   ArrowRight,
-  CheckCircle,
+  Mail,
   Users,
   Brain,
   Heart,
@@ -542,8 +542,15 @@ export default function Sales() {
                   {`"We're getting married next year, and this report gave us a roadmap for conversations we didn't even
                   know we needed to have. We feel more prepared than ever."`}
                 </p>
-                <div className="text-sm">
-                  <span className="font-semibold">Sofia (The Mentor) & Leo (The Pioneer)</span>
+                <div className="flex items-center gap-3 mt-auto">
+                  <img
+                    src="https://prehqtlubbqfxsdbtypb.supabase.co/storage/v1/object/public/customer-profiles/couple1.png"
+                    alt="Emma & David"
+                    className="w-10 h-10 rounded-full object-cover"
+                    width="40"
+                    height="40"
+                  />
+                  <span className="font-semibold">David (The Analyst) & Maria (The Explorer)</span>
                 </div>
               </div>
 
@@ -557,16 +564,23 @@ export default function Sales() {
                   {` "Seeing our financial styles laid out so clearly was an eye-opener. We created a joint plan that
                   honors both my need for security and her love for adventure."`}
                 </p>
-                <div className="text-sm">
-                  <span className="font-semibold">David (The Analyst) & Maria (The Explorer)</span>
+                <div className="flex items-center gap-3 mt-auto">
+                  <img
+                    src="https://prehqtlubbqfxsdbtypb.supabase.co/storage/v1/object/public/customer-profiles/couple2.png"
+                    alt="Emma & David"
+                    className="w-10 h-10 rounded-full object-cover"
+                    width="40"
+                    height="40"
+                  />
+                  <span className="font-semibold">Sofia (The Mentor) & Leo (The Pioneer)</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="text-center card-gradient p-6 rounded-lg mb-6 border-4 border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)] ">
+          <div className="text-center card-gradient p-6 rounded-lg mt-6 md:mt-0 mb-6 border-4 border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)] ">
             <p className="text-[var(--text-secondary)] mb-4">
-              One-time payment of $49. Backed by our 14-day satisfaction guarantee,no questions asked.
+              Worry-free. {`You're`} covered by our 14-day satisfaction guarantee, no questions asked.
             </p>
             <div className="flex items-center justify-center space-x-6 text-sm">
               <div className="flex items-center">
@@ -587,7 +601,7 @@ export default function Sales() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-10 md:py-16 px-4 bg-[var(--surface-variant)]">
+      <section id="faq" className="py-2 md:py-16 px-4 bg-[var(--surface-variant)]">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12 section-header">
             <h2 className="text-4xl font-bold mb-6">
@@ -616,6 +630,37 @@ export default function Sales() {
                 )}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/*Newsletter*/}
+      <section>
+        <div className="bg-gradient-to-br from-[var(--primary)]/10 via-[var(--surface2)] to-[var(--accent)]/10 p-8 md:p-12">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--primary)]/20 mb-6">
+              <Mail className="w-8 h-8 text-violet-400" />
+            </div>
+
+            <h3 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">Never Miss a Story</h3>
+
+            <p className="text-lg text-[var(--text-secondary)] mb-8">
+              Get weekly insights on relationships, personal growth, and wellness delivered straight to your inbox.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--primary)] transition-colors"
+              />
+              <button className="btn-primary px-6 py-3 rounded-lg font-semibold whitespace-nowrap flex items-center justify-center gap-2">
+                Subscribe
+                <Mail className="w-4 h-4" />
+              </button>
+            </div>
+
+            <p className="text-xs text-[var(--text-secondary)] mt-4">Join 10,000+ readers. Unsubscribe anytime.</p>
           </div>
         </div>
       </section>

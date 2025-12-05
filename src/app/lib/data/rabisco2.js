@@ -479,17 +479,17 @@
 // 477. N-L-I-F-H/N-V-O-S-A → Innovator / Artist ok
 // 478. N-L-I-F-H/N-V-O-F-H → Innovator / Catalyst ok
 // 479. N-L-I-F-H/N-V-O-F-A → Innovator / Wanderer ok
-// 480. N-L-I-F-H/N-V-I-S-H → Innovator / Mentor up
-// 481. N-L-I-F-H/N-V-I-S-A → Innovator / Sage
-// 482. N-L-I-F-H/N-V-I-F-H → Innovator / Unifier
-// 483. N-L-I-F-H/N-V-I-F-A → Innovator / Mystic
-// 484. N-L-I-F-A/N-L-I-F-A → Visionary / Visionary
-// 485. N-L-I-F-A/N-V-O-S-H → Visionary / Ambassador
-// 486. N-L-I-F-A/N-V-O-S-A → Visionary / Artist
-// 487. N-L-I-F-A/N-V-O-F-H → Visionary / Catalyst
-// 488. N-L-I-F-A/N-V-O-F-A → Visionary / Wanderer
-// 489. N-L-I-F-A/N-V-I-S-H → Visionary / Mentor
-// 490. N-L-I-F-A/N-V-I-S-A → Visionary / Sage
+// 480. N-L-I-F-H/N-V-I-S-H → Innovator / Mentor ok
+// 481. N-L-I-F-H/N-V-I-S-A → Innovator / Sage ok
+// 482. N-L-I-F-H/N-V-I-F-H → Innovator / Unifier ok
+// 483. N-L-I-F-H/N-V-I-F-A → Innovator / Mystic ok
+// 484. N-L-I-F-A/N-L-I-F-A → Visionary / Visionary ok
+// 485. N-L-I-F-A/N-V-O-S-H → Visionary / Ambassador ok
+// 486. N-L-I-F-A/N-V-O-S-A → Visionary / Artist ok
+// 487. N-L-I-F-A/N-V-O-F-H → Visionary / Catalyst ok
+// 488. N-L-I-F-A/N-V-O-F-A → Visionary / Wanderer ok
+// 489. N-L-I-F-A/N-V-I-S-H → Visionary / Mentor ok
+// 490. N-L-I-F-A/N-V-I-S-A → Visionary / Sage ok
 // 491. N-L-I-F-A/N-V-I-F-H → Visionary / Unifier
 // 492. N-L-I-F-A/N-V-I-F-A → Visionary / Mystic
 // 493. N-V-O-S-H/N-V-O-S-H → Ambassador / Ambassador
