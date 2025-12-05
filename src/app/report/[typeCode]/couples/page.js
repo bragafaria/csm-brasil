@@ -152,16 +152,22 @@ export default function Sales() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Image
-                src="/imagens/logo_transparent_svg.svg"
+                src="/logo_transparent_svg.svg"
                 alt="CSM Dynamics Logo"
                 width={32}
                 height={32}
-                className="h-8 w-8"
+                className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8"
               />
-              <div className="flex items-center space-x-1">
-                <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
-                <h1 className="text-xl font-light text-[var(--text-primary)]">Dynamics</h1>
-              </div>
+              <button onClick={() => router.push("/")}>
+                <div className="flex items-center space-x-0.5 sm:space-x-1">
+                  <h1 className="text-sm sm:text-base md:text-xl font-bold text-[var(--primary)] drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">
+                    CSM
+                  </h1>
+                  <h1 className="text-sm sm:text-base md:text-xl font-light text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">
+                    Dynamics
+                  </h1>
+                </div>
+              </button>
             </div>
             <div className="hidden md:flex space-x-8">
               {[
@@ -220,29 +226,14 @@ export default function Sales() {
                   Discover Your Dynamic
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </button>
-                <p className="text-[var(--text-secondary)] flex items-center">
-                  <Play className="h-4 w-4 mr-2 text-[var(--accent)]" />
-                  Start with a free personality assessment to unlock your archetype,then invite your partner!
-                </p>
               </div>
             </div>
-            <div className="relative">
-              <div className="relative w-full h-96 bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 rounded-lg overflow-hidden">
-                <img
-                  src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt="Happy diverse couple looking thoughtfully into the distance together"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--surface)]/60 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="flex space-x-3">
-                    <div className="w-8 h-8 bg-[var(--primary)] rounded-full animate-pulse"></div>
-                    <div className="w-8 h-8 bg-[var(--accent)] rounded-full animate-pulse delay-150"></div>
-                    <div className="w-8 h-8 bg-[var(--primary)] rounded-full animate-pulse delay-300"></div>
-                  </div>
-                  <p className="text-sm text-[var(--text-secondary)] mt-2">Cognitive patterns merging into synergy</p>
-                </div>
-              </div>
+            <div className="relative flex flex-col w-full h-96 bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 rounded-lg overflow-hidden items-center justify-center mt-6">
+              <img
+                src="/note.png"
+                className="w-full h-full object-contain md:object-cover lg:object-contain"
+                alt="Couple's Insight Report preview"
+              />
             </div>
           </div>
         </div>
@@ -295,7 +286,7 @@ export default function Sales() {
           <div className="text-center">
             <p className="text-[var(--accent)] text-lg mb-6">
               <Users className="h-5 w-5 inline mr-2" />
-              {`Join 5,000+ couples who've strengthened their bond with CSM insights`}
+              {`Join 25,000+ couples who've strengthened their bond with CSM insights`}
             </p>
             <button
               onClick={() => router.push("/csm-assessment")}
@@ -482,50 +473,6 @@ export default function Sales() {
               </div>
             ))}
           </div>
-
-          <div className="text-center mt-12">
-            <button
-              onClick={() => scrollToSection("buy-now")}
-              className="btn-primary px-8 py-4 rounded-lg font-semibold text-lg inline-flex items-center"
-            >
-              Ready to see inside your report? Start Now
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section id="faq" className="py-10 md:py-16 px-4 bg-[var(--surface-variant)]">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-12 section-header">
-            <h2 className="text-4xl font-bold mb-6">
-              Frequently Asked <span className="text-[var(--accent)]">Questions</span>
-            </h2>
-          </div>
-
-          <div className="space-y-4 mb-12">
-            {faqs.map((faq, index) => (
-              <div key={index} className="card-gradient rounded-lg overflow-hidden">
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-[var(--surface)]/20 transition-colors"
-                >
-                  <span className="font-semibold">{faq.question}</span>
-                  {expandedFAQ === index ? (
-                    <ChevronUp className="h-5 w-5 text-[var(--accent)]" />
-                  ) : (
-                    <ChevronDown className="h-5 w-5 text-[var(--accent)]" />
-                  )}
-                </button>
-                {expandedFAQ === index && (
-                  <div className="px-6 pb-4">
-                    <p className="text-[var(--text-secondary)] leading-relaxed">{faq.answer}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -644,6 +591,40 @@ export default function Sales() {
                 <span>Privacy Protected</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-10 md:py-16 px-4 bg-[var(--surface-variant)]">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-12 section-header">
+            <h2 className="text-4xl font-bold mb-6">
+              Frequently Asked <span className="text-[var(--accent)]">Questions</span>
+            </h2>
+          </div>
+
+          <div className="space-y-4 mb-12">
+            {faqs.map((faq, index) => (
+              <div key={index} className="card-gradient rounded-lg overflow-hidden">
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-[var(--surface)]/20 transition-colors"
+                >
+                  <span className="font-semibold">{faq.question}</span>
+                  {expandedFAQ === index ? (
+                    <ChevronUp className="h-5 w-5 text-[var(--accent)]" />
+                  ) : (
+                    <ChevronDown className="h-5 w-5 text-[var(--accent)]" />
+                  )}
+                </button>
+                {expandedFAQ === index && (
+                  <div className="px-6 pb-4">
+                    <p className="text-[var(--text-secondary)] leading-relaxed">{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
