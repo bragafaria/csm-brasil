@@ -426,7 +426,7 @@ export default function Home() {
                   <div className="space-y-4">
                     <h3 className="text-2xl font-bold text-center text-white">Five Spectrum Cross-Analysis</h3>
                     <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-left">
-                      Explore how your mind operates across the five core dimensions of cognition - Information
+                      Explore how your mind operates across the five core dimensions of cognition: Information
                       Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style.
                     </p>
                   </div>
