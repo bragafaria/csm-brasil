@@ -15,6 +15,7 @@ import {
   ChevronDown,
   X,
   Menu,
+  Mail,
 } from "lucide-react";
 import { useEffect, useState, useRef, useMemo, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
@@ -944,6 +945,40 @@ export default function Home() {
             {/* Subtle corner glows */}
             <div className="absolute top-10 left-10 w-96 h-96 bg-[#5033c0]/20 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#bf00ff]/20 rounded-full blur-3xl animate-pulse"></div>
+          </div>
+        </div>
+      </section>
+      {/*Newsletter*/}
+      <section>
+        <div>
+          <div className="card-gradient p-1 shadow-2xl">
+            <div className="bg-gradient-to-br from-[var(--primary)]/10 via-[var(--surface2)] to-[var(--accent)]/10 rounded-3xl p-8 md:p-12">
+              <div className="max-w-2xl mx-auto text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--primary)]/20 mb-6">
+                  <Mail className="w-8 h-8 text-violet-400" />
+                </div>
+
+                <h3 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">Never Miss a Story</h3>
+
+                <p className="text-lg text-[var(--text-secondary)] mb-8">
+                  Get weekly insights on relationships, personal growth, and wellness delivered straight to your inbox.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="flex-1 px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--primary)] transition-colors"
+                  />
+                  <button className="btn-primary px-6 py-3 rounded-lg font-semibold whitespace-nowrap flex items-center justify-center gap-2">
+                    Subscribe
+                    <Mail className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <p className="text-xs text-[var(--text-secondary)] mt-4">Join 10,000+ readers. Unsubscribe anytime.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
