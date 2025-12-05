@@ -9,13 +9,14 @@ export default function BlogLayout({ children }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const categories = [
-    { name: "CSM", slug: "/" },
-    { name: "Love & Relationship", slug: "/blog/love-relationship" },
-    { name: "Self & Wellness", slug: "/blog/self-wellness" },
-    { name: "Heartbreak & Divorce", slug: "/blog/heartbreak-divorce" },
-    { name: "Sex & Seduction", slug: "/blog/sex-seduction" },
-    { name: "Entertainment & News", slug: "/blog/entertainment-news" },
+    { name: "Home", slug: "/blog" },
+    { name: "Relationship", slug: "/blog/love-relationship" },
+    { name: "Wellness", slug: "/blog/self-wellness" },
+    { name: "Heartbreak", slug: "/blog/heartbreak-divorce" },
+    { name: "Sex", slug: "/blog/sex-seduction" },
+    { name: "Entertainment", slug: "/blog/entertainment-news" },
     { name: "Expert Advice", slug: "/blog/expert-advice" },
+    { name: "CSM Assessment", slug: "/" },
   ];
 
   // Mobile menu effects (scroll lock + click outside + escape key)
