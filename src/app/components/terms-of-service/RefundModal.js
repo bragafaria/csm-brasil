@@ -51,8 +51,8 @@ export default function RefundModal({ onClose }) {
             <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-3">1. Free Personal Assessment</h2>
             <p className="text-base leading-relaxed">
               The personal CSM assessment is provided <strong>free of charge</strong>. Since there is no payment
-              involved, no refunds are applicable. You may retake the assessment at any time by creating a new account
-              or contacting support.
+              involved, no refunds are applicable, except where required by law. You may retake the assessment at any
+              time by creating a new account or contacting support.
             </p>
           </section>
 
@@ -121,8 +121,8 @@ export default function RefundModal({ onClose }) {
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">2.4 After 14 Days</h3>
                 <p className="text-base leading-relaxed">
                   After the 14-day guarantee period expires, the Couple Insights Report purchase is{" "}
-                  <strong>final and non-refundable</strong>. We encourage you to review your report thoroughly within
-                  the guarantee window and contact us with any concerns.
+                  <strong>typically non-refundable, except where required by law</strong>. We encourage you to review
+                  your report thoroughly within the guarantee window and contact us with any concerns.
                 </p>
               </div>
             </div>
@@ -138,8 +138,8 @@ export default function RefundModal({ onClose }) {
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">3.1 Free First Session</h3>
                 <p className="text-base leading-relaxed">
                   As an upsell from the {`Couple's Insight Report`}, you receive{" "}
-                  <strong>one complimentary CSM Session</strong> to experience the value before committing to a
-                  subscription. Since this first session is free, no refund is applicable.
+                  <strong>one complimentary CSM Session</strong>. Since this first session is free, no refunds apply
+                  except where required by law.
                 </p>
               </div>
 
@@ -246,7 +246,7 @@ export default function RefundModal({ onClose }) {
                   Pay-per-session purchases are{" "}
                   <strong>final once the session report has been generated and delivered</strong>
                   to your dashboard (within 24 hours, Monday-Friday). Since the service has been rendered, these
-                  sessions are non-refundable.
+                  sessions are non-refundable, , except where required by law.
                 </p>
               </div>
 
@@ -310,14 +310,14 @@ export default function RefundModal({ onClose }) {
                   If you initiate a chargeback without first contacting us:
                 </p>
                 <ul className="list-disc pl-6 space-y-1 text-base">
+                  <li>Your account may be temporarily suspended while we review the dispute</li>
+                  <li>Access to purchased reports or sessions may be paused during the investigation</li>
                   <li>
-                    Your account will be <strong>immediately suspended</strong> pending investigation
+                    We will provide supporting information to your payment provider if the chargeback appears incorrect
                   </li>
-                  <li>Access to all purchased reports and sessions will be revoked</li>
-                  <li>We will provide evidence to your payment provider to contest fraudulent chargebacks</li>
                   <li>
-                    If the chargeback is found to be fraudulent, your account may be permanently terminated and you may
-                    be liable for legal fees
+                    If a chargeback is determined by your payment provider to be invalid, normal account access can be
+                    restored once the dispute is resolved
                   </li>
                 </ul>
               </div>
@@ -326,8 +326,8 @@ export default function RefundModal({ onClose }) {
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">5.3 Legitimate Disputes</h3>
                 <p className="text-base leading-relaxed">
                   We fully support legitimate disputes for billing errors or unauthorized charges. Simply email us at
-                  <strong> csm@csmdynamics.com</strong> with &quot;Billing Dispute&quot; in the subject line, and
-                  we&apos;ll investigate and resolve the issue promptly, usually within 24-48 hours.
+                  <strong> csm@csmdynamics.com</strong> with &quot;Billing Dispute&quot; in the subject line. We&apos;ll
+                  investigate and help clarify the issue promptly, usually within 24-48 hours.
                 </p>
               </div>
             </div>
@@ -341,18 +341,16 @@ export default function RefundModal({ onClose }) {
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">6.1 Refund Timeline</h3>
                 <ul className="list-disc pl-6 space-y-2 text-base">
                   <li>
-                    <strong>Request Review:</strong> 1-3 business days to review your refund request
+                    <strong>Request Review:</strong> Typically 1-3 business days
                   </li>
                   <li>
-                    <strong>Refund Processing:</strong> 3-5 business days after approval to process through Stripe
+                    <strong>Refund Processing:</strong> Typically 3-5 business days after approval
                   </li>
                   <li>
-                    <strong>Bank Posting:</strong> 5-10 business days for refund to appear in your account (varies by
-                    bank)
+                    <strong>Bank Posting:</strong> Typically 5-10 business days depending on your bank
                   </li>
                   <li>
-                    <strong>Total Time:</strong> Typically 7-15 business days from request to refund appearing in your
-                    account
+                    <strong>Total Time:</strong> Typically 7-15 business days in total
                   </li>
                 </ul>
               </div>
@@ -404,7 +402,8 @@ export default function RefundModal({ onClose }) {
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">7.3 Account Termination</h3>
                 <p className="text-base leading-relaxed">
                   If we terminate your account for violations of our Terms of Service (e.g., abuse, fraudulent activity,
-                  harassment), no refunds will be issued for any products or remaining subscription time.
+                  harassment), no refunds will be issued for any products or remaining subscription time except where
+                  required by law.
                 </p>
               </div>
 

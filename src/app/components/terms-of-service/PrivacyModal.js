@@ -45,6 +45,13 @@ export default function PrivacyModal({ onClose }) {
             the &quot;Service&quot;), you agree to the collection and use of information in accordance with this Privacy
             Policy.
           </p>
+          <p className="text-base leading-relaxed text-red-800 mb-4">
+            <strong>
+              Note: CSMDynamics.com does not provide ANY clinical, psychological, or medical services. All insights are
+              for personal development and educational purposes only. CSM Session Reports provide personal development
+              guidance and are not a substitute for therapy, counseling, or medical advice.
+            </strong>
+          </p>
 
           <section>
             <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-3">1. Information We Collect</h2>

@@ -1,7 +1,7 @@
 //@/app/components/terms-of-service/TermsModal.js
 "use client";
 
-import { X } from "lucide-react";
+import { Italic, X } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function TermsModal({ onClose }) {
@@ -97,9 +97,17 @@ export default function TermsModal({ onClose }) {
             <div className="space-y-4">
               <div>
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">3.1 Not Professional Services</h3>
+                <p className="text-base leading-relaxed text-red-800 mb-4">
+                  <strong>
+                    CSMDynamics.com does not provide ANY clinical, psychological, or medical services. All insights are
+                    for personal development and educational purposes only. CSM Session Reports provide personal
+                    development guidance and are not a substitute for therapy, counseling, or medical advice.
+                  </strong>
+                </p>
                 <p className="text-base font-bold uppercase mb-3">
                   THE CSM ASSESSMENT, REPORTS, AND SESSIONS ARE SELF-HELP TOOLS ONLY AND DO NOT CONSTITUTE:
                 </p>
+
                 <ul className="list-disc pl-8 space-y-1 text-base">
                   <li>Psychological counseling, therapy, or mental health treatment</li>
                   <li>Medical advice or diagnosis</li>
