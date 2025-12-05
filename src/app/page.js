@@ -232,8 +232,9 @@ export default function Home() {
             <div className="hidden md:flex space-x-4 lg:space-x-8">
               {[
                 { id: "home", label: "Home" },
-                { id: "how-it-works", label: "How It Works" },
                 { id: "whats-inside", label: "What's Inside" },
+                { id: "how-it-works", label: "How It Works" },
+                { id: "why-CSM-?", label: "Why CSM?" },
                 { id: "faq", label: "FAQ" },
                 { id: "blog", label: "Blog" },
               ].map((item) => (
@@ -271,8 +272,9 @@ export default function Home() {
             <div className="flex flex-col space-y-1">
               {[
                 { id: "home", label: "Home" },
-                { id: "how-it-works", label: "How It Works" },
                 { id: "whats-inside", label: "What's Inside" },
+                { id: "how-it-works", label: "How It Works" },
+                { id: "why-CSM-?", label: "Why CSM?" },
                 { id: "faq", label: "FAQ" },
                 { id: "blog", label: "Blog" },
               ].map((item) => (
@@ -385,7 +387,10 @@ export default function Home() {
       </section>
       {/* Spectrum Preview */}
       {/* Spectrum Preview */}
-      <section className="pt-16 md:py-16 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]">
+      <section
+        id="whats-inside"
+        className="pt-16 md:py-16 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold my-6 text-white">Your mind mapped. Not labeled.</h2>
@@ -629,7 +634,7 @@ export default function Home() {
         </div>
       </section>
       {/* Features Section */}
-      <section id="whats-inside" className="pt-20 md:py-16 relative section-full">
+      <section id="why-CSM-?" className="pt-20 md:py-16 relative section-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 flex flex-wrap items-center justify-center gap-1 md:gap-2">
