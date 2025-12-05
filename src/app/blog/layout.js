@@ -16,7 +16,7 @@ export default function BlogLayout({ children }) {
     { name: "Sex", slug: "/blog/sex-seduction" },
     { name: "Entertainment", slug: "/blog/entertainment-news" },
     { name: "Expert Advice", slug: "/blog/expert-advice" },
-    { name: "CSM Assessment", slug: "/" },
+    { name: "CSM Homepage", slug: "/" },
     { name: "Login", slug: "/login" },
   ];
 
