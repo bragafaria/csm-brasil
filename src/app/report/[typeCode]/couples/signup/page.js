@@ -281,7 +281,7 @@ export default function Signup() {
             transition={{ delay: 0.4, duration: 0.5 }}
             className="text-[var(--text-secondary)] text-center mb-8 leading-relaxed"
           >
-            {`Before you can sign up and access your personalized Couple's Insight Report, you'll need to complete the CSM
+            {`Before you can sign up and access your personalized Couple's Insights Report, you'll need to complete the CSM
             assessment. This only takes a few minutes!`}
           </motion.p>
 
@@ -333,7 +333,7 @@ export default function Signup() {
           transition={{ duration: 0.5 }}
           className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]"
         >
-          {`Sign Up to Get Your Couple's Insight Report`}
+          {`Sign Up to Get Your Couple's Insights Report`}
         </motion.h1>
 
         {confirmationSent ? (

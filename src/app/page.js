@@ -589,7 +589,7 @@ export default function Home() {
               },
               {
                 title: "Invite Your Partner",
-                text: "Send a private invite. When they finish, you unlock your joint Couple's Insight Report, showing compatibility patterns, communication strategies, and opportunities for growth.",
+                text: "Send a private invite. When they finish, you unlock your joint Couple's Insights Report, showing compatibility patterns, communication strategies, and opportunities for growth.",
               },
             ].map((step, i) => (
               <motion.div

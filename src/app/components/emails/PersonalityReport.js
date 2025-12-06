@@ -187,7 +187,7 @@ export default function PersonalityReportEmail({
                               boxShadow: "0 4px 12px rgba(139, 92, 246, 0.4)",
                             }}
                           >
-                            🎯 {`Access Your Couple's Insight Report`}
+                            🎯 {`Access Your Couple's Insights Report`}
                           </a>
                         </div>
                       </td>
@@ -317,7 +317,7 @@ Your personalized personality report is ready.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🎯 **NEW** COUPLE'S INSIGHT REPORT
+🎯 **NEW** Couple's Insights Report
 Unlock deep compatibility insights for your relationship
 
 ${couplesReportUrl}
