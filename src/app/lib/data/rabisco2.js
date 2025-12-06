@@ -490,16 +490,16 @@
 // 488. N-L-I-F-A/N-V-O-F-A → Visionary / Wanderer ok
 // 489. N-L-I-F-A/N-V-I-S-H → Visionary / Mentor ok
 // 490. N-L-I-F-A/N-V-I-S-A → Visionary / Sage ok
-// 491. N-L-I-F-A/N-V-I-F-H → Visionary / Unifier
-// 492. N-L-I-F-A/N-V-I-F-A → Visionary / Mystic
-// 493. N-V-O-S-H/N-V-O-S-H → Ambassador / Ambassador
-// 494. N-V-O-S-H/N-V-O-S-A → Ambassador / Artist
-// 495. N-V-O-S-H/N-V-O-F-H → Ambassador / Catalyst
-// 496. N-V-O-S-H/N-V-O-F-A → Ambassador / Wanderer
-// 497. N-V-O-S-H/N-V-I-S-H → Ambassador / Mentor
-// 498. N-V-O-S-H/N-V-I-S-A → Ambassador / Sage
-// 499. N-V-O-S-H/N-V-I-F-H → Ambassador / Unifier
-// 500. N-V-O-S-H/N-V-I-F-A → Ambassador / Mystic
+// 491. N-L-I-F-A/N-V-I-F-H → Visionary / Unifier ok
+// 492. N-L-I-F-A/N-V-I-F-A → Visionary / Mystic ok
+// 493. N-V-O-S-H/N-V-O-S-H → Ambassador / Ambassador ok
+// 494. N-V-O-S-H/N-V-O-S-A → Ambassador / Artist ok
+// 495. N-V-O-S-H/N-V-O-F-H → Ambassador / Catalyst ok
+// 496. N-V-O-S-H/N-V-O-F-A → Ambassador / Wanderer ok
+// 497. N-V-O-S-H/N-V-I-S-H → Ambassador / Mentor ok
+// 498. N-V-O-S-H/N-V-I-S-A → Ambassador / Sage up
+// 499. N-V-O-S-H/N-V-I-F-H → Ambassador / Unifier ok
+// 500. N-V-O-S-H/N-V-I-F-A → Ambassador / Mystic ok
 // 501. N-V-O-S-A/N-V-O-S-A → Artist / Artist
 // 502. N-V-O-S-A/N-V-O-F-H → Artist / Catalyst
 // 503. N-V-O-S-A/N-V-O-F-A → Artist / Wanderer

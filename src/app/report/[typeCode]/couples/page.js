@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import {
   ArrowRight,
@@ -158,7 +159,7 @@ export default function Sales() {
                 height={32}
                 className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8"
               />
-              <button onClick={() => router.push("/")}>
+              <button onClick={() => scrollToSection("home")}>
                 <div className="flex items-center space-x-0.5 sm:space-x-1">
                   <h1 className="text-sm sm:text-base md:text-xl font-bold text-[var(--primary)] drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">
                     CSM
@@ -176,7 +177,7 @@ export default function Sales() {
                 { id: "how-it-works", label: "How It Works" },
                 { id: "whats-inside", label: "What's Inside" },
                 { id: "faq", label: "FAQ" },
-                { id: "buy-now", label: "Buy Now" },
+                // { id: "buy-now", label: "Buy Now" },
               ].map((item) => (
                 <button
                   key={item.id}
@@ -241,14 +242,14 @@ export default function Sales() {
       </section>
 
       {/* The Opportunity Section */}
-      <section id="why-csm" className="py-4 md:py-16 px-4 bg-[var(--surface-variant)]">
+      <section id="why-csm" className="py-4 md:py-16 px-4 pt-10 bg-[var(--surface-variant)]">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 section-header">
             <h2 className="text-4xl font-bold mb-6">
               For Couples Who <span className="text-[var(--accent)]">Build</span>, Not Just Repair
             </h2>
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
-              {`Great relationships aren't just about fixing problems,they're about understanding what lies ahead. The CSM
+              {`Great relationships aren't just about fixing problems, they're about understanding what lies ahead. The CSM
               report gives you the foresight to navigate life's biggest domains before challenges arise.`}
             </p>
           </div>
@@ -393,7 +394,7 @@ export default function Sales() {
       {/* What's Inside Section */}
       <section id="whats-inside" className="py-16 px-4">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12 section-header">
+          <div className="text-center mb-12 md:mb-20 section-header">
             <h2 className="text-4xl font-bold mb-6">
               A Comprehensive Guide to <span className="text-[var(--accent)]">Your Relationship</span>
             </h2>
@@ -496,7 +497,7 @@ export default function Sales() {
                     { icon: Clock, text: "Lifetime Dashboard Access" },
                     { icon: BarChart3, text: "Visual Analytics & Charts" },
                     { icon: Target, text: "10 Life Areas Analysis" },
-                    { icon: MessageCircle, text: "Free Coaching Session" },
+                    { icon: MessageCircle, text: "Free CSM Session" },
                     { icon: RefreshCw, text: "14-Day Money-Back Guarantee" },
                     { icon: Shield, text: "Secure & Private" },
                   ].map((feature, index) => (
@@ -509,7 +510,7 @@ export default function Sales() {
 
                 <div className="bg-[var(--accent)]/10 p-4 rounded-lg mb-6">
                   <p className="text-[var(--accent)] font-semibold text-center">
-                    Limited Offer: Free coach session available to first 500 sign-ups
+                    Limited Offer: Free CSM Session available to first 500 sign-ups
                   </p>
                 </div>
 
@@ -531,7 +532,7 @@ export default function Sales() {
             </div>
 
             {/* Testimonials */}
-            <div className="space-y-6">
+            <div className="space-y-6 md:mb-8">
               <div className="card-gradient p-6 rounded-lg">
                 <div className="flex mb-3">
                   {[...Array(5)].map((_, i) => (
@@ -578,7 +579,7 @@ export default function Sales() {
             </div>
           </div>
 
-          <div className="text-center card-gradient p-6 rounded-lg mt-6 md:mt-0 mb-6 border-4 border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)] ">
+          <div className="text-center card-gradient p-6 rounded-lg mt-6 md:mt-0 md:mb-6 mb-4 border-4 border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)] ">
             <p className="text-[var(--text-secondary)] mb-4">
               Worry-free. {`You're`} covered by our 14-day satisfaction guarantee, no questions asked.
             </p>
@@ -601,7 +602,7 @@ export default function Sales() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-2 md:py-16 px-4 bg-[var(--surface-variant)]">
+      <section id="faq" className="pt-12 pb-4 md:py-16 px-4 bg-[var(--surface-variant)]">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12 section-header">
             <h2 className="text-4xl font-bold mb-6">
@@ -671,77 +672,56 @@ export default function Sales() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
-                <Brain className="h-8 w-8 text-[var(--accent)]" />
-                <span className="text-xl font-bold">CSM Insights</span>
+                <Image
+                  src="/logo_transparent_svg.svg"
+                  alt="CSM Dynamics Logo"
+                  width={40}
+                  height={40}
+                  className="h-8 w-8"
+                />
+                <div className="flex items-center space-x-1">
+                  <h1 className="text-2xl font-bold text-[var(--primary)]">CSM</h1>
+                  <h1 className="text-2xl font-light text-white">Dynamics</h1>
+                  <sup className="text-sm md:text-base align-super">&reg;</sup>
+                </div>
               </div>
               <p className="text-[var(--text-secondary)] mb-4">
                 Empowering couples with science-backed relationship insights through the Cognitive Spectrum Model.
               </p>
-              <div className="flex space-x-4">
-                <a
-                  href="https://twitter.com"
-                  className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
-                  Twitter
-                </a>
-                <a
-                  href="https://facebook.com"
-                  className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
-                  Facebook
-                </a>
-                <a
-                  href="https://instagram.com"
-                  className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
-                  Instagram
-                </a>
-              </div>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Legal</h4>
               <div className="space-y-2">
-                <a
-                  href="/privacy"
-                  className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
-                  Privacy Policy
-                </a>
-                <a
-                  href="/terms"
-                  className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                <button
+                  onClick={() => setShowTermsModal(true)}
+                  className="block text-left text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus:outline-none cursor-pointer transition-colors"
                 >
                   Terms of Service
-                </a>
-                <a
-                  href="/refunds"
-                  className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                </button>
+                <button
+                  onClick={() => setShowPrivacyModal(true)}
+                  className="block text-left text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus:outline-none cursor-pointer transition-colors"
+                >
+                  Privacy Policy
+                </button>
+
+                <button
+                  onClick={() => setShowRefundModal(true)}
+                  className="block text-left text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus:outline-none cursor-pointer transition-colors"
                 >
                   Refund Policy
-                </a>
+                </button>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Support</h4>
+              <h4 className="font-semibold mb-4">Resources</h4>
               <div className="space-y-2">
-                <a
-                  href="/contact"
-                  className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                <Link
+                  href="mailto:csm@csmdynamics.com?subject=Abuse"
+                  className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 >
-                  Contact Info
-                </a>
-                <a
-                  href="/help"
-                  className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
-                  Help Center
-                </a>
-                <a
-                  href="/csm-assessment"
-                  className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                >
-                  Free Assessment
-                </a>
+                  Report Abuse
+                </Link>
               </div>
             </div>
           </div>
