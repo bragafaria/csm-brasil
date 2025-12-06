@@ -19,8 +19,8 @@ export default function DashboardLayout({ children }) {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      setIsMobile(width < 430);
-      if (width >= 430) {
+      setIsMobile(width < 768);
+      if (width >= 768) {
         setSidebarOpen(true);
       } else {
         setSidebarOpen(false);

@@ -330,7 +330,7 @@ export default function Sales() {
           <div className="text-center mb-10">
             <p className="text-[var(--accent)] text-lg mb-6">
               <Users className="h-5 w-5 inline mr-2" />
-              {`Join 25,000+ couples who've strengthened their bond with CSM insights`}
+              {`Join 25,000+ couples who've strengthened their bond with the CSM Couple's Insights Report.`}
             </p>
             <button
               onClick={() => scrollToSection("buy-now")}
@@ -507,7 +507,7 @@ export default function Sales() {
                 </div>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
                   {`"We're getting married next year, and this report gave us a roadmap for conversations we didn't even
-                  know we needed to have. We feel more prepared than ever."`}
+                  know we needed to have."`}
                 </p>
                 <div className="flex items-center gap-3 mt-auto">
                   <img
@@ -547,7 +547,7 @@ export default function Sales() {
 
           <div className="text-center card-gradient p-6 rounded-lg mt-6 md:mt-0 md:mb-6 mb-4 border-4 border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)] ">
             <p className="text-[var(--text-secondary)] mb-4">
-              Worry-free. {`You're`} protected by our 14-day satisfaction guarantee, no questions asked.
+              Worry-free. {`You're`} protected by our 14-day money-back guarantee, no questions asked.
             </p>
             <div className="flex items-center justify-center space-x-6 text-sm">
               <div className="flex items-center">
@@ -605,7 +605,7 @@ export default function Sales() {
       <section>
         <div className="bg-gradient-to-br from-[var(--primary)]/10 via-[var(--surface2)] to-[var(--accent)]/10 p-8 md:p-12">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--primary)]/20 mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--primary)]/20">
               <Mail className="w-8 h-8 text-violet-400" />
             </div>
 
@@ -627,7 +627,7 @@ export default function Sales() {
               </button>
             </div>
 
-            <p className="text-xs text-[var(--text-secondary)] mt-4">Join 10,000+ readers. Unsubscribe anytime.</p>
+            <p className="text-xs text-[var(--text-secondary)] my-4">Join 10,000+ readers. Unsubscribe anytime.</p>
           </div>
         </div>
       </section>
@@ -692,7 +692,7 @@ export default function Sales() {
             </div>
           </div>
           <div className="border-t border-[var(--border)] mt-8 pt-8 text-center text-[var(--text-secondary)]">
-            <p>&copy; 2025 CSM Insights. All rights reserved.</p>
+            <p>&copy; 2025 CSM Dynamics. All rights reserved.</p>
           </div>
         </div>
       </footer>
