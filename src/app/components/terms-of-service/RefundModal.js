@@ -67,9 +67,9 @@ export default function RefundModal({ onClose }) {
                   2.1 14-Day Satisfaction Guarantee
                 </h3>
                 <p className="text-base leading-relaxed mb-3">
-                  We offer a <strong>14-day money-back guarantee</strong> for the Couple's Insights Report. If you are
-                  not satisfied with your report for any reason, you may request a full refund within 14 days of your
-                  purchase date.
+                  We offer a <strong>14-day money-back guarantee</strong> for the {`Couple's`} Insights Report. If you
+                  are not satisfied with your report for any reason, you may request a full refund within 14 days of
+                  your purchase date.
                 </p>
                 <div className="bg-[var(--surface)]/20 border-l-4 border-[var(--accent)] p-4 rounded-r-lg">
                   <p className="text-base leading-relaxed font-semibold mb-2">What qualifies for a refund:</p>
@@ -85,7 +85,9 @@ export default function RefundModal({ onClose }) {
 
               <div>
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">2.2 How to Request a Refund</h3>
-                <p className="text-base leading-relaxed mb-2">To request a refund for your Couple's Insights Report:</p>
+                <p className="text-base leading-relaxed mb-2">
+                  To request a refund for your {`Couple's`} Insights Report:
+                </p>
                 <ol className="list-decimal pl-6 space-y-2 text-base">
                   <li>
                     Email us at <strong>csm@csmdynamics.com</strong> with &quot;Couple Report Refund Request&quot; in
@@ -120,7 +122,7 @@ export default function RefundModal({ onClose }) {
               <div>
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">2.4 After 14 Days</h3>
                 <p className="text-base leading-relaxed">
-                  After the 14-day guarantee period expires, the Couple's Insights Report purchase is{" "}
+                  After the 14-day guarantee period expires, the {`Couple's`} Insights Report purchase is{" "}
                   <strong>typically non-refundable, except where required by law</strong>. We encourage you to review
                   your report thoroughly within the guarantee window and contact us with any concerns.
                 </p>
@@ -507,7 +509,7 @@ export default function RefundModal({ onClose }) {
                     <td className="border border-[var(--border)] px-4 py-2">N/A</td>
                   </tr>
                   <tr>
-                    <td className="border border-[var(--border)] px-4 py-2">Couple's Insights Report</td>
+                    <td className="border border-[var(--border)] px-4 py-2">{`Couple's`} Insights Report</td>
                     <td className="border border-[var(--border)] px-4 py-2">$49 (one-time)</td>
                     <td className="border border-[var(--border)] px-4 py-2">14-day money-back guarantee</td>
                   </tr>
