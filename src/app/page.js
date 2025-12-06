@@ -952,7 +952,7 @@ export default function Home() {
       <section>
         <div className="bg-gradient-to-br from-[var(--primary)]/10 via-[var(--surface2)] to-[var(--accent)]/10 p-8 md:p-12">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--primary)]/20 mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--primary)]/20">
               <Mail className="w-8 h-8 text-violet-400" />
             </div>
 
@@ -974,7 +974,7 @@ export default function Home() {
               </button>
             </div>
 
-            <p className="text-xs text-[var(--text-secondary)] mt-4">Join 10,000+ readers. Unsubscribe anytime.</p>
+            <p className="text-xs text-[var(--text-secondary)] my-4">Join 10,000+ readers. Unsubscribe anytime.</p>
           </div>
         </div>
       </section>
