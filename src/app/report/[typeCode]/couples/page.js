@@ -38,7 +38,7 @@ export default function Sales() {
     }
 
     const handleScroll = () => {
-      const sections = ["home", "why-csm", "whats-inside", "faq", "buy-now"];
+      const sections = ["home", "why-csm", "how-it-works", "whats-inside", "faq", "buy-now"];
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -551,7 +551,7 @@ export default function Sales() {
                     width="40"
                     height="40"
                   />
-                  <span className="font-semibold">David (The Analyst) & Maria (The Explorer)</span>
+                  <span className="font-semibold text-sm">David (The Analyst) & Maria (The Explorer)</span>
                 </div>
               </div>
 
@@ -573,7 +573,7 @@ export default function Sales() {
                     width="40"
                     height="40"
                   />
-                  <span className="font-semibold">Sofia (The Mentor) & Leo (The Pioneer)</span>
+                  <span className="font-semibold text-sm">Sofia (The Mentor) & Leo (The Pioneer)</span>
                 </div>
               </div>
             </div>
