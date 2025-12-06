@@ -38,7 +38,7 @@ export default function Sales() {
     }
 
     const handleScroll = () => {
-      const sections = ["home", "why-csm", "whats-inside", "faq", "buy-now"];
+      const sections = ["home", "why-csm", "how-it-works", "whats-inside", "faq", "buy-now"];
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -68,12 +68,6 @@ export default function Sales() {
     if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleEmailSubmit = (e) => {
-    e.preventDefault();
-    setIsEmailSubmitted(true);
-    setTimeout(() => setIsEmailSubmitted(false), 3000);
-  };
-
   const toggleFAQ = (index) => {
     setExpandedFAQ(expandedFAQ === index ? null : index);
   };
@@ -86,7 +80,7 @@ export default function Sales() {
     {
       question: "Is CSM scientifically legit, or just another buzzword quiz?",
       answer:
-        "The Cognitive Spectrum Model is built on established psychological research, combining elements from cognitive science, behavioral psychology, and systems theory. Unlike pop psychology quizzes, CSM uses psychometrically validated questions and has been tested with over 10,000 individuals to ensure reliable, actionable insights.",
+        "The Cognitive Spectrum Model is built on established psychological research, combining elements from cognitive science, behavioral psychology, and systems theory. Unlike pop psychology quizzes, CSM uses psychometrically validated questions and has been tested with over 25,000 individuals to ensure reliable, actionable insights.",
     },
     {
       question: "What is the Cognitive Spectrum Model (CSM), and why should I care?",
@@ -141,7 +135,7 @@ export default function Sales() {
     {
       question: "What's the refund policy?",
       answer:
-        "We offer a 14-day satisfaction guarantee, no questions asked. If you're not completely satisfied with your couple's insight report, we'll provide a full refund. We're confident in the value CSM provides to couples.",
+        "We offer a 14-day satisfaction guarantee, no questions asked. If you're not completely satisfied with your Couple's Insights Report, we'll provide a full refund. We're confident in the value CSM provides to couples.",
     },
   ];
 
@@ -234,7 +228,7 @@ export default function Sales() {
               <img
                 src="/note.png"
                 className="w-full h-full object-contain md:object-cover lg:object-contain"
-                alt="Couple's Insight Report preview"
+                alt="Couple's Insights Report preview"
               />
             </div>
           </div>
@@ -249,8 +243,12 @@ export default function Sales() {
               For Couples Who <span className="text-[var(--accent)]">Build</span>, Not Just Repair
             </h2>
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
-              {`Great relationships aren't just about fixing problems, they're about understanding what lies ahead. The CSM
-              report gives you the foresight to navigate life's biggest domains before challenges arise.`}
+              Great relationships {`aren't`} just about fixing problems, {`they're`} about understanding what lies
+              ahead. The
+              <span>
+                <strong className="text-[var(--accent)]"> CSM {`Couple's`} Insights Report</strong>
+              </span>{" "}
+              gives you the foresight to navigate {`life's`} biggest domains before challenges arise.
             </p>
           </div>
 
@@ -259,22 +257,22 @@ export default function Sales() {
               {
                 icon: Target,
                 title: "Plan Your Future",
-                desc: "Align your approaches to career, finances, and family life.",
+                desc: "Align your visions for career, money, family, and legacy so you build a life that excites both of you.",
               },
               {
                 icon: Heart,
                 title: "Deepen Your Connection",
-                desc: "Understand each other's core needs for love, joy, and personal space.",
+                desc: "Uncover the patterns behind your conflicts and affection, and turn everyday moments into true intimacy.",
               },
               {
                 icon: MessageCircle,
                 title: "Communicate with Clarity",
-                desc: "Learn the 'why' behind your different communication styles.",
+                desc: "Learn the “why” behind your different communication styles and identify the signals that help you truly understand each other.",
               },
               {
                 icon: TrendingUp,
                 title: "Grow as a Team",
-                desc: "Turn individual strengths into a powerful, shared superpower.",
+                desc: "Watch your different ways of thinking shift from friction to momentum, creating a relationship that feels more aligned and supportive.",
               },
             ].map((item, index) => (
               <div key={index} className="card-gradient p-6 rounded-lg text-center">
@@ -286,38 +284,6 @@ export default function Sales() {
           </div>
         </div>
       </section>
-
-      {/* Email Signup Form */}
-      {/* <section className="py-16 px-4">
-        <div className="container mx-auto max-w-2xl text-center">
-          <div className="card-gradient p-8 rounded-lg">
-            <h3 className="text-2xl font-bold mb-4">Get Free Relationship Tips</h3>
-            <p className="text-[var(--text-secondary)] mb-6">
-              {`Sign up for our weekly insights and get 10% off your couple's report`}
-            </p>
-            {!isEmailSubmitted ? (
-              <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-4">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
-                  className="flex-1 px-4 py-3 rounded-lg bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
-                  required
-                />
-                <button type="submit" className="btn-primary px-6 py-3 rounded-lg font-semibold whitespace-nowrap">
-                  Get Tips + Discount
-                </button>
-              </form>
-            ) : (
-              <div className="flex items-center justify-center text-green-400">
-                <CheckCircle className="h-5 w-5 mr-2" />
-                Thanks! Check your email for your discount code.
-              </div>
-            )}
-          </div>
-        </div>
-      </section> */}
 
       {/* How It Works Section */}
       <section id="how-it-works" className="pb-16 pt-2 md:pb-16 md:pt-4 px-4 bg-[var(--surface-variant)]">
@@ -339,13 +305,13 @@ export default function Sales() {
               {
                 step: "2",
                 title: "Invite Your Partner",
-                desc: "The full Couple's Insight Report is generated by our algorithm.",
+                desc: "Invite your partner to take the assessment and give both of you access to your lifetime dashboard.",
                 icon: BarChart3,
               },
               {
                 step: "3",
                 title: "Transform Your Relationship",
-                desc: "Use your report to have deeper conversations and make more intentional decisions together.",
+                desc: "The full Couple's Insights Report is generated by our algorithm based on your individual results.",
                 icon: Heart,
               },
             ].map((item, index) => (
@@ -483,7 +449,7 @@ export default function Sales() {
               <div className="card-gradient p-8 rounded-lg mb-8">
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <h3 className="text-2xl font-bold">CSM Couple Insights Report</h3>
+                    <h3 className="text-2xl font-bold">CSM {`Couple's`} Insights Report</h3>
                     <p className="text-[var(--text-secondary)]">Complete relationship blueprint</p>
                   </div>
                   <div className="text-right">
@@ -551,7 +517,7 @@ export default function Sales() {
                     width="40"
                     height="40"
                   />
-                  <span className="font-semibold">David (The Analyst) & Maria (The Explorer)</span>
+                  <span className="font-semibold text-sm">David (The Analyst) & Maria (The Explorer)</span>
                 </div>
               </div>
 
@@ -573,7 +539,7 @@ export default function Sales() {
                     width="40"
                     height="40"
                   />
-                  <span className="font-semibold">Sofia (The Mentor) & Leo (The Pioneer)</span>
+                  <span className="font-semibold text-sm">Sofia (The Mentor) & Leo (The Pioneer)</span>
                 </div>
               </div>
             </div>
@@ -581,7 +547,7 @@ export default function Sales() {
 
           <div className="text-center card-gradient p-6 rounded-lg mt-6 md:mt-0 md:mb-6 mb-4 border-4 border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)] ">
             <p className="text-[var(--text-secondary)] mb-4">
-              Worry-free. {`You're`} covered by our 14-day satisfaction guarantee, no questions asked.
+              Worry-free. {`You're`} protected by our 14-day satisfaction guarantee, no questions asked.
             </p>
             <div className="flex items-center justify-center space-x-6 text-sm">
               <div className="flex items-center">

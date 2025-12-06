@@ -168,7 +168,7 @@ export default function PrivacyModal({ onClose }) {
                     and personalized reports
                   </li>
                   <li>
-                    <strong>Deliver Couple Insights Reports:</strong> Combine partner data to analyze relationship
+                    <strong>Deliver {`Couple's`} Insights Report:</strong> Combine partner data to analyze relationship
                     dynamics
                   </li>
                   <li>
@@ -250,15 +250,17 @@ export default function PrivacyModal({ onClose }) {
             <div className="space-y-4">
               <div>
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">
-                  3.1 With Your Partner (Couple Insights Reports Only)
+                  3.1 With Your Partner ({`Couple's Insights Report Only`})
                 </h3>
                 <p className="text-base leading-relaxed mb-2">
-                  When you and your partner both complete assessments for the Couple Insights Report:
+                  When you and your partner both complete assessments for the {`Couple's`} Insights Report:
                 </p>
                 <ul className="list-disc pl-8 space-y-1 text-base">
                   <li>Both partners can view the combined report showing both individual profiles</li>
                   <li>Each partner&apos;s detailed responses remain private unless shared in the joint report</li>
-                  <li>You acknowledge and consent to this data sharing when purchasing the Couple Insights Report</li>
+                  <li>
+                    You acknowledge and consent to this data sharing when purchasing the {`Couple's`} Insights Report
+                  </li>
                 </ul>
               </div>
 

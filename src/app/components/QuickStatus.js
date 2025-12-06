@@ -139,7 +139,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
         <div className="flex flex-wrap items-center justify-start gap-3">
           <div className="flex  items-center space-x-3">
             <FileText className="w-6 h-6 text-[var(--text-secondary)]" />
-            <span className="text-[var(--text-primary)] font-medium">{"Couple's Insight Report"} </span>
+            <span className="text-[var(--text-primary)] font-medium">{"Couple's Insights Report"} </span>
           </div>
           <div className="flex items-center space-x-2">
             {getStatusIcon(reportReady)}

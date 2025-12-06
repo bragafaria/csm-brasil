@@ -439,7 +439,7 @@ export default function PersonalReportPage() {
             <h1 className="text-4xl font-bold text-white">Your CSM Personality Report</h1>
             <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">
               {`Uncover your cognitive blueprint, revealing how you think, connect, and evolve. Understanding yourself is
-              the first step to exploring how you relate to others through the Couple's Insight Report.`}
+              the first step to exploring how you relate to others through the Couple's Insights Report.`}
             </p>
           </div>
         </div>
@@ -1341,7 +1341,7 @@ export default function PersonalReportPage() {
               with your partner's.`}
             </p>
             <p className="text-base leading-relaxed text-[var(--text-secondary)] mt-4">
-              {`The CSM Couple's Insight Report shows how your two minds interact, offering guidance to strengthen
+              {`The CSM Couple's Insights Report shows how your two minds interact, offering guidance to strengthen
               alignment, work through friction, and grow together with intention. Curious how your blueprints align?
               Find out in your Couple's Report.`}
             </p>

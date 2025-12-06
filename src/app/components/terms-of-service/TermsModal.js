@@ -63,7 +63,9 @@ export default function TermsModal({ onClose }) {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">2.2 Couple Insights Report</h3>
+                <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">
+                  2.2 {`Couple's`} Insights Report
+                </h3>
                 <p className="text-base leading-relaxed">
                   For a one-time fee of $49 USD, couples can receive a comprehensive report analyzing their relationship
                   dynamics across ten life areas based on both partners&apos; CSM assessments.
@@ -205,8 +207,9 @@ export default function TermsModal({ onClose }) {
               <div>
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">4.3 Partner Consent</h3>
                 <p className="text-base leading-relaxed">
-                  If inviting a partner to complete an assessment for the Couple Insights Report, you confirm that you
-                  have their explicit consent to share their email address and involve them in the assessment process.
+                  If inviting a partner to complete an assessment for the{`Couple's`} Insights Report, you confirm that
+                  you have their explicit consent to share their email address and involve them in the assessment
+                  process.
                 </p>
               </div>
 
@@ -232,7 +235,7 @@ export default function TermsModal({ onClose }) {
                     <strong>Free Personal Assessment:</strong> No charge
                   </li>
                   <li>
-                    <strong>Couple Insights Report:</strong> $49 USD (one-time payment)
+                    <strong>{`Couple's Insights Report:`}</strong> $49 USD (one-time payment)
                   </li>
                   <li>
                     <strong>CSM Sessions Subscription:</strong> $49/month (auto-renewing) with unlimited sessions (a new
@@ -268,8 +271,8 @@ export default function TermsModal({ onClose }) {
               <div>
                 <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">5.4 Refund Policy</h3>
                 <p className="text-base leading-relaxed mb-2">
-                  <strong>Couple Insights Report:</strong> 14-day satisfaction guarantee. If dissatisfied, contact us
-                  within 14 days of purchase for a full refund.
+                  <strong>{`Couple's Insights Report:`}</strong> 14-day satisfaction guarantee. If dissatisfied, contact
+                  us within 14 days of purchase for a full refund.
                 </p>
                 <p className="text-base leading-relaxed">
                   <strong>CSM Sessions:</strong> No refunds for completed sessions or unused subscription time, except
@@ -312,8 +315,8 @@ export default function TermsModal({ onClose }) {
                 service improvement
               </li>
               <li>
-                For Couple Insights Reports, both partners&apos; data is combined, and you acknowledge that your partner
-                will have access to shared results
+                For {`Couple's`} Insights Reports, both partners&apos; data is combined, and you acknowledge that your
+                partner will have access to shared results
               </li>
               <li>
                 CSM Sessions content is confidential and used only to provide services, train coaches, and improve our
