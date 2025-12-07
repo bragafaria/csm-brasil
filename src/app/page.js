@@ -556,7 +556,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="order-5 lg:order-none group min-h-[400px]  flex flex-col space-y-4 lg:mb-0 mt-20"
+                  className="order-5 lg:order-none group min-h-[400px]  flex flex-col space-y-4 lg:mb-0 mt-14 md:mt-20"
                 >
                   <div className="relative mx-auto border border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)] ">
                     <video

@@ -43,18 +43,20 @@ export default function IntroContext({ partnerA, partnerB }) {
   return (
     <div className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed">
       <div className="card-gradient p-6 rounded-lg shadow-custom">
-        <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-4">Important Context Before Reading</h3>
+        <h3 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4">
+          Important Context Before Reading
+        </h3>
 
         <div className="space-y-6">
           <div>
-            <h4 className="font-medium text-[var(--accent)] mb-2">The 10 Life Areas Challenges</h4>
-            <p className="text-sm">
+            <h4 className="text-xl font-semibold text-[var(--text-primary)] mb-2">The Life Areas Challenges</h4>
+            <p className="text-lg text-[var(--text-secondary)]">
               This section reveals where your cognitive preferences may naturally diverge, the everyday areas where
               tension, miscommunication, or emotional friction are most likely to appear. These insights are not
               forecasts of conflict or failure, but tools for awareness. Every strong relationship must balance
               difference with understanding, and this report helps you do just that.
             </p>
-            <p className="text-sm mt-3">
+            <p className="text-lg text-[var(--text-secondary)] mt-3">
               Think of this section as the growth map of your relationship. It highlights not only your recurring stress
               points but also the doorways to deeper empathy and balance. By bringing consciousness to these areas, you
               can turn friction into transformation, strengthening both your individual development and the long-term

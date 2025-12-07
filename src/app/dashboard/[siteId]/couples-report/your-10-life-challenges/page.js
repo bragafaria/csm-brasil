@@ -55,13 +55,19 @@ export default function LifeChallengesPageRoute() {
       </div>
     );
   }
+  const pageTitle = `Life Challenges`;
+  const subHeading = `Explore the natural chemistry and connection patterns between ${data.partnerA.name} and ${data.partnerB.name}.`;
 
   return (
-    <div className="container mx-auto p-6 mt-20 max-w-7xl">
-      <h1 className="text-3xl md:text-4xl font-bold text-center mb-10 text-[var(--text-primary)]">
-        {data.partnerA.name} & {data.partnerB.name}
-        {"'s Report"}
-      </h1>
+    <div className="container mx-auto p-6 max-w-4xl">
+      <div className="hero-gradient rounded-lg p-6 md:p-8 mb-8 shadow-custom-lg">
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+          <div>
+            <h1 className="text-2xl md:text-4xl font-bold text-white">{pageTitle}</h1>
+            <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">{subHeading}</p>
+          </div>
+        </div>
+      </div>
 
       <IntroContext partnerA={data.partnerA} partnerB={data.partnerB} />
 
