@@ -528,3 +528,403 @@
 // 526. N-V-I-F-H/N-V-I-F-H → Unifier / Unifier ok
 // 527. N-V-I-F-H/N-V-I-F-A → Unifier / Mystic ok
 // 528. N-V-I-F-A/N-V-I-F-A → Mystic / Mystic ok
+
+export const LifeAreasChallenges = {
+  "C-L-O-S-H/C-L-O-S-H": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics: [
+          "Both Architects approach their careers with strong focus on practical, measurable goals, driven to build systems that show real results in the world. They thrive when organizing resources and people toward clear outcomes, using factual data to guide each step. Their decision-making is rooted in logic, ensuring efficiency and choices that align with cause-and-effect principles. Each one seeks to create structured paths that lead to collective success, often stepping into leadership roles to construct solid, lasting frameworks. In your partnership, this shared preference for hands-on, observable achievements builds a natural understanding of what purpose means to each of you, allowing mutual encouragement rooted in aligned, practical insights.",
+          "Both Architects shape their professional motivations through a collaborative and harmonious lens, aiming for teamwork where shared success feels deeply fulfilling. They naturally prioritize organizing groups to reach common goals, and they feel rewarded when everyone benefits from fair systems. Day to day, this appears as discussing project decisions together or checking in about how teams are functioning to maintain smooth cooperation. One may focus more on coordinating departmental progress while the other ensures efficient resource use, yet both align comfortably in the desire for collective advancement. This connection strengthens your bond, as you continually inspire each other to pursue roles built on teamwork, mutual contribution, and professional unity.",
+        ],
+        coreChallenge:
+          "The main challenge arises when both Architects lean too heavily on teamwork and logical consensus in their career journeys, creating difficulty when one needs to assert a personal direction or pursue a professional path independently.",
+        whyThisHappens:
+          "- Their shared harmonious style creates a high value on group approval, which can lead to personal goals being postponed for collective agreement.\n- Their concrete information processing emphasizes measurable goals for both, which can create overlapping priorities that limit individual creativity in career planning.\n- Their logical approach may lead to competition over leadership in analytical roles when working together.\n- Their stable change preference encourages sticking to jointly planned career paths, making it harder to adapt when unexpected individual opportunities appear.\n- Their identical cognitive patterns reinforce long-term habits of teamwork, sometimes creating an echo chamber instead of fresh professional challenges.",
+        redFlags:
+          "- Begins with hesitating to share personal career ideas that might disrupt the shared path.\n- Grows into recurring disagreements about who should lead decisions in professional situations.\n- Becomes clear when one partner quietly stops supporting the other's ambitions, leading to suppressed frustration.",
+        resolutionStrategies: [
+          "Hold bi-weekly check-ins where both Architects update each other on individual career goals, with clear milestones and practical steps. Use your logical strengths to map independent progress, and include supportive conversations about how to contribute to each other’s team-based pursuits without overshadowing personal initiative.",
+          "Set healthy boundaries for career independence by assigning protected time blocks for personal professional pursuits. A shared calendar can reinforce stability while still giving each partner room to take action freely, preventing burnout from constant collaboration.",
+          "Recognize that your shared practical and logical strengths create powerful synergy in professional success. Work together on selective projects that amplify both of your talents, turning collaboration into an empowering choice rather than an obligation.",
+        ],
+        growthOutcome:
+          "You grow into a partnership defined by strong professional empowerment, where career successes multiply through smart collaboration while personal ambitions still thrive independently.",
+      },
+      wealthAndProsperityChallenges: {
+        dynamics: [
+          "Both Architects manage money through a practical and detail-oriented lens, focusing on budgets, savings structures, and tangible investments like property. They treat financial decisions as tools for long-term security, monitoring spending closely and preferring reliable, real-world outcomes over speculation. This shared approach creates a smooth dynamic in planning for prosperity, allowing both to support collective goals such as building financial safety nets or steadily growing assets.",
+          "Thanks to their harmonious style and logical priorities, both Architects view finances as a shared resource that should benefit the household as a whole. They rely on objective measures like cost analysis and return on investment, and they appreciate structured plans such as fixed budgets that reinforce security. In daily life, this creates frequent teamwork in reviewing spending, planning for major purchases, or tracking progress toward shared goals. Their alignment helps create a reliable and stress-reducing financial environment.",
+        ],
+        coreChallenge:
+          "The main financial tension appears when both Architects’ desire for joint control creates restrictions around personal autonomy, making it difficult to adjust spending to individual needs without group approval.",
+        whyThisHappens:
+          "- Their shared concrete processing leads to detailed financial tracking from both sides, which can feel limiting when independent purchases are needed.\n- Their logical approach encourages efficiency in spending, sometimes resulting in debates over the most optimal choice.\n- Their harmonious preference for agreement slows spontaneous decisions.\n- Their stable approach leads to strict routines around money that reduce flexibility when unexpected opportunities or needs arise.\n- Their identical cognitive patterns amplify shared control, leaving little room for different spending styles.",
+        redFlags:
+          "- Begins with small frustrations about unapproved purchases.\n- Grows into arguments during budget meetings, questioning dedication to shared goals.\n- Becomes evident when secret accounts or hidden expenses surface, weakening trust.",
+        resolutionStrategies: [
+          "Build a hybrid financial system balancing shared resources and individual spending freedom. Maintain joint budgets for collective needs while giving each person their own allowance to use without requiring approval.",
+          "Create weekly or bi-weekly finance check-ins focused on logical analysis and shared values. Keep structure but allow small adjustments to avoid rigidity, ensuring harmony without micromanagement.",
+          "Embrace how your shared money strengths result in impressive financial stability. Use your combined skills to make strategic investments that support both personal satisfaction and shared prosperity.",
+        ],
+        growthOutcome:
+          "You establish strong financial security while preserving individual freedom, creating prosperity that feels fair, supportive, and abundant for both of you.",
+      },
+      healthAndVitalityChallenges: {
+        dynamics: [
+          "Both Architects manage physical well-being through active engagement and structured routines. They often enjoy group fitness, planned workouts, or energetic activities that maintain forward movement and external stimulation. Their stable change preference supports consistency, helping both partners stay motivated and accountable through well-established wellness habits.",
+          "Because of their harmonious approach, both Architects enjoy health and fitness in community or shared settings. They favor tangible goals such as tracking steps, improving performance metrics, or maintaining planned routines. Daily life may include preparing healthy meals together, scheduling exercise sessions side by side, and supporting each other’s stress management strategies through teamwork and open discussions.",
+        ],
+        coreChallenge:
+          "The main issue arises when both Architects fill their wellness schedules with shared activities, leaving little room for rest and personal recharge, eventually causing energy strain or burnout.",
+        whyThisHappens:
+          "- Their outward energy focus keeps them engaged together, sometimes leaving no space for individual relaxation.\n- Their stable routine limits flexibility to rest when one person needs downtime.\n- Their harmonious approach puts priority on shared participation, even when personal boundaries are necessary.\n- Their concrete metric-tracking can become competitive and stressful.\n- Their identical cognitive patterns expand organized activity but forget internal recovery needs.",
+        redFlags:
+          "- Begins with skipping personal rest to keep up with joint routines.\n- Grows into irritability or resentment toward scheduled activities.\n- Becomes clear when declining energy leads to blame or withdrawal.",
+        resolutionStrategies: [
+          "Design a wellness routine with a rhythm of shared and solo activities. Alternate social exercise days with independent fitness time to preserve energy while maintaining teamwork.",
+          "Communicate energy needs kindly and clearly. Statements like 'I need quiet time tonight' maintain connection and respect without misunderstanding.",
+          "Honor your outward and active lifestyle as a shared strength while recognizing that true vitality requires personal space too. Supporting both sides creates sustainable long-term health.",
+        ],
+        growthOutcome:
+          "You build vibrant and lasting wellness patterns grounded in mutual motivation, balanced independence, and joyful physical engagement.",
+      },
+      loveAndRomanceChallenges: {
+        dynamics: [
+          "Both Architects express love through practical action, planning meaningful activities, and resolving problems to support the relationship. They connect through shared experiences that engage the outside world, choosing active bonding over emotional deep dives. This brings a stable, reliable sense of affection built on consistency and mutual participation.",
+          "Because of their harmonious style, both Architects value cooperative intimacy and emotional equality. They express affection through tangible gestures, organized plans, and thoughtful coordination of daily lives. Conflict resolution tends to be logical and fair, reinforcing trust and unity in the partnership.",
+        ],
+        coreChallenge:
+          "Romantic struggles emerge when both partners focus too heavily on practical expressions, making deeper emotional vulnerability or spontaneous intimacy harder to embrace.",
+        whyThisHappens:
+          "- Their harmonious expectations can become demanding, leaving little space for emotional independence.\n- Their logical style may feel too rational during intimate moments that require softness.\n- Their outward energy prioritizes activities over reflective connection.\n- Their concrete mindset prefers practical gestures instead of symbolic romance that creates emotional richness.\n- Their identical cognitive tendencies intensify pursuit and participation without nourishing inner depth.",
+        redFlags:
+          "- Begins when spontaneous affection declines.\n- Grows into pressure for more structured intimacy, reducing passion.\n- Becomes noticeable when criticism replaces warmth in routine interactions.",
+        resolutionStrategies: [
+          "Develop romantic rituals that combine planning and genuine emotional connection. Alternate responsibility for designing thoughtful date experiences that feel exciting but still authentic.",
+          "Introduce flexible time for closeness that supports both activity and relaxation. This keeps love alive without overwhelming expectations.",
+          "Recognize that your logical commitment creates dependable love. Celebrate the security you offer each other as a foundation for deeper vulnerability and emotional openness.",
+        ],
+        growthOutcome:
+          "You build a relationship where practical devotion and meaningful intimacy coexist beautifully, giving your love depth, reliability, and long-lasting joy.",
+      },
+      familyAndHomeLifeChallenges: {
+        dynamics: [
+          "Both Architects prefer a structured and ordered home environment, including predictable routines and practical organization. They work together to keep household life steady, efficient, and manageable.",
+          "With their harmonious teamwork style, they see home responsibilities as shared duties that require fair cooperation. They make decisions together to maintain efficiency and equal contribution, ensuring balance in their domestic life.",
+        ],
+        coreChallenge:
+          "Household friction emerges when both require agreement and structure for every choice, making it difficult to adapt quickly or make personal decisions in shared spaces.",
+        whyThisHappens:
+          "- Their stable routine preference can make changes stressful.\n- Their harmonious mindset delays decisions that feel unilateral.\n- Their logical focus may spark debates about efficiency.\n- Their concrete thinking prioritizes function, sometimes overlooking comfort.\n- Their identical organizational approach can turn cooperation into control.",
+        redFlags:
+          "- Begins with avoiding joint routines to escape negotiations.\n- Grows into conflict over who decides household roles.\n- Becomes visible when emotional avoidance disrupts domestic peace.",
+        resolutionStrategies: [
+          "Assign home domains so each person has reasonable autonomy in specific areas while still providing occasional feedback from the other.",
+          "Implement rotation systems that balance fairness and productivity, including appreciation rituals to keep harmony strong.",
+          "Recognize how well your team-based home approach prevents chaos, and value the structure that supports shared comfort.",
+        ],
+        growthOutcome:
+          "You create a home environment that blends clarity with warmth, supporting a family life that is organized, respectful, and uplifting.",
+      },
+      friendshipsAndCommunityChallenges: {
+        dynamics: [
+          "Both Architects enjoy energizing social engagement, preferring group activities, planned gatherings, and structured social calendars. Together they build a strong external network that keeps life lively and connected.",
+          "With their harmonious orientation, they choose community involvement that supports group goals. They favor practical group activities and friendships based on shared interests and collaboration.",
+        ],
+        coreChallenge:
+          "Challenges arise when social calendars fill too quickly, reducing space for personal friendships and downtime, which can cause emotional strain or burnout.",
+        whyThisHappens:
+          "- Their outward energy keeps them active longer than is sustainable.\n- Their harmonious style drives commitment to group expectations.\n- Their stable planning leaves little room for restful spontaneity.\n- Their concrete interests lead to similar types of social engagements.\n- Their identical cognition increases group dependence for enjoyment.",
+        redFlags:
+          "- Begins with canceling personal plans to attend shared events.\n- Grows into arguments about boundaries and social fatigue.\n- Becomes clear when individual friendships fade away.",
+        resolutionStrategies: [
+          "Set community involvement limits together. Plan shared events but also protect time for individual social needs.",
+          "Communicate energy boundaries kindly, reminding each other that personal space supports relationship health.",
+          "Tap into your shared networking strengths to diversify friendships and balance group engagement with personal development.",
+        ],
+        growthOutcome:
+          "You build deep and fulfilling social lives with a healthy mix of shared belonging and personal friendships.",
+      },
+      growthAndDiscoveryChallenges: {
+        dynamics: [
+          "Both Architects learn through hands-on experience and structured development paths. They commit to mastering skills through practical training and clear milestones, cheering each other on through shared achievements.",
+          "With harmonious and logical collaboration, they prefer learning environments where they can work together, exchange insights, and earn recognizable qualifications that prove progress.",
+        ],
+        coreChallenge:
+          "Challenges appear when both partners stick too tightly to shared learning paths, leaving little room for personal interests or exploratory changes.",
+        whyThisHappens:
+          "- Their concrete approach can limit exposure to new ideas.\n- Their stable style resists shifting paths once a plan is set.\n- Their harmonious mindset prioritizes joint learning over individualized pursuits.\n- Their logical goal-setting focuses on credentials, reducing space for exploratory growth.\n- Their identical cognitive process reinforces sameness.",
+        redFlags:
+          "- Begins with dropping personal learning goals.\n- Grows into frustration about progress or unfinished joint commitments.\n- Becomes visible when new personal interests are dismissed quickly.",
+        resolutionStrategies: [
+          "Create dual learning tracks that include shared activities alongside personal explorations. Compare progress monthly for encouragement.",
+          "Maintain lists of independent interests and alternate whose goals take priority during certain periods.",
+          "Recognize how your teamwork strengthens commitment, while independence fuels new discoveries.",
+        ],
+        growthOutcome:
+          "You grow into a lifelong learning partnership that supports individual purpose while celebrating shared accomplishments.",
+      },
+      joyAndAdventureChallenges: {
+        dynamics: [
+          "Both Architects seek joy through active recreation like structured trips, planned activities, and social adventures. They feel energized when their leisure time is organized, exciting, and purposeful.",
+          "With a harmonious perspective, they pursue fun that everyone enjoys, like game nights, travel with friends, and group activities that bring shared excitement. Practical details ensure outings run smoothly and bring real satisfaction.",
+        ],
+        coreChallenge:
+          "The main challenge arises when planned fun becomes overly structured, leaving little room for spontaneity or independent enjoyment.",
+        whyThisHappens:
+          "- Their outward energy drives ongoing activity, risking overcommitment.\n- Their stable planning limits sudden playful moments.\n- Their harmonious style prioritizes shared recreation over individual delight.\n- Their concrete preferences reduce variety in adventure types.\n- Their identical cognition intensifies structure without leaving room for surprise.",
+        redFlags:
+          "- Begins when upcoming plans spark stress instead of anticipation.\n- Grows into conflicts during vacations due to rigid expectations.\n- Becomes clear when independent fun is lost entirely.",
+        resolutionStrategies: [
+          "Alternate between organized adventures and flexible days with no plan. Celebrate the joy that arises from both structure and spontaneity.",
+          "Blend different types of activities, from active group outings to quiet or creative experiences that offer contrast and refreshment.",
+          "Support both shared joy and personal exploration to keep fun meaningful and free from pressure.",
+        ],
+        growthOutcome:
+          "You create exciting shared memories full of laughter and variety, balancing structure with freedom for a playful and fulfilling life together.",
+      },
+      spaceAndSerenityChallenges: {
+        dynamics: [
+          "Both Architects recharge through light shared connection rather than deep solitude, preferring structured downtime that preserves closeness while still feeling restful. They work together to maintain peaceful and organized environments.",
+          "With a harmonious style, they enjoy being near each other even in quiet periods. They prefer physically organized spaces and mutual agreements about how to unwind without conflict.",
+        ],
+        coreChallenge:
+          "Difficulties appear when both partners remain constantly accessible during downtime, which can prevent full relaxation or personal space needed for deeper restoration.",
+        whyThisHappens:
+          "- Their outward recharge style encourages interaction even when alone time is needed.\n- Their harmonious mindset fears that space might signal disconnection.\n- Their stable planning leaves little room for spontaneous self-care.\n- Their concrete approach seeks physical solutions, sometimes missing emotional boundaries.\n- Their identical cognition reinforces constant availability.",
+        redFlags:
+          "- Begins with irritation when personal quiet is interrupted.\n- Grows into emotional withdrawal or avoidance.\n- Becomes clear when tension fills what should be restful moments.",
+        resolutionStrategies: [
+          "Create clear signals for quiet needs, like door cues or planned quiet hours that support autonomy while maintaining trust.",
+          "Use short and gentle communication to request space without fear of misunderstanding.",
+          "Recognize that personal tranquility strengthens connection, allowing each person to return refreshed and fully present.",
+        ],
+        growthOutcome:
+          "You develop a calm and nurturing dynamic that honors independence and closeness, giving peace and comfort space to thrive.",
+      },
+      impactAndLegacyChallenges: {
+        dynamics: [
+          "Both Architects picture legacy through logical, measurable contributions that help groups thrive. They focus on building systems and leading initiatives that create meaningful, long-lasting change where results can be seen clearly.",
+          "Because they value harmony and stability, they build their ambitions around collective success rather than spotlight recognition. They aim to create structures and programs that serve others and stand strong over time.",
+        ],
+        coreChallenge:
+          "Legacy challenges occur when both partners concentrate so much on collective impact that personal purpose and individual identity within shared goals becomes harder to define.",
+        whyThisHappens:
+          "- Their harmonious focus can dilute individual uniqueness.\n- Their concrete mindset prioritizes measurable contributions over creative expression.\n- Their logical influence drives debates about best strategies.\n- Their stable methods resist evolving visions.\n- Their identical cognitive processes amplify shared direction without clearly separating personal impact.",
+        redFlags:
+          "- Begins with ignoring individual legacy ideas.\n- Grows into strained collaboration on large goals.\n- Becomes clear when inspiration fades and cynicism surfaces.",
+        resolutionStrategies: [
+          "Clarify individual legacy missions separately, then identify aligned areas that strengthen collective influence.",
+          "Schedule yearly vision sessions to integrate personal evolution into shared plans.",
+          "Celebrate both mutual accomplishments and individual breakthroughs to reinforce confidence and creative motivation.",
+        ],
+        growthOutcome:
+          "You achieve meaningful, lasting influence where your shared strengths elevate each person’s legacy into something neither could build alone.",
+      },
+    },
+  ],
+  "C-L-O-S-H/C-L-O-S-A": [
+    {
+      careerAndPurposeChallenges: {
+        dynamics: [
+          "The Architect and The Engineer both approach their careers with a strong focus on practical, tangible goals they can observe and measure right now. Since you both prefer solid information over guesswork, your career paths tend to revolve around hands-on projects, dependable systems, and real-world results that clearly make a difference. The Architect might build a career around organizing teams to create efficient operations, while The Engineer tends to focus on crafting tools or processes that instantly solve problems. Logic plays a central role in your decision-making, so each of you naturally prioritizes what is objectively effective, like proven strategies and streamlined methods. This shared foundation helps you understand each other's motivation for purposeful work that is grounded, achievable, and impactful, giving you a strong base to meaningfully support one another’s ambitions.",
+          "The Architect's collaborative nature shapes their drive toward team-based success and shared missions, thriving on coordinating groups and seeing everyone contribute to a collective win. In contrast, The Engineer leans toward independent accomplishments, building personal expertise through focused, individual work that allows full control. For instance, The Architect may choose roles that require coordinating projects with many moving parts, using group input to guide decisions, while The Engineer gravitates to positions involving solo innovation, specialized research, or technical tasks. This difference shows how The Architect finds validation in team achievements, while The Engineer measures success primarily through personal mastery and results, forming two distinct but naturally complementary approaches to long-term career growth.",
+        ],
+        coreChallenge:
+          "The main tension appears when The Architect's desire for collaborative input in career planning clashes with The Engineer's preference for autonomous control, creating frustration around how to support each other's professional decisions without one feeling overridden or the other feeling isolated.",
+        whyThisHappens:
+          "- The Architect's harmonious style makes them seek team-oriented validation in career choices, while The Engineer's autonomous approach requires full personal authority, creating tension in shared discussions about professional goals.\n- Both rely on concrete information, setting clear, measurable milestones, but different expectations around involvement create friction—one wants collaborative planning while the other prefers independent goal-setting.\n- Logical decision-making is important for both, yet The Architect applies it to group priorities while The Engineer uses it to optimize individual success, creating differing views on what matters most.\n- With stable, steady change preferences, both take careful steps in career planning, but The Architect includes others in their structure, while The Engineer builds independent pathways, creating mismatched expectations around flexibility.\n- The Architect’s outward focus on organizing teams conflicts with The Engineer’s reflective, self-driven expertise-building, creating patterns where one pushes for collaboration and the other withdraws to maintain autonomy.",
+        redFlags:
+          "- Begins with withdrawing from career conversations to avoid perceived pressure or unwanted input.\n- Escalates into repetitive arguments whenever career decisions arise, often with accusations of being overly controlling or too detached.\n- Becomes clear when resentment forms, causing one partner to downplay or fail to celebrate the other's professional milestones.",
+        resolutionStrategies: [
+          "Set regular career check-ins where The Architect shares updates about organizing teams for practical goals, highlighting specific collaborative accomplishments, and The Engineer shares independent projects with detailed technical insights. Allow The Architect to offer networking or structural support without requiring joint involvement, and let The Engineer contribute logical, independent advice that supports The Architect's missions. This honors your shared focus on concrete results and rational thinking while respecting each person’s preferred collaboration style.",
+          "Create clear boundaries for career feedback using structured monthly reviews that feel predictable for your stable approaches, while remaining adaptable as new opportunities arise. Since both of you channel energy outward through action, direct it into complementary goals—The Architect handling group-oriented planning and The Engineer managing individualized execution—ensuring that neither overwhelms the other while mutual respect grows.",
+          "Appreciate how your shared concrete and logical foundations make your career approaches naturally supportive. The Architect’s team-building opens opportunities for The Engineer’s independent achievements, while The Engineer’s innovations provide practical solutions that elevate The Architect’s group efforts. This turns potential friction into a productive partnership where you both grow professionally.",
+        ],
+        growthOutcome:
+          "Your connection deepens by encouraging each other’s career paths with balance and respect, creating a powerful partnership where combined practical logic produces achievements and fulfillment greater than either could accomplish alone.",
+      },
+
+      wealthAndProsperityChallenges: {
+        dynamics: [
+          "The Architect and The Engineer both view finances through a realistic, grounded lens, focusing on concrete budgeting, tangible assets like savings and property, and measurable steps that gradually build security. You both prefer financial systems that can be tracked and controlled in the present—whether monitoring monthly expenses or checking investment returns rooted in real data. This shared practicality means you gravitate toward straightforward financial planning that avoids unnecessary risks, creating a reliable foundation for building prosperity. Whether establishing emergency funds or selecting stable investments, your mutual preference for concrete, structured methods makes financial alignment easier and strengthens one another's sense of stability.",
+          "The Architect sees money as a tool for collective security, gravitating toward joint decisions that prioritize shared goals and family needs, while The Engineer sees it as a source of personal autonomy, preferring independent control of their resources. While both value logical efficiency, The Architect may put funds toward communal experiences or group benefits, whereas The Engineer frequently channels finances into personal investments or tools. With a steady approach to change, The Architect prefers collaborative budgeting with clear categories, while The Engineer maintains independent planning that still follows predictable systems. These differences show up in everyday choices, such as decisions about shared versus separate accounts or how unexpected expenses should be managed.",
+        ],
+        coreChallenge:
+          "Tension arises when The Architect pushes for joint financial decision-making to create shared security, clashing with The Engineer's need for financial independence, leading to disagreements over budgeting authority and spending priorities.",
+        whyThisHappens:
+          "- Both use concrete tracking systems, monitoring every dollar, but The Architect involves others for harmony while The Engineer prioritizes private oversight, creating disagreements over shared versus individual accounts.\n- Logical priorities guide both partners, but The Architect optimizes for group benefit while The Engineer optimizes for individual gain, creating friction around financial intent.\n- The Architect treats money communally and seeks consensus, while The Engineer sees finances as a personal tool requiring autonomy, which creates mismatched expectations around trust.\n- Both prefer consistent routines, yet The Architect designs budgets collaboratively while The Engineer plans independently, creating tension during financial changes.\n- The Architect’s organized management of shared resources conflicts with The Engineer’s self-reliant handling of money, leading to patterns where one feels restricted and the other unsupported.",
+        redFlags:
+          "- Begins with hiding small purchases to avoid discussions about shared spending.\n- Escalates into heated arguments over even minor financial choices.\n- Becomes clear when trust erodes enough that partners keep completely separate accounts and make secretive plans.",
+        resolutionStrategies: [
+          "Design a hybrid budget where The Architect oversees shared categories such as household bills with equal input, supporting collaborative security, while The Engineer maintains full freedom over personal funds for individual goals. Contribute fairly to joint savings and schedule quarterly reviews that respect The Architect’s desire for shared reflection and The Engineer’s autonomy, blending concrete tracking with logical efficiency.",
+          "Hold weekly financial check-ins with clear agendas to use your logical strengths, creating agreements that remain structured yet adaptable. Since stability matters to both of you, build reliable systems like automatic transfers, while allowing The Engineer to make independent adjustments and giving The Architect space to discuss values like security openly.",
+          "Recognize that your approaches can strengthen one another. The Architect’s shared planning provides a stable safety net protecting the Engineer’s individual investments, while the Engineer’s independent strategies add efficient growth opportunities that increase the partnership’s prosperity.",
+        ],
+        growthOutcome:
+          "You build a strong, well-balanced financial foundation that supports both shared security and personal freedom, allowing resources to flow toward collective dreams and individual pursuits alike.",
+      },
+
+      healthAndVitalityChallenges: {
+        dynamics: [
+          "The Architect and The Engineer both channel their energy outward, finding motivation through active engagement with the world, so you often approach health through movement-based activities like structured workouts or engaging fitness routines. You recharge by doing, preferring wellness practices that involve interaction, visible progress, or hands-on involvement. With stable approaches to routine, The Architect might plan consistent group workouts for accountability, while The Engineer sets up predictable, independent exercise schedules. This shared outward focus makes health something active and practical for both of you, opening opportunities to support one another through energizing habits that strengthen vitality together.",
+          "The Architect’s harmonious nature makes group fitness appealing, such as team sports or guided classes where shared energy feels motivating, while The Engineer prefers solo workouts that protect their independence and focus. Your concrete processing means The Architect tracks group-based metrics like class attendance, while The Engineer keeps personal records such as weights or distances. These differences show up daily—The Architect proposing joint runs for connection while The Engineer opts for quiet time at the gym, or in stress management, with The Architect preferring social walks and The Engineer choosing solitary routines.",
+        ],
+        coreChallenge:
+          "Conflict arises when The Architect seeks shared wellness activities for connection, overwhelming The Engineer's need for independent exercise, resulting in strained routines and mismatched energy during health efforts.",
+        whyThisHappens:
+          "- Both recharge through activity, but The Architect needs social engagement to stay motivated while The Engineer requires solo focus, creating mismatched energy levels during joint workouts.\n- Stable routines suit both partners, yet The Architect organizes them collaboratively while The Engineer prefers independent structure, causing difficulty in aligning schedules.\n- The Architect’s group-oriented motivation can feel draining to The Engineer’s autonomous need for self-paced vitality.\n- Both track tangible health metrics, but The Architect shares these socially while The Engineer keeps progress private, leading to conflicting expectations.\n- The Architect’s coordinated wellness pushes against The Engineer’s independent path, creating patterns of pressure and withdrawal.",
+        redFlags:
+          "- Begins with avoiding shared workouts, using excuses to skip activities.\n- Escalates into chronic fatigue or burnout due to mismatched health routines.\n- Becomes evident when resentment appears through comments criticizing each other's habits.",
+        resolutionStrategies: [
+          "Create a balanced health plan where The Architect attends group classes on certain days for social stimulation while The Engineer follows solo routines for personal recharge. Meet monthly to share progress—The Architect discussing team-oriented gains and The Engineer describing personal achievements—and find small points of overlap, such as occasional paired walks, without forcing constant togetherness.",
+          "Communicate openly about energy and boundaries with simple phrases like ‘I need group time to stay motivated’ or ‘Solo workouts help me stay balanced.’ This validates The Architect’s need for connection and The Engineer’s need for autonomy, preventing misinterpretation while supporting wellness for both.",
+          "See how your styles complement each other. The Architect’s group involvement adds excitement and variety to routines that the Engineer might find repetitive, while The Engineer’s discipline and consistency encourage The Architect to stay committed beyond social motivation.",
+        ],
+        growthOutcome:
+          "You cultivate strong, sustainable vitality where outward energy and consistent routines create health patterns that nourish your partnership daily.",
+      },
+
+      loveAndRomanceChallenges: {
+        dynamics: [
+          "The Architect and The Engineer both express love through practical, logical acts such as solving problems together or planning thoughtful gestures that demonstrate dependable care. You tend to make romantic decisions objectively, so affection often takes the form of reliable actions that build security—like organizing meaningful outings or helping each other accomplish important goals. With outward energy, The Architect often initiates shared activities for connection, while The Engineer creates efficient, purposeful moments that still hold emotional meaning. This shared approach makes your love feel grounded and action-driven, forming a relationship where devotion is expressed in consistent, real efforts that strengthen your bond over time.",
+          "The Architect craves emotional alignment through frequent, harmonious check-ins and shared intimacy, wanting steady connection to feel secure, while The Engineer maintains firmer boundaries to protect their independence, preferring emotional closeness on their own terms. Because you both process affection concretely, The Architect expresses love through tangible shared experiences, while The Engineer uses personal or individualized gifts. These contrasting preferences show up in everyday patterns: The Architect might plan joint evenings to build closeness, while The Engineer needs time alone afterward to recharge; or during conflict, The Architect wants open conversation immediately while The Engineer needs quiet reflection first.",
+        ],
+        coreChallenge:
+          "Challenges emerge when The Architect's desire for continuous emotional harmony feels intrusive to The Engineer's need for independent space, sparking tension around how affection and intimacy should be expressed.",
+        whyThisHappens:
+          "- The Architect’s harmonious style expects ongoing emotional connection, while The Engineer’s autonomous nature requires space, creating feelings of intrusion or rejection.\n- Both express love practically, but The Architect frames gestures as shared while The Engineer frames them individually, leading to mismatched interpretations.\n- Outward energy pushes both toward active connection, yet The Architect wants frequent shared experiences while The Engineer prefers selective engagement.\n- Concrete affection shows up through tangible gifts or actions, but The Architect prefers communal expression while The Engineer values personal ones.\n- The Architect’s pursuit of closeness can trigger The Engineer’s need to retreat, creating push-pull patterns in daily intimacy.",
+        redFlags:
+          "- Begins with reduced affection, such as fewer touches or compliments.\n- Escalates into arguments where one partner demands connection and the other withdraws.\n- Becomes evident when resentment forms, which may lead to criticism of each other's romantic needs.",
+        resolutionStrategies: [
+          "Plan weekly dates that give The Architect meaningful shared time—like dinners with conversation—while allowing The Engineer to handle logistics, giving them a sense of independence. Alternate planning responsibilities so The Architect receives harmonious connection and The Engineer retains autonomous influence, blending your practical expressions of care.",
+          "Balance closeness by establishing routines that include both togetherness and scheduled personal space. Use your outward energy for active, engaging dates while respecting The Engineer’s need for post-connection reflection to avoid overwhelming them.",
+          "Recognize how your romantic languages enrich each other. The Architect’s expressive warmth encourages The Engineer to open up emotionally, while The Engineer’s steady, practical gestures help ground The Architect’s feelings in reliable commitment.",
+        ],
+        growthOutcome:
+          "You create a loving relationship where harmonious closeness and autonomous freedom naturally balance, allowing deep understanding and lasting intimacy to flourish.",
+      },
+
+      familyAndHomeLifeChallenges: {
+        dynamics: [
+          "The Architect and The Engineer both appreciate structured home environments with predictable schedules and organized systems that help daily routines run smoothly. You each approach family life through practical organization, focusing on tangible elements like chore lists, planned meals, or functional living spaces that support efficiency. With steady approaches to change, The Architect might prefer collaborative planning for household responsibilities, while The Engineer reliably manages personal tasks independently. This shared love of structure helps your home feel secure, steady, and well-coordinated, creating an environment where everyone clearly understands their role and can contribute confidently.",
+          "The Architect views household duties as shared responsibilities, seeking collaboration and consensus around decisions like décor, routines, or meal planning to maintain harmony. Meanwhile, The Engineer sees tasks more individually, handling their portion independently without excessive discussion. Both value logical efficiency, but The Architect aims for group optimization—such as coordinated family chores—while The Engineer focuses on personal logic, like completing tasks efficiently on their own. These distinctions surface in everyday situations, such as The Architect wanting open family discussions for decisions and The Engineer preferring to simply take action, or in chore distribution where The Architect coordinates and The Engineer executes solo.",
+        ],
+        coreChallenge:
+          "Conflict develops when The Architect insists on collaborative decision-making for harmony, frustrating The Engineer's preference for independent task completion, leading to disagreements over responsibility and authority within the home.",
+        whyThisHappens:
+          "- Stable routines fit both partners, but The Architect builds them jointly while The Engineer adapts personally, creating scheduling conflicts.\n- The Architect anticipates collective input on all household matters, while The Engineer prefers autonomous choices, causing mismatched expectations.\n- Logical planning leads The Architect to streamline group tasks, while The Engineer optimizes personal effort, shifting the focus of chores.\n- Concrete needs create functional spaces, yet The Architect designs shared environments while The Engineer needs personal areas.\n- The Architect’s managing instincts can unintentionally overshadow The Engineer’s independent tendencies, leading to avoidance or uneven labor patterns.",
+        redFlags:
+          "- Begins with withdrawal from shared family activities or skipping collaborative moments.\n- Escalates into power struggles over even simple home decisions.\n- Becomes clear when resentment builds and household responsibilities are avoided or unevenly distributed.",
+        resolutionStrategies: [
+          "Divide home responsibilities by domains—The Architect managing shared areas like the kitchen through collaborative planning, while The Engineer handles personal spaces independently. Use a stable weekly chore chart that includes built-in flexibility, honoring The Architect’s desire for harmony and The Engineer’s need for autonomy.",
+          "Implement logical, rotating systems for chore distribution to maintain fairness while integrating small moments of appreciation. This approach blends efficiency with emotional balance, making household decisions feel both structured and supportive.",
+          "Let your strengths complement each other. The Architect’s collaborative mindset prevents isolation within the home, while The Engineer’s independent management enhances efficiency and prevents decision-making bottlenecks.",
+        ],
+        growthOutcome:
+          "You create a warm, balanced household where structured harmony meets autonomous efficiency, allowing your family to thrive through shared stability and clear roles.",
+      },
+
+      friendshipsAndCommunityChallenges: {
+        dynamics: [
+          "The Architect and The Engineer both engage actively with the world, drawing energy from lively social interactions and friendships that involve shared activities. You recharge through participation, enjoying group events, outings, or conversations that stimulate your external focus. With stable approaches, The Architect may organize regular group gatherings, while The Engineer creates consistent one-on-one or small-group outings. This shared outward orientation creates a lively social atmosphere, allowing you to build meaningful networks that keep your social life enriched and dynamic.",
+          "The Architect commits to community involvement for the sake of group harmony, attending gatherings to support collective goals and strengthen relationships, while The Engineer selects social interactions based on personal interest, maintaining independently chosen friendships. Your concrete preferences show up in activity-based engagements—The Architect enjoys practical group outings like shared hikes, while The Engineer prefers solo activities or carefully chosen meetups. This difference appears in commitments, where The Architect organizes large gatherings and The Engineer chooses selective pursuits, or in participation, with The Architect favoring broad involvement and The Engineer valuing deeper, more focused interaction.",
+        ],
+        coreChallenge:
+          "Tension develops when The Architect seeks frequent group commitments for connection, overwhelming The Engineer’s preference for selective social involvement, creating friction around the frequency and nature of shared friendships.",
+        whyThisHappens:
+          "- Both gain energy from socializing, but The Architect’s capacity for group engagement is often higher than The Engineer’s selective preference.\n- The Architect accepts invitations for harmony, while The Engineer chooses only meaningful ones, causing conflict over commitments.\n- Stable schedules work for both, but The Architect wants joint planning while The Engineer prefers independent decision-making.\n- Concrete friendships revolve around shared activities, yet The Architect includes broader groups and The Engineer focuses on a smaller circle.\n- The Architect’s broad networking can feel overwhelming to The Engineer’s selective style, prompting overcommitment or withdrawal patterns.",
+        redFlags:
+          "- Begins with declining shared invitations or avoiding group gatherings.\n- Escalates into arguments about every community plan.\n- Becomes clear when social lives drift apart, weakening connection within the partnership.",
+        resolutionStrategies: [
+          "Create a social balance where The Architect participates in multiple group events for connection, while The Engineer chooses one personal activity that suits their individuality. Agree on one joint outing a month, with The Architect handling coordination and The Engineer determining duration, blending outward energy with personal boundaries.",
+          "Use validating language such as ‘Group time lifts me up’ or ‘Selective friendships help me stay grounded.’ This encourages mutual respect and prevents resentment, supporting both individual and shared social connections.",
+          "Blend both approaches to enrich your social world. The Architect’s wide network offers opportunities and community, while The Engineer’s deep, selective friendships add emotional depth and intimacy to that broader circle.",
+        ],
+        growthOutcome:
+          "You cultivate a vibrant social life where active engagement and personal depth coexist, creating relationships and community ties that are meaningful and energizing for both of you.",
+      },
+
+      growthAndDiscoveryChallenges: {
+        dynamics: [
+          "The Architect and The Engineer pursue growth through practical learning, preferring concrete skills like workshops or hands-on training that produce results you can see and apply immediately. You value development that leads to real progress—whether through certifications, technical skills, or real-world projects. With steady approaches, The Architect may take structured courses with group participation, while The Engineer follows a reliable self-paced study path. This shared focus creates a grounded sense of personal evolution, allowing you to inspire one another through manageable steps that steadily build competence.",
+          "The Architect seeks collaborative learning environments such as group classes where shared insights deepen understanding, while The Engineer prefers independent study to develop personal mastery. Logical motivations guide both partners: The Architect learns best through team discussions, while The Engineer thrives through solo analysis. These differences appear in daily choices—the Architect might join seminars with peer input, while The Engineer chooses in-depth reading alone; or the Architect may commit to joint programs while The Engineer pursues self-driven interests.",
+        ],
+        coreChallenge:
+          "Tension arises when The Architect desires shared growth experiences while The Engineer seeks independent learning paths, creating conflict around how to support each other’s development without imposing or disengaging.",
+        whyThisHappens:
+          "- Concrete preferences lead The Architect toward collaborative workshops and The Engineer toward solitary study, causing divergent approaches.\n- Stable commitments encourage structured programs for both, but The Architect shares them while The Engineer keeps them personal.\n- The Architect’s harmonious style finds motivation in group learning, which can drain The Engineer’s need for autonomy.\n- Logical motivations lead both toward certifications or progress, but through very different routes—team-based for The Architect and solo for The Engineer.\n- The Architect’s push for shared exploration can trigger The Engineer’s need for individual space, creating cycles of abandoning joint pursuits.",
+        redFlags:
+          "- Begins with avoiding jointly planned learning activities.\n- Escalates into frustration about unfinished shared projects.\n- Becomes clear when resentment diminishes appreciation for each other’s personal growth.",
+        resolutionStrategies: [
+          "Follow separate development tracks where The Architect joins group-based courses and The Engineer pursues independent training. Meet monthly to share insights—The Architect focusing on real-world applications and The Engineer on underlying systems or frameworks. Find natural overlaps without forcing joint participation.",
+          "Build parallel growth paths that allow solo exploration with shared moments of reflection. Create a common resource space for exchanging ideas, and alternate joint learning experiences to celebrate differences without competitiveness.",
+          "Recognize how your different learning styles strengthen each other. The Architect’s collaborative drive provides structure and accountability, while The Engineer’s independent curiosity brings innovative ideas that broaden The Architect’s perspective.",
+        ],
+        growthOutcome:
+          "You experience meaningful and continuous growth where practical learning and steady commitment fuel mutual inspiration, enriching both your personal evolution and your shared journey.",
+      },
+
+      joyAndAdventureChallenges: {
+        dynamics: [
+          "The Architect and The Engineer both seek joy through active, hands-on adventures that offer stimulation and fun—whether trying new sports, exploring lively places, or engaging in energetic activities together. You both find delight in recreational experiences that activate your senses and provide movement. With steady approaches, The Architect likes to plan detailed outings for consistent enjoyment, while The Engineer organizes personal adventures with methodical precision. This shared outward focus creates lively, engaging leisure time where you can bond over experiences that shake up routine and bring laughter into your partnership.",
+          "The Architect gravitates toward group-based play, organizing shared recreation such as game nights or team outings for collective enjoyment, while The Engineer leans toward solo pursuits like individual hikes or focused creative hobbies. You both enjoy concrete activities, but The Architect tends to prefer group-centered sensory experiences, while The Engineer finds joy in personal hands-on tasks like building or crafting. These differences surface in vacation planning—with The Architect developing structured group trips and The Engineer preferring self-guided exploration—or in weekends, where The Architect suggests collaborative activities and The Engineer gravitates toward quieter, individual leisure.",
+        ],
+        coreChallenge:
+          "Conflicts arise when The Architect’s structured, group-oriented fun feels obligatory to The Engineer, who prefers spontaneous, individual enjoyment, leading to mismatched expectations and reduced shared joy.",
+        whyThisHappens:
+          "- Both enjoy high-energy recreation, but The Architect's social stamina surpasses The Engineer’s preference for solo adventures.\n- Stable tendencies lead The Architect to detailed itineraries while The Engineer prefers personal flexibility.\n- Harmonious involvement drives The Architect to plan collective play, which may feel draining to The Engineer’s need for autonomous fun.\n- Concrete preferences inspire sensory activities, yet The Architect shares them with others while The Engineer keeps them individual.\n- The Architect’s organized leisure can clash with The Engineer’s desire for spontaneous enjoyment, prompting avoidance of shared recreation.",
+        redFlags:
+          "- Begins with dread or reluctance toward planned activities.\n- Escalates into conflicts during vacations or outings.\n- Becomes evident when recreation becomes separate, reducing shared memories and laughter.",
+        resolutionStrategies: [
+          "Use a rotating schedule for adventures where The Architect plans one structured group outing, such as a festival with reservations, and The Engineer selects a flexible, solo-friendly activity like individual exploration. Include light social time to match your outward energy but also incorporate recovery periods to protect each partner's joy.",
+          "Alternate adventure types to give each person what they enjoy. Encourage The Architect to appreciate the calm richness in solo activities, while The Engineer learns to enjoy the dynamic energy of group events. After each activity, share three highlights to help you see joy through each other’s eyes.",
+          "Honor both shared and individual joy. The Architect’s group adventures create lasting memories that prevent isolation, while The Engineer’s independent pursuits introduce freedom and spontaneity that keep The Architect’s plans fresh.",
+        ],
+        growthOutcome:
+          "You create a joyful partnership filled with both shared adventures and independent delight, weaving playful connections and personal exhilaration into your everyday life.",
+      },
+
+      spaceAndSerenityChallenges: {
+        dynamics: [
+          "The Architect and The Engineer both use outward energy to move through life, so you often find calm through light activity or gentle interaction rather than complete isolation. Quiet moments feel like opportunities for productive rest, whether through planning, light tasks, or mild engagement. With steady approaches, The Architect prefers collaboratively scheduled downtime, while The Engineer reliably organizes personal moments of rest. This shared approach allows you to understand each other's need for balanced tranquility, helping create space dynamics that feel active yet restorative within the relationship.",
+          "The Architect finds peace through soft connection during downtime—like quiet shared reading or light conversation for harmony—while The Engineer needs firmer boundaries to recharge fully, preferring complete solitude. Your concrete approach shows up in how each of you manages the environment: The Architect seeks control of shared spaces for comfort, while The Engineer needs physically separate areas for autonomy. This difference appears in boundary-setting, where The Architect checks in gently while The Engineer closes off fully, or in relaxation styles, with The Architect unwinding relationally and The Engineer unwinding independently.",
+        ],
+        coreChallenge:
+          "Serenity becomes strained when The Architect’s desire for gentle connection during rest feels intrusive to The Engineer’s need for solitary recharge, leading to misunderstandings and tension around personal space.",
+        whyThisHappens:
+          "- Both recharge through light engagement, but The Architect needs relational moments while The Engineer requires some isolation.\n- The Architect’s desire for connection can feel like rejection when space is requested, while The Engineer sees unwanted closeness as intruding on autonomy.\n- The Architect prefers scheduled downtime together, while The Engineer takes solitude spontaneously.\n- Concrete needs show up as physical space for The Engineer and mental reassurance for The Architect.\n- The Architect’s check-ins can unintentionally push The Engineer into retreat, especially during quiet moments.",
+        redFlags:
+          "- Begins with frequent interruptions during alone time.\n- Escalates into prolonged isolation or avoidance.\n- Becomes apparent when boundaries trigger ongoing conflict, making the home feel tense.",
+        resolutionStrategies: [
+          "Create serenity zones—spaces where The Architect can enjoy shared quiet moments and The Engineer can retreat for complete solitude. Use simple signals like door positions or visual cues to communicate needs without tension, respecting the Architect’s desire for connection and the Engineer’s need for independence.",
+          "Establish clear, non-emotional communication for requesting space, such as using brief notes or specific timeframes. This prevents misunderstandings, allowing The Architect to seek connection without feeling needy and The Engineer to take solitude without hurting feelings.",
+          "Recognize how your approaches strengthen serenity together. The Architect’s gentle connection keeps solitude from becoming isolating, while The Engineer’s strong boundaries teach healthy separation that prevents emotional over-reliance.",
+        ],
+        growthOutcome:
+          "You cultivate peaceful, respectful rhythms where outward energy blends with autonomous tranquility, creating a soothing balance that replenishes your bond.",
+      },
+
+      impactAndLegacyChallenges: {
+        dynamics: [
+          "The Architect and The Engineer both envision legacy through concrete, practical contributions that create lasting systems or meaningful real-world change. You rely on logic to guide your efforts and prefer outward action that leads to visible, measurable results. The Architect focuses on team-driven initiatives that benefit groups or communities, while The Engineer pursues independent innovations that stand on their own. This combination creates a grounded sense of purpose, allowing you to align on meaningful goals that feel achievable and impactful.",
+          "The Architect builds legacies through collaboration, such as organizing community programs or structured group projects, while The Engineer creates personal impact through independent inventions, expressions, or solutions. With steady planning approaches, The Architect thinks long-term about shared systems, while The Engineer focuses on autonomous contributions that evolve over time. For example, The Architect might develop enduring community institutions, while The Engineer creates artistic works, technical tools, or personal breakthroughs that shape their unique path. These contrasting drives show how both teamwork and self-reliance shape your understanding of significance.",
+        ],
+        coreChallenge:
+          "Conflict emerges when The Architect seeks joint legacy-building for shared impact, clashing with The Engineer’s desire for independent accomplishments, creating tension around how meaningful contributions should be made.",
+        whyThisHappens:
+          "- The Architect’s harmonious nature drives group-oriented legacy goals, while The Engineer’s autonomy motivates individual paths.\n- Both prefer measurable contributions, yet The Architect shares them collectively while The Engineer keeps them personal.\n- Logical planning leads The Architect toward system-building and The Engineer toward independent innovation.\n- Stable preferences shape The Architect’s long-term structures and the Engineer’s self-led evolution.\n- These stacked differences lead to divergent ideas about what meaningful impact truly looks like.",
+        redFlags:
+          "- Begins with dismissing each other’s ideas about purpose.\n- Escalates into failed joint projects or abandoned plans.\n- Becomes evident when disappointment turns into cynicism about shared dreams.",
+        resolutionStrategies: [
+          "Clarify personal visions by having The Architect outline community-oriented goals and The Engineer define individual innovations. Then identify natural intersections—like using The Engineer’s creations within The Architect’s programs—to blend autonomy with harmony, creating shared impact without sacrificing independence.",
+          "Hold annual purpose discussions that integrate concrete achievements with long-term planning. Combine both partners’ strengths by creating shared narratives that honor stable structures and evolving contributions, bridging differences in vision.",
+          "Celebrate each partner’s unique role in shaping legacy. The Architect’s ability to reach groups amplifies The Engineer’s innovations, while The Engineer’s depth and originality strengthen the Architect’s collaborative mission with credibility and influence.",
+        ],
+        growthOutcome:
+          "You build an enduring legacy of wide-reaching impact and deep innovation, creating a partnership that multiplies your contributions far beyond what either of you could achieve alone.",
+      },
+    },
+  ],
+};
