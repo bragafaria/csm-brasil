@@ -1,7 +1,6 @@
 // app/layout.js
 import "./globals.css";
 import SupabaseListener from "@/app/lib/supabase/SupabaseListener";
-import { PHProvider } from "./lib/posthog-provider";
 
 export const metadata = {
   title: "Personality Assessment for Couples | CSM Dynamics",
@@ -77,10 +76,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <PHProvider>
-          <SupabaseListener />
-          {children}
-        </PHProvider>
+        <SupabaseListener />
+        {children}
       </body>
     </html>
   );
