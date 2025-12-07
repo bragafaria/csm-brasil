@@ -387,7 +387,6 @@ export default function Home() {
         </div>
       </section>
       {/* Spectrum Preview */}
-      {/* Spectrum Preview */}
       <section
         id="whats-inside"
         className="pt-16 md:py-16 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]"
@@ -444,11 +443,11 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-                  className="order-3 lg:order-none lg:col-start-2 lg:row-start-2 mt-4 lg:mb-0"
+                  className="order-3 lg:order-none lg:col-start-2 lg:row-start-2 mt-10 md:mt-4 lg:mb-0 mb-4"
                 >
                   <div
                     className="group bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] p-6 rounded-2xl 
-        border border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)] flex flex-col space-y-4 lg:mt-10"
+                border border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)] flex flex-col space-y-4 lg:mt-10"
                   >
                     <div className="text-center space-y-2">
                       <h3 className="text-xl font-bold text-[var(--text-primary)]">Information Processing</h3>
@@ -550,6 +549,49 @@ export default function Home() {
                     </p>
                   </div>
                 </motion.div>
+
+                {/* Section 5: Image (order-5 on mobile, left column on desktop) */}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="order-5 lg:order-none group min-h-[400px]  flex flex-col space-y-4 lg:mb-0 mt-20"
+                >
+                  <div className="relative mx-auto border border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)] ">
+                    <video
+                      src="/brain-compressed.mp4"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      width={350}
+                      height={519}
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                    {/* Gradient overlay at bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-t from-[var(--surface)] to-transparent z-20 pointer-events-none"></div>
+                  </div>
+                </motion.div>
+
+                {/* Section 6: Blueprint title (order-6 on mobile, right column on desktop) */}
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                  className="order-6 lg:order-none flex flex-col justify-center space-y-6 lg:pl-8 my-8 lg:mb-0"
+                >
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-bold text-center text-white">Your {`Mind's`} Blueprint</h3>
+                    <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-left">
+                      The Cognitive Spectrum Model (CSM) is a modern personality framework that maps how your mind is
+                      wired. Our algorithm reveals the unique cognitive stack that drives your thoughts and decisions.
+                    </p>
+                  </div>
+                </motion.div>
               </div>
             </div>
           </div>
@@ -577,7 +619,7 @@ export default function Home() {
             {[
               {
                 title: "Take the Free Assessment",
-                text: "You can start on your own. Answer a quick, 10-minute questionnaire that reveals your unique Cognitive Spectrum profile.",
+                text: "You can start on your own. Answer a quick, 10-minute questionnaire that reveals your unique cognitive profile.",
               },
               {
                 title: "Get Your Results",
