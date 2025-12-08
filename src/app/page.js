@@ -372,7 +372,7 @@ export default function Home() {
               </div>
               <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--accent-rgb),0.1)] to-transparent border border-[rgba(var(--accent-rgb),0.2)] backdrop-blur-sm">
                 <div className="text-2xl sm:text-3xl font-bold text-white mb-2">
-                  <Counter target={94} suffix="%" duration={3000} />
+                  <Counter target={95} suffix="%" duration={3000} />
                 </div>
                 <div className="text-[var(--text-secondary)] text-sm sm:text-base">Report improvement</div>
               </div>
@@ -430,9 +430,12 @@ export default function Home() {
                 >
                   <div className="space-y-4">
                     <h3 className="text-2xl font-bold text-center text-white">Five Spectrum Cross-Analysis</h3>
-                    <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-left">
+                    <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-center lg:text-left">
                       Explore how your mind operates across the five core dimensions of cognition: Information
                       Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style.
+                    </p>
+                    <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-center lg:text-left">
+                      Access visual charts, domain scores, and profile analysis.
                     </p>
                   </div>
                 </motion.div>
@@ -542,7 +545,7 @@ export default function Home() {
                     <h3 className="text-2xl font-bold text-center text-white">Depth and Precision</h3>
                   </div>
                   <div className="space-y-4">
-                    <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-left">
+                    <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-center lg:text-left">
                       The five CSM dimensions give you a precise and deep understanding of how you process information,
                       make decisions, and interact with others. This clarity helps you identify strengths, uncover
                       weaknesses, and pursue growth with greater purpose.
@@ -586,7 +589,7 @@ export default function Home() {
                 >
                   <div className="space-y-4">
                     <h3 className="text-2xl font-bold text-center text-white">Your {`Mind's`} Blueprint</h3>
-                    <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-left">
+                    <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-center lg:text-left">
                       The Cognitive Spectrum Model (CSM) is a modern personality framework that maps how your mind is
                       wired. Our algorithm reveals the unique cognitive stack that drives your thoughts and decisions.
                     </p>
@@ -615,7 +618,7 @@ export default function Home() {
           </div>
 
           {/* Grid - Added responsive gaps */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10" key={routeKey}>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10" key={routeKey}>
             {[
               {
                 title: "Take the Free Assessment",
@@ -705,7 +708,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8" key={routeKey}>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" key={routeKey}>
             {/* NEW: Self-Awareness Card - First Position */}
             <AnimatedCard delay={0}>
               <div
@@ -899,7 +902,7 @@ export default function Home() {
               {
                 question: "Can CSM really “read” my relationship like a mind reader?",
                 answer:
-                  "CSM doesn’t guess emotions or predict outcomes intuitively. Instead, it analyzes cognitive alignments, such as how a partner who prefers Harmony might interact with someone who favors Autonomy. It identifies areas of synergy and potential friction. About 94% of users report that CSM provides clearer insights into relationship dynamics, helping them communicate and connect more effectively.",
+                  "CSM doesn’t guess emotions or predict outcomes intuitively. Instead, it analyzes cognitive alignments, such as how a partner who prefers Harmony might interact with someone who favors Autonomy. It identifies areas of synergy and potential friction. About 95% of users report that CSM provides clearer insights into relationship dynamics, helping them communicate and connect more effectively.",
               },
               {
                 question: "Is CSM scientifically legit, or just another buzzword quiz?",
