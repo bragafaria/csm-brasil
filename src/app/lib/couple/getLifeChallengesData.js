@@ -1,6 +1,5 @@
 // app/lib/couple/getLifeChallengesData.js
 import { supabase } from "@/app/utils/supabaseClient";
-import { LifeAreasChallenges } from "@/app/lib/data/LifeAreasChallenges";
 
 export async function getLifeChallengesData(siteId) {
   // 1. Get session
@@ -61,22 +60,18 @@ export async function getLifeChallengesData(siteId) {
   const key1 = `${partnerAData.typeCode}/${partnerBData.typeCode}`;
   const key2 = `${partnerBData.typeCode}/${partnerAData.typeCode}`;
 
-  const lifeChallengesArray = LifeAreasChallenges[key1] || LifeAreasChallenges[key2];
+  const { data: challengeData, error } = await supabase
+    .from("life_challenges")
+    .select("data")
+    .or(`pairing_key.eq.${key1},pairing_key.eq.${key2}`)
+    .maybeSingle(); // Use maybeSingle() to avoid error if not found
 
-  // 7. Safely extract first object from array
-  let lifeChallenges = null;
-
-  if (Array.isArray(lifeChallengesArray) && lifeChallengesArray.length > 0) {
-    lifeChallenges = lifeChallengesArray[0];
-  }
-
-  if (!lifeChallenges) {
-    console.error("Missing life challenges for:", key1, "or", key2);
-    console.error("Available keys (sample):", Object.keys(LifeAreasChallenges).slice(0, 5));
+  if (!challengeData) {
     throw new Error(`No life challenges data for ${key1} or ${key2}`);
   }
 
-  // 8. Return clean data
+  const lifeChallenges = challengeData.data;
+
   return {
     partnerA: { name: partnerAData.name, typeCode: partnerAData.typeCode },
     partnerB: { name: partnerBData.name, typeCode: partnerBData.typeCode },

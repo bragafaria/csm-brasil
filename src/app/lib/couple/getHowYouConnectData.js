@@ -1,8 +1,7 @@
-// app/lib/couple/getHowYouConnectData.js
 import { supabase } from "@/app/utils/supabaseClient";
-import { coupleDynamics } from "@/app/lib/data/couple-dynamics-data";
 
 export async function getHowYouConnectData(siteId) {
+  // 1. Get session
   const {
     data: { session },
     error: sessionError,
@@ -15,6 +14,7 @@ export async function getHowYouConnectData(siteId) {
 
   const userId = session.user.id;
 
+  // 2. Fetch Partner A (from URL)
   const { data: partnerAData, error: partnerAError } = await supabase
     .from("users")
     .select("id, name, typeCode, partner_id, has_assessment")
@@ -26,6 +26,7 @@ export async function getHowYouConnectData(siteId) {
     throw new Error("Partner data not found. Contact support.");
   }
 
+  // 3. Access control
   const isPartnerA = userId === siteId;
   const isPartnerB = partnerAData.partner_id === userId;
 
@@ -38,6 +39,7 @@ export async function getHowYouConnectData(siteId) {
     throw new Error("Your partner has not completed the assessment yet.");
   }
 
+  // 4. Fetch Partner B (linked partner)
   const { data: partnerBData, error: partnerBError } = await supabase
     .from("users")
     .select("id, name, typeCode, has_assessment")
@@ -48,33 +50,35 @@ export async function getHowYouConnectData(siteId) {
     throw new Error("Partner data not found");
   }
 
+  // 5. Both must have completed assessment
   if (!partnerAData.has_assessment || !partnerBData.has_assessment) {
     throw new Error("Both partners must complete the assessment.");
   }
 
-  // === NORMALIZE KEY ===
-  // === NORMALIZE KEY: TRY BOTH ORDERS ===
-  const [typeA, typeB] = [partnerAData.typeCode, partnerBData.typeCode];
+  // 6. Fetch couple dynamics from database
+  const key1 = `${partnerAData.typeCode}/${partnerBData.typeCode}`;
+  const key2 = `${partnerBData.typeCode}/${partnerAData.typeCode}`;
 
-  const tryKey = (a, b) => {
-    const k1 = a > b ? `${a}/${b}` : `${b}/${a}`;
-    if (coupleDynamics[k1]) return coupleDynamics[k1];
-    const k2 = a < b ? `${a}/${b}` : `${b}/${a}`;
-    if (coupleDynamics[k2]) return coupleDynamics[k2];
-    return null;
-  };
+  const { data: dynamicsData, error: dynamicsError } = await supabase
+    .from("couple_dynamics")
+    .select("data")
+    .or(`pairing_key.eq.${key1},pairing_key.eq.${key2}`)
+    .maybeSingle();
 
-  const dynamics = tryKey(typeA, typeB);
-  if (!dynamics) {
-    const attempted = typeA > typeB ? `${typeA}/${typeB}` : `${typeB}/${typeA}`;
-    console.error("Missing dynamics for:", attempted);
-    console.error("Available keys (first 3):", Object.keys(coupleDynamics).slice(0, 3));
-    throw new Error(`No dynamics data for ${attempted}`);
+  if (dynamicsError) {
+    console.error("Database error:", dynamicsError);
+    throw new Error("Failed to fetch couple dynamics data");
   }
 
+  if (!dynamicsData) {
+    console.error("Missing couple dynamics for:", key1, "or", key2);
+    throw new Error(`No couple dynamics data found for this pairing`);
+  }
+
+  // 7. Return clean data
   return {
     partnerA: { name: partnerAData.name, typeCode: partnerAData.typeCode },
     partnerB: { name: partnerBData.name, typeCode: partnerBData.typeCode },
-    dynamics,
+    dynamics: dynamicsData.data, // This is the JSONB data from database
   };
 }

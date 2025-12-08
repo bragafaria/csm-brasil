@@ -344,7 +344,7 @@ export default function Sales() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {[
               { icon: Shield, text: "Secure & Private" },
-              { icon: Award, text: "94% Report Clearer Insights" },
+              { icon: Award, text: "95% Report Clearer Insights" },
               { icon: Brain, text: "Psychometrically Validated" },
               { icon: Lock, text: "Backed by Modern Psychology" },
             ].map((badge, index) => (

@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .js,.jsx --quiet"
+    "lint": "eslint . --ext .js,.jsx --quiet",
+    "migrate:challenges": "node scripts/migrate-life-challenges.js",
+    "migrate:dynamics": "node scripts/migrate-couple-dynamics.js"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.31.10",
