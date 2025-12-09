@@ -80,7 +80,7 @@ export default function DashboardLayout({ children }) {
           {/* Logo (Center on mobile, natural position on desktop) */}
           <div className="flex items-center gap-1.5 sm:gap-2 absolute left-1/2 -translate-x-1/2 sm:relative sm:left-0 sm:translate-x-0">
             <Image
-              src="/logo_transparent_svg.svg"
+              src="/logo_transparent.png"
               alt="CSM Dynamics Logo"
               width={24}
               height={24}

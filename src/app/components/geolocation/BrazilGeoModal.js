@@ -105,7 +105,7 @@ export default function BrazilGeoModal() {
 
         {/* Logo and Company Name */}
         <div className="flex items-center justify-center space-x-2 mb-6">
-          <Image src="/logo_transparent_svg.svg" alt="CSM Dynamics Logo" width={32} height={32} className="h-8 w-8" />
+          <Image src="/logo_transparent.png" alt="CSM Dynamics Logo" width={32} height={32} className="h-8 w-8" />
           <div className="flex items-center space-x-1">
             <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
             <h1 className="text-xl font-light text-[var(--text-primary)]">Dynamics</h1>

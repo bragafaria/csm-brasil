@@ -211,7 +211,7 @@ export default function Home() {
             {/* Mobile: Logo (Center) & Desktop: Logo (Left) */}
             <div className="flex items-center space-x-1.5 sm:space-x-2 md:flex-none absolute left-1/2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0">
               <Image
-                src="/logo_transparent_svg.svg"
+                src="/logo_transparent.png"
                 alt="CSM Dynamics Logo"
                 width={32}
                 height={32}
@@ -1029,13 +1029,7 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
-                <Image
-                  src="/logo_transparent_svg.svg"
-                  alt="CSM Dynamics Logo"
-                  width={40}
-                  height={40}
-                  className="h-8 w-8"
-                />
+                <Image src="/logo_transparent.png" alt="CSM Dynamics Logo" width={40} height={40} className="h-8 w-8" />
                 <div className="flex items-center space-x-1">
                   <h1 className="text-2xl font-bold text-[var(--primary)]">CSM</h1>
                   <h1 className="text-2xl font-light text-white">Dynamics</h1>

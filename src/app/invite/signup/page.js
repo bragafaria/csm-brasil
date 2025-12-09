@@ -147,7 +147,7 @@ function InviteSignupContent() {
     <div className="min-h-screen flex items-center justify-center bg-[var(--surface)] p-4">
       <div className="card-gradient p-8 rounded-lg shadow-custom-lg max-w-md w-full">
         <div className="flex items-center justify-center space-x-2 mb-6">
-          <Image src="/logo_transparent_svg.svg" alt="CSM Dynamics Logo" width={28} height={28} className="h-7 w-7" />
+          <Image src="/logo_transparent.png" alt="CSM Dynamics Logo" width={28} height={28} className="h-7 w-7" />
           <div className="flex items-center space-x-1">
             <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
             <h1 className="text-xl font-light text-[var(--text-primary)]">Dynamics</h1>

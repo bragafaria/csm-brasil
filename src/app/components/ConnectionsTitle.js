@@ -39,7 +39,7 @@ export default function ConnectionsTitle() {
   return (
     <div className="relative z-10 text-center">
       <div className="flex items-center justify-center gap-1 mb-10">
-        <img src="/logo_transparent_svg.svg" alt="CSM Dynamics Logo" className="h-8 md:h-10 w-auto" />
+        <img src="/logo_transparent.png" alt="CSM Dynamics Logo" className="h-8 md:h-10 w-auto" />
         <h3 className="text-2xl md:text-4xl font-bold ml-2 tracking-widest text-[var(--primary)]">CSM</h3>
         <h3 className="text-2xl md:text-4xl font-base tracking-widest text-gray-400">
           Dynamics
