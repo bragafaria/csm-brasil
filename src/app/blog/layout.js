@@ -78,7 +78,7 @@ export default function BlogLayout({ children }) {
               className="flex items-center space-x-2 absolute left-1/2 -translate-x-1/2 lg:relative lg:left-0 lg:translate-x-0"
             >
               <Image
-                src="/logo_transparent_svg.svg"
+                src="/logo_transparent.png"
                 alt="CSM Blog Logo"
                 width={28}
                 height={28}
