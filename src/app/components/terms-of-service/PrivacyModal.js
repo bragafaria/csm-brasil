@@ -593,11 +593,13 @@ export default function PrivacyModal({ onClose }) {
             </p>
             <div className="text-base leading-relaxed space-y-1">
               <p className="text-base leading-relaxed">
-                <strong>CSM Global</strong>
+                <strong>CSM Global LTDA</strong>
                 <br />
                 Email: csm@csmdynamics.com
                 <br />
-                Address: CLN 113 C 116, Brasilia, DF 70.763-530 Brazil
+                Address: Avenida Marquês de São Vicente, 405, Sala 1804
+                <br />
+                São Paulo, SP 01139-001 Brazil
               </p>
             </div>
             <p className="text-base leading-relaxed mt-3">
