@@ -424,12 +424,15 @@ export default function TermsModal({ onClose }) {
 
           <section>
             <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-3">15. Contact Information</h2>
+
             <p className="text-base leading-relaxed">
-              <strong>CSM Global</strong>
+              <strong>CSM Global LTDA</strong>
               <br />
               Email: csm@csmdynamics.com
               <br />
-              Address: CLN 113 C 116, Brasilia, DF 70.763-530 Brazil
+              Address: Avenida Marquês de São Vicente, 405, Sala 1804
+              <br />
+              São Paulo, SP 01139-001 Brazil
             </p>
           </section>
 
