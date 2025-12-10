@@ -481,6 +481,86 @@ export default function Sales() {
                 </div>
               </motion.div>
             </div>
+            {/* Block 2: Visual CSM Sessions */}
+            <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8 mb-16 lg:mb-24">
+              {/* Description - Right on desktop, Second on mobile */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                className="flex flex-col justify-center space-y-6 lg:pl-8"
+              >
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold text-center lg:text-left text-white">CSM Sessions</h3>
+                  <p className="text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
+                    Explore how your mind operates across the five core dimensions of cognition: Information Processing,
+                    Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style.
+                  </p>
+                  <p className="text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
+                    Access visual charts, domain scores, and profile analysis.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Video - Left on desktop, First on mobile */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="order-5 lg:order-none group min-h-[400px]  flex flex-col space-y-4 lg:mb-0 mt-14 md:mt-20"
+              >
+                <div className="relative mx-auto">
+                  <video
+                    src="/csm-sessions.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    width={350}
+                    height={519}
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </motion.div>
+            </div>
+            {/* Block 3: Dashbaord */}
+            <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8">
+              {/* Video - Left on desktop, First on mobile */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
+                className="flex justify-center mb-8 lg:mb-0"
+              >
+                <div className="relative w-full max-w-[600px] ">
+                  <img src="/dashboard.png" alt="Life Blueprint Video" className="w-full max-w-[600px]" />
+
+                  <div className="absolute bottom-0 lefimgight-0 h-2 bg-gradient-to-t from-[var(--surface)] to-transparent z-20 pointer-events-none"></div>
+                </div>
+              </motion.div>
+
+              {/* Description - Right on desktop, Second on mobile */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
+                className="flex flex-col justify-center space-y-6 lg:pl-8"
+              >
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold text-center lg:text-left text-white">Lifetime Dashboard Access</h3>
+                  <p className="text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
+                    The Cognitive Spectrum Model (CSM) is a modern personality framework that maps how your mind is
+                    wired. Our algorithm reveals the unique cognitive stack that drives your thoughts and decisions.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
