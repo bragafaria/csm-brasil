@@ -287,7 +287,7 @@ export default function Sales() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="pb-16 pt-2 md:pb-16 md:pt-4 px-4 bg-[var(--surface-variant)]">
+      <section id="how-it-works" className="pb-16 pt-2 md:pb-2 md:pt-4 px-4 bg-[var(--surface-variant)]">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 section-header">
             <h2 className="text-4xl font-bold mb-6">
@@ -342,7 +342,7 @@ export default function Sales() {
             </button>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+          {/* <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {[
               { icon: Shield, text: "Secure & Private" },
               { icon: Award, text: "95% Report Clearer Insights" },
@@ -354,209 +354,200 @@ export default function Sales() {
                 <p className="text-sm font-medium">{badge.text}</p>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
       {/* What's Inside Section */}
       <section
         id="whats-inside"
-        className="pt-16 md:py-16 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]"
+        className="pt-8 pb-12 sm:pt-12 sm:pb-16 md:pt-16 md:pb-20 lg:py-24 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold my-6 text-white">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white">
               A Comprehensive Guide
-              <br /> to <span className="text-[var(--accent)] ">Your Relationship</span>
+              <br /> to <span className="text-[var(--accent)]">Your Relationship</span>
             </h2>
-            <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
               Personality {`isn't a box. It's`} a spectrum of how your mind actually works. CSM shows you where you
               shine, where you stretch, and how you connect.
             </p>
           </div>
 
-          {/* FIXED RESPONSIVE LAYOUT */}
-          <div className="max-w-4xl mx-auto w-full">
-            {/* Block 1: CAS Video + Description */}
-            <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8 mb-16 lg:mb-24">
-              {/* Video - Left on desktop, First on mobile */}
+          <div className="max-w-4xl mx-auto w-full space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
+            {/* Block 1: Visual Analytics */}
+            <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-                className="flex justify-center"
+                className="flex justify-center mb-6 sm:mb-8 lg:mb-0"
               >
-                <img src="/pgraph.png" alt="Visual Analytics Graph" className="w-full max-w-[250px]" />
+                <img
+                  src="/pgraph.png"
+                  alt="Visual Analytics Graph"
+                  className="w-full max-w-[200px] sm:max-w-[220px] md:max-w-[250px]"
+                />
               </motion.div>
 
-              {/* Description - Left on desktop, First on mobile */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-                className="flex flex-col justify-center space-y-6 lg:pr-8 mb-8 lg:mb-0"
+                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pr-8 px-4 sm:px-0"
               >
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold text-center lg:text-left text-white">Visual Analytics</h3>
-                  <p className="text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
-                    The five CSM dimensions give you a precise and deep understanding of how you process information,
-                    make decisions, and interact with others. This clarity helps you identify strengths, uncover
-                    weaknesses, and pursue growth with greater purpose.
+                <div className="space-y-3 sm:space-y-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-center lg:text-left text-white">
+                    Visual Analytics
+                  </h3>
+                  <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
+                    CSM Visual Analytics places both partners side-by-side so you can clearly see how each of you
+                    perceives the world and makes decisions, instantly spotting friction points while watching your
+                    shared strengths and individual differences light up in real time.
                   </p>
                 </div>
               </motion.div>
             </div>
 
-            {/* Block 2: Visual Analytics Description + Graph */}
-            <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8 mb-16 lg:mb-24">
-              {/* Description - Right on desktop, Second on mobile */}
+            {/* Block 2: Compatibility Risk Ranking */}
+            <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8">
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-                className="flex flex-col justify-center space-y-6 lg:pl-8"
+                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pl-8 mb-6 sm:mb-8 lg:mb-0 px-4 sm:px-0 lg:order-1"
               >
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold text-center lg:text-left text-white">Compatibility Risk Ranking</h3>
-                  <p className="text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
-                    Explore how your mind operates across the five core dimensions of cognition: Information Processing,
-                    Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style.
-                  </p>
-                  <p className="text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
-                    Access visual charts, domain scores, and profile analysis.
+                <div className="space-y-3 sm:space-y-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-center lg:text-left text-white">
+                    Compatibility Risk Ranking
+                  </h3>
+                  <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
+                    CSM Compatibility Risk Ranking gives you a clear{" "}
+                    <span className="font-bold">Compatibility Alignment Score (CAS)</span>, revealing which dimension
+                    creates the most friction and where small adjustments can lead to major breakthroughs. Most couples
+                    discover their real risk {`isn't`} where they expected, and improving just the top one or two areas
+                    often transforms the relationship quickly.
                   </p>
                 </div>
               </motion.div>
 
-              {/* Video - Left on desktop, First on mobile */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
-                className="flex justify-center mb-8 lg:mb-0"
+                className="flex justify-center lg:order-2"
               >
-                <div className="relative w-full max-w-[350px] ">
-                  <img src="/rank.png" alt="Life Blueprint Video" className="w-full max-w-[350px]" />
-
-                  <div className="absolute bottom-0 lefimgight-0 h-2 bg-gradient-to-t from-[var(--surface)] to-transparent z-20 pointer-events-none"></div>
+                <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[350px]">
+                  <img src="/rank.png" alt="Life Blueprint Video" className="w-full" />
+                  <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-t from-[var(--surface)] to-transparent z-20 pointer-events-none"></div>
                 </div>
               </motion.div>
             </div>
 
-            {/* Block 3: Brain Video + Blueprint Description */}
+            {/* Block 3: 10 Life Area Challenges */}
             <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8">
-              {/* Video - Left on desktop, First on mobile */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
-                className="flex justify-center mb-8 lg:mb-0"
+                className="flex justify-center mb-6 sm:mb-8 lg:mb-0"
               >
-                <div className="relative w-full max-w-[600px] border border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)]">
-                  <img src="/life.png" alt="Life Blueprint Video" className="w-full max-w-[600px]" />
-
-                  <div className="absolute bottom-0 lefimgight-0 h-2 bg-gradient-to-t from-[var(--surface)] to-transparent z-20 pointer-events-none"></div>
+                <div className="relative w-full max-w-[320px] sm:max-w-[420px] md:max-w-[520px] lg:max-w-[600px] border border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)]">
+                  <img src="/life.png" alt="Life Blueprint Video" className="w-full" />
+                  <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-t from-[var(--surface)] to-transparent z-20 pointer-events-none"></div>
                 </div>
               </motion.div>
 
-              {/* Description - Right on desktop, Second on mobile */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
-                className="flex flex-col justify-center space-y-6 lg:pl-8"
+                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pl-8 px-4 sm:px-0"
               >
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold text-center lg:text-left text-white">10 Life Area Challenges</h3>
-                  <p className="text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
-                    The Cognitive Spectrum Model (CSM) is a modern personality framework that maps how your mind is
-                    wired. Our algorithm reveals the unique cognitive stack that drives your thoughts and decisions.
+                <div className="space-y-3 sm:space-y-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-center lg:text-left text-white">
+                    10 Life Area Challenges
+                  </h3>
+                  <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
+                    CSM goes far beyond {`"you think differently"`} by showing how your unique cognitive patterns play
+                    out across the ten areas. In each domain, you see exactly where your preferences clash or overwhelm
+                    the other, making it easy to apply small adjustments that turn daily friction into effortless
+                    teamwork.
                   </p>
                 </div>
               </motion.div>
             </div>
-            {/* Block 2: Visual CSM Sessions */}
-            <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8 mb-16 lg:mb-24">
-              {/* Description - Right on desktop, Second on mobile */}
+
+            {/* Block 4: CSM Sessions */}
+            <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8">
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-                className="flex flex-col justify-center space-y-6 lg:pl-8"
+                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pl-8 mb-6 sm:mb-8 lg:mb-0 px-4 sm:px-0 lg:order-1"
               >
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold text-center lg:text-left text-white">CSM Sessions</h3>
-                  <p className="text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
-                    Explore how your mind operates across the five core dimensions of cognition: Information Processing,
-                    Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style.
-                  </p>
-                  <p className="text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
-                    Access visual charts, domain scores, and profile analysis.
+                <div className="space-y-3 sm:space-y-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-center lg:text-left text-white">CSM Sessions</h3>
+                  <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
+                    Whenever a disagreement, decision, or moment of disconnect appears, just open a private CSM Session,
+                    describe {`what's`} happening, and a Certified CSM-Expert delivers a personalized report built for
+                    your exact cognitive profiles: fast, precise, and fully private.
                   </p>
                 </div>
               </motion.div>
 
-              {/* Video - Left on desktop, First on mobile */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="order-5 lg:order-none group min-h-[400px]  flex flex-col space-y-4 lg:mb-0 mt-14 md:mt-20"
+                className="flex justify-center lg:order-2"
               >
-                <div className="relative mx-auto">
-                  <video
-                    src="/csm-sessions.mp4"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    width={350}
-                    height={519}
-                  >
+                <div className="relative mx-auto w-full max-w-[280px] sm:max-w-[320px] md:max-w-[350px]">
+                  <video src="/csm-sessions.mp4" autoPlay muted loop playsInline preload="metadata" className="w-full">
                     Your browser does not support the video tag.
                   </video>
                 </div>
               </motion.div>
             </div>
-            {/* Block 3: Dashbaord */}
+
+            {/* Block 5: Lifetime Dashboard Access */}
             <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8">
-              {/* Video - Left on desktop, First on mobile */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
-                className="flex justify-center mb-8 lg:mb-0"
+                className="flex justify-center mb-6 sm:mb-8 lg:mb-0"
               >
-                <div className="relative w-full max-w-[600px] ">
-                  <img src="/dashboard.png" alt="Life Blueprint Video" className="w-full max-w-[600px]" />
-
-                  <div className="absolute bottom-0 lefimgight-0 h-2 bg-gradient-to-t from-[var(--surface)] to-transparent z-20 pointer-events-none"></div>
+                <div className="relative w-full max-w-[320px] sm:max-w-[420px] md:max-w-[520px] lg:max-w-[600px]">
+                  <img src="/dashboard.png" alt="Life Blueprint Video" className="w-full" />
+                  <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-t from-[var(--surface)] to-transparent z-20 pointer-events-none"></div>
                 </div>
               </motion.div>
 
-              {/* Description - Right on desktop, Second on mobile */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
-                className="flex flex-col justify-center space-y-6 lg:pl-8"
+                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pl-8 px-4 sm:px-0"
               >
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold text-center lg:text-left text-white">Lifetime Dashboard Access</h3>
-                  <p className="text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
-                    The Cognitive Spectrum Model (CSM) is a modern personality framework that maps how your mind is
-                    wired. Our algorithm reveals the unique cognitive stack that drives your thoughts and decisions.
+                <div className="space-y-3 sm:space-y-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-center lg:text-left text-white">
+                    Lifetime Dashboard Access
+                  </h3>
+                  <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
+                    You get permanent, lifetime access to your private dashboard. All your personal profiles, your
+                    complete couple report, and every CSM Session are saved forever for quick and easy reference.
                   </p>
                 </div>
               </motion.div>
