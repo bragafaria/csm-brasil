@@ -24,7 +24,10 @@ import {
   RefreshCw,
 } from "lucide-react";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
+import TermsModal from "@/app/components/terms-of-service/TermsModal";
+import PrivacyModal from "@/app/components/terms-of-service/PrivacyModal";
+import RefundModal from "@/app/components/terms-of-service/RefundModal";
 
 export default function Sales() {
   const { typeCode } = useParams();
@@ -33,6 +36,9 @@ export default function Sales() {
   const [expandedFAQ, setExpandedFAQ] = useState(null);
   const [email, setEmail] = useState("");
   const [isEmailSubmitted, setIsEmailSubmitted] = useState(false);
+  const [showTermsModal, setShowTermsModal] = useState(false);
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+  const [showRefundModal, setShowRefundModal] = useState(false);
 
   useEffect(() => {
     if (typeCode) {
@@ -80,9 +86,19 @@ export default function Sales() {
 
   const faqs = [
     {
+      question: "What's the refund policy?",
+      answer:
+        "We offer a 14-day satisfaction guarantee, no questions asked. If you're not completely satisfied with your Couple's Insights Report, we'll provide a full refund. We're confident in the value CSM provides to couples.",
+    },
+    {
+      question: "Are CSM Sessions therapy?",
+      answer:
+        "CSM Sessions are not a therapeutic tool and does not diagnose or treat mental health conditions. It is a self-awareness and personal growth service designed to provide structured insights and strategies for relationships and life challenges. Many users combine it with counseling or coaching, but it is fully effective as a standalone growth tool. Our services are designed for personal growth, self-reflection, and relationship insights only.",
+    },
+    {
       question: "Is CSM scientifically legit, or just another buzzword quiz?",
       answer:
-        "The Cognitive Spectrum Model is built on established psychological research, combining elements from cognitive science, behavioral psychology, and systems theory. Unlike pop psychology quizzes, CSM uses psychometrically validated questions and has been tested with over 25,000 individuals to ensure reliable, actionable insights.",
+        "The Cognitive Spectrum Model is built on established psychological research, combining elements from cognitive science, behavioral psychology, and systems theory. Unlike pop psychology quizzes, CSM uses psychometrically validated questions and has been tested with over 25,000 couples to ensure reliable, actionable insights.",
     },
     {
       question: "What is the Cognitive Spectrum Model (CSM), and why should I care?",
@@ -105,39 +121,9 @@ export default function Sales() {
         "CSM doesn't predict the future, but it reveals patterns in how you and your partner approach life's challenges. Think of it as a GPS for your relationship,it shows you where you are now and suggests the best routes forward based on your unique dynamic.",
     },
     {
-      question: "How does the free assessment work?",
-      answer:
-        "The free assessment takes 10-15 minutes and identifies your individual cognitive archetype. You'll get immediate insights about your processing style. To unlock the full couple's report, you'll invite your partner to take their assessment, and our system generates a comprehensive analysis of your combined dynamic.",
-    },
-    {
-      question: "Do I need my partner to start?",
-      answer:
-        "No! Start with the free individual assessment to discover your own archetype. You can invite your partner later to unlock the full couple's report. Many people find their individual insights so valuable that their partner becomes curious to participate.",
-    },
-    {
       question: "Can CSM predict if we're soulmates or just spot potential issues?",
       answer:
         "CSM focuses on compatibility and growth opportunities rather than making destiny predictions. It shows you where you naturally complement each other and where you might face challenges, giving you tools to navigate both successfully.",
-    },
-    {
-      question: "How quickly will I get my results?",
-      answer:
-        "Individual results are instant after completing the free assessment. The full couple's report is generated within 24 hours after both partners complete their assessments. You'll receive an email notification when it's ready.",
-    },
-    {
-      question: "Is CSM therapy or coaching?",
-      answer:
-        "CSM is an assessment tool that provides insights and recommendations. While it includes a complimentary coaching session, it's not a substitute for therapy. Think of it as a roadmap that can enhance any relationship work you're already doing.",
-    },
-    {
-      question: "What if my partner doesn't want to participate?",
-      answer:
-        "Start with your free individual assessment! You'll gain valuable self-insights, and many partners become interested once they see the quality of results. The individual report alone provides significant value for personal growth and relationship awareness.",
-    },
-    {
-      question: "What's the refund policy?",
-      answer:
-        "We offer a 14-day satisfaction guarantee, no questions asked. If you're not completely satisfied with your Couple's Insights Report, we'll provide a full refund. We're confident in the value CSM provides to couples.",
     },
   ];
 
@@ -202,11 +188,11 @@ export default function Sales() {
       <section id="home" className="pt-24 pb-0 md:pb-16 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-0 md:gap-6 lg:gap-12 items-center">
-            <div className="section-header">
-              <div className="bg-[var(--accent)]/20 text-[var(--accent)] px-4 py-2 rounded-full inline-flex items-center mb-6">
+            <div className="section-header md:mt-10 lg:mt-0">
+              {/* <div className="bg-[var(--accent)]/20 text-[var(--accent)] px-4 py-2 rounded-full inline-flex items-center mb-6">
                 <Star className="h-4 w-4 mr-2" />
                 Limited-time: Get 10% off with code FUTURE10
-              </div>
+              </div> */}
               <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
                 Chart the Future of Your
                 <span className="text-[var(--accent)]"> Relationship</span>
@@ -226,7 +212,7 @@ export default function Sales() {
                 </button>
               </div>
             </div>
-            <div className="relative flex flex-col w-full pb-8  bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 rounded-lg overflow-hidden items-center justify-center mt-6">
+            <div className="relative flex flex-col w-full pb-12 md:pb-8 bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 rounded-lg overflow-hidden items-center justify-center mt-6">
               <img
                 src="/note.png"
                 className="w-full h-full object-contain md:object-cover lg:object-contain"
@@ -371,20 +357,19 @@ export default function Sales() {
               <br /> to <span className="text-[var(--accent)]">Your Relationship</span>
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
-              Personality {`isn't a box. It's`} a spectrum of how your mind actually works. CSM shows you where you
-              shine, where you stretch, and how you connect.
+              Your personalized roadmap for alignment, clarity, and lasting connection.
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto w-full space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
-            {/* Block 1: Visual Analytics */}
+            {/* Block 1: Visual Analytics - Image first on mobile, then text */}
             <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-                className="flex justify-center mb-6 sm:mb-8 lg:mb-0"
+                className="flex justify-center mb-6 sm:mb-8 lg:mb-0 order-1 lg:order-1"
               >
                 <img
                   src="/pgraph.png"
@@ -398,13 +383,13 @@ export default function Sales() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pr-8 px-4 sm:px-0"
+                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pr-8 px-4 sm:px-0 order-2 lg:order-2"
               >
                 <div className="space-y-3 sm:space-y-4">
                   <h3 className="text-xl sm:text-2xl font-bold text-center lg:text-left text-white">
-                    Visual Analytics
+                    Visual Analytics & Charts
                   </h3>
-                  <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
+                  <p className="text-sm sm:text-base mx-auto md:max-w-md text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
                     CSM Visual Analytics places both partners side-by-side so you can clearly see how each of you
                     perceives the world and makes decisions, instantly spotting friction points while watching your
                     shared strengths and individual differences light up in real time.
@@ -413,51 +398,51 @@ export default function Sales() {
               </motion.div>
             </div>
 
-            {/* Block 2: Compatibility Risk Ranking */}
+            {/* Block 2: Compatibility Risk Ranking - Image first on mobile, text below */}
             <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8">
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pl-8 mb-6 sm:mb-8 lg:mb-0 px-4 sm:px-0 lg:order-1"
-              >
-                <div className="space-y-3 sm:space-y-4">
-                  <h3 className="text-xl sm:text-2xl font-bold text-center lg:text-left text-white">
-                    Compatibility Risk Ranking
-                  </h3>
-                  <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
-                    CSM Compatibility Risk Ranking gives you a clear{" "}
-                    <span className="font-bold">Compatibility Alignment Score (CAS)</span>, revealing which dimension
-                    creates the most friction and where small adjustments can lead to major breakthroughs. Most couples
-                    discover their real risk {`isn't`} where they expected, and improving just the top one or two areas
-                    often transforms the relationship quickly.
-                  </p>
-                </div>
-              </motion.div>
-
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
-                className="flex justify-center lg:order-2"
+                className="flex justify-center mb-6 sm:mb-8 lg:mb-0 order-1 lg:order-2"
               >
                 <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[350px]">
                   <img src="/rank.png" alt="Life Blueprint Video" className="w-full" />
                   <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-t from-[var(--surface)] to-transparent z-20 pointer-events-none"></div>
                 </div>
               </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pl-8 px-4 sm:px-0 order-2 lg:order-1"
+              >
+                <div className="space-y-3 sm:space-y-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-center lg:text-left text-white">
+                    Compatibility Risk Ranking
+                  </h3>
+                  <p className="text-sm sm:text-base mx-auto md:max-w-md text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
+                    CSM Compatibility Risk Ranking gives you a clear{" "}
+                    <span className="font-bold">Compatibility Alignment Scores (CAS)</span>, revealing which dimension
+                    creates the most friction and where small adjustments can lead to major breakthroughs. Most couples
+                    discover their real risk {`isn't`} where they expected, and improving just the top one or two areas
+                    often transforms the relationship quickly.
+                  </p>
+                </div>
+              </motion.div>
             </div>
 
-            {/* Block 3: 10 Life Area Challenges */}
+            {/* Block 3: 10 Life Area Challenges - Image first on mobile, text below */}
             <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
-                className="flex justify-center mb-6 sm:mb-8 lg:mb-0"
+                className="flex justify-center mb-6 sm:mb-8 lg:mb-0 order-1 lg:order-1"
               >
                 <div className="relative w-full max-w-[320px] sm:max-w-[420px] md:max-w-[520px] lg:max-w-[600px] border border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)]">
                   <img src="/life.png" alt="Life Blueprint Video" className="w-full" />
@@ -470,13 +455,13 @@ export default function Sales() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
-                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pl-8 px-4 sm:px-0"
+                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pl-8 px-4 sm:px-0 order-2 lg:order-2"
               >
                 <div className="space-y-3 sm:space-y-4">
                   <h3 className="text-xl sm:text-2xl font-bold text-center lg:text-left text-white">
                     10 Life Area Challenges
                   </h3>
-                  <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
+                  <p className="text-sm sm:text-base mx-auto md:max-w-md text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
                     CSM goes far beyond {`"you think differently"`} by showing how your unique cognitive patterns play
                     out across the ten areas. In each domain, you see exactly where your preferences clash or overwhelm
                     the other, making it easy to apply small adjustments that turn daily friction into effortless
@@ -486,31 +471,14 @@ export default function Sales() {
               </motion.div>
             </div>
 
-            {/* Block 4: CSM Sessions */}
+            {/* Block 4: CSM Sessions - Video first on mobile, text below */}
             <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8">
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pl-8 mb-6 sm:mb-8 lg:mb-0 px-4 sm:px-0 lg:order-1"
-              >
-                <div className="space-y-3 sm:space-y-4">
-                  <h3 className="text-xl sm:text-2xl font-bold text-center lg:text-left text-white">CSM Sessions</h3>
-                  <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
-                    Whenever a disagreement, decision, or moment of disconnect appears, just open a private CSM Session,
-                    describe {`what's`} happening, and a Certified CSM-Expert delivers a personalized report built for
-                    your exact cognitive profiles: fast, precise, and fully private.
-                  </p>
-                </div>
-              </motion.div>
-
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="flex justify-center lg:order-2"
+                className="flex justify-center mb-6 sm:mb-8 lg:mb-0 order-1 lg:order-2"
               >
                 <div className="relative mx-auto w-full max-w-[280px] sm:max-w-[320px] md:max-w-[350px]">
                   <video src="/csm-sessions.mp4" autoPlay muted loop playsInline preload="metadata" className="w-full">
@@ -518,16 +486,34 @@ export default function Sales() {
                   </video>
                 </div>
               </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pl-8 px-4 sm:px-0 order-2 lg:order-1"
+              >
+                <div className="space-y-3 sm:space-y-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-center lg:text-left text-white">CSM Sessions</h3>
+                  <p className="text-sm sm:text-base mx-auto md:max-w-md text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
+                    Whenever a disagreement, decision, or moment of disconnect appears, just open a private CSM Session,
+                    describe {`what's`} happening, and a Certified CSM-Expert delivers a personalized report built for
+                    your exact cognitive profiles: fast, precise, and fully private. Your first session is free with
+                    every Couple Insights report.
+                  </p>
+                </div>
+              </motion.div>
             </div>
 
-            {/* Block 5: Lifetime Dashboard Access */}
+            {/* Block 5: Lifetime Dashboard Access - Image first on mobile, text below */}
             <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
-                className="flex justify-center mb-6 sm:mb-8 lg:mb-0"
+                className="flex justify-center mb-6 sm:mb-8 lg:mb-0 order-1 lg:order-1"
               >
                 <div className="relative w-full max-w-[320px] sm:max-w-[420px] md:max-w-[520px] lg:max-w-[600px]">
                   <img src="/dashboard.png" alt="Life Blueprint Video" className="w-full" />
@@ -540,13 +526,13 @@ export default function Sales() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
-                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pl-8 px-4 sm:px-0"
+                className="flex flex-col justify-center space-y-3 sm:space-y-4 md:space-y-6 lg:pl-8 px-4 sm:px-0 order-2 lg:order-2"
               >
                 <div className="space-y-3 sm:space-y-4">
                   <h3 className="text-xl sm:text-2xl font-bold text-center lg:text-left text-white">
                     Lifetime Dashboard Access
                   </h3>
-                  <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
+                  <p className="text-sm sm:text-base mx-auto md:max-w-md text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
                     You get permanent, lifetime access to your private dashboard. All your personal profiles, your
                     complete couple report, and every CSM Session are saved forever for quick and easy reference.
                   </p>
@@ -816,6 +802,9 @@ export default function Sales() {
           </div>
         </div>
       </footer>
+      {showTermsModal && <TermsModal onClose={() => setShowTermsModal(false)} />}
+      {showPrivacyModal && <PrivacyModal onClose={() => setShowPrivacyModal(false)} />}
+      {showRefundModal && <RefundModal onClose={() => setShowRefundModal(false)} />}
     </div>
   );
 }

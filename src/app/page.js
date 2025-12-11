@@ -931,7 +931,7 @@ export default function Home() {
               {
                 question: "Is CSM therapy?",
                 answer:
-                  "No. CSM is not a therapeutic tool and does not diagnose or treat mental health conditions. It is a self-awareness and personal growth framework designed to provide structured insights and strategies for relationships and life challenges. Many users combine it with counseling or coaching, but it is fully effective as a standalone growth tool. Our services are designed for personal growth, self-reflection, and relationship insight only.",
+                  "No. CSM is not a therapeutic tool and does not diagnose or treat mental health conditions. It is a self-awareness and personal growth framework designed to provide structured insights and strategies for relationships and life challenges. Many users combine it with counseling or coaching, but it is fully effective as a standalone growth tool. Our services are designed for personal growth, self-reflection, and relationship insights only.",
               },
             ].map((faq, index) => (
               <div key={index} className="card-gradient rounded-lg overflow-hidden">
