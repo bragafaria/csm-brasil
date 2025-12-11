@@ -892,7 +892,7 @@ export default function Home() {
               {
                 question: "How is CSM different from MBTI, Enneagram, or Big Five?",
                 answer:
-                  "While MBTI categorizes people into 16 types, Enneagram focuses on motivations, and the Big Five measures broad traits, CSM provides 32 archetypes supported by spectrum-based analyses for greater precision. By integrating cognitive patterns with real-world interpersonal insights, CSM provides actionable strategies for personal growth and relationship success that other personality frameworks don’t. CSM is particularly valuable for improving self-awareness, enhancing communication, and understanding compatibility in relationships or other interpersonal contexts.",
+                  "While MBTI categorizes people into 16 types, Enneagram focuses on motivations, and the Big Five measures broad traits, CSM provides 32 archetypes supported by spectrum-based analysis for greater precision. By integrating cognitive patterns with real-world interpersonal insights, CSM provides actionable strategies for personal growth and relationship success that other personality frameworks don’t. CSM is particularly valuable for improving self-awareness, enhancing communication, and understanding compatibility in relationships or other interpersonal contexts.",
               },
               {
                 question: "Why should I trust CSM over free online quizzes?",
