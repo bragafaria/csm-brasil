@@ -11,14 +11,15 @@ import {
   MessageCircle,
   TrendingUp,
   Shield,
+  List,
   Star,
   ChevronDown,
   ChevronUp,
-  Play,
+  Scale,
   BarChart3,
   Target,
   Lock,
-  Award,
+  BookHeart,
   Clock,
   RefreshCw,
 } from "lucide-react";
@@ -200,7 +201,7 @@ export default function Sales() {
       {/* Hero Section */}
       <section id="home" className="pt-24 pb-0 md:pb-16 px-4">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-0 md:gap-12 items-center">
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-0 md:gap-6 lg:gap-12 items-center">
             <div className="section-header">
               <div className="bg-[var(--accent)]/20 text-[var(--accent)] px-4 py-2 rounded-full inline-flex items-center mb-6">
                 <Star className="h-4 w-4 mr-2" />
@@ -225,7 +226,7 @@ export default function Sales() {
                 </button>
               </div>
             </div>
-            <div className="relative flex flex-col w-full h-96 bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 rounded-lg overflow-hidden items-center justify-center mt-6">
+            <div className="relative flex flex-col w-full pb-8  bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 rounded-lg overflow-hidden items-center justify-center mt-6">
               <img
                 src="/note.png"
                 className="w-full h-full object-contain md:object-cover lg:object-contain"
@@ -361,7 +362,7 @@ export default function Sales() {
       {/* What's Inside Section */}
       <section
         id="whats-inside"
-        className="pt-8 pb-12 sm:pt-12 sm:pb-16 md:pt-16 md:pb-20 lg:py-24 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]"
+        className="pt-4 pb-12 sm:pb-16 md:pt-16 md:py-16 bg-gradient-to-b from-[var(--surface-variant)] to-[var(--surface)]"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
@@ -584,10 +585,13 @@ export default function Sales() {
                   {[
                     { icon: Clock, text: "Lifetime Dashboard Access" },
                     { icon: BarChart3, text: "Visual Analytics & Charts" },
-                    { icon: Target, text: "10 Life Areas Analysis" },
+                    { icon: Target, text: "10 Life Areas Challenges" },
                     { icon: MessageCircle, text: "Free CSM Session" },
+                    { icon: List, text: "Compabitility Alignment Scores" },
+                    { icon: Users, text: "How You Connect Analysis" },
+                    { icon: BookHeart, text: "Personality Reports" },
+                    { icon: Scale, text: "Couple's Strengths and Weaknesses" },
                     { icon: RefreshCw, text: "14-Day Money-Back Guarantee" },
-                    { icon: Shield, text: "Secure & Private" },
                   ].map((feature, index) => (
                     <div key={index} className="flex items-center space-x-3">
                       <feature.icon className="h-5 w-5 text-[var(--accent)]" />
