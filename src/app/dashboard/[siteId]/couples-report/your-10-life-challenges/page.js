@@ -56,7 +56,7 @@ export default function LifeChallengesPageRoute() {
     );
   }
   const pageTitle = `Life Challenges`;
-  const subHeading = `Explore the natural chemistry and connection patterns between ${data.partnerA.name} and ${data.partnerB.name}.`;
+  const subHeading = `Discover the natural friction points and growth opportunities between ${data.partnerA.name} and ${data.partnerB.name} across the 10 core areas of shared life.`;
 
   return (
     <div className="container mx-auto p-6 max-w-4xl">

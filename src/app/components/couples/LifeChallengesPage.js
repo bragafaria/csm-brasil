@@ -10,9 +10,13 @@ import {
   Haze,
   TreePalm,
   Trophy,
+  ArrowRight,
 } from "lucide-react";
+import { useParams, useRouter } from "next/navigation";
 
 export default function LifeChallengesPage({ lifeChallenges }) {
+  const { siteId } = useParams();
+  const router = useRouter();
   const areas = [
     { key: "careerAndPurposeChallenges", title: "Career & Purpose", icon: Building2 },
     { key: "wealthAndProsperityChallenges", title: "Wealth & Prosperity", icon: HandCoins },
@@ -86,21 +90,33 @@ export default function LifeChallengesPage({ lifeChallenges }) {
                 })}
               </ul>
             </div>
-
             {/* RESOLUTION STRATEGIES */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Resolution Strategies</h3>
-              <ol className="list-decimal pl-6 space-y-2 text-lg text-[var(--text-secondary)]">
-                {c.resolutionStrategies.map((strat, i) => (
-                  <li key={i}>{strat}</li>
-                ))}
-              </ol>
-            </div>
+              <h3 className="text-xl font-semibold text-[var(--text-primary)] mt-4 mb-10">Resolution Strategies</h3>
 
-            {/* GROWTH OUTCOME */}
-            <div>
-              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Growth Outcome</h3>
-              <p className="text-lg italic text-[var(--text-secondary)]">{c.growthOutcome}</p>
+              <div className="bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl p-6 md:p-8 border border-[var(--border)] text-center">
+                <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-6">
+                  <strong>{area.title}</strong>
+                </p>
+
+                <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">
+                  Want clear, step-by-step strategies written exclusively for the two of you, based on your exact
+                  archetypes and current situation?
+                </p>
+
+                <button
+                  onClick={() => router.push(`/dashboard/${siteId}/coaching/sessions`)}
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-[var(--primary)] hover:bg-[var(--accent)] text-white font-semibold text-medium md:text-lg rounded-xl shadow-lg transition-all hover:shadow-xl hover:scale-105"
+                >
+                  Book Your CSM Session
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+
+                <p className="text-sm text-[var(--text-secondary)]/80 mt-5 italic">
+                  A Certified CSM-Expert will deliver a fully personalized report with practical resolution strategies
+                  tailored just for you.
+                </p>
+              </div>
             </div>
           </section>
         );
