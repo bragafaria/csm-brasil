@@ -1257,6 +1257,43 @@ export default function PersonalReportPage() {
                       </div>
                     </div>
                   </div>
+                  {/* SUMMARY BASED ON DOMINANCE LEVEL */}
+                  <div className="mt-6 bg-[var(--surface3)] rounded-2xl px-2 md:px-0 py-6 border-t border-[var(--border)]">
+                    <p className="text-base leading-relaxed text-[var(--text-secondary)] italic text-center max-w-2xl mx-auto">
+                      {dimIdx === 0 && "Information Processing"}
+                      {dimIdx === 1 && "Decision-Making"}
+                      {dimIdx === 2 && "Energy Orientation"}
+                      {dimIdx === 3 && "Change Approach"}
+                      {dimIdx === 4 && "Interpersonal Style"} summary:{" "}
+                      <span className="font-semibold not-italic text-[var(--text-primary)]">
+                        {primaryPct <= 65 && (
+                          <>
+                            You have a <span className="text-green-400">Mild Preference</span> ({primaryPct}%{" "}
+                            {primaryPole}). This is the most balanced range. You naturally lean toward{" "}
+                            {primaryFull.toLowerCase()}, but you switch to the opposite pole often and comfortably. Most
+                            people with a Mild preference feel they can “go either way” depending on the situation.
+                          </>
+                        )}
+                        {primaryPct >= 66 && primaryPct <= 85 && (
+                          <>
+                            You have a <span className="text-yellow-400">Moderate Preference</span> ({primaryPct}%{" "}
+                            {primaryPole}). This is the “classic” clear-but-not-extreme lean:{" "}
+                            {primaryFull.toLowerCase()} is unmistakably your default mode and feels most natural, yet
+                            you can still access and use the opposite side without too much friction when needed.
+                          </>
+                        )}
+                        {primaryPct >= 86 && (
+                          <>
+                            You have a <span className="text-red-400">Strong Preference</span> ({primaryPct}%{" "}
+                            {primaryPole}).
+                            {primaryFull} is deeply wired into who you are, and it’s your automatic, effortless way of
+                            operating. The opposite pole ({secondaryFull.toLowerCase()}) tends to feel foreign or
+                            draining and usually only shows up under pressure or with deliberate effort.
+                          </>
+                        )}
+                      </span>
+                    </p>
+                  </div>
 
                   {/* PERSONALIZED PARAGRAPHS */}
                   <div className="mt-6 space-y-4 border-t border-[var(--border)] pt-6 px-2">

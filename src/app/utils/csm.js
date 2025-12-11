@@ -677,7 +677,7 @@ export const questions = [
     id: 62,
     dimension: 4,
     type: "likert",
-    text: "I’d rather fail alone than succeed in a group.",
+    text: "Even if the outcome is worse, I prefer projects where I have full control.",
     favoring: "A",
     reverse: false,
   },
@@ -710,7 +710,7 @@ export const questions = [
     text: "Credit for team success:",
     options: forcedOptions("H", "A", {
       strongP1: "Share praise equally, even if you did most work.",
-      strongP2: "Highlight your key contributions.",
+      strongP2: "Make sure everyone knows exactly which parts were my ideas and execution.",
       leanP1: "Thank team but note your role.",
       leanP2: "Accept praise but redirect to team.",
       balanced: "We succeeded together.",
