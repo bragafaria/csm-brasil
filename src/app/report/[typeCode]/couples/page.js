@@ -103,7 +103,7 @@ export default function Sales() {
     {
       question: "What is the Cognitive Spectrum Model (CSM), and why should I care?",
       answer:
-        "CSM maps how your mind processes information, makes decisions, and approaches life's domains. Instead of putting you in a box, it shows you as a spectrum across multiple cognitive dimensions. This helps couples understand not just what they do differently, but why,leading to deeper empathy and more effective communication.",
+        "CSM maps how your mind processes information, makes decisions, and approaches life's domains. Instead of putting you in a box, it shows you as a spectrum across multiple cognitive dimensions. This helps couples understand not just what they do differently, but why, leading to deeper empathy and more effective communication.",
     },
     {
       question: "How is CSM different from MBTI, Enneagram, or Big Five?",
@@ -118,7 +118,7 @@ export default function Sales() {
     {
       question: "Can CSM really 'read' my relationship like a mind reader?",
       answer:
-        "CSM doesn't predict the future, but it reveals patterns in how you and your partner approach life's challenges. Think of it as a GPS for your relationship,it shows you where you are now and suggests the best routes forward based on your unique dynamic.",
+        "CSM doesn't predict the future, but it reveals patterns in how you and your partner approach life's challenges. Think of it as a GPS for your relationship, it shows you where you are now and suggests the best routes forward based on your unique dynamic.",
     },
     {
       question: "Can CSM predict if we're soulmates or just spot potential issues?",
@@ -533,8 +533,8 @@ export default function Sales() {
                     Lifetime Dashboard Access
                   </h3>
                   <p className="text-sm sm:text-base mx-auto md:max-w-md text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
-                    You get permanent, lifetime access to your private dashboard. All your personal profiles, your
-                    complete couple report, and every CSM Session are saved forever for quick and easy reference.
+                    You get permanent, lifetime access to your dashboard. All your personal profiles, your complete
+                    couple report, and every CSM Session are saved forever for quick and easy reference.
                   </p>
                 </div>
               </motion.div>
@@ -569,14 +569,14 @@ export default function Sales() {
 
                 <div className="grid md:grid-cols-2 gap-4 mb-6">
                   {[
-                    { icon: Clock, text: "Lifetime Dashboard Access" },
-                    { icon: BarChart3, text: "Visual Analytics & Charts" },
                     { icon: Target, text: "10 Life Areas Challenges" },
-                    { icon: MessageCircle, text: "Free CSM Session" },
+                    { icon: BarChart3, text: "Visual Analytics & Charts" },
                     { icon: List, text: "Compabitility Alignment Scores" },
                     { icon: Users, text: "How You Connect Analysis" },
                     { icon: BookHeart, text: "Personality Reports" },
                     { icon: Scale, text: "Couple's Strengths and Weaknesses" },
+                    { icon: MessageCircle, text: "Free CSM Session" },
+                    { icon: Clock, text: "Lifetime Dashboard Access" },
                     { icon: RefreshCw, text: "14-Day Money-Back Guarantee" },
                   ].map((feature, index) => (
                     <div key={index} className="flex items-center space-x-3">

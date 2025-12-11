@@ -233,19 +233,26 @@ export default function Test() {
 
         {/* Likert Scale */}
         {q.type === "likert" && (
-          <div className="flex justify-between gap-2 mb-6">
-            {[1, 2, 3, 4, 5].map((v) => (
+          <div className="space-y-3 mb-6">
+            {[
+              { value: 1, label: "Strongly Disagree" },
+              { value: 2, label: "Disagree" },
+              { value: 3, label: "Somewhat Disagree" },
+              { value: 4, label: "Neutral" },
+              { value: 5, label: "Somewhat Agree" },
+              { value: 6, label: "Agree" },
+              { value: 7, label: "Strongly Agree" },
+            ].map(({ value, label }) => (
               <button
-                key={v}
-                onClick={() => handleAnswer(v)}
-                className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all ${
-                  answers[current] === v
-                    ? "btn-primary shadow-md"
+                key={value}
+                onClick={() => handleAnswer(value)}
+                className={`w-full py-3 px-4 rounded-lg text-left font-medium transition-all text-base ${
+                  answers[current] === value
+                    ? "btn-primary shadow-md ring-4 ring-[var(--primary)]/30"
                     : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[var(--surface-variant-hover)]"
                 }`}
-                aria-label={`Rate ${v} out of 5`}
               >
-                {v}
+                <span className="block mt-0.5 font-semibold">{label}</span>
               </button>
             ))}
           </div>
