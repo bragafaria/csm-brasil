@@ -435,7 +435,7 @@ export default function Sales() {
               </motion.div>
             </div>
 
-            {/* Block 3: 10 Life Area Challenges - Image first on mobile, text below */}
+            {/* Block 3: 10 Life-Area Challenges - Image first on mobile, text below */}
             <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-8">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
@@ -459,7 +459,7 @@ export default function Sales() {
               >
                 <div className="space-y-3 sm:space-y-4">
                   <h3 className="text-xl sm:text-2xl font-bold text-center lg:text-left text-white">
-                    10 Life Area Challenges
+                    10 Life-Area Challenges
                   </h3>
                   <p className="text-sm sm:text-base mx-auto md:max-w-md text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
                     CSM goes far beyond {`"you think differently"`} by showing how your unique cognitive patterns play
@@ -569,10 +569,10 @@ export default function Sales() {
 
                 <div className="grid md:grid-cols-2 gap-4 mb-6">
                   {[
-                    { icon: Target, text: "10 Life Areas Challenges" },
+                    { icon: Target, text: "10 Life-Area Challenges" },
                     { icon: BarChart3, text: "Visual Analytics & Charts" },
-                    { icon: List, text: "Compabitility Alignment Scores" },
-                    { icon: Users, text: "How You Connect Analysis" },
+                    { icon: List, text: "Compatibility Alignment Scores" },
+                    { icon: Users, text: "`How You Connect' Analysis" },
                     { icon: BookHeart, text: "Personality Reports" },
                     { icon: Scale, text: "Couple's Strengths and Weaknesses" },
                     { icon: MessageCircle, text: "Free CSM Session" },
