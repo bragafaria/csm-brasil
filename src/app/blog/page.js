@@ -1,8 +1,8 @@
-// app/blog/page.js
 import Link from "next/link";
 import { getPostsWithCategory, getCategories, getPostsByCategorySlug } from "@/app/lib/neon";
 import { format } from "date-fns";
-import { Heart, Sparkles, Flame, HeartOff, Newspaper, HatGlasses, Mail } from "lucide-react";
+import { Heart, Sparkles, Flame, HeartOff, Newspaper, HatGlasses } from "lucide-react";
+import Newsletter from "@/app/components/newsletter/subscribe/page"; // Import the component file, not the page
 
 export const revalidate = 86400;
 
@@ -18,9 +18,6 @@ export async function generateMetadata() {
   };
 }
 
-/* ------------------------------------------------------------------ */
-/*  Image fallback component – tiny, reusable, no extra deps          */
-/* ------------------------------------------------------------------ */
 function PostImage({ src, alt, className }) {
   if (!src) {
     return (
@@ -34,51 +31,10 @@ function PostImage({ src, alt, className }) {
   return <img src={src} alt={alt} className={`object-cover ${className}`} />;
 }
 
-/* ------------------------------------------------------------------ */
-/*  Newsletter Component                                              */
-/* ------------------------------------------------------------------ */
-function NewsletterSection() {
-  return (
-    <div className="my-20">
-      <div className="card-gradient rounded-3xl p-1 shadow-2xl">
-        <div className="bg-gradient-to-br from-[var(--primary)]/10 via-[var(--surface2)] to-[var(--accent)]/10 rounded-3xl p-8 md:p-12">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--primary)]/20 mb-6">
-              <Mail className="w-8 h-8 text-violet-400" />
-            </div>
-
-            <h3 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">Never Miss a Story</h3>
-
-            <p className="text-lg text-[var(--text-secondary)] mb-8">
-              Get weekly insights on relationships, personal growth, and wellness delivered straight to your inbox.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--primary)] transition-colors"
-              />
-              <button className="btn-primary px-6 py-3 rounded-lg font-semibold whitespace-nowrap flex items-center justify-center gap-2">
-                Subscribe
-                <Mail className="w-4 h-4" />
-              </button>
-            </div>
-
-            <p className="text-xs text-[var(--text-secondary)] mt-4">Join 10,000+ readers. Unsubscribe anytime.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
 export default async function BlogHome() {
   const featured = await getPostsWithCategory({ published: true, limit: 1 });
   const categories = await getCategories();
 
-  /* ---- category order ------------------------------------------------ */
   const categoryOrder = [
     "love-relationship",
     "self-wellness",
@@ -105,7 +61,6 @@ export default async function BlogHome() {
     return aIdx - bIdx;
   });
 
-  /* ---- icons (still used for the section header) ------------------- */
   const categoryIcons = {
     "love-relationship": <Heart className="w-10 h-10 text-violet-400" />,
     "self-wellness": <Sparkles className="w-10 h-10 text-violet-400" />,
@@ -161,7 +116,6 @@ export default async function BlogHome() {
                   </Link>
                 </div>
 
-                {/* FEATURED IMAGE */}
                 <div className="md:w-1/2 relative aspect-[16/9] md:aspect-auto">
                   <PostImage
                     src={featured[0].image_url}
@@ -177,10 +131,8 @@ export default async function BlogHome() {
 
       {/* CATEGORIES GRID */}
       <section className="mt-24 max-w-7xl mx-auto px-6 space-y-20">
-        {postsByCategory.map((cat, index) => {
+        {postsByCategory.map((cat) => {
           const Icon = categoryIcons[cat.slug] || <Heart className="w-10 h-10 text-[var(--primary)]" />;
-
-          // Show newsletter after "heartbreak-divorce" (index 2)
           const showNewsletterAfter = cat.slug === "heartbreak-divorce";
 
           return (
@@ -203,7 +155,6 @@ export default async function BlogHome() {
                   <Link key={post.id} href={`/blog/${post.category_slug}/${post.slug}`} className="group block">
                     <article className="card-gradient rounded-2xl p-1 h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
                       <div className="bg-[var(--surface2)] rounded-2xl p-5 h-full flex flex-col">
-                        {/* POST IMAGE */}
                         <div className="rounded-xl w-full aspect-[16/9] mb-4 overflow-hidden border border-[var(--border)]">
                           {post.image_url ? (
                             <img
@@ -236,7 +187,7 @@ export default async function BlogHome() {
               </div>
 
               {/* Newsletter section after heartbreak-divorce */}
-              {showNewsletterAfter && <NewsletterSection />}
+              {showNewsletterAfter && <Newsletter />}
             </div>
           );
         })}

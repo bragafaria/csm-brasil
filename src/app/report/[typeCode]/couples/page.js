@@ -28,6 +28,7 @@ import { motion } from "framer-motion";
 import TermsModal from "@/app/components/terms-of-service/TermsModal";
 import PrivacyModal from "@/app/components/terms-of-service/PrivacyModal";
 import RefundModal from "@/app/components/terms-of-service/RefundModal";
+import Newsletter from "@/app/components/newsletter/subscribe/page";
 
 export default function Sales() {
   const { typeCode } = useParams();
@@ -198,7 +199,7 @@ export default function Sales() {
                 <span className="text-[var(--accent)]"> Relationship</span>
               </h1>
               <p className="text-xl text-[var(--text-secondary)] mb-8 leading-relaxed">
-                The CSM {"Couple's"} Insight Report is a personalized guide to your relationship dynamic, grounded in
+                The CSM {`Couple's`} Insight Report is a personalized guide to your relationship dynamic, grounded in
                 modern psychology. Understand your combined strengths, navigate future challenges, and build a more
                 conscious connection.
               </p>
@@ -572,7 +573,7 @@ export default function Sales() {
                     { icon: Target, text: "10 Life-Area Challenges" },
                     { icon: BarChart3, text: "Visual Analytics & Charts" },
                     { icon: List, text: "Compatibility Alignment Scores" },
-                    { icon: Users, text: "`How You Connect' Analysis" },
+                    { icon: Users, text: "'How You Connect' Analysis" },
                     { icon: BookHeart, text: "Personality Reports" },
                     { icon: Scale, text: "Couple's Strengths and Weaknesses" },
                     { icon: MessageCircle, text: "Free CSM Session" },
@@ -715,33 +716,7 @@ export default function Sales() {
 
       {/*Newsletter*/}
       <section>
-        <div className="bg-gradient-to-br from-[var(--primary)]/10 via-[var(--surface2)] to-[var(--accent)]/10 p-8 md:p-12">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--primary)]/20">
-              <Mail className="w-8 h-8 text-violet-400" />
-            </div>
-
-            <h3 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">Never Miss a Story</h3>
-
-            <p className="text-lg text-[var(--text-secondary)] mb-8">
-              Get weekly insights on relationships, personal growth, and wellness delivered straight to your inbox.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--primary)] transition-colors"
-              />
-              <button className="btn-primary px-6 py-3 rounded-lg font-semibold whitespace-nowrap flex items-center justify-center gap-2">
-                Subscribe
-                <Mail className="w-4 h-4" />
-              </button>
-            </div>
-
-            <p className="text-xs text-[var(--text-secondary)] my-4">Join 10,000+ readers. Unsubscribe anytime.</p>
-          </div>
-        </div>
+        <Newsletter />
       </section>
 
       {/* Footer */}
