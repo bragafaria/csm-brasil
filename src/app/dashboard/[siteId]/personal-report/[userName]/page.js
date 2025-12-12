@@ -1389,7 +1389,7 @@ export default function PersonalReportPage() {
         <button
           id="couples-report-cta"
           onClick={() => {
-            router.push(`/dashboard/${siteId}/couples-report/analytics`);
+            router.push(`/dashboard/${siteId}/couples-report/how-you-connect`);
           }}
           className={
             "inline-flex items-center btn-primary px-8 py-6 rounded-lg font-semibold cursor-pointer gap-2 transition-all hover:shadow-lg mb-10"
