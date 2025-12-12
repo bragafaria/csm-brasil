@@ -49,8 +49,8 @@ export default function Newsletter() {
 
   return (
     <div className="my-20">
-      <div className="bg-gradient-to-br from-[var(--primary)]/10 via-[var(--surface2)] to-[var(--accent)]/10 rounded-3xl p-1 shadow-2xl">
-        <div className="bg-gradient-to-br from-[var(--primary)]/10 via-[var(--surface2)] to-[var(--accent)]/10 rounded-3xl p-8 md:p-12">
+      <div className="bg-gradient-to-br from-[var(--primary)]/10 via-[var(--surface2)] to-[var(--accent)]/10 rounded-3xl p-1">
+        <div className="bg-gradient-to-br from-[var(--primary)]/10 via-[var(--surface2)] to-[var(--accent)]/10 rounded-3xl pb-10 md:p-0">
           <div className="max-w-2xl mx-auto text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--primary)]/20 mb-6">
               <Mail className="w-8 h-8 text-violet-400" />
