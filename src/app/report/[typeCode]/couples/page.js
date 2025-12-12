@@ -498,7 +498,7 @@ export default function Sales() {
                   <h3 className="text-xl sm:text-2xl font-bold text-center lg:text-left text-white">CSM Sessions</h3>
                   <p className="text-sm sm:text-base mx-auto md:max-w-md text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
                     Whenever a disagreement, decision, or moment of disconnect appears, just open a private CSM Session,
-                    describe {`what's`} happening, and a Certified CSM-Expert delivers a personalized report built for
+                    describe {`what's`} happening, and a CSM-Certified Expert delivers a personalized report built for
                     your exact cognitive profiles: fast, precise, and fully private. Your first session is free with
                     every Couple Insights report.
                   </p>
