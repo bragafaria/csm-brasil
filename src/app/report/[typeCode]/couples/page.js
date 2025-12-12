@@ -500,7 +500,7 @@ export default function Sales() {
                     Whenever a disagreement, decision, or moment of disconnect appears, just open a private CSM Session,
                     describe {`what's`} happening, and a CSM-Certified Expert delivers a personalized report built for
                     your exact cognitive profiles: fast, precise, and fully private. Your first session is free with
-                    every Couple Insights report.
+                    every Couple’s Insights Report.
                   </p>
                 </div>
               </motion.div>
