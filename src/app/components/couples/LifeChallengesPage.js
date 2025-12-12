@@ -110,7 +110,7 @@ export default function LifeChallengesPage({ lifeChallenges }) {
           </button>
 
           <p className="text-sm text-[var(--text-secondary)]/80 mt-5 italic">
-            A Certified CSM-Expert will deliver a fully personalized report with practical resolution strategies
+            A CSM-Certified Expert will deliver a fully personalized report with practical resolution strategies
             tailored just for you.
           </p>
         </div>

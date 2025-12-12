@@ -46,7 +46,7 @@ export default function WhatsNextAnalytics() {
               onClick={() => router.push(`/dashboard/${siteId}/coaching/sessions`)}
               className="px-6 py-3 rounded-full font-medium transition-all bg-[var(--primary)] text-white shadow-md hover:scale-105"
             >
-              Go to CSM Sessions
+              Book Your CSM Session
             </button>
           </div>
         </div>
