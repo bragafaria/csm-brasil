@@ -4,7 +4,7 @@ export default function IntroCsmDimension() {
     <div className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed mb-8">
       <div className="card-gradient p-6 rounded-lg shadow-custom pb-10">
         <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
-          A Quick Look at the CSM Dimensions
+          A Quick Reference to the CSM Dimensions
         </h2>
 
         <p className="text-lg mb-8 text-start">
