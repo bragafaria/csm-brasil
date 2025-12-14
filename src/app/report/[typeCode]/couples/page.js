@@ -574,7 +574,7 @@ export default function Sales() {
                     { icon: BarChart3, text: "Visual Analytics & Charts" },
                     { icon: List, text: "Compatibility Alignment Scores" },
                     { icon: Users, text: "'How You Connect' Analysis" },
-                    { icon: BookHeart, text: "Personality Reports" },
+                    { icon: BookHeart, text: "Full Personality Reports" },
                     { icon: Scale, text: "Couple's Strengths and Weaknesses" },
                     { icon: MessageCircle, text: "Free CSM Session" },
                     { icon: Clock, text: "Lifetime Dashboard Access" },
