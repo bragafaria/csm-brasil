@@ -1086,11 +1086,46 @@ DEGREES OF INFLUENCE:
                     </p>
                   </div>
                   {/* PERSONALIZED PARAGRAPHS */}
-                  <div className="mt-6 space-y-4 border-t border-[var(--border)] pt-6 px-2">
+                  <div className="relative mt-6 space-y-4 border-t border-[var(--border)] pt-6 px-2">
                     {dim[dom.toLowerCase()]?.map((para, i) => (
-                      <p key={i} className="text-base leading-relaxed text-[var(--text-secondary)]">
-                        {para}
-                      </p>
+                      <div key={i}>
+                        <p className="text-base leading-relaxed text-[var(--text-secondary)]">{para}</p>
+                        <div
+                          className="absolute inset-0 bg-[var(--surface)]/95 backdrop-blur-[3px] rounded-md flex items-center justify-center p-3 hover:cursor-pointer"
+                          onClick={() => {
+                            document.getElementById("couples-report-cta")?.scrollIntoView({ behavior: "smooth" });
+                          }}
+                        >
+                          <div className="text-center bg-black/25 rounded-2xl p-6 backdrop-blur-sm">
+                            <Lock className="w-8 h-8 text-white font-bold mx-auto mb-3 drop-shadow-lg" />
+                            <p
+                              className="text-xl font-extrabold text-white mb-2"
+                              style={{
+                                textShadow: `0 2px 4px rgba(0, 0, 0, 0.8),
+                          0 0 12px rgba(0, 0, 0, 0.6)`,
+                              }}
+                            >
+                              Access Your Dashboard
+                            </p>
+                            <p
+                              className="text-base text-white"
+                              style={{
+                                textShadow: "0 2px 4px rgba(0, 0, 0, 0.8)",
+                              }}
+                            >
+                              {`and Unlock Your`}{" "}
+                              <span className="text-[var(--accent)] font-bold">
+                                {dimIdx === 0 && "Information Processing"}
+                                {dimIdx === 1 && "Decision-Making"}
+                                {dimIdx === 2 && "Energy Orientation"}
+                                {dimIdx === 3 && "Change Approach"}
+                                {dimIdx === 4 && "Interpersonal Style"}
+                              </span>{" "}
+                              {`Analysis`}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </motion.div>
@@ -1163,17 +1198,17 @@ DEGREES OF INFLUENCE:
                   >
                     {match.reason}
                   </p>
-                  <div className="absolute inset-0 bg-[var(--surface)]/80 backdrop-blur-[1px] rounded-md flex items-center justify-center p-3">
+                  <div className="absolute inset-0 bg-[var(--surface)]/80 backdrop-blur-[3px] rounded-md flex items-center justify-center p-3">
                     <div className="text-center">
                       <Lock className="w-8 h-8 text-[var(--text-primary)] font-bold mx-auto mb-1 drop-shadow-sm" />
                       <p
                         className="text-lg font-extrabold text-[var(--text-secondary)]"
                         style={{
                           textShadow: `0 1px 2px rgba(0, 0, 0, 0.2),
-0 0 8px rgba(0, 0, 0, 0.2)`,
+                          0 0 8px rgba(0, 0, 0, 0.2)`,
                         }}
                       >
-                        Unlock full insight
+                        Access Your Dashboard
                       </p>
                       <p
                         className="text-sm text-[var(--text-secondary)] mt-1 mb-8"
@@ -1181,7 +1216,9 @@ DEGREES OF INFLUENCE:
                           textShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
                         }}
                       >
-                        Click to Discover How You Connect
+                        {`and Discover Your`}{" "}
+                        <span className="text-[var(--accent)] font-bold">{`"${match.type}"`}</span>
+                        <br /> {`Compatibility Profile`}
                       </p>
                     </div>
                   </div>
@@ -1191,7 +1228,7 @@ DEGREES OF INFLUENCE:
           </div>
           <div className="border-t border-[var(--border)] pt-8 mt-8">
             <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-4">
-              Next Steps: Understanding Your Relationship Blueprint
+              Next Steps: Get Your {`Couple's`} Insights Report
             </h3>
             <p className="text-base leading-relaxed text-[var(--text-secondary)]">
               {`Now that you've explored your own cognitive patterns, the natural next step is seeing how they interact
@@ -1235,7 +1272,7 @@ DEGREES OF INFLUENCE:
             </div>
           ) : (
             <>
-              {`Get Your Couple's Insights Report`}
+              {`Access Your Dashboard Now`}
               <ArrowRight className="h-5 w-5" />
             </>
           )}
