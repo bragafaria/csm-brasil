@@ -199,7 +199,7 @@ export default function Sales() {
                 <span className="text-[var(--accent)]"> Relationship</span>
               </h1>
               <p className="text-xl text-[var(--text-secondary)] mb-8 leading-relaxed">
-                The CSM {`Couple's`} Insight Report is a personalized guide to your relationship dynamic, grounded in
+                The CSM {`Couple's`} Insights Report is a personalized guide to your relationship dynamic, grounded in
                 modern psychology. Understand your combined strengths, navigate future challenges, and build a more
                 conscious connection.
               </p>
