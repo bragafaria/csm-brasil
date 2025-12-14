@@ -7,7 +7,9 @@ import Link from "next/link";
 export const revalidate = 86400;
 
 export async function generateMetadata({ params }) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+
+  const post = await getPostBySlug(slug);
   if (!post) return { title: "Post Not Found" };
 
   return {
@@ -23,12 +25,18 @@ export async function generateMetadata({ params }) {
 }
 
 async function getPostBySlug(slug) {
-  const posts = await getPostsWithCategory({ published: true, limit: 1, slug });
+  const posts = await getPostsWithCategory({
+    published: true,
+    limit: 1,
+    slug,
+  });
   return posts[0] || null;
 }
 
 export default async function BlogPost({ params }) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+
+  const post = await getPostBySlug(slug);
   if (!post) notFound();
 
   return (
@@ -58,18 +66,18 @@ export default async function BlogPost({ params }) {
       {/* Content */}
       <div
         className="prose pl-4 pr-2 prose-lg max-w-none 
-             prose-p:text-white 
-             prose-li:text-white 
-             prose-blockquote:text-white 
-             prose-code:text-white 
-             prose-pre:bg-[var(--surface2)] prose-pre:text-white 
-             prose-a:text-purple-600 prose-a:hover:text-purple-400 prose-a:underline 
-             prose-img:rounded-lg prose-img:shadow-md 
-             prose-headings:text-white prose-headings:font-bold 
-             prose-strong:text-white prose-em:text-white prose-u:text-white 
-             prose-iframe:w-full prose-iframe:h-auto 
-             prose-figure:flex prose-figure:justify-center 
-             prose-figcaption:text-center prose-figcaption:text-sm prose-figcaption:text-[var(--text-secondary)]"
+          prose-p:text-white 
+          prose-li:text-white 
+          prose-blockquote:text-white 
+          prose-code:text-white 
+          prose-pre:bg-[var(--surface2)] prose-pre:text-white 
+          prose-a:text-purple-600 prose-a:hover:text-purple-400 prose-a:underline 
+          prose-img:rounded-lg prose-img:shadow-md 
+          prose-headings:text-white prose-headings:font-bold 
+          prose-strong:text-white prose-em:text-white prose-u:text-white 
+          prose-iframe:w-full prose-iframe:h-auto 
+          prose-figure:flex prose-figure:justify-center 
+          prose-figcaption:text-center prose-figcaption:text-sm prose-figcaption:text-[var(--text-secondary)]"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
 
@@ -84,7 +92,7 @@ export default async function BlogPost({ params }) {
         </Link>
       </div>
 
-      {/* Schema (Article) */}
+      {/* Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
