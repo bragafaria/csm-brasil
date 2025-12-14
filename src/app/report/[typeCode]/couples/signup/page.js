@@ -132,7 +132,7 @@ export default function Signup() {
         email,
         password,
         options: {
-          data: { name, typeCode, has_assessment: !!assessmentData },
+          data: { name, typeCode: assessmentData?.typeCode, has_assessment: !!assessmentData },
           emailRedirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/success/login`,
         },
       });
@@ -176,7 +176,7 @@ export default function Signup() {
       if (assessmentData) {
         const updateData = {
           name,
-          typeCode,
+          typeCode: assessmentData?.typeCode,
           has_assessment: true,
           percents: assessmentData.percents?.length === 5 ? assessmentData.percents : [],
           dominants: assessmentData.dominants?.length === 5 ? assessmentData.dominants : [],

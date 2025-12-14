@@ -20,6 +20,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import LZString from "lz-string";
 import Spinner from "@/app/components/ui/Spinner";
 import { PieChart } from "@mui/x-charts/PieChart";
+import Link from "next/link";
 
 export default function PersonalReport() {
   const { typeCode: urlCode } = useParams();
@@ -57,8 +58,11 @@ export default function PersonalReport() {
 
   if (!data) {
     return (
-      <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center p-6">
+      <div className="flex flex-col min-h-screen bg-[var(--surface)] flex items-center justify-center p-6 gap-4">
         <Spinner />
+        <p className="text-center">
+          <span className="font-bold">Loading... </span>
+        </p>
       </div>
     );
   }

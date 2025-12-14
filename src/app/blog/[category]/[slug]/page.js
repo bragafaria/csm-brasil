@@ -84,11 +84,15 @@ export default async function BlogPost({ params }) {
       {/* CTA */}
       <div className="mt-16 p-8 bg-gradient-to-r from-[var(--accent)] to-blue-600 rounded-2xl text-white text-center">
         <h3 className="text-2xl font-bold mb-4">Ready to Apply CSM to Your Life?</h3>
+        <p className="text-white/90 mb-8 max-w-2xl mx-auto">
+          In just 10 minutes, uncover your free, science-backed CSM profile and see how your unique patterns shape your
+          relationships and personal growth.
+        </p>
         <Link
-          href="/csm-assessment"
-          className="inline-block bg-white text-[var(--accent)] font-bold px-8 py-3 rounded-full hover:shadow-lg transition"
+          href="/"
+          className="inline-block bg-white text-[var(--primary)] font-bold px-10 py-4 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
         >
-          Take Free CSM Assessment
+          Learn More
         </Link>
       </div>
 
