@@ -213,7 +213,7 @@ export default function Sales() {
                 </button>
               </div>
             </div>
-            <div className="relative flex flex-col w-full pb-12 md:pb-8 bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 rounded-lg overflow-hidden items-center justify-center mt-6">
+            <div className="relative flex flex-col w-full pb-12 md:pb-8 bg-gradient-to-br from-[var(--primary)]/20 to-[var(--accent)]/20 rounded-lg overflow-hidden items-center justify-center mt-10 md:mt-6">
               <img
                 src="/note.png"
                 className="w-full h-full object-contain md:object-cover lg:object-contain"
@@ -311,7 +311,7 @@ export default function Sales() {
                   </div>
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                <p className="text-[var(--text-secondary)]">{item.desc}</p>
+                <p className="text-[var(--text-secondary)] md:max-w-md mx-auto">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -556,7 +556,7 @@ export default function Sales() {
           <div className="grid lg:grid-cols-3 gap-8 ">
             {/* Pricing Card */}
             <div className="lg:col-span-2">
-              <div className="card-gradient p-8 rounded-lg mb-8">
+              <div className="card-gradient p-8 rounded-lg mb-0 lg:mb-8">
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <h3 className="text-2xl font-bold">CSM {`Couple's`} Insights Report</h3>

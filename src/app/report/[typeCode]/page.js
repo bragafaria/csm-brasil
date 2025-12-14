@@ -1113,7 +1113,7 @@ DEGREES OF INFLUENCE:
                                 textShadow: "0 2px 4px rgba(0, 0, 0, 0.8)",
                               }}
                             >
-                              {`and Unlock Your`}{" "}
+                              {`and View Your`}{" "}
                               <span className="text-[var(--accent)] font-bold">
                                 {dimIdx === 0 && "Information Processing"}
                                 {dimIdx === 1 && "Decision-Making"}
