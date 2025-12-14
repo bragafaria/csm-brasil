@@ -255,8 +255,7 @@ export default function PersonalityReportEmail({
                             textAlign: "center",
                           }}
                         >
-                          Your free personality report link is permanent and contains your complete results. Bookmark it
-                          or share it with others.
+                          Your free personality report link is permanent and contains your results. Bookmark it!
                         </p>
                       </td>
                     </tr>
@@ -327,7 +326,7 @@ ${couplesReportUrl}
 View your FREE personality report:
 ${shareableUrl}
 
-Your free report link is permanent and contains your complete results. Bookmark it or share it with others.
+Your free report link is permanent and contains your results. Bookmark it!
 
 ---
 

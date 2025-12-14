@@ -1239,9 +1239,7 @@ DEGREES OF INFLUENCE:
               with your partner's.`}
             </p>
             <p className="text-base leading-relaxed text-[var(--text-secondary)] mt-4">
-              {`The CSM Couple's Insights Report shows how your two minds interact, offering guidance to strengthen
-              alignment, work through friction, and grow together with intention. Curious how your blueprints align?
-              Find out in your Couple's Report.`}
+              {`The CSM Couple’s Insights Report reveals how your two minds interact, highlighting alignment, friction points, and practical ways to grow together with intention. Curious how your blueprints align? Explore your Couple’s Insights Report and your full personality report inside your dashboard.`}
             </p>
           </div>
         </div>
