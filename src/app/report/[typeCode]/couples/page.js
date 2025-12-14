@@ -426,7 +426,7 @@ export default function Sales() {
                     Compatibility Risk Ranking
                   </h3>
                   <p className="text-sm sm:text-base mx-auto md:max-w-md text-[var(--text-secondary)] leading-relaxed text-center lg:text-left">
-                    CSM Compatibility Risk Ranking gives you a clear{" "}
+                    The CSM Compatibility Risk Ranking gives you clear{" "}
                     <span className="font-bold">Compatibility Alignment Scores (CAS)</span>, revealing which dimension
                     creates the most friction and where small adjustments can lead to major breakthroughs. Most couples
                     discover their real risk {`isn't`} where they expected, and improving just the top one or two areas
