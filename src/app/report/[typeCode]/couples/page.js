@@ -288,7 +288,7 @@ export default function Sales() {
               {
                 step: "1",
                 title: "Access Your Dashboard",
-                desc: "All your reports, insights, and CSM sessions are saved forever, giving you a space to return to whenever you want clarity, growth, or deeper understanding.",
+                desc: "All your full reports, insights, and CSM sessions are saved forever, giving you a space to return to whenever you want clarity, growth, or deeper understanding.",
                 icon: Users,
               },
               {
