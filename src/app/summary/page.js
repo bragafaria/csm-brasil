@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Spinner from "@/app/components/ui/Spinner";
-import { User, Mail } from "lucide-react";
+import { User, Mail, AlertCircle, CheckCircle } from "lucide-react";
 import { createPermanentReportUrl } from "@/app/lib/sharable-url";
 
 // Helper function to safely use localStorage with fallback
@@ -49,10 +49,14 @@ export default function Summary() {
   const [data, setData] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
   const [valid, setValid] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [nameTouched, setNameTouched] = useState(false);
+  const [emailTouched, setEmailTouched] = useState(false);
+  const [confirmEmailTouched, setConfirmEmailTouched] = useState(false);
 
   useEffect(() => {
     // Add a small delay to ensure localStorage write has completed
@@ -95,13 +99,28 @@ export default function Summary() {
   }, [router]);
 
   useEffect(() => {
-    const isValid = name.trim() !== "" && /\S+@\S+\.\S+/.test(email);
+    const isValid =
+      name.trim() !== "" && /\S+@\S+\.\S+/.test(email) && email.toLowerCase() === confirmEmail.toLowerCase();
     setValid(isValid);
-  }, [name, email]);
+  }, [name, email, confirmEmail]);
+
+  // Validation states
+  const nameIsValid = name.trim() !== "";
+  const showNameError = nameTouched && !nameIsValid;
+  const showNameValid = nameTouched && nameIsValid;
+
+  const emailsMatch = email.toLowerCase() === confirmEmail.toLowerCase();
+  const showEmailMismatch = confirmEmailTouched && confirmEmail !== "" && !emailsMatch;
+  const showEmailMatch = confirmEmailTouched && confirmEmail !== "" && emailsMatch;
 
   const handleSubmit = async () => {
     if (!valid || !data?.typeCode) {
       setError("Please complete all fields");
+      return;
+    }
+
+    if (email.toLowerCase() !== confirmEmail.toLowerCase()) {
+      setError("Email addresses do not match");
       return;
     }
 
@@ -250,13 +269,44 @@ export default function Summary() {
                     placeholder="First Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    onBlur={() => setNameTouched(true)}
                     aria-label="Your first name"
-                    className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/30 text-white placeholder-white/70 
-                               focus:outline-none focus:border-white focus:ring-2 focus:ring-white/30 
-                               transition-all duration-300 text-lg font-medium"
+                    className={`w-full px-5 py-4 rounded-xl bg-white/5 text-white placeholder-white/70 
+                               focus:outline-none focus:ring-2 
+                               transition-all duration-300 text-lg font-medium
+                               ${
+                                 showNameError
+                                   ? "border-2 border-red-400 focus:border-red-400 focus:ring-red-400/30"
+                                   : showNameValid
+                                     ? "border-2 border-green-400 focus:border-green-400 focus:ring-green-400/30"
+                                     : "border border-white/30 focus:border-white focus:ring-white/30"
+                               }`}
                     required
                   />
                 </div>
+
+                {/* Name validation feedback */}
+                {showNameError && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-center gap-2 mt-2 text-red-300 text-sm"
+                  >
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>Please enter your name</span>
+                  </motion.div>
+                )}
+
+                {showNameValid && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-center gap-2 mt-2 text-green-300 text-sm"
+                  >
+                    <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>Name looks good</span>
+                  </motion.div>
+                )}
               </div>
 
               {/* Email */}
@@ -276,6 +326,7 @@ export default function Summary() {
                     placeholder="your@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    onBlur={() => setEmailTouched(true)}
                     aria-label="Your email address"
                     className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/30 text-white placeholder-white/70 
                                focus:outline-none focus:border-white focus:ring-2 focus:ring-white/30 
@@ -283,6 +334,58 @@ export default function Summary() {
                     required
                   />
                 </div>
+              </div>
+
+              {/* Confirm Email */}
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <Mail className="w-5 h-5 text-white/70" />
+                  <p className="text-white/90 text-sm font-medium">Confirm Email</p>
+                </div>
+                <div className="relative">
+                  <input
+                    type="email"
+                    placeholder="Confirm your email"
+                    value={confirmEmail}
+                    onChange={(e) => setConfirmEmail(e.target.value)}
+                    onBlur={() => setConfirmEmailTouched(true)}
+                    aria-label="Confirm your email address"
+                    className={`w-full px-5 py-4 rounded-xl bg-white/5 text-white placeholder-white/70 
+                               focus:outline-none focus:ring-2 
+                               transition-all duration-300 text-lg font-medium
+                               ${
+                                 showEmailMismatch
+                                   ? "border-2 border-red-400 focus:border-red-400 focus:ring-red-400/30"
+                                   : showEmailMatch
+                                     ? "border-2 border-green-400 focus:border-green-400 focus:ring-green-400/30"
+                                     : "border border-white/30 focus:border-white focus:ring-white/30"
+                               }`}
+                    required
+                  />
+                </div>
+
+                {/* Real-time validation feedback */}
+                {showEmailMismatch && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-center gap-2 mt-2 text-red-300 text-sm"
+                  >
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>Email addresses do not match</span>
+                  </motion.div>
+                )}
+
+                {showEmailMatch && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-center gap-2 mt-2 text-green-300 text-sm"
+                  >
+                    <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>Email addresses match</span>
+                  </motion.div>
+                )}
               </div>
 
               {/* Error */}
