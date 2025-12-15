@@ -1117,7 +1117,7 @@ DEGREES OF INFLUENCE:
                                 textShadow: "0 2px 4px rgba(0, 0, 0, 0.8)",
                               }}
                             >
-                              {`and View Your`}{" "}
+                              {`to View Your`}{" "}
                               <span className="text-[var(--accent)] font-bold">
                                 {dimIdx === 0 && "Information Processing"}
                                 {dimIdx === 1 && "Decision-Making"}
@@ -1222,7 +1222,7 @@ DEGREES OF INFLUENCE:
                       >
                         {`and Discover Your`}{" "}
                         <span className="text-[var(--accent)] font-bold">{`"${match.type}"`}</span>
-                        <br /> {`Compatibility Profile`}
+                        <br /> {`Compatibility Type`}
                       </p>
                     </div>
                   </div>

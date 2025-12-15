@@ -43,7 +43,7 @@ export const reportTemplates = {
         {
           result: "Detachment",
           description:
-            "Focusing heavily on logic might cause you to overlook emotional aspects in situations, potentially straining relationships. By intentionally tuning into feelings—yours and others'—you can develop a more balanced perspective. This growth will enrich your interactions and deepen your connections.",
+            "Focusing heavily on logic might cause you to overlook emotional aspects in situations, potentially straining relationships. By intentionally tuning into feelings,yours and others',you can develop a more balanced perspective. This growth will enrich your interactions and deepen your connections.",
         },
         {
           result: "Overcommitment",
@@ -78,7 +78,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction:
-        "The five CSM dimensions represent spectrums of preference that shape how you see the world, make choices, and interact with others. Each one highlights a different aspect of your cognitive style, from how you gather information to your approach to relationships. Understanding these as flexible preferences rather than fixed traits helps you appreciate your natural leanings while spotting areas for growth.\n\nThink of them as a map of your mind's architecture, showing where you feel most comfortable and where stretching a bit can bring balance. This awareness empowers you to navigate life more intentionally. By exploring each dimension, you'll gain insights that feel personal and actionable.\n\nRemember, no preference is better than another—it's about how they combine to make you uniquely you. Use this profile to celebrate your strengths and gently work on any imbalances. It's a tool for self-compassion and continuous improvement.",
+        "The five CSM dimensions represent spectrums of preference that shape how you see the world, make choices, and interact with others. Each one highlights a different aspect of your cognitive style, from how you gather information to your approach to relationships. Understanding these as flexible preferences rather than fixed traits helps you appreciate your natural leanings while spotting areas for growth.\n\nThink of them as a map of your mind's architecture, showing where you feel most comfortable and where stretching a bit can bring balance. This awareness empowers you to navigate life more intentionally. By exploring each dimension, you'll gain insights that feel personal and actionable.\n\nRemember, no preference is better than another,it's about how they combine to make you uniquely you. Use this profile to celebrate your strengths and gently work on any imbalances. It's a tool for self-compassion and continuous improvement.",
       dimensions: [
         {
           title: "Information Processing",
@@ -301,7 +301,7 @@ export const reportTemplates = {
     },
     detailedEssence: [
       {
-        note: "As The Engineer, you embody a practical, self-directed way of navigating life, always seeking efficient paths to your goals. This essence comes from blending tangible focus with logical drive, all channeled through outward action and structured independence. To grasp it fully, pair this with your dimensional profile below—it shows the percentages that shape your unique balance. Together, they reveal how your preferences create a resilient, innovative approach to challenges. Remember, this is your map for growth, highlighting strengths to leverage and areas to explore.",
+        note: "As The Engineer, you embody a practical, self-directed way of navigating life, always seeking efficient paths to your goals. This essence comes from blending tangible focus with logical drive, all channeled through outward action and structured independence. To grasp it fully, pair this with your dimensional profile below,it shows the percentages that shape your unique balance. Together, they reveal how your preferences create a resilient, innovative approach to challenges. Remember, this is your map for growth, highlighting strengths to leverage and areas to explore.",
       },
       {
         deepAnalysis: [
@@ -561,7 +561,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction:
-        "Think of your personality as a set of five sliding scales, each one showing how you tend to see the world, choose your actions, and relate to life. These scales—covering how you take in information, make decisions, get your energy, approach changes, and connect with people—build the foundation of who you are. Getting familiar with them helps you spot your natural strengths and see spots where a little shift could make things even better for you. It's all about growing in ways that feel right. Each scale has two ends, and you're somewhere in between, which makes your mix special. Knowing this lets you handle situations with more ease and kindness toward yourself. It turns self-reflection into something practical and encouraging.",
+        "Think of your personality as a set of five sliding scales, each one showing how you tend to see the world, choose your actions, and relate to life. These scales,covering how you take in information, make decisions, get your energy, approach changes, and connect with people,build the foundation of who you are. Getting familiar with them helps you spot your natural strengths and see spots where a little shift could make things even better for you. It's all about growing in ways that feel right. Each scale has two ends, and you're somewhere in between, which makes your mix special. Knowing this lets you handle situations with more ease and kindness toward yourself. It turns self-reflection into something practical and encouraging.",
       dimensions: [
         {
           title: "Information Processing",
@@ -784,7 +784,7 @@ export const reportTemplates = {
     },
     detailedEssence: [
       {
-        note: "To get the most out of understanding yourself as The Pioneer, think of this as your core map—how you naturally move through life with bold, independent energy. Pair it with the dimensional breakdowns and your specific percentages below; they'll show where you lean strongest and where there's room to stretch. This combination gives you a clear picture of your unique style, helping you play to your strengths every day.",
+        note: "To get the most out of understanding yourself as The Pioneer, think of this as your core map,how you naturally move through life with bold, independent energy. Pair it with the dimensional breakdowns and your specific percentages below; they'll show where you lean strongest and where there's room to stretch. This combination gives you a clear picture of your unique style, helping you play to your strengths every day.",
       },
       {
         deepAnalysis: [
@@ -798,7 +798,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction:
-        "Think of your personality as a set of five sliding scales, each showing where you naturally lean in how you see the world, make choices, get energized, handle change, and connect with people. These aren't fixed categories but flexible preferences that shape your unique way of thinking and acting. Understanding them helps you spot your go-to strengths and areas where stretching a bit can bring more balance and growth to your life.\n\nEach dimension has two ends, like Concrete versus Abstract for how you take in information. Your position on the scale—whether mild, moderate, or strong—reveals how strongly you favor one side and how easily you can tap into the other. This insight lets you navigate situations more effectively, turning self-awareness into real, everyday advantages.\n\nAs The Pioneer, these dimensions come together to fuel your bold, action-oriented style. Use them to appreciate what makes you tick and to explore new ways of approaching challenges.",
+        "Think of your personality as a set of five sliding scales, each showing where you naturally lean in how you see the world, make choices, get energized, handle change, and connect with people. These aren't fixed categories but flexible preferences that shape your unique way of thinking and acting. Understanding them helps you spot your go-to strengths and areas where stretching a bit can bring more balance and growth to your life.\n\nEach dimension has two ends, like Concrete versus Abstract for how you take in information. Your position on the scale,whether mild, moderate, or strong,reveals how strongly you favor one side and how easily you can tap into the other. This insight lets you navigate situations more effectively, turning self-awareness into real, everyday advantages.\n\nAs The Pioneer, these dimensions come together to fuel your bold, action-oriented style. Use them to appreciate what makes you tick and to explore new ways of approaching challenges.",
       dimensions: [
         {
           title: "Information Processing",
@@ -1025,17 +1025,17 @@ export const reportTemplates = {
       },
       {
         deepAnalysis: [
-          "As The Curator, you navigate life with thoughtful care, collecting and organizing what you learn so everything feels clear and meaningful. You naturally notice the practical, real parts of your environment first — details that feel solid, familiar, and trustworthy. This helps you build a reliable understanding of the world, using logic to make sense of each step. Your inward reflection deepens this clarity, allowing ideas to settle into balanced insights. In relationships, you look for shared understanding, creating interactions that feel supportive and connected.",
+          "As The Curator, you navigate life with thoughtful care, collecting and organizing what you learn so everything feels clear and meaningful. You naturally notice the practical, real parts of your environment first , details that feel solid, familiar, and trustworthy. This helps you build a reliable understanding of the world, using logic to make sense of each step. Your inward reflection deepens this clarity, allowing ideas to settle into balanced insights. In relationships, you look for shared understanding, creating interactions that feel supportive and connected.",
           "Stability matters to you, as routines bring a comforting sense of predictability and peace. Having structure helps you focus on what truly matters, preserving information and memories in a way that gives them lasting value. When making decisions, you lean on clear reasoning to choose what will keep things steady and dependable. At the same time, your harmonious nature encourages cooperation and fairness, helping others feel included and heard. This combination makes you a grounding presence in the lives of those around you.",
           "Quiet reflection is a major source of energy for you, offering the space to recharge and refine your thoughts. You may enjoy spending time on your own, organizing ideas or sorting through memories, which gives you a deep sense of fulfillment. This inward focus pairs well with your practical side, as it helps you examine details carefully without feeling rushed. It strengthens your logical approach too, allowing you to reach conclusions that are solid and well-supported. Your pace is calm and steady, helping growth unfold naturally and authentically.",
           "Harmony guides you to bridge differences with kindness, thoughtful communication, and patience. You value relationships built on mutual respect, which softens any strictness that may come from your structured preferences. This warmth brightens the knowledge you share, making information easier for others to understand and appreciate. It shows up in everyday conversations, where you listen closely and offer clarity. Welcoming this part of yourself fully can deepen your sense of connection and belonging.",
-          "Living as The Curator means honoring your strengths while gently expanding your comfort zone. Your skill in organizing and reflecting creates a strong foundation for everything you do. Relationships flourish through your steady support and cooperative spirit, forming bonds that are meaningful and long-lasting. Altogether, your traits build a life of calm contribution, purposeful growth, and inner peace — one that feels true to who you are at your core.",
+          "Living as The Curator means honoring your strengths while gently expanding your comfort zone. Your skill in organizing and reflecting creates a strong foundation for everything you do. Relationships flourish through your steady support and cooperative spirit, forming bonds that are meaningful and long-lasting. Altogether, your traits build a life of calm contribution, purposeful growth, and inner peace , one that feels true to who you are at your core.",
         ],
       },
     ],
     dimensionalProfile: {
       introduction:
-        "Think of your personality as a set of five sliding scales, each showing how you tend to see the world, choose paths, draw energy, handle shifts, and connect with people. These aren't strict labels but preferences that shape your unique way of thinking and being. Getting to know them helps you see why some things come easily while others take more effort, opening doors to better self-understanding and kinder growth.\n\nEach scale has two ends, like focusing on facts versus ideas, and your spot on it influences how you navigate life. It's all about balance—your natural leans are strengths, and touching the other side can bring new perspectives. This view turns personality into something flexible you can work with.\n\nExploring these helps you celebrate what makes you you, while spotting ways to stretch a bit. It's supportive, like having a map for your mind that encourages empathy toward yourself.",
+        "Think of your personality as a set of five sliding scales, each showing how you tend to see the world, choose paths, draw energy, handle shifts, and connect with people. These aren't strict labels but preferences that shape your unique way of thinking and being. Getting to know them helps you see why some things come easily while others take more effort, opening doors to better self-understanding and kinder growth.\n\nEach scale has two ends, like focusing on facts versus ideas, and your spot on it influences how you navigate life. It's all about balance,your natural leans are strengths, and touching the other side can bring new perspectives. This view turns personality into something flexible you can work with.\n\nExploring these helps you celebrate what makes you you, while spotting ways to stretch a bit. It's supportive, like having a map for your mind that encourages empathy toward yourself.",
       dimensions: [
         {
           title: "Information Processing",
@@ -1513,7 +1513,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction:
-        "Your personality unfolds across five key spectrums, each representing a range of preferences rather than fixed categories. These dimensions—Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style—work together to shape how you see the world, make choices, and connect with others. Understanding where you lean on each spectrum helps highlight your natural strengths while pointing out areas for balance and growth, leading to greater self-awareness and more intentional living.\n\nThink of these as sliding scales where your position reflects everyday tendencies, not rigid rules. For instance, a stronger pull toward one end might feel effortless, while the other requires more deliberate effort. This framework empowers you to appreciate your unique wiring and adapt when life calls for it, fostering personal development in a supportive way.\n\nBy exploring these dimensions, you'll see how they interconnect to form your overall approach to life. This insight can guide you in relationships, work, and self-care, helping you leverage what comes naturally while gently expanding your comfort zone.",
+        "Your personality unfolds across five key spectrums, each representing a range of preferences rather than fixed categories. These dimensions,Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style,work together to shape how you see the world, make choices, and connect with others. Understanding where you lean on each spectrum helps highlight your natural strengths while pointing out areas for balance and growth, leading to greater self-awareness and more intentional living.\n\nThink of these as sliding scales where your position reflects everyday tendencies, not rigid rules. For instance, a stronger pull toward one end might feel effortless, while the other requires more deliberate effort. This framework empowers you to appreciate your unique wiring and adapt when life calls for it, fostering personal development in a supportive way.\n\nBy exploring these dimensions, you'll see how they interconnect to form your overall approach to life. This insight can guide you in relationships, work, and self-care, helping you leverage what comes naturally while gently expanding your comfort zone.",
       dimensions: [
         {
           title: "Information Processing",
@@ -2233,7 +2233,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction: [
-        "Your personality unfolds across five key spectrums in the Cognitive Spectrum Model, each representing a range of preferences rather than fixed categories. These dimensions—Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style—work together to form your unique cognitive map. Understanding where you lean on each helps reveal how you naturally navigate life, make choices, and connect with others.",
+        "Your personality unfolds across five key spectrums in the Cognitive Spectrum Model, each representing a range of preferences rather than fixed categories. These dimensions,Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style,work together to form your unique cognitive map. Understanding where you lean on each helps reveal how you naturally navigate life, make choices, and connect with others.",
         "Think of these as sliding scales where your position shows your default tendencies, but with room to shift based on situations. A stronger lean means a more pronounced style, while a milder one offers greater flexibility. This awareness empowers you to leverage your strengths and gently develop less familiar areas for a more balanced approach.",
         "As The Artisan, your profile highlights specific leans that shape your creative and practical worldview. Exploring these details can spark insights into why certain activities feel energizing or why some interactions click effortlessly. It's a tool for self-compassion and intentional growth.",
       ],
@@ -2703,7 +2703,7 @@ export const reportTemplates = {
     },
     detailedEssence: [
       {
-        note: "As The Adventurer, you bring a vibrant energy to life, always ready to embrace new experiences with open arms. Your personality shines through in how you connect with the world around you, guided by what feels right in the moment. This report dives into your unique way of being, highlighting what makes you tick without getting into complicated terms. To get the full picture, pair this with your dimensional profile below—it shows the percentages that shape your preferences and offers insights for growth.",
+        note: "As The Adventurer, you bring a vibrant energy to life, always ready to embrace new experiences with open arms. Your personality shines through in how you connect with the world around you, guided by what feels right in the moment. This report dives into your unique way of being, highlighting what makes you tick without getting into complicated terms. To get the full picture, pair this with your dimensional profile below,it shows the percentages that shape your preferences and offers insights for growth.",
       },
       {
         deepAnalysis: [
@@ -2941,7 +2941,7 @@ export const reportTemplates = {
     },
     detailedEssence: [
       {
-        note: "To get the most from this report, think of The Counselor as your natural way of being—grounded in real experiences, guided by compassion, energized by quiet reflection, favoring stability, and seeking connection. Read it alongside your dimensional profile and percentages below for a clearer picture of how these preferences shape your unique style. This essence captures your core strengths in providing supportive guidance, while highlighting areas for growth to live more fully.",
+        note: "To get the most from this report, think of The Counselor as your natural way of being,grounded in real experiences, guided by compassion, energized by quiet reflection, favoring stability, and seeking connection. Read it alongside your dimensional profile and percentages below for a clearer picture of how these preferences shape your unique style. This essence captures your core strengths in providing supportive guidance, while highlighting areas for growth to live more fully.",
       },
       {
         deepAnalysis: [
@@ -3084,7 +3084,7 @@ export const reportTemplates = {
       ],
       compatibility: {
         introduction:
-          "In CSM, compatibility arises from aligned motivations like harmony or autonomy, and energy directions, creating natural ease—while differences in dimensions like concrete/abstract or logic/values spark valuable growth through complementary perspectives.",
+          "In CSM, compatibility arises from aligned motivations like harmony or autonomy, and energy directions, creating natural ease,while differences in dimensions like concrete/abstract or logic/values spark valuable growth through complementary perspectives.",
         matches: [
           {
             type: "Synergistic",
@@ -3201,7 +3201,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction:
-        "Your personality unfolds across five key spectrums in the Cognitive Spectrum Model, each representing a natural preference rather than a fixed trait. These dimensions—Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style—work together to shape how you see the world, choose your actions, and connect with life. Understanding where you lean on each spectrum helps reveal your strengths and areas for gentle expansion, fostering greater self-awareness and fulfillment.\n\nThink of these as sliding scales where your position reflects everyday tendencies, not absolutes. A stronger lean might mean exceptional skill in one area with room to explore the other side, while a milder one offers easy adaptability. This framework empowers you to appreciate your unique cognitive makeup and navigate life with more intention.\n\nBy exploring these dimensions, you'll see how they interplay to form your archetype as The Healer, providing practical insights for personal growth and relationships.",
+        "Your personality unfolds across five key spectrums in the Cognitive Spectrum Model, each representing a natural preference rather than a fixed trait. These dimensions,Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style,work together to shape how you see the world, choose your actions, and connect with life. Understanding where you lean on each spectrum helps reveal your strengths and areas for gentle expansion, fostering greater self-awareness and fulfillment.\n\nThink of these as sliding scales where your position reflects everyday tendencies, not absolutes. A stronger lean might mean exceptional skill in one area with room to explore the other side, while a milder one offers easy adaptability. This framework empowers you to appreciate your unique cognitive makeup and navigate life with more intention.\n\nBy exploring these dimensions, you'll see how they interplay to form your archetype as The Healer, providing practical insights for personal growth and relationships.",
       dimensions: [
         {
           title: "Information Processing",
@@ -3424,7 +3424,7 @@ export const reportTemplates = {
     },
     detailedEssence: [
       {
-        note: "To get the most from this report, think of it as a mirror reflecting your natural tendencies as The Peacemaker. Combine this essence with your dimensional profile below—it shows your specific preferences across the five spectrums, giving a fuller picture of how you navigate life. This understanding can guide you toward more fulfilling personal growth and connections.",
+        note: "To get the most from this report, think of it as a mirror reflecting your natural tendencies as The Peacemaker. Combine this essence with your dimensional profile below,it shows your specific preferences across the five spectrums, giving a fuller picture of how you navigate life. This understanding can guide you toward more fulfilling personal growth and connections.",
       },
       {
         deepAnalysis: [
@@ -3438,7 +3438,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction: [
-        "Your personality unfolds across five key spectrums in the Cognitive Spectrum Model, each representing a range of preferences rather than fixed categories. These dimensions—Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style—work together to shape how you see the world, make choices, and connect with others. Understanding where you lean on each spectrum helps reveal your unique cognitive architecture, highlighting natural strengths and areas for growth.",
+        "Your personality unfolds across five key spectrums in the Cognitive Spectrum Model, each representing a range of preferences rather than fixed categories. These dimensions,Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style,work together to shape how you see the world, make choices, and connect with others. Understanding where you lean on each spectrum helps reveal your unique cognitive architecture, highlighting natural strengths and areas for growth.",
         "Think of these as sliding scales where your position shows a preference, not an absolute. A stronger lean means that side feels more natural, while a milder one offers easy access to both ends. This framework encourages self-awareness by showing how your preferences interact, creating a balanced view of yourself. It empowers you to leverage what comes easily and develop what doesn't, leading to more intentional living.",
         "As The Peacemaker, your specific configuration across these spectrums creates a harmonious, adaptive style. Exploring each dimension in detail, including how different preference levels might play out, gives you tools for personal insight. This isn't about changing who you are, but about appreciating your wiring and using it wisely in everyday life.",
       ],
@@ -3567,7 +3567,7 @@ export const reportTemplates = {
       ],
       compatibility: {
         introduction:
-          "In CSM, compatibility grows from aligned motivations like harmony or autonomy, and energy directions, creating natural ease—while differences in perception or judgment spark valuable growth through complementary perspectives.",
+          "In CSM, compatibility grows from aligned motivations like harmony or autonomy, and energy directions, creating natural ease,while differences in perception or judgment spark valuable growth through complementary perspectives.",
         matches: [
           {
             type: "Synergistic",
@@ -3667,7 +3667,7 @@ export const reportTemplates = {
     },
     detailedEssence: [
       {
-        note: "To get the fullest picture of who you are as The Empath, take a moment to connect this essence with your dimensional profile below—it shows the unique blend of your preferences and how they shape your daily life.",
+        note: "To get the fullest picture of who you are as The Empath, take a moment to connect this essence with your dimensional profile below,it shows the unique blend of your preferences and how they shape your daily life.",
       },
       {
         deepAnalysis: [
@@ -3681,7 +3681,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction:
-        "Your personality unfolds across five key spectrums in the Cognitive Spectrum Model, each showing where you naturally lean in how you see the world, decide things, energize yourself, handle change, and connect with others. These aren't fixed categories but fluid preferences that create your unique cognitive map, helping you understand why certain ways feel effortless while others take more intention. By exploring these poles—like focusing on what's real now versus imagining what could be—you gain tools for self-awareness, making it easier to grow and adapt in ways that feel authentic to you.",
+        "Your personality unfolds across five key spectrums in the Cognitive Spectrum Model, each showing where you naturally lean in how you see the world, decide things, energize yourself, handle change, and connect with others. These aren't fixed categories but fluid preferences that create your unique cognitive map, helping you understand why certain ways feel effortless while others take more intention. By exploring these poles,like focusing on what's real now versus imagining what could be,you gain tools for self-awareness, making it easier to grow and adapt in ways that feel authentic to you.",
       dimensions: [
         {
           title: "Information Processing",
@@ -4157,7 +4157,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction:
-        "The five dimensions of the Cognitive Spectrum Model represent key aspects of how you see the world, make choices, and interact with others. Each one is a spectrum, meaning you have a preference for one side but can access the other when it suits the situation. This setup creates your unique cognitive architecture, blending these preferences into a cohesive whole that guides your daily life. Understanding these poles—like focusing on what's real versus what's possible—helps you recognize your natural strengths and where you might stretch for growth. It's not about being boxed in, but rather seeing how these elements work together to make you who you are. This awareness can lead to better self-understanding and more intentional ways of navigating challenges and opportunities.",
+        "The five dimensions of the Cognitive Spectrum Model represent key aspects of how you see the world, make choices, and interact with others. Each one is a spectrum, meaning you have a preference for one side but can access the other when it suits the situation. This setup creates your unique cognitive architecture, blending these preferences into a cohesive whole that guides your daily life. Understanding these poles,like focusing on what's real versus what's possible,helps you recognize your natural strengths and where you might stretch for growth. It's not about being boxed in, but rather seeing how these elements work together to make you who you are. This awareness can lead to better self-understanding and more intentional ways of navigating challenges and opportunities.",
       dimensions: [
         {
           title: "Information Processing",
@@ -4607,7 +4607,7 @@ export const reportTemplates = {
         {
           result: "Emotional Distance",
           description:
-            "Your priority on objective truth can make feelings seem secondary in heated moments. Practicing pause to acknowledge emotions—yours and others—deepens every connection you value. This simple shift transforms good relationships into extraordinary ones.",
+            "Your priority on objective truth can make feelings seem secondary in heated moments. Practicing pause to acknowledge emotions,yours and others,deepens every connection you value. This simple shift transforms good relationships into extraordinary ones.",
         },
         {
           result: "Overcommitment",
@@ -4623,7 +4623,7 @@ export const reportTemplates = {
     },
     detailedEssence: [
       {
-        note: "As The Revolutionary, your personality pulses with relentless forward motion and unapologetic originality. Read this section together with your exact percentages in the dimensional profile below—those numbers reveal precisely how intensely each preference shapes your daily experience.",
+        note: "As The Revolutionary, your personality pulses with relentless forward motion and unapologetic originality. Read this section together with your exact percentages in the dimensional profile below,those numbers reveal precisely how intensely each preference shapes your daily experience.",
       },
       {
         deepAnalysis: [
@@ -4637,7 +4637,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction:
-        "The Cognitive Spectrum Model maps your personality across five continuous spectrums, each revealing a natural preference that shapes how you think, decide, and connect. Your exact percentages show the strength of each lean—mild, moderate, or strong—creating a precise portrait of your cognitive style.\n\nThese five dimensions interweave to form your unique archetype. No preference is inherently better; each pole offers distinct advantages. Understanding your position on every spectrum illuminates why certain moments feel effortless while others demand conscious effort.\n\nSelf-awareness here is transformative. By honoring your dominant tendencies and gently stretching toward the opposite pole, you unlock greater versatility, deeper relationships, and a more authentic life.",
+        "The Cognitive Spectrum Model maps your personality across five continuous spectrums, each revealing a natural preference that shapes how you think, decide, and connect. Your exact percentages show the strength of each lean,mild, moderate, or strong,creating a precise portrait of your cognitive style.\n\nThese five dimensions interweave to form your unique archetype. No preference is inherently better; each pole offers distinct advantages. Understanding your position on every spectrum illuminates why certain moments feel effortless while others demand conscious effort.\n\nSelf-awareness here is transformative. By honoring your dominant tendencies and gently stretching toward the opposite pole, you unlock greater versatility, deeper relationships, and a more authentic life.",
       dimensions: [
         {
           title: "Information Processing",
@@ -4758,17 +4758,17 @@ export const reportTemplates = {
     },
     relationships: {
       intro:
-        "As The Revolutionary, you bring electric intensity and unwavering authenticity to every connection. You seek partners who match your pace, respect your freedom, and engage with complete honesty—no games, no chains. Your relationships either ignite spectacular growth or dissolve quickly when autonomy feels threatened.",
+        "As The Revolutionary, you bring electric intensity and unwavering authenticity to every connection. You seek partners who match your pace, respect your freedom, and engage with complete honesty,no games, no chains. Your relationships either ignite spectacular growth or dissolve quickly when autonomy feels threatened.",
       compatibility: {
         introduction:
-          "CSM compatibility emerges from cognitive alignment—shared energy orientation and change approach create immediate ease, while differences in interpersonal style spark profound growth. Opposites challenge deepest assumptions, offering transformation through contrast.",
+          "CSM compatibility emerges from cognitive alignment,shared energy orientation and change approach create immediate ease, while differences in interpersonal style spark profound growth. Opposites challenge deepest assumptions, offering transformation through contrast.",
         matches: [
           {
             type: "Synergistic",
             name: "The Pioneer",
             code: "C-L-O-F-A",
             reason:
-              "You both live for action, freedom, and constant forward motion—two independent forces exploring life at full throttle with zero need for control. The shared outward energy and flexible autonomy create partnerships that feel like perpetual adventure.",
+              "You both live for action, freedom, and constant forward motion,two independent forces exploring life at full throttle with zero need for control. The shared outward energy and flexible autonomy create partnerships that feel like perpetual adventure.",
           },
           {
             type: "Complementary",
@@ -4782,7 +4782,7 @@ export const reportTemplates = {
             name: "The Disruptor",
             code: "N-L-O-F-H",
             reason:
-              "Mirror images except for interpersonal style—their harmonious orientation challenges your autonomy, teaching you that collective power can amplify individual vision without compromising either.",
+              "Mirror images except for interpersonal style,their harmonious orientation challenges your autonomy, teaching you that collective power can amplify individual vision without compromising either.",
           },
           {
             type: "Challenging",
@@ -4874,7 +4874,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction:
-        "The Cognitive Spectrum Model views personality through five key spectrums, each representing a range of preferences rather than fixed categories. These dimensions—Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style—work together to form your unique cognitive architecture. Understanding where you lean on each spectrum helps reveal how you naturally navigate the world, make choices, and connect with others.\n\nBy seeing these as fluid preferences, you gain insight into your strengths and areas for growth. For instance, a stronger lean toward one pole might feel instinctive, while the opposite offers opportunities to expand. This awareness empowers you to adapt more effectively in various situations, fostering self-compassion and personal development.\n\nExploring these dimensions personally can transform how you approach challenges and relationships. It's about recognizing your default modes and learning to access the full spectrum when it serves you best. This balanced view supports a more authentic and versatile way of being.",
+        "The Cognitive Spectrum Model views personality through five key spectrums, each representing a range of preferences rather than fixed categories. These dimensions,Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style,work together to form your unique cognitive architecture. Understanding where you lean on each spectrum helps reveal how you naturally navigate the world, make choices, and connect with others.\n\nBy seeing these as fluid preferences, you gain insight into your strengths and areas for growth. For instance, a stronger lean toward one pole might feel instinctive, while the opposite offers opportunities to expand. This awareness empowers you to adapt more effectively in various situations, fostering self-compassion and personal development.\n\nExploring these dimensions personally can transform how you approach challenges and relationships. It's about recognizing your default modes and learning to access the full spectrum when it serves you best. This balanced view supports a more authentic and versatile way of being.",
       dimensions: [
         {
           title: "Information Processing",
@@ -5097,7 +5097,7 @@ export const reportTemplates = {
     },
     detailedEssence: [
       {
-        note: "To grasp what makes you uniquely The Theorist, consider how your preferences shape your worldview—it's about seeking truth through independent, abstract exploration. Reading this alongside your dimensional profile and percentages will give you a clearer picture of how these elements come together in your daily life. This essence highlights your strengths in deep analysis while pointing toward areas for personal development.",
+        note: "To grasp what makes you uniquely The Theorist, consider how your preferences shape your worldview,it's about seeking truth through independent, abstract exploration. Reading this alongside your dimensional profile and percentages will give you a clearer picture of how these elements come together in your daily life. This essence highlights your strengths in deep analysis while pointing toward areas for personal development.",
       },
       {
         deepAnalysis: [
@@ -5111,7 +5111,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction: [
-        "Your personality in the Cognitive Spectrum Model unfolds across five key spectrums, each representing a range of preferences rather than fixed categories. These dimensions—Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style—interact to form your unique cognitive architecture. Understanding where you fall on each spectrum helps reveal how you naturally navigate the world, make choices, and relate to others.",
+        "Your personality in the Cognitive Spectrum Model unfolds across five key spectrums, each representing a range of preferences rather than fixed categories. These dimensions,Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style,interact to form your unique cognitive architecture. Understanding where you fall on each spectrum helps reveal how you naturally navigate the world, make choices, and relate to others.",
         "For instance, a stronger lean toward one pole doesn't mean you can't access the other; it's about your default tendencies and what feels most comfortable. This awareness can guide personal growth by highlighting strengths to leverage and areas to develop. Embracing both ends of each spectrum fosters balance and adaptability in various aspects of life.",
         "As The Theorist, your positions on these spectrums create a cohesive profile focused on abstract, logical, inward, stable, and autonomous approaches. Exploring them individually will show how they support your quest for deep understanding.",
       ],
@@ -5339,7 +5339,7 @@ export const reportTemplates = {
     },
     detailedEssence: [
       {
-        note: "As The Innovator, you bring a special blend of thoughtful analysis and creative exploration to everything you do. This report dives into what makes you unique, highlighting how your preferences shape your worldview and interactions. To get the full picture, pair this with your dimensional profile below—it shows the nuances of your strengths across different levels of preference. Remember, this is about understanding yourself better, not fitting into a box. Let's explore what drives you and how you can grow from here.",
+        note: "As The Innovator, you bring a special blend of thoughtful analysis and creative exploration to everything you do. This report dives into what makes you unique, highlighting how your preferences shape your worldview and interactions. To get the full picture, pair this with your dimensional profile below,it shows the nuances of your strengths across different levels of preference. Remember, this is about understanding yourself better, not fitting into a box. Let's explore what drives you and how you can grow from here.",
       },
       {
         deepAnalysis: [
@@ -5386,7 +5386,7 @@ export const reportTemplates = {
             "Picture a situation where facts and feelings both matter. You weigh each side comfortably, choosing what fits the moment best. This balanced style helps you navigate choices with ease, combining analysis and empathy whenever needed. It keeps your decisions fair, relatable, and attuned to the nuances of each situation. People see you as thoughtful and open to multiple angles.",
             "In group discussions, you might support a logical plan while making sure it aligns with everyone's concerns, shaping outcomes that feel inclusive. This adaptability prevents rigid thinking and allows compassionate adjustments. It inspires trust, since people know you consider both emotional and practical aspects. Your choices often create harmony and satisfy various needs.",
             "Reflect on a personal goal. You evaluate practical pros and cons while also considering how it affects your well-being and relationships. This blend strengthens self-awareness and guides you toward choices that feel genuine. It supports ongoing development, as you draw naturally from both head and heart. Your balanced judgment nurtures a life rooted in integrity and connection.",
-            "When priorities shift, you adjust without hesitation, choosing whichever tool—logic or values—suits the moment. This keeps you flexible and grounded. It enhances communication, turning potential tension into opportunities for understanding. Your approach feels natural and empowering in many areas of life.",
+            "When priorities shift, you adjust without hesitation, choosing whichever tool,logic or values,suits the moment. This keeps you flexible and grounded. It enhances communication, turning potential tension into opportunities for understanding. Your approach feels natural and empowering in many areas of life.",
           ],
           moderate: [
             "Logic often takes the lead in your decision-making, giving you clarity through evidence and cause-effect thinking, though you can turn to values when needed. This dependable method brings consistency and makes difficult choices easier to navigate. It influences your problem-solving style, guiding you toward structured solutions. Adding empathy intentionally brings warmth and emotional depth to your decisions.",
@@ -5591,7 +5591,7 @@ export const reportTemplates = {
     dimensionalProfile: {
       introduction: [
         "The five dimensions in the Cognitive Spectrum Model represent key aspects of how you experience the world, each as a spectrum rather than fixed categories. They show your natural leanings in perceiving information, making decisions, directing energy, approaching change, and relating to others. Understanding these helps you see your cognitive architecture as a personalized map, highlighting strengths and areas for growth.",
-        "Each dimension has two poles, like Concrete versus Abstract, and your position on the spectrum indicates preference strength—mild for balance, moderate for focused reliability, or strong for deep mastery with potential blind spots. This framework promotes self-awareness by showing how these preferences interact in your daily life. It encourages viewing opposites not as weaknesses but as opportunities to expand your perspective.",
+        "Each dimension has two poles, like Concrete versus Abstract, and your position on the spectrum indicates preference strength,mild for balance, moderate for focused reliability, or strong for deep mastery with potential blind spots. This framework promotes self-awareness by showing how these preferences interact in your daily life. It encourages viewing opposites not as weaknesses but as opportunities to expand your perspective.",
         "By exploring your placements, you gain insights into why certain situations feel energizing or challenging. This knowledge supports personal development, helping you adapt more effectively across contexts. It's about embracing your unique configuration while building versatility for a more balanced approach.",
       ],
       dimensions: [
@@ -5719,7 +5719,7 @@ export const reportTemplates = {
       ],
       compatibility: {
         introduction:
-          "In CSM, compatibility arises from how cognitive preferences align or contrast—shared motivations like Autonomy create ease, while differences in energy or decision styles encourage growth through mutual understanding.",
+          "In CSM, compatibility arises from how cognitive preferences align or contrast,shared motivations like Autonomy create ease, while differences in energy or decision styles encourage growth through mutual understanding.",
         matches: [
           {
             type: "Synergistic",
@@ -6075,7 +6075,7 @@ export const reportTemplates = {
     dimensionalProfile: {
       introduction: [
         "The five CSM dimensions form the foundation of your personality, each representing a spectrum where you lean toward one side or the other based on your natural preferences. These aren't fixed categories but fluid scales that show how you process information, make decisions, direct your energy, approach change, and relate to others. Understanding your position on each helps you see your strengths clearly and spot areas for growth, leading to better self-awareness and more fulfilling interactions.",
-        "Your cognitive architecture is unique, shaped by where you fall on these spectrums—whether closer to the center for balance or toward one end for specialization. This framework encourages seeing opposites not as weaknesses but as complementary tools you can develop. By exploring these dimensions, you gain insights into why certain situations feel energizing or draining, empowering you to navigate life more intentionally.",
+        "Your cognitive architecture is unique, shaped by where you fall on these spectrums,whether closer to the center for balance or toward one end for specialization. This framework encourages seeing opposites not as weaknesses but as complementary tools you can develop. By exploring these dimensions, you gain insights into why certain situations feel energizing or draining, empowering you to navigate life more intentionally.",
         "Remember, no preference is better than another; it's about how they combine to create your archetype. Use this profile to celebrate your natural tendencies while gently stretching toward the other poles for rounded development.",
       ],
       dimensions: [
@@ -6301,7 +6301,7 @@ export const reportTemplates = {
     },
     detailedEssence: [
       {
-        note: "To get the most from this report, think of The Catalyst as your core way of engaging with the world—full of energy for new ideas and a heart for bringing people together. Read it alongside the dimensional profile below, where your preferences on each spectrum add layers to this picture. This combination gives you a clear map for self-understanding and growth.",
+        note: "To get the most from this report, think of The Catalyst as your core way of engaging with the world,full of energy for new ideas and a heart for bringing people together. Read it alongside the dimensional profile below, where your preferences on each spectrum add layers to this picture. This combination gives you a clear map for self-understanding and growth.",
       },
       {
         deepAnalysis: [
@@ -6315,7 +6315,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction:
-        "The five dimensions in the Cognitive Spectrum Model represent key spectrums of how you prefer to think, feel, and interact. Each one shows a preference between two poles, like focusing on real details versus big-picture ideas, creating a unique cognitive map that's all yours. Understanding these helps you see your natural strengths and where you might stretch for balance, leading to better self-awareness and personal growth.\n\nThese spectrums aren't about being one way or the other—they're about your leanings, which can shift with context or effort. For The Catalyst, your preferences shape an inspiring, adaptable style that emphasizes empathy and exploration. Exploring each dimension gives insights into why you approach life as you do, opening doors to more intentional living.\n\nThink of this profile as a guide to your mind's architecture, highlighting how these elements work together. It's designed to feel supportive, showing possibilities for harmony within yourself. Use it to celebrate what comes easily and gently work on what doesn't.",
+        "The five dimensions in the Cognitive Spectrum Model represent key spectrums of how you prefer to think, feel, and interact. Each one shows a preference between two poles, like focusing on real details versus big-picture ideas, creating a unique cognitive map that's all yours. Understanding these helps you see your natural strengths and where you might stretch for balance, leading to better self-awareness and personal growth.\n\nThese spectrums aren't about being one way or the other,they're about your leanings, which can shift with context or effort. For The Catalyst, your preferences shape an inspiring, adaptable style that emphasizes empathy and exploration. Exploring each dimension gives insights into why you approach life as you do, opening doors to more intentional living.\n\nThink of this profile as a guide to your mind's architecture, highlighting how these elements work together. It's designed to feel supportive, showing possibilities for harmony within yourself. Use it to celebrate what comes easily and gently work on what doesn't.",
       dimensions: [
         {
           title: "Information Processing",
@@ -6556,7 +6556,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction:
-        "Your personality unfolds across five key spectrums, each representing a preference rather than a fixed trait. These dimensions—Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style—work together to form your unique cognitive map. Understanding where you lean on each helps highlight your natural strengths while pointing to areas for balanced growth, making self-awareness more actionable and supportive.",
+        "Your personality unfolds across five key spectrums, each representing a preference rather than a fixed trait. These dimensions,Information Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style,work together to form your unique cognitive map. Understanding where you lean on each helps highlight your natural strengths while pointing to areas for balanced growth, making self-awareness more actionable and supportive.",
       dimensions: [
         {
           title: "Information Processing",
@@ -7282,7 +7282,7 @@ export const reportTemplates = {
       introduction: [
         "The Cognitive Spectrum Model views your personality through five key dimensions, each as a spectrum where you lean toward one side more than the other. These preferences shape how you take in information, make choices, direct your energy, approach change, and connect with people. Understanding them helps you see your natural strengths and areas for growth, leading to better self-awareness and more fulfilling interactions.",
         "Rather than fixed categories, these spectrums show your unique blend, with percentages indicating how strongly you prefer one pole over the other. This flexible framework encourages you to appreciate your dominant styles while exploring the opposite sides for balance. It's all about using your cognitive architecture to live more intentionally.",
-        "By reflecting on each dimension, you'll gain insights into why you think and act the way you do. This knowledge empowers personal development and stronger relationships. Remember, no preference is better—it's about what works best for you in different situations.",
+        "By reflecting on each dimension, you'll gain insights into why you think and act the way you do. This knowledge empowers personal development and stronger relationships. Remember, no preference is better,it's about what works best for you in different situations.",
       ],
       dimensions: [
         {
@@ -7409,7 +7409,7 @@ export const reportTemplates = {
       ],
       compatibility: {
         introduction:
-          "In CSM, compatibility arises from how cognitive preferences align or contrast—shared styles like Harmony or Inward energy create natural ease, while opposites encourage personal expansion and deeper understanding.",
+          "In CSM, compatibility arises from how cognitive preferences align or contrast,shared styles like Harmony or Inward energy create natural ease, while opposites encourage personal expansion and deeper understanding.",
         matches: [
           {
             type: "Synergistic",
@@ -7509,7 +7509,7 @@ export const reportTemplates = {
     },
     detailedEssence: [
       {
-        note: "To get the full picture of what being The Mystic means for you, think of this as your core blueprint—how you naturally see the world, make choices, and connect with what's around you. Pair this with the details on your dimension preferences and percentages below; they'll show you the nuances of your style and where you can stretch for even more balance and fulfillment.",
+        note: "To get the full picture of what being The Mystic means for you, think of this as your core blueprint,how you naturally see the world, make choices, and connect with what's around you. Pair this with the details on your dimension preferences and percentages below; they'll show you the nuances of your style and where you can stretch for even more balance and fulfillment.",
       },
       {
         deepAnalysis: [
@@ -7523,7 +7523,7 @@ export const reportTemplates = {
     ],
     dimensionalProfile: {
       introduction:
-        "Your personality unfolds across five key spectrums, each showing where you naturally lean in how you see the world, choose your actions, draw your energy, handle shifts, and connect with people. These aren't fixed categories but fluid preferences that shape your unique way of being. By understanding both ends of each spectrum—like focusing on what's real versus what's possible—you gain clearer insights into your strengths and areas for growth, helping you navigate life with more ease and intention.",
+        "Your personality unfolds across five key spectrums, each showing where you naturally lean in how you see the world, choose your actions, draw your energy, handle shifts, and connect with people. These aren't fixed categories but fluid preferences that shape your unique way of being. By understanding both ends of each spectrum,like focusing on what's real versus what's possible,you gain clearer insights into your strengths and areas for growth, helping you navigate life with more ease and intention.",
       dimensions: [
         {
           title: "Information Processing",
