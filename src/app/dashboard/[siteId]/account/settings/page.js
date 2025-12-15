@@ -19,6 +19,7 @@ export default function SettingsPage() {
 
   // Change Email
   const [newEmail, setNewEmail] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
   const [emailLoading, setEmailLoading] = useState(false);
   const [emailStatus, setEmailStatus] = useState(null);
 
@@ -108,13 +109,16 @@ export default function SettingsPage() {
   };
 
   // ==================== CHANGE EMAIL ====================
-  // Update the handleEmailChange function in your settings page
-
   const handleEmailChange = async (e) => {
     e.preventDefault();
 
     if (!newEmail || !newEmail.includes("@")) {
       setEmailStatus({ success: false, message: "Please enter a valid email address" });
+      return;
+    }
+
+    if (newEmail.toLowerCase() !== confirmEmail.toLowerCase()) {
+      setEmailStatus({ success: false, message: "Email addresses do not match" });
       return;
     }
 
@@ -145,6 +149,7 @@ export default function SettingsPage() {
           "Email change requested! Check your NEW email for the confirmation link. Once confirmed, your account will be updated automatically.",
       });
       setNewEmail("");
+      setConfirmEmail("");
     } catch (err) {
       console.error("Email change error:", err);
       setEmailStatus({
@@ -247,6 +252,15 @@ export default function SettingsPage() {
                   placeholder="New email address"
                   value={newEmail}
                   onChange={(e) => setNewEmail(e.target.value)}
+                  required
+                  className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:border-white transition"
+                />
+
+                <input
+                  type="email"
+                  placeholder="Confirm new email address"
+                  value={confirmEmail}
+                  onChange={(e) => setConfirmEmail(e.target.value)}
                   required
                   className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:border-white transition"
                 />
