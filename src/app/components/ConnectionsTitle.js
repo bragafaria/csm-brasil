@@ -46,9 +46,9 @@ export default function ConnectionsTitle() {
           <sup className="text-sm md:text-base align-super">&reg;</sup>
         </h3>
       </div>
-      <h1 className="text-4xl md:text-8xl font-bold text-white drop-shadow-2xl">32 ARCHETYPES</h1>
+      <h1 className="text-4xl md:text-8xl font-bold text-white drop-shadow-2xl">32 ARQUÉTIPOS</h1>
       <h3 className="text-xl px-2 font-light tracking-wider text-gray-400 mt-6 mb-10">
-        A personalized cognitive blueprint with unmatched depth and precision.
+        Um blueprint cognitivo personalizado com profundidade e precisão incomparáveis.
       </h3>
 
       {/* 32 Archetypes — Hidden on mobile, visible on md+ */}

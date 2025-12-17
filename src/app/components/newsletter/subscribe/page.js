@@ -14,7 +14,7 @@ export default function Newsletter() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setStatus("error");
-      setMessage("Please enter a valid email address");
+      setMessage("Por favor, insira um endereço de e-mail válido.");
       return;
     }
 
@@ -34,16 +34,16 @@ export default function Newsletter() {
 
       if (response.ok) {
         setStatus("success");
-        setMessage(data.message || "Successfully subscribed!");
+        setMessage(data.message || "Inscrição realizada com sucesso!");
         setEmail("");
       } else {
         setStatus("error");
-        setMessage(data.error || "Something went wrong. Please try again.");
+        setMessage(data.error || "Algo deu errado. Por favor, tente novamente.");
       }
     } catch (error) {
       console.error("Subscribe error:", error);
       setStatus("error");
-      setMessage("Something went wrong. Please try again.");
+      setMessage("Algo deu errado. Por favor, tente novamente.");
     }
   };
 
@@ -56,16 +56,17 @@ export default function Newsletter() {
               <Mail className="w-8 h-8 text-violet-400" />
             </div>
 
-            <h3 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">Never Miss a Story</h3>
+            <h3 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">Nunca Perca uma História</h3>
 
             <p className="text-lg text-[var(--text-secondary)] mb-8">
-              Get weekly insights on relationships, personal growth, and wellness delivered straight to your inbox.
+              Receba semanalmente insights sobre relacionamentos, crescimento pessoal e bem-estar diretamente na sua
+              caixa de entrada.
             </p>
 
             <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Digite seu e-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={status === "loading"}
@@ -76,7 +77,7 @@ export default function Newsletter() {
                 disabled={status === "loading"}
                 className="btn-primary px-6 py-3 rounded-lg font-semibold whitespace-nowrap flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {status === "loading" ? "Subscribing..." : "Subscribe"}
+                {status === "loading" ? "Inscrevendo..." : "Assinar"}
                 <Mail className="w-4 h-4" />
               </button>
             </form>
@@ -92,7 +93,9 @@ export default function Newsletter() {
               </div>
             )}
 
-            <p className="text-xs text-[var(--text-secondary)] mt-4">Join 10,000+ readers. Unsubscribe anytime.</p>
+            <p className="text-xs text-[var(--text-secondary)] mt-4">
+              Junte-se a mais de 10.000 leitores. Cancele a inscrição a qualquer momento.
+            </p>
           </div>
         </div>
       </div>

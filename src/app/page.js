@@ -234,9 +234,9 @@ export default function Home() {
             <div className="hidden md:flex space-x-4 lg:space-x-8">
               {[
                 { id: "home", label: "Home" },
-                { id: "whats-inside", label: "What's Inside" },
-                { id: "how-it-works", label: "How It Works" },
-                { id: "why-CSM-?", label: "Why CSM?" },
+                { id: "whats-inside", label: "O que é?" },
+                { id: "how-it-works", label: "Como Funciona" },
+                { id: "why-CSM-?", label: "Por que CSM?" },
                 { id: "faq", label: "FAQ" },
                 { id: "blog", label: "Blog" },
               ].map((item) => (
@@ -274,9 +274,9 @@ export default function Home() {
             <div className="flex flex-col space-y-1">
               {[
                 { id: "home", label: "Home" },
-                { id: "whats-inside", label: "What's Inside" },
-                { id: "how-it-works", label: "How It Works" },
-                { id: "why-CSM-?", label: "Why CSM?" },
+                { id: "whats-inside", label: "O que é?" },
+                { id: "how-it-works", label: "Como Funciona" },
+                { id: "why-CSM-?", label: "Por que CSM?" },
                 { id: "faq", label: "FAQ" },
                 { id: "blog", label: "Blog" },
               ].map((item) => (
@@ -317,7 +317,7 @@ export default function Home() {
                 variants={headlineVariants}
                 className="block bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] gradient-text md:pb-4"
               >
-                Stronger Relationships
+                Relacionamentos Fortes
               </motion.span>
             </h1>
             <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
@@ -328,7 +328,7 @@ export default function Home() {
                 variants={headlineVariants}
                 className="block bg-gradient-to-r from-[var(--text-primary)] via-[var(--text-primary)] to-[var(--text-primary)] gradient-text md:pb-4"
               >
-                Start With
+                Começam com
               </motion.span>
             </h1>
             <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl  font-bold leading-tight mb-4 sm:mb-6">
@@ -339,13 +339,13 @@ export default function Home() {
                 variants={headlineVariants}
                 className="block bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--primary)] gradient-text pb-4"
               >
-                Understanding
+                Compreensão
               </motion.span>
             </h1>
 
             <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto mb-10">
-              The Cognitive Spectrum Model (CSM) is a framework that maps how you think and connect, providing clear
-              steps for personal growth and stronger relationships.
+              O Modelo do Espectro Cognitivo (CSM) é uma estrutura que mapeia como você pensa e se conecta com os
+              outros, oferecendo passos claros para o crescimento pessoal e relacionamentos mais fortes.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-2">
@@ -358,10 +358,12 @@ export default function Home() {
                 variants={buttonVariants}
                 className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 shadow-2xl flex items-center space-x-2 text-[var(--text-primary)] max-w-sm md:max-w-md sm:w-auto justify-center"
               >
-                <span>{loggingOut ? "Preparing…" : "Take Free Test"}</span>
+                <span>{loggingOut ? "Preparando…" : "Faça o Teste Gratuito"}</span>
                 <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
-              <p className="text-[var(--text-secondary)] text-xs sm:text-sm">Takes only 10 minutes • Completely free</p>
+              <p className="text-[var(--text-secondary)] text-xs sm:text-sm">
+                Leva apenas 10 minutos • Totalmente gratuito
+              </p>
             </div>
 
             <div className="my-12 md:my-16 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8 px-2">
@@ -369,19 +371,19 @@ export default function Home() {
                 <div className="text-2xl sm:text-3xl font-bold text-white mb-2">
                   <Counter target={25} suffix="k+" duration={3000} />
                 </div>
-                <div className="text-[var(--text-secondary)] text-sm sm:text-base">Couples helped</div>
+                <div className="text-[var(--text-secondary)] text-sm sm:text-base">Casais ajudados</div>
               </div>
               <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--accent-rgb),0.1)] to-transparent border border-[rgba(var(--accent-rgb),0.2)] backdrop-blur-sm">
                 <div className="text-2xl sm:text-3xl font-bold text-white mb-2">
                   <Counter target={95} suffix="%" duration={3000} />
                 </div>
-                <div className="text-[var(--text-secondary)] text-sm sm:text-base">Report improvement</div>
+                <div className="text-[var(--text-secondary)] text-sm sm:text-base">Relataram melhorias</div>
               </div>
               <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-b from-[rgba(var(--primary-rgb),0.1)] to-transparent border border-[rgba(var(--primary-rgb),0.2)] backdrop-blur-sm">
                 <div className="text-2xl sm:text-3xl font-bold text-white mb-2">
                   <Counter target={4.9} suffix=" ★" duration={3000} decimals={1} />
                 </div>
-                <div className="text-[var(--text-secondary)] text-sm sm:text-base">Average rating</div>
+                <div className="text-[var(--text-secondary)] text-sm sm:text-base">Avaliação média</div>
               </div>
             </div>
           </div>
@@ -394,10 +396,10 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold my-6 text-white">Your mind mapped. Not labeled.</h2>
+            <h2 className="text-4xl md:text-5xl font-bold my-6 text-white">Sua mente mapeada. Não rotulada.</h2>
             <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
-              Personality {`isn't a box. It's`} a spectrum of how your mind actually works. CSM shows you where you
-              shine, where you stretch, and how you connect.
+              Personalidade não é uma caixa. É um espectro de como sua mente realmente funciona. O CSM mostra onde você
+              brilha, onde pode se desenvolver e como você se conecta.
             </p>
           </div>
 
@@ -430,13 +432,13 @@ export default function Home() {
                   className="order-2 lg:order-none flex flex-col justify-center space-y-6 lg:pl-8 mb-8 lg:mb-0"
                 >
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-bold text-center text-white">Five Spectrum Cross-Analysis</h3>
+                    <h3 className="text-2xl font-bold text-center text-white">Análise Cruzada dos Cinco Espectros</h3>
                     <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-center lg:text-left md:max-w-md mx-auto">
-                      Explore how your mind operates across the five core dimensions of cognition: Information
-                      Processing, Decision-Making, Energy Orientation, Change Approach, and Interpersonal Style.
+                      Explore como sua mente opera nas cinco dimensões centrais da cognição: Processamento de
+                      Informações, Tomada de Decisão, Orientação de Energia, Abordagem de Mudança e Estilo Interpessoal.
                     </p>
                     <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-center lg:text-left">
-                      Access visual charts, domain scores, and profile analysis.
+                      Acesse gráficos visuais, pontuações por domínio e análises de perfil.
                     </p>
                   </div>
                 </motion.div>
@@ -454,9 +456,9 @@ export default function Home() {
                 border border-[rgba(var(--primary-rgb),0.2)] shadow-[0_0_40px_rgba(var(--primary-rgb),0.3)] flex flex-col space-y-4 lg:mt-10"
                   >
                     <div className="text-center space-y-2">
-                      <h3 className="text-xl font-bold text-[var(--text-primary)]">Information Processing</h3>
+                      <h3 className="text-xl font-bold text-[var(--text-primary)]">Processamento de Informações</h3>
                       <p className="text-sm text-[var(--text-secondary)] italic">
-                        How do you naturally perceive information?
+                        Como você percebe as informações de forma natural?
                       </p>
                     </div>
 
@@ -469,16 +471,18 @@ export default function Home() {
                         className="bg-gradient-to-r from-green-500/10 to-black/10 p-4 rounded-xl border border-green-400/20 space-y-2"
                       >
                         <div className="text-lg font-medium text-[var(--text-primary)] text-center">
-                          Concrete Focus (C)
+                          Foco no Concreto (C)
                         </div>
                         <p className="text-sm text-[var(--text-secondary)] text-center italic px-2">
-                          Focuses on tangible, verifiable data and practical details in the present moment.
+                          Foca em dados tangíveis, verificáveis e em detalhes práticos do momento presente.
                         </p>
                         <div className="space-y-2">
-                          <div className="text-base font-bold text-green-400 text-center">Mild Dominance</div>
+                          <div className="text-base font-bold text-green-400 text-center">Dominância Leve</div>
                           <div className="flex items-center justify-between">
                             <div className="flex items-center space-x-2">
-                              <span className="text-sm font-medium text-[var(--text-primary)]">Primary Preference</span>
+                              <span className="text-sm font-medium text-[var(--text-primary)]">
+                                Preferência Primária
+                              </span>
                               <HelpCircle className="h-4 w-4 text-green-400" />
                             </div>
                             <span className="text-xl font-bold text-green-400">57%</span>
@@ -503,17 +507,17 @@ export default function Home() {
                         className="bg-gradient-to-r from-red-500/10 to-black/10 p-4 rounded-xl border border-red-400/20 space-y-2"
                       >
                         <div className="text-lg font-medium text-[var(--text-primary)] text-center">
-                          Abstract Insight (N)
+                          Insight Abstrato (N)
                         </div>
                         <p className="text-sm text-[var(--text-secondary)] text-center italic px-2">
-                          Focuses on patterns, possibilities, and future implications.
+                          Foca em padrões, possibilidades e implicações futuras.
                         </p>
                         <div className="space-y-2">
-                          <div className="text-base font-bold text-red-400 text-center">High Influence</div>
+                          <div className="text-base font-bold text-red-400 text-center">Alta Influência</div>
                           <div className="flex items-center justify-between">
                             <div className="flex items-center space-x-2">
                               <span className="text-sm font-medium text-[var(--text-primary)]">
-                                Secondary Influence
+                                Influência Secundária
                               </span>
                               <HelpCircle className="h-4 w-4 text-red-400" />
                             </div>
@@ -543,13 +547,13 @@ export default function Home() {
                   className="order-4 lg:order-none flex flex-col justify-center space-y-6 lg:pl-8 mt-8 mb-8 lg:mb-0 lg:col-start-1"
                 >
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-bold text-center text-white">Depth and Precision</h3>
+                    <h3 className="text-2xl font-bold text-center text-white">Profundidade e Precisão</h3>
                   </div>
                   <div className="space-y-4">
                     <p className="text-[var(--text-secondary)] leading-relaxed text-center md:max-w-md mx-auto lg:text-left">
-                      The five CSM dimensions give you a precise and deep understanding of how you process information,
-                      make decisions, and interact with others. This clarity helps you identify strengths, uncover
-                      weaknesses, and pursue growth with greater purpose.
+                      As cinco dimensões do CSM oferecem uma compreensão precisa e profunda de como você processa
+                      informações, toma decisões e interage com os outros. Essa clareza ajuda a identificar pontos
+                      fortes, revelar pontos de desenvolvimento e buscar crescimento com mais propósito.
                     </p>
                   </div>
                 </motion.div>
@@ -589,10 +593,11 @@ export default function Home() {
                   className="order-6 lg:order-none flex flex-col justify-center space-y-6 lg:pl-8 my-8 lg:mb-0"
                 >
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-bold text-center text-white">Your {`Mind's`} Blueprint</h3>
+                    <h3 className="text-2xl font-bold text-center text-white">O Blueprint da Sua Mente</h3>
                     <p className="text-[var(--text-secondary)] leading-relaxed text-center md:text-center md:max-w-md mx-auto lg:text-left">
-                      The Cognitive Spectrum Model (CSM) is a modern personality framework that maps how your mind is
-                      wired. Our algorithm reveals the unique cognitive stack that drives your thoughts and decisions.
+                      O Modelo do Espectro Cognitivo (CSM) é uma estrutura moderna de personalidade que mapeia como sua
+                      mente é estruturada. Nosso algoritmo revela os seus padrões cognitivos que impulsionam seus
+                      pensamentos e decisões.
                     </p>
                   </div>
                 </motion.div>
@@ -611,10 +616,10 @@ export default function Home() {
           {/* Header - Added responsive text sizes and margins */}
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-[var(--text-primary)] px-2">
-              How It Works
+              Como Funciona
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
-              Four simple steps to transform how you understand yourself and each other.
+              Quatro passos simples para transformar a forma como você entende a si mesmo e um ao outro.
             </p>
           </div>
 
@@ -622,20 +627,20 @@ export default function Home() {
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10" key={routeKey}>
             {[
               {
-                title: "Take the Free Assessment",
-                text: "You can start on your own. Answer a quick, 10-minute questionnaire that reveals your unique cognitive profile.",
+                title: "Faça a Avaliação Gratuita",
+                text: "Você pode começar por conta própria. Responda a um questionário rápido de 10 minutos que revela seu perfil cognitivo único.",
               },
               {
-                title: "Get Your Results",
-                text: "Receive your CSM Archetype instantly, along with percentage-based spectrums and deep insights into your strengths, growth areas, and blind spots",
+                title: "Receba Seus Resultados",
+                text: "Receba seu Arquétipo CSM instantaneamente, junto com espectros baseados em porcentagens e insights profundos sobre seus pontos fortes, áreas de crescimento e pontos cegos.",
               },
               {
-                title: "Access Your Dashboard",
-                text: "Enter your lifetime dashboard to explore your results, track growth, save insights, and use relationship tools anytime, on any device.",
+                title: "Acesse Seu Dashboard",
+                text: "Entre no seu painel para explorar seus resultados, acompanhar seu crescimento, salvar insights e usar ferramentas de relacionamento a qualquer momento, em qualquer dispositivo. Acesso vitalício.",
               },
               {
-                title: "Invite Your Partner",
-                text: "Send a private invite. When they finish, you unlock your joint Couple's Insights Report, showing compatibility patterns, communication strategies, and opportunities for growth.",
+                title: "Convide Seu Parceiro(a)",
+                text: "Envie um convite privado. Quando a outra pessoa concluir, você desbloqueia o Relatório de Insights do Casal, mostrando padrões de compatibilidade, estratégias de comunicação e oportunidades de crescimento.",
               },
             ].map((step, i) => (
               <motion.div
@@ -671,11 +676,11 @@ export default function Home() {
               onClick={handleStartTest}
               className="group bg-[var(--primary)] hover:bg-[var(--primary-dark)] px-12 py-4 rounded-full text-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl flex items-center space-x-3 mx-auto text-[var(--text-primary)]"
             >
-              <span>Take Free Test</span>
+              <span>Faça o Teste Gratuito</span>
               <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </button>
             <p className="text-[var(--text-secondary)] mt-4 text-xs sm:text-sm">
-              Takes only 10 minutes • Completely free
+              Leva apenas 10 minutos • Totalmente gratuito
             </p>
           </div>
         </div>
@@ -688,12 +693,12 @@ export default function Home() {
               <span className="bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-primary)] gradient-text whitespace-nowrap">
                 {" "}
                 {/* Add gradient-text */}
-                Why Couples
+                Por que os casais
               </span>
               <span className="relative inline-block">
                 <span className="absolute inset-0 bg-[var(--primary)] rounded-md"></span>
                 <RotatingWord
-                  words={["Choose", "Love", "Trust", "Value"]}
+                  words={["Escolhem a", "Amam a", "Confiam na", "Valorizam a"]}
                   interval={2000}
                   className="relative z-10 text-white font-bold flex items-center justify-center h-full px-3 py-1 md:px-4 md:py-2" // Ensure RotatingWord has text-white or similar
                 />
@@ -701,11 +706,11 @@ export default function Home() {
               <span className="bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-primary)] gradient-text whitespace-nowrap">
                 {" "}
                 {/* Add gradient-text */}
-                Our Assessment
+                nossa avaliação
               </span>
             </h2>
             <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
-              Understand each other like never before.
+              Entendam um ao outro como nunca antes.
             </p>
           </div>
 
@@ -722,10 +727,10 @@ export default function Home() {
                 <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Brain className="h-8 w-8 text-[var(--text-primary)]" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Self-Awareness</h3>
+                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Autoconhecimento</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
-                  Gain a precise profile of your cognitive and emotional patterns. This gives you the essential
-                  foundation for genuine connection and deeper mutual understanding in your relationship.
+                  Obtenha um perfil preciso dos seus padrões cognitivos e emocionais. Isso oferece a base essencial para
+                  uma conexão genuína e uma compreensão mútua mais profunda no seu relacionamento.
                 </p>
               </div>
             </AnimatedCard>
@@ -741,10 +746,11 @@ export default function Home() {
                 <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Users className="h-8 w-8 text-[var(--text-primary)]" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Couple-Focused</h3>
+                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Focado no Casal</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
-                  Unlike individual personality tests, our framework is crafted to reveal how partners interact. It
-                  highlights your relationship dynamics, where you naturally align, and where growth is possible.
+                  Diferentemente dos testes de personalidade individuais, nosso framework foi desenvolvido para revelar
+                  como os parceiros interagem. Ele destaca as dinâmicas do relacionamento, onde vocês se alinham
+                  naturalmente e onde o crescimento é possível.
                 </p>
               </div>
             </AnimatedCard>
@@ -760,10 +766,10 @@ export default function Home() {
                 <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Target className="h-8 w-8 text-[var(--text-primary)]" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Actionable Insights</h3>
+                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Insights Práticos</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
-                  Receive clear, practical recommendations for your unique patterns and communication styles. Turn
-                  understanding into meaningful daily improvements.
+                  Receba recomendações claras e práticas para seus padrões e estilos de comunicação únicos. Transforme o
+                  entendimento em melhorias significativas no dia a dia.
                 </p>
               </div>
             </AnimatedCard>
@@ -779,10 +785,10 @@ export default function Home() {
                 <div className="w-16 h-16 rounded-2xl bg-[var(--primary)] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Shield className="h-8 w-8 text-[var(--text-primary)]" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Research-Based</h3>
+                <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)]">Baseado em Pesquisas</h3>
                 <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
-                  Grounded in decades of relationship psychology research and validated by thousands of thriving
-                  couples. It’s science you can trust.
+                  Baseado em décadas de pesquisa em psicologia de relacionamentos e validado por milhares de casais
+                  bem-sucedidos. É ciência em que você pode confiar.
                 </p>
               </div>
             </AnimatedCard>
@@ -794,7 +800,7 @@ export default function Home() {
       <section className="pt-20 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white"> What Couples Say</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white"> O Que os Casais Dizem</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -806,8 +812,8 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-[var(--text-secondary)] mb-6 leading-relaxed flex-grow">
-                This assessment revealed communication patterns we never noticed. Our relationship has never been
-                stronger!
+                Essa avaliação revelou padrões de comunicação que nunca tínhamos percebido. Nosso relacionamento nunca
+                esteve tão forte!
               </p>
               <div className="flex items-center gap-3 mt-auto">
                 <img
@@ -829,8 +835,8 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-[var(--text-secondary)] mb-6 leading-relaxed flex-grow">
-                Finally, a test that looks at us as a couple, not just individuals. The insights were incredibly
-                accurate.
+                Finalmente, um teste que nos analisa como casal, e não apenas como indivíduos. Os insights foram
+                incrivelmente precisos.
               </p>
               <div className="flex items-center gap-3 mt-auto">
                 <img
@@ -852,7 +858,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-[var(--text-secondary)] mb-6 leading-relaxed flex-grow">
-                The personalized recommendations helped us navigate our differences with so much more understanding.
+                As recomendações personalizadas nos ajudaram a lidar com nossas diferenças com muito mais compreensão.
               </p>
               <div className="flex items-center gap-3 mt-auto">
                 <img
@@ -879,60 +885,60 @@ export default function Home() {
             className="text-center mb-12 section-header"
           >
             <h2 className="text-4xl font-bold mb-6">
-              Frequently <span className="text-[var(--accent)]">Questions</span>
+              Perguntas <span className="text-[var(--accent)]">Frequentes</span>
             </h2>
           </motion.div>
 
           <div className="space-y-4 mb-12">
             {[
               {
-                question: "What is the Cognitive Spectrum Model (CSM), and why should I care?",
+                question: "O que é o Modelo do Espectro Cognitivo (CSM) e por que devo me importar?",
                 answer:
-                  "The Cognitive Spectrum Model, or CSM, is a modern personality framework that evaluates how individuals think and interact across five key spectrums: Information Processing (Concrete versus Abstract), Decision-Making (Analytical versus Empathic), Energy Orientation (Inward versus Outward), Change Approach (Stable versus Adaptive), and Interpersonal Style (Harmony versus Autonomy). By assessing these dimensions, CSM generates one of 32 archetypes, providing a detailed analytics profile that highlights your unique cognitive patterns, individually and within relationships.",
+                  "O Modelo do Espectro Cognitivo (CSM) é uma estrutura moderna de personalidade que avalia como os indivíduos pensam e interagem em cinco espectros-chave: Processamento de Informações (Concreto versus Abstrato), Tomada de Decisão (Analítico versus Empático), Orientação de Energia (Voltado para Dentro versus Voltado para Fora), Abordagem de Mudança (Estável versus Adaptativa) e Estilo Interpessoal (Harmonia versus Autonomia). Ao avaliar essas dimensões, o CSM gera um dos 32 arquétipos, fornecendo um perfil detalhado que destaca seus padrões cognitivos únicos, individualmente e nos relacionamentos.",
               },
               {
-                question: "How is CSM different from MBTI, Enneagram, or Big Five?",
+                question: "Como o CSM é diferente do MBTI, Eneagrama ou Big Five?",
                 answer:
-                  "While MBTI categorizes people into 16 types, Enneagram focuses on motivations, and the Big Five measures broad traits, CSM provides 32 archetypes supported by spectrum-based analysis for greater precision. By integrating cognitive patterns with real-world interpersonal insights, CSM provides actionable strategies for personal growth and relationship success that other personality frameworks don’t. CSM is particularly valuable for improving self-awareness, enhancing communication, and understanding compatibility in relationships or other interpersonal contexts.",
+                  "Enquanto o MBTI categoriza pessoas em 16 tipos, o Eneagrama foca em motivações e o Big Five mede traços amplos, o CSM oferece 32 arquétipos apoiados por análises baseadas em espectros para maior precisão. Integrando padrões cognitivos com insights interpessoais do mundo real, o CSM fornece estratégias práticas para crescimento pessoal e sucesso nos relacionamentos, que outros frameworks de personalidade não oferecem. É particularmente valioso para melhorar autoconhecimento, comunicação e compatibilidade em relacionamentos ou outros contextos interpessoais.",
               },
               {
-                question: "Why should I trust CSM over free online quizzes?",
+                question: "Por que devo confiar no CSM em vez de quizzes online gratuitos?",
                 answer:
-                  "Most free personality quizzes oversimplify human behavior. CSM is research-based, psychometrically validated, and designed for practical application in relationships and self-growth. Users consistently report that the insights are accurate, relevant, and immediately actionable, unlike generic quizzes that provide vague or entertainment-focused results.",
+                  "A maioria dos quizzes gratuitos simplifica demais o comportamento humano. O CSM é baseado em pesquisas, validado psicometricamente e projetado para aplicação prática em relacionamentos e crescimento pessoal. Usuários relatam consistentemente que os insights são precisos, relevantes e imediatamente aplicáveis, ao contrário de quizzes genéricos que fornecem resultados vagos ou apenas para entretenimento.",
               },
               {
-                question: "Can CSM really “read” my relationship like a mind reader?",
+                question: "O CSM realmente “lê” meu relacionamento como um leitor de mentes?",
                 answer:
-                  "CSM doesn’t guess emotions or predict outcomes intuitively. Instead, it analyzes cognitive alignments, such as how a partner who prefers Harmony might interact with someone who favors Autonomy. It identifies areas of synergy and potential friction. About 95% of users report that CSM provides clearer insights into relationship dynamics, helping them communicate and connect more effectively.",
+                  "O CSM não adivinha emoções nem prevê resultados intuitivamente. Ele analisa alinhamentos cognitivos, como a interação entre um parceiro que prefere Harmonia e outro que prefere Autonomia. Identifica áreas de sinergia e possíveis atritos. Cerca de 95% dos usuários relatam que o CSM oferece insights claros sobre a dinâmica do relacionamento, ajudando na comunicação e na conexão.",
               },
               {
-                question: "Is CSM scientifically legit, or just another buzzword quiz?",
+                question: "O CSM é cientificamente legítimo ou é apenas mais um quiz da moda?",
                 answer:
-                  "CSM is grounded in psychological theory, combining Jungian cognitive functions with Big Five traits. Ongoing research supports its reliability in predicting relational patterns, outperforming other popular personality frameworks in actionable insight. CSM is evidence-based and designed for practical application, not entertainment.",
+                  "O CSM é fundamentado em teoria psicológica, combinando funções cognitivas junguianas com traços do Big Five. Pesquisas contínuas apoiam sua confiabilidade na previsão de padrões relacionais, superando outros frameworks populares em insights aplicáveis. É baseado em evidências e projetado para aplicação prática, não para entretenimento.",
               },
               {
-                question: "How does the free assessment work?",
+                question: "Como funciona a avaliação gratuita?",
                 answer:
-                  "The free CSM assessment is designed to be concise, typically taking 10 to 15 minutes. It blends Likert-scale ratings with situational questions that reveal your cognitive preferences. Upon completion, you receive a free report detailing your archetype, percentage-based spectrum scores, strengths, weaknesses, and preliminary relational insights. The assessment is secure, mobile-friendly, and accessible on any device.",
+                  "A avaliação gratuita do CSM é concisa, geralmente levando de 10 a 15 minutos. Combina escalas de Likert com perguntas situacionais que revelam suas preferências cognitivas. Ao concluir, você recebe um relatório gratuito detalhando seu arquétipo, pontuações percentuais nos espectros, pontos fortes, áreas de desenvolvimento e insights relacionais preliminares. A avaliação é segura, compatível com dispositivos móveis e acessível em qualquer dispositivo.",
               },
               {
-                question: "Do I need my partner to start?",
+                question: "Preciso do meu parceiro para começar?",
                 answer:
-                  "No. You can complete the free assessment on your own and explore your personal profile first. If you want a full Couple’s Insights Report, your partner will also need to take the assessment. Many users start individually and later invite their partner for a joint analysis.",
+                  "Não. Você pode completar a avaliação gratuita sozinho e explorar seu perfil pessoal primeiro. Para obter o Relatório de Insights do Casal, seu parceiro também precisará realizar a avaliação. Muitos usuários começam individualmente e depois convidam o parceiro para uma análise conjunta.",
               },
               {
-                question: "Can CSM predict if we’re soulmates or just spot potential issues?",
+                question: "O CSM pode prever se somos almas gêmeas ou apenas identificar possíveis problemas?",
                 answer:
-                  "CSM doesn’t predict destiny or label anyone as a soulmate. Instead, it highlights potential compatibilities and challenges, such as Harmony-Autonomy differences or Analytical-Empathic interactions. It provides strategies to navigate common frictions, helping couples focus on growth, understanding, and conscious effort rather than chance.",
+                  "O CSM não prevê destino nem rotula ninguém como alma gêmea. Ele destaca compatibilidades potenciais e desafios, como diferenças Harmonia-Autonomia ou interações Analítico-Empático. Fornece estratégias para lidar com atritos comuns, ajudando casais a focarem em crescimento, compreensão e esforço consciente, em vez de sorte.",
               },
               {
-                question: "How quickly will I get my results?",
-                answer: "Your individual free assessment results are generated immediately.",
+                question: "Quão rápido receberei meus resultados?",
+                answer: "Os resultados individuais da avaliação gratuita são gerados imediatamente.",
               },
               {
-                question: "Is CSM therapy?",
+                question: "O CSM é uma terapia?",
                 answer:
-                  "No. CSM is not a therapeutic tool and does not diagnose or treat mental health conditions. It is a self-awareness and personal growth framework designed to provide structured insights and strategies for relationships and life challenges. Many users combine it with counseling or coaching, but it is fully effective as a standalone growth tool. Our services are designed for personal growth, self-reflection, and relationship insights only.",
+                  "Não. O CSM não é uma ferramenta terapêutica e não diagnostica nem trata condições de saúde mental. É uma estrutura de autoconhecimento e crescimento pessoal projetada para fornecer insights e estratégias estruturadas para relacionamentos e desafios da vida. Muitos usuários combinam com aconselhamento ou coaching, mas é totalmente eficaz como ferramenta de desenvolvimento independente. Nossos serviços são voltados apenas para crescimento pessoal, autorreflexão e insights sobre relacionamentos.",
               },
             ].map((faq, index) => (
               <div key={index} className="card-gradient rounded-lg overflow-hidden">
@@ -961,10 +967,10 @@ export default function Home() {
       <section className="pt-6 md:py-16 gradient-bg-with-vars from-[rgba(var(--primary-rgb),0.2)] to-[rgba(var(--accent-rgb),0.2)]">
         <div className="max-w-4xl mx-auto text-center px-4 py-6 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-primary)] bg-clip-text text-transparent">
-            Ready to Deepen Your Connection?
+            Pronto para Aprfundar a Sua Conexão?
           </h2>
           <p className="text-xl text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
-            Join thousands of couples who have transformed their relationships through understanding
+            Junte-se a milhares de casais que transformaram seus relacionamentos por meio da compreensão.
           </p>
           <button
             onClick={handleStartTest}
@@ -973,7 +979,9 @@ export default function Home() {
             <span>Take Free Test</span>
             <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
           </button>
-          <p className="text-[var(--text-secondary)] mt-4">No credit card required • Results in minutes</p>
+          <p className="text-[var(--text-secondary)] mt-4">
+            Não é necessário cartão de crédito • Resultados em minutos
+          </p>
         </div>
       </section>
       {/* CONNECTIONS PARTICLE SECTION - FULL WIDTH, CONTAINED */}
@@ -1012,7 +1020,8 @@ export default function Home() {
                 </div>
               </div>
               <p className="text-[var(--text-secondary)] mb-4">
-                Empowering couples with science-backed relationship insights through the Cognitive Spectrum Model.
+                Capacitando casais com insights de relacionamento baseados em ciência através do Modelo do Espectro
+                Cognitivo.
               </p>
               <div className="flex space-x-4">
                 <Link
@@ -1036,28 +1045,28 @@ export default function Home() {
                   onClick={() => setShowTermsModal(true)}
                   className="block text-left text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus:outline-none cursor-pointer transition-colors"
                 >
-                  Terms of Service
+                  Termos de Serviço
                 </button>
                 <button
                   onClick={() => setShowPrivacyModal(true)}
                   className="block text-left text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus:outline-none cursor-pointer transition-colors"
                 >
-                  Privacy Policy
+                  Política de Privacidade
                 </button>
 
                 <button
                   onClick={() => setShowRefundModal(true)}
                   className="block text-left text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus:outline-none cursor-pointer transition-colors"
                 >
-                  Refund Policy
+                  Política de Reembolso
                 </button>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Resources</h4>
+              <h4 className="font-semibold mb-4">Resursos</h4>
               <div className="space-y-2">
                 <Link href="/affiliate" className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
-                  Affiliate Program
+                  Programa de Afiliados
                 </Link>
                 <Link href="/blog" className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
                   Blog
@@ -1066,13 +1075,13 @@ export default function Home() {
                   href="mailto:csm@csmdynamics.com?subject=Abuse"
                   className="block text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 >
-                  Report Abuse
+                  Denunciar Abuso
                 </Link>
               </div>
             </div>
           </div>
           <div className="border-t border-[var(--border)] mt-8 pt-8 text-center text-[var(--text-secondary)]">
-            <p>&copy; 2025 CSM Dynamics. All rights reserved.</p>
+            <p>&copy; 2025 CSM Dynamics. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
