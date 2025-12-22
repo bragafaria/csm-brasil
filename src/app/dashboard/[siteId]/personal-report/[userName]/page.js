@@ -38,23 +38,28 @@ const safeParse = (value, fallback = []) => {
 
 // === CONSTANTS ===
 const PRIMARY_EXPLANATION = `
-To add greater nuance to your CSM profile, each dimension's preference is expressed as a percentage split between the two poles. 
+Para adicionar maior nuance ao seu perfil CSM, a preferência de cada dimensão é expressa como uma divisão percentual entre os dois polos.
 
-Primary Preference (above 50%) reflects your dominant approach, This is your natural, go-to way of thinking and processing information in that dimension.
+A Preferência Primária (acima de 50%) reflete sua abordagem dominante. Esse é o seu modo natural, automático, de pensar e processar informações naquela dimensão.
 
-DEGREES OF DOMINANCE:
-• Mild Preference (51–65%): Slight advantage, good flexibility, easy access to secondary
-• Moderate Preference (66–85%): Clear dominance, reliable lean with some adaptability  
-• Strong Preference (86–100%): Heavy dominance, core strength but potential blind spots
+GRAUS DE DOMINÂNCIA:
+
+* Preferência Leve (51–65%): Leve vantagem, boa flexibilidade e fácil acesso ao polo secundário
+* Preferência Moderada (66–85%): Dominância clara, inclinação consistente com alguma adaptabilidade
+* Preferência Forte (86–100%): Dominância elevada, principal força cognitiva, mas com possíveis pontos cegos
+
 `;
 
 const SECONDARY_EXPLANATION = `
-Secondary Preference (below 50%) indicates how accessible the opposite pole is to you. This shows your flexibility and where you can stretch for balance.
+A Preferência Secundária (abaixo de 50%) indica o quão acessível é para você o polo oposto. Isso revela seu nível de flexibilidade e onde você pode se expandir para alcançar maior equilíbrio.
 
-DEGREES OF INFLUENCE:
-• High Influence (35–49%): Strong accessibility, frequent use, reliable complement
-• Moderate Influence (15–34%): Noticeable presence, emerges in specific situations
-• Low Influence (0–14%): Rarely used naturally, often a blind spot or growth area
+GRAUS DE INFLUÊNCIA:
+
+Alta Influência (35–49%): Forte acessibilidade, uso frequente e complemento confiável
+
+Influência Moderada (15–34%): Presença perceptível, emerge em situações específicas
+
+Baixa Influência (0–14%): Raramente utilizada de forma natural, frequentemente um ponto cego ou área de desenvolvimento
 `;
 
 const poleMap = {
@@ -71,24 +76,24 @@ const poleMap = {
 };
 
 const poleFullName = {
-  C: "Concrete Focus",
-  N: "Abstract Insight",
-  L: "Analytical Logic",
-  V: "Empathic Values",
-  O: "Outward Engagement",
-  I: "Inward Reflection",
-  S: "Stable Structure",
-  F: "Adaptive Flexibility",
-  H: "Collaborative Harmony",
-  A: "Independent Autonomy",
+  C: "Foco Concreto",
+  N: "Percepção Abstrata",
+  L: "Lógica Analítica",
+  V: "Valores Empáticos",
+  O: "Engajamento Externo",
+  I: "Reflexão Interna",
+  S: "Estrutura Estável",
+  F: "Flexibilidade Adaptativa",
+  H: "Harmonia Colaborativa",
+  A: "Autonomia Independente",
 };
 
 const dimensionLabels = [
-  "Information Processing",
-  "Decision-Making",
-  "Energy Orientation",
-  "Change Approach",
-  "Interpersonal Style",
+  "Processamento da Informação",
+  "Tomada de Decisão",
+  "Orientação de Energia",
+  "Abordagem à Mudança",
+  "Estilo Interpessoal",
 ];
 
 const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A28EFF"];
@@ -272,7 +277,8 @@ export default function PersonalReportPage() {
     }
 
     // FIX: Use 'name' from data, not 'userName' from params
-    const shareText = `Hey, it's ${name}! I just took the CSM personality assessment and got "${archetypeName}" type. It was way more accurate than I expected. Take a look:`;
+    const shareText = `Oi, aqui é ${name}! Acabei de fazer a avaliação de personalidade do CSM e meu tipo foi "${archetypeName}". Foi muito mais precisa do que eu esperava. Dá uma olhada:`;
+
     const shareData = {
       title: `I'm The ${archetypeName} (${typeCode})`,
       text: shareText,
@@ -290,7 +296,7 @@ export default function PersonalReportPage() {
     } else if (platform === "twitter") {
       const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
       window.open(twitterUrl, "_blank");
-    } else if (platform === "copy") {
+    } else if (platform === "copiar") {
       fallbackCopy(shareData);
     } else if (platform === "whatsapp") {
       const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
@@ -397,7 +403,7 @@ export default function PersonalReportPage() {
         <div className="card-gradient p-8 rounded-lg shadow-custom max-w-2xl mx-auto text-center">
           <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-4">{error}</h1>
           <button onClick={() => router.push(`/dashboard/${siteId}`)} className="btn-primary mt-6 px-6 py-3 rounded-lg">
-            Back to Dashboard
+            Voltar para o Dashboard
           </button>
         </div>
       </div>
@@ -418,16 +424,16 @@ export default function PersonalReportPage() {
 
   // === FALLBACK DESCRIPTIONS ===
   const fallbackDesc = {
-    C: "Focuses on tangible, verifiable data; practical, detail-oriented.",
-    N: "Focuses on patterns, possibilities, theories; imaginative, forward-looking.",
-    L: "Objective logic, cause-and-effect; seeks truth via systemic analysis.",
-    V: "Personal values, human impact; seeks harmony via emotional alignment.",
-    O: "External stimulation via action; recharges socially.",
-    I: "Internal stimulation via reflection; recharges in solitude.",
-    S: "Prefers planning, organization; outward Judging (L/V).",
-    F: "Prefers spontaneity, flexibility; outward Perceiving (C/N).",
-    H: "Collaboration, collective goals; group-focused modes.",
-    A: "Self-reliance, personal objectives; individual-focused modes.",
+    C: "Foca em dados tangíveis e verificáveis; prático e orientado a detalhes.",
+    N: "Foca em padrões, possibilidades e teorias; imaginativo e voltado para o futuro.",
+    L: "Lógica objetiva, causa e efeito; busca a verdade por meio de análise sistêmica.",
+    V: "Valores pessoais e impacto humano; busca harmonia por meio do alinhamento emocional.",
+    O: "Estimulação externa por meio da ação; recarrega energia socialmente.",
+    I: "Estimulação interna por meio da reflexão; recarrega energia na solitude.",
+    S: "Prefere planejamento e organização; Julgamento externo (L/V).",
+    F: "Prefere espontaneidade e flexibilidade; Percepção externa (C/N).",
+    H: "Colaboração e objetivos coletivos; modos focados no grupo.",
+    A: "Autossuficiência e objetivos pessoais; modos focados no indivíduo.",
   };
 
   return (
@@ -436,7 +442,7 @@ export default function PersonalReportPage() {
       <div className="hero-gradient rounded-lg p-6 md:p-8 shadow-custom-lg">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
           <div>
-            <h1 className="text-4xl font-bold text-white">Your CSM Personality Report</h1>
+            <h1 className="text-4xl font-bold text-white">Seu Relatório de Personalidade CSM</h1>
             <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">
               {`Uncover your cognitive blueprint, revealing how you think, connect, and evolve. Understanding yourself is
               the first step to exploring how you relate to others through the Couple's Insights Report.`}
@@ -452,19 +458,19 @@ export default function PersonalReportPage() {
           <div className="mt-8 p-6 md:p-8 bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl border border-[var(--border)] shadow-lg">
             <div className="mb-8">
               <h3 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4 text-center">
-                Quick Overview
+                Visão Geral
               </h3>
 
               <p className="text-base md:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed text-center">
-                The Cognitive Spectrum Model (CSM) breaks down how your mind works into five independent dimensions,
-                each like a slider between two opposite poles that shape the way you think, decide, and interact.
+                O Modelo do Espectro Cognitivo (CSM) divide a forma como sua mente funciona em cinco dimensões
+                independentes, cada um com dois polos opostos que moldam a maneira como você pensa, decide e interage.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               {/* Dimension 1 - Information Processing */}
               <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all">
-                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Information Processing</h4>
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Processamento da Informação</h4>
                 <div className="space-y-3 text-sm text-[var(--text-secondary)]">
                   {/* Concrete */}
                   <div className="flex items-center gap-3">
@@ -472,7 +478,7 @@ export default function PersonalReportPage() {
                       C
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Concrete (C):</strong> Facts, details, real.
+                      <strong className="text-[var(--text-primary)]">Concreto (C):</strong> Fatos, detalhes, realidade.
                     </div>
                   </div>
 
@@ -482,8 +488,8 @@ export default function PersonalReportPage() {
                       N
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Abstract (N):</strong> Patterns, ideas,
-                      possibilities.
+                      <strong className="text-[var(--text-primary)]">Abstrato (N):</strong> Padrões, ideias,
+                      possibilidades.
                     </div>
                   </div>
                 </div>
@@ -491,14 +497,15 @@ export default function PersonalReportPage() {
 
               {/* Dimension 2 - Decision-Making */}
               <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all">
-                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Decision-Making</h4>
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Tomada de Decisão</h4>
                 <div className="space-y-3 text-sm text-[var(--text-secondary)]">
                   <div className="flex items-center gap-3">
                     <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
                       L
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Analytical Logic (L):</strong> Rules, data, logic.
+                      <strong className="text-[var(--text-primary)]">Lógica Analítica (L):</strong> Regras, dados,
+                      lógica.
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -506,8 +513,8 @@ export default function PersonalReportPage() {
                       V
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Empathic Values (V):</strong> Feelings, harmony,
-                      people.
+                      <strong className="text-[var(--text-primary)]">Valores Empáticos (V):</strong> Sentimentos,
+                      harmonia, pessoas.
                     </div>
                   </div>
                 </div>
@@ -515,14 +522,14 @@ export default function PersonalReportPage() {
 
               {/* Dimension 3 - Energy Orientation */}
               <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all">
-                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Energy Orientation</h4>
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Orientação de Energia</h4>
                 <div className="space-y-3 text-sm text-[var(--text-secondary)]">
                   <div className="flex items-center gap-3">
                     <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
                       O
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Outward (O):</strong> Action, social, external.
+                      <strong className="text-[var(--text-primary)]">Externo (O):</strong> Ação, social, externo.
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -530,7 +537,7 @@ export default function PersonalReportPage() {
                       I
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Inward (I):</strong> Reflection, solitude, inner.
+                      <strong className="text-[var(--text-primary)]">Interno (I):</strong> Reflexão, solitude, interior.
                     </div>
                   </div>
                 </div>
@@ -538,15 +545,15 @@ export default function PersonalReportPage() {
 
               {/* Dimension 4 - Change Approach */}
               <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all">
-                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Change Approach</h4>
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Abordagem à Mudança</h4>
                 <div className="space-y-3 text-sm text-[var(--text-secondary)]">
                   <div className="flex items-center gap-3">
                     <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
                       S
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Stable Structure (S):</strong> Plans, order,
-                      predictable.
+                      <strong className="text-[var(--text-primary)]">Estrutura Estável (S):</strong> Planejamento,
+                      ordem, previsibilidade.
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -554,8 +561,8 @@ export default function PersonalReportPage() {
                       F
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Adaptive Flexibility (F):</strong> Spontaneity,
-                      flow, flexible.
+                      <strong className="text-[var(--text-primary)]">Flexibilidade Adaptativa (F):</strong>{" "}
+                      Espontaneidade, fluidez, flexibilidade.
                     </div>
                   </div>
                 </div>
@@ -563,15 +570,15 @@ export default function PersonalReportPage() {
 
               {/* Dimension 5 - Interpersonal Style (centered) */}
               <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all md:col-span-2 md:max-w-md md:mx-auto">
-                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Interpersonal Style</h4>
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Estilo Interpessoal</h4>
                 <div className="space-y-3 text-sm text-[var(--text-secondary)]">
                   <div className="flex items-center gap-3">
                     <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
                       H
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Collaborative Harmony (H):</strong> Team,
-                      consensus, group.
+                      <strong className="text-[var(--text-primary)]">Harmonia Colaborativa (H):</strong> Equipe,
+                      consenso, grupo.
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -579,8 +586,8 @@ export default function PersonalReportPage() {
                       A
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Independent Autonomy (A):</strong> Solo, freedom,
-                      self.
+                      <strong className="text-[var(--text-primary)]">Autonomia Independente (A):</strong> Autonomia,
+                      liberdade, individualidade.
                     </div>
                   </div>
                 </div>
@@ -589,29 +596,29 @@ export default function PersonalReportPage() {
 
             <div className="border-t border-[var(--border)] pt-6">
               <p className="text-base md:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed text-center italic">
-                Your unique mix across these poles in each dimension creates your cognitive profile. No pole is better,
-                just different strengths and growth areas.
+                Sua combinação única entre esses polos em cada dimensão forma o seu perfil cognitivo. Nenhum polo é
+                melhor que o outro, apenas apresentam forças diferentes e apontam possíveis pontos de desenvolvimento.
               </p>
             </div>
           </div>
 
           <h2 className="text-3xl font-bold text-[var(--text-primary)] pl-4 md:pl-1 mb-6 mt-10 md:mt-20 text-left">
-            Summary
+            Resumo
           </h2>
 
           <div className="space-y-5">
             <div className="space-y-6 justify-between">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="border border-white/20 bg-white/5 p-4 rounded-lg">
-                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">User:</p>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Usuário:</p>
                   <p className="text-xl font-bold text-[var(--text-primary)]">{name}</p>
                 </div>
                 <div className="border border-white/20 bg-white/5 p-4 rounded-lg">
-                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Archetype:</p>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Arquétipo:</p>
                   <p className="text-xl font-bold text-[var(--text-primary)]">{archetypeName}</p>
                 </div>
                 <div className="border border-white/20 bg-white/5 p-4 rounded-lg">
-                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Archetype Code:</p>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Código do Arquétipo:</p>
                   <p className="text-xl font-bold text-[var(--text-primary)]">{typeCode}</p>
                 </div>
               </div>
@@ -621,12 +628,12 @@ export default function PersonalReportPage() {
               <div className="flex flex-col max-w-3xl mx-auto border border-white/10 bg-[var(--surface-variant)] rounded-lg p-8 space-y-4 text-left">
                 <div className="mb-2">
                   <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mt-8 mb-4 text-center">
-                    Your Archetype&apos;s Essence
+                    A Essência do Seu Arquétipo
                   </h3>
 
                   <p className="text-base text-[var(--text-secondary)] max-w-md mx-auto mb-6 leading-relaxed text-center">
-                    Discover the core patterns that define your cognitive style and how you naturally engage with the
-                    world.
+                    Descubra os padrões centrais que definem seu estilo cognitivo e como você se envolve com o mundo de
+                    forma natural.
                   </p>
                 </div>
                 <div className="space-y-4">
@@ -639,7 +646,7 @@ export default function PersonalReportPage() {
                         </p>
                       ))
                   ) : (
-                    <p className="text-[var(--text-primary)] leading-relaxed">No detailed analysis available.</p>
+                    <p className="text-[var(--text-primary)] leading-relaxed">Nenhuma análise detalhada disponível.</p>
                   )}
                 </div>
               </div>
@@ -650,13 +657,11 @@ export default function PersonalReportPage() {
               {/* ==================== DPS DISTRIBUTION ==================== */}
               <div className="flex flex-col items-center p-4 bg-[var(--surface-variant)] rounded-lg">
                 <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mt-10 mb-4 text-center">
-                  Dimensional Preference Strength (DPS)
+                  Força de Preferência Dimensional (DPS)
                 </h3>
 
                 <p className="text-base text-[var(--text-secondary)] max-w-md mx-auto mb-6 leading-relaxed text-center">
-                  {` DPS measures how strongly you lean toward one pole over its opposite on each of the five dimensions.
-                  Higher DPS means you rely heavily on one style of thinking (it's your natural default). Lower DPS
-                  means you move easily between both poles (you are naturally flexible).`}
+                  {` O DPS mede o quanto você tende fortemente a um polo em relação ao seu oposto em cada uma das cinco dimensões. Um DPS mais alto indica que você depende fortemente de um estilo de pensamento (é seu padrão natural).Um DPS mais baixo indica que você transita facilmente entre os dois polos (você é naturalmente flexível).`}
                 </p>
 
                 {/* Pie chart – now uses the **DPS values** (0-100) */}
@@ -726,16 +731,16 @@ export default function PersonalReportPage() {
                       .filter((index) => index !== -1);
 
                     const poleToFull = {
-                      C: "Concrete Focus",
-                      N: "Abstract Insight",
-                      L: "Analytical Logic",
-                      V: "Empathic Values",
-                      O: "Outward Engagement",
-                      I: "Inward Reflection",
-                      S: "Stable Structure",
-                      F: "Adaptive Flexibility",
-                      H: "Collaborative Harmony",
-                      A: "Independent Autonomy",
+                      C: "Foco Concreto",
+                      N: "Percepção Abstrata",
+                      L: "Lógica Analítica",
+                      V: "Valores Empáticos",
+                      O: "Engajamento Externo",
+                      I: "Reflexão Interna",
+                      S: "Estrutura Estável",
+                      F: "Flexibilidade Adaptativa",
+                      H: "Harmonia Colaborativa",
+                      A: "Autonomia Independente",
                     };
 
                     return (
@@ -797,8 +802,8 @@ export default function PersonalReportPage() {
                                       </h4>
 
                                       <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                                        This is your strongest cognitive preference, your go-to way of processing
-                                        information in this dimension. You rely on this naturally and effortlessly.
+                                        Esta é a sua preferência cognitiva mais forte, seu modo natural de processar
+                                        informações nesta dimensão. Você depende dela de forma natural e sem esforço.
                                       </p>
                                     </div>
                                   </motion.div>
@@ -816,7 +821,7 @@ export default function PersonalReportPage() {
                                       <div className="flex items-center gap-2 mb-3">
                                         <CircleAlert className="w-6 h-6 text-purple-400" />
                                         <span className="text-sm font-semibold text-purple-400 uppercase tracking-wide">
-                                          Growth Opportunity
+                                          Oportunidade de Crescimento
                                         </span>
                                       </div>
 
@@ -825,8 +830,8 @@ export default function PersonalReportPage() {
                                       </h4>
 
                                       <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                                        This is your opposite pole, the area where conscious development can create the
-                                        biggest personal expansion and cognitive flexibility.
+                                        Este é o seu polo oposto, a área em que o desenvolvimento consciente pode gerar
+                                        a maior expansão pessoal e flexibilidade cognitiva.
                                       </p>
                                     </div>
                                   </motion.div>
@@ -839,20 +844,22 @@ export default function PersonalReportPage() {
                         {/* Bottom Insight - Only shown once */}
                         <div className="w-full p-4 mt-6 bg-[var(--surface)]/50 rounded-lg ">
                           <p className="text-sm text-center text-[var(--text-secondary)] italic font-light">
-                            <strong className="text-[var(--text-primary)]">Insight:</strong> Your high DPS in{" "}
+                            <strong className="text-[var(--text-primary)]">Insight:</strong> Seu DPS alto em{" "}
                             {strongestIndices.length > 1
                               ? strongestIndices.map((i, idx) => (
                                   <span key={i}>
                                     {dimensionLabels[i]}
                                     {idx < strongestIndices.length - 2 ? ", " : ""}
-                                    {idx === strongestIndices.length - 2 ? " and " : ""}
+                                    {idx === strongestIndices.length - 2 ? " e " : ""}
                                   </span>
                                 ))
                               : dimensionLabels[strongestIndices[0]]}{" "}
-                            {strongestIndices.length > 1 ? "mean" : "means"} you have pronounced default mode
-                            {strongestIndices.length > 1 ? "s" : ""}. Developing your opposite pole
-                            {strongestIndices.length > 1 ? "s" : ""} will bring the greatest balance and adaptability to
-                            your cognitive toolkit.
+                            {strongestIndices.length > 1 ? "indica que" : "indica que"} você possui
+                            {strongestIndices.length > 1 ? " modos" : " um modo"}
+                            {strongestIndices.length > 1 ? " padrões" : " padrão"}
+                            {strongestIndices.length > 1 ? " pronunciados" : " pronunciado"}
+                            {strongestIndices.length > 1 ? " nestas dimensões" : " nesta dimensão"}. Desenvolvendo seu
+                            polo oposto trará maior equilíbrio e adaptabilidade ao seu conjunto cognitivo.
                           </p>
                         </div>
                       </>
@@ -863,10 +870,11 @@ export default function PersonalReportPage() {
                 <div className="mt-8 p-6  bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl border border-[var(--border)] shadow-lg">
                   <div className="flex flex-col mt-8 mb-4">
                     <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-4 text-center">
-                      Poles Preferences
+                      Preferências dos Polos
                     </h3>
                     <p className="text-base text-[var(--text-secondary)] text-center max-w-md mx-auto mb-6 leading-relaxed">
-                      Your natural defaults (Primary) and their opposite growth areas (Secondary) at a glance.
+                      Seus padrões naturais (Primários) e suas áreas de crescimento opostas (Secundárias) de forma
+                      resumida.
                     </p>
                   </div>
 
@@ -874,7 +882,7 @@ export default function PersonalReportPage() {
                     {/* Primary Poles */}
                     <div className="space-y-4 border border-white/10 bg--[var(--surface-variant)] rounded-lg p-5">
                       <div>
-                        <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Primary Poles</p>
+                        <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Polos Primários</p>
                         <div className="flex flex-wrap gap-2">
                           {dominants.map((pole, i) => {
                             const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
@@ -886,16 +894,16 @@ export default function PersonalReportPage() {
                             }[level];
 
                             const fullName = {
-                              C: "Concrete Focus",
-                              N: "Abstract Insight",
-                              L: "Analytical Logic",
-                              V: "Empathic Values",
-                              O: "Outward Engagement",
-                              I: "Inward Reflection",
-                              S: "Stable Structure",
-                              F: "Adaptive Flexibility",
-                              H: "Collaborative Harmony",
-                              A: "Independent Autonomy",
+                              C: "Foco Concreto",
+                              N: "Percepção Abstrata",
+                              L: "Lógica Analítica",
+                              V: "Valores Empáticos",
+                              O: "Engajamento Externo",
+                              I: "Reflexão Interna",
+                              S: "Estrutura Estável",
+                              F: "Flexibilidade Adaptativa",
+                              H: "Harmonia Colaborativa",
+                              A: "Autonomia Independente",
                             }[pole];
 
                             return (
@@ -913,7 +921,7 @@ export default function PersonalReportPage() {
                       {/* Legend BELOW */}
                       <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] pt-3 border-t border-white/10">
                         <div className="flex items-center gap-1.5">
-                          <span className="font-medium">Primary Degrees of Dominance:</span>
+                          <span className="font-medium">Grau de Dominância Primário:</span>
                           <HelpCircle
                             onClick={() => openModal("Primary Degrees of Dominance", PRIMARY_EXPLANATION)}
                             className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
@@ -922,15 +930,15 @@ export default function PersonalReportPage() {
                         <div className="flex flex-wrap gap-3">
                           <div className="flex items-center gap-2">
                             <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                            <span>Mild</span>
+                            <span>Leve</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                            <span>Moderate</span>
+                            <span>Moderado</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                            <span>Strong</span>
+                            <span>Forte</span>
                           </div>
                         </div>
                       </div>
@@ -939,7 +947,7 @@ export default function PersonalReportPage() {
                     {/* Secondary Poles */}
                     <div className="space-y-4 border border-white/10 bg--[var(--surface-variant)] rounded-lg p-5">
                       <div>
-                        <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Secondary Poles</p>
+                        <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Polos Secundários</p>
                         <div className="flex flex-wrap gap-2">
                           {dominants.map((pole, i) => {
                             const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
@@ -952,16 +960,16 @@ export default function PersonalReportPage() {
 
                             const secondaryPole = poleMap[pole];
                             const fullName = {
-                              C: "Concrete Focus",
-                              N: "Abstract Insight",
-                              L: "Analytical Logic",
-                              V: "Empathic Values",
-                              O: "Outward Engagement",
-                              I: "Inward Reflection",
-                              S: "Stable Structure",
-                              F: "Adaptive Flexibility",
-                              H: "Collaborative Harmony",
-                              A: "Independent Autonomy",
+                              C: "Foco Concreto",
+                              N: "Percepção Abstrata",
+                              L: "Lógica Analítica",
+                              V: "Valores Empáticos",
+                              O: "Engajamento Externo",
+                              I: "Reflexão Interna",
+                              S: "Estrutura Estável",
+                              F: "Flexibilidade Adaptativa",
+                              H: "Harmonia Colaborativa",
+                              A: "Autonomia Independente",
                             }[secondaryPole];
 
                             return (
@@ -979,7 +987,7 @@ export default function PersonalReportPage() {
                       {/* Legend BELOW */}
                       <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] pt-3 border-t border-white/10">
                         <div className="flex items-center gap-1.5">
-                          <span className="font-medium">Secondary Degrees of Influence:</span>
+                          <span className="font-medium">Grau de Influência Secundário:</span>
                           <HelpCircle
                             onClick={() => openModal("Secondary Degrees of Influence", SECONDARY_EXPLANATION)}
                             className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
@@ -988,15 +996,15 @@ export default function PersonalReportPage() {
                         <div className="flex flex-wrap gap-3">
                           <div className="flex items-center gap-2">
                             <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                            <span>Low</span>
+                            <span>Leve</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                            <span>Moderate</span>
+                            <span>Moderado</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                            <span>High</span>
+                            <span>Forte</span>
                           </div>
                         </div>
                       </div>
@@ -1040,18 +1048,16 @@ export default function PersonalReportPage() {
       <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll my-8">
         <div className="card-gradient p-6 rounded-lg shadow-custom">
           <div className="text-left space-y-3">
-            <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
-              Your Archetype in Action
-            </h2>
+            <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">Seu Arquétipo em Ação</h2>
             <p className="text-base md:text-lg text-[var(--text-secondary)] italic leading-relaxed max-w-3xl">
-              Explore the real-world strengths that empower you and the challenges that invite growth.
+              Explore as forças do mundo real que te fortalecem e os desafios que promovem seu crescimento.
             </p>
           </div>
 
           <div className="mt-8 space-y-8">
             {/* Strengths */}
             <div>
-              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Strengths</h3>
+              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Qualidades</h3>
               <ul className="space-y-4">
                 {tmpl.strengths.results.map((s, i) => (
                   <li key={i} className="flex flex-col gap-3">
@@ -1069,7 +1075,7 @@ export default function PersonalReportPage() {
 
             {/* Challenges */}
             <div>
-              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Challenges</h3>
+              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Desafios</h3>
               <ul className="space-y-4">
                 {tmpl.weaknesses.results.map((w, i) => (
                   <li key={i} className="flex flex-col gap-3">
@@ -1095,10 +1101,10 @@ export default function PersonalReportPage() {
 
                   try {
                     const url = await generateShareableLink();
-                    console.log("Generated new share URL:", url); // Debug log
+                    console.log("Nova URL de compartilhamento gerada:", url); // Debug log
                     setShareUrl(url);
                   } catch (error) {
-                    console.error("Failed to generate share link:", error);
+                    console.error("Falha ao gerar o link de compartilhamento:", error);
                     setShareUrl(null); // Ensure it's null on error
                   } finally {
                     setIsGeneratingLink(false);
@@ -1107,7 +1113,7 @@ export default function PersonalReportPage() {
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all mb-6 md:mb-1"
               >
                 <Share2 className="w-5 h-5" />
-                Share Your Results
+                Compartilhe Seus Resultados
               </button>
             </div>
           </div>
@@ -1117,27 +1123,26 @@ export default function PersonalReportPage() {
       {/* ==================== DIMENSIONAL PROFILE ==================== */}
       <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll">
         <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
-          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
-            Your Dimensional Profile
-          </h2>
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">Seu Perfil Dimensional</h2>
 
           <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">
-            The five dimensions of the Cognitive Spectrum Model represent the key spectrums that shape how you
-            experience and interact with the world. They are not fixed categories but fluid scales that highlight your
-            natural tendencies. Understanding them helps you recognize your strengths, notice blind spots, and create
-            more balance in how you think and relate to others.
+            As cinco dimensões do Modelo do Espectro Cognitivo (CSM) representam os principais espectros que moldam como
+            você experiencia e interage com o mundo. Elas não são categorias fixas, mas escalas fluidas que destacam
+            suas tendências naturais. Compreendê-las ajuda a reconhecer suas forças, identificar pontos cegos e criar
+            mais equilíbrio na forma como você pensa e se relaciona com os outros.
           </p>
 
           <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">
-            Each dimension offers insight into your cognitive design, from how you process information to how you make
-            decisions, manage energy, approach change, and connect with people. By seeing where you fall on these
-            spectrums, you can better appreciate what makes your style unique while also learning how to flex into the
-            opposite side when needed.
+            Cada dimensão oferece insights sobre seu design cognitivo, desde como você processa informações até como
+            toma decisões, gerencia energia, aborda mudanças e se conecta com as pessoas. Ao perceber onde você se
+            posiciona nesses espectros, você pode valorizar o que torna seu estilo único e também aprender a
+            flexibilizar-se para o polo oposto quando necessário.
           </p>
 
           <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">
-            This profile is personalized to your results, showing percentages that reveal your specific leanings. Use it
-            to reflect on how these preferences show up in your daily choices, relationships, and growth.
+            Este perfil é personalizado de acordo com seus resultados, mostrando percentuais que revelam suas
+            inclinações específicas. Use-o para refletir sobre como essas preferências se manifestam em suas escolhas
+            diárias, relacionamentos e desenvolvimento pessoal.
           </p>
 
           {/* {tmpl.detailedEssence.map((item, i) =>
@@ -1160,11 +1165,11 @@ export default function PersonalReportPage() {
               const secondaryFull = poleFullName[poleMap[primaryPole]];
 
               const primaryDesc =
-                dim.descriptions?.[primaryPole] || fallbackDesc[primaryPole] || "Description unavailable.";
+                dim.descriptions?.[primaryPole] || fallbackDesc[primaryPole] || "Descrição indisponível.";
               const secondaryDesc =
                 dim.descriptions?.[poleMap[primaryPole]] ||
                 fallbackDesc[poleMap[primaryPole]] ||
-                "Description unavailable.";
+                "Descrição indisponível.";
 
               const primaryColor = getColor(dom);
               const secondaryColor = getColor(inf);
@@ -1203,12 +1208,12 @@ export default function PersonalReportPage() {
                     </div>
                     <p className="text-sm text-[var(--text-secondary)] text-center italic px-4">{primaryDesc}</p>
                     <div className="space-y-3">
-                      <div className={`text-base font-bold ${primaryColor.text} text-center`}>{dom} Dominance</div>
+                      <div className={`text-base font-bold ${primaryColor.text} text-center`}>{dom} Dominância</div>
                       <div className="flex items-center justify-between px-4">
                         <div className="flex items-center space-x-2 flex-1">
-                          <span className="text-sm font-medium text-[var(--text-primary)]">Primary Preference</span>
+                          <span className="text-sm font-medium text-[var(--text-primary)]">Preferência Primária</span>
                           <HelpCircle
-                            onClick={() => openModal("Primary Preference", PRIMARY_EXPLANATION)}
+                            onClick={() => openModal("Preferência Primária", PRIMARY_EXPLANATION)}
                             className={`h-4 w-4 ${primaryColor.text} cursor-pointer hover:scale-110 transition-transform`}
                           />
                         </div>
@@ -1235,12 +1240,12 @@ export default function PersonalReportPage() {
                     </div>
                     <p className="text-sm text-[var(--text-secondary)] text-center italic px-4">{secondaryDesc}</p>
                     <div className="space-y-3">
-                      <div className={`text-base font-bold ${secondaryColor.text} text-center`}>{inf} Influence</div>
+                      <div className={`text-base font-bold ${secondaryColor.text} text-center`}>{inf} Influência</div>
                       <div className="flex items-center justify-between px-4">
                         <div className="flex items-center space-x-2 flex-1">
-                          <span className="text-sm font-medium text-[var(--text-primary)]">Secondary Influence</span>
+                          <span className="text-sm font-medium text-[var(--text-primary)]">Influência Secundária</span>
                           <HelpCircle
-                            onClick={() => openModal("Secondary Influence", SECONDARY_EXPLANATION)}
+                            onClick={() => openModal("Influência Secundária", SECONDARY_EXPLANATION)}
                             className={`h-4 w-4 ${secondaryColor.text} cursor-pointer hover:scale-110 transition-transform`}
                           />
                         </div>
@@ -1260,35 +1265,37 @@ export default function PersonalReportPage() {
                   {/* SUMMARY BASED ON DOMINANCE LEVEL */}
                   <div className="mt-6 bg-[var(--surface3)] rounded-2xl px-2 md:px-0 py-6 border-t border-[var(--border)]">
                     <p className="text-base leading-relaxed text-[var(--text-secondary)] italic text-center max-w-2xl mx-auto">
-                      {dimIdx === 0 && "Information Processing"}
-                      {dimIdx === 1 && "Decision-Making"}
-                      {dimIdx === 2 && "Energy Orientation"}
-                      {dimIdx === 3 && "Change Approach"}
-                      {dimIdx === 4 && "Interpersonal Style"} summary:{" "}
+                      {" "}
+                      Resumo ({dimIdx === 0 && "Processamento da Informação"}
+                      {dimIdx === 1 && "Tomada de Decisão"}
+                      {dimIdx === 2 && "Orientação de Energia"}
+                      {dimIdx === 3 && "Abordagem à Mudança"}
+                      {dimIdx === 4 && "Estilo Interpessoal"}):{" "}
                       <span className="font-semibold not-italic text-[var(--text-primary)]">
                         {primaryPct <= 65 && (
                           <>
-                            You have a <span className="text-green-400">Mild Preference</span> ({primaryPct}%{" "}
-                            {primaryPole}). This is the most balanced range. You naturally lean toward{" "}
-                            {primaryFull.toLowerCase()}, but you switch to the opposite pole often and comfortably. Most
-                            people with a Mild preference feel they can “go either way” depending on the situation.
+                            Você possui uma <span className="text-green-400">Preferência Leve</span> ({primaryPct}%{" "}
+                            {primaryPole}). Esta é a faixa mais equilibrada. Você tende naturalmente para{" "}
+                            {primaryFull.toLowerCase()}, mas alterna para o polo oposto com frequência e facilidade. A
+                            maioria das pessoas com Preferência Leve sente que pode “ir para qualquer lado” dependendo
+                            da situação.
                           </>
                         )}
                         {primaryPct >= 66 && primaryPct <= 85 && (
                           <>
-                            You have a <span className="text-yellow-400">Moderate Preference</span> ({primaryPct}%{" "}
-                            {primaryPole}). This is the “classic” clear-but-not-extreme lean:{" "}
-                            {primaryFull.toLowerCase()} is unmistakably your default mode and feels most natural, yet
-                            you can still access and use the opposite side without too much friction when needed.
+                            Você possui uma <span className="text-yellow-400">Preferência Moderada</span> ({primaryPct}%{" "}
+                            {primaryPole}). Esta é a inclinação “clássica”, clara mas não extrema:{" "}
+                            {primaryFull.toLowerCase()} é claramente seu modo padrão e se sente mais natural, ainda
+                            assim você consegue acessar e usar o polo oposto sem muita dificuldade quando necessário.
                           </>
                         )}
                         {primaryPct >= 86 && (
                           <>
-                            You have a <span className="text-red-400">Strong Preference</span> ({primaryPct}%{" "}
+                            Você possui uma <span className="text-red-400">Preferência Forte</span> ({primaryPct}%{" "}
                             {primaryPole}).
-                            {primaryFull} is deeply wired into who you are, and it’s your automatic, effortless way of
-                            operating. The opposite pole ({secondaryFull.toLowerCase()}) tends to feel foreign or
-                            draining and usually only shows up under pressure or with deliberate effort.
+                            {primaryFull} está profundamente enraizado em quem você é e é seu modo automático e sem
+                            esforço de agir. O polo oposto ({secondaryFull.toLowerCase()}) tende a parecer estranho ou
+                            desgastante e geralmente só se manifesta sob pressão ou com esforço deliberado.
                           </>
                         )}
                       </span>
@@ -1318,10 +1325,10 @@ export default function PersonalReportPage() {
 
                 try {
                   const url = await generateShareableLink();
-                  console.log("Generated new share URL:", url); // Debug log
+                  console.log("Nova URL de compartilhamento gerada:", url); // Debug log
                   setShareUrl(url);
                 } catch (error) {
-                  console.error("Failed to generate share link:", error);
+                  console.error("Falha ao gerar o link de compartilhamento:", error);
                   setShareUrl(null); // Ensure it's null on error
                 } finally {
                   setIsGeneratingLink(false);
@@ -1330,7 +1337,7 @@ export default function PersonalReportPage() {
               className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all mb-6 md:mb-1"
             >
               <Share2 className="w-5 h-5" />
-              Share Your Results
+              Compartilhe seus resultados
             </button>
           </div>
         </div>
@@ -1339,15 +1346,15 @@ export default function PersonalReportPage() {
       {/* ==================== HOW YOU CONNECT ==================== */}
       <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mt-8 mb-12">
         <div className="card-gradient p-6 rounded-lg shadow-custom">
-          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">How You Connect</h2>
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">Como você se conecta</h2>
 
           <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">{tmpl.relationships?.intro}</p>
 
           <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">
-            Every relationship creates a different dynamic based on how two personalities think, feel, and interact.
-            Below, you will see how your archetype relates to others in four types of compatibility. Each one highlights
-            what the connection may feel like, whether it flows easily, brings balance, encourages growth, or may
-            require more effort.{" "}
+            Cada relacionamento cria uma dinâmica diferente com base em como duas personalidades pensam, sentem e
+            interagem. A seguir, você verá como o seu arquétipo se relaciona com os outros em quatro tipos de
+            compatibilidade. Cada um destaca como a conexão pode se sentir, se flui com facilidade, traz equilíbrio,
+            incentiva o crescimento ou pode exigir mais esforço.{" "}
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-10">
@@ -1371,7 +1378,7 @@ export default function PersonalReportPage() {
 
           <div className="border-t border-[var(--border)] pt-8 mt-8">
             <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-4">
-              Next Steps: Understanding Your Relationship Blueprint
+              Próximos Passos: Compreendendo seu Plano de Relacionamento
             </h3>
             <p className="text-base leading-relaxed text-[var(--text-secondary)]">
               {`Now that you've explored your own cognitive patterns, the natural next step is seeing how they interact
@@ -1395,7 +1402,7 @@ export default function PersonalReportPage() {
             "inline-flex items-center btn-primary px-8 py-6 rounded-lg font-semibold cursor-pointer gap-2 transition-all hover:shadow-lg mb-10"
           }
         >
-          Discover How You Connect
+          Descubra Como Você se Conecta
           <ArrowRight className="h-5 w-5" />
         </button>
       </section>
@@ -1425,7 +1432,7 @@ export default function PersonalReportPage() {
               <div className="flex justify-between items-center mb-8">
                 <div className="flex items-center gap-2">
                   <Share2 className="w-6 h-6 text-[var(--text-primary)]" />
-                  <h3 className="text-lg font-bold text-[var(--text-primary)]">Share Your Results</h3>
+                  <h3 className="text-lg font-bold text-[var(--text-primary)]">Compartilhe Seus Resultados</h3>
                 </div>
                 <button
                   onClick={() => {
@@ -1446,7 +1453,7 @@ export default function PersonalReportPage() {
                 <div className="space-y-4 mb-6">
                   <div className="flex flex-col items-center justify-center py-8">
                     <Spinner />
-                    <p className="text-[var(--text-secondary)] mt-4 text-sm">Generating your shareable link...</p>
+                    <p className="text-[var(--text-secondary)] mt-4 text-sm">Gerando seu link compartilhável...</p>
                   </div>
                 </div>
               )}
@@ -1459,7 +1466,7 @@ export default function PersonalReportPage() {
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#25D366] text-white rounded-lg hover:bg-[#1da851] transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <MessageCircle className="w-5 h-5" />
-                  Share on WhatsApp
+                  Compartilhar no WhatsApp
                 </button>
                 <button
                   onClick={() => shareVia("telegram")}
@@ -1467,7 +1474,7 @@ export default function PersonalReportPage() {
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#0088cc] text-white rounded-lg hover:bg-[#0077b3] transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="w-5 h-5" />
-                  Share on Telegram
+                  Compartilhar no Telegram
                 </button>
                 <button
                   onClick={() => shareVia("facebook")}
@@ -1477,7 +1484,7 @@ export default function PersonalReportPage() {
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
-                  Share on Facebook
+                  Compartilhar no Facebook
                 </button>
                 <button
                   onClick={() => shareVia("twitter")}
@@ -1485,7 +1492,7 @@ export default function PersonalReportPage() {
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#1DA1F2] text-white rounded-lg hover:bg-[#1a91da] transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Twitter className="w-5 h-5" />
-                  Share on Twitter
+                  Compartilhar no Twitter
                 </button>
                 <button
                   onClick={() => shareVia("copy")}
@@ -1493,7 +1500,7 @@ export default function PersonalReportPage() {
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[var(--surface-variant)] text-[var(--text-primary)] rounded-lg hover:bg-[var(--surface)] transition font-medium border border-[var(--border)] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Copy className="w-5 h-5" />
-                  Copy Link
+                  Copiar Link
                 </button>
               </div>
 
@@ -1502,17 +1509,17 @@ export default function PersonalReportPage() {
                 {isGeneratingLink ? (
                   <div className="flex items-center justify-center gap-2">
                     <div className="w-3 h-3 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin"></div>
-                    Generating short link...
+                    Gerando link curto...
                   </div>
                 ) : copySuccess ? (
                   <div className="flex items-center justify-center gap-2 text-green-400">
                     <CheckCircle className="w-4 h-4" />
-                    Link copied successfully!
+                    Link copiado com sucesso!
                   </div>
                 ) : shareUrl ? (
-                  "Your full report is included in the link."
+                  "Seu relatório completo está incluído no link."
                 ) : (
-                  <div className="text-red-400">Failed to generate link. Please try again.</div>
+                  <div className="text-red-400">Falha ao gerar o link. Por favor, tente novamente.</div>
                 )}
               </div>
             </motion.div>

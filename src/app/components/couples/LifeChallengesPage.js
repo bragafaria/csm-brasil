@@ -45,10 +45,10 @@ export default function LifeChallengesPage({ lifeChallenges }) {
             </div>
 
             {/* DYNAMICS */}
-            <div className="mb-8">
+            {/* <div className="mb-8">
               <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3">How You Naturally Operate</h3>
               <div className="space-y-4 text-lg text-[var(--text-secondary)]">
-                {/* Handle dynamics as an array */}
+              
                 {Array.isArray(c.dynamics)
                   ? c.dynamics.map((paragraph, i) => (
                       <p key={i} className="mb-4 last:mb-0">
@@ -61,11 +61,11 @@ export default function LifeChallengesPage({ lifeChallenges }) {
                       </p>
                     ))}
               </div>
-            </div>
+            </div>*/}
 
             {/* CORE CHALLENGE */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Core Challenge</h3>
+              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Possible Challenges</h3>
               <p className="text-lg text-[var(--text-secondary)]">{c.coreChallenge}</p>
             </div>
 

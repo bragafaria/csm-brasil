@@ -6,38 +6,38 @@ import { supabase } from "@/app/utils/supabaseClient";
 import { CheckCircle, Clock, XCircle, Users, FileText, UserCheck, User } from "lucide-react"; // Added User icon for archetypes
 
 const archetypes = {
-  "C-L-O-S-H": "The Architect",
-  "C-L-O-S-A": "The Engineer",
-  "C-L-O-F-H": "The Navigator",
-  "C-L-O-F-A": "The Pioneer",
-  "C-L-I-S-H": "The Curator",
-  "C-L-I-S-A": "The Analyst",
-  "C-L-I-F-H": "The Mediator",
-  "C-L-I-F-A": "The Maverick",
-  "C-V-O-S-H": "The Steward",
-  "C-V-O-S-A": "The Artisan",
-  "C-V-O-F-H": "The Campaigner",
-  "C-V-O-F-A": "The Adventurer",
-  "C-V-I-S-H": "The Counselor",
-  "C-V-I-S-A": "The Healer",
-  "C-V-I-F-H": "The Peacemaker",
-  "C-V-I-F-A": "The Empath",
-  "N-L-O-S-H": "The Strategist",
-  "N-L-O-S-A": "The Inventor",
-  "N-L-O-F-H": "The Disruptor",
-  "N-L-O-F-A": "The Revolutionary",
-  "N-L-I-S-H": "The Academic",
-  "N-L-I-S-A": "The Theorist",
-  "N-L-I-F-H": "The Innovator",
-  "N-L-I-F-A": "The Visionary",
-  "N-V-O-S-H": "The Ambassador",
-  "N-V-O-S-A": "The Artist",
-  "N-V-O-F-H": "The Catalyst",
-  "N-V-O-F-A": "The Wanderer",
-  "N-V-I-S-H": "The Mentor",
-  "N-V-I-S-A": "The Sage",
-  "N-V-I-F-H": "The Unifier",
-  "N-V-I-F-A": "The Mystic",
+  "C-L-O-S-H": "O Arquiteto",
+  "C-L-O-S-A": "O Engenheiro",
+  "C-L-O-F-H": "O Navegador",
+  "C-L-O-F-A": "O Pioneiro",
+  "C-L-I-S-H": "O Curador",
+  "C-L-I-S-A": "O Analista",
+  "C-L-I-F-H": "O Mediador",
+  "C-L-I-F-A": "O Independente",
+  "C-V-O-S-H": "O Guardião",
+  "C-V-O-S-A": "O Artesão",
+  "C-V-O-F-H": "O Mobilizador",
+  "C-V-O-F-A": "O Aventureiro",
+  "C-V-I-S-H": "O Conselheiro",
+  "C-V-I-S-A": "O Restaurador",
+  "C-V-I-F-H": "O Pacificador",
+  "C-V-I-F-A": "O Empata",
+  "N-L-O-S-H": "O Estrategista",
+  "N-L-O-S-A": "O Inventor",
+  "N-L-O-F-H": "O Disruptor",
+  "N-L-O-F-A": "O Revolucionário",
+  "N-L-I-S-H": "O Acadêmico",
+  "N-L-I-S-A": "O Teórico",
+  "N-L-I-F-H": "O Inovador",
+  "N-L-I-F-A": "O Visionário",
+  "N-V-O-S-H": "O Embaixador",
+  "N-V-O-S-A": "O Artista",
+  "N-V-O-F-H": "O Catalisador",
+  "N-V-O-F-A": "O Andarilho",
+  "N-V-I-S-H": "O Mentor",
+  "N-V-I-S-A": "O Sábio",
+  "N-V-I-F-H": "O Unificador",
+  "N-V-I-F-A": "O Místico",
 };
 
 export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB }) {
@@ -73,7 +73,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
   }, [userData, siteId, isPartnerA, isPartnerB]);
 
   if (loading) {
-    return <p className="text-[var(--text-secondary)] text-sm animate-pulse">Loading stats...</p>;
+    return <p className="text-[var(--text-secondary)] text-sm animate-pulse">Carregando Status...</p>;
   }
 
   const getArchetype = (typeCode) => archetypes[typeCode] || "Unknown";
@@ -111,7 +111,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
           <div className="flex flex-wrap items-center justify-start gap-3">
             <div className="flex items-center space-x-3">
               <UserCheck className="w-6 h-6 text-[var(--text-secondary)]" />
-              <span className="text-[var(--text-primary)] font-medium">Your Assessment</span>
+              <span className="text-[var(--text-primary)] font-medium">Sua avaliação</span>
             </div>
             <div className="flex items-center space-x-2">
               {getStatusIcon(yourAssessment)}
@@ -124,7 +124,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
           <div className="flex flex-wrap items-center justify-start gap-3">
             <div className="flex items-center space-x-3">
               <Users className="w-6 h-6 text-[var(--text-secondary)]" />
-              <span className="text-[var(--text-primary)] font-medium">{"Partner's Assessment"}</span>
+              <span className="text-[var(--text-primary)] font-medium">{"Avaliação do(a) Parceiro(a)"}</span>
             </div>
             <div className="flex items-center space-x-2">
               {getStatusIcon(partnerAssessment)}
@@ -139,7 +139,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
         <div className="flex flex-wrap items-center justify-start gap-3">
           <div className="flex  items-center space-x-3">
             <FileText className="w-6 h-6 text-[var(--text-secondary)]" />
-            <span className="text-[var(--text-primary)] font-medium">{"Couple's Insights Report"} </span>
+            <span className="text-[var(--text-primary)] font-medium">{"Relatório de Insights do Casal"} </span>
           </div>
           <div className="flex items-center space-x-2">
             {getStatusIcon(reportReady)}
@@ -156,7 +156,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
         <div className="card-gradient p-4 rounded-lg shadow-custom">
           <div className="flex items-center space-x-3 mb-2">
             <User className="w-5 h-5 text-[var(--text-secondary)]" />
-            <span className="text-[var(--text-secondary)] text-sm uppercase tracking-wide">Your Archetype</span>
+            <span className="text-[var(--text-secondary)] text-sm uppercase tracking-wide">Seu Arquétipo</span>
           </div>
           <span className="text-[var(--text-primary)] font-semibold block">{yourType}</span>
         </div>
@@ -165,7 +165,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
           <div className="flex items-center space-x-3 mb-2">
             <User className="w-5 h-5 text-[var(--text-secondary)]" />
             <span className="text-[var(--text-secondary)] text-sm uppercase tracking-wide">
-              {"Partner's Archetype"}
+              {"Arquétipo do(a) parceiro(a)"}
             </span>
           </div>
           <span className="text-[var(--text-primary)] font-semibold block">{partnerType}</span>

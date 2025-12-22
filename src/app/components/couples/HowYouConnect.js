@@ -18,22 +18,6 @@ export default function HowYouConnectPage({ dynamics }) {
         </div>
       </section>
 
-      {/* HARMONY-AUTONOMY INTERPLAY */}
-      {dynamics.haInterplay && (
-        <section className="card-gradient p-6 rounded-lg shadow-custom max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 text-left">
-            Harmony-Autonomy Interplay
-          </h2>
-          <div className="space-y-4 text-lg text-[var(--text-secondary)]">
-            {dynamics.haInterplay.split("\n\n").map((paragraph, i) => (
-              <p key={i} className="mb-4 last:mb-0">
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        </section>
-      )}
-
       {/* STRENGTHS & GROWTH AREAS — STACKED */}
       <div className="space-y-8 max-w-4xl mx-auto">
         {/* STRENGTHS */}
@@ -61,11 +45,7 @@ export default function HowYouConnectPage({ dynamics }) {
               </div>
             ))}
           </div>
-        </section>
-
-        {/* GROWTH AREAS */}
-        <section className="card-gradient p-6 rounded-lg shadow-custom">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--accent)] mb-6 text-left">Growth Areas</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-[var(--accent)] mb-6 mt-20 text-left">Weaknesses</h2>
 
           {/* MINI-INTRO — SAME FONT SIZE & STYLE AS ALL PARAGRAPHS */}
           <p className="text-lg text-[var(--text-secondary)] mb-6">
@@ -90,6 +70,38 @@ export default function HowYouConnectPage({ dynamics }) {
           </div>
         </section>
       </div>
+
+      {/* Synergies And Challenges INTERPLAY */}
+      {dynamics.synergiesAndChallenges && (
+        <section className="card-gradient p-6 rounded-lg shadow-custom max-w-4xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 text-left">
+            Synergies And Challenges
+          </h2>
+          <div className="space-y-4 text-lg text-[var(--text-secondary)]">
+            {dynamics.synergiesAndChallenges.split("\n\n").map((paragraph, i) => (
+              <p key={i} className="mb-4 last:mb-0">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* HARMONY-AUTONOMY INTERPLAY */}
+      {dynamics.haInterplay && (
+        <section className="card-gradient p-6 rounded-lg shadow-custom max-w-4xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 text-left">
+            Harmony-Autonomy Interplay
+          </h2>
+          <div className="space-y-4 text-lg text-[var(--text-secondary)]">
+            {dynamics.haInterplay.split("\n\n").map((paragraph, i) => (
+              <p key={i} className="mb-4 last:mb-0">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

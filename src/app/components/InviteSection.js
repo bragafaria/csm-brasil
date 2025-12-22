@@ -18,8 +18,8 @@ export default function InviteSection({ siteId }) {
   useEffect(() => {
     async function fetchInvite() {
       if (!siteId) {
-        console.error("Invalid siteId:", siteId);
-        setError("Invalid dashboard URL.");
+        console.error("siteId inválido", siteId);
+        setError("Dashboard URL inválido.");
         setLoading(false);
         return;
       }
@@ -30,13 +30,13 @@ export default function InviteSection({ siteId }) {
           error: sessionError,
         } = await supabase.auth.getSession();
         if (sessionError || !session) {
-          console.error("Session error:", sessionError?.message || "No session found");
-          setError("You must be logged in to generate an invite.");
+          console.error("Session error:", sessionError?.message || "Nenhuma sessão encontrada");
+          setError("Você precisa estar logado para gerar um convite.");
           setLoading(false);
           router.push("/login");
           return;
         }
-        console.log("InviteSection session user ID:", session.user.id);
+        console.log("ID do usuário da sessão (InviteSection):", session.user.id);
 
         const userId = session.user.id;
 
@@ -150,9 +150,9 @@ export default function InviteSection({ siteId }) {
       className="hero-gradient p-6 rounded-lg shadow-custom hover:shadow-custom-lg transition-all"
     >
       <div className="flex flex-col items-center my-4">
-        <h2 className="text-2xl md:text-3xl font-semibold text-[var(--text-primary)] mb-3">Invite Your Partner</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold text-[var(--text-primary)] mb-3">Convide seu parceiro(a)</h2>
         <p className="text-[var(--text-secondary)] text-center text-lg leading-relaxed">
-          Share this private link with your partner to join the dashboard and take their assessment.
+          Compartilhe este link privado com seu parceiro(a) para que ele(a) acesse o painel e realize a avaliação.
         </p>
       </div>
 
@@ -164,7 +164,7 @@ export default function InviteSection({ siteId }) {
             onClick={copyToClipboard}
             className="btn-primary border border-white py-3 px-6 rounded-lg font-semibold flex items-center gap-2 whitespace-nowrap shadow-md hover:shadow-lg transition-all"
           >
-            Copy Link
+            Copiar Link
           </motion.button>
 
           {/* Copied confirmation message */}
@@ -178,7 +178,7 @@ export default function InviteSection({ siteId }) {
                 className="mt-3 flex items-center gap-2 text-green-400 font-medium"
               >
                 <Check className="h-5 w-5" />
-                <span>Copied!</span>
+                <span>Copiado!</span>
               </motion.div>
             )}
           </AnimatePresence>
@@ -192,7 +192,7 @@ export default function InviteSection({ siteId }) {
                 copied ? "mt-2" : "mt-3"
               }`}
             >
-              ✅ Ready to share with your partner!
+              ✅ Pronto para compartilhar com seu parceiro(a)!
             </motion.p>
           )}
         </div>

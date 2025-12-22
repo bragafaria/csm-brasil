@@ -47,8 +47,10 @@ export default function IntroContext({ partnerA, partnerB }) {
       <p className="text-lg text-[var(--text-secondary)] mb-4">
         This section highlights the natural chemistry between <strong>{nameA}</strong> and <strong>{nameB}</strong>,
         showing how your cognitive styles can complement each other when both partners feel grounded, self-aware, and
-        open in communication. Think of this as a portrait of your relationship at its most balanced, not a judgment of
-        where you are today.
+        open in communication.{" "}
+        <span className="font-bold">
+          Think of this as a portrait of your relationship at its most balanced, not a judgment of where you are today.
+        </span>
       </p>
 
       <p className="text-lg text-[var(--text-secondary)] mb-6">

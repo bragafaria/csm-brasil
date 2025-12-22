@@ -174,7 +174,7 @@ export default function Summary() {
       <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center p-6">
         <div className="flex items-center gap-3">
           <Spinner size="lg" />
-          <span className="text-white text-lg">Loading your results...</span>
+          <span className="text-white text-lg">Carregando os resultados...</span>
         </div>
       </div>
     );
@@ -185,7 +185,7 @@ export default function Summary() {
     return (
       <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center p-6">
         <div className="card-gradient p-8 rounded-lg shadow-custom-lg border border-[var(--border)] max-w-md text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Assessment Not Found</h2>
+          <h2 className="text-2xl font-bold text-white mb-4">Avaliação não encontrada</h2>
           <p className="text-white/70 mb-6">
             {`We couldn't find your assessment results. This might happen if you're using private browsing mode.`}
           </p>
@@ -193,7 +193,7 @@ export default function Summary() {
             onClick={() => router.push("/assessment/test")}
             className="btn-primary py-3 px-6 rounded-lg font-medium"
           >
-            Retake Assessment
+            Refazer Avaliação
           </button>
         </div>
       </div>
@@ -217,7 +217,7 @@ export default function Summary() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-3xl md:text-5xl font-bold text-white mb-4"
             >
-              Congratulations!
+              Parabéns!
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
@@ -225,14 +225,14 @@ export default function Summary() {
               transition={{ delay: 0.4 }}
               className="text-lg md:text-xl text-white/90 max-w-xl mx-auto"
             >
-              {`You've completed the CSM assessment. Enter your details below to access your personalized report.`}
+              {`Você concluiu a avaliação CSM. Insira seus dados abaixo para acessar seu relatório completo, personalizado.`}
             </motion.p>
           </div>
 
           {/* Progress Bar – 100% */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="mb-10">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium text-[var(--accent)]">Assessment Complete</span>
+              <span className="text-sm font-medium text-[var(--accent)]">Avaliação Completa</span>
               <span className="text-sm font-medium text-[var(--accent)]">100%</span>
             </div>
             <div className="w-full h-2 bg-white/20 rounded-full overflow-hidden">
@@ -252,7 +252,7 @@ export default function Summary() {
             transition={{ delay: 0.5 }}
             className="bg-indigo-950/10 backdrop-blur-3xl rounded-2xl px-4 py-8 md:p-10 border border-white/20 shadow-xl"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-8">Your Full Report Is Ready</h3>
+            <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-8">Sua Avaliação Está Pronta</h3>
 
             <div className="space-y-6 max-w-md mx-auto">
               {/* Name */}
@@ -260,7 +260,7 @@ export default function Summary() {
                 <div className="flex items-center gap-3 mb-2">
                   <User className="w-5 h-5 text-white/70" />
                   <p className="text-white/90 text-sm font-medium">
-                    Name <span className="font-normal text-white/70">(will personalize your report)</span>
+                    Nome <span className="font-normal text-white/70">(personalizaremos seu relatório)</span>
                   </p>
                 </div>
                 <div className="relative">
@@ -293,7 +293,7 @@ export default function Summary() {
                     className="flex items-center gap-2 mt-2 text-red-300 text-sm"
                   >
                     <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                    <span>Please enter your name</span>
+                    <span>Por favor, insira seu nome</span>
                   </motion.div>
                 )}
 
@@ -304,7 +304,7 @@ export default function Summary() {
                     className="flex items-center gap-2 mt-2 text-green-300 text-sm"
                   >
                     <CheckCircle className="w-4 h-4 flex-shrink-0" />
-                    <span>Name looks good</span>
+                    <span>Name parece correto</span>
                   </motion.div>
                 )}
               </div>
@@ -315,9 +315,7 @@ export default function Summary() {
                   <Mail className="w-5 h-5 text-white/70" />
                   <p className="text-white/90 text-sm font-medium">
                     Email{" "}
-                    <span className="font-normal text-white/70">
-                      (report will also be sent directly to your inbox, instantly)
-                    </span>
+                    <span className="font-normal text-white/70">(sua avaliação será enviada para este endereço)</span>
                   </p>
                 </div>
                 <div className="relative">
@@ -340,7 +338,7 @@ export default function Summary() {
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <Mail className="w-5 h-5 text-white/70" />
-                  <p className="text-white/90 text-sm font-medium">Confirm Email</p>
+                  <p className="text-white/90 text-sm font-medium">Confirme seu email</p>
                 </div>
                 <div className="relative">
                   <input
@@ -372,7 +370,7 @@ export default function Summary() {
                     className="flex items-center gap-2 mt-2 text-red-300 text-sm"
                   >
                     <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                    <span>Email addresses do not match</span>
+                    <span>Endereço de email diferente</span>
                   </motion.div>
                 )}
 
@@ -383,7 +381,7 @@ export default function Summary() {
                     className="flex items-center gap-2 mt-2 text-green-300 text-sm"
                   >
                     <CheckCircle className="w-4 h-4 flex-shrink-0" />
-                    <span>Email addresses match</span>
+                    <span>Endereço de email correto</span>
                   </motion.div>
                 )}
               </div>
@@ -414,11 +412,11 @@ export default function Summary() {
                 {isSubmitting ? (
                   <>
                     <Spinner className="text-white" size="sm" />
-                    Loading Report...
+                    Carregando Relatório...
                   </>
                 ) : valid ? (
                   <>
-                    View Full Report
+                    Veja seu relatório completo
                     <motion.div animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
                       →
                     </motion.div>
@@ -431,7 +429,7 @@ export default function Summary() {
 
             {/* Privacy Note */}
             <p className="text-white/60 text-center text-xs leading-relaxed mt-6">
-              Your data is secure and only used to personalize your report. We respect your privacy.
+              Seus dados nunca serão compartilhados com terceiros. Nós respectamos sua privacidade.
             </p>
           </motion.div>
         </motion.div>

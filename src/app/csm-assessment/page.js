@@ -194,18 +194,18 @@ export default function Test() {
           <Image src="/logo_transparent.png" alt="CSM Dynamics Logo" width={28} height={28} className="h-7 w-7" />
           <div className="flex items-center gap-1">
             <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
-            <h1 className="text-xl font-light text-white">Assessment</h1>
+            <h1 className="text-xl font-light text-white">Avaliação</h1>
           </div>
         </div>
 
         <p className="text-center text-sm text-[var(--text-secondary)] mb-6 italic">
-          Be honest. Think briefly. Answer what you <em>truly</em> do.
+          Pense brevemente. Responda o que você <em>realmente</em> faz.
         </p>
 
         {/* Progress */}
         <div className="flex justify-between items-center mb-4">
-          <span className="text-sm font-medium text-[var(--accent)]">{percentage}% Complete</span>
-          <span className="text-sm font-medium text-[var(--accent)]">~{minutesLeft} min left</span>
+          <span className="text-sm font-medium text-[var(--accent)]">{percentage}% Completo</span>
+          <span className="text-sm font-medium text-[var(--accent)]">~{minutesLeft} min rest.</span>
         </div>
 
         <div className="w-full h-3 mb-6 bg-[var(--surface-variant)] rounded-full overflow-hidden">
@@ -235,13 +235,13 @@ export default function Test() {
         {q.type === "likert" && (
           <div className="space-y-3 mb-6">
             {[
-              { value: 1, label: "Strongly Disagree" },
-              { value: 2, label: "Disagree" },
-              { value: 3, label: "Somewhat Disagree" },
-              { value: 4, label: "Neutral" },
-              { value: 5, label: "Somewhat Agree" },
-              { value: 6, label: "Agree" },
-              { value: 7, label: "Strongly Agree" },
+              { value: 1, label: "Discordo totalmente" },
+              { value: 2, label: "Discordo" },
+              { value: 3, label: "Discordo parcialmente" },
+              { value: 4, label: "Neutro" },
+              { value: 5, label: "Concordo parcialmente" },
+              { value: 6, label: "Concordo" },
+              { value: 7, label: "Concordo totalmente" },
             ].map(({ value, label }) => (
               <button
                 key={value}
@@ -286,7 +286,7 @@ export default function Test() {
             className="py-3 px-6 rounded-lg bg-[var(--surface-variant)] text-[var(--text-secondary)] font-medium hover:bg-[var(--surface-variant-hover)] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
             aria-label="Previous question"
           >
-            Prev
+            Voltar
           </button>
 
           <button
@@ -298,9 +298,9 @@ export default function Test() {
             aria-label={current < questions.length - 1 ? "Next question" : "Finish test"}
           >
             {isSubmitting ? (
-              <Spinner>{current < questions.length - 1 ? "Next..." : "Finishing..."}</Spinner>
+              <Spinner>{current < questions.length - 1 ? "Próximo..." : "Finalizar..."}</Spinner>
             ) : (
-              <span>{current < questions.length - 1 ? "Next" : "Finish"}</span>
+              <span>{current < questions.length - 1 ? "Próximo" : "Finalizar"}</span>
             )}
           </button>
         </div>

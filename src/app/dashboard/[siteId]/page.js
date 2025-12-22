@@ -164,7 +164,7 @@ function DashboardContent() {
   return (
     <div className="container mx-auto p-6 mt-10 max-w-7xl">
       <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-16 text-left">
-        Welcome to Your Dashboard, {userInfo}.
+        Bem-vindo ao seu dashboard, {userInfo}.
       </h1>
 
       {showAssessmentPrompt && (
@@ -176,10 +176,10 @@ function DashboardContent() {
         >
           <div className="flex flex-col items-center my-4">
             <h2 className="text-2xl md:text-3xl font-semibold text-[var(--text-primary)] mb-3">
-              Complete Your Assessment
+              Conclua sua avaliação
             </h2>
             <p className="text-[var(--text-secondary)] text-center text-lg leading-relaxed">
-              {"Please complete your assessment to view your report and your couple's report."}
+              {"Por favor, conclua sua avaliação para visualizar seu relatório e o relatório do casal."}
             </p>
           </div>
           <div className="flex flex-col items-center justify-center">
@@ -187,7 +187,7 @@ function DashboardContent() {
               onClick={() => router.push(`/dashboard/${siteId}/csm-assessment`)}
               className="btn-primary border border-white py-3 px-6 rounded-lg font-semibold flex items-center gap-2 whitespace-nowrap shadow-md hover:shadow-lg transition-all"
             >
-              Take Assessment
+              Faça a avaliação
               <svg
                 className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform"
                 fill="none"
@@ -204,7 +204,12 @@ function DashboardContent() {
       <div className="grid grid-cols-1 gap-6 items-start">
         {showInviteSection && <InviteSection siteId={siteId} />}
         <div className="card-gradient p-6 rounded-lg shadow-custom">
-          <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Quick Stats</h2>
+          <div className="flex flex-col items-start my-4">
+            <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-1">Status Atual</h2>
+            <h3 className="text-sm font-light text-[var(--text-primary)] mb-3">
+              <em>(Use o menu para acessar seus relatórios)</em>
+            </h3>
+          </div>
           <QuickStats userData={currentUser} siteId={siteId} isPartnerA={isPartnerA} isPartnerB={isPartnerB} />
         </div>
       </div>
@@ -217,7 +222,7 @@ export default function DashboardPage() {
     <Suspense
       fallback={
         <div className="flex items-center justify-center w-full min-h-screen p-6">
-          <Spinner>Loading dashboard...</Spinner>
+          <Spinner>Carregando dashboard...</Spinner>
         </div>
       }
     >
