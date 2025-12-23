@@ -755,15 +755,15 @@ Baixa Influência (0–14%): Raramente utilizada de forma natural, frequentement
                         <div className="flex flex-wrap gap-3">
                           <div className="flex items-center gap-2">
                             <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                            <span>Mild</span>
+                            <span>Leve</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                            <span>Moderate</span>
+                            <span>Moderado</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                            <span>Strong</span>
+                            <span>Forte</span>
                           </div>
                         </div>
                       </div>
