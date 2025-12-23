@@ -280,7 +280,7 @@ export default function PersonalReportPage() {
     const shareText = `Oi, aqui é ${name}! Acabei de fazer a avaliação de personalidade do CSM e meu tipo foi "${archetypeName}". Foi muito mais precisa do que eu esperava. Dá uma olhada:`;
 
     const shareData = {
-      title: `I'm The ${archetypeName} (${typeCode})`,
+      title: `Eu sou O ${archetypeName} (${typeCode})`,
       text: shareText,
       url: shareUrl,
     };
@@ -746,7 +746,7 @@ export default function PersonalReportPage() {
                     return (
                       <>
                         <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-6 text-center mt-6 md:mt-10">
-                          {strongestIndices.length > 1 ? "Your Strongest Dimensions" : "Your Strongest Dimension"}
+                          {strongestIndices.length > 1 ? "Suas Dimensões Mais Fortes" : "Sua Dimensão Mais Forte"}
                         </h3>
 
                         <div className="space-y-8">
@@ -793,7 +793,7 @@ export default function PersonalReportPage() {
                                       <div className="flex items-center gap-2 mb-3">
                                         <CheckCircle className="w-6 h-6 text-green-400" />
                                         <span className="text-sm font-semibold text-green-400 uppercase tracking-wide">
-                                          Natural Default
+                                          Padrão Natural
                                         </span>
                                       </div>
 
@@ -1038,7 +1038,7 @@ export default function PersonalReportPage() {
               className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all mb-6 md:mb-1"
             >
               <Share2 className="w-5 h-5" />
-              Share Your Results
+              Compartilhe Seus Resultados
             </button>
           </div>
         </div>
@@ -1337,7 +1337,7 @@ export default function PersonalReportPage() {
               className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all mb-6 md:mb-1"
             >
               <Share2 className="w-5 h-5" />
-              Compartilhe seus resultados
+              Compartilhe Seus Resultados
             </button>
           </div>
         </div>
@@ -1382,12 +1382,12 @@ export default function PersonalReportPage() {
             </h3>
             <p className="text-base leading-relaxed text-[var(--text-secondary)]">
               {`Agora que você explorou seus próprios padrões cognitivos, o próximo passo natural é ver como eles interagem
-  com os do seu parceiro.`}
+  com os do seu parceiro(a).`}
             </p>
             <p className="text-base leading-relaxed text-[var(--text-secondary)] mt-4">
               {`O Relatório de Insights do Casal CSM mostra como as duas mentes de vocês interagem, oferecendo orientações para
-  fortalecer o alinhamento, lidar com atritos e crescer juntos com intenção. Quer saber como seus blueprints se
-  alinham? Descubra no Relatório do Casal.`}
+  fortalecer o alinhamento, lidar com atritos e crescer juntos com intenção. Quer saber como os seus padrões se
+  alinham ou se diferem? Descubra no Relatório do Casal.`}
             </p>
           </div>
         </div>

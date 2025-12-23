@@ -126,9 +126,9 @@ export default function SessionsPage() {
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
             <BookOpen className="text-white flex-shrink-0" size={32} />
             <div>
-              <h1 className="text-2xl md:text-4xl font-bold text-white">CSM Sessions</h1>
+              <h1 className="text-2xl md:text-4xl font-bold text-white">Sessões de CSM</h1>
               <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">
-                Engage in guided self-reflection based on your CSM archetype.
+                Participe de uma autorreflexão guiada com base no seu arquétipo CSM.
               </p>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default function SessionsPage() {
         {/* Tabbed Content */}
         <div className="card-gradient rounded-lg shadow-custom overflow-hidden">
           <div className="flex flex-col pl-2 md:pl-10 gap-6 mt-10">
-            <p className="text-base font-semibold text-center md:text-left">Choose:</p>
+            <p className="text-base font-semibold text-center md:text-left">Escolha:</p>
 
             {/* Mobile: forced horizontal, smart shrinking via smaller text + tighter padding */}
             <div className="flex justify-center sm:justify-start gap-2 md:gap-4">
@@ -150,7 +150,7 @@ export default function SessionsPage() {
                 }`}
               >
                 <SquarePen className="text-[var(--accent)] flex-shrink-0" size={18} />
-                <span className="text-sm md:text-base lg:text-lg whitespace-nowrap">Start Session</span>
+                <span className="text-sm md:text-base lg:text-lg whitespace-nowrap">Iniciar Sessão</span>
               </button>
 
               <button
@@ -162,7 +162,7 @@ export default function SessionsPage() {
                 }`}
               >
                 <List className="text-[var(--accent)] flex-shrink-0" size={18} />
-                <span className="text-sm md:text-base lg:text-lg whitespace-nowrap">View Sessions</span>
+                <span className="text-sm md:text-base lg:text-lg whitespace-nowrap">Ver Sessões</span>
               </button>
             </div>
           </div>

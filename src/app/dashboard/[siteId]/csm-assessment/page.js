@@ -78,7 +78,7 @@ export default function DashboardTest() {
     async function initializeTestDashboardPage() {
       if (!siteId) {
         console.error("Invalid siteId:", siteId);
-        setError("Invalid dashboard link.");
+        setError("Link do Dashboard inválido.");
         setLoading(false);
         return;
       }
@@ -90,14 +90,14 @@ export default function DashboardTest() {
         } = await supabase.auth.getSession();
         if (sessionError || !session) {
           console.error("Session error:", sessionError?.message || "No session found", sessionError);
-          setError("You must be logged in to access the assessment.");
+          setError("Você precisa estar conectado para acessar a avaliação.");
           setLoading(false);
           router.push("/login");
           return;
         }
 
         const userId = session.user.id;
-        console.log("Initializing test for user:", { userId, siteId });
+        console.log("Inicializando teste para o usuário:", { userId, siteId });
 
         const { data: userData, error: userError } = await supabase
           .from("users")
@@ -107,7 +107,7 @@ export default function DashboardTest() {
 
         if (userError || !userData) {
           console.error("User fetch error:", userError?.message || "No user found for userId", userId, userError);
-          setError("User profile not found. Please log in again.");
+          setError("Perfil do usuário não encontrado. Por favor, faça login novamente.");
           await supabase.auth.signOut();
           router.push("/login");
           setLoading(false);
@@ -119,7 +119,7 @@ export default function DashboardTest() {
 
         if (!isPartnerA && !isPartnerB) {
           console.error("Access denied:", { userId, siteId, partner_id: userData.partner_id });
-          setError("You do not have access to this dashboard.");
+          setError("Você não tem acesso a este dashboard.");
           setLoading(false);
           return;
         }
@@ -147,7 +147,7 @@ export default function DashboardTest() {
         setLoading(false);
       } catch (err) {
         console.error("Unexpected error in initializeTestDashboardPage:", err.message, err);
-        setError("An unexpected error occurred. Please try again.");
+        setError("Ocorreu um erro inesperado. Por favor, tente novamente.");
         setLoading(false);
       }
     }
@@ -197,14 +197,14 @@ export default function DashboardTest() {
         !Array.isArray(results.categories)
       ) {
         console.error("Invalid assessment results:", results);
-        setError("Failed to calculate assessment results. Please try again.");
+        setError("Falha ao calcular os resultados da avaliação. Por favor, tente novamente.");
         setIsSubmitting(false);
         return;
       }
 
       safeLocalStorage.setItem("csmAssessmentData", JSON.stringify({ answers, results }));
       setAssessmentData(results);
-      console.log("Assessment results calculated:", results);
+      console.log("Resultados da avaliação calculados:", results);
 
       const {
         data: { session },
@@ -213,7 +213,7 @@ export default function DashboardTest() {
       const userId = session?.user?.id;
       if (!userId) {
         console.error("Session expired: No userId found");
-        setError("Session expired. Please log in again.");
+        setError("Sessão expirada. Por favor, faça login novamente.");
         router.push("/login");
         setIsSubmitting(false);
         return;
@@ -235,14 +235,14 @@ export default function DashboardTest() {
 
       if (supabaseError) {
         console.error("Supabase update error details:", supabaseError.message, supabaseError);
-        setError(`Failed to save results: ${supabaseError.message}. Please try again.`);
+        setError(`Falha ao salvar os resultados: ${supabaseError.message}. Por favor, tente novamente.`);
         setIsSubmitting(false);
         return;
       }
 
       if (!updateResponse || updateResponse.length === 0) {
         console.error("No rows updated - check RLS or userId:", userId);
-        setError("Failed to update profile (no rows affected). Please try again.");
+        setError("Failed to update profile (no rows affected). Por favor, tente novamente.");
         setIsSubmitting(false);
         return;
       }
@@ -255,7 +255,7 @@ export default function DashboardTest() {
       router.refresh();
     } catch (err) {
       console.error("Unexpected error in next:", err.message, err);
-      setError("An unexpected error occurred while saving results. Please try again.");
+      setError("Ocorreu um erro inesperado ao salvar os resultados. Por favor, tente novamente.");
       setIsSubmitting(false);
     }
   };
@@ -276,7 +276,7 @@ export default function DashboardTest() {
   if (loading) {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-[var(--surface)]">
-        <Spinner>Loading assessment...</Spinner>
+        <Spinner>Carregando avaliação...</Spinner>
       </main>
     );
   }
@@ -289,7 +289,7 @@ export default function DashboardTest() {
           onClick={() => router.push("/login")}
           className="mt-6 btn-primary py-3 px-6 rounded-lg font-semibold transition-all"
         >
-          Go to Login
+          Ir para Login
         </button>
       </main>
     );
@@ -299,13 +299,13 @@ export default function DashboardTest() {
     return (
       <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-[var(--surface)]">
         <div className="text-[var(--text-primary)] text-center text-lg font-medium">
-          Assessment already completed or not needed.
+          Avaliação já concluída ou não necessária.
         </div>
         <button
           onClick={() => router.push(`/dashboard/${siteId}`)}
           className="mt-6 btn-primary py-3 px-6 rounded-lg font-semibold transition-all"
         >
-          Go Back
+          Voltar
         </button>
       </main>
     );
@@ -332,17 +332,18 @@ export default function DashboardTest() {
           <Image src="/logo_transparent.png" alt="CSM Dynamics Logo" width={28} height={28} className="h-7 w-7" />
           <div className="flex items-center gap-1">
             <h1 className="text-xl font-bold text-[var(--primary)]">CSM</h1>
-            <h1 className="text-xl font-light text-white">Assessment</h1>
+            <h1 className="text-xl font-light text-white">Avaliação</h1>
           </div>
         </div>
 
         <p className="text-center text-sm text-[var(--text-secondary)] mb-6 italic">
-          Be honest. Think briefly. Answer what you <em>truly</em> do.
+          {" "}
+          Seja sincero. Pense rapidamente. Responda o que você <em>realmente</em> faz.
         </p>
         {/* Progress Header */}
         <div className="flex justify-between items-center mb-4">
-          <span className="text-sm font-medium text-[var(--accent)]">{percentage}% Complete</span>
-          <span className="text-sm font-medium text-[var(--accent)]">~{minutesLeft} min left</span>
+          <span className="text-sm font-medium text-[var(--accent)]">{percentage}% Completo</span>
+          <span className="text-sm font-medium text-[var(--accent)]">~{minutesLeft} min rest</span>
         </div>
 
         {/* Progress Bar */}
@@ -362,13 +363,13 @@ export default function DashboardTest() {
         {q.type === "likert" && (
           <div className="space-y-3 mb-6">
             {[
-              { value: 1, label: "Strongly Disagree" },
-              { value: 2, label: "Disagree" },
-              { value: 3, label: "Somewhat Disagree" },
-              { value: 4, label: "Neutral" },
-              { value: 5, label: "Somewhat Agree" },
-              { value: 6, label: "Agree" },
-              { value: 7, label: "Strongly Agree" },
+              { value: 1, label: "Discordo totalmente" },
+              { value: 2, label: "Discordo" },
+              { value: 3, label: "Discordo parcialmente" },
+              { value: 4, label: "Neutro" },
+              { value: 5, label: "Concordo parcialmente" },
+              { value: 6, label: "Concordo" },
+              { value: 7, label: "Concordo totalmente" },
             ].map(({ value, label }) => (
               <button
                 key={value}
@@ -384,7 +385,6 @@ export default function DashboardTest() {
             ))}
           </div>
         )}
-
         {/* Forced Select */}
         {q.type === "forced-select" && (
           <div className="space-y-3 mb-6">
@@ -397,42 +397,11 @@ export default function DashboardTest() {
                     ? "btn-primary shadow-md"
                     : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[var(--surface-variant-hover)]"
                 }`}
+                aria-label={`Selecione uma opção: ${opt.label}`}
               >
                 {opt.label}
               </button>
             ))}
-          </div>
-        )}
-
-        {/* Rank Allocation */}
-        {q.type === "rank" && (
-          <div className="mb-6">
-            <div className="space-y-4 card-gradient p-5 rounded-lg border border-[var(--border)]">
-              <p className="text-sm text-[var(--text-secondary)] italic">
-                Allocate 10 points across the options to reflect your preference (e.g., 5-3-2 or 4-4-2). Total must sum
-                to 10.
-              </p>
-              {q.options.map((opt) => (
-                <div key={opt.key} className="flex items-center justify-between gap-4">
-                  <label className="text-[var(--text-secondary)] flex-1 text-sm font-medium">{opt.label}</label>
-                  <input
-                    type="number"
-                    min="0"
-                    max="10"
-                    value={ranks[opt.key] || 0}
-                    onChange={(e) => handleRankChange(opt.key, e.target.value)}
-                    className="w-16 p-2 rounded-lg bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border)] focus:border-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]/20 transition-[var(--transition)]"
-                    placeholder="0"
-                  />
-                </div>
-              ))}
-              <div className="text-sm font-medium text-[var(--text-secondary)]">
-                Total Points: {Object.values(ranks).reduce((sum, val) => sum + (parseInt(val) || 0), 0)}/10
-              </div>
-              {!isRankValid() && (
-                <p className="text-sm text-red-400 mt-2">Please allocate exactly 10 points across the options.</p>
-              )}
-            </div>
           </div>
         )}
 

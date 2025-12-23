@@ -69,7 +69,7 @@ export default function SettingsPage() {
         data: { session },
       } = await supabase.auth.getSession();
       if (!session) {
-        alert("You must be logged in");
+        alert("Você precisa estar logado");
         return;
       }
 
@@ -89,7 +89,7 @@ export default function SettingsPage() {
       if (url) {
         const newWindow = window.open(url, "_blank");
         if (!newWindow) {
-          alert("Please allow popups for this site");
+          alert("Por favor, permita pop-ups para este site");
         }
 
         const checkReturn = setInterval(() => {
@@ -113,17 +113,17 @@ export default function SettingsPage() {
     e.preventDefault();
 
     if (!newEmail || !newEmail.includes("@")) {
-      setEmailStatus({ success: false, message: "Please enter a valid email address" });
+      setEmailStatus({ success: false, message: "Por favor, insira um endereço de e-mail válido" });
       return;
     }
 
     if (newEmail.toLowerCase() !== confirmEmail.toLowerCase()) {
-      setEmailStatus({ success: false, message: "Email addresses do not match" });
+      setEmailStatus({ success: false, message: "Os endereços de e-mail não são iguais" });
       return;
     }
 
     if (newEmail.toLowerCase() === currentEmail.toLowerCase()) {
-      setEmailStatus({ success: false, message: "New email must be different from current email" });
+      setEmailStatus({ success: false, message: "O novo e-mail deve ser diferente do e-mail atual" });
       return;
     }
 
@@ -146,7 +146,7 @@ export default function SettingsPage() {
       setEmailStatus({
         success: true,
         message:
-          "Email change requested! Check your NEW email for the confirmation link. Once confirmed, your account will be updated automatically.",
+          "A alteração de e-mail foi solicitada! Verifique seu NOVO e-mail e clique no link de confirmação. Após a confirmação, sua conta será atualizada automaticamente.",
       });
       setNewEmail("");
       setConfirmEmail("");
@@ -166,12 +166,12 @@ export default function SettingsPage() {
     e.preventDefault();
 
     if (newPassword !== confirmPassword) {
-      setPasswordStatus({ success: false, message: "New passwords do not match" });
+      setPasswordStatus({ success: false, message: "As novas senhas não são iguais" });
       return;
     }
 
     if (newPassword.length < 6) {
-      setPasswordStatus({ success: false, message: "Password must be at least 6 characters" });
+      setPasswordStatus({ success: false, message: "A senha deve ter pelo menos 6 caracteres" });
       return;
     }
 
@@ -198,7 +198,7 @@ export default function SettingsPage() {
     if (error) {
       setPasswordStatus({ success: false, message: error.message });
     } else {
-      setPasswordStatus({ success: true, message: "Password updated successfully!" });
+      setPasswordStatus({ success: true, message: "Senha atualizada com sucesso!" });
       setCurrentPassword("");
       setNewPassword("");
       setConfirmPassword("");
@@ -225,8 +225,8 @@ export default function SettingsPage() {
         >
           {/* Header */}
           <div className="text-center mb-10">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Account Settings</h1>
-            <p className="text-lg text-white/80">Manage your account, subscription, and security settings.</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Configurações da Conta</h1>
+            <p className="text-lg text-white/80">Gerencie sua conta, assinatura e configurações de segurança.</p>
           </div>
 
           <div className="space-y-8">
@@ -234,7 +234,7 @@ export default function SettingsPage() {
             <div className="p-6 bg-white/5 border border-white/30 rounded-xl">
               <div className="flex items-center gap-3 mb-2">
                 <Mail className="w-5 h-5 text-white/90" />
-                <h3 className="text-lg font-semibold text-white/90">Current Email</h3>
+                <h3 className="text-lg font-semibold text-white/90">Email Atual</h3>
               </div>
               <p className="text-white text-lg break-all ml-8">{currentEmail}</p>
             </div>
@@ -243,13 +243,13 @@ export default function SettingsPage() {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <Mail className="w-6 h-6 text-white/90" />
-                <h3 className="text-xl font-semibold text-white/90">Change Email Address</h3>
+                <h3 className="text-xl font-semibold text-white/90">Alterar endereço de e-mail</h3>
               </div>
 
               <form onSubmit={handleEmailChange} className="space-y-4">
                 <input
                   type="email"
-                  placeholder="New email address"
+                  placeholder="Novo endereço de e-mail"
                   value={newEmail}
                   onChange={(e) => setNewEmail(e.target.value)}
                   required
@@ -258,7 +258,7 @@ export default function SettingsPage() {
 
                 <input
                   type="email"
-                  placeholder="Confirm new email address"
+                  placeholder="Confirme o novo endereço de e-mail"
                   value={confirmEmail}
                   onChange={(e) => setConfirmEmail(e.target.value)}
                   required
@@ -293,11 +293,11 @@ export default function SettingsPage() {
                   disabled={emailLoading}
                   className="w-full py-4 rounded-xl btn-primary font-bold text-lg shadow-lg hover:shadow-2xl transition disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {emailLoading ? "Sending Confirmation..." : "Change Email"}
+                  {emailLoading ? "Enviando confirmação..." : "Alterar e-mail"}
                 </motion.button>
 
                 <p className="text-xs text-white/50 text-center">
-                  A confirmation link will be sent to your <strong className="text-white/80">new</strong> email.
+                  Um link de confirmação será enviado para seu <strong className="text-white/80">novo</strong> e-mail.
                 </p>
               </form>
             </div>
@@ -306,13 +306,13 @@ export default function SettingsPage() {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <Lock className="w-6 h-6 text-white/90" />
-                <h3 className="text-xl font-semibold text-white/90">Change Password</h3>
+                <h3 className="text-xl font-semibold text-white/90">Alterar Senha</h3>
               </div>
 
               <form onSubmit={handlePasswordChange} className="space-y-4">
                 <input
                   type="password"
-                  placeholder="Current password"
+                  placeholder="Senha atual"
                   value={currentPassword}
                   onChange={(e) => setCurrentPassword(e.target.value)}
                   required
@@ -321,7 +321,7 @@ export default function SettingsPage() {
 
                 <input
                   type="password"
-                  placeholder="New password"
+                  placeholder="Nova senha"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   required
@@ -331,7 +331,7 @@ export default function SettingsPage() {
 
                 <input
                   type="password"
-                  placeholder="Confirm new password"
+                  placeholder="Confirme a nova senha"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
@@ -367,7 +367,7 @@ export default function SettingsPage() {
                   disabled={passwordLoading}
                   className="w-full py-4 rounded-xl btn-primary font-bold text-lg shadow-lg hover:shadow-2xl transition disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {passwordLoading ? "Updating Password..." : "Update Password"}
+                  {passwordLoading ? "Atualizando senha..." : "Atualizar senha"}
                 </motion.button>
               </form>
             </div>
@@ -376,7 +376,7 @@ export default function SettingsPage() {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <CreditCard className="w-6 h-6 text-white/90" />
-                <h3 className="text-xl font-semibold text-white/90">Subscription</h3>
+                <h3 className="text-xl font-semibold text-white/90">Assinatura</h3>
               </div>
 
               {subscriptionStatus ? (
@@ -385,36 +385,36 @@ export default function SettingsPage() {
                     <p className="text-white/70 text-sm mb-2">Status</p>
                     <p
                       className={`font-bold text-lg ${
-                        subscriptionStatus === "active" || subscriptionStatus === "trialing"
+                        subscriptionStatus === "ativo" || subscriptionStatus === "avaliação"
                           ? "text-green-400"
-                          : subscriptionStatus === "canceled" ||
-                              subscriptionStatus === "past_due" ||
-                              subscriptionStatus === "unpaid" ||
-                              subscriptionStatus === "incomplete" ||
-                              subscriptionStatus === "incomplete_expired"
+                          : subscriptionStatus === "cancelado" ||
+                              subscriptionStatus === "em_atraso" ||
+                              subscriptionStatus === "não_pago" ||
+                              subscriptionStatus === "incompleto" ||
+                              subscriptionStatus === "incompleto_expirado"
                             ? "text-orange-400"
                             : "text-white/70"
                       }`}
                     >
-                      {subscriptionStatus === "active" && "Active"}
-                      {subscriptionStatus === "trialing" && "Active: Trial period"}
-                      {subscriptionStatus === "canceled" && "Canceled: access until end of billing period"}
-                      {subscriptionStatus === "past_due" && "Payment failed: please update card"}
-                      {subscriptionStatus === "unpaid" && "Unpaid: please update payment"}
-                      {subscriptionStatus === "incomplete" && "Incomplete: setup failed"}
-                      {subscriptionStatus === "incomplete_expired" && "Incomplete: expired"}
+                      {subscriptionStatus === "ativo" && "Ativo"}
+                      {subscriptionStatus === "avaliação" && "Ativo: Período de avaliação"}
+                      {subscriptionStatus === "cancelado" && "Cancelado: acesso até o final do período de cobrança"}
+                      {subscriptionStatus === "em_atraso" && "Pagamento em atraso: por favor, atualize o cartão"}
+                      {subscriptionStatus === "não_pago" && "Pagamento não realizado: por favor, atualize o cartão"}
+                      {subscriptionStatus === "incompleto" && "Incompleto: falha na configuração"}
+                      {subscriptionStatus === "incompleto_expirado" && "Incompleto: expirado"}
                       {![
-                        "active",
-                        "trialing",
-                        "canceled",
-                        "past_due",
-                        "unpaid",
-                        "incomplete",
-                        "incomplete_expired",
+                        "ativo",
+                        "avaliação",
+                        "cancelado",
+                        "em_atraso",
+                        "não_pago",
+                        "incompleto",
+                        "incompleto_expirado",
                       ].includes(subscriptionStatus) &&
                         (subscriptionStatus
                           ? subscriptionStatus.charAt(0).toUpperCase() + subscriptionStatus.slice(1).replace(/_/g, " ")
-                          : "Unknown")}
+                          : "Desconhecido")}
                     </p>
                   </div>
 
@@ -425,16 +425,16 @@ export default function SettingsPage() {
                     disabled={portalLoading}
                     className="w-full py-4 rounded-xl btn-primary font-bold text-lg shadow-lg hover:shadow-2xl transition disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {portalLoading ? "Opening Portal..." : "Manage Subscription → Update Card / Cancel"}
+                    {portalLoading ? "Abrindo portal..." : "Gerenciar assinatura → Atualizar cartão / Cancelar"}
                   </motion.button>
 
                   <p className="text-xs text-white/50 text-center">
-                    Update payment method, renew or cancel anytime in the secure Stripe portal.
+                    Atualize o método de pagamento, renove ou cancele a qualquer momento no portal seguro da Stripe.
                   </p>
                 </div>
               ) : (
                 <div className="p-8 bg-white/5 border border-white/30 rounded-xl text-center">
-                  <p className="text-white/60">No active subscription</p>
+                  <p className="text-white/60">Nenhuma assinatura ativa</p>
                 </div>
               )}
             </div>

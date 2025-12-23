@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Spinner from "@/app/components/ui/Spinner";
 import { Send, AlertCircle, CheckCircle } from "lucide-react";
 
-const areas = ["Support", "Billing", "Partnership", "Licensing", "Feedback"];
+const areas = ["Suporte", "Faturamento", "Parceria", "Licenciamento", "Sugestões"];
 
 function generateTicket() {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -50,7 +50,7 @@ export default function SupportForm({ userName, userEmail, siteId }) {
           userSubject: form.subject,
           message: form.message,
           ticket,
-          confirmationSubject: `We received your support request – Ticket #${ticket}`, // optional, or let server default
+          confirmationSubject: `Recebemos sua solicitação de suporte – Ticket #${ticket}`, // optional, or let server default
         }),
       });
 
@@ -73,9 +73,9 @@ export default function SupportForm({ userName, userEmail, siteId }) {
           className="card-gradient rounded-3xl p-8 md:p-12 shadow-2xl border border-[var(--border)]"
         >
           <div className="text-center mb-10">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Support Center</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Central de Suporte</h1>
             <p className="text-lg text-white/80">
-              We’re here to help you and your partner. Expect a reply within 24 hours.
+              Estamos aqui para ajudar você e seu parceiro(a). Espere uma resposta dentro de 24 horas.
             </p>
           </div>
 
@@ -86,7 +86,9 @@ export default function SupportForm({ userName, userEmail, siteId }) {
               className="mb-8 p-6 bg-green-500/20 border border-green-500/50 rounded-xl flex items-center justify-center gap-3"
             >
               <CheckCircle className="w-8 h-8 text-green-400" />
-              <p className="text-green-300 font-semibold text-lg">Message sent! We’ll reply within 24 hours.</p>
+              <p className="text-green-300 font-semibold text-lg">
+                Mensagem enviada! Responderemos dentro de 24 horas.
+              </p>
             </motion.div>
           )}
 
@@ -105,7 +107,7 @@ export default function SupportForm({ userName, userEmail, siteId }) {
             {/* Area */}
             <div>
               <label className="block text-white/90 font-medium mb-3">
-                Area <span className="text-white/60 text-sm">(required)</span>
+                Area <span className="text-white/60 text-sm">(Obrigatório)</span>
               </label>
               <select
                 value={form.area}
@@ -129,14 +131,14 @@ export default function SupportForm({ userName, userEmail, siteId }) {
             {/* Subject */}
             <div>
               <label className="block text-white/90 font-medium mb-3">
-                Subject <span className="text-white/60 text-sm">(required)</span>
+                Subject <span className="text-white/60 text-sm">(Obrigatório)</span>
               </label>
               <input
                 type="text"
                 required
                 value={form.subject}
                 onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                placeholder="Short summary of your question"
+                placeholder="Resumo breve da sua pergunta"
                 className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:border-white transition"
               />
             </div>
@@ -144,14 +146,14 @@ export default function SupportForm({ userName, userEmail, siteId }) {
             {/* Message */}
             <div>
               <label className="block text-white/90 font-medium mb-3">
-                Message <span className="text-white/60 text-sm">(required)</span>
+                Mensagem <span className="text-white/60 text-sm">(Obrigatório)</span>
               </label>
               <textarea
                 required
                 rows={9}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                placeholder="Please describe your question or issue in detail..."
+                placeholder="Por favor, descreva sua pergunta ou problema em detalhes..."
                 className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/30 text-white placeholder-white/60 focus:outline-none focus:border-white resize-none transition"
               />
             </div>
@@ -167,19 +169,19 @@ export default function SupportForm({ userName, userEmail, siteId }) {
               {submitting ? (
                 <>
                   <Spinner size="sm" />
-                  Sending...
+                  Enviando...
                 </>
               ) : (
                 <>
                   <Send className="w-5 h-5" />
-                  Send Message
+                  Enviar Mensagem
                 </>
               )}
             </motion.button>
           </form>
 
           <p className="text-white/50 text-center text-sm mt-10">
-            You’re signed in as <span className="font-medium text-white">{userName}</span> ({userEmail})
+            Você está conectado(a) como <span className="font-medium text-white">{userName}</span> ({userEmail})
           </p>
         </motion.div>
       </div>

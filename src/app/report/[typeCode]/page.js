@@ -20,7 +20,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import LZString from "lz-string";
 import Spinner from "@/app/components/ui/Spinner";
 import { PieChart } from "@mui/x-charts/PieChart";
-import Link from "next/link";
 
 export default function PersonalReport() {
   const { typeCode: urlCode } = useParams();
@@ -58,7 +57,7 @@ export default function PersonalReport() {
 
   if (!data) {
     return (
-      <div className="flex flex-col min-h-screen bg-[var(--surface)] flex items-center justify-center p-6 gap-4">
+      <div className="flex flex-col min-h-screen bg-[var(--surface)] items-center justify-center p-6 gap-4">
         <Spinner />
         <p className="text-center">
           <span className="font-bold">Loading... </span>
@@ -95,20 +94,28 @@ export default function PersonalReport() {
   };
 
   const PRIMARY_EXPLANATION = `
-To add greater nuance to your CSM profile, each dimension's preference is expressed as a percentage split between the two poles.
-Primary Preference (above 50%) reflects your dominant approach, This is your natural, go-to way of thinking and processing information in that dimension.
-DEGREES OF DOMINANCE:
-• Mild Preference (51–65%): Slight advantage, good flexibility, easy access to secondary
-• Moderate Preference (66–85%): Clear dominance, reliable lean with some adaptability
-• Strong Preference (86–100%): Heavy dominance, core strength but potential blind spots
+Para adicionar maior nuance ao seu perfil CSM, a preferência de cada dimensão é expressa como uma divisão percentual entre os dois polos.
+
+A Preferência Primária (acima de 50%) reflete sua abordagem dominante. Esse é o seu modo natural, automático, de pensar e processar informações naquela dimensão.
+
+GRAUS DE DOMINÂNCIA:
+
+* Preferência Leve (51–65%): Leve vantagem, boa flexibilidade e fácil acesso ao polo secundário
+* Preferência Moderada (66–85%): Dominância clara, inclinação consistente com alguma adaptabilidade
+* Preferência Forte (86–100%): Dominância elevada, principal força cognitiva, mas com possíveis pontos cegos
+
 `;
 
   const SECONDARY_EXPLANATION = `
-Secondary Preference (below 50%) indicates how accessible the opposite pole is to you. This shows your flexibility and where you can stretch for balance.
-DEGREES OF INFLUENCE:
-• High Influence (35–49%): Strong accessibility, frequent use, reliable complement
-• Moderate Influence (15–34%): Noticeable presence, emerges in specific situations
-• Low Influence (0–14%): Rarely used naturally, often a blind spot or growth area
+A Preferência Secundária (abaixo de 50%) indica o quão acessível é para você o polo oposto. Isso revela seu nível de flexibilidade e onde você pode se expandir para alcançar maior equilíbrio.
+
+GRAUS DE INFLUÊNCIA:
+
+Alta Influência (35–49%): Forte acessibilidade, uso frequente e complemento confiável
+
+Influência Moderada (15–34%): Presença perceptível, emerge em situações específicas
+
+Baixa Influência (0–14%): Raramente utilizada de forma natural, frequentemente um ponto cego ou área de desenvolvimento
 `;
 
   const getLevel = (primaryPct) => {
@@ -131,24 +138,24 @@ DEGREES OF INFLUENCE:
   };
 
   const poleFullName = {
-    C: "Concrete Focus",
-    N: "Abstract Insight",
-    L: "Analytical Logic",
-    V: "Empathic Values",
-    O: "Outward Engagement",
-    I: "Inward Reflection",
-    S: "Stable Structure",
-    F: "Adaptive Flexibility",
-    H: "Collaborative Harmony",
-    A: "Independent Autonomy",
+    C: "Foco Concreto",
+    N: "Percepção Abstrata",
+    L: "Lógica Analítica",
+    V: "Valores Empáticos",
+    O: "Engajamento Externo",
+    I: "Reflexão Interna",
+    S: "Estrutura Estável",
+    F: "Flexibilidade Adaptativa",
+    H: "Harmonia Colaborativa",
+    A: "Autonomia Independente",
   };
 
   const dimensionLabels = [
-    "Information Processing",
-    "Decision-Making",
-    "Energy Orientation",
-    "Change Approach",
-    "Interpersonal Style",
+    "Processamento da Informação",
+    "Tomada de Decisão",
+    "Orientação de Energia",
+    "Abordagem à Mudança",
+    "Estilo Interpessoal",
   ];
 
   const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A28EFF"];
@@ -222,9 +229,9 @@ DEGREES OF INFLUENCE:
       return;
     }
 
-    const shareText = `Hey, it's ${userName}! I just took the CSM personality assessment and got "${archetypeName}" type. It was way more accurate than I expected. Take a look:`;
+    const shareText = `Oi, aqui é ${userName}! Acabei de fazer a avaliação de personalidade do CSM e meu tipo foi "${archetypeName}". Foi muito mais precisa do que eu esperava. Dá uma olhada:`;
     const shareData = {
-      title: `I'm The ${archetypeName} (${typeCodeWithDashes})`,
+      title: `Eu sou O ${archetypeName} (${typeCodeWithDashes})`,
       text: shareText,
       url: shareUrl,
     };
@@ -319,7 +326,7 @@ DEGREES OF INFLUENCE:
       <div className="hero-gradient rounded-lg p-6 md:p-8 shadow-custom-lg">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
           <div>
-            <h1 className="text-4xl font-bold text-white">Your CSM Personality Report</h1>
+            <h1 className="text-4xl font-bold text-white">Seu Relatório de Personalidade CSM</h1>
             <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">
               {`Uncover your cognitive blueprint, revealing how you think, connect, and evolve. Understanding yourself is
               the first step to exploring how you relate to others through the Couple's Insights Report.`}
@@ -335,17 +342,17 @@ DEGREES OF INFLUENCE:
           <div className="mt-8 p-6 md:p-8 bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl border border-[var(--border)] shadow-lg">
             <div className="mb-8">
               <h3 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4 text-center">
-                Quick Overview
+                Visão Geral
               </h3>
               <p className="text-base md:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed text-center">
-                The Cognitive Spectrum Model (CSM) breaks down how your mind works into five independent dimensions,
-                each like a slider between two opposite poles that shape the way you think, decide, and interact.
+                O Modelo do Espectro Cognitivo (CSM) divide a forma como sua mente funciona em cinco dimensões
+                independentes, cada um com dois polos opostos que moldam a maneira como você pensa, decide e interage.
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               {/* Dimension 1 - Information Processing */}
               <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all">
-                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Information Processing</h4>
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Processamento da Informação</h4>
                 <div className="space-y-3 text-sm text-[var(--text-secondary)]">
                   {/* Concrete */}
                   <div className="flex items-center gap-3">
@@ -353,7 +360,7 @@ DEGREES OF INFLUENCE:
                       C
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Concrete (C):</strong> Facts, details, real.
+                      <strong className="text-[var(--text-primary)]">Concreto (C):</strong> Fatos, detalhes, realidade.
                     </div>
                   </div>
 
@@ -363,8 +370,8 @@ DEGREES OF INFLUENCE:
                       N
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Abstract (N):</strong> Patterns, ideas,
-                      possibilities.
+                      <strong className="text-[var(--text-primary)]">Abstrato (N):</strong> Padrões, ideias,
+                      possibilidades.
                     </div>
                   </div>
                 </div>
@@ -372,14 +379,15 @@ DEGREES OF INFLUENCE:
 
               {/* Dimension 2 - Decision-Making */}
               <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all">
-                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Decision-Making</h4>
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Tomada de Decisão</h4>
                 <div className="space-y-3 text-sm text-[var(--text-secondary)]">
                   <div className="flex items-center gap-3">
                     <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
                       L
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Analytical Logic (L):</strong> Rules, data, logic.
+                      <strong className="text-[var(--text-primary)]">Lógica Analítica (L):</strong> Regras, dados,
+                      lógica.
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -387,8 +395,8 @@ DEGREES OF INFLUENCE:
                       V
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Empathic Values (V):</strong> Feelings, harmony,
-                      people.
+                      <strong className="text-[var(--text-primary)]">Valores Empáticos (V):</strong> Sentimentos,
+                      harmonia, pessoas.
                     </div>
                   </div>
                 </div>
@@ -396,14 +404,14 @@ DEGREES OF INFLUENCE:
 
               {/* Dimension 3 - Energy Orientation */}
               <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all">
-                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Energy Orientation</h4>
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Orientação de Energia</h4>
                 <div className="space-y-3 text-sm text-[var(--text-secondary)]">
                   <div className="flex items-center gap-3">
                     <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
                       O
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Outward (O):</strong> Action, social, external.
+                      <strong className="text-[var(--text-primary)]">Externo (O):</strong> Ação, social, externo.
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -411,7 +419,7 @@ DEGREES OF INFLUENCE:
                       I
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Inward (I):</strong> Reflection, solitude, inner.
+                      <strong className="text-[var(--text-primary)]">Interno (I):</strong> Reflexão, solitude, interior.
                     </div>
                   </div>
                 </div>
@@ -419,15 +427,15 @@ DEGREES OF INFLUENCE:
 
               {/* Dimension 4 - Change Approach */}
               <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all">
-                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Change Approach</h4>
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Abordagem à Mudança</h4>
                 <div className="space-y-3 text-sm text-[var(--text-secondary)]">
                   <div className="flex items-center gap-3">
                     <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
                       S
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Stable Structure (S):</strong> Plans, order,
-                      predictable.
+                      <strong className="text-[var(--text-primary)]">Estrutura Estável (S):</strong> Planejamento,
+                      ordem, previsibilidade.
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -435,8 +443,8 @@ DEGREES OF INFLUENCE:
                       F
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Adaptive Flexibility (F):</strong> Spontaneity,
-                      flow, flexible.
+                      <strong className="text-[var(--text-primary)]">Flexibilidade Adaptativa (F):</strong>{" "}
+                      Espontaneidade, fluidez, flexibilidade.
                     </div>
                   </div>
                 </div>
@@ -444,15 +452,15 @@ DEGREES OF INFLUENCE:
 
               {/* Dimension 5 - Interpersonal Style (centered) */}
               <div className="bg-white/5 border border-white/10 rounded-lg p-5 hover:bg-white/10 transition-all md:col-span-2 md:max-w-md md:mx-auto">
-                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Interpersonal Style</h4>
+                <h4 className="font-bold text-[var(--accent)] text-lg mb-3 text-center">Estilo Interpessoal</h4>
                 <div className="space-y-3 text-sm text-[var(--text-secondary)]">
                   <div className="flex items-center gap-3">
                     <div className="bg-[var(--surface3)] text-white font-black text-xs w-7 h-7 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
                       H
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Collaborative Harmony (H):</strong> Team,
-                      consensus, group.
+                      <strong className="text-[var(--text-primary)]">Harmonia Colaborativa (H):</strong> Equipe,
+                      consenso, grupo.
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -460,8 +468,8 @@ DEGREES OF INFLUENCE:
                       A
                     </div>
                     <div>
-                      <strong className="text-[var(--text-primary)]">Independent Autonomy (A):</strong> Solo, freedom,
-                      self.
+                      <strong className="text-[var(--text-primary)]">Autonomia Independente (A):</strong> Autonomia,
+                      liberdade, individualidade.
                     </div>
                   </div>
                 </div>
@@ -469,28 +477,28 @@ DEGREES OF INFLUENCE:
             </div>
             <div className="border-t border-[var(--border)] pt-6">
               <p className="text-base md:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed text-center italic">
-                Your unique mix across these poles in each dimension creates your cognitive profile. No pole is better,
-                just different strengths and growth areas.
+                Sua combinação única entre esses polos em cada dimensão forma o seu perfil cognitivo. Nenhum polo é
+                melhor que o outro, apenas apresentam forças diferentes e apontam possíveis pontos de desenvolvimento.
               </p>
             </div>
           </div>
 
           <h2 className="text-3xl font-bold text-[var(--text-primary)] pl-4 md:pl-1 mb-6 mt-10 md:mt-20 text-left">
-            Summary
+            Resumo
           </h2>
           <div className="space-y-5">
             <div className="space-y-6 justify-between">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="border border-white/20 bg-white/5 p-4 rounded-lg">
-                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">User:</p>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Usuário:</p>
                   <p className="text-xl font-bold text-[var(--text-primary)]">{userName || "Anonymous"}</p>
                 </div>
                 <div className="border border-white/20 bg-white/5 p-4 rounded-lg">
-                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Archetype:</p>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Arquétipo:</p>
                   <p className="text-xl font-bold text-[var(--text-primary)]">{archetypeName}</p>
                 </div>
                 <div className="border border-white/20 bg-white/5 p-4 rounded-lg">
-                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Archetype Code:</p>
+                  <p className="text-sm font-medium text-[var(--text-secondary)] mb-2">Código do Arquétipo:</p>
                   <p className="text-xl font-bold text-[var(--text-primary)]">{typeCodeWithDashes}</p>
                 </div>
               </div>
@@ -501,11 +509,11 @@ DEGREES OF INFLUENCE:
               <div className="flex flex-col max-w-3xl mx-auto border border-white/10 bg-[var(--surface-variant)] rounded-lg p-8 space-y-4 text-left">
                 <div className="mb-2">
                   <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mt-8 mb-4 text-center">
-                    Your Archetype&apos;s Essence
+                    A Essência do Seu Arquétipo
                   </h3>
                   <p className="text-base text-[var(--text-secondary)] max-w-md mx-auto mb-6 leading-relaxed text-center">
-                    Discover the core patterns that define your cognitive style and how you naturally engage with the
-                    world.
+                    Descubra os padrões centrais que definem seu estilo cognitivo e como você se envolve com o mundo de
+                    forma natural.
                   </p>
                 </div>
                 <div className="space-y-4">
@@ -518,7 +526,7 @@ DEGREES OF INFLUENCE:
                         </p>
                       ))
                   ) : (
-                    <p className="text-[var(--text-primary)] leading-relaxed">No detailed analysis available.</p>
+                    <p className="text-[var(--text-primary)] leading-relaxed">Nenhuma análise detalhada disponível</p>
                   )}
                 </div>
               </div>
@@ -529,12 +537,10 @@ DEGREES OF INFLUENCE:
               {/* ==================== DPS DISTRIBUTION ==================== */}
               <div className="flex flex-col items-center p-4 bg-[var(--surface-variant)] rounded-lg">
                 <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mt-10 mb-4 text-center">
-                  Dimensional Preference Strength (DPS)
+                  Força de Preferência Dimensional (DPS)
                 </h3>
                 <p className="text-base text-[var(--text-secondary)] max-w-md mx-auto mb-6 leading-relaxed text-center">
-                  {` DPS measures how strongly you lean toward one pole over its opposite on each of the five dimensions.
-                  Higher DPS means you rely heavily on one style of thinking (it's your natural default). Lower DPS
-                  means you move easily between both poles (you are naturally flexible).`}
+                  {` O DPS mede o quanto você tende fortemente a um polo em relação ao seu oposto em cada uma das cinco dimensões. Um DPS mais alto indica que você depende fortemente de um estilo de pensamento (é seu padrão natural).Um DPS mais baixo indica que você transita facilmente entre os dois polos (você é naturalmente flexível).`}
                 </p>
                 <div className="pie-chart-container w-full max-w-md">
                   <PieChart
@@ -595,7 +601,7 @@ DEGREES OF INFLUENCE:
                     return (
                       <>
                         <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-6 text-center mt-6 md:mt-10">
-                          {strongestIndices.length > 1 ? "Your Strongest Dimensions" : "Your Strongest Dimension"}
+                          {strongestIndices.length > 1 ? "Suas Dimensões Mais Fortes" : "Sua Dimensão Mais Forte"}
                         </h3>
                         <div className="space-y-8">
                           {strongestIndices.map((maxDpsIndex, idx) => {
@@ -636,15 +642,15 @@ DEGREES OF INFLUENCE:
                                       <div className="flex items-center gap-2 mb-3">
                                         <CheckCircle className="w-6 h-6 text-green-400" />
                                         <span className="text-sm font-semibold text-green-400 uppercase tracking-wide">
-                                          Natural Default
+                                          Padrão Natural
                                         </span>
                                       </div>
                                       <h4 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-2">
                                         {dominantPoleName}
                                       </h4>
                                       <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                                        This is your strongest cognitive preference, your go-to way of processing
-                                        information in this dimension. You rely on this naturally and effortlessly.
+                                        Esta é a sua preferência cognitiva mais forte, seu modo natural de processar
+                                        informações nesta dimensão. Você depende dela de forma natural e sem esforço.
                                       </p>
                                     </div>
                                   </motion.div>
@@ -659,15 +665,15 @@ DEGREES OF INFLUENCE:
                                       <div className="flex items-center gap-2 mb-3">
                                         <CircleAlert className="w-6 h-6 text-purple-400" />
                                         <span className="text-sm font-semibold text-purple-400 uppercase tracking-wide">
-                                          Growth Opportunity
+                                          Oportunidade de Crescimento
                                         </span>
                                       </div>
                                       <h4 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-2">
                                         {oppositePoleName}
                                       </h4>
                                       <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                                        This is your opposite pole, the area where conscious development can create the
-                                        biggest personal expansion and cognitive flexibility.
+                                        Este é o seu polo oposto, a área em que o desenvolvimento consciente pode gerar
+                                        a maior expansão pessoal e flexibilidade cognitiva.
                                       </p>
                                     </div>
                                   </motion.div>
@@ -678,7 +684,7 @@ DEGREES OF INFLUENCE:
                         </div>
                         <div className="w-full p-4 mt-6 bg-[var(--surface)]/50 rounded-lg ">
                           <p className="text-sm text-center text-[var(--text-secondary)] italic font-light">
-                            <strong className="text-[var(--text-primary)]">Insight:</strong> Your high DPS in{" "}
+                            <strong className="text-[var(--text-primary)]">Insight:</strong> Seu DPS alto em{" "}
                             {strongestIndices.length > 1
                               ? strongestIndices.map((i, idx) => (
                                   <span key={i}>
@@ -688,10 +694,12 @@ DEGREES OF INFLUENCE:
                                   </span>
                                 ))
                               : dimensionLabels[strongestIndices[0]]}{" "}
-                            {strongestIndices.length > 1 ? "mean" : "means"} you have pronounced default mode
-                            {strongestIndices.length > 1 ? "s" : ""}. Developing your opposite pole
-                            {strongestIndices.length > 1 ? "s" : ""} will bring the greatest balance and adaptability to
-                            your cognitive toolkit.
+                            {strongestIndices.length > 1 ? "indica que" : "indica que"} você possui
+                            {strongestIndices.length > 1 ? " modos" : " um modo"}
+                            {strongestIndices.length > 1 ? " padrões" : " padrão"}
+                            {strongestIndices.length > 1 ? " pronunciados" : " pronunciado"}
+                            {strongestIndices.length > 1 ? " nestas dimensões" : " nesta dimensão"}. Desenvolvendo seu
+                            polo oposto trará maior equilíbrio e adaptabilidade ao seu conjunto cognitivo.
                           </p>
                         </div>
                       </>
@@ -703,17 +711,18 @@ DEGREES OF INFLUENCE:
                 <div className="mt-8 p-6 bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl border border-[var(--border)] shadow-lg">
                   <div className="flex flex-col mt-8 mb-4">
                     <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-4 text-center">
-                      Poles Preferences
+                      Preferências dos Polos
                     </h3>
                     <p className="text-base text-[var(--text-secondary)] text-center max-w-md mx-auto mb-6 leading-relaxed">
-                      Your natural defaults (Primary) and their opposite growth areas (Secondary) at a glance.
+                      Seus padrões naturais (Primários) e suas áreas de crescimento opostas (Secundárias) de forma
+                      resumida.
                     </p>
                   </div>
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Primary Poles */}
                     <div className="space-y-4 border border-white/10 bg--[var(--surface-variant)] rounded-lg p-5">
                       <div>
-                        <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Primary Poles</p>
+                        <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Polos Primários</p>
                         <div className="flex flex-wrap gap-2">
                           {dominants.map((pole, i) => {
                             const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
@@ -737,7 +746,7 @@ DEGREES OF INFLUENCE:
                       </div>
                       <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] pt-3 border-t border-white/10">
                         <div className="flex items-center gap-1.5">
-                          <span className="font-medium">Primary Degrees of Dominance:</span>
+                          <span className="font-medium">Grau de Dominância Primário:</span>
                           <HelpCircle
                             onClick={() => openModal("Primary Degrees of Dominance", PRIMARY_EXPLANATION)}
                             className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
@@ -762,7 +771,7 @@ DEGREES OF INFLUENCE:
                     {/* Secondary Poles */}
                     <div className="space-y-4 border border-white/10 bg--[var(--surface-variant)] rounded-lg p-5">
                       <div>
-                        <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Secondary Poles</p>
+                        <p className="text-lg font-bold text-[var(--text-primary)] mb-3">Polos Secundários</p>
                         <div className="flex flex-wrap gap-2">
                           {dominants.map((pole, i) => {
                             const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
@@ -787,7 +796,7 @@ DEGREES OF INFLUENCE:
                       </div>
                       <div className="flex flex-col items-start gap-3 text-xs text-[var(--text-secondary)] pt-3 border-t border-white/10">
                         <div className="flex items-center gap-1.5">
-                          <span className="font-medium">Secondary Degrees of Influence:</span>
+                          <span className="font-medium">Grau de Influência Secundário:</span>
                           <HelpCircle
                             onClick={() => openModal("Secondary Degrees of Influence", SECONDARY_EXPLANATION)}
                             className="h-4 w-4 text-[var(--text-secondary)] cursor-pointer hover:text-[var(--accent)] transition-colors"
@@ -796,15 +805,15 @@ DEGREES OF INFLUENCE:
                         <div className="flex flex-wrap gap-3">
                           <div className="flex items-center gap-2">
                             <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                            <span>Low</span>
+                            <span>Leve</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                            <span>Moderate</span>
+                            <span>Moderado</span>
                           </div>
                           <div className="flex items-center gap-2">
                             <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                            <span>High</span>
+                            <span>Forte</span>
                           </div>
                         </div>
                       </div>
@@ -839,7 +848,7 @@ DEGREES OF INFLUENCE:
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all mb-6 md:mb-1"
               >
                 <Share2 className="w-5 h-5" />
-                Share Your Results
+                Compartilhe Seus Resultados
               </button>
             </div>
           )}
@@ -850,17 +859,15 @@ DEGREES OF INFLUENCE:
       <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll my-8">
         <div className="card-gradient p-6 rounded-lg shadow-custom">
           <div className="text-left space-y-3">
-            <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
-              Your Archetype in Action
-            </h2>
+            <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">Seu Arquétipo em Ação</h2>
             <p className="text-base md:text-lg text-[var(--text-secondary)] italic leading-relaxed max-w-3xl">
-              Explore the real-world strengths that empower you and the challenges that invite growth.
+              Explore as forças do mundo real que te fortalecem e os desafios que promovem seu crescimento.
             </p>
           </div>
           <div className="mt-8 space-y-8">
             {/* Strengths */}
             <div>
-              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Strengths</h3>
+              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Qualidades</h3>
               <ul className="space-y-4">
                 {tmpl.strengths.results.map((s, i) => (
                   <li key={i} className="flex flex-col gap-3">
@@ -877,7 +884,7 @@ DEGREES OF INFLUENCE:
             </div>
             {/* Challenges */}
             <div>
-              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Challenges</h3>
+              <h3 className="text-2xl font-bold text-[var(--accent)] mb-4 md:mb-6 mt-10">Desafios</h3>
               <ul className="space-y-4">
                 {tmpl.weaknesses.results.map((w, i) => (
                   <li key={i} className="flex flex-col gap-3">
@@ -917,7 +924,7 @@ DEGREES OF INFLUENCE:
                   className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all mb-6 md:mb-1"
                 >
                   <Share2 className="w-5 h-5" />
-                  Share Your Results
+                  Compartilhe Seus Resultados
                 </button>
               </div>
             )}
@@ -928,24 +935,23 @@ DEGREES OF INFLUENCE:
       {/* ==================== DIMENSIONAL PROFILE ==================== */}
       <section className="max-w-4xl mx-auto space-y-12 text-[var(--text-secondary)] leading-relaxed scroll">
         <div className="card-gradient p-4 md:p-6 rounded-lg shadow-custom">
-          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">
-            Your Dimensional Profile
-          </h2>
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">Seu Perfil Dimensional</h2>
           <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">
-            The five dimensions of the Cognitive Spectrum Model represent the key spectrums that shape how you
-            experience and interact with the world. They are not fixed categories but fluid scales that highlight your
-            natural tendencies. Understanding them helps you recognize your strengths, notice blind spots, and create
-            more balance in how you think and relate to others.
+            As cinco dimensões do Modelo do Espectro Cognitivo (CSM) representam os principais espectros que moldam como
+            você experiencia e interage com o mundo. Elas não são categorias fixas, mas escalas fluidas que destacam
+            suas tendências naturais. Compreendê-las ajuda a reconhecer suas forças, identificar pontos cegos e criar
+            mais equilíbrio na forma como você pensa e se relaciona com os outros.
           </p>
           <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">
-            Each dimension offers insight into your cognitive design, from how you process information to how you make
-            decisions, manage energy, approach change, and connect with people. By seeing where you fall on these
-            spectrums, you can better appreciate what makes your style unique while also learning how to flex into the
-            opposite side when needed.
+            Cada dimensão oferece insights sobre seu design cognitivo, desde como você processa informações até como
+            toma decisões, gerencia energia, aborda mudanças e se conecta com as pessoas. Ao perceber onde você se
+            posiciona nesses espectros, você pode valorizar o que torna seu estilo único e também aprender a
+            flexibilizar-se para o polo oposto quando necessário.
           </p>
           <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">
-            This profile is personalized to your results, showing percentages that reveal your specific leanings. Use it
-            to reflect on how these preferences show up in your daily choices, relationships, and growth.
+            Este perfil é personalizado de acordo com seus resultados, mostrando percentuais que revelam suas
+            inclinações específicas. Use-o para refletir sobre como essas preferências se manifestam em suas escolhas
+            diárias, relacionamentos e desenvolvimento pessoal.
           </p>
 
           <div className="space-y-10 mt-20">
@@ -958,11 +964,11 @@ DEGREES OF INFLUENCE:
               const primaryFull = poleFullName[primaryPole];
               const secondaryFull = poleFullName[poleMap[primaryPole]];
               const primaryDesc =
-                dim.descriptions?.[primaryPole] || fallbackDesc[primaryPole] || "Description unavailable.";
+                dim.descriptions?.[primaryPole] || fallbackDesc[primaryPole] || "Descrição indisponível.";
               const secondaryDesc =
                 dim.descriptions?.[poleMap[primaryPole]] ||
                 fallbackDesc[poleMap[primaryPole]] ||
-                "Description unavailable.";
+                "Descrição indisponível.";
               const primaryColor = getColor(dom);
               const secondaryColor = getColor(inf);
 
@@ -999,10 +1005,10 @@ DEGREES OF INFLUENCE:
                     </div>
                     <p className="text-sm text-[var(--text-secondary)] text-center italic px-4">{primaryDesc}</p>
                     <div className="space-y-3">
-                      <div className={`text-base font-bold ${primaryColor.text} text-center`}>{dom} Dominance</div>
+                      <div className={`text-base font-bold ${primaryColor.text} text-center`}>{dom} Dominância</div>
                       <div className="flex items-center justify-between px-4">
                         <div className="flex items-center space-x-2 flex-1">
-                          <span className="text-sm font-medium text-[var(--text-primary)]">Primary Preference</span>
+                          <span className="text-sm font-medium text-[var(--text-primary)]">Preferência Primária</span>
                           <HelpCircle
                             onClick={() => openModal("Primary Preference", PRIMARY_EXPLANATION)}
                             className={`h-4 w-4 ${primaryColor.text} cursor-pointer hover:scale-110 transition-transform`}
@@ -1030,10 +1036,10 @@ DEGREES OF INFLUENCE:
                     </div>
                     <p className="text-sm text-[var(--text-secondary)] text-center italic px-4">{secondaryDesc}</p>
                     <div className="space-y-3">
-                      <div className={`text-base font-bold ${secondaryColor.text} text-center`}>{inf} Influence</div>
+                      <div className={`text-base font-bold ${secondaryColor.text} text-center`}>{inf} Influência</div>
                       <div className="flex items-center justify-between px-4">
                         <div className="flex items-center space-x-2 flex-1">
-                          <span className="text-sm font-medium text-[var(--text-primary)]">Secondary Influence</span>
+                          <span className="text-sm font-medium text-[var(--text-primary)]">Influência Secundária</span>
                           <HelpCircle
                             onClick={() => openModal("Secondary Influence", SECONDARY_EXPLANATION)}
                             className={`h-4 w-4 ${secondaryColor.text} cursor-pointer hover:scale-110 transition-transform`}
@@ -1055,35 +1061,37 @@ DEGREES OF INFLUENCE:
                   {/* SUMMARY BASED ON DOMINANCE LEVEL */}
                   <div className="mt-6 bg-[var(--surface3)] rounded-2xl px-2 md:px-0 py-6 border-t border-[var(--border)]">
                     <p className="text-base leading-relaxed text-[var(--text-secondary)] italic text-center max-w-2xl mx-auto">
-                      {dimIdx === 0 && "Information Processing"}
-                      {dimIdx === 1 && "Decision-Making"}
-                      {dimIdx === 2 && "Energy Orientation"}
-                      {dimIdx === 3 && "Change Approach"}
-                      {dimIdx === 4 && "Interpersonal Style"} summary:{" "}
+                      {" "}
+                      Resumo ({dimIdx === 0 && "Processamento da Informação"}
+                      {dimIdx === 1 && "Tomada de Decisão"}
+                      {dimIdx === 2 && "Orientação de Energia"}
+                      {dimIdx === 3 && "Abordagem à Mudança"}
+                      {dimIdx === 4 && "Estilo Interpessoal"}):{" "}
                       <span className="font-semibold not-italic text-[var(--text-primary)]">
                         {primaryPct <= 65 && (
                           <>
-                            You have a <span className="text-green-400">Mild Preference</span> ({primaryPct}%{" "}
-                            {primaryPole}). This is the most balanced range. You naturally lean toward{" "}
-                            {primaryFull.toLowerCase()}, but you switch to the opposite pole often and comfortably. Most
-                            people with a Mild preference feel they can “go either way” depending on the situation.
+                            Você possui uma <span className="text-green-400">Preferência Leve</span> ({primaryPct}%{" "}
+                            {primaryPole}). Esta é a faixa mais equilibrada. Você tende naturalmente para{" "}
+                            {primaryFull.toLowerCase()}, mas alterna para o polo oposto com frequência e facilidade. A
+                            maioria das pessoas com Preferência Leve sente que pode “ir para qualquer lado” dependendo
+                            da situação.
                           </>
                         )}
                         {primaryPct >= 66 && primaryPct <= 85 && (
                           <>
-                            You have a <span className="text-yellow-400">Moderate Preference</span> ({primaryPct}%{" "}
-                            {primaryPole}). This is the “classic” clear-but-not-extreme lean:{" "}
-                            {primaryFull.toLowerCase()} is unmistakably your default mode and feels most natural, yet
-                            you can still access and use the opposite side without too much friction when needed.
+                            Você possui uma <span className="text-yellow-400">Preferência Moderada</span> ({primaryPct}%{" "}
+                            {primaryPole}). Esta é a inclinação “clássica”, clara mas não extrema:{" "}
+                            {primaryFull.toLowerCase()} é claramente seu modo padrão e se sente mais natural, ainda
+                            assim você consegue acessar e usar o polo oposto sem muita dificuldade quando necessário.
                           </>
                         )}
                         {primaryPct >= 86 && (
                           <>
-                            You have a <span className="text-red-400">Strong Preference</span> ({primaryPct}%{" "}
+                            Você possui uma <span className="text-red-400">Preferência Forte</span> ({primaryPct}%{" "}
                             {primaryPole}).
-                            {primaryFull} is deeply wired into who you are, and it’s your automatic, effortless way of
-                            operating. The opposite pole ({secondaryFull.toLowerCase()}) tends to feel foreign or
-                            draining and usually only shows up under pressure or with deliberate effort.
+                            {primaryFull} está profundamente enraizado em quem você é e é seu modo automático e sem
+                            esforço de agir. O polo oposto ({secondaryFull.toLowerCase()}) tende a parecer estranho ou
+                            desgastante e geralmente só se manifesta sob pressão ou com esforço deliberado.
                           </>
                         )}
                       </span>
@@ -1109,7 +1117,7 @@ DEGREES OF INFLUENCE:
                           0 0 12px rgba(0, 0, 0, 0.6)`,
                               }}
                             >
-                              Access Your Dashboard
+                              Acesse Seu Dashboard
                             </p>
                             <p
                               className="text-base text-white"
@@ -1117,15 +1125,14 @@ DEGREES OF INFLUENCE:
                                 textShadow: "0 2px 4px rgba(0, 0, 0, 0.8)",
                               }}
                             >
-                              {`to View Your`}{" "}
+                              {`Para Ver Sua Análise de`}{" "}
                               <span className="text-[var(--accent)] font-bold">
-                                {dimIdx === 0 && "Information Processing"}
-                                {dimIdx === 1 && "Decision-Making"}
-                                {dimIdx === 2 && "Energy Orientation"}
-                                {dimIdx === 3 && "Change Approach"}
-                                {dimIdx === 4 && "Interpersonal Style"}
+                                {dimIdx === 0 && "Processamento de Informação"}
+                                {dimIdx === 1 && "Tomada de Decisão"}
+                                {dimIdx === 2 && "Orientação de Energia"}
+                                {dimIdx === 3 && "Abordagem de Mudanças"}
+                                {dimIdx === 4 && "Estilo Interpessoal"}
                               </span>{" "}
-                              {`Analysis`}
                             </p>
                           </div>
                         </div>
@@ -1149,7 +1156,7 @@ DEGREES OF INFLUENCE:
 
                   try {
                     const url = await generateShareableLink();
-                    console.log("Generated new share URL:", url); // Debug log
+                    console.log("Nova URL de compartilhamento gerada:", url); // Debug log
                     setShareUrl(url);
                   } catch (error) {
                     console.error("Failed to generate share link:", error);
@@ -1161,7 +1168,7 @@ DEGREES OF INFLUENCE:
                 className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-[var(--surface3)] border border-[var(--border)] backdrop-blur-sm rounded-lg hover:bg-[var(--primary)] transition-all mb-6 md:mb-1"
               >
                 <Share2 className="w-5 h-5" />
-                Share Your Results
+                Compartilhe Seus Resultados
               </button>
             </div>
           )}
@@ -1171,13 +1178,13 @@ DEGREES OF INFLUENCE:
       {/* ==================== HOW YOU CONNECT ==================== */}
       <section className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed scroll mt-8 mb-12">
         <div className="card-gradient p-6 rounded-lg shadow-custom">
-          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">How You Connect</h2>
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-6 mt-8 text-left">Como você se conecta</h2>
           <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">{tmpl.relationships?.intro}</p>
           <p className="text-base leading-relaxed text-[var(--text-secondary)] mb-8">
-            Every relationship creates a different dynamic based on how two personalities think, feel, and interact.
-            Below, you will see how your archetype relates to others in four types of compatibility. Each one highlights
-            what the connection may feel like, whether it flows easily, brings balance, encourages growth, or may
-            require more effort.{" "}
+            Cada relacionamento cria uma dinâmica diferente com base em como duas personalidades pensam, sentem e
+            interagem. A seguir, você verá como o seu arquétipo se relaciona com os outros em quatro tipos de
+            compatibilidade. Cada um destaca como a conexão pode se sentir, se flui com facilidade, traz equilíbrio,
+            incentiva o crescimento ou pode exigir mais esforço.{" "}
           </p>
           <div className="grid md:grid-cols-2 gap-6 mb-10">
             {tmpl.relationships?.compatibility?.matches?.map((match, i) => (
@@ -1212,7 +1219,7 @@ DEGREES OF INFLUENCE:
                           0 0 8px rgba(0, 0, 0, 0.2)`,
                         }}
                       >
-                        Access Your Dashboard
+                        Acesse seu dashboard
                       </p>
                       <p
                         className="text-sm text-[var(--text-secondary)] mt-1 mb-8"
@@ -1220,9 +1227,9 @@ DEGREES OF INFLUENCE:
                           textShadow: "0 1px 2px rgba(0, 0, 0, 0.2)",
                         }}
                       >
-                        {`and Discover Your`}{" "}
+                        {`e descubra seu tipo`}{" "}
                         <span className="text-[var(--accent)] font-bold">{`"${match.type}"`}</span>
-                        <br /> {`Compatibility Type`}
+                        <br /> {`de compatibilidade`}
                       </p>
                     </div>
                   </div>
@@ -1232,14 +1239,16 @@ DEGREES OF INFLUENCE:
           </div>
           <div className="border-t border-[var(--border)] pt-8 mt-8">
             <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-4">
-              Next Steps: Get Your {`Couple's`} Insights Report
+              Próximos Passos: Compreendendo seu Plano de Relacionamento
             </h3>
             <p className="text-base leading-relaxed text-[var(--text-secondary)]">
-              {`Now that you've explored your own cognitive patterns, the natural next step is seeing how they interact
-              with your partner's.`}
+              {`Agora que você explorou seus próprios padrões cognitivos, o próximo passo natural é ver como eles interagem
+  com os do seu parceiro(a).`}
             </p>
             <p className="text-base leading-relaxed text-[var(--text-secondary)] mt-4">
-              {`The CSM Couple’s Insights Report reveals how your two minds interact, highlighting alignment, friction points, and practical ways to grow together with intention. Curious how your blueprints align? Explore your Couple’s Insights Report and your full personality report inside your dashboard.`}
+              {`O Relatório de Insights do Casal CSM mostra como as duas mentes de vocês interagem, oferecendo orientações para
+  fortalecer o alinhamento, lidar com atritos e crescer juntos com intenção. Quer saber como os seus padrões se
+  alinham ou se diferem? Descubra no Relatório do Casal.`}
             </p>
           </div>
         </div>
@@ -1264,17 +1273,17 @@ DEGREES OF INFLUENCE:
         >
           {isSharedView ? (
             <div className="py-16 bg-gradient-to-r from-[var(--primary)] to-purple-800 rounded-3xl max-w-7xl mx-auto px-6 text-center">
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Take the Free Personality Test</h3>
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Faça o Teste de Personalidade Gratuito</h3>
               <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-                Get your personalized CSM archetype report in under 10 minutes.
+                Obtenha seu relatório personalizado CSM em menos de 10 minutos.
               </p>
               <span className="inline-block bg-white text-[var(--primary)] font-bold px-10 py-4 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
-                Start Free Assessment
+                Iniciar Avaliação Gratuita
               </span>
             </div>
           ) : (
             <>
-              {`Access Your Dashboard Now`}
+              {`Acesse Seu Dashboard Agora`}
               <ArrowRight className="h-5 w-5" />
             </>
           )}
@@ -1306,7 +1315,7 @@ DEGREES OF INFLUENCE:
               <div className="flex justify-between items-center mb-8">
                 <div className="flex items-center gap-2">
                   <Share2 className="w-6 h-6 text-[var(--text-primary)]" />
-                  <h3 className="text-lg font-bold text-[var(--text-primary)]">Share Your Results</h3>
+                  <h3 className="text-lg font-bold text-[var(--text-primary)]">Compartilhe Seus Resultados</h3>
                 </div>
                 <button
                   onClick={() => {
@@ -1326,7 +1335,7 @@ DEGREES OF INFLUENCE:
                 <div className="space-y-4 mb-6">
                   <div className="flex flex-col items-center justify-center py-8">
                     <Spinner />
-                    <p className="text-[var(--text-secondary)] mt-4 text-sm">Generating your shareable link...</p>
+                    <p className="text-[var(--text-secondary)] mt-4 text-sm">Gerando seu link compartilhável...</p>
                   </div>
                 </div>
               )}
@@ -1339,7 +1348,7 @@ DEGREES OF INFLUENCE:
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#25D366] text-white rounded-lg hover:bg-[#1da851] transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <MessageCircle className="w-5 h-5" />
-                  Share on WhatsApp
+                  Compartilhar no WhatsApp
                 </button>
                 <button
                   onClick={() => shareVia("telegram")}
@@ -1347,7 +1356,7 @@ DEGREES OF INFLUENCE:
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#0088cc] text-white rounded-lg hover:bg-[#0077b3] transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send className="w-5 h-5" />
-                  Share on Telegram
+                  Compartilhar no Telegram
                 </button>
                 <button
                   onClick={() => shareVia("facebook")}
@@ -1357,7 +1366,7 @@ DEGREES OF INFLUENCE:
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
-                  Share on Facebook
+                  Compartilhar no Facebook
                 </button>
                 <button
                   onClick={() => shareVia("twitter")}
@@ -1365,7 +1374,7 @@ DEGREES OF INFLUENCE:
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#1DA1F2] text-white rounded-lg hover:bg-[#1a91da] transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Twitter className="w-5 h-5" />
-                  Share on Twitter
+                  Compartilhar no Twitter
                 </button>
                 <button
                   onClick={() => shareVia("copy")}
@@ -1373,7 +1382,7 @@ DEGREES OF INFLUENCE:
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[var(--surface-variant)] text-[var(--text-primary)] rounded-lg hover:bg-[var(--surface)] transition font-medium border border-[var(--border)] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Copy className="w-5 h-5" />
-                  Copy Link
+                  Copiar Link
                 </button>
               </div>
 
@@ -1382,17 +1391,17 @@ DEGREES OF INFLUENCE:
                 {isGeneratingLink ? (
                   <div className="flex items-center justify-center gap-2">
                     <div className="w-3 h-3 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin"></div>
-                    Generating short link...
+                    Gerando link curto...
                   </div>
                 ) : copySuccess ? (
                   <div className="flex items-center justify-center gap-2 text-green-400">
                     <CheckCircle className="w-4 h-4" />
-                    Link copied successfully!
+                    Link copiado com sucesso!
                   </div>
                 ) : shareUrl ? (
                   "Your full report is included in the link."
                 ) : (
-                  <div className="text-red-400">Failed to generate link. Please try again.</div>
+                  <div className="text-red-400">Falha ao gerar o link. Por favor, tente novamente.</div>
                 )}
               </div>
             </motion.div>

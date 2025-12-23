@@ -266,7 +266,7 @@ export default function Summary() {
                 <div className="relative">
                   <input
                     type="text"
-                    placeholder="First Name"
+                    placeholder="Nome"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     onBlur={() => setNameTouched(true)}
@@ -321,7 +321,7 @@ export default function Summary() {
                 <div className="relative">
                   <input
                     type="email"
-                    placeholder="your@email.com"
+                    placeholder="seu@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     onBlur={() => setEmailTouched(true)}
@@ -343,7 +343,7 @@ export default function Summary() {
                 <div className="relative">
                   <input
                     type="email"
-                    placeholder="Confirm your email"
+                    placeholder="Confirme seu email"
                     value={confirmEmail}
                     onChange={(e) => setConfirmEmail(e.target.value)}
                     onBlur={() => setConfirmEmailTouched(true)}

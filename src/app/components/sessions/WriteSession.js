@@ -183,7 +183,7 @@ export default function WriteSession({ onTabChange }) {
     return (
       <div className="flex items-center justify-center p-8">
         <div className="flex justify-center gap-3">
-          <Spinner>Loading session status...</Spinner>
+          <Spinner>Carregando status da sessão...</Spinner>
         </div>
       </div>
     );
@@ -194,7 +194,7 @@ export default function WriteSession({ onTabChange }) {
       <div className="p-6 bg-[var(--surface-variant)] rounded-lg border border-red-400/20 shadow-custom">
         <p className="text-red-400 text-sm font-medium">Error: {error}</p>
         <button onClick={() => window.location.reload()} className="mt-3 text-xs text-[var(--accent)] hover:underline">
-          Refresh
+          Atualizar
         </button>
       </div>
     );
@@ -224,17 +224,19 @@ export default function WriteSession({ onTabChange }) {
           <>
             <div className="flex flex-col items-center px-2 mb-6 md:px-20">
               <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-10 text-center">
-                Start Your Private Session
+                Inicie Sua Sessão Privada
               </h1>
               <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mb-2 md:mb-4">
-                Tell us about the challenge, question, or uncertainty you’d like support with. The more detail you
-                share, the more accurately we can shape your <strong>Personalized Session Report </strong> to reflect
-                your CSM profile. You’re welcome to focus on any area of your life, including:
+                Conte para nós sobre o desafio, a pergunta ou a incerteza para a qual você gostaria de receber apoio.
+                Quanto mais detalhes você compartilhar, com mais precisão poderemos moldar seu{" "}
+                <strong>Relatório de Sessão Personalizado</strong> para refletir seu perfil CSM. Você pode focar em
+                qualquer área da sua vida, incluindo:
               </p>
+
               <ul className="list-none space-y-2 mt-4 text-[var(--text-secondary)] text-sm md:text-base leading-relaxed mb-2 md:mb-4 max-w-2xl mx-auto">
                 <li className="flex items-start justify-start">
-                  <CircleCheckBig className="h-6 w-6 mr-2 text-[var(--accent)] flex-shrink-0" />A personal or
-                  relationship situation you’re trying to navigate.
+                  <CircleCheckBig className="h-6 w-6 mr-2 text-[var(--accent)] flex-shrink-0" />
+                  Uma situação pessoal ou de relacionamento que você está tentando lidar ou conduzir.
                 </li>
                 <li className="flex items-start justify-start">
                   <CircleCheckBig className="h-6 w-6 mr-2 text-[var(--accent)] flex-shrink-0" />
@@ -242,12 +244,12 @@ export default function WriteSession({ onTabChange }) {
                 </li>
                 <li className="flex items-start justify-start">
                   <CircleCheckBig className="h-6 w-6 mr-2 text-[var(--accent)] flex-shrink-0" />
-                  Questions about purpose, direction, or how you relate to others.
+                  Perguntas sobre propósito, direção ou sobre como você se relaciona com os outros.
                 </li>
               </ul>
               <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center mt-4 mb-2 md:mb-4">
-                Share whatever feels meaningful to you, and we’ll help you gain clarity through your unique cognitive
-                strengths.
+                Compartilhe o que for significativo para você, e nós ajudaremos você a ganhar clareza por meio de suas
+                forças cognitivas únicas.
               </p>
 
               {/* ONLY THIS PART WAS CHANGED — PERFECTLY CENTERED, NO TYPOS */}
@@ -271,16 +273,16 @@ export default function WriteSession({ onTabChange }) {
                     </div>
                   </div>
                   <span className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    I confirm that I am at least 18 years old, have read and agree to the{" "}
+                    Confirmo que tenho pelo menos 18 anos de idade, li e concordo com os{" "}
                     <button
                       type="button"
                       onClick={() => setShowTermsModal(true)}
                       className="font-medium text-violet-400 hover:underline underline-offset-2 focus:outline-none underline"
                     >
-                      Terms of Service
+                      Termos de Serviço
                     </button>
-                    , understand that CSM Sessions are self-help tools (not therapy or professional counseling), and
-                    accept all disclaimers and limitations of liability.
+                    , entendo que as Sessões CSM são ferramentas de autoajuda (não são terapia nem aconselhamento
+                    profissional) e aceito todos os avisos legais e limitações de responsabilidade.
                   </span>
                 </label>
 
@@ -295,12 +297,12 @@ export default function WriteSession({ onTabChange }) {
                       : "bg-[var(--surface-variant)] text-[var(--text-secondary)]/60 cursor-not-allowed opacity-70"
                   }`}
                 >
-                  {termsAccepted ? "Start Session" : "Accept Terms to Continue"}
+                  {termsAccepted ? "Iniciar Sessão" : "Aceite os Termos para Continuar"}
                 </motion.button>
 
                 {!termsAccepted && (
                   <p className="text-xs text-[var(--text-secondary)]/70 text-center mt-2 max-w-md">
-                    You must accept the Terms of Service to begin
+                    Você deve aceitar os Termos de Serviço para começar
                   </p>
                 )}
               </div>
@@ -313,20 +315,19 @@ export default function WriteSession({ onTabChange }) {
         {showEditor && (
           <>
             <div className="flex flex-col items-center text-center">
-              <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] md:mb-6">
-                Submit Your Session Entry
-              </h1>
+              <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] md:mb-6">Enviar Sua Sessão</h1>
 
               <p className="text-base max-w-md font-light italic text-[var(--text-primary)] md:mb-6 mt-4">
-                A CSM-certified expert will personally review your entry and reach out to you within 1–2 business days.
+                Um especialista certificado em CSM revisará sua solicitação pessoalmente e entrará em contato com você
+                em até 1–2 dias úteis.
               </p>
             </div>
 
             {userStatus?.hasActiveSession && (
               <div className="mb-8 mt-8 p-6 bg-red-600/10 border border-[var(--border)] rounded-lg">
                 <p className="text-[var(--text-secondary)] text-sm md:text-base leading-relaxed text-center">
-                  You already have an <strong>active session</strong> awaiting a response from your CSM-Certified
-                  Expert. Please wait until it is answered before starting a new one.
+                  Você já possui uma <strong>sessão ativa</strong> aguardando uma resposta do seu Especialista
+                  Certificado em CSM. Aguarde até que ela seja respondida antes de iniciar uma nova.
                 </p>
               </div>
             )}
@@ -348,15 +349,15 @@ export default function WriteSession({ onTabChange }) {
 
             <div>
               <p className="text-[var(--text-secondary)] text-sm font-light italic leading-relaxed text-center px-4">
-                <strong>Note:</strong> This chat is completely private. Only you have access to your questions and
-                responses. Your partner cannot view or edit anything you share here, though you’re welcome to share your
-                reflections later if you wish.
+                <strong>Nota:</strong> Este chat é completamente privado. Somente você tem acesso às suas perguntas e
+                respostas. Seu parceiro não pode ver nem editar nada do que você compartilha aqui, embora você possa
+                compartilhar suas reflexões posteriormente, se desejar.
               </p>
 
               <div className="flex flex-col gap-4 mt-4">
                 <div className="flex justify-end items-center text-xs mt-3">
                   <div className={wordCount > 2500 ? "text-red-500 font-medium" : "text-[var(--text-secondary)]"}>
-                    {wordCount} / 2,500 words
+                    {wordCount} / 2,500 palavras
                   </div>
                 </div>
 
@@ -390,7 +391,7 @@ export default function WriteSession({ onTabChange }) {
                 animate={{ opacity: 1, height: "auto" }}
                 className="border-t border-[var(--border)] pt-6"
               >
-                <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-3">Live Preview:</h2>
+                <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-3">Preview:</h2>
                 <div className="p-5 bg-[var(--surface)] rounded-lg border border-[var(--border)] shadow-inner">
                   <div className="prose dark:prose-invert max-w-none text-[var(--text-primary)]">
                     <div dangerouslySetInnerHTML={{ __html: content }} />

@@ -167,7 +167,7 @@ export default function ViewSessions() {
     return (
       <div className="flex items-center justify-center p-8">
         <div className="flex items-center gap-3">
-          <Spinner>Loading sessions...</Spinner>
+          <Spinner>Carregando sessões...</Spinner>
         </div>
       </div>
     );
@@ -178,7 +178,7 @@ export default function ViewSessions() {
       <div className="p-6 bg-[var(--surface-variant)] rounded-lg border border-red-400/20 shadow-custom">
         <p className="text-red-400 text-sm font-medium">Error: {error}</p>
         <button onClick={() => window.location.reload()} className="mt-3 text-xs text-[var(--accent)] hover:underline">
-          Refresh
+          Atualizar
         </button>
       </div>
     );
@@ -193,12 +193,14 @@ export default function ViewSessions() {
       {!selectedSession ? (
         <>
           <h2 className="text-xl text-center sm:text-2xl md:text-3xl font-bold text-[var(--text-primary)] mt-4 mb-6">
-            Your CSM Sessions
+            Suas Sessões CSM
           </h2>
 
           {/* Coach Info */}
           <div className="mb-6 p-4 sm:p-6 bg-[var(--surface-variant)] rounded-lg border border-[var(--border)] shadow-sm">
-            <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)] mb-3">CSM-Certified Expert:</h3>
+            <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)] mb-3">
+              Especialista Certificado em CSM:
+            </h3>
             <div className="flex items-center gap-4">
               {coach.profile_picture_path ? (
                 <img
@@ -214,16 +216,16 @@ export default function ViewSessions() {
               <div className="flex-1 min-w-0">
                 <p className="font-medium text-[var(--text-primary)] truncate">{coach.name}</p>
                 <span className="inline-block px-2 py-1.5 mt-2 rounded-full text-xs font-semibold uppercase tracking-wider text-green-500 border-green-500/30 bg-green-500/10">
-                  Active
+                  Ativo
                 </span>
               </div>
             </div>
           </div>
 
           <div className="mt-10 sm:mt-14">
-            <h2 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-2">Select Your Session:</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] mb-2">Selecione sua sessão :</h2>
             <p className="text-sm sm:text-base text-[var(--text-secondary)] mb-6">
-              View your past and current CSM sessions. Click a session to see a preview.
+              Veja suas sessões CSM passadas e atuais. Clique em uma sessão para ver uma prévia.
             </p>
           </div>
 
@@ -231,7 +233,7 @@ export default function ViewSessions() {
           {sessions.length === 0 ? (
             <div className="text-center py-12 bg-[var(--surface)] rounded-lg border border-[var(--border)]">
               <p className="text-sm sm:text-base text-[var(--text-secondary)]">
-                No sessions found. Start a new session to begin!
+                Nenhuma sessão encontrada. Inicie uma nova sessão para começar!
               </p>
             </div>
           ) : (
@@ -283,10 +285,11 @@ export default function ViewSessions() {
                     : "btn-secondary hover:shadow-md"
                 }`}
               >
-                Previous
+                Anterior
               </button>
               <span className="text-sm text-[var(--text-secondary)]">
-                Page {currentPage} of {totalPages}
+                Página
+                {currentPage} de {totalPages}
               </span>
               <button
                 onClick={handleNextPage}
@@ -297,7 +300,7 @@ export default function ViewSessions() {
                     : "btn-secondary hover:shadow-md"
                 }`}
               >
-                Next
+                Próximo
               </button>
             </div>
           )}
@@ -315,7 +318,11 @@ export default function ViewSessions() {
       {showQuestionModal &&
         selectedSession &&
         createPortal(
-          <FullScreenModal onClose={() => setShowQuestionModal(false)} title="Your Session Entry">
+          <FullScreenModal
+            onClose={() => setShowQuestionModal(false)}
+            title="Sua entrada de sessão
+"
+          >
             <div className="flex flex-col sm:flex-row items-center gap-4 p-4 sm:p-5 bg-[var(--surface3)] rounded-lg border border-[var(--border)] mb-6">
               {coach.profile_picture_path ? (
                 <img
@@ -330,7 +337,7 @@ export default function ViewSessions() {
               )}
               <div className="flex-1 min-w-0 text-center sm:text-left">
                 <p className="font-semibold text-[var(--text-primary)] truncate">{coach.name}</p>
-                <p className="text-xs text-[var(--text-secondary)]">CSM-Certified Expert</p>
+                <p className="text-xs text-[var(--text-secondary)]">Especialista Certificado em CSM</p>
               </div>
               <span
                 className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${getStatusStyles(
@@ -352,7 +359,11 @@ export default function ViewSessions() {
       {showAnswerModal &&
         selectedSession?.answer &&
         createPortal(
-          <FullScreenModal onClose={() => setShowAnswerModal(false)} title="Re: Full Session Report">
+          <FullScreenModal
+            onClose={() => setShowAnswerModal(false)}
+            title="Re: Relatório Completo da Sessão
+"
+          >
             <div className="flex flex-col sm:flex-row items-center gap-4 p-4 sm:p-5 bg-[var(--surface3)] rounded-lg border border-[var(--border)] mb-6">
               {coach.profile_picture_path ? (
                 <img
@@ -367,7 +378,7 @@ export default function ViewSessions() {
               )}
               <div className="flex-1 min-w-0 text-center sm:text-left">
                 <p className="font-semibold text-[var(--text-primary)] truncate">{coach.name}</p>
-                <p className="text-xs text-[var(--text-secondary)]">CSM-Certified Expert</p>
+                <p className="text-xs text-[var(--text-secondary)]">Especialista Certificado em CSM</p>
               </div>
               <span
                 className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-semibold uppercase tracking-wider ${getStatusStyles(

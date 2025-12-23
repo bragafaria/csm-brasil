@@ -76,11 +76,11 @@ export default function Test() {
             setCurrent(firstUnanswered);
           }
         } else {
-          setError("Previous progress is outdated. Starting a new test.");
+          setError("O progresso anterior está desatualizado. Inicie um novo teste.");
           safeLocalStorage.removeItem("csmAnswers");
         }
       } catch (e) {
-        setError("Error loading progress. Starting a new test.");
+        setError("Erro ao carregar o progresso. Inicie um novo teste.");
         safeLocalStorage.removeItem("csmAnswers");
       }
     }
@@ -102,7 +102,7 @@ export default function Test() {
 
   const next = () => {
     if (answers[current] === null) {
-      setError("Please answer this question.");
+      setError("Por favor, responda a esta pergunta.");
       return;
     }
 
@@ -117,7 +117,7 @@ export default function Test() {
       }, 500);
     } else {
       if (answers.some((a) => a === null)) {
-        setError("Please complete all questions.");
+        setError("Por favor, responda a todas as perguntas.");
         setIsSubmitting(false);
         return;
       }
@@ -130,7 +130,7 @@ export default function Test() {
       const saved = safeLocalStorage.setItem("csmAssessmentData", JSON.stringify(assessmentData));
 
       if (!saved && !localStorageAvailable) {
-        setError("Storage not available. Your results may not be saved.");
+        setError("Armazenamento indisponível. Seus resultados podem não ser salvos.");
         // Still allow continuing - data will be passed via router state as fallback
       }
 
@@ -170,7 +170,7 @@ export default function Test() {
       {!localStorageAvailable && (
         <div className="mb-4 p-3 bg-yellow-900/20 border border-yellow-500/50 rounded-lg max-w-lg">
           <p className="text-yellow-200 text-sm text-center">
-            ⚠️ Private browsing detected. To save your progress, please use a regular browser window.
+            ⚠️ Navegação privada detectada. Para salvar seu progresso, use uma janela de navegador comum.
           </p>
         </div>
       )}
@@ -257,7 +257,6 @@ export default function Test() {
             ))}
           </div>
         )}
-
         {/* Forced Select */}
         {q.type === "forced-select" && (
           <div className="space-y-3 mb-6">
@@ -270,7 +269,7 @@ export default function Test() {
                     ? "btn-primary shadow-md"
                     : "bg-[var(--surface-variant)] text-[var(--text-secondary)] hover:bg-[var(--surface-variant-hover)]"
                 }`}
-                aria-label={`Select option: ${opt.label}`}
+                aria-label={`Selecione uma opção: ${opt.label}`}
               >
                 {opt.label}
               </button>
@@ -284,7 +283,7 @@ export default function Test() {
             onClick={prev}
             disabled={current === 0 || isSubmitting}
             className="py-3 px-6 rounded-lg bg-[var(--surface-variant)] text-[var(--text-secondary)] font-medium hover:bg-[var(--surface-variant-hover)] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-            aria-label="Previous question"
+            aria-label="Pergunta anterior"
           >
             Voltar
           </button>
@@ -295,7 +294,7 @@ export default function Test() {
             className={`py-3 px-10 rounded-lg btn-primary font-semibold transition-all flex items-center justify-center gap-3 ${
               isSubmitting ? "opacity-90 cursor-not-allowed" : ""
             }`}
-            aria-label={current < questions.length - 1 ? "Next question" : "Finish test"}
+            aria-label={current < questions.length - 1 ? "Próxima pergunta" : "Finalizar teste"}
           >
             {isSubmitting ? (
               <Spinner>{current < questions.length - 1 ? "Próximo..." : "Finalizar..."}</Spinner>
