@@ -199,7 +199,7 @@ export default function PersonalReportPage() {
         !Array.isArray(categories) ||
         categories.length !== 5
       ) {
-        setError("Invalid assessment data format.");
+        setError("Formato de dados da avaliação inválido.");
         setLoading(false);
         return;
       }
@@ -207,7 +207,7 @@ export default function PersonalReportPage() {
       const typeCodeWithDashes = dominants.join("-");
       const tmpl = reportTemplates[typeCodeWithDashes];
       if (!tmpl || !tmpl.dimensionalProfile?.dimensions) {
-        setError("Report template not found or missing dimensions.");
+        setError("Modelo de relatório não encontrado ou dimensões ausentes.");
         setLoading(false);
         return;
       }
@@ -370,23 +370,23 @@ export default function PersonalReportPage() {
   };
 
   const getLevel = (primaryPct) => {
-    if (primaryPct >= 86) return { dom: "Strong", inf: "Low" };
-    if (primaryPct >= 66) return { dom: "Moderate", inf: "Moderate" };
-    return { dom: "Mild", inf: "High" };
+    if (primaryPct >= 86) return { dom: "Forte", inf: "Baixa" };
+    if (primaryPct >= 66) return { dom: "Moderada", inf: "Moderada" };
+    return { dom: "Leve", inf: "Alta" };
   };
 
   const getColor = (level) =>
     ({
-      Mild: { border: "border-green-400/20", text: "text-green-400", bg: "bg-green-400", from: "from-green-500/10" },
-      Moderate: {
+      Leve: { border: "border-green-400/20", text: "text-green-400", bg: "bg-green-400", from: "from-green-500/10" },
+      Moderada: {
         border: "border-yellow-400/20",
         text: "text-yellow-400",
         bg: "bg-yellow-400",
         from: "from-yellow-500/10",
       },
-      Strong: { border: "border-red-400/20", text: "text-red-400", bg: "bg-red-400", from: "from-red-500/10" },
-      High: { border: "border-red-400/20", text: "text-red-400", bg: "bg-red-400", from: "from-red-500/10" },
-      Low: { border: "border-green-400/20", text: "text-green-400", bg: "bg-green-400", from: "from-green-500/10" },
+      Forte: { border: "border-red-400/20", text: "text-red-400", bg: "bg-red-400", from: "from-red-500/10" },
+      Alta: { border: "border-red-400/20", text: "text-red-400", bg: "bg-red-400", from: "from-red-500/10" },
+      Baixa: { border: "border-green-400/20", text: "text-green-400", bg: "bg-green-400", from: "from-green-500/10" },
     })[level] || { border: "border-gray-400/20", text: "text-gray-400", bg: "bg-gray-400", from: "from-gray-500/10" };
 
   // === RENDER STATES ===
@@ -888,9 +888,9 @@ export default function PersonalReportPage() {
                             const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
                             const level = getLevel(pct).dom;
                             const color = {
-                              Mild: "bg-green-500/50",
-                              Moderate: "bg-yellow-500/50",
-                              Strong: "bg-red-500/50",
+                              Leve: "bg-green-500/50",
+                              Moderada: "bg-yellow-500/50",
+                              Forte: "bg-red-500/50",
                             }[level];
 
                             const fullName = {
@@ -953,9 +953,9 @@ export default function PersonalReportPage() {
                             const pct = Math.round(percents[i].p1 > percents[i].p2 ? percents[i].p1 : percents[i].p2);
                             const level = getLevel(pct).inf;
                             const color = {
-                              High: "bg-red-500/50",
-                              Moderate: "bg-yellow-500/50",
-                              Low: "bg-green-500/50",
+                              Alta: "bg-red-500/50",
+                              Moderada: "bg-yellow-500/50",
+                              Baixa: "bg-green-500/50",
                             }[level];
 
                             const secondaryPole = poleMap[pole];

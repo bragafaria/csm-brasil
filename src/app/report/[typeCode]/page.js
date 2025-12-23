@@ -60,7 +60,7 @@ export default function PersonalReport() {
       <div className="flex flex-col min-h-screen bg-[var(--surface)] items-center justify-center p-6 gap-4">
         <Spinner />
         <p className="text-center">
-          <span className="font-bold">Loading... </span>
+          <span className="font-bold">Carregando...</span>
         </p>
       </div>
     );
@@ -70,11 +70,11 @@ export default function PersonalReport() {
   const { percents = [], dominants = [], archetype, typeCode: storedCode } = results;
 
   if (!percents.length || !dominants.length) {
-    return <div>Error: Invalid assessment data.</div>;
+    return <div>Erro: Dados da avaliação inválidos.</div>;
   }
 
   const archetypeName =
-    typeof archetype === "object" && archetype?.name ? archetype.name : String(archetype || "Unknown Archetype");
+    typeof archetype === "object" && archetype?.name ? archetype.name : String(archetype || "Arquétipo Desconhecido");
 
   const rawCode = (urlCode ?? storedCode)?.replace(/-/g, "").toUpperCase();
   const typeCodeWithDashes = rawCode.split("").join("-");
@@ -83,7 +83,7 @@ export default function PersonalReport() {
   if (!tmpl) {
     return (
       <div className="min-h-screen bg-[var(--surface)] flex items-center justify-center p-6">
-        <p className="text-lg text-red-400">Report not found for {typeCodeWithDashes}</p>
+        <p className="text-lg text-red-400">Relatório não encontrado para {typeCodeWithDashes}</p>
       </div>
     );
   }
@@ -119,9 +119,9 @@ Baixa Influência (0–14%): Raramente utilizada de forma natural, frequentement
 `;
 
   const getLevel = (primaryPct) => {
-    if (primaryPct >= 86) return { dom: "Strong", inf: "Low" };
-    if (primaryPct >= 66) return { dom: "Moderate", inf: "Moderate" };
-    return { dom: "Mild", inf: "High" };
+    if (primaryPct >= 86) return { dom: "Forte", inf: "Baixa" };
+    if (primaryPct >= 66) return { dom: "Moderada", inf: "Moderada" };
+    return { dom: "Leve", inf: "Alta" };
   };
 
   const poleMap = {
@@ -176,16 +176,16 @@ Baixa Influência (0–14%): Raramente utilizada de forma natural, frequentement
 
   const getColor = (level) =>
     ({
-      Mild: { border: "border-green-400/20", text: "text-green-400", bg: "bg-green-400", from: "from-green-500/10" },
-      Moderate: {
+      Leve: { border: "border-green-400/20", text: "text-green-400", bg: "bg-green-400", from: "from-green-500/10" },
+      Moderada: {
         border: "border-yellow-400/20",
         text: "text-yellow-400",
         bg: "bg-yellow-400",
         from: "from-yellow-500/10",
       },
-      Strong: { border: "border-red-400/20", text: "text-red-400", bg: "bg-red-400", from: "from-red-500/10" },
-      High: { border: "border-red-400/20", text: "text-red-400", bg: "bg-red-400", from: "from-red-500/10" },
-      Low: { border: "border-green-400/20", text: "text-green-400", bg: "bg-green-400", from: "from-green-500/10" },
+      Forte: { border: "border-red-400/20", text: "text-red-400", bg: "bg-red-400", from: "from-red-500/10" },
+      Alta: { border: "border-red-400/20", text: "text-red-400", bg: "bg-red-400", from: "from-red-500/10" },
+      Baixa: { border: "border-green-400/20", text: "text-green-400", bg: "bg-green-400", from: "from-green-500/10" },
     })[level] || { border: "border-gray-400/20", text: "text-gray-400", bg: "bg-gray-400", from: "from-gray-500/10" };
 
   // Replace your shortenUrl function with this:
@@ -1010,7 +1010,7 @@ Baixa Influência (0–14%): Raramente utilizada de forma natural, frequentement
                         <div className="flex items-center space-x-2 flex-1">
                           <span className="text-sm font-medium text-[var(--text-primary)]">Preferência Primária</span>
                           <HelpCircle
-                            onClick={() => openModal("Primary Preference", PRIMARY_EXPLANATION)}
+                            onClick={() => openModal("Preferência Primária", PRIMARY_EXPLANATION)}
                             className={`h-4 w-4 ${primaryColor.text} cursor-pointer hover:scale-110 transition-transform`}
                           />
                         </div>
@@ -1041,7 +1041,7 @@ Baixa Influência (0–14%): Raramente utilizada de forma natural, frequentement
                         <div className="flex items-center space-x-2 flex-1">
                           <span className="text-sm font-medium text-[var(--text-primary)]">Influência Secundária</span>
                           <HelpCircle
-                            onClick={() => openModal("Secondary Influence", SECONDARY_EXPLANATION)}
+                            onClick={() => openModal("Influência Secundária", SECONDARY_EXPLANATION)}
                             className={`h-4 w-4 ${secondaryColor.text} cursor-pointer hover:scale-110 transition-transform`}
                           />
                         </div>
