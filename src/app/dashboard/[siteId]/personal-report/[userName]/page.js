@@ -444,8 +444,8 @@ export default function PersonalReportPage() {
           <div>
             <h1 className="text-4xl font-bold text-white">Seu Relatório de Personalidade CSM</h1>
             <p className="text-[var(--text-secondary)] text-base md:text-lg mt-2">
-              {`Uncover your cognitive blueprint, revealing how you think, connect, and evolve. Understanding yourself is
-              the first step to exploring how you relate to others through the Couple's Insights Report.`}
+              {`Descubra seu mapa cognitivo, revelando como você pensa, se conecta e evolui. Compreender a si mesmo é o primeiro passo para explorar como você se relaciona com os outros por meio do Relatório de Insights do Casal.
+`}
             </p>
           </div>
         </div>
@@ -1381,13 +1381,13 @@ export default function PersonalReportPage() {
               Próximos Passos: Compreendendo seu Plano de Relacionamento
             </h3>
             <p className="text-base leading-relaxed text-[var(--text-secondary)]">
-              {`Now that you've explored your own cognitive patterns, the natural next step is seeing how they interact
-              with your partner's.`}
+              {`Agora que você explorou seus próprios padrões cognitivos, o próximo passo natural é ver como eles interagem
+  com os do seu parceiro.`}
             </p>
             <p className="text-base leading-relaxed text-[var(--text-secondary)] mt-4">
-              {`The CSM Couple's Insights Report shows how your two minds interact, offering guidance to strengthen
-              alignment, work through friction, and grow together with intention. Curious how your blueprints align?
-              Find out in your Couple's Report.`}
+              {`O Relatório de Insights do Casal CSM mostra como as duas mentes de vocês interagem, oferecendo orientações para
+  fortalecer o alinhamento, lidar com atritos e crescer juntos com intenção. Quer saber como seus blueprints se
+  alinham? Descubra no Relatório do Casal.`}
             </p>
           </div>
         </div>

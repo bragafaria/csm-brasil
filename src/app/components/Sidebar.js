@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/app/utils/supabaseClient";
-import { User, Users, BookOpen, Settings, HelpCircle, X, ChevronLeft } from "lucide-react";
+import { House, User, Users, BookOpen, Settings, HelpCircle, X, ChevronLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import Spinner from "@/app/components/ui/Spinner";
 
@@ -17,53 +17,53 @@ export default function Sidebar({ sidebarOpen, toggleSidebar, isMobile, siteId }
   const [menuItems, setMenuItems] = useState([
     {
       id: "home",
-      label: "Home",
-      icon: User,
+      label: "Início",
+      icon: House,
       route: `/dashboard/${siteId}`,
     },
     {
       id: "personal-report",
-      label: "Personal Report",
+      label: "Relatório Pessoal",
       icon: User,
       subItems: [],
     },
     {
       id: "couples-report",
-      label: "Couple’s Report",
+      label: "Relatório do Casal",
       icon: Users,
       subItems: [
         {
-          label: "How You Connect",
+          label: "Como Vocês se Conectam",
           route: `/dashboard/${siteId}/couples-report/how-you-connect`,
         },
 
         {
-          label: "Life Challenges",
+          label: "Desafios da Vida",
           route: `/dashboard/${siteId}/couples-report/your-10-life-challenges`,
         },
         {
-          label: "Analytics",
+          label: "Análises",
           route: `/dashboard/${siteId}/couples-report/analytics`,
         },
       ],
     },
     {
       id: "coaching",
-      label: "CSM Sessions",
+      label: "Sessões CSM",
       icon: BookOpen,
-      subItems: [{ label: "Private Sessions", route: `/dashboard/${siteId}/coaching/sessions` }],
+      subItems: [{ label: "Sessões Privadas", route: `/dashboard/${siteId}/coaching/sessions` }],
     },
     {
       id: "account",
-      label: "Account",
+      label: "Conta",
       icon: Settings,
-      subItems: [{ label: "Settings", route: `/dashboard/${siteId}/account/settings` }],
+      subItems: [{ label: "Configurações", route: `/dashboard/${siteId}/account/settings` }],
     },
     {
       id: "support",
-      label: "Support",
+      label: "Suporte",
       icon: HelpCircle,
-      subItems: [{ label: "Contact us", route: `/dashboard/${siteId}/support/contact-us` }],
+      subItems: [{ label: "Fale Conosco", route: `/dashboard/${siteId}/support/contact-us` }],
     },
   ]);
 

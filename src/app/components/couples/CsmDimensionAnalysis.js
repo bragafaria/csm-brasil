@@ -142,7 +142,9 @@ export default function CsmDimensionAnalysis({
 
       {/* CAS Badge */}
       <div className="relative z-10 mt-10 pt-6 border-t border-[var(--border)]">
-        <p className="text-center font-bold text-[var(--text-primary)] text-xl mb-8">Compatibility Alignment Score</p>
+        <p className="text-center font-bold text-[var(--text-primary)] text-xl mb-8">
+          Pontuação de Alinhamento de Compatibilidade
+        </p>
         <div className="flex items-center justify-center gap-3 mb-8">
           <div
             className={`inline-flex items-center gap-2 px-5 py-3 rounded-full font-bold text-lg
@@ -151,8 +153,8 @@ export default function CsmDimensionAnalysis({
                          cas >= 80
                            ? "bg-green-800 text-white"
                            : cas >= 60
-                           ? "bg-yellow-800 text-white"
-                           : "bg-red-800 text-white"
+                             ? "bg-yellow-800 text-white"
+                             : "bg-red-800 text-white"
                        }`}
           >
             <span>{cas} pts</span>

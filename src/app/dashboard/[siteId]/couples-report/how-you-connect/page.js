@@ -34,7 +34,7 @@ export default function HowYouConnectPageRoute() {
   if (loading) {
     return (
       <div className="container mx-auto p-6 mt-20 max-w-7xl flex items-center justify-center min-h-[60vh]">
-        <Spinner>Loading report...</Spinner>
+        <Spinner>Carregando relatório...</Spinner>
       </div>
     );
   }
@@ -43,21 +43,21 @@ export default function HowYouConnectPageRoute() {
     return (
       <div className="container mx-auto p-6 mt-20 max-w-7xl">
         <div className="card-gradient p-8 rounded-lg shadow-custom max-w-2xl mx-auto text-center">
-          <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-4">Report Not Available</h1>
+          <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-4">Relatório Indisponível</h1>
           <p className="text-red-400 text-lg">{error}</p>
           <button
             onClick={() => router.push(`/dashboard/${params.siteId}`)}
             className="btn-primary mt-6 px-6 py-3 rounded-lg"
           >
-            Back to Dashboard
+            Voltar ao Dashboard
           </button>
         </div>
       </div>
     );
   }
 
-  const pageTitle = `How You Connect`;
-  const subHeading = `Explore the natural chemistry and connection patterns between ${data.partnerA.name} and ${data.partnerB.name}.`;
+  const pageTitle = `Como Vocês se Conectam`;
+  const subHeading = `Explore a química natural e os padrões de conexão entre ${data.partnerA.name} e ${data.partnerB.name}.`;
 
   return (
     <>

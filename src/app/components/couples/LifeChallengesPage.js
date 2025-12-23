@@ -18,16 +18,16 @@ export default function LifeChallengesPage({ lifeChallenges }) {
   const { siteId } = useParams();
   const router = useRouter();
   const areas = [
-    { key: "careerAndPurposeChallenges", title: "Career & Purpose", icon: Building2 },
-    { key: "wealthAndProsperityChallenges", title: "Wealth & Prosperity", icon: HandCoins },
-    { key: "healthAndVitalityChallenges", title: "Health & Vitality", icon: HeartPulse },
-    { key: "loveAndRomanceChallenges", title: "Love & Romance", icon: MessageCircleHeart },
-    { key: "familyAndHomeLifeChallenges", title: "Family & Home Life", icon: HouseHeart },
-    { key: "friendshipsAndCommunityChallenges", title: "Friendships & Community", icon: Handshake },
-    { key: "growthAndDiscoveryChallenges", title: "Growth & Discovery", icon: Sprout },
-    { key: "joyAndAdventureChallenges", title: "Joy & Adventure", icon: Haze },
-    { key: "spaceAndSerenityChallenges", title: "Space & Serenity", icon: TreePalm },
-    { key: "impactAndLegacyChallenges", title: "Impact & Legacy", icon: Trophy },
+    { key: "careerAndPurposeChallenges", title: "Carreira e Propósito", icon: Building2 },
+    { key: "wealthAndProsperityChallenges", title: "Riqueza e Prosperidade", icon: HandCoins },
+    { key: "healthAndVitalityChallenges", title: "Saúde e Vitalidade", icon: HeartPulse },
+    { key: "loveAndRomanceChallenges", title: "Amor e Romance", icon: MessageCircleHeart },
+    { key: "familyAndHomeLifeChallenges", title: "Família e Vida no Lar", icon: HouseHeart },
+    { key: "friendshipsAndCommunityChallenges", title: "Amizades e Comunidade", icon: Handshake },
+    { key: "growthAndDiscoveryChallenges", title: "Crescimento e Descoberta", icon: Sprout },
+    { key: "joyAndAdventureChallenges", title: "Alegria e Aventura", icon: Haze },
+    { key: "spaceAndSerenityChallenges", title: "Espaço e Serenidade", icon: TreePalm },
+    { key: "impactAndLegacyChallenges", title: "Impacto e Legado", icon: Trophy },
   ];
 
   return (
@@ -65,13 +65,13 @@ export default function LifeChallengesPage({ lifeChallenges }) {
 
             {/* CORE CHALLENGE */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Possible Challenges</h3>
+              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Desafios Possíveis</h3>
               <p className="text-lg text-[var(--text-secondary)]">{c.coreChallenge}</p>
             </div>
 
             {/* WHY THIS HAPPENS */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Why This Happens</h3>
+              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Por que Isso Acontece</h3>
               <ul className="list-disc pl-6 space-y-2 text-lg text-[var(--text-secondary)]">
                 {c.whyThisHappens.split("\n").map((line, i) => {
                   const trimmedLine = line.replace(/^- /, "").trim();
@@ -82,7 +82,7 @@ export default function LifeChallengesPage({ lifeChallenges }) {
 
             {/* RED FLAGS */}
             <div className="mb-8">
-              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Red Flags to Watch For</h3>
+              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3">Sinais de Alerta a Observar</h3>
               <ul className="list-disc pl-6 space-y-2 text-lg text-[var(--text-secondary)]">
                 {c.redFlags.split("\n").map((line, i) => {
                   const trimmedLine = line.replace(/^- /, "").trim();
@@ -97,21 +97,21 @@ export default function LifeChallengesPage({ lifeChallenges }) {
       <div className="mb-8">
         <div className="bg-gradient-to-br from-[var(--surface-variant)] to-[var(--surface)] rounded-xl p-6 md:p-8 border border-[var(--border)] text-center">
           <p className="text-lg leading-relaxed text-[var(--text-secondary)] mb-8">
-            Want clear, step-by-step strategies written exclusively for the two of you, based on your exact archetypes
-            and current situation?
+            Quer estratégias claras, passo a passo, escritas exclusivamente para vocês dois, com base nos seus
+            arquétipos exatos e na situação atual de vocês?
           </p>
 
           <button
             onClick={() => router.push(`/dashboard/${siteId}/coaching/sessions`)}
             className="inline-flex items-center gap-3 px-8 py-4 bg-[var(--primary)] hover:bg-[var(--accent)] text-white font-semibold text-medium md:text-lg rounded-xl shadow-lg transition-all hover:shadow-xl hover:scale-105"
           >
-            Book Your CSM Session
+            Agende Sua Sessão CSM
             <ArrowRight className="w-5 h-5" />
           </button>
 
           <p className="text-sm text-[var(--text-secondary)]/80 mt-5 italic">
-            A CSM-Certified Expert will deliver a fully personalized report with practical resolution strategies
-            tailored just for you.
+            Um Especialista Certificado em CSM entregará um relatório totalmente personalizado, com estratégias práticas
+            de resolução feitas sob medida para vocês.
           </p>
         </div>
       </div>

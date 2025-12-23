@@ -7,7 +7,7 @@ export default function HowYouConnectPage({ dynamics }) {
       {/* DYNAMICS */}
       <section className="card-gradient p-6 rounded-lg shadow-custom max-w-4xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 text-left">
-          Relationship Dynamics
+          Dinâmica do relacionamento
         </h2>
         <div className="space-y-4 text-lg text-[var(--text-secondary)]">
           {dynamics.dynamics.split("\n\n").map((paragraph, i) => (
@@ -22,12 +22,12 @@ export default function HowYouConnectPage({ dynamics }) {
       <div className="space-y-8 max-w-4xl mx-auto">
         {/* STRENGTHS */}
         <section className="card-gradient p-6 rounded-lg shadow-custom">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--accent)] mb-6 text-left">Strengths</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-[var(--accent)] mb-6 text-left">Qualidades</h2>
 
           {/* MINI-INTRO — SAME FONT SIZE & STYLE AS ALL PARAGRAPHS */}
           <p className="text-lg text-[var(--text-secondary)] mb-6">
-            These are the core strengths that emerge naturally when your partnership is in balance. They reflect what
-            makes your connection resilient, joyful, and deeply supportive.
+            Estas são as forças centrais que surgem naturalmente quando a parceria de vocês está em equilíbrio. Elas
+            refletem o que torna a conexão resiliente, prazerosa e profundamente acolhedora.
           </p>
 
           <div className="space-y-6">
@@ -45,12 +45,12 @@ export default function HowYouConnectPage({ dynamics }) {
               </div>
             ))}
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--accent)] mb-6 mt-20 text-left">Weaknesses</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-[var(--accent)] mb-6 mt-20 text-left">Fragilidades</h2>
 
           {/* MINI-INTRO — SAME FONT SIZE & STYLE AS ALL PARAGRAPHS */}
           <p className="text-lg text-[var(--text-secondary)] mb-6">
-            These are opportunities for deeper alignment. With awareness and intention, even small shifts in these areas
-            can transform challenges into sources of growth and closeness.
+            Estas são oportunidades para um alinhamento mais profundo. Com consciência e intenção, até pequenas mudanças
+            nessas áreas podem transformar desafios em fontes de crescimento e proximidade.
           </p>
 
           <div className="space-y-6">
@@ -75,7 +75,7 @@ export default function HowYouConnectPage({ dynamics }) {
       {dynamics.synergiesAndChallenges && (
         <section className="card-gradient p-6 rounded-lg shadow-custom max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 text-left">
-            Synergies And Challenges
+            Sinergias e Desafios
           </h2>
           <div className="space-y-4 text-lg text-[var(--text-secondary)]">
             {dynamics.synergiesAndChallenges.split("\n\n").map((paragraph, i) => (
@@ -91,7 +91,7 @@ export default function HowYouConnectPage({ dynamics }) {
       {dynamics.haInterplay && (
         <section className="card-gradient p-6 rounded-lg shadow-custom max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-6 text-left">
-            Harmony-Autonomy Interplay
+            Interação entre harmonia e autonomia
           </h2>
           <div className="space-y-4 text-lg text-[var(--text-secondary)]">
             {dynamics.haInterplay.split("\n\n").map((paragraph, i) => (

@@ -35,7 +35,7 @@ export default function CoupleAnalyticsPage() {
     loadData();
   }, [params.siteId]);
 
-  if (loading) return <Spinner>Loading analytics...</Spinner>;
+  if (loading) return <Spinner>Carregando análises...</Spinner>;
   if (error) return <ErrorCard error={error} siteId={params.siteId} router={router} />;
 
   const pageTitle = "Couple Analytics";
@@ -103,11 +103,11 @@ export default function CoupleAnalyticsPage() {
             partnerA={{ name: data.partnerA.name, values: pole1A }}
             partnerB={{ name: data.partnerB.name, values: pole1B }}
             metrics={metricsPole1}
-            title="Foundational Orientation Poles"
+            title="Polos de Orientação Fundamentais"
           />
           <div className="space-y-4">
             <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] my-8 text-start">
-              Foundational Orientation Analysis:
+              Análise de Orientação Fundamental:
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
               {CSM_DIMENSIONS.map((dim, i) => (
@@ -139,11 +139,11 @@ export default function CoupleAnalyticsPage() {
             partnerA={{ name: data.partnerA.name, values: pole2A }}
             partnerB={{ name: data.partnerB.name, values: pole2B }}
             metrics={metricsPole2}
-            title="Expansive Orientation Poles"
+            title="Polos de Orientação Expansiva"
           />
           <div className="space-y-4">
             <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] my-8 text-start">
-              Expansive Orientation Analysis:
+              Análise de Orientação Expansiva:
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
               {CSM_DIMENSIONS.map((dim, i) => (
@@ -184,10 +184,10 @@ function ErrorCard({ error, siteId, router }) {
   return (
     <div className="container mx-auto p-6 mt-20 max-w-7xl">
       <div className="card-gradient p-8 rounded-lg shadow-custom max-w-2xl mx-auto text-center">
-        <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-4">Analytics Not Available</h1>
+        <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-4">Análises Indisponíveis</h1>
         <p className="text-red-400 text-lg">{error}</p>
         <button onClick={() => router.push(`/dashboard/${siteId}`)} className="btn-primary mt-6 px-6 py-3 rounded-lg">
-          Back to Dashboard
+          Voltar ao Dashboard
         </button>
       </div>
     </div>

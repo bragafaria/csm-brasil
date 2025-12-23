@@ -11,7 +11,7 @@ export default function NavButtons({ current, siteId }) {
   return (
     <div className="flex flex-wrap justify-center gap-3 mt-12">
       <div className="border-t border-[var(--border)] mt-8 pt-8 text-center text-[var(--text-secondary)]">
-        <p>&copy; 2025 CSM Dynamics. All rights reserved.</p>
+        <p>&copy; 2025 CSM Dynamics. Todos os direitos reservados.</p>
       </div>
     </div>
   );

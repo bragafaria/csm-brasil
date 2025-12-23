@@ -1,40 +1,38 @@
 // app/components/couples/IntroContext.jsx
 export default function IntroContext({ partnerA, partnerB }) {
   const typeMap = {
-    "C-L-I-S-H": "The Curator",
-    "N-L-I-S-H": "The Academic",
-    "C-L-O-S-H": "The Architect",
-    "C-L-O-S-A": "The Engineer",
-    "C-L-O-F-H": "The Navigator",
-    "C-L-O-F-A": "The Pioneer",
-    "C-L-I-S-H": "The Curator",
-    "C-L-I-S-A": "The Analyst",
-    "C-L-I-F-H": "The Mediator",
-    "C-L-I-F-A": "The Maverick",
-    "C-V-O-S-H": "The Steward",
-    "C-V-O-S-A": "The Artisan",
-    "C-V-O-F-H": "The Campaigner",
-    "C-V-O-F-A": "The Adventurer",
-    "C-V-I-S-H": "The Counselor",
-    "C-V-I-S-A": "The Healer",
-    "C-V-I-F-H": "The Peacemaker",
-    "C-V-I-F-A": "The Empath",
-    "N-L-O-S-H": "The Strategist",
-    "N-L-O-S-A": "The Inventor",
-    "N-L-O-F-H": "The Disruptor",
-    "N-L-O-F-A": "The Revolutionary",
-    "N-L-I-S-H": "The Academic",
-    "N-L-I-S-A": "The Theorist",
-    "N-L-I-F-H": "The Innovator",
-    "N-L-I-F-A": "The Visionary",
-    "N-V-O-S-H": "The Ambassador",
-    "N-V-O-S-A": "The Artist",
-    "N-V-O-F-H": "The Catalyst",
-    "N-V-O-F-A": "The Wanderer",
-    "N-V-I-S-H": "The Mentor",
-    "N-V-I-S-A": "The Sage",
-    "N-V-I-F-H": "The Unifier",
-    "N-V-I-F-A": "The Mystic",
+    "C-L-O-S-H": "O Arquiteto",
+    "C-L-O-S-A": "O Engenheiro",
+    "C-L-O-F-H": "O Navegador",
+    "C-L-O-F-A": "O Pioneiro",
+    "C-L-I-S-H": "O Curador",
+    "C-L-I-S-A": "O Analista",
+    "C-L-I-F-H": "O Mediador",
+    "C-L-I-F-A": "O Independente",
+    "C-V-O-S-H": "O Guardião",
+    "C-V-O-S-A": "O Artesão",
+    "C-V-O-F-H": "O Mobilizador",
+    "C-V-O-F-A": "O Aventureiro",
+    "C-V-I-S-H": "O Conselheiro",
+    "C-V-I-S-A": "O Restaurador",
+    "C-V-I-F-H": "O Pacificador",
+    "C-V-I-F-A": "O Empático",
+    "N-L-O-S-H": "O Estrategista",
+    "N-L-O-S-A": "O Inventor",
+    "N-L-O-F-H": "O Disruptor",
+    "N-L-O-F-A": "O Revolucionário",
+    "N-L-I-S-H": "O Acadêmico",
+    "N-L-I-S-A": "O Teórico",
+    "N-L-I-F-H": "O Inovador",
+    "N-L-I-F-A": "O Visionário",
+    "N-V-O-S-H": "O Embaixador",
+    "N-V-O-S-A": "O Artista",
+    "N-V-O-F-H": "O Catalisador",
+    "N-V-O-F-A": "O Andarilho",
+    "N-V-I-S-H": "O Mentor",
+    "N-V-I-S-A": "O Sábio",
+    "N-V-I-F-H": "O Unificador",
+    "N-V-I-F-A": "O Místico",
   };
 
   const nameA = typeMap[partnerA.typeCode] || partnerA.typeCode;
@@ -44,27 +42,31 @@ export default function IntroContext({ partnerA, partnerB }) {
     <div className="max-w-4xl mx-auto space-y-8 text-[var(--text-secondary)] leading-relaxed">
       <div className="card-gradient p-6 rounded-lg shadow-custom">
         <h3 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-4">
-          Important Context Before Reading
+          Contexto Importante Antes da Leitura
         </h3>
 
         <div className="space-y-6">
           <div>
-            <h4 className="text-xl font-semibold text-[var(--text-primary)] mb-2">The Life Areas Challenges</h4>
+            <h4 className="text-xl font-semibold text-[var(--text-primary)] mb-2">Desafios nas Áreas da Vida</h4>
             <p className="text-lg text-[var(--text-secondary)]">
-              This section reveals where your cognitive preferences may naturally diverge: the everyday areas where
-              tension, miscommunication, or emotional friction are most likely to appear if left unspoken. These aren’t
-              predictions of failure; they’re <span className="font-bold">possible natural pressure points </span> that,
-              with awareness, become doorways to deeper empathy, balance, and alignment.
+              Esta seção revela onde as preferências cognitivas de vocês podem divergir naturalmente: as áreas do dia a
+              dia em que tensão, falhas de comunicação ou atrito emocional tendem a surgir quando não são colocadas em
+              palavras. Isso não são previsões de fracasso; são{" "}
+              <span className="font-bold">possíveis pontos naturais de pressão</span> que, com consciência, se tornam
+              portas de entrada para uma empatia mais profunda, equilíbrio e alinhamento.
             </p>
+
             <p className="text-lg text-[var(--text-secondary)] mt-3">
-              Think of this as the growth map of your relationship. By bringing gentle consciousness to these recurring
-              stress points, you transform friction into mutual understanding, strengthening both your individual
-              development and the long-term harmony of your partnership.
+              Pense nisso como o mapa de crescimento do relacionamento de vocês. Ao trazer uma consciência gentil para
+              esses pontos recorrentes de tensão, vocês transformam o atrito em compreensão mútua, fortalecendo tanto o
+              desenvolvimento individual quanto a harmonia de longo prazo da parceria.
             </p>
+
             <p className="text-lg text-[var(--text-secondary)] mt-3 font-bold">
-              Keep in mind that not every life area described here will reflect your current reality. Some challenges
-              may feel spot-on today, while others might emerge later or never fully apply. Your unique experiences,
-              communication, and growth together shape which ones become relevant.
+              Tenha em mente que nem todas as áreas da vida descritas aqui refletirão a realidade atual de vocês. Alguns
+              desafios podem fazer total sentido agora, enquanto outros podem surgir mais adiante ou nunca se aplicar
+              completamente. As experiências únicas, a comunicação e o crescimento conjunto de vocês determinam quais se
+              tornam relevantes.
             </p>
           </div>
         </div>

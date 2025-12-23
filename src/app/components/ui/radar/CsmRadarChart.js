@@ -40,26 +40,26 @@ export default function CsmRadarChart({ partnerA, partnerB, metrics, title }) {
 
   // Define poles dynamically based on chart type
   const poles =
-    title === "Foundational Orientation Poles"
+    title === "Polos de Orientação Fundamentais"
       ? [
-          { letter: "C", name: "Concrete Focus" },
-          { letter: "L", name: "Analytical Logic" },
-          { letter: "I", name: "Inward Reflection" },
-          { letter: "S", name: "Stable Structure" },
-          { letter: "H", name: "Collaborative Harmony" },
+          { letter: "C", name: "Foco Concreto" },
+          { letter: "L", name: "Lógica Analítica" },
+          { letter: "I", name: "Reflexão Interna" },
+          { letter: "S", name: "Estrutura Estável" },
+          { letter: "H", name: "Harmonia Colaborativa" },
         ]
       : [
-          { letter: "N", name: "Abstract Insight" },
-          { letter: "V", name: "Empathic Values" },
-          { letter: "O", name: "Outward Engagement" },
-          { letter: "F", name: "Adaptive Flexibility" },
-          { letter: "A", name: "Independent Autonomy" },
+          { letter: "N", name: "Percepção Abstrata" },
+          { letter: "V", name: "Valores Empáticos" },
+          { letter: "O", name: "Engajamento Externo" },
+          { letter: "F", name: "Flexibilidade Adaptativa" },
+          { letter: "A", name: "Autonomia Independente" },
         ];
 
   return (
     <section className="card-gradient p-6 rounded-lg shadow-custom max-w-4xl mx-auto">
       <h3 className="text-sm md:text-lg font-bold text-[var(--accent)] mb-4 text-center">
-        {title === "Foundational Orientation Poles" ? "Chart 1" : "Chart 2"}
+        {title === "Polos de Orientação Fundamentais" ? "Gráfico 1" : "Gráfico 2"}
       </h3>
       <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-8 text-center">{title}</h2>
 

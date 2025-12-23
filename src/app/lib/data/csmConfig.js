@@ -2,114 +2,112 @@
 
 export const CSM_DIMENSIONS = [
   {
-    name: "Information Processing",
-    subtitle: "How you perceive and interpret data",
+    name: "Processamento de Informações",
+    subtitle: "Como você percebe e interpreta dados",
     pole1: {
       letter: "C",
-      name: "Concrete Focus",
-      desc: "Preference for tangible, verifiable, real-world data; what is practical and observable now.",
+      name: "Foco Concreto",
+      desc: "Preferência por dados tangíveis, verificáveis e do mundo real; aquilo que é prático e observável no presente.",
     },
     pole2: {
       letter: "N",
-      name: "Abstract Insight",
-      desc: "Preference for patterns, possibilities, and theoretical connections: what could be.",
+      name: "Percepção Abstrata",
+      desc: "Preferência por padrões, possibilidades e conexões teóricas: aquilo que poderia ser.",
     },
   },
   {
-    name: "Decision-Making",
-    subtitle: "How you evaluate and decide",
+    name: "Tomada de Decisão",
+    subtitle: "Como você avalia e decide",
     pole1: {
       letter: "L",
-      name: "Analytical Logic",
-      desc: "Preference for objective, impersonal logic and principles of cause and effect.",
+      name: "Lógica Analítica",
+      desc: "Preferência por lógica objetiva e impessoal, baseada em princípios de causa e efeito.",
     },
     pole2: {
       letter: "V",
-      name: "Empathic Values",
-      desc: "Decisions based on personal values and the impact on people.",
+      name: "Valores Empáticos",
+      desc: "Decisões baseadas em valores pessoais e no impacto sobre as pessoas.",
     },
   },
   {
-    name: "Energy Orientation",
-    subtitle: "Where your focus and energy flow",
+    name: "Orientação de Energia",
+    subtitle: "Para onde fluem seu foco e sua energia",
     pole1: {
       letter: "I",
-      name: "Inward Reflection",
-      desc: "Directs energy internally, finding stimulation in reflection and deep thought.",
+      name: "Reflexão Interna",
+      desc: "Direciona a energia para dentro, encontrando estímulo na reflexão e no pensamento profundo.",
     },
     pole2: {
       letter: "O",
-      name: "Outward Engagement",
-      desc: "Directs energy externally, finding stimulation in action and interaction.",
+      name: "Engajamento Externo",
+      desc: "Direciona a energia para fora, encontrando estímulo na ação e na interação.",
     },
   },
   {
-    name: "Change Approach",
-    subtitle: "How you approach change and structure",
+    name: "Abordagem em Relação à Mudança",
+    subtitle: "Como você lida com mudanças e estrutura",
     pole1: {
       letter: "S",
-      name: "Stable Structure",
-      desc: "Preference for closure, planning, and organized systems.",
+      name: "Estrutura Estável",
+      desc: "Preferência por fechamento, planejamento e sistemas organizados.",
     },
     pole2: {
       letter: "F",
-      name: "Adaptive Flexibility",
-      desc: "Preference for spontaneity, open options, and adapting to new information.",
+      name: "Flexibilidade Adaptativa",
+      desc: "Preferência por espontaneidade, opções em aberto e adaptação a novas informações.",
     },
   },
   {
-    name: "Interpersonal Style",
-    subtitle: "How your cognition orients to others",
+    name: "Estilo Interpessoal",
+    subtitle: "Como sua cognição se orienta em relação aos outros",
     pole1: {
       letter: "H",
-      name: "Collaborative Harmony",
-      desc: "Oriented toward group dynamics, collaboration, and collective goals.",
+      name: "Harmonia Colaborativa",
+      desc: "Orientação para dinâmicas de grupo, colaboração e objetivos coletivos.",
     },
     pole2: {
       letter: "A",
-      name: "Independent Autonomy",
-      desc: "Oriented toward self-reliance, personal objectives, and individual freedom.",
+      name: "Autonomia Independente",
+      desc: "Orientação para autossuficiência, objetivos pessoais e liberdade individual.",
     },
   },
 ];
 
 export const PREFERENCE_TIERS = {
-  // app/lib/data/csmConfig.js → Replace primary block
-
-  // app/lib/data/csmConfig.js → Replace primary block
+  // app/lib/data/csmConfig.js → Substituir bloco primary
 
   primary: {
     "51-65": {
-      label: "Mild Preference",
+      label: "Preferência Leve",
       desc: (pct, pole, oppositePole, oppositePct) =>
-        `${pole} is your natural lean (used ${pct}% of the time), but the opposite pole (${oppositePole} at ${oppositePct}%) is still accessible and shows up with little effort when situations call for it.`,
+        `${pole} é sua inclinação natural (usada em ${pct}% do tempo), mas o polo oposto (${oppositePole}, com ${oppositePct}%) ainda é acessível e surge com pouco esforço quando a situação exige.`,
     },
     "66-85": {
-      label: "Moderate Preference",
+      label: "Preferência Moderada",
       desc: (pct, pole, oppositePole, oppositePct) =>
-        `${pole} is your clear default (used ${pct}% of the time). The opposite pole (${oppositePole} at ${oppositePct}%) appears when needed, although it is not your automatic response.`,
+        `${pole} é seu padrão claro (usado em ${pct}% do tempo). O polo oposto (${oppositePole}, com ${oppositePct}%) aparece quando necessário, embora não seja sua resposta automática.`,
     },
     "86-100": {
-      label: "Strong Preference",
+      label: "Preferência Forte",
       desc: (pct, pole, oppositePole, oppositePct) =>
-        `${pole} is your dominant mode (used ${pct}% of the time). The opposite pole (${oppositePole} at ${oppositePct}%) shows up rarely and usually requires conscious effort.`,
+        `${pole} é seu modo dominante (usado em ${pct}% do tempo). O polo oposto (${oppositePole}, com ${oppositePct}%) aparece raramente e geralmente exige esforço consciente.`,
     },
   },
   secondary: {
     "35-49": {
-      label: "High Influence",
+      label: "Alta Influência",
       desc: (pct, pole, primaryPole, primaryPct) =>
-        `${pole} is not your default, but it plays a noticeable role (appearing in ${pct}% of situations) and feels natural when the context fits. Your primary pole is ${primaryPole} at ${primaryPct}%.`,
+        `${pole} não é seu padrão principal, mas exerce um papel perceptível (aparecendo em ${pct}% das situações) e soa natural quando o contexto favorece. Seu polo primário é ${primaryPole}, com ${primaryPct}%.`,
     },
     "15-34": {
-      label: "Moderate Influence",
+      label: "Influência Moderada",
       desc: (pct, pole, primaryPole, primaryPct) =>
-        `${pole} is not your default and shows up occasionally (in ${pct}% of situations), usually triggered by specific contexts or needs. Your primary pole is ${primaryPole} at ${primaryPct}%.`,
+        `${pole} não é seu padrão principal e surge ocasionalmente (em ${pct}% das situações), geralmente acionado por contextos ou necessidades específicas. Seu polo primário é ${primaryPole}, com ${primaryPct}%.`,
     },
     "0-14": {
-      label: "Low Influence",
+      label: "Baixa Influência",
       desc: (pct, pole, primaryPole, primaryPct) =>
-        `${pole} is not your default and appears rarely (only ${pct}% of the time). It feels less familiar and usually requires intentional effort. Your primary pole is ${primaryPole} at ${primaryPct}%.`,
+        `${pole} não é seu padrão principal e aparece raramente (apenas ${pct}% do tempo). É menos familiar e normalmente requer esforço intencional. Seu polo primário é ${primaryPole}, com ${primaryPct}%.`,
     },
   },
 };
@@ -117,18 +115,18 @@ export const PREFERENCE_TIERS = {
 // ← ADD THIS LINE
 export const CAS_TIERS = {
   "80-100": {
-    label: "Easy Alignment",
+    label: "Alinhamento Fácil",
     desc: (pole) =>
-      `Both partners rely on similar patterns within ${pole}, making the dimension feel natural and easy to navigate together. Communication flows with minimal friction, and understanding each other's perspective often happens automatically.`,
+      `Ambos os parceiros se apoiam em padrões semelhantes dentro de ${pole}, fazendo com que essa dimensão pareça natural e fácil de navegar em conjunto. A comunicação flui com atrito mínimo, e a compreensão da perspectiva um do outro costuma acontecer de forma quase automática.`,
   },
   "60-79": {
-    label: "Manageable Alignment",
+    label: "Alinhamento Gerenciável",
     desc: (pole) =>
-      `Partners share the same general orientation toward ${pole}, but differ enough in intensity that their default reactions do not always match. Most interactions feel smooth, but certain situations may reveal gaps that require intention, clarification, or small adjustments to stay aligned.`,
+      `Os parceiros compartilham a mesma orientação geral em relação a ${pole}, mas diferem o suficiente em intensidade para que suas reações padrão nem sempre coincidam. A maioria das interações flui bem, porém certas situações podem revelar diferenças que exigem intenção, esclarecimento ou pequenos ajustes para manter o alinhamento.`,
   },
   "0-59": {
-    label: "Challenging Alignment",
+    label: "Alinhamento Desafiador",
     desc: (pole) =>
-      `Partners approach ${pole} from different cognitive starting points. Their natural ways of processing or responding often diverge, making alignment a more active process. Clear communication, curiosity, and conscious bridging are essential to avoid misunderstandings and maintain harmony.`,
+      `Os parceiros abordam ${pole} a partir de pontos de partida cognitivos diferentes. Suas formas naturais de processar ou responder frequentemente divergem, tornando o alinhamento um processo mais ativo. Comunicação clara, curiosidade e esforço consciente para criar pontes são essenciais para evitar mal-entendidos e preservar a harmonia.`,
   },
 };

@@ -21,7 +21,7 @@ const archetypes = {
   "C-V-I-S-H": "O Conselheiro",
   "C-V-I-S-A": "O Restaurador",
   "C-V-I-F-H": "O Pacificador",
-  "C-V-I-F-A": "O Empata",
+  "C-V-I-F-A": "O Empático",
   "N-L-O-S-H": "O Estrategista",
   "N-L-O-S-A": "O Inventor",
   "N-L-O-F-H": "O Disruptor",
@@ -78,19 +78,19 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
 
   const getArchetype = (typeCode) => archetypes[typeCode] || "Unknown";
 
-  const yourAssessment = userData.has_assessment ? "Completed" : "Pending";
-  const partnerAssessment = partnerData ? (partnerData.has_assessment ? "Completed" : "Pending") : "Not Signed Up";
+  const yourAssessment = userData.has_assessment ? "Concluído" : "Pendente";
+  const partnerAssessment = partnerData ? (partnerData.has_assessment ? "Concluído" : "Pendente") : "Não Inscrito";
 
-  const reportReady = userData.has_assessment && partnerData?.has_assessment ? "Ready" : "Waiting";
-  const yourType = userData.typeCode ? `${getArchetype(userData.typeCode)} (${userData.typeCode})` : "Not Available";
+  const reportReady = userData.has_assessment && partnerData?.has_assessment ? "Pronto" : "Aguardando";
+  const yourType = userData.typeCode ? `${getArchetype(userData.typeCode)} (${userData.typeCode})` : "Não Disponível";
   const partnerType = partnerData?.typeCode
     ? `${getArchetype(partnerData.typeCode)} (${partnerData.typeCode})`
-    : "Not Available";
+    : "Não Disponível";
 
   const getStatusIcon = (status) => {
-    if (status === "Completed" || status === "Ready") {
+    if (status === "Concluído" || status === "Pronto") {
       return <CheckCircle className="w-5 h-5 text-green-400" />;
-    } else if (status === "Pending" || status === "Waiting") {
+    } else if (status === "Pendente" || status === "Aguardando") {
       return <Clock className="w-5 h-5 text-yellow-400" />;
     } else {
       return <XCircle className="w-5 h-5 text-red-400" />;
@@ -98,8 +98,8 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
   };
 
   const getStatusColor = (status) => {
-    if (status === "Completed" || status === "Ready") return "text-green-400";
-    if (status === "Pending" || status === "Waiting") return "text-yellow-400";
+    if (status === "Concluído" || status === "Pronto") return "text-green-400";
+    if (status === "Pendente" || status === "Aguardando") return "text-yellow-400";
     return "text-red-400";
   };
 
@@ -107,7 +107,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
     <div className="space-y-6">
       {/* Assessment Statuses */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="card-gradient p-4 rounded-lg shadow-custom">
+        <div className="p-4 rounded-lg">
           <div className="flex flex-wrap items-center justify-start gap-3">
             <div className="flex items-center space-x-3">
               <UserCheck className="w-6 h-6 text-[var(--text-secondary)]" />
@@ -120,7 +120,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
           </div>
         </div>
 
-        <div className="card-gradient p-4 rounded-lg shadow-custom">
+        <div className="p-4 rounded-lg">
           <div className="flex flex-wrap items-center justify-start gap-3">
             <div className="flex items-center space-x-3">
               <Users className="w-6 h-6 text-[var(--text-secondary)]" />
@@ -135,7 +135,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
       </div>
 
       {/* Report Status */}
-      <div className="card-gradient p-4 rounded-lg shadow-custom">
+      <div className="p-4 rounded-lg">
         <div className="flex flex-wrap items-center justify-start gap-3">
           <div className="flex  items-center space-x-3">
             <FileText className="w-6 h-6 text-[var(--text-secondary)]" />
@@ -153,7 +153,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
 
       {/* Archetypes */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="card-gradient p-4 rounded-lg shadow-custom">
+        <div className="p-4 rounded-lg">
           <div className="flex items-center space-x-3 mb-2">
             <User className="w-5 h-5 text-[var(--text-secondary)]" />
             <span className="text-[var(--text-secondary)] text-sm uppercase tracking-wide">Seu Arquétipo</span>
@@ -161,7 +161,7 @@ export default function QuickStats({ userData, siteId, isPartnerA, isPartnerB })
           <span className="text-[var(--text-primary)] font-semibold block">{yourType}</span>
         </div>
 
-        <div className="card-gradient p-4 rounded-lg shadow-custom">
+        <div className="p-4 rounded-lg">
           <div className="flex items-center space-x-3 mb-2">
             <User className="w-5 h-5 text-[var(--text-secondary)]" />
             <span className="text-[var(--text-secondary)] text-sm uppercase tracking-wide">
