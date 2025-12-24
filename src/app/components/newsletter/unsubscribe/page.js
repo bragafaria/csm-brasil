@@ -18,11 +18,11 @@ export default function UnsubscribePage() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setStatus("error");
-      setMessage("Please enter a valid email address");
+      setMessage("Por favor, insira um endereço de e-mail válido");
       return;
     }
 
-    setStatus("loading");
+    setStatus("carregando");
     setMessage("");
 
     try {
@@ -42,12 +42,12 @@ export default function UnsubscribePage() {
         setEmail("");
       } else {
         setStatus("error");
-        setMessage(data.error || "Something went wrong. Please try again.");
+        setMessage(data.error || "Algo deu errado. Por favor, tente novamente.");
       }
     } catch (error) {
       console.error("Unsubscribe error:", error);
       setStatus("error");
-      setMessage("Something went wrong. Please try again.");
+      setMessage("Algo deu errado. Por favor, tente novamente.");
     }
   };
 
@@ -61,17 +61,17 @@ export default function UnsubscribePage() {
             </div>
 
             <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">
-              Unsubscribe from Newsletter
+              Cancelar inscrição na newsletter
             </h1>
 
             <p className="text-lg text-[var(--text-secondary)] mb-8">
-              {`We're`} sorry to see you go. Enter your email address below to unsubscribe from our newsletter.
+              Lamentamos vê-lo sair. Insira seu endereço de e-mail abaixo para cancelar a inscrição na nossa newsletter.
             </p>
 
             <form onSubmit={handleUnsubscribe} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Insira seu Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={status === "loading"}
@@ -82,7 +82,7 @@ export default function UnsubscribePage() {
                 disabled={status === "loading"}
                 className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg font-semibold whitespace-nowrap flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
-                {status === "loading" ? "Processing..." : "Unsubscribe"}
+                {status === "loading" ? "Processando..." : "Cancelar Inscrição"}
                 <X className="w-4 h-4" />
               </button>
             </form>
@@ -101,14 +101,14 @@ export default function UnsubscribePage() {
 
             <div className="mt-8 pt-8 border-t border-[var(--border)]">
               <p className="text-sm text-[var(--text-secondary)] mb-4">
-                Changed your mind? You can always resubscribe later.
+                Mudou de ideia? Você sempre pode se inscrever novamente mais tarde.
               </p>
               <Link
                 href="/"
                 className="inline-flex items-center gap-2 text-[var(--primary)] hover:text-[var(--accent)] transition-colors font-medium"
               >
                 <Mail className="w-4 h-4" />
-                Return to homepage
+                Voltar para a página inicial
               </Link>
             </div>
           </div>

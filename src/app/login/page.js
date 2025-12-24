@@ -25,7 +25,7 @@ export default function Login() {
     const params = new URLSearchParams(window.location.search);
     const msg = params.get("message");
     if (msg === "email_changed") {
-      setUrlMessage("Email changed successfully! Please log in with your new email.");
+      setUrlMessage("E-mail alterado com sucesso! Por favor, faça login com seu novo e-mail.");
     }
   }, []);
 
@@ -77,12 +77,12 @@ export default function Login() {
       }
 
       if (!data.session) {
-        setError("No session returned. Please try again.");
+        setError("Nenhuma sessão retornada. Por favor, tente novamente.");
         setLoading(false);
         return;
       }
 
-      console.log("Login successful, fetching user data:", { userId: data.session.user.id });
+      console.log("Login bem-sucedido, obtendo dados do usuário:", { userId: data.session.user.id });
 
       // Step 3: Fetch user data (protected by RLS policies)
       const { data: userData, error: userError } = await supabase
@@ -93,14 +93,14 @@ export default function Login() {
 
       if (userError) {
         console.error("Error fetching user data:", userError.message, userError);
-        setError("Failed to load user data.");
+        setError("Falha ao carregar os dados do usuário.");
         setLoading(false);
         return;
       }
 
       if (!userData) {
         console.error("No user found for ID:", data.session.user.id);
-        setError("User not found.");
+        setError("Usuário não encontrado.");
         setLoading(false);
         return;
       }
@@ -116,7 +116,7 @@ export default function Login() {
       router.push(`/dashboard/${userData.site_id}`);
     } catch (err) {
       console.error("Unexpected error during login:", err.message, err);
-      setError("An unexpected error occurred.");
+      setError("Ocorreu um erro inesperado.");
       setLoading(false);
     }
   };
@@ -142,7 +142,7 @@ export default function Login() {
             <h1 className="text-xl font-light text-[var(--text-primary)]">Dynamics</h1>
           </div>
         </div>
-        <h1 className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]">Login to Your Account</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]">Faça Login na Sua Conta</h1>
 
         <form onSubmit={handleLogin} className="space-y-4">
           <input
@@ -156,7 +156,7 @@ export default function Login() {
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
-              placeholder="Password"
+              placeholder="Senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-3 pr-12 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
@@ -177,7 +177,7 @@ export default function Login() {
               onClick={() => setIsResetModalOpen(true)}
               className="text-[var(--accent)] text-sm hover:underline font-medium"
             >
-              Forgot password?
+              Esqueceu a senha?
             </button>
           </div>
 
@@ -205,14 +205,14 @@ export default function Login() {
             disabled={loading || rateLimitInfo?.limited}
             className="btn-primary w-full py-3 rounded-lg font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? "Fazendo login..." : "Login"}
           </button>
         </form>
 
         <p className="text-center mt-6 text-[var(--text-secondary)] text-sm">
-          {`Don't have an account?`}{" "}
+          {`Não tem uma conta?`}{" "}
           <a href="/csm-assessment" className="text-[var(--accent)] hover:underline font-medium">
-            Take your free assessment now!
+            Faça sua avaliação gratuita agora!
           </a>
         </p>
       </div>
@@ -221,9 +221,9 @@ export default function Login() {
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 p-4">
           <div className="card-gradient p-6 rounded-lg shadow-custom-lg max-w-sm w-full">
-            <h2 className="text-xl font-semibold mb-4 text-[var(--text-primary)]">Action Required</h2>
+            <h2 className="text-xl font-semibold mb-4 text-[var(--text-primary)]">Ação Necessária</h2>
             <p className="text-[var(--text-secondary)] mb-6 text-sm leading-relaxed">
-              {`Please complete the personal assessment test and purchase the couple's report to access your dashboard.`}
+              {`Por favor, complete o teste de avaliação pessoal e adquira o relatório do casal para acessar seu painel.`}
             </p>
             <button
               onClick={handleModalClose}
@@ -240,7 +240,7 @@ export default function Login() {
         <div className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-sm z-50 p-4 transition-opacity duration-300 ease-in-out border border-[var(--border)]">
           <div className="card-gradient p-6 rounded-xl shadow-2xl max-w-sm w-full transform transition-transform duration-300 ease-in-out scale-100">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-semibold text-[var(--text-primary)]">Reset Your Password</h2>
+              <h2 className="text-xl font-semibold text-[var(--text-primary)]">Redefinir Sua Senha</h2>
               <button
                 type="button"
                 onClick={() => {
@@ -257,7 +257,7 @@ export default function Login() {
             <form onSubmit={handleSendReset} className="space-y-4">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Digite seu e-mail"
                 value={resetEmail}
                 onChange={(e) => setResetEmail(e.target.value)}
                 required
@@ -284,14 +284,14 @@ export default function Login() {
                   }}
                   className="flex-1 py-3 rounded-lg border border-[var(--border)] text-[var(--text-primary)] font-medium hover:bg-[var(--surface-variant)] transition-colors"
                 >
-                  Cancel
+                  Cancelar
                 </button>
                 <button
                   type="submit"
                   disabled={resetLoading}
                   className="flex-1 btn-primary py-3 rounded-lg font-semibold disabled:opacity-50 transition-all hover:brightness-110"
                 >
-                  {resetLoading ? "Sending..." : "Send Reset Link"}
+                  {resetLoading ? "Enviando..." : "Redefinir Senha"}
                 </button>
               </div>
             </form>

@@ -45,7 +45,7 @@ function LoginContent() {
         const verifyData = await verifyRes.json();
 
         if (!verifyRes.ok || !verifyData.paid) {
-          setError(verifyData.error || "Payment not confirmed.");
+          setError(verifyData.error || "Pagamento não confirmado.");
           setLoading(false);
           return;
         }
@@ -71,7 +71,7 @@ function LoginContent() {
         className="min-h-screen flex items-center justify-center bg-[var(--surface)]"
       >
         <div className="text-[var(--text-primary)] text-xl">
-          {sessionId ? "Payment successful, redirecting..." : "Checking session..."}
+          {sessionId ? "Pagamento bem-sucedido, redirecionando..." : "Verificando sessão..."}
         </div>
       </motion.div>
     );
@@ -80,7 +80,7 @@ function LoginContent() {
   // === Error state (optional) ===
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--surface)] text-[var(--text-primary)] text-xl">
-      {error || "Something unexpected happened."}
+      {error || "Ocorreu algo inesperado."}
     </div>
   );
 }

@@ -75,7 +75,7 @@ export default function Signup() {
         }
       } catch (err) {
         console.error("Unexpected error in init:", err.message, err);
-        setServerError("An unexpected error occurred. Please try again.");
+        setServerError("Ocorreu um erro inesperado. Por favor, tente novamente.");
       }
     }
     init();
@@ -123,7 +123,7 @@ export default function Signup() {
 
       if (existingUser) {
         console.warn("User already exists with email:", email);
-        setServerError("An account with this email already exists. Please log in.");
+        setServerError("Já existe uma conta com este e-mail. Por favor, faça login.");
         setLoading(false);
         return;
       }
@@ -221,8 +221,8 @@ export default function Signup() {
       console.error("Signup error:", err.message, err);
       setServerError(
         err.message.includes("already exists")
-          ? "An account with this email already exists. Please log in."
-          : err.message || "An unexpected error occurred during signup."
+          ? "Já existe uma conta com este e-mail. Faça login, por favor."
+          : err.message || "Ocorreu um erro inesperado durante o cadastro."
       );
       setLoading(false);
     }
@@ -272,7 +272,7 @@ export default function Signup() {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="text-2xl font-bold mb-4 text-center text-[var(--text-primary)]"
           >
-            Assessment Required
+            Avaliação Necessária
           </motion.h2>
 
           <motion.p
@@ -281,8 +281,7 @@ export default function Signup() {
             transition={{ delay: 0.4, duration: 0.5 }}
             className="text-[var(--text-secondary)] text-center mb-8 leading-relaxed"
           >
-            {`Before you can sign up and access your personalized Couple's Insights Report, you'll need to complete the CSM
-            assessment. This only takes a few minutes!`}
+            {`Antes de se cadastrar e acessar seu Relatório Personalizado de Insights do Casal, você precisará completar a avaliação CSM. Isso leva apenas alguns minutos!`}
           </motion.p>
 
           <motion.a
@@ -294,7 +293,7 @@ export default function Signup() {
             whileTap={{ scale: 0.97 }}
             className="btn-primary w-full py-4 rounded-lg font-semibold text-base inline-flex items-center justify-center gap-3 group shadow-lg"
           >
-            <span>Take the Assessment</span>
+            <span>Fazer a Avaliação</span>
             <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </motion.a>
         </div>
@@ -333,7 +332,7 @@ export default function Signup() {
           transition={{ duration: 0.5 }}
           className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]"
         >
-          {`Sign Up to Get Your Couple's Insights Report`}
+          {`Cadastre-se para obter seu Relatório de Insights do Casal`}
         </motion.h1>
 
         {confirmationSent ? (
@@ -344,7 +343,7 @@ export default function Signup() {
             className="text-center"
           >
             <p className="text-[var(--text-primary)] mb-4">
-              A confirmation email has been sent to {email}. Please verify your email to continue.
+              Um e-mail de confirmação foi enviado para {email}. Por favor, verifique seu e-mail para continuar.
             </p>
             <motion.button
               onClick={() => router.push(`/report/${typeCode}/couples`)}
@@ -352,7 +351,7 @@ export default function Signup() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Return to Couples Page
+              Voltar Para a Página do Casal
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </motion.button>
           </motion.div>
@@ -365,7 +364,7 @@ export default function Signup() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5 }}
                   type="text"
-                  placeholder="Name"
+                  placeholder="Nome"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full px-4 py-3 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
@@ -395,7 +394,7 @@ export default function Signup() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                   type="email"
-                  placeholder="Confirm Email"
+                  placeholder="Confirmar E-mail"
                   value={confirmEmail}
                   onChange={(e) => setConfirmEmail(e.target.value)}
                   onPaste={(e) => e.preventDefault()}
@@ -412,7 +411,7 @@ export default function Signup() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                     type={showPassword ? "text" : "password"}
-                    placeholder="Password"
+                    placeholder="Senha"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="w-full px-4 py-3 pr-12 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
@@ -461,16 +460,16 @@ export default function Signup() {
                     </div>
                   </div>
                   <span className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    I have read and agree to the{" "}
+                    Li e concordo com o{" "}
                     <button
                       type="button"
                       onClick={() => setShowTermsModal(true)}
                       className="font-medium text-violet-400 hover:underline underline-offset-2 focus:outline-none focus:underline"
                     >
-                      Terms of Service
+                      Termos de Serviço
                     </button>
-                    , understand that CSM Sessions are self-help tools (not therapy or professional counseling), and
-                    accept all disclaimers and limitations of liability.
+                    , entendo que as Sessões CSM são ferramentas de autoajuda (não terapia ou aconselhamento
+                    profissional), e aceito todas as isenções de responsabilidade e limitações de responsabilidade.
                   </span>
                 </label>
 
@@ -487,7 +486,9 @@ export default function Signup() {
                   whileHover={loading || !termsAccepted ? {} : { scale: 1.02 }}
                   whileTap={loading || !termsAccepted ? {} : { scale: 0.98 }}
                 >
-                  <span className="flex-shrink-0">{loading ? "Processing..." : "Sign Up and Proceed to Payment"}</span>
+                  <span className="flex-shrink-0">
+                    {loading ? "Processando..." : "Cadastre-se e prossiga para o pagamento"}
+                  </span>
                   {!loading && (
                     <ArrowRight className="h-5 w-5 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
                   )}
@@ -495,7 +496,7 @@ export default function Signup() {
 
                 {!termsAccepted && (
                   <p className="text-xs text-[var(--text-secondary)]/70 text-center mt-2 max-w-md">
-                    You must accept the Terms of Service to continue
+                    Você deve aceitar os Termos de Serviço para continuar
                   </p>
                 )}
               </div>

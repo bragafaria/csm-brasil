@@ -40,7 +40,7 @@ export async function checkLoginRateLimit(email) {
 
       return {
         allowed: false,
-        error: `Too many login attempts. Please try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
+        error: `Muitas tentativas de login. Por favor, tente novamente em ${minutesUntilReset} minuto${minutesUntilReset !== 1 ? "s" : ""}.`,
         rateLimit: {
           limited: true,
           remaining: 0,
@@ -91,7 +91,7 @@ export async function checkBloggerLoginRateLimit(email) {
 
       return {
         allowed: false,
-        error: `Too many login attempts. Please try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
+        error: `Muitas tentativas de login. Por favor, tente novamente em ${minutesUntilReset} minuto${minutesUntilReset !== 1 ? "s" : ""}.`,
         rateLimit: {
           limited: true,
           remaining: 0,
@@ -142,7 +142,7 @@ export async function checkCoachLoginRateLimit(email) {
 
       return {
         allowed: false,
-        error: `Too many login attempts. Please try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
+        error: `Muitas tentativas de login. Por favor, tente novamente em ${minutesUntilReset} minuto${minutesUntilReset !== 1 ? "s" : ""}.`,
         rateLimit: {
           limited: true,
           remaining: 0,
@@ -195,7 +195,7 @@ export async function checkSignupRateLimit(email) {
 
       return {
         allowed: false,
-        error: `Too many signup attempts. Please try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
+        error: `Muitas tentativas de login. Por favor, tente novamente em ${minutesUntilReset} minuto${minutesUntilReset !== 1 ? "s" : ""}.`,
         rateLimit: {
           limited: true,
           remaining: 0,
@@ -242,7 +242,7 @@ export async function checkStripeCheckoutRateLimit(userId) {
 
       return {
         allowed: false,
-        error: `Too many checkout attempts. Please try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
+        error: `Muitas tentativas de login. Por favor, tente novamente em ${minutesUntilReset} minuto${minutesUntilReset !== 1 ? "s" : ""}.`,
       };
     }
 
@@ -264,7 +264,7 @@ export async function checkStripeCheckoutRateLimit(userId) {
 export async function sendResetEmail(email) {
   try {
     if (!email || !email.includes("@")) {
-      return { success: false, error: "Please enter a valid email" };
+      return { success: false, error: "Por favor, insira um e-mail válido" };
     }
 
     const headersList = await headers();
@@ -279,7 +279,7 @@ export async function sendResetEmail(email) {
 
       return {
         success: false,
-        error: `Too many reset attempts. Please try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
+        error: `Muitas tentativas de redefinição de senha. Por favor, tente novamente em ${minutesUntilReset} minuto${minutesUntilReset !== 1 ? "s" : ""}.`,
       };
     }
 
@@ -309,13 +309,13 @@ export async function sendResetEmail(email) {
 
     return {
       success: true,
-      message: "Check your email for the reset link!",
+      message: "Verifique seu e-mail para o link de redefinição!",
     };
   } catch (error) {
     console.error("Reset email error:", error);
     return {
       success: false,
-      error: "Failed to send reset email. Please try again.",
+      error: "Falha ao enviar o e-mail de redefinição. Por favor, tente novamente.",
     };
   }
 }
@@ -324,7 +324,7 @@ export async function updatePasswordWithRateLimit(newPassword, searchParams) {
   try {
     // Validation
     if (!newPassword || newPassword.length < 6) {
-      return { success: false, error: "Password must be at least 6 characters" };
+      return { success: false, error: "A senha deve ter pelo menos 6 caracteres" };
     }
 
     // Rate limit check
@@ -338,7 +338,7 @@ export async function updatePasswordWithRateLimit(newPassword, searchParams) {
       const minutesUntilReset = Math.ceil((resetDate - Date.now()) / 60000);
       return {
         success: false,
-        error: `Too many password update attempts. Try again in ${minutesUntilReset} minute${minutesUntilReset !== 1 ? "s" : ""}.`,
+        error: `Muitas tentativas de atualização de senha. Tente novamente em ${minutesUntilReset} minuto${minutesUntilReset !== 1 ? "s" : ""}.`,
       };
     }
 
@@ -361,7 +361,7 @@ export async function updatePasswordWithRateLimit(newPassword, searchParams) {
     if (code) {
       const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
       if (exchangeError) {
-        return { success: false, error: "Invalid or expired reset link" };
+        return { success: false, error: "Link de redefinição inválido ou expirado" };
       }
     }
 
@@ -376,6 +376,6 @@ export async function updatePasswordWithRateLimit(newPassword, searchParams) {
     redirect("/login");
   } catch (error) {
     console.error("Password update rate limit error:", error);
-    return { success: false, error: "An error occurred. Please try again." };
+    return { success: false, error: "Ocorreu um erro. Por favor, tente novamente." };
   }
 }
