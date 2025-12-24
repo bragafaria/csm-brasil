@@ -25,13 +25,13 @@ export default function ResetPassword() {
     if (type === "recovery" && access_token && refresh_token) {
       supabase.auth.setSession({ access_token, refresh_token }).then(({ data, error }) => {
         if (error) {
-          setError("Invalid or expired reset link");
+          setError("Link de redefinição inválido ou expirado");
         } else {
           setIsValidLink(true);
         }
       });
     } else {
-      setError("Invalid reset link");
+      setError("Link de redefinição inválido");
     }
   }, []);
 
@@ -40,12 +40,12 @@ export default function ResetPassword() {
     setError("");
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError("As senhas não correspondem");
       return;
     }
 
     if (password.length < 6) {
-      setError("Password must be at least 6 characters");
+      setError("A senha deve ter pelo menos 6 caracteres");
       return;
     }
 
@@ -54,7 +54,7 @@ export default function ResetPassword() {
     const { error: updateError } = await supabase.auth.updateUser({ password });
 
     if (updateError) {
-      setError(updateError.message || "Failed to update password");
+      setError(updateError.message || "Falha ao atualizar a senha");
       setLoading(false);
       return;
     }
@@ -68,7 +68,7 @@ export default function ResetPassword() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[var(--surface)] p-4">
         <div className="card-gradient p-8 rounded-lg shadow-custom-lg max-w-md w-full text-center">
-          <p className="text-[var(--text-secondary)]">Verifying reset link...</p>
+          <p className="text-[var(--text-secondary)]">Verificando link de redefinição...</p>
         </div>
       </div>
     );
@@ -85,12 +85,12 @@ export default function ResetPassword() {
           </div>
         </div>
 
-        <h1 className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]">Set New Password</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]">Definir nova senha</h1>
 
         {success ? (
           <div className="text-center py-8">
-            <p className="text-green-400 text-lg mb-2">Password changed successfully!</p>
-            <p className="text-[var(--text-secondary)] text-sm">Redirecting to login...</p>
+            <p className="text-green-400 text-lg mb-2">Senha alterada com sucesso!</p>
+            <p className="text-[var(--text-secondary)] text-sm">Redirecionando para o login...</p>
           </div>
         ) : (
           <>
@@ -98,7 +98,7 @@ export default function ResetPassword() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <input
                 type="password"
-                placeholder="New password"
+                placeholder="Nova senha"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -107,7 +107,7 @@ export default function ResetPassword() {
               />
               <input
                 type="password"
-                placeholder="Confirm new password"
+                placeholder="Confirme Nova senha"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
@@ -120,7 +120,7 @@ export default function ResetPassword() {
                 disabled={loading || !isValidLink}
                 className="btn-primary w-full py-3 rounded-lg font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading ? "Updating..." : "Update Password"}
+                {loading ? "Atualizando..." : "Atualizar senha"}
               </button>
             </form>
           </>

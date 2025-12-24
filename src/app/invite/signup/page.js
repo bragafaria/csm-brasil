@@ -37,14 +37,14 @@ function InviteSignupContent() {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!name) newErrors.name = ["Name is required"];
-    if (!email) newErrors.email = ["Email is required"];
-    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = ["Invalid email format"];
-    if (!confirmEmail) newErrors.confirmEmail = ["Confirm email is required"];
-    else if (email !== confirmEmail) newErrors.confirmEmail = ["Emails do not match"];
-    if (!password) newErrors.password = ["Password is required"];
-    else if (password.length < 6) newErrors.password = ["Password must be at least 6 characters"];
-    if (!termsAccepted) newErrors.terms = ["You must accept the Terms of Service"];
+    if (!name) newErrors.name = ["Nome é obrigatório"];
+    if (!email) newErrors.email = ["E-mail é obrigatório"];
+    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = ["Formato de e-mail inválido"];
+    if (!confirmEmail) newErrors.confirmEmail = ["Confirmação de e-mail é obrigatória"];
+    else if (email !== confirmEmail) newErrors.confirmEmail = ["Os e-mails não correspondem"];
+    if (!password) newErrors.password = ["Senha é obrigatória"];
+    else if (password.length < 6) newErrors.password = ["A senha deve ter pelo menos 6 caracteres"];
+    if (!termsAccepted) newErrors.terms = ["Você deve aceitar os Termos de Serviço"];
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -65,7 +65,7 @@ function InviteSignupContent() {
     const siteId = searchParams.get("siteId");
 
     if (!invite || !siteId) {
-      setServerError("Invalid invite link.");
+      setServerError("Link de convite inválido.");
       setShowModal(true);
       setLoading(false);
       return;
@@ -110,7 +110,7 @@ function InviteSignupContent() {
       const result = await response.json();
 
       if (!response.ok) {
-        setServerError(result.error || "An unexpected error occurred.");
+        setServerError(result.error || "Ocorreu um erro inesperado.");
         setShowModal(true);
         setLoading(false);
         return;
@@ -132,7 +132,7 @@ function InviteSignupContent() {
       const dashboardId = partnerA?.site_id || siteId;
       router.push(`/dashboard/${dashboardId}`);
     } catch (err) {
-      setServerError(err.message || "An unexpected error occurred.");
+      setServerError(err.message || "Ocorreu um erro inesperado.");
       setShowModal(true);
       setLoading(false);
     }
@@ -154,7 +154,9 @@ function InviteSignupContent() {
           </div>
         </div>
 
-        <h1 className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]">Sign Up to Join Your Partner</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center text-[var(--text-primary)]">
+          Cadastre-se Para se Juntar ao Seu Parceiro
+        </h1>
 
         <form onSubmit={handleSignup} className="space-y-4">
           <div>
@@ -184,7 +186,7 @@ function InviteSignupContent() {
           <div>
             <input
               type="email"
-              placeholder="Confirm Email"
+              placeholder="Confirme o Email"
               value={confirmEmail}
               onChange={(e) => setConfirmEmail(e.target.value)}
               onPaste={(e) => e.preventDefault()}
@@ -193,12 +195,11 @@ function InviteSignupContent() {
             />
             {errors.confirmEmail && <p className="text-red-400 text-sm mt-1">{errors.confirmEmail[0]}</p>}
           </div>
-
           <div>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
-                placeholder="Password"
+                placeholder="Senha"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-3 pr-12 rounded-lg bg-[var(--surface-variant)] border border-[var(--border)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-[var(--transition)]"
@@ -208,7 +209,7 @@ function InviteSignupContent() {
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors focus:outline-none"
-                aria-label={showPassword ? "Hide password" : "Show password"}
+                aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
               >
                 {showPassword ? <Eye className="w-5 h-5" /> : <EyeOff className="w-5 h-5" />}
               </button>
@@ -236,16 +237,16 @@ function InviteSignupContent() {
                 </div>
               </div>
               <span className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                I have read and agree to the{" "}
+                Li e concordo com o{" "}
                 <button
                   type="button"
                   onClick={() => setShowTermsModal(true)}
                   className="font-medium text-violet-400 hover:underline underline-offset-2 focus:outline-none focus:underline"
                 >
-                  Terms of Service
+                  Termos de Serviço
                 </button>
-                , understand that CSM Sessions are self-help tools (not therapy or professional counseling), and accept
-                all disclaimers and limitations of liability.
+                , entendo que as Sessões CSM são ferramentas de autoajuda (não terapia ou aconselhamento profissional) e
+                aceito todas as isenções de responsabilidade e limitações de responsabilidade.
               </span>
             </label>
             {errors.terms && <p className="text-red-400 text-sm mt-2 text-center w-full">{errors.terms[0]}</p>}
@@ -267,13 +268,13 @@ function InviteSignupContent() {
                 : "btn-primary cursor-pointer"
             }`}
           >
-            {loading ? "Processing..." : "Sign Up"}
+            {loading ? "Processando..." : "Cadastrar-se"}
             {!loading && <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />}
           </button>
 
           {!termsAccepted && (
             <p className="text-xs text-[var(--text-secondary)]/70 text-center mt-2">
-              You must accept the Terms of Service to continue
+              Você deve aceitar os Termos de Serviço para continuar
             </p>
           )}
         </form>
@@ -281,10 +282,10 @@ function InviteSignupContent() {
         {showModal && (
           <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 p-4">
             <div className="card-gradient p-6 rounded-lg shadow-custom-lg max-w-sm w-full">
-              <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-4">Error</h2>
+              <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-4">Erro</h2>
               <p className="text-[var(--text-secondary)] mb-6 text-sm leading-relaxed">{serverError}</p>
               <button onClick={closeModal} className="btn-primary w-full py-3 rounded-lg font-semibold transition-all">
-                Close
+                Fechar
               </button>
             </div>
           </div>
@@ -301,7 +302,7 @@ export default function InviteSignupPage() {
     <Suspense
       fallback={
         <div className="min-h-screen flex items-center justify-center bg-[var(--surface)]">
-          <div className="text-[var(--text-primary)]">Loading...</div>
+          <div className="text-[var(--text-primary)]">Carregando...</div>
         </div>
       }
     >
